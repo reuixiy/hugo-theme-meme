@@ -1,7 +1,7 @@
 // Note: Original code from https://derekkedziora.com/blog/dark-mode
 
-{{- $themeColor := .Site.Params.themeColor -}}
-{{- $themeColorDark := .Site.Params.themeColorDark -}}
+{{ $themeColor := .Site.Params.themeColor }}
+{{ $themeColorDark := .Site.Params.themeColorDark }}
 
 const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
 
