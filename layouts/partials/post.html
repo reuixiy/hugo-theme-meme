@@ -102,7 +102,7 @@
                             {{ end }}
                         {{ end }}
                         {{ if .Site.Params.displayEditLink }}
-                            {{ with .Site.Params.repoURL }}
+                            {{ with .Site.Params.repoEditURL }}
                                 {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.editIcon) "icon" "icon edit-icon") }}
                                 {{ $contentDir := $.Site.Params.contentDir }}
                                 {{ $content := (cond $.Site.IsMultiLingual (printf `/%s/` $contentDir) (printf `/content/`)) }}
