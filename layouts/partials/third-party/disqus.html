@@ -1,6 +1,6 @@
 {{- partial "components/title.html" . -}}
 {{- $title := .Scratch.Get "title" -}}
-<script data-no-instant>
+<script>
     function loadComments() {
         document.querySelector('#load-comments').style = "display:none";
         if (typeof DISQUS === 'undefined') {
