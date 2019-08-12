@@ -13,12 +13,12 @@
 {{ end }}
 
 {{ if eq .Site.Params.trackingCodeType "analytics" }}
-<!-- Google Analytics -->
+    <!-- Google Analytics -->
     <script>
         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
         ga('create', '{{ $id }}', 'auto');
         ga('send', 'pageview');
     </script>
     <script async src='https://www.google-analytics.com/analytics.js'></script>
-<!-- End Google Analytics -->
+    <!-- End Google Analytics -->
 {{ end }}
