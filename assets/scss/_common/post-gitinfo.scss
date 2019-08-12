@@ -1,5 +1,6 @@
 .post-gitinfo {
-    margin-top: 5em;
+    font-size: 80%;
+    margin-top: ($fontSize * 5);
     display: flex;
     justify-content: space-between;
     color: var(--color-contrast-medium);
