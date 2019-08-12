@@ -11,7 +11,7 @@
     {{- end -}}
     <!-- Dark Mode -->
     {{- if .Site.Params.enableDarkMode }}
-        <script data-no-instant>
+        <script>
             const theme = localStorage.getItem('theme');
             if (theme === "dark") {
                 document.documentElement.setAttribute('data-theme', 'dark');
@@ -36,6 +36,8 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <!-- Dual-core Browser -->
     <meta name="renderer" content="webkit" />
+
+    {{ hugo.Generator }}
 
     {{ partial "components/title.html" . }}
     {{- $title := .Scratch.Get "title" -}}
