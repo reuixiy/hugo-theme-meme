@@ -20,7 +20,7 @@
             {{ end }}
             {{ $siteInfoIcon := (replace (.Scratch.Get "siteInfoIcon") "icon" "icon footer-icon") }}
 
-            <div class="site-info">{{ printf `%s %s %s %s` $siteInfoCopyright $siteInfoCreatedYear $siteInfoIcon .Site.Author.name | safeHTML }}</div>
+            <div class="site-info">{{ printf `%s %s%s%s` $siteInfoCopyright $siteInfoCreatedYear $siteInfoIcon .Site.Author.name | safeHTML }}</div>
 
             {{ if .Site.Params.displayPoweredBy }}
                 <div class="powered-by">{{ printf `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [MemE](https://github.com/reuixiy/hugo-theme-meme)` | markdownify | safeHTML }}</div>
