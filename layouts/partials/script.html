@@ -90,3 +90,13 @@
         {{ end }}
     {{ end }}
 {{ end }}
+
+{{ if .Site.Params.enableServiceWorker }}
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }
+    </script>
+{{ end }}
