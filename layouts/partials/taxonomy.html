@@ -1,0 +1,24 @@
+<main class="main list" id="main">
+    <div class="main-inner">
+        <div class="content list-group">
+            {{ if .Site.Params.displayListTitle }}
+                <h1 class="list-title">{{ .Title | default (.Type | title) }}</h1>
+            {{ end }}
+            {{ $type := .Type }}
+            {{ range .Data.Terms.ByCount }}
+                {{ $name := .Name }}
+                <ul class="list-part">
+                    <h2 class="term-title">
+                        {{ with $.Site.GetPage (printf "/%s/%s" $type $name) }}
+                            <a href="{{ .RelPermalink }}" class="term-title-link">{{ .LinkTitle | default .Data.Term }}</a>
+                        {{ end }}
+                        {{ if $.Site.Params.displayTaxonomyTermCount }}
+                            <span class="term-count">{{ printf "(%d)" .Count }}</span>
+                        {{ end }}
+                    </h2>
+                    {{ partial "list-item.html" . }}
+                </ul>
+            {{ end }}
+        </div>
+    </div>
+</main>

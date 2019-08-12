@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}"{{ if .Site.Params.enableDarkMode }}{{ with .Site.Params.defaultTheme | default "light" }} data-theme="{{ . }}"{{ end }}{{ end }}>
+    {{ partial "head.html" . }}
+    <body>
+        <div class="container">
+            {{ partial "header.html" . }}
+            {{ partial "menu.html" . }}
+            {{ partial "multilingual.html" . }}
+            {{ partial "dark-mode.html" . }}
+            {{ block "main" . }}{{ end }}
+            {{ partial "footer.html" . }}
+        </div>
+    </body>
+    {{ partial "script.html" . }}
+</html>

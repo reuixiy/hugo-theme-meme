@@ -1,0 +1,23 @@
+<!-- Nested / Iteration / Recursion -->
+{{- $.Scratch.Delete "sections" -}}
+{{- $.Scratch.Delete "pages" -}}
+{{- $Deliver := . -}}
+{{- $contentDir := $.Site.Params.contentDir -}}
+{{- template "treeSections" (dict "Deliver" $Deliver "path" (cond $.Site.IsMultiLingual (printf `./%s` $contentDir) (printf `./content`))) -}}
+{{- define "treeSections" -}}
+    {{- $Deliver := .Deliver -}}
+    {{- $path := .path -}}
+    {{- range (readDir $path) -}}
+        {{- $fileName := .Name -}}
+        {{- if .IsDir -}}
+            {{- $pagePath := (cond $Deliver.Site.IsMultiLingual (strings.TrimPrefix (printf `./%s` $Deliver.Site.Params.contentDir) (printf `%s/%s` $path $fileName)) (strings.TrimPrefix "./content" (printf `%s/%s` $path $fileName))) -}}
+            {{- with $Deliver.Site.GetPage $pagePath -}}
+                {{- if and (eq .Kind "section") (in $Deliver.Site.Params.postSections .Section) -}}
+                    {{- $Deliver.Scratch.Add "sections" (printf "%s, " $fileName) -}}
+                    {{- $Deliver.Scratch.SetInMap "pages" $pagePath $fileName -}}
+                {{- end -}}
+            {{- end -}}
+            {{- template "treeSections" (dict "Deliver" $Deliver "path" (printf `%s/%s` $path $fileName)) -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}

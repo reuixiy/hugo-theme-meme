@@ -1,0 +1,236 @@
+.post-title {
+    text-align: center;
+}
+
+.post-subtitle {
+    font-size: 1.8em;
+    text-align: center;
+    font-weight: 700;
+    margin-top: -0.618em;
+}
+
+.post-description {
+    text-align: center;
+    margin: $fontSize 0;
+    font-size: 90%;
+}
+
+.post-body {
+    margin-top: 5em !important;
+}
+
+.post {
+    p {
+        margin: 0 0 1em;
+        line-height: $lineHeight;
+        a {
+            text-decoration: underline;
+        }
+    }
+    img {
+        display: block;
+        margin: 2em auto;
+        max-width: 100%;
+        border: 1px solid var(--color-contrast-lower);
+        clear: both;
+    }
+    video {
+        display: block;
+        max-width: 100%;
+        margin: 2em auto;
+        clear: both;
+    }
+    sup {
+        font-size: 70%;
+        vertical-align: super;
+        a {
+            text-decoration: none;
+        }
+    }
+    ol, ul {
+        padding-left: 2em;
+        line-height: $lineHeight;
+    }
+    hr {
+        border: none;
+        margin: 2.427em 0 1.5em;
+        text-align: center;
+        &::after {
+            content: "···";
+            letter-spacing: 2em;
+            padding-left: 2em;
+        }
+    }
+}
+
+blockquote {
+    margin: 1em 0;
+    padding: 0 1em;
+    color: var(--color-contrast-medium);
+    border-left: 3px solid var(--color-contrast-low);
+    p {
+        text-align: left !important;
+    }
+    a {
+        color: var(--color-contrast-medium);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.emphasis-point {
+    font-weight: normal;
+    text-emphasis: '•';
+    -webkit-text-emphasis: '•';
+    -moz-text-emphasis: '•';
+    text-emphasis-position: under;
+    -webkit-text-emphasis-position: under;
+    -moz-text-emphasis-position: under;
+}
+
+.drop-cap {
+    float: left;
+    font-size: $fontSize * 3;
+    margin-right: $lineHeight * $fontSize - $fontSize;
+    margin-top: $fontSize / 2;
+    line-height: $lineHeight * $fontSize;
+}
+
+.caption {
+    display: block;
+    text-align: center;
+    margin: -1em 0 0;
+    font-size: 90%;
+    color: var(--color-contrast-medium);
+}
+
+.contents {
+    margin-top: 5em;
+    ol {
+        list-style: none;
+        counter-reset: item;
+        li::before {
+            content: counters(item, ".") ". ";
+            counter-increment: item;
+        }
+    }
+}
+ol.toc {
+    padding: 0;
+    overflow: auto;
+    white-space: nowrap;
+    line-height: $lineHeight;
+}
+
+.footnotes {
+    font-size: 90%;
+    padding: ($fontSize * 5) 0 0;
+    hr {
+        margin: 0;
+        height: 1px;
+        border: none;
+        background-color: var(--color-contrast-medium);
+    }
+    ol {
+        margin: ($fontSize * 1.618) 0 0;
+        padding: 0 $fontSize 0 ($fontSize * 2);
+    }
+}
+
+.anchor-link {
+    position: absolute;
+    transform: translate(-150%);
+}
+.anchor-icon {
+    width: 0.75em;
+    height: 0.75em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid var(--color-contrast-lower);
+    margin: 2em 0;
+}
+thead {
+    font-weight: 700;
+}
+th, td {
+    font-size: 0.8em;
+    padding: 0.4em;
+    border: 1px solid var(--color-contrast-lower);
+}
+table>tbody>tr:nth-of-type(odd) {
+    background-color: var(--color-contrast-lower);
+}
+table>tbody>tr:hover {
+    background-color: var(--color-contrast-low);
+}
+
+dt {
+    font-weight: 700;
+}
+dd {
+    margin-left: 2em;
+    text-align: left;
+}
+
+code {
+    padding: ($fontSize / 8) ($fontSize / 4);
+    background-color: var(--color-contrast-lower);
+    border-radius: 3px;
+    font-size: 80%;
+}
+pre {
+    overflow: auto;
+    font-size: $fontSize * 0.8;
+    margin: ($fontSize * 2) 0;
+}
+.highlight {
+    font-size: 0.8em;
+    margin: ($fontSize * 2) 0;
+    line-height: 1.618;
+    background-color: var(--color-contrast-lower);
+    code {
+        margin: 0;
+        padding: 0;
+        font-size: 1em;
+    }
+    pre {
+        margin: 1em 0;
+    }
+    table {
+        border-collapse: separate;
+    }
+    th, td {
+        font-size: inherit;
+    }
+    table>tbody>tr:nth-of-type(odd) {
+        background-color: inherit;
+    }
+    table>tbody>tr:hover {
+        background-color: inherit;
+    }
+}
+span.lnt {
+    user-select: none;
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.lntable {
+    padding: 0 1em !important;
+}
+.lntd {
+    padding-right: 1em !important;
+    pre {
+        overflow: hidden;
+    }
+}
+
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+}

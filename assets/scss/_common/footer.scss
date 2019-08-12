@@ -1,0 +1,26 @@
+.main {
+    padding-bottom: 15em;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 90%;
+    color: var(--color-contrast-medium);
+    a {
+        color: var(--color-contrast-medium);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.footer-inner {
+    padding: 1.618em;
+    text-align: center;
+}
+
+.footer-icon {
+    margin: 0 0.5em 0.3em;
+}

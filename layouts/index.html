@@ -1,0 +1,102 @@
+{{ define "main" }}
+    <!-- Layout Poetry -->
+    {{ if eq .Site.Params.homeLayout "poetry" }}
+        <main class="home">
+            <div class="poetry">
+                {{ range .Site.Params.homePoetry }}
+                    <p>{{ . | markdownify }}</p>
+                {{ end }}
+            </div>
+
+            <div class="links">
+                {{ range .Site.Menus.home }}
+                    {{- $linkType := (string .Pre) -}}
+                    {{- $iconName := (string .Post) -}}
+                    {{- $icon := (index $.Site.Data.SVG $iconName) -}}
+                    <a href="{{ .URL }}" class="links-item"{{ if eq $linkType "external" }} target="_blank" rel="noopener"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
+                {{ end }}
+            </div>
+        </main>
+    {{ end }}
+    <!-- Layout Footage -->
+    {{ if eq .Site.Params.homeLayout "footage" }}
+        <main class="home">
+            {{ with or .Site.Params.homeVideoWebm .Site.Params.homeVideoMp4 }}
+                <video poster="{{ $.Site.Params.homePoster }}" id="bgvid" playsinline autoplay muted loop>
+                    {{ with $.Site.Params.homeVideoWebm }}
+                        <source src="{{ . }}" type="video/webm" />
+                    {{ end }}
+                    {{ with $.Site.Params.homeVideoMp4 }}
+                        <source src="{{ . }}" type="video/mp4" />
+                    {{ end }}
+                </video>
+            {{ end }}
+            <div class="main-inner">
+                <div class="content">
+                    <a href="{{ .Site.Params.homeLogoLink }}">
+                        <img src="{{ .Site.Params.homeLogo }}" class="avatar" />
+                    </a>
+                    <h1>{{ .Site.Params.homeTitle }}</h1>
+                    <div class="motto">{{ .Site.Params.homeMotto }}</div>
+                    <hr>
+                    <div class="description">{{ .Site.Params.homeDescription }}</div>
+                    <div class="keywords">{{ .Site.Params.homeKeywords }}</div>
+                </div>
+                <div class="links">
+                    {{ $length := sub (len .Site.Menus.home) 1 }}
+                    {{ range $index, $value := .Site.Menus.home }}
+                        {{- $linkType := (string .Pre) -}}
+                        {{- $iconName := (string .Post) -}}
+                        {{- $icon := (index $.Site.Data.SVG $iconName) -}}
+                        <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
+                        {{- if lt $index $length -}}
+                            {{- $.Site.Params.homeLinksDelimiter -}}
+                        {{- end -}}
+                    {{ end }}
+                </div>
+            </div>
+        </main>
+    {{ end }}
+    <!-- Layout Posts -->
+    {{ if eq .Site.Params.homeLayout "posts" }}
+        <main class="main single" id="main">
+            <div class="main-inner">
+                {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.postSections) }}
+                {{ range $paginator.Pages }}
+                    <article class="content post home">
+                        <h2 class="post-title">
+                            <a href="{{ .RelPermalink }}" class="summary-title-link">{{ .LinkTitle }}</a>
+                        </h2>
+                        {{ if $.Site.Params.enablePostMetaInHome }}
+                            {{ partial "post-meta.html" . }}
+                        {{ end }}
+                        <summary class="summary">
+                            {{ partial "components/summary.html" . }}
+                            {{ $summary := (.Scratch.Get "summary") | replaceRE `(</p>)……` `$1` }}
+                            {{ $summary | safeHTML }}
+                        </summary>
+                        {{ if .Truncated }}
+                            <div class="read-more-container">
+                                <a href="{{ .RelPermalink }}" class="read-more-link">{{ i18n "readMore" }} »</a>
+                            </div>
+                        {{ end }}
+                    </article>
+                {{ end }}
+                {{ if or $paginator.HasPrev $paginator.HasNext }}
+                    <ul class="pagination">
+                        {{ if $paginator.HasPrev }}
+                            <li class="pagination-prev">
+                                <a href="{{ $paginator.Prev.URL }}" rel="prev">{{ printf `< %s` (i18n "prevPage") | safeHTML }}</a>
+                            </li>
+                        {{ end }}
+                        {{ if $paginator.HasNext }}
+                            <li class="pagination-next">
+                                <a href="{{ $paginator.Next.URL }}" rel="next">{{ printf `%s >` (i18n "nextPage") | safeHTML }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
+                {{ end }}
+            </div>
+        </main>
+    {{ end }}
+{{ end }}

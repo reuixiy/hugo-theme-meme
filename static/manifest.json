@@ -1,0 +1,16 @@
+{
+    "name": "Hugo Theme Serif",
+    "short_name": "Serif",
+    "icons": [
+        {
+            "src": "/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "start_url": "/?utm_source=homescreen"
+}

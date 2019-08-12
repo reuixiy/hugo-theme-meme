@@ -1,0 +1,53 @@
+<!-- keywordsDefault -->
+{{- $.Scratch.Delete "keywordsDefault" -}}
+{{- range $taxonomy, $terms := .Site.Taxonomies -}}
+    {{- range $term, $value := $terms -}}
+        {{- $.Scratch.Add "keywordsDefault" (printf "%s, " $term) -}}
+    {{- end -}}
+{{- end -}}
+{{- if (eq $.Site.Params.categoryBy "sections") -}}
+    {{- partial "components/tree-sections.html" . -}}
+    {{- $keywordsDefault := (replace (delimit (union (split (strings.TrimSuffix ", " ($.Scratch.Get "keywordsDefault")) ", ") (split (strings.TrimSuffix ", " ($.Scratch.Get "sections")) ", ")) " ") " " ", ") -}}
+    {{- $.Scratch.Set "keywordsDefault" $keywordsDefault -}}
+{{- end -}}
+<!-- keywordsSite -->
+{{- $.Scratch.Delete "keywordsSite" -}}
+{{- range .Site.Params.siteKeywords -}}
+    {{- $.Scratch.Add "keywordsSite" (printf "%s, " .) -}}
+{{- end -}}
+<!-- keywordsPost -->
+{{- if .IsPage -}}
+    {{- $.Scratch.Delete "keywordsPost" -}}
+    {{- range $taxonomy, $terms := .Site.Taxonomies -}}
+        {{- with $.Param $taxonomy -}}
+            {{- range $index, $term := . -}}
+                {{- $.Scratch.Add "keywordsPost" (printf "%s, " ($term | anchorize)) -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+    {{- with .Section -}}
+        {{- if and (eq $.Site.Params.categoryBy "sections") (in $.Site.Params.postSections $.Section) -}}
+            {{- with $.File -}}
+                {{- $.Scratch.Delete "Dir" -}}
+                {{- $.Scratch.Delete "postSections" -}}
+                {{- $sections := split (strings.TrimSuffix "/" .Dir) "/" -}}
+                {{- range $sections -}}
+                    {{- $section := . -}}
+                    {{- $.Scratch.Add "Dir" (printf `/%s` $section) -}}
+                    {{- with $.Site.GetPage ($.Scratch.Get "Dir") -}}
+                        {{- if (eq .Kind "section") -}}
+                            {{- $.Scratch.Add "postSections" (printf "%s, " $section) -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+    {{- $keywordsPost := (replace (delimit (union (split (strings.TrimSuffix ", " ($.Scratch.Get "keywordsPost")) ", ") (split (strings.TrimSuffix ", " ($.Scratch.Get "postSections")) ", ")) " ") " " ", ") -}}
+    {{- $.Scratch.Set "keywordsPost" $keywordsPost -}}
+{{- end -}}
+<!-- keywordsFrontMatter -->
+{{- $.Scratch.Delete "keywordsFrontMatter" -}}
+{{- range .Keywords -}}
+    {{- $.Scratch.Add "keywordsFrontMatter" (printf "%s, " .) -}}
+{{- end -}}

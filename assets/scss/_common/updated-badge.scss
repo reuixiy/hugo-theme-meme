@@ -1,0 +1,12 @@
+.updated-badge-container {
+    margin-top: 5em;
+    text-align: center;
+}
+
+.updated-badge-left {
+    fill: var(--color-contrast-low);
+}
+
+.updated-badge-right {
+    fill: alpha(var(--color-primary), 0.5);
+}

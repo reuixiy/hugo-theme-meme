@@ -1,0 +1,16 @@
+{{ if .Truncated -}}
+    <!-- For the CJK language, add ellipsis. -->
+    {{- if .Params.isCJKLanguage -}}
+        {{- $summary := printf "%s%s" .Summary (i18n "ellipsis") -}}
+        {{- $.Scratch.Set "summary" $summary -}}
+    <!-- For the other languages, no need. -->
+    <!-- Hugo’s automatic summary split method will split untill where the sentence end. -->
+    <!-- (Tested English Only) -->
+    {{- else -}}
+        {{- $summary := .Summary -}}
+        {{- $.Scratch.Set "summary" $summary -}}
+    {{- end -}}
+{{- else -}}
+    {{- $summary := .Summary -}}
+    {{- $.Scratch.Set "summary" $summary -}}
+{{- end -}}

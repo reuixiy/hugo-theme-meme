@@ -1,0 +1,178 @@
+{{- $Content := .Content -}}
+{{- .Scratch.Set "Content" $Content -}}
+
+<!-- Link Headings to TOC -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
+{{- if and $enableTOC .Site.Params.linkHeadingsToTOC -}}
+    {{- $regexPatternLinkHeadings := `(<h[1-6] id="([^"]+)">)(.+)?(</h[1-6]+>)` -}}
+    {{- $regexReplacementLinkHeadings := `$1<a href="#contents:$2" class="headings">$3</a>$4` -}}
+    {{- $Content := $Content | replaceRE $regexPatternLinkHeadings $regexReplacementLinkHeadings | safeHTML -}}
+    {{- .Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Headings Anchor / Section Sign -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if .Site.Params.enableHeadingsAnchor -}}
+    {{- with .Site.Params.headingsOpt -}}
+        {{- $headings := . -}}
+        {{- $.Scratch.Set "headings" $headings -}}
+    {{- end -}}
+    {{- $headings := .Scratch.Get "headings" -}}
+    {{- $headings := $headings | default "1-6" -}}
+
+    {{- with .Site.Params.anchorIcon -}}
+        {{- $icon := (replace (index $.Site.Data.SVG .) "icon" "icon anchor-icon") -}}
+        {{- $.Scratch.Set "icon" $icon -}}
+    {{- end -}}
+    {{- $icon := .Scratch.Get "icon" -}}
+    {{- $anchor := $icon | default .Site.Params.anchorSymbol | default "§" -}}
+
+    {{- if .Site.Params.enableAnchorLink -}}
+        {{- $replacement := (printf `$1<a href="#$2" class="anchor-link">%s</a>$3$4` $anchor) -}}
+        {{- $.Scratch.Set "replacement" $replacement -}}
+    {{- else -}}
+        {{- $replacement := (printf `$1<span class="anchor-link">%s</span>$3$4` $anchor) -}}
+        {{- $.Scratch.Set "replacement" $replacement -}}
+    {{- end -}}
+    {{- $replacement := .Scratch.Get "replacement" -}}
+
+    {{- $regexPatternHeadingsAnchor := (printf `(<h[%s] id="([^"]+)">)(.+)?(</h[%s]+>)` $headings $headings) -}}
+    {{- $regexReplacementHeadingsAnchor := $replacement -}}
+    {{- $Content := $Content | replaceRE $regexPatternHeadingsAnchor $regexReplacementHeadingsAnchor | safeHTML -}}
+    {{- .Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Drop Cap -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if eq .Type "poetry" -}}
+    {{- $enableDropCap := .Params.dropCap | default false -}}
+    {{- .Scratch.Set "enableDropCap" $enableDropCap -}}
+{{- else -}}
+    {{- $enableDropCap := .Params.dropCap | default .Site.Params.enableDropCap -}}
+    {{- .Scratch.Set "enableDropCap" $enableDropCap -}}
+{{- end -}}
+{{- $enableDropCap := .Scratch.Get "enableDropCap" -}}
+{{- if $enableDropCap -}}
+    {{- $regexPatternDropCap := `(<p)(>)([^<])(.+(</p>|\n))` -}}
+    {{- $regexReplacementDropCap := `$1 style="text-indent:0"$2<span class="drop-cap">$3</span>$4` -}}
+    {{- $firstParagraphOld := (delimit (findRE $regexPatternDropCap .Content 1) " ") -}}
+    {{- $firstParagraphNew := (replaceRE $regexPatternDropCap $regexReplacementDropCap $firstParagraphOld) -}}
+    {{- $Content := replace $Content $firstParagraphOld $firstParagraphNew | safeHTML -}}
+    {{- .Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Drop Cap After `<hr />` -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if ne .Type "poetry" -}}
+    {{- if and .Site.Params.enableDropCap .Site.Params.enableDropCapAfterHr -}}
+        {{- if .Site.Params.deleteHrBeforeDropCap -}}
+            {{- $replacement := `$2 style="text-indent:0"$3<span class="drop-cap">$4</span>$5` -}}
+            {{- $.Scratch.Set "replacement" $replacement -}}
+        {{- else -}}
+            {{- $replacement := `$1$2 style="text-indent:0"$3<span class="drop-cap">$4</span>$5` -}}
+            {{- $.Scratch.Set "replacement" $replacement -}}
+        {{- end -}}
+        {{- $replacement := .Scratch.Get "replacement" -}}
+
+        {{- $regexPatternDropCapAfterHr := `(\n<hr />\n)(\n<p)(>)([^<])(.+(</p>|\n))` -}}
+        {{- $regexReplacementDropCapAfterHr := $replacement -}}
+        {{- $Content := $Content | replaceRE $regexPatternDropCapAfterHr $regexReplacementDropCapAfterHr | safeHTML -}}
+        {{- .Scratch.Set "Content" $Content -}}
+    {{- end -}}
+{{- end -}}
+
+<!-- New Markdown Syntax: Emphasis Point `..text..` -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if .Site.Params.enableEmphasisPoint -}}
+    {{- $regexPatternEmphasisPoint := `([^\.])\.\.([^\.| |\n|/|\\]+)\.\.([^\.])` -}}
+    {{- $regexReplacementEmphasisPoint := `$1<strong class="emphasis-point">$2</strong>$3` -}}
+    {{- $Content := $Content | replaceRE $regexPatternEmphasisPoint $regexReplacementEmphasisPoint | safeHTML -}}
+    {{- .Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Footnote Ref with Square Brackets `[]` -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if .Site.Params.squareBrackets -}}
+    {{- $regexPatternFootnoteRef := `(<sup class="footnote-ref" id="fnref:\d+"><a href="#fn:\d+">)(\d+)(</a></sup>)` -}}
+    {{- $regexReplacementFootnoteRef := `$1[$2]$3` -}}
+    {{- $Content := $Content | replaceRE $regexPatternFootnoteRef $regexReplacementFootnoteRef | safeHTML -}}
+    {{- .Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Image Footnote -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- $regexPatternFootnoteImage := `(<sup)(.+</sup><img)` -}}
+{{- $regexReplacementFootnoteImage := `$1 style="float:right"$2` -}}
+{{- $Content := $Content | replaceRE $regexPatternFootnoteImage $regexReplacementFootnoteImage | safeHTML -}}
+{{- .Scratch.Set "Content" $Content -}}
+
+<!-- Delete Footnote `<hr />` -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if .Site.Params.insertHrBySelf -}}
+    {{- $regexPatternDeleteHr := `<hr />\n(<div class="footnotes">)` -}}
+    {{- $regexReplacementDeleteHr := `$1` -}}
+    {{- $Content := $Content | replaceRE $regexPatternDeleteHr $regexReplacementDeleteHr | safeHTML -}}
+    {{- .Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Replace `footnoteReturnLinkContents` with icon -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- with .Site.Params.footnoteReturnLinkIcon -}}
+    {{- $icon := (replace (index $.Site.Data.SVG .) "icon" "icon footnote-icon") -}}
+    {{- $replacement := (printf `${1}%v</$3` $icon) | safeHTML -}}
+
+    {{- $regexPatternfootnoteReturnLinkIcon := `(href="#fnref[^>]+>)([^a]+)(.+)` -}}
+    {{- $regexReplacementfootnoteReturnLinkIcon := $replacement -}}
+    {{- $Content := $Content | replaceRE $regexPatternfootnoteReturnLinkIcon $regexReplacementfootnoteReturnLinkIcon | safeHTML -}}
+    {{- $.Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Video -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- $regexPatternVideo := `(<img)( src="[^"]+\.(mp4|webm|ogg)")( alt="[^"]+.)?(.+)?( />)` -}}
+{{- $regexReplacementVideo := `<video$2$5 controls></video>` -}}
+{{- $Content := $Content | replaceRE $regexPatternVideo $regexReplacementVideo | safeHTML -}}
+{{- .Scratch.Set "Content" $Content -}}
+
+<!-- Image / Video Caption -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if .Site.Params.enableCaption -}}
+    {{- $captionPrefix := .Site.Params.captionPrefix -}}
+    {{- $regexPatternCaption := `(<(img|video).+) title="([^"]+)"( controls)?( />|>)(</video>)?` -}}
+    {{- $regexReplacementCaption := (printf `$1$4$5$6<span class="caption">%s$3</span>` $captionPrefix) -}}
+    {{- $Content := $Content | replaceRE $regexPatternCaption $regexReplacementCaption | safeHTML -}}
+    {{- .Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Image / Video Hosting -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if .Site.Params.enableHost -}}
+    {{- $hostURL := .Site.Params.hostURL -}}
+    {{- $regexPatternHost := `(<(img|video) src=")/([^"]+)` -}}
+    {{- $regexReplacementHost := (printf `${1}%s$3` $hostURL) -}}
+    {{- $Content := $Content | replaceRE $regexPatternHost $regexReplacementHost | safeHTML -}}
+    {{- .Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Task List -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- $regexPatternTaskList := `(<ol |<ul )(class="task-list">\n<li><label>)` -}}
+{{- $regexReplacementTaskList := `${1}style="list-style:none" $2` -}}
+{{- $Content := $Content | replaceRE $regexPatternTaskList $regexReplacementTaskList | safeHTML -}}
+{{- .Scratch.Set "Content" $Content -}}
+
+<!-- Paragraph Indent -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if ne .Type "poetry" -}}
+    {{- if (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) -}}
+        {{- $regexPatternIndent := `(<p)(>)(.+<br />)` -}}
+        {{- $regexReplacementIndent := `$1 style="text-indent:0;padding-left:2em;margin:1em 0"$2$3` -}}
+        {{- $Content := $Content | replaceRE $regexPatternIndent $regexReplacementIndent | safeHTML -}}
+        {{- .Scratch.Set "Content" $Content -}}
+    {{- end -}}
+{{- end -}}
+
+<!-- Final Content -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- .Scratch.Set "Content" $Content -}}

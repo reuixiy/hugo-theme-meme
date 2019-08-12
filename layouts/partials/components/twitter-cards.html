@@ -1,0 +1,25 @@
+<!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started -->
+<!-- https://cards-dev.twitter.com/validator -->
+<!-- https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/twitter_cards.html -->
+{{- $Deliver := .Deliver -}}
+<!-- Auto Detect Images -->
+{{- if $Deliver.Site.Params.autoDetectImages -}}
+    {{- partial "components/auto-detect-images.html" $Deliver -}}
+{{- end -}}
+{{- $imgsURL := ($Deliver.Scratch.Get "imgsURL") -}}
+<!-- Author -->
+{{- partial "components/author.html" $Deliver -}}
+{{- $author := ($Deliver.Scratch.Get "author") -}}
+
+{{- with $imgsURL -}}
+    <meta name="twitter:card" content="summary_large_image" />
+{{ else -}}
+    <meta name="twitter:card" content="summary" />
+{{- end }}
+
+{{ with $Deliver.Site.Params.siteTwitter -}}
+    <meta name="twitter:site" content="@{{ . }}" />
+{{ end -}}
+{{ with $author.twitter -}}
+    <meta name="twitter:creator" content="@{{ . }}" />
+{{ end -}}

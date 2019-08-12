@@ -1,0 +1,118 @@
+<head {{ if .Site.Params.openGraph }}prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# fb: http://ogp.me/ns/fb#"{{ end }}>
+    {{- $themeColor := .Site.Params.themeColor -}}
+    {{- $themeColorDark := .Site.Params.themeColorDark -}}
+    {{- with .Site.Params.defaultTheme | default "light" -}}
+        {{- if eq . "light" -}}
+            <meta name="theme-color" content="{{ $themeColor }}" />
+        {{- end -}}
+        {{- if eq . "dark" -}}
+            <meta name="theme-color" content="{{ $themeColorDark }}" />
+        {{- end -}}
+    {{- end -}}
+    <!-- Dark Mode -->
+    {{- if .Site.Params.enableDarkMode }}
+        <script data-no-instant>
+            const theme = localStorage.getItem('theme');
+            if (theme === "dark") {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColorDark }}');
+            } else if (theme === "light") {
+                document.documentElement.setAttribute('data-theme', 'light');
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColor }}');
+            }
+        </script>
+    {{- end }}
+
+    <meta charset="UTF-8" />
+    <!-- Responsive Web Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+    <!-- Old Old IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <!-- Avoid Automatic Format Detection -->
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    <!-- Avoid Transcoding -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <!-- Avoid Baidu Mobile Search Transcoding -->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- Dual-core Browser -->
+    <meta name="renderer" content="webkit" />
+
+    {{ partial "components/title.html" . }}
+    {{- $title := .Scratch.Get "title" -}}
+    <title>{{ $title }}</title>
+
+    <!-- CSS -->
+    {{- partial "style.html" . }}
+
+    <!-- Fonts -->
+    {{- with .Site.Params.fontsLink -}}
+        {{ printf `<link href="%s" rel="stylesheet" />` . | safeHTML }}
+    {{- end }}
+
+    <meta name="author" content="{{ .Params.author | default .Site.Author.name }}" />
+    {{ partial "components/summary.html" . }}
+    {{- $description := .Description | default (.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) | default .Site.Params.siteDescription | plainify -}}
+    <meta name="description" content="{{ $description }}" />
+    {{ partial "components/keywords.html" . }}
+    {{- $keywordsDefault := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsDefault")) -}}
+    {{- $keywordsSite := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsSite")) -}}
+    {{- $keywordsPost := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsPost")) -}}
+    {{- $keywordsFrontMatter := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsFrontMatter")) -}}
+    {{- $keywords := $keywordsFrontMatter | default $keywordsPost | default $keywordsSite | default $keywordsDefault -}}
+    <meta name="keywords" content="{{ $keywords }}" />
+    
+    <!-- Favicon, Icons, Web App -->
+    {{- $favicon := "favicon.ico" -}}
+    {{- $safariMaskIcon := "icons/safari-pinned-tab.svg" -}}
+    {{- $safariMaskColor := .Site.Params.safariMaskColor -}}
+    {{- $appleTouchIcon := "icons/apple-touch-icon.png" -}}
+    {{- $msApplicationStartURL := print `/` | absLangURL -}}
+    {{- $msApplicationTileColor := .Site.Params.msApplicationTileColor -}}
+    {{- $msApplicationTileImage := "icons/mstile-150x150.png" -}}
+    {{- $manifest := "manifest.json" -}}
+    <link rel="shortcut icon" type="image/ico" href="{{ $favicon | relURL }}" />
+    <link rel="mask-icon" href="{{ $safariMaskIcon | relURL }}" color="{{ $safariMaskColor }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouchIcon | relURL }}" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="{{ .Site.Title }}" />
+    <meta name="msapplication-starturl" content="{{ $msApplicationStartURL }}" />
+    <meta name="msapplication-TileColor" content="{{ $msApplicationTileColor }}" />
+    <meta name="msapplication-TileImage" content="{{ $msApplicationTileImage | relURL }}" />
+    <link rel="manifest" href="{{ $manifest | relURL }}" />
+
+    <!-- Atom / RSS -->
+    {{ with .OutputFormats.Get "SectionsAtom" -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+    {{ with .OutputFormats.Get "SectionsRSS" -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType .Permalink $.Site.Title | safeHTML }}
+    {{ end }}
+
+    <!-- SEO -->
+    <link rel="canonical" href="{{ .Permalink }}" />
+    {{- $Deliver := . -}}
+    <!-- JSON-LD -->
+    {{- with .Site.Params.jsonLD -}}
+        {{ partial "components/json-ld.html" (dict "Deliver" $Deliver "title" $title "description" $description "keywords" $keywords) }}
+    {{- end }}
+
+    <!-- Twitter Cards -->
+    {{- with .Site.Params.twitterCards -}}
+        {{ partial "components/twitter-cards.html" (dict "Deliver" $Deliver) }}
+    {{- end }}
+    <!-- Open Graph -->
+    {{- with .Site.Params.openGraph -}}
+        {{ partial "components/open-graph.html" (dict "Deliver" $Deliver "title" $title "description" $description "keywords" $keywords) }}
+    {{- end }}
+
+    {{- with .Site.Params.googleSiteVerification }}
+        <meta name="google-site-verification" content="{{ . }}" />
+    {{- end }}
+
+    {{- if and .Site.Params.enableGoogleAnalytics (eq hugo.Environment "production") }}
+        {{ partial "third-party/google-analytics.html" . }}
+    {{- end }}
+</head>

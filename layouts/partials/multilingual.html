@@ -1,0 +1,21 @@
+{{ if and .Site.IsMultiLingual .Site.Params.enableLangToggle }}
+    <div class="lang-toggle" onmouseover="langSwitcherOver()" onmouseout="langSwitcherOut()">{{ i18n "flag" }}
+        {{ if .IsTranslated }}
+            <ul id="langs">
+                {{ range .Translations }}
+                    <li><a rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ index $.Site.Data.Flags .Lang }}</a></li>
+                {{ end }}
+            </ul>
+        {{ else }}
+            {{ if not .Site.Params.autoHideLangToggle }}
+                <ul id="langs">
+                    {{ range .Site.Languages }}
+                        {{ if ne $.Site.Language.Lang .Lang }}
+                            <li><a rel="alternate" href="{{ .Lang | relURL }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ index $.Site.Data.Flags .Lang }}</a></li>
+                        {{ end }}
+                    {{ end }}
+                </ul>
+            {{ end }}
+        {{ end }}
+    </div>
+{{ end }}

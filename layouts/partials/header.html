@@ -1,0 +1,11 @@
+{{ if or (and .IsHome .Site.Params.displayHeaderInHome) (and (not .IsHome) .Site.Params.displayHeader) }}
+    <header class="header">
+        <div class="site-brand">
+            {{ if .Site.Params.siteBrandSVG }}
+            <a href="{{ print `/` | relLangURL }}">{{ .Site.Data.SVG.brand | safeHTML }}</a>
+            {{ else }}
+            <a href="{{ print `/` | relLangURL }}" class="brand">{{ .Site.Title }}</a>
+            {{ end }}
+        </div>
+    </header>
+{{ end }}

@@ -1,0 +1,59 @@
+.contents-title-indent {
+    text-align: center;
+}
+.indent {
+    p {
+        text-indent: 2em;
+        margin: 0;
+    }
+    .caption {
+        text-indent: 0;
+        margin: 0 0 1em;
+    }
+    blockquote {
+        padding: 0;
+        border: none;
+    }
+    img, video {
+        margin: 1em auto;
+    }
+    table {
+        margin: 1em 0;
+    }
+    pre, .highlight {
+        margin: $fontSize 0;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+    }
+    .anchor-link {
+        position: relative;
+        transform: none;
+        display: block;
+        float: none;
+    }
+    ol, ul {
+        margin: 0;
+        list-style-position: inside;
+        p {
+            text-indent: 0;
+            display: inline-block;
+        }
+    }
+    .footnotes {
+        ol {
+            margin: ($fontSize * 1.618) 0 0;
+            list-style-position: outside;
+        }
+    }
+    dl {
+        text-indent: 2em;
+        dd {
+            text-indent: 0;
+            margin-left: 4em;
+        }
+        p {
+            text-indent: 0;
+        }
+    }
+}

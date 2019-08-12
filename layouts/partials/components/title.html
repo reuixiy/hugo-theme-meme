@@ -1,0 +1,26 @@
+<!-- Home -->
+{{- if eq .Kind "home" -}}
+    {{- $title := .Site.Title -}}
+    {{- .Scratch.Set "title" $title -}}
+<!-- Taxonomy -->
+{{- else if eq .Kind "taxonomyTerm" -}}
+    {{- $title := printf "%s | %s" (.Title | default (.Type | title)) .Site.Title -}}
+    {{- .Scratch.Set "title" $title -}}
+<!-- Taxonomy Term -->
+{{- else if eq .Kind "taxonomy" -}}
+    {{- $taxonomyTermTitle := .Title | default .Data.Term -}}
+    {{- with .Site.GetPage (printf "/%s" .Data.Plural) -}}
+        {{- $title := printf "%s: %s | %s" (.Title | default (.Type | title)) $taxonomyTermTitle .Site.Title -}}
+        {{- $.Scratch.Set "title" $title -}}
+    {{- end -}}
+<!-- Section -->
+{{- else if eq .Kind "section" -}}
+    {{- with .File -}}
+        {{- $title := printf "%s | %s" ($.Title | default (delimit (last 1 (split (strings.TrimSuffix "/" .Dir) "/")) " ") | plainify) $.Site.Title -}}
+        {{- $.Scratch.Set "title" $title -}}
+    {{- end -}}
+<!-- Page -->
+{{- else -}}
+    {{- $title := printf "%s | %s" (.Title | plainify) .Site.Title -}}
+    {{- .Scratch.Set "title" $title -}}
+{{- end -}}

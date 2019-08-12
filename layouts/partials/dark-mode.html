@@ -1,0 +1,11 @@
+{{ if .Site.Params.enableDarkMode }}
+    {{ with .Site.Params.defaultTheme | default "light" }}
+        {{ if eq . "light" }}
+            {{ $.Scratch.Set "text" "🌞" }}
+        {{ else }}
+            {{ $.Scratch.Set "text" "🌙" }}
+        {{ end }}
+        {{ $text := $.Scratch.Get "text" }}
+        <div id="theme-toggle" onclick="modeSwitcher()">{{ $text }}</div>
+    {{ end }}
+{{ end }}

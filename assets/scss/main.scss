@@ -1,0 +1,338 @@
+{{ with .Site.Params.fontSize | default 16 }}
+    $fontSize: {{ . }}px;
+{{ end }}
+{{ with .Site.Params.lineHeight | default 2 }}
+    $lineHeight: {{ . }};
+{{ end }}
+
+{{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
+    {{ .Scratch.Set "glyph" "'glyph-correction', " }}
+    $glyph: true;
+    .anchor-icon {
+        margin-top: 0.4em;
+    }
+    .drop-cap {
+        margin-top: $fontSize !important;
+    }
+    .post-meta-icon, .footer-icon {
+        margin-bottom: 0 !important;
+    }
+{{ else }}
+    {{ .Scratch.Set "glyph" "" }}
+{{ end }}
+{{ $glyph := .Scratch.Get "glyph" }}
+
+{{ with .Site.Params.fontFamilySiteBrand }}
+    $fontFamilySiteBrand: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyPostTitle }}
+    $fontFamilyPostTitle: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyHeadings }}
+    $fontFamilyHeadings: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyCode }}
+    $fontFamilyCode: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyQuote }}
+    $fontFamilyQuote: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyTOC }}
+    $fontFamilyTOC: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyCaption }}
+    $fontFamilyCaption: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyFooter }}
+    $fontFamilyFooter: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyBody }}
+    $fontFamilyBody: {{ $glyph }}{{ . }};
+{{ end }}
+
+{{ with .Site.Params.duration | default 0.5 }}
+    $duration: {{ . }}s;
+{{ end }}
+
+{{ with .Site.Params.primaryColorLight | default "0, 0%, 0%" }}
+    {{ $number := (split (replace . "%" "") ", ") }}
+    {{ range $index, $value := $number }}
+        {{ if eq $index 0 }}
+            $primaryColorLightH: {{ $value | int }};
+        {{ end }}
+        {{ if eq $index 1 }}
+            $primaryColorLightS: {{ $value | int }}%;
+        {{ end }}
+        {{ if eq $index 2 }}
+            $primaryColorLightL: {{ $value | int }}%;
+        {{ end }}
+    {{ end }}
+{{ end }}
+@import "_variables/light.scss";
+
+{{ if .Site.Params.enableDarkMode }}
+    {{ with .Site.Params.primaryColorDark | default "0, 0%, 0%" }}
+        {{ $number := (split (replace . "%" "") ", ") }}
+        {{ range $index, $value := $number }}
+            {{ if eq $index 0 }}
+                $primaryColorDarkH: {{ $value | int }};
+            {{ end }}
+            {{ if eq $index 1 }}
+                $primaryColorDarkS: {{ $value | int }}%;
+            {{ end }}
+            {{ if eq $index 2 }}
+                $primaryColorDarkL: {{ $value | int }}%;
+            {{ end }}
+        {{ end }}
+    {{ end }}
+    @import "_variables/dark.scss";
+    @media (prefers-color-scheme: dark) {
+        html {
+            content: "dark";
+        }
+    }
+    @media (prefers-color-scheme: light) {
+        html {
+            content: "light";
+        }
+    }
+    #theme-toggle {
+        padding: 1em;
+        cursor: pointer;
+        float: right;
+        position: relative;
+        z-index: 4;
+    }
+{{ end }}
+
+{{ if and .Site.IsMultiLingual .Site.Params.enableLangToggle }}
+    @import "_common/multilingual.scss";
+{{ end }}
+
+@import "_common/base.scss";
+
+@import "_common/fonts.scss";
+
+@import "_common/header.scss";
+.site-brand {
+    {{ with .Site.Params.siteBrandBackgroundColor }}
+        background-color: {{ . }}
+    {{ end }}
+    {{ with .Site.Params.siteBrandBackgroundImage }}
+        background-image: {{ . }};
+    {{ end }}
+}
+{{ if .Site.Params.siteBrandSVG }}
+    .brand {
+        width: {{ .Site.Params.siteBrandSVGWidth }}px;
+        height: {{ .Site.Params.siteBrandSVGHeight }}px;
+        fill: {{ .Site.Params.siteBrandSVGFill }};
+    }
+{{ else }}
+    .brand {
+        font-size: {{ .Site.Params.siteBrandFontSize }}em;
+        color: {{ .Site.Params.siteBrandFontColor }};
+        text-decoration: none;
+        &:hover {
+            color: {{ .Site.Params.siteBrandFontColor }};
+        }
+    }
+{{ end }}
+
+@import "_common/menu.scss";
+
+{{ if or .Site.Params.enablePostMeta .Site.Params.enablePostMetaInHome }}
+    @import "_common/post-meta.scss";
+{{ end }}
+
+@import "_common/single.scss";
+{{ with .Site.Params.postWidth }}
+    .single .main-inner {
+        width: {{ . }}em;
+    }
+    @media (max-width: {{ mul (add . 5) $.Site.Params.fontSize }}px) {
+        .single .main-inner {
+            width: auto;
+        }
+        .anchor-link {
+            position: relative;
+            transform: none;
+            float: right;
+        }
+        .menu {
+            display: flex;
+        }
+        .menu-item {
+            flex: 1;
+            margin: 0;
+        }
+        .menu-item-name {
+            display: block !important;
+        }
+    }
+{{ end }}
+{{ if .Site.Params.enableAnchorAutoHide }}
+    :root {
+        --anchor-opacity: 0;
+    }
+    .anchor-link {
+        opacity: var(--anchor-opacity);
+        transition: all ($duration / 2);
+    }
+    .post {
+        h1, h2, h3, h4, h5, h6, .anchor-link {
+            &:hover {
+                --anchor-opacity: 1;
+            }
+        }
+    }
+{{ end }}
+{{ with .Site.Params.footnoteReturnLinkIcon }}
+    .footnote-icon {
+        fill: alpha(var(--color-contrast-high), 0.5);
+        transition: fill $duration;
+        &:hover {
+            fill: var(--color-primary);
+        }
+    }
+{{ end }}
+
+{{ if .Site.Params.enableParagraphIndent }}
+    @import "_common/indent.scss";
+{{ end }}
+
+{{ if .Site.Params.enablePostCopyright }}
+    @import "_common/post-copyright.scss";
+{{ end }}
+
+{{ if .Site.Params.enablePostUpdatedBadge }}
+    @import "_common/updated-badge.scss";
+{{ end }}
+
+{{ if .Site.Params.enablePostGitInfo }}
+    @import "_common/post-gitinfo.scss";
+{{ end }}
+
+{{ if .Site.Params.enableRelatedPosts }}
+    @import "_common/related-posts.scss";
+{{ end }}
+
+{{ if .Site.Params.enablePostTags }}
+    @import "_common/post-tags.scss";
+{{ end }}
+
+{{ if .Site.Params.enableMinimalFooter }}
+    @import "_common/minimal-footer.scss";
+{{ end }}
+
+{{ if .Site.Params.enableAboutPageMinimalFooter }}
+    @import "_common/minimal-footer-about.scss";
+{{ end }}
+
+{{ if .Site.Params.enablePostNav }}
+    @import "_common/post-nav.scss";
+{{ end }}
+
+{{ if .Site.Params.enableComments }}
+    @import "_common/comments.scss";
+{{ end }}
+
+@import "_common/list.scss";
+{{ with .Site.Params.listWidth }}
+    .list .main-inner {
+        width: {{ . }}em;
+    }
+    @media (max-width: {{ mul (add . 5) $.Site.Params.fontSize }}px) {
+        .list .main-inner {
+            width: auto;
+        }
+        .anchor-link {
+            position: relative;
+            transform: none;
+            float: right;
+        }
+        .menu {
+            display: flex;
+        }
+        .menu-item {
+            flex: 1;
+            margin: 0;
+        }
+        .menu-item-name {
+            display: block !important;
+        }
+    }
+{{ end }}
+{{ if eq .Site.Params.listDatePosition "right" }}
+    .list-item-title {
+        flex: 1;
+    }
+{{ end }}
+{{ if eq .Site.Params.listDatePosition "left" }}
+    .list-item {
+        flex-direction: row-reverse;
+    }
+    .list-item-time {
+        flex: 1;
+    }
+    .list-item-title {
+        text-align: right;
+    }
+{{ end }}
+
+{{ if .Site.Params.enableFooter }}
+    @import "_common/footer.scss";
+    {{ with .Site.Params.iconColor }}
+        .footer-icon {
+            fill: {{ . }};
+        }
+    {{ end }}
+    {{ if .Site.Params.iconAnimation }}
+        @keyframes heartAnimate {
+            0%,100%{transform:scale(1);}
+            10%,30%{transform:scale(0.9);}
+            20%,40%,60%,80%{transform:scale(1.1);}
+            50%,70%{transform:scale(1.1);}
+        }
+        .footer-icon {
+            animation: heartAnimate 1.33s ease-in-out infinite;
+        }
+    {{ end }}
+{{ end }}
+
+{{ if eq .Site.Params.homeLayout "poetry" }}
+    @import "_common/_page/home-poetry.scss";
+    .links-item {
+        padding: {{ .Site.Params.homeLinksPadding }}em;
+        display: inline-block;
+    }
+{{ end }}
+{{ if eq .Site.Params.homeLayout "footage" }}
+    @import "_common/_page/home-footage.scss";
+    .home::before {
+        background-image: url({{ .Site.Params.homePoster }});
+    }
+{{ end }}
+{{ if eq .Site.Params.homeLayout "posts" }}
+    @import "_common/_page/home-posts.scss";
+{{ end }}
+
+@import "_common/_page/404.scss";
+.fof::before {
+    background-image: url({{ .Site.Params.fofPoster }});
+}
+
+@import "_common/_highlight/light.scss";
+.chroma {
+    color: var(--color-contrast-high);
+    background-color: var(--color-contrast-lower);
+}
+{{ if .Site.Params.enableDarkMode }}
+    @import "_common/_highlight/dark.scss";
+    .chroma-dark {
+        color: var(--color-contrast-high);
+        background-color: var(--color-contrast-lower);
+    }
+{{ end }}
+
+@import "_custom/custom.scss";

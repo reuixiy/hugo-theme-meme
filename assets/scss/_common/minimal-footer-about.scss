@@ -1,0 +1,17 @@
+.minimal-footer-about {
+    font-size: 80%;
+    margin-top: ($fontSize * 5);
+    display: flex;
+    line-height: 2;
+    a {
+        color: alpha(var(--color-contrast-medium), 0.9);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.about-socials {
+    flex: 1;
+    margin-right: 2em;
+}

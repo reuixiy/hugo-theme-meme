@@ -1,0 +1,20 @@
+.post-gitinfo {
+    margin-top: 5em;
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-contrast-medium);
+    a {
+        color: var(--color-contrast-medium);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.post-gitinfo-left, .post-gitinfo-right {
+    display: flex;
+}
+
+.gitinfo-item {
+    margin: 0 0.5em;
+}

@@ -1,0 +1,48 @@
+<main class="main list" id="main">
+    <div class="main-inner">
+        <div class="content categories">
+            {{ if .Site.Params.displayListTitle }}
+                <h1 class="list-title">{{ .Title | default (.Type | title) }}</h1>
+            {{ end }}
+            <div class="tree">
+                {{ partial "components/tree-sections.html" . }}
+                {{ $pages := (.Scratch.Get "pages") }}
+                {{ range $page, $name := $pages }}
+                    {{ $depth := (len (split (strings.TrimPrefix "/" $page) "/")) }}
+                    {{ with $.Site.GetPage $page }}
+                        {{ $padding := (mul $depth (mul 2 (mul 1.2 .Site.Params.fontSize))) }}
+                        <p style="padding-left: {{ $padding }}px">
+                            <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default $name }}</a>
+                            {{ if $.Site.Params.displayPostsCount }}
+                                {{ $sectionPage := .CurrentSection }}
+                                {{ $.Scratch.Delete "pages" }}
+                                {{ range $.Site.RegularPages }}
+                                    {{ if (.IsDescendant $sectionPage) }}
+                                        {{ $.Scratch.Add "pages" (slice .) }}
+                                    {{ end }}
+                                {{ end }}
+                                {{ $pages := $.Scratch.Get "pages" }}
+                                <span class="category-count">{{ printf "(%d)" (len $pages) }}</span>
+                            {{ end }}
+                        </p>
+                        {{ if $.Site.Params.displayPosts }}
+                            {{ $sectionPage := .CurrentSection }}
+                            {{ $.Scratch.Delete "pages" }}
+                            {{ range $.Site.RegularPages }}
+                                {{ if (.InSection $sectionPage) }}
+                                    {{ $.Scratch.Add "pages" (slice .) }}
+                                {{ end }}
+                            {{ end }}
+                            {{ $pages := $.Scratch.Get "pages" }}
+                            {{ range $pages }}
+                                <p style="padding-left: {{ add $padding (mul 2 (mul 1.2 .Site.Params.fontSize)) }}px">
+                                    <a href="{{ .RelPermalink }}" class="category-post">{{ .LinkTitle }}</a>
+                                </p>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</main>

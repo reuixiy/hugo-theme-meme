@@ -1,0 +1,47 @@
+<main class="main list" id="main">
+    <div class="main-inner">
+        <div class="content categories">
+            {{ if .Site.Params.displayListTitle }}
+                <h1 class="list-title">{{ .Title | default (.Type | title) }}</h1>
+            {{ end }}
+            <div class="tree">
+                {{ .Scratch.Delete "categories" }}
+                {{ range $.Site.RegularPages }}
+                    {{ with .Param "categories" }}
+                        {{ $category := (printf `/%s` (replace (delimit . " ") " " "/")) }}
+                        {{ $.Scratch.Add "categories" (slice $category) }}
+                    {{ end }}
+                {{ end }}
+                {{ $categories := uniq (.Scratch.Get "categories") | sort }}
+                {{ range $categories }}
+                    {{ $categoryTerms := (split (strings.TrimPrefix "/" .) "/") }}
+                    {{ $depth := (len $categoryTerms) }}
+                    {{ $padding := (mul $depth 2) }}
+                    {{ $lastTerm := (delimit (last 1 $categoryTerms) " ") }}
+                    {{ with $.Site.GetPage (printf `/categories/%s` $lastTerm) }}
+                        <p style="padding-left: {{ $padding }}em">
+                            <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default .Data.Term }}</a>
+                            {{ if $.Site.Params.displayPostsCount }}
+                                <span class="category-count">{{ printf "(%d)" (len .Data.category) }}</span>
+                            {{ end }}
+                        </p>
+                    {{ end }}
+                    {{ if $.Site.Params.displayPosts }}
+                        {{ $context := . }}
+                        {{ range $.Site.RegularPages }}
+                            {{ $page := . }}
+                            {{ with .Param "categories" }}
+                                {{ $category := (printf `/%s` (replace (delimit . " ") " " "/")) }}
+                                {{ if eq $context $category }}
+                                    <p style="padding-left: {{ add $padding 2 }}em">
+                                        <a href="{{ $page.RelPermalink }}" class="category-post">{{ $page.LinkTitle }}</a>
+                                    </p>
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</main>

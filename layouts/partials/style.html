@@ -1,0 +1,56 @@
+{{- $path := (strings.TrimPrefix "/" (printf `%s/css/meme.css` .Site.LanguagePrefix)) -}}
+{{- $options := (dict "targetPath" $path "outputStyle" "compressed") -}}
+{{- $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "styles/main-rendered.scss" . | resources.ToCSS $options | resources.Fingerprint -}}
+{{- printf `<link rel="stylesheet" href="%s" integrity="%s" data-instant-track />` $style.RelPermalink $style.Data.Integrity | safeHTML -}}
+
+{{- .Scratch.Delete "style" -}}
+
+{{- if .Site.Params.enableDarkMode -}}
+    {{- if or (and .IsHome .Site.Params.hideThemeToggleInHome) (and (not .IsHome) .Site.Params.hideThemeToggle) -}}
+        {{- .Scratch.Add "style" "#theme-toggle {display:none}" -}}
+    {{- end -}}
+
+    {{- if .Params.darkImage | default .Site.Params.darkImage -}}
+        {{- .Scratch.Add "style" "html[data-theme='dark'] .post img {filter:invert(85%) hue-rotate(180deg)}" -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if and .Site.IsMultiLingual .Site.Params.enableLangToggle -}}
+    {{- if .IsHome -}}
+        {{- if .Site.Params.hideLangToggleInHome -}}
+            {{- .Scratch.Add "style" ".lang-toggle {display:none}" -}}
+        {{- end -}}
+    {{- else -}}
+        {{- if .Site.Params.autoHideLangToggle -}}
+            {{- if not .IsTranslated -}}
+                {{- .Scratch.Add "style" ".lang-toggle {display:none}" -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if .Params.smallCap | default .Site.Params.enableSmallCap -}}
+    {{- .Scratch.Add "style" ".post h1,.post h2,.post h3,.post h4,.post h5,.post h6,.post-subtitle {font-variant:small-caps}" -}}
+{{- end -}}
+
+{{- with .Params.align | default "default" -}}
+    {{- if eq . "justify" -}}
+        {{- $.Scratch.Add "style" ".post p {text-align:justify;text-justify:distribute}" -}}
+    {{- end -}}
+    {{- if and $.Site.Params.enableJustify (eq . "default") -}}
+        {{- $.Scratch.Add "style" ".post p {text-align:justify;text-justify:distribute}" -}}
+    {{- end -}}
+    {{- if eq . "center" -}}
+        {{- $.Scratch.Add "style" ".post p {text-align:center}" -}}
+    {{- end -}}
+{{- end -}}
+
+{{- if eq .Type "poetry" -}}
+    {{- $.Scratch.Add "style" ".post-body {display:table;margin: 0 auto}" -}}
+{{- end -}}
+
+{{- $style := .Scratch.Get "style" -}}
+
+{{- with $style -}}
+    {{- printf `<style data-instant-track>%s</style>` . | safeHTML -}}
+{{- end -}}

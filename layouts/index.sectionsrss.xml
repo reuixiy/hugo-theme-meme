@@ -1,0 +1,91 @@
+{{- printf `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }}
+<!-- Reference: https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/rss.xml -->
+<!-- Reference: https://github.com/kaushalmodi/hugo-atom-feed/blob/master/layouts/_default/list.atom.xml -->
+<!-- Reference: https://validator.w3.org/feed/docs/rss2.html -->
+<!-- Reference: https://developers.google.com/gdata/docs/1.0/reference -->
+<!-- Reference: https://www.intertwingly.net/wiki/pie/Rss20AndAtom10Compared -->
+<!-- Reference: https://en.wikipedia.org/wiki/RSS -->
+{{- $pages := .Site.RegularPages -}}
+{{- $limit := .Site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}
+{{- $pages = $pages | first $limit -}}
+{{- end }}
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>{{ .Site.Title | safeHTML }}</title>
+        <link>{{ .Permalink }}</link>
+        <description>{{ .Site.Params.siteDescription | safeHTML }}</description>
+        {{ printf `<generator>Hugo %s https://gohugo.io/</generator>` hugo.Version | safeHTML }}
+        {{ with .Site.LanguageCode }}
+            <language>{{ . }}</language>
+        {{ end }}
+        {{ with .Site.Author.email }}
+            <managingEditor>{{ . }}{{ with $.Site.Author.name }} ({{ . }}){{ end }}</managingEditor>
+        {{ end }}
+        {{ with .Site.Author.email }}
+            <webMaster>{{ . }}{{ with $.Site.Author.name }} ({{ . }}){{ end }}</webMaster>
+        {{ end }}
+        {{ with .Site.Copyright }}
+            <copyright>{{ . | plainify }}</copyright>
+        {{ end }}
+        <lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+        {{ with .OutputFormats.Get "SectionsRSS" }}
+            {{ printf `<atom:link rel="self" type=%q href=%q />` .MediaType .Permalink | safeHTML }}
+        {{ end }}
+        {{ range (where $pages "Section" "in" .Site.Params.feedSections) }}
+            {{ $page := . }}
+            {{- partial "components/author.html" $page -}}
+            {{- $author := ($page.Scratch.Get "author") -}}
+            <item>
+                {{ $pageTitle := printf "%s | %s" .Title .Site.Title | safeHTML -}}
+                <title>{{ $pageTitle }}</title>
+                <link>{{ .Permalink }}</link>
+                <guid isPermaLink="true">{{ .Permalink }}</guid>
+                <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+                {{ with $author.email }}
+                    <author>{{ . }}{{ with $author.name }} ({{ . }}){{ end }}</author>
+                {{ end }}
+                {{ with $author.copyright -}}
+                    <copyright>{{ . | plainify }}</copyright>
+                {{- end }}
+                {{ if $.Site.Params.includeContent }}
+                    {{ partial "toc.html" . }}
+                    {{ $toc := .Scratch.Get "toc" }}
+                    {{ partial "content.html" . }}
+                    {{ $Content := .Scratch.Get "Content" }}
+                    {{ printf `<description><![CDATA[%s%s]]></description>` $toc $Content | safeHTML }}
+                {{ else }}
+                    {{- partial "components/summary.html" $page -}}
+                    {{- $summary := .Description | default ($page.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) -}}
+                    {{ printf `<description><![CDATA[%s]]></description>` ($summary | markdownify | htmlUnescape) | safeHTML }}
+                {{ end }}
+                <!-- Sections -->
+                {{ if eq $.Site.Params.categoryBy "sections" }}
+                    {{ $.Scratch.Delete "sectionDir" }}
+                    {{ $sections := split (strings.TrimSuffix "/" .File.Dir) "/" }}
+                    {{ range $sections }}
+                        {{ $section := . }}
+                        {{ $.Scratch.Add "sectionDir" (printf `/%s` .) }}
+                        {{ with $.Site.GetPage ($.Scratch.Get "sectionDir") }}
+                            {{ if (eq .Kind "section") }}
+                                <category domain="{{ printf "%s/" ($.Scratch.Get "sectionDir" | urlize | absLangURL) }}">{{ $section }}</category>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+                <!-- Taxonomies -->
+                {{ with $.Site.Taxonomies }}
+                    {{ range $taxonomy, $terms := . }}
+                        {{ with $page.Param $taxonomy }}
+                            {{ range $index, $term := . }}
+                                {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy ($term | anchorize)) }}
+                                    <category domain="{{ .Permalink }}">{{ $term }}</category>
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            </item>
+        {{ end }}
+    </channel>
+</rss>

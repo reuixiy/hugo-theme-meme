@@ -1,0 +1,6 @@
+{{ range .Pages }}
+    <li class="list-item">
+        <a href="{{ .RelPermalink }}" class="list-item-title">{{ .LinkTitle }}</a>
+        {{ printf `<time datetime="%s" class="list-item-time">%s</time>` (.PublishDate.Format "2006-01-02T15:04:05-07:00") (.PublishDate.Format .Site.Params.listDateFormat) | safeHTML }}
+    </li>
+{{ end }}

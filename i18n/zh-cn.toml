@@ -1,0 +1,104 @@
+[flag]
+other = "🇨🇳"
+
+[ellipsis]
+other = "……"
+
+
+[tocTitle]
+other = "目录"
+
+[readMore]
+other = "阅读全文"
+
+[prevPage]
+other = "上一页"
+
+[nextPage]
+other = "下一页"
+
+[copyrightAuthor]
+other = "作者："
+
+[copyrightLink]
+other = "链接："
+
+[copyrightLicense]
+other = "版权："
+
+[relatedPosts]
+other = "相关文章："
+
+[loadComments]
+other = "加载评论"
+
+[fofLinkText]
+other = "送我回主页"
+
+
+[january]
+other = "一月"
+
+[february]
+other = "二月"
+
+[march]
+other = "三月"
+
+[april]
+other = "四月"
+
+[may]
+other = "五月"
+
+[june]
+other = "六月"
+
+[july]
+other = "七月"
+
+[august]
+other = "八月"
+
+[september]
+other = "九月"
+
+[october]
+other = "十月"
+
+[november]
+other = "十一月"
+
+[december]
+other = "十二月"
+
+
+[0]
+other = "〇"
+
+[1]
+other = "一"
+
+[2]
+other = "二"
+
+[3]
+other = "三"
+
+[4]
+other = "四"
+
+[5]
+other = "五"
+
+[6]
+other = "六"
+
+[7]
+other = "七"
+
+[8]
+other = "八"
+
+[9]
+other = "九"

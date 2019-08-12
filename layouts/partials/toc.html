@@ -1,0 +1,45 @@
+{{- $toc := .TableOfContents -}}
+
+{{- $regexPatternTOC := `<nav id="TableOfContents">((.|\s)+)</nav>` -}}
+{{- $regexReplacementTOC := `<nav class="contents">$1</nav>` -}}
+{{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
+
+{{- $regexPatternTOC := `(</?)ul>` -}}
+{{- $regexReplacementTOC := `${1}ol>` -}}
+{{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
+
+{{- $regexPatternTOC := `(<nav class="contents">\n)<ol>` -}}
+{{- $regexReplacementTOC := `$1<ol class="toc">` -}}
+{{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
+
+{{- if .Site.Params.displayTOCTitle -}}
+    {{- .Scratch.Set "regexReplacementTOCTitle" (printf `$1<h2 id="contents" class="contents-title">%s</h2>$2` (i18n "tocTitle")) -}}
+    {{- if ne .Type "poetry" -}}
+        {{- if (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) -}}
+            {{- .Scratch.Set "regexReplacementTOCTitle" (printf `$1<h2 id="contents" class="contents-title-indent">%s</h2>$2` (i18n "tocTitle")) -}}
+        {{- end -}}
+    {{- end -}}
+    {{- $regexPatternTOC := `(<nav class="contents">\n)(<ol class="toc">)` -}}
+    {{- $regexReplacementTOC := .Scratch.Get "regexReplacementTOCTitle" -}}
+    {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
+    {{- .Scratch.Set "toc" $toc -}}
+{{- end -}}
+
+<!-- Link Headings to TOC -->
+{{- $toc := .Scratch.Get "toc" | default $toc -}}
+{{- if .Site.Params.linkHeadingsToTOC -}}
+    {{- $regexPatternTOC := `(<a)( href="#([^"]+)">)` -}}
+    {{- $regexReplacementTOC := `$1 id="contents:$3"$2` -}}
+    {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
+    {{- .Scratch.Set "toc" $toc -}}
+{{ end }}
+
+<!-- Delete Useless First Level When Post is Not Start With Heading 1 -->
+{{- $toc := .Scratch.Get "toc" | default $toc -}}
+{{- $regexPatternTOC := `(<ol class="toc">)\n<li>\n<ol>(([\n].+)*)\n</ol></li>(\n</ol>)` -}}
+{{- $regexReplacementTOC := `$1$2$4` -}}
+{{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
+{{- .Scratch.Set "toc" $toc -}}
+
+{{- $toc := .Scratch.Get "toc" -}}
+{{- .Scratch.Set "toc" $toc -}}

@@ -1,0 +1,162 @@
+<!-- https://schema.org/ -->
+<!-- https://json-ld.org/ -->
+<!-- https://search.google.com/structured-data/testing-tool -->
+{{- $Deliver := .Deliver -}}
+{{- $title := .title -}}
+{{- $description := .description -}}
+{{- $keywords := .keywords -}}
+{{- $baseURLWithLangFix := print `/` | absLangURL -}}
+<!-- Auto Detect Images -->
+{{- if $Deliver.Site.Params.autoDetectImages -}}
+    {{- partial "components/auto-detect-images.html" $Deliver -}}
+{{- end -}}
+{{- $imgsURL := ($Deliver.Scratch.Get "imgsURL") -}}
+<!-- Image absURL -->
+{{ with $Deliver.Params.images | default $imgsURL -}}
+    {{- $Deliver.Scratch.Delete "image" -}}
+    {{- range . -}}
+        {{- $image := . | absURL | safeHTML -}}
+        {{- $Deliver.Scratch.Add "image" (printf "%s, " $image) -}}
+    {{- end -}}
+{{ end }}
+{{- $image := (split (strings.TrimSuffix ", " ($Deliver.Scratch.Get "image")) ", ") -}}
+<!-- Author -->
+{{- partial "components/author.html" $Deliver -}}
+{{- $author := ($Deliver.Scratch.Get "author") -}}
+<!-- Date -->
+{{- partial "components/date.html" $Deliver -}}
+{{- $pubDate := ($Deliver.Scratch.Get "pubDate") -}}
+{{- $modDate := ($Deliver.Scratch.Get "modDate") -}}
+
+{{- if $Deliver.IsHome -}}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "datePublished": {{ $pubDate }},
+        "dateModified": {{ $modDate }},
+        "url": {{ $baseURLWithLangFix }},
+        "description": {{ $description }},
+        "keywords": {{ $keywords }},
+        {{ with $Deliver.Site.Params.siteLogo -}}
+        "image": {{ . | absURL }},
+        {{ end -}}
+        {{ with $author -}}
+        "author": {
+            "@type": "Person",
+            {{ with .motto -}}
+            "description": {{ . | plainify }},
+            {{ end -}}
+            {{ with .email -}}
+            "email": {{ . }},
+            {{ end -}}
+            {{ with .avatar -}}
+            "image": {{ . | absURL }},
+            {{ end -}}
+            {{ with .website -}}
+            "url": {{ . }},
+            {{ end -}}
+            {{ with .name -}}
+            "name": {{ . }}
+            {{- end }}
+        },
+        {{ end -}}
+        {{ with $author.copyright -}}
+        "license": {{ . | plainify }},
+        {{ end -}}
+        "name": {{ $title }}
+    }
+</script>
+{{- else if and $Deliver.IsPage (in $Deliver.Site.Params.postSections $Deliver.Section) -}}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "datePublished": {{ $pubDate }},
+        "dateModified": {{ $modDate }},
+        "url": {{ $Deliver.Permalink }},
+        "headline": {{ $title }},
+        "description": {{ $description }},
+        "keywords": {{ $keywords }},
+        "inLanguage" : "{{ $Deliver.Site.LanguageCode }}",
+        "articleSection": {{ $Deliver.Section }},
+        "wordCount": {{ $Deliver.WordCount }},
+        {{ with $Deliver.Params.images | default $imgsURL -}}
+        "image": {{ $image }},
+        {{ else -}}
+        {{ with $Deliver.Site.Params.siteLogo -}}
+        "image": {{ . | absURL }},
+        {{ end -}}
+        {{ end -}}
+        {{ with $author -}}
+        "author": {
+            "@type": "Person",
+            {{ with .motto -}}
+            "description": {{ . | plainify }},
+            {{ end -}}
+            {{ with .email -}}
+            "email": {{ . }},
+            {{ end -}}
+            {{ with .avatar -}}
+            "image": {{ . | absURL }},
+            {{ end -}}
+            {{ with .website -}}
+            "url": {{ . }},
+            {{ end -}}
+            {{ with .name -}}
+            "name": {{ . }}
+            {{- end }}
+        },
+        {{ end -}}
+        {{ with $author.copyright -}}
+        "license": {{ . | plainify }},
+        {{ end -}}
+        "publisher": {
+            "@type": "Organization",
+            "name": {{ $Deliver.Site.Title }},
+            {{ with $Deliver.Site.Params.siteLogo -}}
+            "logo": {
+                "@type": "ImageObject",
+                "url": {{ . | absURL }}
+            },
+            {{ end -}}
+            "url": {{ $baseURLWithLangFix }}
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": {{ $baseURLWithLangFix }}
+        }
+    }
+</script>
+{{- else -}}
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "datePublished": {{ $pubDate }},
+        "dateModified": {{ $modDate }},
+        "url": {{ $Deliver.Permalink }},
+        "name": {{ $title }},
+        "description": {{ $description }},
+        "keywords": {{ $keywords }},
+        {{ with $Deliver.Site.Params.siteLogo -}}
+        "image": {{ . | absURL }},
+        {{ end -}}
+        "publisher": {
+            "@type": "Organization",
+            "name": {{ $Deliver.Site.Title }},
+            {{ with $Deliver.Site.Params.siteLogo -}}
+            "logo": {
+                "@type": "ImageObject",
+                "url": {{ . | absURL }}
+            },
+            {{ end -}}
+            "url": {{ $baseURLWithLangFix }}
+        },
+        "mainEntityOfPage": {
+            "@type": "WebSite",
+            "@id": {{ $baseURLWithLangFix }}
+        }
+    }
+</script>
+{{- end -}}

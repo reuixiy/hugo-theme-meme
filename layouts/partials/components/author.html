@@ -1,0 +1,52 @@
+{{- if .Params.original | default .Site.Params.original -}}
+    {{- with .Site.Author.name -}}
+        {{- $.Scratch.SetInMap "author" "name" . -}}
+    {{- end -}}
+    {{- with .Site.Author.email -}}
+        {{- $.Scratch.SetInMap "author" "email" . -}}
+    {{- end -}}
+    {{- with .Site.Author.motto -}}
+        {{- $.Scratch.SetInMap "author" "motto" . -}}
+    {{- end -}}
+    {{- with .Site.Author.avatar -}}
+        {{- $.Scratch.SetInMap "author" "avatar" . -}}
+    {{- end -}}
+    {{- $baseURLWithLangFix := (printf "%s%s/" (strings.TrimSuffix "/" .Site.BaseURL) .Site.LanguagePrefix) -}}
+    {{- with .Site.Author.website | default $baseURLWithLangFix -}}
+        {{- $.Scratch.SetInMap "author" "website" . -}}
+    {{- end -}}
+    {{- with .Site.Copyright -}}
+        {{- $.Scratch.SetInMap "author" "copyright" . -}}
+    {{- end -}}
+    {{- with .Site.Author.twitter -}}
+        {{- $.Scratch.SetInMap "author" "twitter" . -}}
+    {{- end -}}
+    {{- with .Site.Author.facebook -}}
+        {{- $.Scratch.SetInMap "author" "facebook" . -}}
+    {{- end -}}
+{{- else -}}
+    {{- with .Params.author -}}
+        {{- $.Scratch.SetInMap "author" "name" . -}}
+    {{- end -}}
+    {{- with .Params.email -}}
+        {{- $.Scratch.SetInMap "author" "email" . -}}
+    {{- end -}}
+    {{- with .Params.motto -}}
+        {{- $.Scratch.SetInMap "author" "motto" . -}}
+    {{- end -}}
+    {{- with .Params.avatar -}}
+        {{- $.Scratch.SetInMap "author" "avatar" . -}}
+    {{- end -}}
+    {{- with .Params.website -}}
+        {{- $.Scratch.SetInMap "author" "website" . -}}
+    {{- end -}}
+    {{- with .Params.copyright -}}
+        {{- $.Scratch.SetInMap "author" "copyright" . -}}
+    {{- end -}}
+    {{- with .Params.twitter -}}
+        {{- $.Scratch.SetInMap "author" "twitter" . -}}
+    {{- end -}}
+    {{- with .Params.facebook -}}
+        {{- $.Scratch.SetInMap "author" "facebook" . -}}
+    {{- end -}}
+{{- end -}}

@@ -1,0 +1,29 @@
+{{- partial "components/title.html" . -}}
+{{- $title := .Scratch.Get "title" -}}
+<script data-no-instant>
+    function loadComments() {
+        document.querySelector('#load-comments').style = "display:none";
+        if (typeof DISQUS === 'undefined') {
+            var disqus_config = function () {
+                {{ with .Params.disqus_url | default .Permalink }}this.page.url = '{{ . }}';{{ end }}
+                {{ with .Params.disqus_identifier | default .RelPermalink }}this.page.identifier = '{{ . }}';{{ end }}
+                {{ with .Params.disqus_title | default $title }}this.page.title = '{{ . }}';{{ end }}
+            };
+            (function() {
+                var d = document, s = d.createElement('script'); s.async = true;
+                s.src = 'https://{{ .Site.Params.disqusShortname }}.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        } else {
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    {{ with .Params.disqus_url | default .Permalink }}this.page.url = '{{ . }}';{{ end }}
+                    {{ with .Params.disqus_identifier | default .RelPermalink }}this.page.identifier = '{{ . }}';{{ end }}
+                    {{ with .Params.disqus_title | default $title }}this.page.title = '{{ . }}';{{ end }}
+                }
+            });
+        }
+    }
+</script>

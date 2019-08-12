@@ -1,0 +1,9 @@
+[data-theme="dark"] {
+    @include defineColorHSL(--color-primary, $primaryColorDarkH, $primaryColorDarkS, $primaryColorDarkL);
+    @include defineColorHSL(--color-bg, 0, 0%, 10%);
+    @include defineColorHSL(--color-contrast-lower, 0, 0%, 15%);
+    @include defineColorHSL(--color-contrast-low, 0, 0%, 40%);
+    @include defineColorHSL(--color-contrast-medium, 0, 0%, 60%);
+    @include defineColorHSL(--color-contrast-high, 0, 0%, 80%);
+    @include defineColorHSL(--color-contrast-higher, 0, 0%, 90%);
+}
