@@ -326,17 +326,19 @@
     background-image: url({{ .Site.Params.fofPoster }});
 }
 
-@import "_common/_highlight/light.scss";
-.chroma {
-    color: var(--color-contrast-high);
-    background-color: var(--color-contrast-lower);
-}
-{{ if .Site.Params.enableDarkMode }}
-    @import "_common/_highlight/dark.scss";
-    .chroma-dark {
+{{ if .Site.Params.enableHighlight }}
+    @import "_common/_highlight/light.scss";
+    .chroma {
         color: var(--color-contrast-high);
         background-color: var(--color-contrast-lower);
     }
+    {{ if .Site.Params.enableDarkMode }}
+        @import "_common/_highlight/dark.scss";
+        .chroma-dark {
+            color: var(--color-contrast-high);
+            background-color: var(--color-contrast-lower);
+        }
+    {{ end }}
 {{ end }}
 
 @import "_custom/custom.scss";
