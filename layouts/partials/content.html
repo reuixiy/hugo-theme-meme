@@ -149,10 +149,18 @@
 {{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.enableHost -}}
     {{- $hostURL := .Site.Params.hostURL -}}
-    {{- $regexPatternHost := `(<(img|video) src=")/([^"]+)` -}}
-    {{- $regexReplacementHost := (printf `${1}%s$3` $hostURL) -}}
-    {{- $Content := $Content | replaceRE $regexPatternHost $regexReplacementHost | safeHTML -}}
-    {{- .Scratch.Set "Content" $Content -}}
+    {{- $temps := findRE `<(img|video) src="/?([^":]+)` $Content -}}
+    {{- with $temps -}}
+        {{- range . -}}
+            {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
+                {{- $url := replaceRE `<(img|video) src="/?([^":]+)` `$2` . -}}
+                {{- $prefix := replaceRE `(<(img|video) src=")/?([^":]+)` `$1` . -}}
+                {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
+                {{- $Content := ($.Scratch.Get "Content") | replaceRE . $replacement | safeHTML -}}
+                {{- $.Scratch.Set "Content" $Content -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
 {{- end -}}
 
 <!-- Task List -->
