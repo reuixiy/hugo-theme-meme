@@ -280,6 +280,10 @@
     }
 {{ end }}
 
+{{ if .Site.Params.enableBackToTop }}
+    @import "_common/back-to-top.scss";
+{{ end }}
+
 {{ if .Site.Params.enableFooter }}
     @import "_common/footer.scss";
     {{ with .Site.Params.iconColor }}

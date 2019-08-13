@@ -1,0 +1,3 @@
+{{ if or (and .IsHome .Site.Params.displayBackToTopInHome) (and (not .IsHome) .Site.Params.enableBackToTop) }}
+    <a href="#" class="back-to-top">{{ index .Site.Data.SVG .Site.Params.backToTopIcon | safeHTML }}</a>
+{{ end }}
