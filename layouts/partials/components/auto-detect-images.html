@@ -2,27 +2,27 @@
 <!-- https://gohugo.io/functions/replacere/ -->
 <!-- https://regex101.com/ -->
 {{- if and .IsPage (in .Site.Params.postSections .Section) -}}
-	{{- $imgs := findRE `<img src="/?([^"]+)` .Content -}}
-	{{- with $imgs -}}
-		{{- $.Scratch.Delete "imgsURL" -}}
-		{{- range . -}}
-			{{- if and $.Site.Params.enableHost $.Site.Params.headAlso -}}
-				{{- $url := replaceRE `<img src="/?([^"]+)` `$1` . -}}
-				{{- if ne (substr $url 0 4) "http" -}}
-					{{- $hostURL := $.Site.Params.hostURL -}}
-					{{- $replacement := (printf `%s$1` $hostURL) -}}
-					{{- $.Scratch.Set "replacement" $replacement -}}
-				{{- else -}}
-					{{- $.Scratch.Set "replacement" `$1` -}}
-				{{- end -}}
-			{{- else -}}
-				{{- $.Scratch.Set "replacement" `$1` -}}
-			{{- end -}}
-			{{- $replacement := $.Scratch.Get "replacement" -}}
-			{{- $imgsURL := replaceRE `<img src="/?([^"]+)` $replacement . -}}
-			{{- if not (in (slice ".mp4" ".webm" ".ogg") (path.Ext $imgsURL)) -}}
-				{{- $.Scratch.Add "imgsURL" (slice $imgsURL) -}}
-			{{- end -}}
-		{{- end -}}
-	{{- end -}}
+    {{- $imgs := findRE `<img src="/?([^"]+)` .Content -}}
+    {{- with $imgs -}}
+        {{- $.Scratch.Delete "imgsURL" -}}
+        {{- range . -}}
+            {{- if and $.Site.Params.enableHost $.Site.Params.headAlso -}}
+                {{- $url := replaceRE `<img src="/?([^"]+)` `$1` . -}}
+                {{- if ne (substr $url 0 4) "http" -}}
+                    {{- $hostURL := $.Site.Params.hostURL -}}
+                    {{- $replacement := (printf `%s$1` $hostURL) -}}
+                    {{- $.Scratch.Set "replacement" $replacement -}}
+                {{- else -}}
+                    {{- $.Scratch.Set "replacement" `$1` -}}
+                {{- end -}}
+            {{- else -}}
+                {{- $.Scratch.Set "replacement" `$1` -}}
+            {{- end -}}
+            {{- $replacement := $.Scratch.Get "replacement" -}}
+            {{- $imgsURL := replaceRE `<img src="/?([^"]+)` $replacement . -}}
+            {{- if not (in (slice ".mp4" ".webm" ".ogg") (path.Ext $imgsURL)) -}}
+                {{- $.Scratch.Add "imgsURL" (slice $imgsURL) -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
 {{- end -}}
