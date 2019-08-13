@@ -1,4 +1,4 @@
-{{ if or (and .IsHome .Site.Params.displayMenuInHome) (and (not .IsHome) .Site.Params.displayMenu) }}
+{{ if or (and .IsHome .Site.Params.displayMenuInHome) (and (not .IsHome) .Site.Params.enableMenu) }}
     <nav class="nav">
         <ul class="menu" id="menu">
             {{ $currentPage := .Site.GetPage (printf `/%s` .Section) }}

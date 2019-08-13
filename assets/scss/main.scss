@@ -113,33 +113,37 @@
 
 @import "_common/fonts.scss";
 
-@import "_common/header.scss";
-.site-brand {
-    {{ with .Site.Params.siteBrandBackgroundColor }}
-        background-color: {{ . }}
-    {{ end }}
-    {{ with .Site.Params.siteBrandBackgroundImage }}
-        background-image: {{ . }};
-    {{ end }}
-}
-{{ if .Site.Params.siteBrandSVG }}
-    .brand {
-        width: {{ .Site.Params.siteBrandSVGWidth }}px;
-        height: {{ .Site.Params.siteBrandSVGHeight }}px;
-        fill: {{ .Site.Params.siteBrandSVGFill }};
+{{ if .Site.Params.enableHeader }}
+    @import "_common/header.scss";
+    .site-brand {
+        {{ with .Site.Params.siteBrandBackgroundColor }}
+            background-color: {{ . }}
+        {{ end }}
+        {{ with .Site.Params.siteBrandBackgroundImage }}
+            background-image: {{ . }};
+        {{ end }}
     }
-{{ else }}
-    .brand {
-        font-size: {{ .Site.Params.siteBrandFontSize }}em;
-        color: {{ .Site.Params.siteBrandFontColor }};
-        text-decoration: none;
-        &:hover {
-            color: {{ .Site.Params.siteBrandFontColor }};
+    {{ if .Site.Params.siteBrandSVG }}
+        .brand {
+            width: {{ .Site.Params.siteBrandSVGWidth }}px;
+            height: {{ .Site.Params.siteBrandSVGHeight }}px;
+            fill: {{ .Site.Params.siteBrandSVGFill }};
         }
-    }
+    {{ else }}
+        .brand {
+            font-size: {{ .Site.Params.siteBrandFontSize }}em;
+            color: {{ .Site.Params.siteBrandFontColor }};
+            text-decoration: none;
+            &:hover {
+                color: {{ .Site.Params.siteBrandFontColor }};
+            }
+        }
+    {{ end }}
 {{ end }}
 
-@import "_common/menu.scss";
+{{ if .Site.Params.enableMenu }}
+    @import "_common/menu.scss";
+{{ end }}
 
 {{ if or .Site.Params.enablePostMeta .Site.Params.enablePostMetaInHome }}
     @import "_common/post-meta.scss";

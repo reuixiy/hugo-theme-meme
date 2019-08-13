@@ -1,4 +1,4 @@
-{{ if or (and .IsHome .Site.Params.displayHeaderInHome) (and (not .IsHome) .Site.Params.displayHeader) }}
+{{ if or (and .IsHome .Site.Params.displayHeaderInHome) (and (not .IsHome) .Site.Params.enableHeader) }}
     <header class="header">
         <div class="site-brand">
             {{ if .Site.Params.siteBrandSVG }}
