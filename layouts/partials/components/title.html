@@ -15,10 +15,8 @@
     {{- end -}}
 <!-- Section -->
 {{- else if eq .Kind "section" -}}
-    {{- with .File -}}
-        {{- $title := printf "%s | %s" ($.Title | default (delimit (last 1 (split (strings.TrimSuffix "/" .Dir) "/")) " ") | plainify) $.Site.Title -}}
-        {{- $.Scratch.Set "title" $title -}}
-    {{- end -}}
+    {{- $title := printf "%s | %s" (.Title | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") | plainify) .Site.Title -}}
+    {{- .Scratch.Set "title" $title -}}
 <!-- Page -->
 {{- else -}}
     {{- $title := printf "%s | %s" (.Title | plainify) .Site.Title -}}

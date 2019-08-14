@@ -7,9 +7,7 @@
                 <div class="content list-group">
                     {{ if .Site.Params.displayListTitle }}
                         {{ if (eq .Kind "section") }}
-                            {{ with .File }}
-                                <h1 class="list-title">{{ $.Title | default (delimit (last 1 (split (strings.TrimSuffix "/" .Dir) "/")) " ") }}</h1>
-                            {{ end }}
+                            <h1 class="list-title">{{ .Title | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") }}</h1>
                         {{ end }}
                         {{ if (eq .Kind "taxonomy") }}
                             <h1 class="list-title">{{ .Title | default .Data.Term }}</h1>
