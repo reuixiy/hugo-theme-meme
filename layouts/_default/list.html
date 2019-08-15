@@ -38,7 +38,7 @@
 
                     <!-- Taxonomy Term -->
                     {{ if (eq .Kind "taxonomy") }}
-                        {{ $pages := .Pages }}
+                        {{ $pages := .Site.RegularPages }}
                         {{ $.Scratch.Set "pages" $pages }}
                     {{ end }}
 
