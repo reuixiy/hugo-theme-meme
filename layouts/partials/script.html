@@ -91,7 +91,7 @@
     {{ end }}
 {{ end }}
 
-{{ if .Site.Params.enableServiceWorker }}
+{{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {

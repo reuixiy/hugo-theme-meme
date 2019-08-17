@@ -126,6 +126,9 @@ ol.toc {
 .footnotes {
     font-size: 90%;
     padding: ($fontSize * 5) 0 0;
+    a {
+        text-decoration: underline;
+    }
     hr {
         margin: 0;
         height: 1px;
