@@ -171,10 +171,10 @@ th, td {
     border: 1px solid var(--color-contrast-lower);
 }
 table>tbody>tr:nth-of-type(odd) {
-    background-color: alpha(var(--color-contrast-lower), 0.75);
+    background-color: alpha(var(--color-contrast-lower), 0.5);
 }
 table>tbody>tr:hover {
-    background-color: var(--color-contrast-low);
+    background-color: var(--color-contrast-lower);
 }
 
 dt {
