@@ -4,19 +4,20 @@
     }
 }
 
-@if variable-exists("fontFamilyPostTitle") {
-    .post {
-        .post-title, .post-subtitle {
-            font-family: $fontFamilyPostTitle;
-        }
+@if variable-exists("fontFamilyTitle") {
+    .list-title, .term-title, .list-year, .list-month, .post-title, .post-subtitle, .related-title, .post-nav {
+        font-family: $fontFamilyPostTitle;
     }
 }
 
 @if variable-exists("fontFamilyHeadings") {
-    .post {
+    .post-body {
         h1, h2, h3, h4, h5, h6 {
             font-family: $fontFamilyHeadings;
         }
+    }
+    .contents-title {
+        font-family: $fontFamilyHeadings;
     }
 }
 
