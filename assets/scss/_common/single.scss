@@ -51,6 +51,11 @@
         padding-left: 2em;
         line-height: $lineHeight;
     }
+    li {
+        a {
+            text-decoration: underline;
+        }
+    }
     hr {
         border: none;
         margin: 2.427em 0 1.5em;
