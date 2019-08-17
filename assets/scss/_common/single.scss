@@ -17,6 +17,11 @@
 
 .post-body {
     margin-top: 5em !important;
+    li {
+        a {
+            text-decoration: underline;
+        }
+    }
 }
 
 .post {
@@ -50,11 +55,6 @@
     ol, ul {
         padding-left: 2em;
         line-height: $lineHeight;
-    }
-    li {
-        a {
-            text-decoration: underline;
-        }
     }
     hr {
         border: none;
