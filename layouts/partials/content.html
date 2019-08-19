@@ -140,7 +140,7 @@
 {{- if .Site.Params.enableCaption -}}
     {{- $captionPrefix := .Site.Params.captionPrefix -}}
     {{- $regexPatternCaption := `(<(img|video).+) title="([^"]+)"( controls)?( />|>)(</video>)?` -}}
-    {{- $regexReplacementCaption := (printf `$1$4$5$6<span class="caption">%s$3</span>` $captionPrefix) -}}
+    {{- $regexReplacementCaption := (printf `$1$4$5$6<span class="caption">%s$3</span>` $captionPrefix) | markdownify -}}
     {{- $Content := $Content | replaceRE $regexPatternCaption $regexReplacementCaption | safeHTML -}}
     {{- .Scratch.Set "Content" $Content -}}
 {{- end -}}
