@@ -17,10 +17,8 @@
 
 .post-body {
     margin-top: 5em !important;
-    li, table {
-        a {
-            text-decoration: underline;
-        }
+    a {
+        text-decoration: underline;
     }
 }
 
@@ -28,9 +26,6 @@
     p {
         margin: 0 0 1em;
         line-height: $lineHeight;
-        a {
-            text-decoration: underline;
-        }
     }
     img {
         display: block;
@@ -131,9 +126,6 @@ ol.toc {
 .footnotes {
     font-size: 90%;
     padding: ($fontSize * 5) 0 0;
-    a {
-        text-decoration: underline;
-    }
     hr {
         margin: 0;
         height: 1px;
