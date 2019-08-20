@@ -147,7 +147,7 @@
 
 <!-- Image / Video Hosting -->
 {{- $Content := .Scratch.Get "Content" -}}
-{{- if .Site.Params.enableHost -}}
+{{- if and .Site.Params.enableHost (eq hugo.Environment "production") -}}
     {{- $hostURL := .Site.Params.hostURL -}}
     {{- $temps := findRE `<(img|video) src="/?([^":]+)` $Content -}}
     {{- with $temps -}}
