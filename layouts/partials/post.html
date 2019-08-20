@@ -31,7 +31,7 @@
 
         </article>
 
-        {{ if .Params.displayCopyright | default .Site.Params.enablePostCopyright }}
+        {{ if .Params.displayCopyright | default .Site.Params.displayPostCopyright }}
             {{ partial "components/author.html" . }}
             {{ $author := .Scratch.Get "author" }}
             {{ with $author.name }}
