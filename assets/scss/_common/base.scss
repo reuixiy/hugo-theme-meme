@@ -61,6 +61,9 @@ svg {
 h1, h2, h3, h4, h5, h6 {
     margin: 1.618em 0 1em;
     color: var(--color-contrast-higher);
+    a {
+        text-decoration: none;
+    }
 }
 h1 {
     font-size: 2em;
