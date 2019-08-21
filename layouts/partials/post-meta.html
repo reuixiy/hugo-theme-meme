@@ -76,6 +76,6 @@
     {{ end }}
     {{ if .Site.Params.displayReadingTime }}
         {{ $icon := replace (index $.Site.Data.SVG $.Site.Params.readingTimeIcon) "icon" "icon post-meta-icon" | safeHTML }}
-        <span class="post-meta-item readingtime">{{ $icon }}{{ .ReadingTime }}&nbsp;mins</span>
+        <span class="post-meta-item readingtime">{{ $icon }}{{ .ReadingTime }}&nbsp;{{ i18n "minute" }}</span>
     {{ end }}
 </div>

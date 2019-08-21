@@ -4,6 +4,9 @@ other = "🇨🇳"
 [ellipsis]
 other = "……"
 
+[minute]
+one = "min"
+other = "mins"
 
 [tocTitle]
 other = "目录"
