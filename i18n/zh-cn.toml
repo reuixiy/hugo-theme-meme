@@ -5,8 +5,8 @@ other = "🇨🇳"
 other = "……"
 
 [minute]
-one = "min"
-other = "mins"
+one = "分钟"
+other = "分钟"
 
 [tocTitle]
 other = "目录"
