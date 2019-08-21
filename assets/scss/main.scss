@@ -334,13 +334,13 @@
     @import "_common/_highlight/light.scss";
     .chroma {
         color: var(--color-contrast-high);
-        background-color: alpha(var(--color-contrast-lower), 0.5);
+        background-color: alpha(var(--color-contrast-lower), 0.75);
     }
     {{ if .Site.Params.enableDarkMode }}
         @import "_common/_highlight/dark.scss";
         .chroma-dark {
             color: var(--color-contrast-high);
-            background-color: alpha(var(--color-contrast-lower), 0.5);
+            background-color: alpha(var(--color-contrast-lower), 0.75);
         }
     {{ end }}
 {{ end }}

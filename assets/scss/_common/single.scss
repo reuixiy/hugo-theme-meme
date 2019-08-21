@@ -216,13 +216,11 @@ pre {
         background-color: inherit;
     }
 }
-.chroma {
-    .lnt {
-        user-select: none;
-        display: block;
-        margin-right: -1em !important;
-        padding: 0 !important;
-    }
+span.lnt {
+    user-select: none;
+    display: block;
+    margin-right: -1em !important;
+    padding: 0 !important;
 }
 
 .katex-display {
