@@ -55,10 +55,10 @@
 {{- end -}}
 
 {{- with $imgsURL -}}
-    <meta name="og:image" content="{{ index $image 0 }}" />
+    <meta property="og:image" content="{{ index $image 0 }}" />
 {{ else -}}
     {{ with $Deliver.Site.Params.siteLogo -}}
-        <meta name="og:image" content="{{ . | absURL }}" />
+        <meta property="og:image" content="{{ . | absURL }}" />
     {{ end -}}
 {{- end -}}
 
