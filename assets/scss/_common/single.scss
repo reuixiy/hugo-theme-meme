@@ -189,7 +189,7 @@ pre {
     margin: ($fontSize * 2) 0;
     padding: 1em;
     line-height: 1.618;
-    background-color: alpha(var(--color-contrast-lower), 0.5);
+    background-color: alpha(var(--color-contrast-lower), 0.75);
 }
 .highlight {
     font-size: 0.8em;
@@ -202,7 +202,6 @@ pre {
     }
     pre {
         margin: 0;
-        padding: 1em;
         overflow: hidden;
         background-color: unset;
     }
