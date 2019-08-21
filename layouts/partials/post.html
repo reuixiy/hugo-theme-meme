@@ -8,8 +8,10 @@
                 <div class="post-subtitle">{{ . | markdownify | safeHTML }}</div>
             {{ end }}
 
-            {{ with .Params.description }}
-                <div class="post-description">{{ . | markdownify | safeHTML }}</div>
+            {{ if .Site.Params.displayPostDescription }}
+                {{ with .Params.description }}
+                    <div class="post-description">{{ . | markdownify | safeHTML }}</div>
+                {{ end }}
             {{ end }}
 
             {{ if .Params.meta | default .Site.Params.enablePostMeta }}
