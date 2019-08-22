@@ -15,10 +15,10 @@ other = "Contents"
 other = "Read More"
 
 [prevPage]
-other = "Older"
+other = "Newer"
 
 [nextPage]
-other = "Newer"
+other = "Older"
 
 [copyrightAuthor]
 other = "Author: "
