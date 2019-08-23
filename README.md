@@ -4,7 +4,9 @@
 
 ## Description
 
-MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme. Moreover, MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup id="fnref:1"><a href="#fn:1">[1]</a></sup>
+MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme.
+
+MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup id="fnref:1"><a href="#fn:1">[1]</a></sup>
 
 Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! :stuck_out_tongue_closed_eyes:
 
@@ -56,7 +58,7 @@ MemE has some special features for lazy bloggers. Such as:
 
 ### Typography
 
-MemE is highly customizable in Typography. You can customize font family, font size, line height, and even content width by yourself.
+MemE is highly customizable in typography. You can customize font family, font size, line height, and even content width by yourself.
 
 Moreover, MemE has Drop Cap & Small Cap features. You can set drop cap or enable drop cap after every horizontal rule tag (`<hr />`) — behaved like [The New Yorker](https://www.newyorker.com/) — for your posts. You can also set Small Cap for your posts’ headings.
 
