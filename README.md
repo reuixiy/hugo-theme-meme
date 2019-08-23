@@ -4,7 +4,7 @@
 
 ## Description
 
-MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme. Moreover, MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup><a href="#fn:1" id="fnref:1">[1]</a></sup>
+MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme. Moreover, MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup id="fnref:1"><a href="#user-content-fn:1">[1]</a></sup>
 
 Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! :stuck_out_tongue_closed_eyes:
 
@@ -30,9 +30,15 @@ Live demo: https://meme-test.netlify.com/
 
 For home page layout, MemE has three different kinds: posts, poetry, footage.
 
+1) Posts
+
 ![home-layout-posts.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-posts.png)
 
+2) Poetry
+
 ![home-layout-poetry.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-poetry.png)
+
+3) Footage
 
 ![home-layout-footage.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-footage.png)
 
@@ -91,7 +97,7 @@ See [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
 
 #### Service Worker
 
-MemE use gulp to generate sw.js, See: https://github.com/reuixiy/meme-test
+MemE use gulp to generate sw.js, see: https://github.com/reuixiy/meme-test
 
 ### More
 
@@ -99,7 +105,7 @@ I will write an easy-to-understand tutorial about how to migrate from Hexo to Hu
 
 ## Awesome MemE
 
-See #2.
+See [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2).
 
 ## Footnotes
 
@@ -111,4 +117,4 @@ For the code I have referenced, I have indicated the source in the code. And I w
 
 ---
 
-<ol><li><a href="https://itsfoss.com/install-arch-linux/">https://itsfoss.com/install-arch-linux/</a> <a id="fn:1" href="#fnref:1">↩</a></li></ol>
+<ol><li id="fn:1"><a href="https://itsfoss.com/install-arch-linux/">https://itsfoss.com/install-arch-linux/</a> <a href="#user-content-fnref:1">↩</a></li></ol>
