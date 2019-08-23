@@ -4,10 +4,10 @@
 name = "MemE"
 license = "MIT"
 licenselink = "https://github.com/reuixiy/hugo-theme-meme/blob/master/LICENSE"
-description = ""
+description = "MemE is a powerful and highly customizable GoHugo blog theme."
 homepage = "https://github.com/reuixiy/hugo-theme-meme/"
-tags = []
-features = []
+tags = ["Blog", "Minimal", "Clean", "Typography", "Multilingual"]
+features = ["Dark Mode", "InstantClick", "KaTeX", "JSON-LD", "Drop Cap"]
 min_version = "0.41"
 
 [author]
