@@ -1,10 +1,10 @@
-# <div align="center">MemE</div>
-
 <div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
+
+# <div align="center">MemE</div>
 
 ## Description
 
-MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme. Moreover, MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup id="fnref:1"><a href="#user-content-fn:1">[1]</a></sup>
+MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme. Moreover, MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup id="fnref:1"><a href="#fn:1">[1]</a></sup>
 
 Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! :stuck_out_tongue_closed_eyes:
 
@@ -62,6 +62,10 @@ Moreover, MemE has Drop Cap & Small Cap features. You can set drop cap or enable
 
 MemE has two different paragraph style: margin and indent. You would get a paragraph style like a book if you set paragraph style to `indent`. Also, MemE has a special layout for poetry.
 
+For Chinese users, MemE has a new Markdown syntax to render [emphasis point](https://en.wikipedia.org/wiki/Emphasis_point). How to use it? `..文字..`. Of course, you can set `enableEmphasisPoint` to `false` if you don't use it.
+
+Another special feature for Chinese users is glyph correction. It’s very useful if you set English fonts before Chinese fonts, which makes some Chinese punctuation glyph incorrect.
+
 ## Documentation
 
 This theme’s documentation is still under development, you can *watch* MemE if you are interested.
@@ -87,6 +91,18 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 $ cd blog
 $ git init
 $ git submodule add https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+```
+
+### Blogging
+
+Firstly, replace `config.toml` with demo site’s [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
+
+Secondly, add some files to `content` directory or just copy demo site’s [content](https://github.com/reuixiy/meme-test/tree/master/content).
+
+Now:
+
+```
+$ hugo server -D
 ```
 
 ### Configuration
@@ -117,4 +133,4 @@ For the code I have referenced, I have indicated the source in the code. And I w
 
 ---
 
-<ol><li id="fn:1"><a href="https://itsfoss.com/install-arch-linux/">https://itsfoss.com/install-arch-linux/</a> <a href="#user-content-fnref:1">↩</a></li></ol>
+<ol><li id="fn:1"><a href="https://itsfoss.com/install-arch-linux/">https://itsfoss.com/install-arch-linux/</a> <a href="#fnref:1">↩</a></li></ol>
