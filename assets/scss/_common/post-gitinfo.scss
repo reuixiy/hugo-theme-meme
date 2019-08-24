@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     color: var(--color-contrast-medium);
+    overflow-x: auto;
     a {
         color: var(--color-contrast-medium);
         &:hover {
