@@ -66,7 +66,7 @@ MemE has two different paragraph style: margin and indent. You would get a parag
 
 For Chinese users, MemE has a new Markdown syntax to render [emphasis point](https://en.wikipedia.org/wiki/Emphasis_point). How to use it? `..文字..`. Of course, you can set `enableEmphasisPoint` to `false` if you don't use it.
 
-Another special feature for Chinese users is glyph correction. It’s very useful if you set English fonts before Chinese fonts, which makes some Chinese punctuation glyph incorrect.
+Another special feature for Chinese users is glyph correction. It’s very useful if you set English fonts before Chinese fonts, which makes some Chinese punctuation glyphs incorrect.
 
 ## Documentation
 
@@ -119,7 +119,7 @@ MemE use gulp to generate sw.js, see: https://github.com/reuixiy/meme-test
 
 ### More
 
-I will write an easy-to-understand tutorial about how to migrate from Hexo to Hugo and the differences of them.
+I will write an easy-to-understand tutorial about how to migrate from Hexo to Hugo and the differences between them.
 
 ## Awesome MemE
 
@@ -133,6 +133,6 @@ Since my previous Hexo blog theme is based on [NexT](https://github.com/theme-ne
 
 For the code I have referenced, I have indicated the source in the code. And I will add a full list here later.
 
----
+<hr style="margin:1.618em 0 1em" />
 
 <ol><li id="fn:1"><a href="https://itsfoss.com/install-arch-linux/">https://itsfoss.com/install-arch-linux/</a> <a href="#fnref:1">↩</a></li></ol>
