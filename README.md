@@ -133,6 +133,6 @@ Since my previous Hexo blog theme is based on [NexT](https://github.com/theme-ne
 
 For the code I have referenced, I have indicated the source in the code. And I will add a full list here later.
 
-<hr style="margin:1.618em 0 1em" />
+---
 
 <ol><li id="fn:1"><a href="https://itsfoss.com/install-arch-linux/">https://itsfoss.com/install-arch-linux/</a> <a href="#fnref:1">↩</a></li></ol>
