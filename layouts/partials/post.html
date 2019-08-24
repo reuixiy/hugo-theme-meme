@@ -70,7 +70,7 @@
             </div>
         {{ end }}
 
-        {{ if and .GitInfo .Site.Params.enablePostGitInfo }}
+        {{ if and .GitInfo (.Params.gitinfo | default .Site.Params.displayPostGitInfo) }}
             <div class="post-gitinfo">
                 {{ if or .Site.Params.displayCommitHash .Site.Params.displayCommitMessage }}
                     <div class="post-gitinfo-left">
