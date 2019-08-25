@@ -17,16 +17,12 @@
     display: flex;
 }
 
-.post-gitinfo-left {
-    margin-left: -0.5em;
+.commit {
+    margin-right: 1em;
 }
 
-.post-gitinfo-right {
-    margin-right: -0.5em;
-}
-
-.gitinfo-item {
-    margin: 0 0.5em;
+.edit {
+    margin-left: 1em;
 }
 
 .git-icon, .msg-icon, .feedback-icon, .edit-icon {
