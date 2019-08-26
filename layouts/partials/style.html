@@ -45,7 +45,7 @@
     {{- end -}}
 {{- end -}}
 
-{{- if eq .Type "poetry" -}}
+{{- if and (eq .Type "poetry") .IsPage -}}
     {{- $.Scratch.Add "style" ".post-body {display:table;margin: 0 auto}" -}}
 {{- end -}}
 
