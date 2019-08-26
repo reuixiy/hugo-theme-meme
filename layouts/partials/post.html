@@ -78,13 +78,13 @@
                             {{ $icon := (replace (index .Site.Data.SVG .Site.Params.gitIcon) "icon" "icon git-icon") }}
                             <div class="gitinfo-item commit">
                                 {{- with .Site.Params.repoURL -}}
-                                    {{- $commit := (printf `<a href="%s/commit/%s" target="_blank">%s</a>` . $.GitInfo.Hash $.GitInfo.AbbreviatedHash) -}}
+                                    {{- $commit := (printf `<a href="%s/commit/%s" target="_blank">%s%s</a>` . $.GitInfo.Hash $icon $.GitInfo.AbbreviatedHash) -}}
                                     {{- $.Scratch.Set "commit" $commit -}}
                                 {{- else -}}
                                     {{- $.Scratch.Set "commit" $.GitInfo.AbbreviatedHash -}}
                                 {{- end -}}
                                 {{- $commit := .Scratch.Get "commit" -}}
-                                {{- printf `%s%s` $icon $commit | safeHTML -}}
+                                {{- printf `%s` $commit | safeHTML -}}
                             </div>
                         {{ end }}
                         {{ if .Site.Params.displayCommitMessage }}

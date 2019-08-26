@@ -3,10 +3,10 @@
     margin-top: ($fontSize * 5);
     display: flex;
     justify-content: space-between;
-    color: var(--color-contrast-medium);
+    color: alpha(var(--color-contrast-medium), 0.8);
     overflow-x: auto;
     a {
-        color: var(--color-contrast-medium);
+        color: alpha(var(--color-contrast-medium), 0.8);
         &:hover {
             color: var(--color-primary);
         }
@@ -17,7 +17,7 @@
     display: flex;
 }
 
-.commit {
+.commit, .commit-msg {
     margin-right: 1em;
 }
 
