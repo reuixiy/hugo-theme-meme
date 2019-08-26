@@ -120,7 +120,6 @@ ol.toc {
     padding: 0;
     overflow: auto;
     white-space: nowrap;
-    line-height: $lineHeight;
 }
 
 .footnotes {
@@ -201,7 +200,7 @@ pre {
         background-color: unset;
     }
     pre {
-        margin: 0;
+        margin: 0 !important;
         overflow: hidden;
         background-color: unset;
     }
@@ -225,4 +224,5 @@ span.lnt {
 .katex-display {
     overflow-x: auto;
     overflow-y: hidden;
+    text-indent: 0;
 }
