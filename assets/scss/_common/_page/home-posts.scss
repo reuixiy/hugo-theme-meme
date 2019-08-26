@@ -2,6 +2,11 @@
     color: var(--color-contrast-higher);
 }
 
+.summary {
+    line-height: $lineHeight;
+    display: block;
+}
+
 .read-more-container {
     text-align: center;
     margin-top: 1.618em;

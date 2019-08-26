@@ -48,8 +48,10 @@
     line-height: 1.5;
 }
 
-.chinese-zodiac {
-    float: right;
+.list-year {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 .term-count {
