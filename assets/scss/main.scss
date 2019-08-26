@@ -271,6 +271,9 @@
     .list-item-title {
         flex: 1;
     }
+    .list-item-time {
+        margin-left: 1em;
+    }
 {{ end }}
 {{ if eq .Site.Params.listDatePosition "left" }}
     .list-item {
@@ -281,6 +284,7 @@
     }
     .list-item-title {
         text-align: right;
+        margin-left: 1em;
     }
 {{ end }}
 
