@@ -8,9 +8,6 @@
 {{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
     {{ .Scratch.Set "glyph" "'glyph-correction', " }}
     $glyph: true;
-    .anchor-icon {
-        margin-top: 0.4em;
-    }
     .drop-cap {
         margin-top: $fontSize !important;
     }
