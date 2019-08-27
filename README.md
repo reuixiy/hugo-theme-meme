@@ -129,7 +129,7 @@ date | * | string
 lastmod | * | string
 publishDate | * | string
 expiryDate | * | string
-<taxonomies> | * | array, eg: categories, tags, series
+`<taxonomies>` eg: categories, tags, series | * | array
 description | * | string, Markdown supported
 summary | * | string, Markdown supported
 keywords | * | array
