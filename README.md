@@ -10,7 +10,7 @@ MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup 
 
 Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! :stuck_out_tongue_closed_eyes:
 
-Live demo: https://meme-test.netlify.com/
+Live demo: https://meme-test.netlify.com
 
 ## Features
 
@@ -32,17 +32,9 @@ Live demo: https://meme-test.netlify.com/
 
 For home page layout, MemE has three different kinds: posts, poetry, footage.
 
-1) Posts
-
-![home-layout-posts.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-posts.png)
-
-2) Poetry
-
-![home-layout-poetry.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-poetry.png)
-
-3) Footage
-
-![home-layout-footage.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-footage.png)
+1) [Posts](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-posts.png)
+2) [Poetry](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-poetry.png)
+3) [Footage](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-footage.png)
 
 ### Good for lazy bloggers
 
@@ -60,9 +52,9 @@ MemE has some special features for lazy bloggers. Such as:
 
 MemE is highly customizable in typography. You can customize font family, font size, line height, and even content width by yourself.
 
-Moreover, MemE has Drop Cap & Small Cap features. You can set drop cap or enable drop cap after every horizontal rule tag (`<hr />`) — behaved like [The New Yorker](https://www.newyorker.com/) — for your posts. You can also set Small Cap for your posts’ headings.
+MemE has Drop Cap & Small Cap features. You can set drop cap or enable drop cap after every horizontal rule tag (`<hr />`) — behaved like [The New Yorker](https://www.newyorker.com/) — for your posts. You can also set Small Cap for your posts’ headings.
 
-MemE has two different paragraph style: margin and indent. You would get a paragraph style like a book if you set paragraph style to `indent`. Also, MemE has a special layout for poetry.
+Moreover, MemE has two different paragraph style: margin and indent. You would get a paragraph style like a book if you set paragraph style to `indent`. Also, MemE has a special layout for poetry.
 
 For Chinese users, MemE has a new Markdown syntax to render [emphasis point](https://en.wikipedia.org/wiki/Emphasis_point). How to use it? `..文字..`. Of course, you can set `enableEmphasisPoint` to `false` if you don't use it.
 
@@ -97,9 +89,9 @@ $ git submodule add https://github.com/reuixiy/hugo-theme-meme.git themes/meme
 
 ### Blogging
 
-Firstly, replace `config.toml` with demo site’s [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
+First, replace `config.toml` with demo site’s [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
 
-Secondly, add some files to `content` directory or just copy demo site’s [content](https://github.com/reuixiy/meme-test/tree/master/content).
+Second, add some files to `content` directory or just copy demo site’s [content](https://github.com/reuixiy/meme-test/tree/master/content).
 
 Now:
 
@@ -115,7 +107,7 @@ See [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
 
 #### Service Worker
 
-MemE use gulp to generate sw.js, see: https://github.com/reuixiy/meme-test
+MemE uses gulp to generate sw.js, see: https://github.com/reuixiy/meme-test
 
 ### More
 
