@@ -7,8 +7,8 @@ licenselink = "https://github.com/reuixiy/hugo-theme-meme/blob/master/LICENSE"
 description = "MemE is a powerful and highly customizable GoHugo blog theme."
 homepage = "https://github.com/reuixiy/hugo-theme-meme/"
 tags = ["Blog", "Minimal", "Clean", "Typography", "Multilingual"]
-features = ["Dark Mode", "InstantClick", "KaTeX", "JSON-LD", "Drop Cap", "Service Worker", "TOC"]
-min_version = "0.41"
+features = ["Dark Mode", "InstantClick", "KaTeX", "JSON-LD", "Drop Cap", "PWA", "TOC"]
+min_version = "0.42"
 
 [author]
 name = "reuixiy"

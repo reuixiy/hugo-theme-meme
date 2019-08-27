@@ -18,7 +18,7 @@ Live demo: https://meme-test.netlify.com
 
 - InstantClick
 - Dark Mode
-- Service Worker
+- PWA
 - JSON-LD
 - Multilingual
 - Atom / RSS
@@ -116,7 +116,7 @@ See [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
 
 #### Service Worker
 
-MemE uses gulp to generate sw.js, see: https://github.com/reuixiy/meme-test
+MemE uses [Workbox](https://developers.google.com/web/tools/workbox/) (via workbox-build & gulp) to generate sw.js, see: https://github.com/reuixiy/meme-test
 
 #### Supported Front Matter
 
@@ -184,7 +184,7 @@ See [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2).
 
 Actually, the reason I developed MemE is simply because I want to migrate [my blog](https://io-oi.me/) from [Hexo](https://hexo.io/) to Hugo smoothly. So I started to research Hugo’s documentation and google everything. In the end, I did it!
 
-Since my previous Hexo blog theme is based on [NexT](https://github.com/theme-next/hexo-theme-next), MemE inherits some of NexT’s layout and style.
+Since my previous Hexo blog theme is based on [NexT](https://github.com/theme-next/hexo-theme-next), MemE inherits some of NexT’s layouts and styles.
 
 For the code I have referenced, I have indicated the source in the code. And I will add a full list here later.
 
