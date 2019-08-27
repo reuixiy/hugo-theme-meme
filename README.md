@@ -6,9 +6,11 @@
 
 MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme.
 
-MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup id="fnref:1"><a href="#fn:1">[1]</a></sup>
+MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup>[1]</sup>
 
-Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! :stuck_out_tongue_closed_eyes:
+Also, I hope you would enjoy MemE like a meme and share MemE like a meme!
+
+Just like what your blog and articles do! :stuck_out_tongue_closed_eyes:
 
 Live demo: https://meme-test.netlify.com
 
@@ -16,6 +18,7 @@ Live demo: https://meme-test.netlify.com
 
 - InstantClick
 - Dark Mode
+- Service Worker
 - JSON-LD
 - Multilingual
 - Atom / RSS
@@ -73,8 +76,8 @@ https://gohugo.io/getting-started/quick-start/
 For Arch Linux users:
 
 ```
-$ sudo pacman -S hugo
-$ hugo new site blog
+~ $ sudo pacman -S hugo
+~ $ hugo new site blog
 ```
 
 For users of other systems, see: https://gohugo.io/getting-started/installing/
@@ -82,9 +85,15 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 #### MemE
 
 ```
-$ cd blog
-$ git init
-$ git submodule add https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+~ $ cd blog
+~/blog $ git init
+~/blog $ git submodule add https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+```
+
+How to update MemE to the latest version?
+
+```
+~/blog $ git submodule update --rebase --remote
 ```
 
 ### Blogging
@@ -96,7 +105,7 @@ Second, add some files to `content` directory or just copy demo site’s [conten
 Now:
 
 ```
-$ hugo server -D
+~/blog $ hugo server -D
 ```
 
 ### Configuration
@@ -108,6 +117,60 @@ See [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
 #### Service Worker
 
 MemE uses gulp to generate sw.js, see: https://github.com/reuixiy/meme-test
+
+#### Supported Front Matter
+
+Name | Description | Note
+:---:|:---:|:---:
+title | * | string
+linkTitle | * | string
+subtitle | displayed below the title | string, Markdown supported, theme only
+date | * | string
+lastmod | * | string
+publishDate | * | string
+expiryDate | * | string
+<taxonomies> | * | array, eg: categories, tags, series
+description | * | string, Markdown supported
+summary | * | string, Markdown supported
+keywords | * | array
+images | * | array
+slug | * | string
+url | * | string
+draft | * | boolean
+isCJKLanguage | * | boolean
+weight | * | integer
+type | * | string, if equal to "poetry", will use a special layout for it
+layout | * | string
+outputs | * | array
+aliases | * | array
+markup | * | string
+meta | set `false` to disable post-meta | boolean, theme only
+toc | display TOC | boolean, overwrite `enableTOC` in `config.toml`, theme only
+displayCopyright | display post-copyright, overwrite `displayPostCopyright` in `config.toml`, theme only
+badge | display updated-badge | boolean, overwrite `displayUpdatedBadge` in `config.toml`, theme only
+gitinfo | display post-gitinfo | boolean, overwrite `displayPostGitInfo` in `config.toml`, theme only
+katex | add KaTeX support | boolean, overwrite `enableKaTeX` in `config.toml`, theme only
+comments | set `false` to disable comments in postSections or set `true` to enable comments in non-postSections | boolean, theme only
+original | original? You can add the following 9 terms if you set `false`. The `author` is required, other optional | boolean, overwrite `original` in `config.toml`, theme only
+author | author of original post | string, theme only
+link | link of original post | string, URL, theme only
+copyright | license of the post | string, Markdown supported, theme only
+website | author’s website | string, theme only
+email | author’s email | string, theme only
+motto | author’s description | string, Markdown supported, theme only
+avatar | author’s avatar | string, URL, theme only
+twitter | author’s twitter id | string, theme only
+facebook | author’s facebook id | string, theme only
+darkImage | dark image? | boolean, overwrite `darkImage` in `config.toml`, theme only
+smallCap | small cap? | boolean, overwrite `enableSmallCap` in `config.toml`, theme only
+dropCap | drop cap? | boolean, overwrite `enableDropCap` in `config.toml`, theme only
+indent | indent instead of margin? | boolean, overwrite `paragraphStyle` in `config.toml`, theme only
+align | normal, justify, center | srting, if euqal to "normal", will overwrite `enableJustify` in `config.toml`, theme only
+disqus_url | * | string
+disqus_identifier | * | string
+disqus_title | * | string
+
+*: see https://gohugo.io/content-management/front-matter/
 
 ### More
 
@@ -125,6 +188,8 @@ Since my previous Hexo blog theme is based on [NexT](https://github.com/theme-ne
 
 For the code I have referenced, I have indicated the source in the code. And I will add a full list here later.
 
+<br>
+
 ---
 
-<ol><li id="fn:1"><a href="https://itsfoss.com/install-arch-linux/">https://itsfoss.com/install-arch-linux/</a> <a href="#fnref:1">↩</a></li></ol>
+\[1\]: https://itsfoss.com/install-arch-linux/
