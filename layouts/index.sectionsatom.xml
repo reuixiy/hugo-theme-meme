@@ -60,11 +60,7 @@
             {{- $summary := .Description | default ($page.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) -}}
             {{ printf `<summary type="html"><![CDATA[%s]]></summary>` ($summary | markdownify | htmlUnescape) | safeHTML }}
             {{ if $.Site.Params.includeContent }}
-                {{ partial "toc.html" . }}
-                {{ $toc := .Scratch.Get "toc" }}
-                {{ partial "content.html" . }}
-                {{ $Content := .Scratch.Get "Content" }}
-                {{ printf `<content type="html"><![CDATA[%s%s]]></content>` $toc $Content | safeHTML }}
+                {{ printf `<content type="html"><![CDATA[%s]]></content>` .Content | safeHTML }}
             {{ end }}
             <!-- Sections -->
             {{ if eq $.Site.Params.categoryBy "sections" }}

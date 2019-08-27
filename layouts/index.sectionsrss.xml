@@ -49,11 +49,7 @@
                     <copyright>{{ . | plainify }}</copyright>
                 {{- end }}
                 {{ if $.Site.Params.includeContent }}
-                    {{ partial "toc.html" . }}
-                    {{ $toc := .Scratch.Get "toc" }}
-                    {{ partial "content.html" . }}
-                    {{ $Content := .Scratch.Get "Content" }}
-                    {{ printf `<description><![CDATA[%s%s]]></description>` $toc $Content | safeHTML }}
+                    {{ printf `<description><![CDATA[%s]]></description>` .Content | safeHTML }}
                 {{ else }}
                     {{- partial "components/summary.html" $page -}}
                     {{- $summary := .Description | default ($page.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) -}}
