@@ -394,11 +394,13 @@ siteBrandBackgroundImage = "linear-gradient(90deg, #f79533 0, #f37055 15%, #ef4e
 
 # poetry, footage, posts
 homeLayout = "posts"
+
 # Layout poetry settings
 # Markdown supported
 homePoetry = []
 # Unit: em
 homeLinksPadding = 1
+
 # Layout footage settings
 homePoster = ""
 homeVideoWebm = ""
@@ -415,7 +417,7 @@ homeLinksDelimiter = ""
 siteLogo = "/icons/apple-touch-icon.png"
 # For HTML meta
 siteDescription = "MemE is a powerful and highly customizable GoHugo blog theme."
-# If not set, will use site all taxonomies term as default
+# If not set, will use site’s all taxonomy terms as default
 siteKeywords = []
 # Keep this format, change the number
 siteCreatedTime = "1969-07-20T20:17:43+00:00"
@@ -493,7 +495,7 @@ darkImage = true
 # safari-pinned-tab.svg, favicon.ico, site.webmanifest and delete others
 # Move to ~/blog/static/icons/
 # Move favicon.ico site.webmanifest to ~/blog/static/
-# Change site.webmanifest to manifest.json
+# Rename site.webmanifest to manifest.json
 # See https://github.com/w3c/manifest/issues/689
 # See https://github.com/OneSignal/OneSignal-Website-SDK/issues/332
 # Check and Modify manifest.json (/icons path)
@@ -711,7 +713,7 @@ backToTopIcon = "arrow-up"
 displayBackToTopInHome = true
 
 # Footer
-# Note: Home layout `poetry` and `footage`, and 404 page have no footer.
+# Note: Home layout `poetry`, `footage`, and 404 page have no footer.
 enableFooter = true
 displayCopyrightSymbol = true
 displaySiteCreatedYear = true
