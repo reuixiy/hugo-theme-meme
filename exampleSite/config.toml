@@ -1,9 +1,12 @@
 baseURL = "https://example.com/"
 theme = "hugo-theme-meme"
+title = "MemE"
 # https://en.wikipedia.org/wiki/Language_localisation
 # https://www.zhihu.com/question/21980689
-defaultContentLanguage = "en-us"
+languageCode = "en-US"
+copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
 
+defaultContentLanguage = "en-us"
 defaultContentLanguageInSubdir = false
 
 enableGitInfo = false
