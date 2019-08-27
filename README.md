@@ -121,7 +121,7 @@ MemE uses gulp to generate sw.js, see: https://github.com/reuixiy/meme-test
 #### Supported Front Matter
 
 Name | Description | Note
-:---:|:---:|:---:
+---|---|---
 title | * | string
 linkTitle | * | string
 subtitle | displayed below the title | string, Markdown supported, theme only
@@ -146,7 +146,7 @@ aliases | * | array
 markup | * | string
 meta | set `false` to disable post-meta | boolean, theme only
 toc | display TOC | boolean, overwrite `enableTOC` in `config.toml`, theme only
-displayCopyright | display post-copyright, overwrite `displayPostCopyright` in `config.toml`, theme only
+displayCopyright | display post-copyright | boolean, overwrite `displayPostCopyright` in `config.toml`, theme only
 badge | display updated-badge | boolean, overwrite `displayUpdatedBadge` in `config.toml`, theme only
 gitinfo | display post-gitinfo | boolean, overwrite `displayPostGitInfo` in `config.toml`, theme only
 katex | add KaTeX support | boolean, overwrite `enableKaTeX` in `config.toml`, theme only
