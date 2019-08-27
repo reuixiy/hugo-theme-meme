@@ -377,7 +377,7 @@ displayHeaderInHome = true
 enableMenu = true
 displayMenuInHome = true
 
-# Use for Header, If true, Please put your SVG brand image to `svg.toml`.
+# Use for Header, If true, Please put your SVG brand image to `SVG.toml`.
 # If false, will use your Site Title as fallback.
 # Unit: px
 siteBrandSVG = true
@@ -474,7 +474,7 @@ includeContent = true
 # Dark Mode
 enableDarkMode = true
 defaultTheme = "light"
-# Note: If false and enableDarkMode equal to `true`,
+# Note: If true and enableDarkMode equal to `true`,
 # users can still get Dark Mode if their device’s system
 # has enabled Dark Mode (`prefers-color-scheme: dark`).
 hideThemeToggle = false
@@ -489,7 +489,8 @@ darkImage = true
 
 # Web App
 # https://realfavicongenerator.net/
-# Delete browserconfig.xml, android-chrome-192x192.png, favicon-16x16.png, favicon-32x32.png
+# Keep android-chrome-512x512.png, apple-touch-icon.png, mstile-150x150.png,
+# safari-pinned-tab.svg, favicon.ico, site.webmanifest and delete others
 # Move to ~/blog/static/icons/
 # Move favicon.ico site.webmanifest to ~/blog/static/
 # Change site.webmanifest to manifest.json
@@ -709,7 +710,7 @@ enableBackToTop = true
 backToTopIcon = "arrow-up"
 displayBackToTopInHome = true
 
-# footer
+# Footer
 # Note: Home layout `poetry` and `footage`, and 404 page have no footer.
 enableFooter = true
 displayCopyrightSymbol = true
