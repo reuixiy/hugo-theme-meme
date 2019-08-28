@@ -192,6 +192,7 @@ pre {
     background-color: alpha(var(--color-contrast-lower), 0.75);
     code {
         background-color: unset;
+        font-size: inherit;
     }
 }
 .highlight {
