@@ -190,6 +190,9 @@ pre {
     padding: 1em;
     line-height: 1.618;
     background-color: alpha(var(--color-contrast-lower), 0.75);
+    code {
+        background-color: unset;
+    }
 }
 .highlight {
     font-size: 0.8em;
@@ -198,7 +201,6 @@ pre {
         margin: 0;
         padding: 0;
         font-size: 1em;
-        background-color: unset;
     }
     pre {
         margin: 0 !important;
