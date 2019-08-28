@@ -171,6 +171,7 @@
             display: block !important;
         }
     }
+    $postWidth: {{ . }};
 {{ end }}
 {{ if .Site.Params.enableAnchorAutoHide }}
     :root {
@@ -263,6 +264,7 @@
             display: block !important;
         }
     }
+    $listWidth: {{ . }};
 {{ end }}
 {{ if eq .Site.Params.listDatePosition "right" }}
     .list-item-title {
