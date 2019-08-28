@@ -21,7 +21,7 @@
     {{- range $taxonomy, $terms := .Site.Taxonomies -}}
         {{- with $.Param $taxonomy -}}
             {{- range $index, $term := . -}}
-                {{- $.Scratch.Add "keywordsPost" (printf "%s, " $term) -}}
+                {{- $.Scratch.Add "keywordsPost" (printf "%s, " ($term | anchorize)) -}}
             {{- end -}}
         {{- end -}}
     {{- end -}}
