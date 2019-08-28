@@ -205,16 +205,16 @@ baseName = "rss"
 # page = ["HTML"]
 # home = ["HTML", "Atom", "RSS", "SectionsAtom", "SectionsRSS"]
 # section = ["NoUglyHTML", "NoUglyRSS", "NoUglyAtom"]
-# # NOT Work, see: https://github.com/gohugoio/hugo/issues/4528
-# # taxonomyTerm = ["HTML"]
+# # Not working below v0.57.0, see: https://github.com/gohugoio/hugo/issues/4528
+# taxonomyTerm = ["NoUglyHTML", "NoUglyRSS"]
 # taxonomy = ["NoUglyHTML", "NoUglyRSS"]
 
 [outputs]
 page = ["HTML"]
 home = ["HTML", "SectionsAtom", "SectionsRSS"]
 section = ["HTML"]
-# NOT Work, see: https://github.com/gohugoio/hugo/issues/4528
-# taxonomyTerm = ["HTML"]
+# Not working below v0.57.0, see: https://github.com/gohugoio/hugo/issues/4528
+taxonomyTerm = ["HTML"]
 taxonomy = ["HTML"]
 
 [author]
