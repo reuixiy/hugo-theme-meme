@@ -8,7 +8,7 @@
     {{- .Scratch.Set "title" $title -}}
 <!-- Taxonomy Term -->
 {{- else if eq .Kind "taxonomy" -}}
-    {{- $taxonomyTermTitle := .Title | default .Data.Term -}}
+    {{- $taxonomyTermTitle := .Title | default .Data.Term | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") -}}
     {{- with .Site.GetPage (printf "/%s" .Data.Plural) -}}
         {{- $title := printf "%s: %s | %s" (.Title | default (.Type | title)) $taxonomyTermTitle .Site.Title -}}
         {{- $.Scratch.Set "title" $title -}}

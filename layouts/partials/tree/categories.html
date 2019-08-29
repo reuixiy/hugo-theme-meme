@@ -20,7 +20,7 @@
                     {{ $lastTerm := (delimit (last 1 $categoryTerms) " ") }}
                     {{ with $.Site.GetPage (printf `/categories/%s` $lastTerm) }}
                         <p style="padding-left: {{ $padding }}em">
-                            <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default .Data.Term }}</a>
+                            <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default .Data.Term | default $lastTerm }}</a>
                             {{ if $.Site.Params.displayPostsCount }}
                                 <span class="category-count">{{ printf "(%d)" (len .Data.category) }}</span>
                             {{ end }}
