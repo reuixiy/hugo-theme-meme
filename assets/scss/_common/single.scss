@@ -118,7 +118,7 @@ blockquote {
 }
 ol.toc {
     padding: 0;
-    overflow: auto;
+    overflow: auto hidden;
     white-space: nowrap;
 }
 
@@ -184,7 +184,7 @@ code {
     font-size: 80%;
 }
 pre {
-    overflow: auto;
+    overflow: auto hidden;
     font-size: $fontSize * 0.8;
     margin: ($fontSize * 2) 0;
     padding: 1em;
@@ -205,7 +205,7 @@ pre {
     }
     pre {
         margin: 0 !important;
-        overflow: hidden;
+        overflow: auto hidden;
         background-color: unset;
     }
     th, td {
@@ -226,7 +226,6 @@ span.lnt {
 }
 
 .katex-display {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto hidden;
     text-indent: 0;
 }
