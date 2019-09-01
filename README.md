@@ -155,6 +155,7 @@ toc | display TOC | boolean, overwrite `enableTOC` in `config.toml`, theme only
 displayCopyright | display post-copyright | boolean, overwrite `displayPostCopyright` in `config.toml`, theme only
 badge | display updated-badge | boolean, overwrite `displayUpdatedBadge` in `config.toml`, theme only
 gitinfo | display post-gitinfo | boolean, overwrite `displayPostGitInfo` in `config.toml`, theme only
+related | display related-posts | boolean, overwrite `displayRelatedPosts` in `config.toml`, theme only
 katex | add KaTeX support | boolean, overwrite `enableKaTeX` in `config.toml`, theme only
 comments | set `false` to disable comments in postSections or set `true` to enable comments in non-postSections | boolean, theme only
 original | original? You can add the following 9 terms if you set `false`. The `author` is required, other optional | boolean, overwrite `original` in `config.toml`, theme only
