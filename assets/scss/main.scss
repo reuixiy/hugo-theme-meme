@@ -22,6 +22,9 @@
 {{ with .Site.Params.fontFamilySiteBrand }}
     $fontFamilySiteBrand: {{ $glyph }}{{ . }};
 {{ end }}
+{{ with .Site.Params.fontFamilyMenu }}
+    $fontFamilyMenu: {{ $glyph }}{{ . }};
+{{ end }}
 {{ with .Site.Params.fontFamilyTitle }}
     $fontFamilyTitle: {{ $glyph }}{{ . }};
 {{ end }}

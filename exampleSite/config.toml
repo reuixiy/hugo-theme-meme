@@ -639,6 +639,7 @@ lineHeight = 1.618
 # Any value is not set, fallback to `fontFamilyBody` it will.
 # If you use SVG as your Site Brand, then leave this value empty.
 fontFamilySiteBrand = ""
+fontFamilyMenu = ""
 fontFamilyTitle = "'Cinzel Decorative', serif"
 fontFamilyHeadings = "'Cinzel Decorative', serif"
 fontFamilyCode = "'Source Code Pro', monospace"

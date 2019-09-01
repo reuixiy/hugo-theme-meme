@@ -4,6 +4,12 @@
     }
 }
 
+@if variable-exists("fontFamilyMenu") {
+    .menu {
+        font-family: $fontFamilyMenu;
+    }
+}
+
 @if variable-exists("fontFamilyTitle") {
     .list-title, .term-title, .list-year, .list-month, .post-title, .post-subtitle, .related-title, .post-nav {
         font-family: $fontFamilyTitle;
