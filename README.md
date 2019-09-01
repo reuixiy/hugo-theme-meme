@@ -41,9 +41,9 @@ You can check this [report](https://www.webpagetest.org/result/190827_95_55731f5
 
 For home page layout, MemE has three different kinds: posts, poetry, footage.
 
-1) [Posts](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-posts.png), live demo: https://meme-test.netlify.com
-2) [Poetry](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-poetry.png), live demo: https://io-oi.me
-3) [Footage](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-footage.png), live demo: https://yixiuer.me
+1. [Posts](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-posts.png), live demo: https://meme-test.netlify.com
+2. [Poetry](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-poetry.png), live demo: https://io-oi.me
+3. [Footage](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-footage.png), live demo: https://yixiuer.me
 
 ### Good for lazy bloggers
 
