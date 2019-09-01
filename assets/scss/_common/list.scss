@@ -17,6 +17,7 @@
     margin-top: 1em;
     padding-bottom: 0.5em;
     display: flex;
+    align-items: baseline;
     &:hover {
         border-bottom-color: var(--color-primary);
         ::before {
