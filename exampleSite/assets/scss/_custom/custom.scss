@@ -1,0 +1,30 @@
+.main {
+    padding-top: 3em;
+}
+
+[lang="en-US"] {
+    .menu {
+        font-size: 80%;
+    }
+
+    .post-meta {
+        font-size: 70%;
+    }
+
+    .drop-cap {
+        margin-top: 16px;
+    }
+
+    .footer {
+        font-size: 80%;
+    }
+
+    @media (max-width: ($postWidth + 5) * $fontSize) {
+        body {
+            font-size: 18px;
+        }
+        .drop-cap {
+            margin-top: 12px;
+        }
+    }
+}
