@@ -98,7 +98,7 @@ extensionsmask = ["hardLineBreak", "backslashLineBreak"]
 # identifier = "posts"
 # [[languages.zh-cn.menu.main]]
 # url = "/zh-cn/series/"
-# name = "专题"
+# name = "专栏"
 # weight = 4
 # pre = "internal"
 # post = "grav"
@@ -150,7 +150,7 @@ extensionsmask = ["hardLineBreak", "backslashLineBreak"]
 # identifier = "home"
 # [[languages.zh-cn.menu.links]]
 # url = "/zh-cn/series/"
-# name = "专题"
+# name = "专栏"
 # weight = 2
 # pre = "internal"
 # identifier = "series"
