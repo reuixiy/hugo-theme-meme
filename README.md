@@ -4,13 +4,9 @@
 
 ## Description
 
-MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme.
+MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme. MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup>[1]</sup>
 
-MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup>[1]</sup>
-
-Also, I hope you would enjoy MemE like a meme and share MemE like a meme!
-
-Just like what your blog and articles do! :stuck_out_tongue_closed_eyes:
+Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! :stuck_out_tongue_closed_eyes:
 
 Live demo: https://meme-test.netlify.com
 
