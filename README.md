@@ -171,6 +171,8 @@ facebook | author’s facebook id | string, theme only
 darkImage | dark image? | boolean, overwrite `darkImage` in `config.toml`, theme only
 smallCap | small cap? | boolean, overwrite `enableSmallCap` in `config.toml`, theme only
 dropCap | drop cap? | boolean, overwrite `enableDropCap` in `config.toml`, theme only
+dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, overwrite `enableDropCapAfterHr` in `config.toml`, theme only
+deleteHrBeforeDropCap | delete horizontal rule tag before drop cap? | boolean, overwrite `deleteHrBeforeDropCap` in `config.toml`, theme only
 indent | indent instead of margin? | boolean, overwrite `paragraphStyle` in `config.toml`, theme only
 align | normal, justify, center | srting, if euqal to "normal", will overwrite `enableJustify` in `config.toml`, theme only
 disqus_url | * | string
