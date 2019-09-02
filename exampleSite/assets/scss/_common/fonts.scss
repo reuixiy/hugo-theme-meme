@@ -1,0 +1,75 @@
+@if variable-exists("fontFamilySiteBrand") {
+    .site-brand {
+        font-family: $fontFamilySiteBrand;
+    }
+}
+
+@if variable-exists("fontFamilyMenu") {
+    .menu {
+        font-family: $fontFamilyMenu;
+    }
+}
+
+@if variable-exists("fontFamilyTitle") {
+    .list-title, .term-title, .list-year, .list-month, .post-title, .post-subtitle, .related-title, .post-nav {
+        font-family: $fontFamilyTitle;
+    }
+}
+
+@if variable-exists("fontFamilyHeadings") {
+    .post-body {
+        h1, h2, h3, h4, h5, h6 {
+            font-family: $fontFamilyHeadings;
+        }
+    }
+    .contents-title, .contents-title-indent {
+        font-family: $fontFamilyHeadings;
+    }
+}
+
+@if variable-exists("fontFamilyCode") {
+    code, pre, sup, .post-meta, .updated-badge, .post-gitinfo, .minimal-footer, .minimal-footer-about {
+        font-family: $fontFamilyCode;
+    }
+}
+
+@if variable-exists("fontFamilyQuote") {
+    blockquote {
+        font-family: $fontFamilyQuote;
+    }
+}
+
+@if variable-exists("fontFamilyTOC") {
+    .contents {
+        font-family: $fontFamilyTOC;
+    }
+}
+
+@if variable-exists("fontFamilyCaption") {
+    .caption {
+        font-family: $fontFamilyCaption;
+    }
+}
+
+@if variable-exists("fontFamilyFooter") {
+    .footer {
+        font-family: $fontFamilyFooter;
+    }
+}
+
+@if variable-exists("fontFamilyBody") {
+    body {
+        font-family: $fontFamilyBody;
+    }
+}
+
+@if variable-exists("glyph") {
+    @font-face {
+        font-family: 'glyph-correction';
+        font-display: swap;
+        src: url("../../fonts/glyph-correction.eot");
+        src: url("../../fonts/glyph-correction.eot") format('embedded-opentype'), url("../../fonts/glyph-correction.woff2") format('woff2'), url("../../fonts/glyph-correction.woff") format('woff'), url("../../fonts/glyph-correction.ttf") format('truetype');
+        font-weight: inherit;
+        font-style: inherit;
+    }
+}
