@@ -1,5 +1,5 @@
 {{- partial "components/title.html" . -}}
-{{- $title := .Scratch.Get "title" -}}
+{{- $rawTitle := .Scratch.Get "rawTitle" -}}
 <script>
     function loadComments() {
         document.querySelector('#load-comments').style = "display:none";
@@ -7,7 +7,7 @@
             var disqus_config = function () {
                 {{ with .Params.disqus_url | default .Permalink }}this.page.url = '{{ . }}';{{ end }}
                 {{ with .Params.disqus_identifier | default .RelPermalink }}this.page.identifier = '{{ . }}';{{ end }}
-                {{ with .Params.disqus_title | default $title }}this.page.title = '{{ . }}';{{ end }}
+                {{ with .Params.disqus_title | default $rawTitle }}this.page.title = '{{ . }}';{{ end }}
             };
             (function() {
                 var d = document, s = d.createElement('script'); s.async = true;
@@ -21,7 +21,7 @@
                 config: function () {
                     {{ with .Params.disqus_url | default .Permalink }}this.page.url = '{{ . }}';{{ end }}
                     {{ with .Params.disqus_identifier | default .RelPermalink }}this.page.identifier = '{{ . }}';{{ end }}
-                    {{ with .Params.disqus_title | default $title }}this.page.title = '{{ . }}';{{ end }}
+                    {{ with .Params.disqus_title | default $rawTitle }}this.page.title = '{{ . }}';{{ end }}
                 }
             });
         }
