@@ -37,8 +37,7 @@
             {{- partial "components/author.html" $page -}}
             {{- $author := ($page.Scratch.Get "author") -}}
             <item>
-                {{ $pageTitle := printf "%s | %s" .Title .Site.Title | safeHTML -}}
-                <title>{{ $pageTitle }}</title>
+                <title>{{ .Title | safeHTML }}</title>
                 <link>{{ .Permalink }}</link>
                 <guid isPermaLink="true">{{ .Permalink }}</guid>
                 <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>

@@ -98,7 +98,7 @@
     {{- $Deliver := . -}}
     <!-- JSON-LD -->
     {{- with .Site.Params.jsonLD -}}
-        {{ partial "components/json-ld.html" (dict "Deliver" $Deliver "title" $title "description" $description "keywords" $keywords) }}
+        {{ partial "components/json-ld.html" (dict "Deliver" $Deliver "description" $description "keywords" $keywords) }}
     {{- end }}
 
     <!-- Twitter Cards -->
@@ -107,7 +107,7 @@
     {{- end }}
     <!-- Open Graph -->
     {{- with .Site.Params.openGraph -}}
-        {{ partial "components/open-graph.html" (dict "Deliver" $Deliver "title" $title "description" $description "keywords" $keywords) }}
+        {{ partial "components/open-graph.html" (dict "Deliver" $Deliver "description" $description "keywords" $keywords) }}
     {{- end }}
 
     {{- with .Site.Params.googleSiteVerification }}
