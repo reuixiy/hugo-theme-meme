@@ -4,9 +4,11 @@
 <!-- https://stackoverflow.com/a/29831974 -->
 <!-- https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/opengraph.html -->
 {{- $Deliver := .Deliver -}}
-{{- $title := .title -}}
 {{- $description := .description -}}
 {{- $keywords := .keywords -}}
+<!-- Title -->
+{{- partial "components/title.html" $Deliver -}}
+{{- $rawTitle := $Deliver.Scratch.Get "rawTitle" -}}
 <!-- Auto Detect Images -->
 {{- if $Deliver.Site.Params.autoDetectImages -}}
     {{- partial "components/auto-detect-images.html" $Deliver -}}
@@ -41,7 +43,7 @@
 {{- end -}}
 {{- $languageCode := $Deliver.Scratch.Get "languageCode" -}}
 
-<meta property="og:title" content="{{ $title }}" />
+<meta property="og:title" content="{{ $rawTitle }}" />
 <meta property="og:description" content="{{ $description }}" />
 <meta property="og:url" content="{{ $Deliver.Permalink }}" />
 <meta property="og:site_name" content="{{ $Deliver.Site.Title }}" />

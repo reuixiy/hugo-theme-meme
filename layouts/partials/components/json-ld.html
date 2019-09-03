@@ -2,10 +2,12 @@
 <!-- https://json-ld.org/ -->
 <!-- https://search.google.com/structured-data/testing-tool -->
 {{- $Deliver := .Deliver -}}
-{{- $title := .title -}}
 {{- $description := .description -}}
 {{- $keywords := .keywords -}}
 {{- $baseURLWithLangFix := print `/` | absLangURL -}}
+<!-- Title -->
+{{- partial "components/title.html" $Deliver -}}
+{{- $rawTitle := $Deliver.Scratch.Get "rawTitle" -}}
 <!-- Auto Detect Images -->
 {{- if $Deliver.Site.Params.autoDetectImages -}}
     {{- partial "components/auto-detect-images.html" $Deliver -}}
@@ -64,7 +66,7 @@
         {{ with $author.copyright -}}
         "license": {{ . | plainify }},
         {{ end -}}
-        "name": {{ $title }}
+        "name": {{ $rawTitle }}
     }
 </script>
 {{- else if and $Deliver.IsPage (in $Deliver.Site.Params.postSections $Deliver.Section) -}}
@@ -75,7 +77,7 @@
         "datePublished": {{ $pubDate }},
         "dateModified": {{ $modDate }},
         "url": {{ $Deliver.Permalink }},
-        "headline": {{ $title }},
+        "headline": {{ $rawTitle }},
         "description": {{ $description }},
         "keywords": {{ $keywords }},
         "inLanguage" : "{{ $Deliver.Site.LanguageCode }}",
@@ -136,7 +138,7 @@
         "datePublished": {{ $pubDate }},
         "dateModified": {{ $modDate }},
         "url": {{ $Deliver.Permalink }},
-        "name": {{ $title }},
+        "name": {{ $rawTitle }},
         "description": {{ $description }},
         "keywords": {{ $keywords }},
         {{ with $Deliver.Site.Params.siteLogo -}}

@@ -2,23 +2,32 @@
 {{- if eq .Kind "home" -}}
     {{- $title := .Site.Title -}}
     {{- .Scratch.Set "title" $title -}}
+    {{- .Scratch.Set "rawTitle" $title -}}
 <!-- Taxonomy -->
 {{- else if eq .Kind "taxonomyTerm" -}}
     {{- $title := printf "%s | %s" (.Title | default (.Type | title)) .Site.Title -}}
+    {{- $rawTitle := (.Title | default (.Type | title)) -}}
     {{- .Scratch.Set "title" $title -}}
+    {{- .Scratch.Set "rawTitle" $rawTitle -}}
 <!-- Taxonomy Term -->
 {{- else if eq .Kind "taxonomy" -}}
     {{- $taxonomyTermTitle := .Title | default .Data.Term | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") -}}
     {{- with .Site.GetPage (printf "/%s" .Data.Plural) -}}
         {{- $title := printf "%s: %s | %s" (.Title | default (.Type | title)) $taxonomyTermTitle .Site.Title -}}
+        {{- $rawTitle := printf "%s: %s" (.Title | default (.Type | title)) $taxonomyTermTitle -}}
         {{- $.Scratch.Set "title" $title -}}
+        {{- $.Scratch.Set "rawTitle" $rawTitle -}}
     {{- end -}}
 <!-- Section -->
 {{- else if eq .Kind "section" -}}
     {{- $title := printf "%s | %s" (.Title | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") | plainify) .Site.Title -}}
+    {{- $rawTitle := .Title | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") | plainify -}}
     {{- .Scratch.Set "title" $title -}}
+    {{- .Scratch.Set "rawTitle" $rawTitle -}}
 <!-- Page -->
 {{- else -}}
     {{- $title := printf "%s | %s" (.Title | plainify) .Site.Title -}}
+    {{- $rawTitle := .Title | plainify -}}
     {{- .Scratch.Set "title" $title -}}
+    {{- .Scratch.Set "rawTitle" $rawTitle -}}
 {{- end -}}
