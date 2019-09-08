@@ -91,12 +91,4 @@
     {{ end }}
 {{ end }}
 
-{{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js');
-            });
-        }
-    </script>
-{{ end }}
+{{ partial "third-party/service-worker.html" . }}

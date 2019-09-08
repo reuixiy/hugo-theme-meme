@@ -38,6 +38,12 @@ other = "Load Comments?"
 [fofLinkText]
 other = "Take Me Home"
 
+[serviceWorkerUpdatedText]
+other = "New Update Available"
+
+[serviceWorkerUpdatedAction]
+other = "Refresh"
+
 
 # Months
 # Used for `i18nMonth`
