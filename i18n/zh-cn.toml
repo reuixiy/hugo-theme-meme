@@ -38,6 +38,12 @@ other = "加载评论"
 [fofLinkText]
 other = "送我回主页"
 
+[serviceWorkerUpdatedText]
+other = "已更新最新版本"
+
+[serviceWorkerUpdatedAction]
+other = "点击刷新"
+
 
 [january]
 other = "一月"
