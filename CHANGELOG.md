@@ -1,8 +1,4 @@
-# [](https://github.com/reuixiy/hugo-theme-meme/compare/v2.1.3...v) (2019-09-09)
-
-
-
-## [2.1.3](https://github.com/reuixiy/hugo-theme-meme/compare/v2.0.0...v2.1.3) (2019-09-09)
+# [2.1.3](https://github.com/reuixiy/hugo-theme-meme/compare/v2.0.0...v2.1.3) (2019-09-09)
 
 
 ### Bug Fixes
