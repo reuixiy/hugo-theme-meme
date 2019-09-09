@@ -649,7 +649,7 @@ fontFamilyFooter = ""
 fontFamilyBody = "EB Garamond, serif"
 
 # https://fonts.google.com/
-fontsLink = 'https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,700,700i|Source+Code+Pro:400,400i,700,700i|Comfortaa:500,700&display=swap'
+fontsLink = 'https://fonts.googleapis.com/css?family=EB+Garamond:400,400i,500,700,700i|Source+Code+Pro:400,400i,700,700i|Comfortaa:700&display=swap'
 
 enableChinesePunctuationGlyphCorrection = false
 
