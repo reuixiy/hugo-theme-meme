@@ -1,4 +1,22 @@
-# [](https://github.com/reuixiy/hugo-theme-meme/compare/v2.0.0...v) (2019-09-01)
+# [](https://github.com/reuixiy/hugo-theme-meme/compare/v2.1.3...v) (2019-09-09)
+
+
+
+## [2.1.3](https://github.com/reuixiy/hugo-theme-meme/compare/v2.0.0...v2.1.3) (2019-09-09)
+
+
+### Bug Fixes
+
+* delete duplicate site title ([77a80fd](https://github.com/reuixiy/hugo-theme-meme/commit/77a80fd))
+* delete duplicate site title again ([5ac16dd](https://github.com/reuixiy/hugo-theme-meme/commit/5ac16dd))
+* drop cap style ([0843057](https://github.com/reuixiy/hugo-theme-meme/commit/0843057))
+* minimal footer style ([b7b45e5](https://github.com/reuixiy/hugo-theme-meme/commit/b7b45e5))
+* minimal-footer-about style ([5e33b95](https://github.com/reuixiy/hugo-theme-meme/commit/5e33b95))
+
+
+### Features
+
+* PWA Update Notification ([1998160](https://github.com/reuixiy/hugo-theme-meme/commit/1998160))
 
 
 
