@@ -7,17 +7,7 @@
 
 {{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
     {{ .Scratch.Set "glyph" "'glyph-correction', " }}
-    @font-face {
-        font-family: 'glyph-correction';
-        font-display: swap;
-        font-weight: inherit;
-        font-style: inherit;
-        src: url("{{ "fonts/glyph-correction.eot" | relURL }}");
-        src: url("{{ "fonts/glyph-correction.eot?#iefix" | relURL }}") format('embedded-opentype'),
-        url("{{ "fonts/glyph-correction.woff2" | relURL }}") format('woff2'),
-        url("{{ "fonts/glyph-correction.woff" | relURL }}") format('woff'),
-        url("{{ "fonts/glyph-correction.ttf" | relURL }}") format('truetype');
-    }
+    $glyph: true;
     .drop-cap {
         margin-top: $fontSize !important;
     }
