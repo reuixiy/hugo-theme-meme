@@ -147,14 +147,14 @@ outputs | * | array
 aliases | * | array
 markup | * | string
 meta | set `false` to disable post-meta | boolean, theme only
-toc | display TOC | boolean, overwrite `enableTOC` in `config.toml`, theme only
-displayCopyright | display post-copyright | boolean, overwrite `displayPostCopyright` in `config.toml`, theme only
-badge | display updated-badge | boolean, overwrite `displayUpdatedBadge` in `config.toml`, theme only
-gitinfo | display post-gitinfo | boolean, overwrite `displayPostGitInfo` in `config.toml`, theme only
-related | display related-posts | boolean, overwrite `displayRelatedPosts` in `config.toml`, theme only
-katex | add KaTeX support | boolean, overwrite `enableKaTeX` in `config.toml`, theme only
+toc | display TOC | boolean, override `enableTOC` in `config.toml`, theme only
+displayCopyright | display post-copyright | boolean, override `displayPostCopyright` in `config.toml`, theme only
+badge | display updated-badge | boolean, override `displayUpdatedBadge` in `config.toml`, theme only
+gitinfo | display post-gitinfo | boolean, override `displayPostGitInfo` in `config.toml`, theme only
+related | display related-posts | boolean, override `displayRelatedPosts` in `config.toml`, theme only
+katex | add KaTeX support | boolean, override `enableKaTeX` in `config.toml`, theme only
 comments | set `false` to disable comments in postSections or set `true` to enable comments in non-postSections | boolean, theme only
-original | original? You can add the following 9 terms if you set `false`. The `author` is required, other optional | boolean, overwrite `original` in `config.toml`, theme only
+original | original? You can add the following 9 terms if you set `false`. The `author` is required, other optional | boolean, override `original` in `config.toml`, theme only
 author | author of original post | string, theme only
 link | link of original post | string, URL, theme only
 copyright | license of the post | string, Markdown supported, theme only
@@ -164,18 +164,19 @@ motto | author’s description | string, Markdown supported, theme only
 avatar | author’s avatar | string, URL, theme only
 twitter | author’s twitter id | string, theme only
 facebook | author’s facebook id | string, theme only
-darkImage | dark image? | boolean, overwrite `darkImage` in `config.toml`, theme only
-smallCap | small cap? | boolean, overwrite `enableSmallCap` in `config.toml`, theme only
-dropCap | drop cap? | boolean, overwrite `enableDropCap` in `config.toml`, theme only
-dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, overwrite `enableDropCapAfterHr` in `config.toml`, theme only
-deleteHrBeforeDropCap | delete horizontal rule tag before drop cap? | boolean, overwrite `deleteHrBeforeDropCap` in `config.toml`, theme only
-indent | indent instead of margin? | boolean, overwrite `paragraphStyle` in `config.toml`, theme only
-align | normal, justify, center | srting, if euqal to "normal", will overwrite `enableJustify` in `config.toml`, theme only
-disqus_url | * | string
-disqus_identifier | * | string
-disqus_title | * | string
+darkImage | dark image? | boolean, override `darkImage` in `config.toml`, theme only
+smallCap | small cap? | boolean, override `enableSmallCap` in `config.toml`, theme only
+dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, theme only
+dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, override `enableDropCapAfterHr` in `config.toml`, theme only
+deleteHrBeforeDropCap | delete horizontal rule tag before drop cap? | boolean, override `deleteHrBeforeDropCap` in `config.toml`, theme only
+indent | indent instead of margin? | boolean, override `paragraphStyle` in `config.toml`, theme only
+align | normal, justify, center | srting, if euqal to "normal", will override `enableJustify` in `config.toml`, theme only
+disqus_url | * | string, if not set, will use `Permalink` as default
+disqus_identifier | * | string, if not set, will use `RelPermalink` as default
+disqus_title | * | string, if not set, will use `Title` as default
 
 *: see https://gohugo.io/content-management/front-matter/
+   and https://gohugo.io/templates/internal/#configure-disqus
 
 ### More
 
