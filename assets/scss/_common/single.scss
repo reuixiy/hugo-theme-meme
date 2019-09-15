@@ -130,6 +130,9 @@ ol.toc {
         height: 1px;
         border: none;
         background-color: var(--color-contrast-medium);
+        &::after {
+            content: none;
+        }
     }
     ol {
         margin: ($fontSize * 1.618) 0 0;
