@@ -21,8 +21,14 @@
 {{- .Scratch.Add "script" (slice $custom) -}}
 
 {{- $path := (strings.TrimPrefix "/" (printf `%s/js/meme.js` .Site.LanguagePrefix)) -}}
-{{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
-{{- printf `<script src="%s" integrity="%s" data-no-instant></script>` $script.RelPermalink $script.Data.Integrity | safeHTML -}}
+
+{{- if .Site.Params.enableFingerprint -}}
+    {{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
+    {{- printf `<script src="%s" integrity="%s" data-no-instant></script>` $script.RelPermalink $script.Data.Integrity | safeHTML -}}
+{{- else -}}
+    {{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify -}}
+    {{- printf `<script src="%s" data-no-instant></script>` $script.RelPermalink | safeHTML -}}
+{{- end -}}
 
 {{- if .Site.Params.enableInstantClick -}}
     <script data-no-instant>InstantClick.init();</script>
