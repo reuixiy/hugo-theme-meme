@@ -742,6 +742,9 @@ enableLangToggle = true
 autoHideLangToggle = true
 hideLangToggleInHome = false
 
+# Style & Script
+enableFingerprint = true
+
 # 404
 fofPoster = ""
 fofVideoWebm = ""

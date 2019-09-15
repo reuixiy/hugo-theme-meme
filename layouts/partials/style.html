@@ -1,7 +1,13 @@
-{{- $path := (strings.TrimPrefix "/" (printf `%s/css/meme.css` .Site.LanguagePrefix)) -}}
+{{- $path := (strings.TrimPrefix "/" (printf `%s/css/meme.min.css` .Site.LanguagePrefix)) -}}
 {{- $options := (dict "targetPath" $path "outputStyle" "compressed") -}}
-{{- $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "styles/main-rendered.scss" . | resources.ToCSS $options | resources.Fingerprint -}}
-{{- printf `<link rel="stylesheet" href="%s" integrity="%s" data-instant-track />` $style.RelPermalink $style.Data.Integrity | safeHTML -}}
+
+{{- if .Site.Params.enableFingerprint -}}
+    {{- $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "styles/main-rendered.scss" . | resources.ToCSS $options | resources.Fingerprint -}}
+    {{- printf `<link rel="stylesheet" href="%s" integrity="%s" data-instant-track />` $style.RelPermalink $style.Data.Integrity | safeHTML -}}
+{{- else -}}
+    {{- $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "styles/main-rendered.scss" . | resources.ToCSS $options -}}
+    {{- printf `<link rel="stylesheet" href="%s" data-instant-track />` $style.RelPermalink | safeHTML -}}
+{{- end -}}
 
 {{- .Scratch.Delete "style" -}}
 
