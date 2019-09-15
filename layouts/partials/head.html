@@ -68,9 +68,13 @@
     {{- $safariMaskIcon := "icons/safari-pinned-tab.svg" -}}
     {{- $safariMaskColor := .Site.Params.safariMaskColor -}}
     {{- $appleTouchIcon := "icons/apple-touch-icon.png" -}}
-    {{- $msApplicationStartURL := print `/` | absLangURL -}}
+    {{- partial "relative-url.html" (dict "Deliver" . "filename" "") -}}
+    {{- $url := .Scratch.Get "url" -}}
+    {{- $msApplicationStartURL := $url -}}
     {{- $msApplicationTileColor := .Site.Params.msApplicationTileColor -}}
-    {{- $msApplicationTileImage := "icons/mstile-150x150.png" -}}
+    {{- partial "relative-url.html" (dict "Deliver" . "filename" "icons/mstile-150x150.png") -}}
+    {{- $url := .Scratch.Get "url" -}}
+    {{- $msApplicationTileImage := $url -}}
     {{- $manifest := "manifest.json" -}}
     <link rel="shortcut icon" type="image/ico" href="{{ $favicon | relURL }}" />
     <link rel="mask-icon" href="{{ $safariMaskIcon | relURL }}" color="{{ $safariMaskColor }}" />
@@ -82,7 +86,7 @@
     <meta name="application-name" content="{{ .Site.Title }}" />
     <meta name="msapplication-starturl" content="{{ $msApplicationStartURL }}" />
     <meta name="msapplication-TileColor" content="{{ $msApplicationTileColor }}" />
-    <meta name="msapplication-TileImage" content="{{ $msApplicationTileImage | relURL }}" />
+    <meta name="msapplication-TileImage" content="{{ $msApplicationTileImage }}" />
     <link rel="manifest" href="{{ $manifest | relURL }}" />
 
     <!-- Atom / RSS -->
