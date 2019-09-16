@@ -6,11 +6,11 @@
     {{- with $imgs -}}
         {{- $.Scratch.Delete "imgsURL" -}}
         {{- range . -}}
-            {{- if and $.Site.Params.enableHost $.Site.Params.headAlso -}}
+            {{- if and $.Site.Params.enableImageHost $.Site.Params.headAlso -}}
                 {{- if (eq hugo.Environment "production") -}}
                     {{- $url := replaceRE `<img src="/?([^"]+)` `$1` . -}}
                     {{- if ne (substr $url 0 4) "http" -}}
-                        {{- $hostURL := $.Site.Params.hostURL -}}
+                        {{- $hostURL := $.Site.Params.imageHostURL -}}
                         {{- $replacement := (printf `%s$1` $hostURL) -}}
                         {{- $.Scratch.Set "replacement" $replacement -}}
                     {{- else -}}

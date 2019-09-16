@@ -147,8 +147,8 @@
 
 <!-- Image Hosting -->
 {{- $Content := .Scratch.Get "Content" -}}
-{{- if and .Site.Params.enableHost (eq hugo.Environment "production") -}}
-    {{- $hostURL := .Site.Params.hostURL -}}
+{{- if and .Site.Params.enableImageHost (eq hugo.Environment "production") -}}
+    {{- $hostURL := .Site.Params.imageHostURL -}}
     {{- $temps := findRE `<(img) src="/?([^":]+)` $Content -}}
     {{- with $temps -}}
         {{- range . -}}
@@ -165,8 +165,8 @@
 
 <!-- Video Hosting -->
 {{- $Content := .Scratch.Get "Content" -}}
-{{- if and .Site.Params.enableHost (eq hugo.Environment "production") -}}
-    {{- $hostURL := .Site.Params.videoHostURL | default .Site.Params.hostURL -}}
+{{- if and .Site.Params.enableVideoHost (eq hugo.Environment "production") -}}
+    {{- $hostURL := .Site.Params.videoHostURL -}}
     {{- $temps := findRE `<(video) src="/?([^":]+)` $Content -}}
     {{- with $temps -}}
         {{- range . -}}
