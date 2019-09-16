@@ -611,6 +611,9 @@ captionPrefix = "◎ "
 # eg: /../../*.jpg
 enableHost = false
 hostURL = "https://example.com/"
+# If not set, will use `hostURL` as fallback
+videoHostURL = "https://example.com/"
+# Use host URL for head meta tags also, images only
 headAlso = false
 
 # Footnote
