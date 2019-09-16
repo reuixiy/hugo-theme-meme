@@ -606,15 +606,19 @@ enableAnchorAutoHide = true
 enableCaption = true
 captionPrefix = "◎ "
 
-# Image / Video Hosting
+# Image Hosting
 # Only support absolute URLs relative to root,
 # eg: /../../*.jpg
-enableHost = false
-hostURL = "https://example.com/"
-# If not set, will use `hostURL` as fallback
-videoHostURL = "https://example.com/"
-# Use host URL for head meta tags also, images only
+enableImageHost = false
+imageHostURL = "https://example.com/"
+# Use host URL for head meta tags also
 headAlso = false
+
+# Video Hosting
+# Only support absolute URLs relative to root,
+# eg: /../../*.mp4
+enableVideoHost = false
+videoHostURL = "https://example.com/"
 
 # Footnote
 # Footnote Ref with Square Brackets `[]`
