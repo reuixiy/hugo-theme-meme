@@ -145,16 +145,34 @@
     {{- .Scratch.Set "Content" $Content -}}
 {{- end -}}
 
-<!-- Image / Video Hosting -->
+<!-- Image Hosting -->
 {{- $Content := .Scratch.Get "Content" -}}
 {{- if and .Site.Params.enableHost (eq hugo.Environment "production") -}}
     {{- $hostURL := .Site.Params.hostURL -}}
-    {{- $temps := findRE `<(img|video) src="/?([^":]+)` $Content -}}
+    {{- $temps := findRE `<(img) src="/?([^":]+)` $Content -}}
     {{- with $temps -}}
         {{- range . -}}
             {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
-                {{- $url := replaceRE `<(img|video) src="/?([^":]+)` `$2` . -}}
-                {{- $prefix := replaceRE `(<(img|video) src=")/?([^":]+)` `$1` . -}}
+                {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
+                {{- $prefix := replaceRE `(<(img) src=")/?([^":]+)` `$1` . -}}
+                {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
+                {{- $Content := ($.Scratch.Get "Content") | replaceRE . $replacement | safeHTML -}}
+                {{- $.Scratch.Set "Content" $Content -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+<!-- Video Hosting -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if and .Site.Params.enableHost (eq hugo.Environment "production") -}}
+    {{- $hostURL := .Site.Params.videoHostURL | default .Site.Params.hostURL -}}
+    {{- $temps := findRE `<(video) src="/?([^":]+)` $Content -}}
+    {{- with $temps -}}
+        {{- range . -}}
+            {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
+                {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
+                {{- $prefix := replaceRE `(<(video) src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
                 {{- $Content := ($.Scratch.Get "Content") | replaceRE . $replacement | safeHTML -}}
                 {{- $.Scratch.Set "Content" $Content -}}
