@@ -113,6 +113,8 @@
 
 @import "_common/fonts.scss";
 
+@import "_common/fonts-src.scss";
+
 {{ if .Site.Params.enableHeader }}
     @import "_common/header.scss";
     .site-brand {
