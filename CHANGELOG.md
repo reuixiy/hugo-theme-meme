@@ -1,3 +1,51 @@
+# [2.1.5](https://github.com/reuixiy/hugo-theme-meme/compare/v2.1.3...v2.1.5) (2019-10-04)
+
+
+### Bug Fixes
+
+* **#11:** glyph-correction on WebKit ([5e4e934](https://github.com/reuixiy/hugo-theme-meme/commit/5e4e934)), closes [#11](https://github.com/reuixiy/hugo-theme-meme/issues/11)
+* **#11:** U+00B7 ([76f6371](https://github.com/reuixiy/hugo-theme-meme/commit/76f6371)), closes [#11](https://github.com/reuixiy/hugo-theme-meme/issues/11)
+* footnote `hr` style ([5f8598b](https://github.com/reuixiy/hugo-theme-meme/commit/5f8598b))
+* use relURL for fonts ([de6916f](https://github.com/reuixiy/hugo-theme-meme/commit/de6916f))
+
+
+### Code Refactoring
+
+* separate fonts src from `fonts.scss` ([8de3b8d](https://github.com/reuixiy/hugo-theme-meme/commit/8de3b8d))
+* separate the video from hosting ([10e8ff3](https://github.com/reuixiy/hugo-theme-meme/commit/10e8ff3))
+
+
+### Features
+
+* add `enableFingerprint` for style & script ([ebaa065](https://github.com/reuixiy/hugo-theme-meme/commit/ebaa065))
+* change some URLs to relative to support IPFS ([6b678da](https://github.com/reuixiy/hugo-theme-meme/commit/6b678da))
+* video hosting URL ([9b15d2e](https://github.com/reuixiy/hugo-theme-meme/commit/9b15d2e))
+
+
+### BREAKING CHANGES
+
+* fonts.scss changed
+
+If you have customized `fonts.scss`, be sure to check this change before updating.
+* config.toml option changed
+```
+ # Image Hosting
+ # Only support absolute URLs relative to root,
+ # eg: /../../*.jpg
+ enableImageHost = false
+ imageHostURL = "https://example.com/"
+ # Use host URL for head meta tags also
+ headAlso = false
+
+ # Video Hosting
+ # Only support absolute URLs relative to root,
+ # eg: /../../*.mp4
+ enableVideoHost = false
+ videoHostURL = "https://example.com/"
+```
+
+
+
 # [2.1.3](https://github.com/reuixiy/hugo-theme-meme/compare/v2.0.0...v2.1.3) (2019-09-09)
 
 
