@@ -283,7 +283,7 @@
             </footer>
         {{ end }}
 
-        {{ if .Site.Params.enablePostNav }}
+        {{ if and .Site.Params.enablePostNav (in .Site.Params.postSections .Section) }}
             {{ if .Site.Params.postNavInSection }}
                 {{ .Scratch.Set "prev" .PrevInSection }}
                 {{ .Scratch.Set "next" .NextInSection }}
