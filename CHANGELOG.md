@@ -1,3 +1,15 @@
+# [2.3.7](https://github.com/reuixiy/hugo-theme-meme/compare/v2.1.5...v2.3.7) (2019-10-09)
+
+
+### Bug Fixes
+
+* display post-nav in postsSection only ([5e503e6](https://github.com/reuixiy/hugo-theme-meme/commit/5e503e6))
+* move `<script>` to the front of `</body>` ([0323fda](https://github.com/reuixiy/hugo-theme-meme/commit/0323fda))
+* post-gitinfo style ([8dd960f](https://github.com/reuixiy/hugo-theme-meme/commit/8dd960f))
+* post-nav style ([7402415](https://github.com/reuixiy/hugo-theme-meme/commit/7402415))
+
+
+
 # [2.1.5](https://github.com/reuixiy/hugo-theme-meme/compare/v2.1.3...v2.1.5) (2019-10-04)
 
 
