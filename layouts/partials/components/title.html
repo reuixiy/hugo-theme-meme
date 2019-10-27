@@ -1,6 +1,6 @@
 <!-- Home -->
 {{- if eq .Kind "home" -}}
-    {{- $title := .Site.Title -}}
+    {{- $title := .Title | default .Site.Title -}}
     {{- .Scratch.Set "rawTitle" $title -}}
     {{- .Scratch.Set "title" $title -}}
 <!-- Taxonomy -->

@@ -99,4 +99,8 @@
             </div>
         </main>
     {{ end }}
+    <!-- Layout Page -->
+    {{ if eq .Site.Params.homeLayout "page" }}
+        {{ partial "post.html" . }}
+    {{ end }}
 {{ end }}
