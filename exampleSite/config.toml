@@ -402,7 +402,7 @@ siteBrandFontColor = "#fff"
 # siteBrandBackgroundColor = "hsl(240, 8%, 12%)"
 siteBrandBackgroundImage = "linear-gradient(90deg, #f79533 0, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%)"
 
-# poetry, footage, posts
+# poetry, footage, posts, page
 homeLayout = "posts"
 
 # Layout poetry settings

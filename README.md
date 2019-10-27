@@ -41,6 +41,8 @@ For home page layout, MemE has three different kinds: posts, poetry, footage.
 2. [Poetry](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-poetry.png), live demo: https://io-oi.me
 3. [Footage](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-footage.png), live demo: https://yixiuer.me
 
+Also, you can set `homeLayout` equal to `page` and add `_index.md` to site’s content folder, which will get a layout like normal page/post.
+
 ### Good for lazy bloggers
 
 MemE has some special features for lazy bloggers. Such as:
