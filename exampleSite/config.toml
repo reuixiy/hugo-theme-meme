@@ -163,7 +163,7 @@ identifier = "feed"
 lineHeight = 2
 fontSize = 16
 postWidth = 36
-enableSmallCap = false
+enableSmallCaps = false
 enableEmphasisPoint = true
 enableChinesePunctuationGlyphCorrection = true
 enableJustify = true
@@ -426,7 +426,7 @@ homeLinksDelimiter = ""
 # URL, For JSON-LD, Twitter Cards, Open Graph
 siteLogo = "/icons/apple-touch-icon.png"
 # For HTML meta
-siteDescription = "MemE is a powerful and highly customizable GoHugo blog theme."
+siteDescription = "MemE is a powerful and highly customizable GoHugo theme for personal blogs."
 # If not set, will use site’s all taxonomy terms as default
 siteKeywords = []
 # Keep this format, change the number
@@ -661,7 +661,7 @@ fontsLink = 'https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,400i,500
 enableChinesePunctuationGlyphCorrection = false
 
 # Post headings and contents title
-enableSmallCap = true
+enableSmallCaps = true
 
 # Post first paragraph
 enableDropCap = true

@@ -1,14 +1,13 @@
+English | 
+<a href="README.zh-cn.md">简体中文</a>
+
 <div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
 
 # <div align="center">MemE</div>
 
 ## Description
 
-MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) *blog* theme.
-
-MemE focus on elegance, code correctness, minimalist theme and simplicity. <sup>[1]</sup>
-
-Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! 😝 Live demo: https://meme-test.netlify.com
+MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) theme for personal blogs. MemE focuses on elegance, simplicity, modernity, and code correctness. Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! 😝 Live demo: https://meme-test.netlify.com
 
 ## Features
 
@@ -19,10 +18,11 @@ Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just l
 - Multilingual
 - Atom / RSS
 - TOC
-- Drop Cap & Small Cap
+- Drop Cap & Small Caps
 - KaTeX
 - Google Analytics
 - Disqus
+- IPFS supported
 - ...
 
 ## Lighthouse Report
@@ -59,7 +59,7 @@ MemE has some special features for lazy bloggers. Such as:
 
 MemE is highly customizable in typography. You can customize font family, font size, line height, and even content width by yourself.
 
-MemE has Drop Cap & Small Cap features. You can set drop cap or enable drop cap after every horizontal rule tag (`<hr />`) — behaved like [The New Yorker](https://www.newyorker.com/) — for your posts. You can also set Small Cap for your posts’ headings.
+MemE has Drop Cap & Small Caps features. You can set drop cap or enable drop cap after every horizontal rule tag (`<hr />`) — behaved like *[The New Yorker](https://www.newyorker.com/)* — for your posts. You can also set Small Caps for your posts’ headings.
 
 Moreover, MemE has two different paragraph style: margin and indent. You would get a paragraph style like a book if you set paragraph style to `indent`. Also, MemE has a special layout for poetry.
 
@@ -102,15 +102,13 @@ How to update MemE to the latest version?
 
 ### Blogging
 
-First, replace `config.toml` with demo site’s [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
+1. Replace `config.toml` with demo site’s [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
 
-Second, add some files to `content` directory or just copy demo site’s [content](https://github.com/reuixiy/meme-test/tree/master/content).
+2. Add some files to `content` directory or just copy demo site’s [content](https://github.com/reuixiy/meme-test/tree/master/content).
 
-Now:
-
-```
-~/blog $ hugo server -D
-```
+3. ```
+   ~/blog $ hugo server -D
+   ```
 
 ### Configuration
 
@@ -167,7 +165,7 @@ avatar | author’s avatar | string, URL, theme only
 twitter | author’s twitter id | string, theme only
 facebook | author’s facebook id | string, theme only
 darkImage | dark image? | boolean, override `darkImage` in `config.toml`, theme only
-smallCap | small cap? | boolean, override `enableSmallCap` in `config.toml`, theme only
+smallCaps | small caps? | boolean, override `enableSmallCaps` in `config.toml`, theme only
 dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, theme only
 dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, override `enableDropCapAfterHr` in `config.toml`, theme only
 deleteHrBeforeDropCap | delete horizontal rule tag before drop cap? | boolean, override `deleteHrBeforeDropCap` in `config.toml`, theme only
@@ -190,14 +188,8 @@ See [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2).
 
 ## Footnotes
 
-Actually, the reason I developed MemE is simply because I want to migrate [my blog](https://io-oi.me/) from [Hexo](https://hexo.io/) to Hugo smoothly. So I started to research Hugo’s documentation and google everything. In the end, I did it!
+Actually, the reason I developed MemE is simply because I want to migrate [my blog](https://io-oi.me/) from [Hexo](https://hexo.io/) to [Hugo](https://gohugo.io/) smoothly. So I started to research Hugo’s documentation and google everything. In the end, I did it!
 
 Since my previous Hexo blog theme is based on [NexT](https://github.com/theme-next/hexo-theme-next), MemE inherits some of NexT’s layouts and styles.
 
 For the code I have referenced, I have indicated the source in the code. And I will add a full list here later.
-
-<br>
-
----
-
-\[1\]: https://itsfoss.com/install-arch-linux/
