@@ -165,7 +165,7 @@ avatar | author’s avatar | string, URL, theme only
 twitter | author’s twitter id | string, theme only
 facebook | author’s facebook id | string, theme only
 darkImage | dark image? | boolean, override `darkImage` in `config.toml`, theme only
-smallCap | small cap? | boolean, override `enableSmallCap` in `config.toml`, theme only
+smallCaps | small caps? | boolean, override `enableSmallCaps` in `config.toml`, theme only
 dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, theme only
 dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, override `enableDropCapAfterHr` in `config.toml`, theme only
 deleteHrBeforeDropCap | delete horizontal rule tag before drop cap? | boolean, override `deleteHrBeforeDropCap` in `config.toml`, theme only
