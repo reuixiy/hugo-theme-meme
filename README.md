@@ -1,5 +1,5 @@
 English | 
-<a href="README.zh-cn.md">简体中文</a>
+<a href="https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-cn.md">简体中文</a>
 
 <div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
 
