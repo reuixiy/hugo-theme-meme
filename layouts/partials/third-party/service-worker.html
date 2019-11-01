@@ -2,70 +2,33 @@
     {{- partial "components/relative-url.html" (dict "Deliver" . "filename" "sw.js") -}}
     {{- $url := .Scratch.Get "url" }}
 
-    <script type="module" data-no-instant>
-        import {Workbox} from 'https://cdn.jsdelivr.net/npm/workbox-cdn@4.3.1/workbox/workbox-window.prod.mjs';
+    <div class="app-refresh" id="app-refresh">
+        <div class="app-refresh-wrap" onclick="location.reload()">
+            <label>{{ i18n "serviceWorkerUpdatedText" }}</label>
+            <span>{{ i18n "serviceWorkerUpdatedAction" }}</span>
+        </div>
+    </div>
 
-        if ('serviceWorker' in navigator) {
-            {{ printf `const wb = new Workbox('%s');` $url | safeJS }}
-            
-            wb.addEventListener('activated', (event) => {
-                if (event.isUpdate) {
-                    appRefresh ({
-                        text: '{{ i18n "serviceWorkerUpdatedText" }}',
-                        action: '{{ i18n "serviceWorkerUpdatedAction" }}',
-                        callback: () => location.reload()
-                    })
-                }
+    <script>
+        if('serviceWorker' in navigator) {
+            {{ printf `navigator.serviceWorker.register('%s')` $url | safeJS }}
+            .then(reg => {
+                reg.addEventListener('updatefound', () => {
+                    newWorker = reg.installing;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed') {
+                            if (navigator.serviceWorker.controller) {
+                                showNotify();
+                            }
+                        }
+                    });
+                });
             });
-
-            wb.register();
         }
-
-        async function appRefresh({text, action, callback}={}) {
-            let themeColor = document.querySelector('meta[name=theme-color]');
-            let dom = document.createElement('div');
-
-            themeColor && (themeColor.content = '#000');
-
-            dom.innerHTML = `
-                <style>
-                    .app-refresh {
-                        background: #000;
-                        height: 0;
-                        line-height: 3em;
-                        overflow: hidden;
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        z-index: 42;
-                        padding: 0 1em;
-                        transition: all .3s ease;
-                    }
-                    .app-refresh-wrap {
-                        display: flex;
-                        color: #fff;
-                    }
-                    .app-refresh-wrap label {
-                        flex: 1;
-                    }
-                    .app-refresh-show {
-                        height: 3em;
-                    }
-                </style>
-                <div class="app-refresh" id="app-refresh">
-                    <div class="app-refresh-wrap" onclick="(${callback})()">
-                        <label>${text}</label>
-                        <span>${action}</span>
-                    </div>
-                </div>
-            `;
-
-            document.body.appendChild(dom);
-
-            setTimeout(function() {
-                document.getElementById('app-refresh').className += ' app-refresh-show';
-            }, 16);
+        
+        function showNotify() {
+            document.querySelector('meta[name=theme-color]').content = '#000';
+            document.getElementById('app-refresh').className += ' app-refresh-show';
         }
     </script>
 {{ end }}
