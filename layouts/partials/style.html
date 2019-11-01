@@ -35,7 +35,7 @@
     {{- end -}}
 {{- end -}}
 
-{{- if .Params.smallCap | default .Site.Params.enableSmallCap -}}
+{{- if .Params.smallCaps | default .Site.Params.enableSmallCaps -}}
     {{- .Scratch.Add "style" ".post-body h1,.post-body h2,.post-body h3,.post-body h4,.post-body h5,.post-body h6,.contents-title,.contents-title-indent {font-variant:small-caps}" -}}
 {{- end -}}
 
