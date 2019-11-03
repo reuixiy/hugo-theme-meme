@@ -124,6 +124,7 @@ theme = "meme"
 title = "Hugo Theme MemE"
 languageCode = "zh-CN"
 copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)"
+hasCJKLanguage = true
 
 defaultContentLanguage = "zh-cn"
 defaultContentLanguageInSubdir = false
