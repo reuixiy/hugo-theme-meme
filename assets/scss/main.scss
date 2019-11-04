@@ -100,6 +100,9 @@
         position: relative;
         z-index: 4;
     }
+    html[data-theme='dark'] .post img {
+        filter: brightness(50%);
+    }
 {{ end }}
 
 {{ if and .Site.IsMultiLingual .Site.Params.enableLangToggle }}

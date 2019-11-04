@@ -15,10 +15,6 @@
     {{- if or (and .IsHome .Site.Params.hideThemeToggleInHome) (and (not .IsHome) .Site.Params.hideThemeToggle) -}}
         {{- .Scratch.Add "style" "#theme-toggle {display:none}" -}}
     {{- end -}}
-
-    {{- if .Params.darkImage | default .Site.Params.darkImage -}}
-        {{- .Scratch.Add "style" "html[data-theme='dark'] .post img {filter:invert(85%) hue-rotate(180deg)}" -}}
-    {{- end -}}
 {{- end -}}
 
 {{- if and .Site.IsMultiLingual .Site.Params.enableLangToggle -}}

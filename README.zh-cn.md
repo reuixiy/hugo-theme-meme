@@ -522,10 +522,6 @@ defaultTheme = "light"
 hideThemeToggle = false
 # 是否在首页隐藏模式切换开关
 hideThemeToggleInHome = false
-# 是否深色化图片
-# 对白底的黑白图片效果较好，对于彩色图片效果较差，建议在这里设置为 `false`
-# 如果你的某篇需要，可以在该文章的 Front Matter 中设置为 `true`
-darkImage = false
 
 # 网页应用
 # 前往 https://realfavicongenerator.net/ 生成相关图标和文件
@@ -939,7 +935,6 @@ motto | author’s description | string, Markdown supported, theme only
 avatar | author’s avatar | string, URL, theme only
 twitter | author’s twitter id | string, theme only
 facebook | author’s facebook id | string, theme only
-darkImage | dark image? | boolean, override `darkImage` in `config.toml`, theme only
 smallCaps | small caps? | boolean, override `enableSmallCaps` in `config.toml`, theme only
 dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, theme only
 dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, override `enableDropCapAfterHr` in `config.toml`, theme only
