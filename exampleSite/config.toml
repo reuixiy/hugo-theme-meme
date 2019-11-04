@@ -491,13 +491,6 @@ defaultTheme = "light"
 # has enabled Dark Mode (`prefers-color-scheme: dark`).
 hideThemeToggle = false
 hideThemeToggleInHome = false
-# Useful for black and white images on a white background.
-# Bad for color images. I suggest you set `true` in post’s
-# Front Matter instead of here, unless all your images are
-# black and white on a white background. Also, you can set
-# `true` here and set `false` in Front Matter which will
-# override what you have set here.
-darkImage = true
 
 # Web App
 # https://realfavicongenerator.net/
