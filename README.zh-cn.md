@@ -534,7 +534,7 @@ darkImage = false
 # 将这些文件移动到 ~/blog/static/icons/ 目录下，再将 favicon.ico, site.webmanifest 移动到 ~/blog/static/ 目录下
 # 再将 site.webmanifest 重命名为 manifest.json，并检查和修改相关内容（图标的路径）
 themeColor = "#fff"
-themeColorDark = "#000"
+themeColorDark = "#1c1c21"
 safariMaskColor = "#2a6df4"
 msApplicationTileColor = "#fff"
 
