@@ -68,7 +68,7 @@
 @import "_variables/light.scss";
 
 {{ if .Site.Params.enableDarkMode }}
-    {{ with .Site.Params.primaryColorDark | default "349, 75%, 51%" }}
+    {{ with .Site.Params.primaryColorDark | default "201, 65%, 62%" }}
         {{ $number := (split (replace . "%" "") ", ") }}
         {{ range $index, $value := $number }}
             {{ if eq $index 0 }}

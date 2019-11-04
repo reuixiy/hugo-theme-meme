@@ -552,7 +552,7 @@ duration = 0.5
 
 # HSL color
 primaryColorLight = "220, 90%, 56%"
-primaryColorDark = "349, 75%, 51%"
+primaryColorDark = "201, 65%, 62%"
 
 # Unit: em
 # You can leave it empty ("") to fallback to default value: 42

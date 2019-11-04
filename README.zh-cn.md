@@ -588,7 +588,7 @@ duration = 0.5
 # HSL 颜色值
 primaryColorLight = "220, 90%, 56%"
 # 深色模式的主色
-primaryColorDark = "349, 75%, 51%"
+primaryColorDark = "201, 65%, 62%"
 
 # 文章的内容宽度
 # 如果为空（""），则用 42 作为默认值
