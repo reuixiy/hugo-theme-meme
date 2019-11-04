@@ -350,7 +350,7 @@
         @import "_common/_highlight/dark.scss";
         .chroma-dark {
             color: var(--color-contrast-high);
-            background-color: alpha(var(--color-contrast-lower), 0.75);
+            background-color: alpha(var(--color-contrast-lower), 0.5);
         }
     {{ end }}
 {{ end }}
