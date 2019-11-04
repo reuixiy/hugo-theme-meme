@@ -301,14 +301,19 @@
         }
     {{ end }}
     {{ if .Site.Params.iconAnimation }}
-        @keyframes heartAnimate {
-            0%,100%{transform:scale(1);}
-            10%,30%{transform:scale(0.9);}
-            20%,40%,60%,80%{transform:scale(1.1);}
-            50%,70%{transform:scale(1.1);}
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10%, 30% {
+                transform: scale(0.9);
+            }
+            20%, 40%, 50%, 60%, 70%, 80% {
+                transform: scale(1.1);
+            }
         }
         .footer-icon {
-            animation: heartAnimate 1.33s ease-in-out infinite;
+            animation: heartbeat 1.33s ease-in-out infinite;
         }
     {{ end }}
 {{ end }}
