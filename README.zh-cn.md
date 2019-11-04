@@ -873,7 +873,7 @@ customFooter = ""
 
 # 多语言
 # 是否开启多语言按钮
-enableLangToggle = true
+enableLangToggle = false
 # 是否自动隐藏多语言按钮，即仅当该文章有相应的翻译版本时才显示按钮
 autoHideLangToggle = true
 # 是否在首页隐藏多语言按钮
