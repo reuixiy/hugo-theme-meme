@@ -85,7 +85,7 @@
 <!-- New Markdown Syntax: Emphasis Point `..text..` -->
 {{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.enableEmphasisPoint -}}
-    {{- $regexPatternEmphasisPoint := `([^\.])\.\.([^\.| |\n|/|\\]+)\.\.([^\.])` -}}
+    {{- $regexPatternEmphasisPoint := `([^\.\x60])\.\.([^\.\s\n\/\\]+)\.\.([^\.\x60])` -}}
     {{- $regexReplacementEmphasisPoint := `$1<strong class="emphasis-point">$2</strong>$3` -}}
     {{- $Content := $Content | replaceRE $regexPatternEmphasisPoint $regexReplacementEmphasisPoint | safeHTML -}}
     {{- .Scratch.Set "Content" $Content -}}
