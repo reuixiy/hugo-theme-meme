@@ -71,12 +71,6 @@
     {{ if not $Deliver.ExpiryDate.IsZero -}}
         {{ printf `<meta property="article:expiration_time" content="%s" />` ($Deliver.ExpiryDate.Format "2006-01-02T15:04:05-07:00") | safeHTML }}
     {{- end }}
-    {{ with $author.facebook -}}
-        <meta property="article:author" content="https://www.facebook.com/{{ . }}" />
-    {{- end }}
-    {{ with $Deliver.Site.Params.siteFacebook -}}
-        <meta property="article:publisher" content="https://www.facebook.com/{{ . }}" />
-    {{ end -}}
     <meta property="article:section" content="{{ $Deliver.Section }}" />
     <meta property="article:tag" content="{{ $keywords }}" />
 {{ else -}}
