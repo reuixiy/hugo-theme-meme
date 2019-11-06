@@ -11,7 +11,7 @@
     {{- .Scratch.Set "Content" $Content -}}
 {{- end -}}
 
-<!-- Headings Anchor / Section Sign -->
+<!-- Headings Anchor -->
 {{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.enableHeadingsAnchor -}}
     {{- with .Site.Params.headingsOpt -}}
