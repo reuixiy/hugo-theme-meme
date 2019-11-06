@@ -21,9 +21,6 @@
     {{- with .Site.Author.twitter -}}
         {{- $.Scratch.SetInMap "author" "twitter" . -}}
     {{- end -}}
-    {{- with .Site.Author.facebook -}}
-        {{- $.Scratch.SetInMap "author" "facebook" . -}}
-    {{- end -}}
 {{- else -}}
     {{- with .Params.author -}}
         {{- $.Scratch.SetInMap "author" "name" . -}}
@@ -45,8 +42,5 @@
     {{- end -}}
     {{- with .Params.twitter -}}
         {{- $.Scratch.SetInMap "author" "twitter" . -}}
-    {{- end -}}
-    {{- with .Params.facebook -}}
-        {{- $.Scratch.SetInMap "author" "facebook" . -}}
     {{- end -}}
 {{- end -}}
