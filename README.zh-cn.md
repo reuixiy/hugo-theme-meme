@@ -1,5 +1,5 @@
 简体中文 | 
-<a href="https://github.com/reuixiy/hugo-theme-meme/blob/master/README.md">English</a>
+[English](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.md)
 
 <div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
 
@@ -79,7 +79,7 @@ https://gohugo.io/getting-started/quick-start/
 
 对于 Arch Linux 的用户：
 
-```
+```sh
 ~ $ sudo pacman -S hugo
 ~ $ hugo new site blog
 ```
@@ -88,7 +88,7 @@ https://gohugo.io/getting-started/quick-start/
 
 #### MemE
 
-```
+```sh
 ~ $ cd blog
 ~/blog $ git init
 ~/blog $ git submodule add https://github.com/reuixiy/hugo-theme-meme.git themes/meme
@@ -96,7 +96,7 @@ https://gohugo.io/getting-started/quick-start/
 
 如何将 MemE 更新到最新版本？
 
-```
+```sh
 ~/blog $ git submodule update --rebase --remote
 ```
 
@@ -105,13 +105,13 @@ https://gohugo.io/getting-started/quick-start/
 1. 将 `config.toml` 替换为 [config.toml](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
 
 2. 新建一篇文章和一个关于页面：
-   ```
+   ```sh
    ~/blog $ hugo new "posts/hello-world.md"
    ~/blog $ hugo new "about/_index.md"
    ```
 
 3. 现在：
-   ```
+   ```sh
    ~/blog $ hugo server -D
    ```
 
