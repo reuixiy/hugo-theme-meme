@@ -1,0 +1,1083 @@
+##########################################
+# Site Settings
+
+baseURL = "https://example.com/"
+title = "Hugo Theme MemE"
+languageCode = "en-US"
+hasCJKLanguage = false
+# Copyright information (Markdown supported)
+copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
+
+# Name of theme
+theme = "meme"
+
+# i18n
+defaultContentLanguage = "en-us"
+defaultContentLanguageInSubdir = false
+
+# Pluralize titles in lists?
+pluralizeListTitles = false
+
+# The length of text in words to show in summary
+summaryLength = 42
+
+# Enable Emoji emoticons support?
+enableEmoji = false
+
+# Text to display for footnote return links
+footnoteReturnLinkContents = "↩"
+
+# Enable `.GitInfo` object for each page?
+enableGitInfo = false
+
+# Enable generation of `robots.txt` file?
+enableRobotsTXT = true
+
+# Number of items per page in paginated 
+# lists (valid for the `posts` homepage
+# layout in MemE)
+paginate = 5
+
+# GitHub flavoured code fences
+pygmentsCodefences = true
+pygmentsUseClasses = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsOptions = "linenos=table"
+
+# URL related
+disablePathToLower = false
+uglyURLs = false
+
+# URL structure
+[permalinks]
+    categories = "/categories/:slug/"
+    tags = "/tags/:slug/"
+
+# Taxonomies
+[taxonomies]
+    category = "categories"
+    tag = "tags"
+
+# Modified date
+[frontmatter]
+    lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
+
+# Markdown rendering engine
+[blackfriday]
+    # Enable smart punctuation substitutions?
+    smartypants = true
+    # Open external links in a new window or tab?
+    hrefTargetBlank = true
+    # Disable some Blackfriday’s Markdown extensions
+    extensionsmask = ["hardLineBreak", "backslashLineBreak"]
+
+# Author’s information
+[author]
+    # Name
+    name = "reuixiy"
+    # Email
+    email = "reuixiy@gmail.com"
+    # Motto or introduction
+    motto = "Viva La Vida"
+    # Avatar
+    avatar = "/icons/apple-touch-icon.png"
+    # Personal website, default: baseURL
+    website = "https://io-oi.me/"
+    # Twitter
+    twitter = "reuixiy"
+
+# Related content
+[related]
+    threshold = 80
+    includeNewer = true
+    toLower = true
+    [[related.indices]]
+        name = "categories"
+        weight = 100
+    [[related.indices]]
+        name = "tags"
+        weight = 95
+    [[related.indices]]
+        name = "date"
+        weight = 10
+        pattern = "2006"
+
+# MIME type of Atom
+[mediaTypes."application/atom+xml"]
+    suffixes = ["xml"]
+
+# Custom Atom template of MemE
+[outputFormats.SectionsAtom]
+    mediaType = "application/atom+xml"
+    baseName = "atom"
+
+# Custom RSS template of MemE
+[outputFormats.SectionsRSS]
+    mediaType = "application/rss+xml"
+    baseName = "rss"
+
+# Hugo’s output control
+[outputs]
+    page = ["HTML"]
+    home = ["HTML", "SectionsAtom", "SectionsRSS"]
+    section = ["HTML"]
+    # Taxonomy
+    taxonomyTerm = ["HTML", "RSS"]
+    # Taxonomy term
+    taxonomy = ["HTML"]
+    # Note: https://github.com/gohugoio/hugo/issues/4528#issuecomment-508488859
+
+# Maximum number of items in the Atom & RSS feed
+[services.rss]
+    limit = -1
+
+
+
+##########################################
+# Menu Settings
+
+# MemE supports the following four menus:
+# 1. main       Menu bar below the header
+# 2. home       Links at the bottom of the
+#               homepage (valid for the
+#               `poetry` and `footage`
+#               homepage layout)
+# 3. socials    Social bar (minimal footer
+#               in about page)
+# 4. links      Link bar (minimal footer
+#               in about page)
+
+# The configuration instructions in the
+# menu are as follows:
+# url           URL
+# name          Text (won’t display if it
+#               is left empty("") or does
+#               not exist)
+# weight        Position
+# pre           Type of link (internal or
+#               external)
+# post          Icon (won’t display if it
+#               is left empty("") or does
+#               not exist)
+# identifier    Icon’s class name (invalid
+#               for the `main` menu)
+
+[menu]
+    ## Menu bar
+    [[menu.main]]
+        url = "/"
+        name = "Home"
+        weight = 1
+        pre = "internal"
+        post = "home"
+    [[menu.main]]
+        url = "/posts/"
+        name = "Posts"
+        weight = 2
+        pre = "internal"
+        post = "archive"
+    [[menu.main]]
+        url = "/categories/"
+        name = "Categories"
+        weight = 3
+        pre = "internal"
+        post = "th"
+    [[menu.main]]
+        url = "/tags/"
+        name = "Tags"
+        weight = 4
+        pre = "internal"
+        post = "tags"
+    [[menu.main]]
+        url = "/about/"
+        name = "About"
+        weight = 5
+        pre = "internal"
+        post = "user-circle"
+
+
+
+##########################################
+# Theme Settings
+
+[params]
+    ######################################
+    # Header
+
+    enableHeader = true
+
+    displayHeaderInHome = true
+
+
+    ######################################
+    # Brand Bar (inside header)
+
+    # Use SVG?
+    siteBrandSVG = true
+    # If true, put your SVG in the `SVG.toml`
+    # file and configure the following options.
+    # Unit: px
+    siteBrandSVGWidth = 250
+    siteBrandSVGHeight = 100
+    siteBrandSVGFill = "#fff"
+    # If false, your site title will be
+    # used as the default and displayed as
+    # text. The font size and font color
+    # can be configured below. The font
+    # family can be configured in typography
+    # section at the bottom of this file.
+    # Unit: em
+    siteBrandFontSize = 5
+    siteBrandFontColor = "#fff"
+
+    # siteBrandBackgroundColor = "hsl(240, 8%, 12%)"
+    siteBrandBackgroundImage = "linear-gradient(90deg, #f79533 0, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%)"
+    # ATTENTION: These two items cannot be
+    #            set together!
+
+
+    ######################################
+    # Menu Bar
+
+    enableMenu = true
+
+    displayMenuInHome = true
+
+    # Highlight current menu item by section?
+    activeInSection = false
+    # Note: if true, the menu item in the
+    #       post page will be highlighted
+    #       also if that post’s section is
+    #       the `url` of that menu item
+
+
+    ######################################
+    # Homepage Layout
+
+    # For homepage layout, MemE has the
+    # following four different types:
+    # 1. poetry    A few lines of verse
+    # 2. footage   With fullscreen background videos
+    # 3. posts     List of post’s summary
+    # 4. page      Normal page/post
+
+    homeLayout = "posts"
+
+    ## Poetry
+    # Verse (Markdown supported)
+    homePoetry = []
+    # Padding of links at the bottom
+    # Unit: em
+    homeLinksPadding = 1
+
+    ## Footage
+    homePoster = ""
+    homeVideoWebm = ""
+    homeVideoMp4 = ""
+    homeLogo = ""
+    homeLogoLink = ""
+    homeTitle = ""
+    homeMotto = ""
+    homeDescription = ""
+    homeKeywords = ""
+    homeLinksDelimiter = ""
+
+
+    ######################################
+    # Site Info
+
+    siteLogo = "/icons/apple-touch-icon.png"
+    # Note: used for JSON-LD, Open Graph
+
+    siteDescription = "MemE is a powerful and highly customizable GoHugo theme for personal blogs."
+    # Note: used for HTML head meta, JSON-LD,
+    #       Open Graph, Atom, RSS
+
+    siteKeywords = []
+    # Note: all taxonomy terms and sections
+    #       name (if category by sections)
+    #       of the site will be taken as
+    #       default if it is left empty([])
+
+    siteCreatedTime = "1969-07-20T20:17:43+00:00"
+    # ATTENTION: keep this format, change
+    #            the number
+
+    siteTwitter = "reuixiy"
+    # Note: used for Twitter Cards
+
+
+    ######################################
+    # Category By
+
+    # MemE supports category by:
+    # 1. sections
+    # 2. categories
+    # The sections is based on the site’s
+    # `content` directory structure; the
+    # categories is based on the post’s
+    # Front Matter. First of all, category
+    # means tree structure (nested, with
+    # sub-category). To achieve it, Hexo
+    # uses the second method, while Hugo
+    # uses the first method. Due to the
+    # different design philosophy, the
+    # difference between Hexo and Hugo has
+    # been made. Therefore, this option
+    # was designed here to be user friendly
+    # to those who come from Hexo. But note
+    # that the second method cannot be
+    # implemented perfectly in Hugo. I
+    # recommended you adapt to Hugo’s design
+    # philosophy if you want to keep the
+    # tree organization structure of your
+    # posts.
+
+    categoryBy = "categories"
+    # ATTENTION: If you set it to `sections`,
+    #            be sure to delete `categories`
+    #            in `taxonomies` at the top
+    #            of this file. Otherwise,
+    #            the categories page will
+    #            be invalid.
+
+
+    ######################################
+    # Categories Page
+
+    # Enable tree structure layout?
+    enableTree = true
+    # ATTENTION: This option cannot be
+    #            disabled if you set
+    #            `categoryBy` to `sections`
+
+    # Display title of posts?
+    displayPosts = true
+
+    # Display count of posts under each
+    # category?
+    displayPostsCount = true
+
+
+    ######################################
+    # Tags Page
+
+    enableTagCloud = true
+
+    fontUnit = "em"
+    largestFontSize = 2.5
+    smallestFontSize = 1
+
+
+    ######################################
+    # List Page
+
+    listWidth = 30
+    # Note: you can leave it empty("") to
+    #       fallback to the default value: 42
+    #       Unit: em
+
+    displayListTitle = true
+
+    listDateFormat = "January 2"
+    # ATTENTION: be sure to follow the
+    #            specified format
+    #            https://gohugo.io/functions/format/
+
+    listDatePosition = "right"
+    # Note: left or right
+
+    # Separate the list by month?
+    groupByMonth = true
+
+    # Enable Chinese zodiac?
+    chineseZodiac = true
+
+    # Translate the year? (valid for title)
+    i18nYear = false
+    # Translate the month? (valid for title)
+    i18nMonth = false
+
+
+    ######################################
+    # Taxonomy List Page
+
+    # Note: for categories page, you can
+    #       set `enableTree` to false to
+    #       get a normal taxonomy list
+    #       page; for tags page, you can
+    #       set `enableTagCloud` to false
+    #       to get a normal taxonomy list
+    #       page.
+
+    # Display count of posts in each
+    # taxonomy term?
+    displayTaxonomyTermCount = true
+
+
+    ######################################
+    # Sections
+
+    # Note: the name of the section is the
+    #       name of the folder under the
+    #       site’s `content` directory.
+
+    postSections = ["posts"]
+
+    mainSections = ["posts"]
+    # Note: MemE does not use this object,
+    #       but some of Hugo’s built-in
+    #       templates (such as RSS) may
+    #       use this. So keep this same
+    #       as `postSections` if you need
+    #       to use Hugo’s built-in
+    #       templates extra.
+
+
+    ######################################
+    # Atom & RSS
+
+    feedSections = ["posts"]
+
+    # Include full content?
+    includeContent = true
+    # Note: If false, only the summary of
+    #       the post will be included. The
+    #       summary, Hugo automatically
+    #       takes the first 70 words (you
+    #       can customize this via
+    #       `summaryLength`) of your content
+    #       as its summary by default.
+    #       Alternatively, you may use the
+    #       <!--more--> (with no whitespace)
+    #       summary divider to split summary
+    #       manually. Or use the `summary`
+    #       variable in post’s Front
+    #       Matter to assign it manually.
+    #       The priority of them: assign
+    #       manually > split manually >
+    #       split automatically. Additionally,
+    #       `description` in post’s Front
+    #       Matter has a higher priority
+    #       than assign manually in the
+    #       custom Atom & RSS template of
+    #       MemE.
+
+
+    ######################################
+    # Dark Mode
+
+    enableDarkMode = true
+
+    defaultTheme = "light"
+    # Note: light or dark
+
+    hideThemeToggle = false
+    hideThemeToggleInHome = false
+    # Note: If dark mode is enabled and
+    #       theme toggle is hidden, your
+    #       readers may still read your
+    #       blog in dark mode if the
+    #       reader’s system is set to dark
+    #       mode. Similarly, if dark mode
+    #       is enabled and is set to the
+    #       default theme, your readers
+    #       may still read your blog in
+    #       light mode, even if you have
+    #       hidden the theme toggle.
+
+
+    ######################################
+    # Web App
+
+    # Note: go to https://realfavicongenerator.net/
+    #       to generate related icons and
+    #       files, unzip after downloading,
+    #       and keep only android-chrome-512x512.png,
+    #       apple-touch-icon.png, mstile-150x150.png,
+    #       safari-pinned-tab.svg, favicon.ico,
+    #       site.webmanifest these files,
+    #       delete the rest. Then move
+    #       these files to the ~/blog/static/icons/
+    #       directory, move favicon.ico,
+    #       site.webmanifest to the ~/blog/static/
+    #       directory, and finally rename
+    #       site.webmanifest to manifest.json,
+    #       and check and modify related
+    #       content (the path of the icons).
+
+    themeColor = "#fff"
+    themeColorDark = "#1c1c21"
+    safariMaskColor = "#2a6df4"
+    msApplicationTileColor = "#fff"
+
+
+    ######################################
+    # HTML Head Meta, SEO & Social Discovery
+
+    jsonLD = true
+    openGraph = true
+    twitterCards = true
+    # ATTENTION: If you set twitterCards
+    #            to `true`, be sure to
+    #            enable openGraph also.
+    #            Otherwise, the Twitter
+    #            Cards info will be
+    #            incomplete.
+
+    autoDetectImages = true
+    # Note: It is recommended to enable it.
+    #       Otherwise, you must manually
+    #       specify `images` in post’s
+    #       Front Matter or links you
+    #       shared on social networks or
+    #       APPs will not be able to
+    #       display a summary view with a
+    #       large image.
+
+
+    ######################################
+    # InstantClick
+
+    enableInstantClick = true
+
+
+    ######################################
+    # Service Worker
+
+    # Note: render only in production
+    #       environment
+
+    enableServiceWorker = false
+    # Note: need third-party support, see
+    #       https://io-oi.me/tech/pwa-via-workbox/
+
+
+    ######################################
+    # KaTeX (chemical equation supported)
+
+    enableKaTeX = false
+    # Note: *global settings*
+    #       `katex` in post’s Front Matter
+    #       has a higher priority than here
+
+
+    ######################################
+    # Comments
+
+    # Note: render only in production
+    #       environment
+
+    enableComments = false
+    # Note: *global settings*
+    #       `comments` in post’s Front Matter
+    #       has a higher priority than here
+
+    ## Disqus
+    enableDisqus = false
+    disqusShortname = ""
+
+
+    ######################################
+    # Google Analytics
+
+    # Note: render only in production
+    #       environment
+
+    enableGoogleAnalytics = false
+
+    trackingCodeType = "gtag"
+    # Note: gtag or analytics
+
+    trackingID = ""
+
+
+    ######################################
+    # Google Site Verification
+
+    googleSiteVerification = ""
+
+
+    ######################################
+    # Post Settings
+
+    # The color change duration of the
+    # hyperlink (in seconds)
+    duration = 0.5
+
+    # Primary color of light mode
+    primaryColorLight = "220, 90%, 56%"
+    # Primary color of dark mode
+    primaryColorDark = "201, 65%, 62%"
+    # ATTENTION: only HSL color values ​​are
+    #            supported
+
+    # The content width of the post
+    postWidth = 32
+    # Note: you can leave it empty("") to
+    #       fallback to the default value: 42
+    #       Unit: em
+
+    # Is the post original?
+    original = true
+    # Note: will affect the author and
+    #       copyright information of the
+    #       post
+    #       *global settings*
+    #       `original` in post’s Front Matter
+    #       has a higher priority than here
+
+
+    ######################################
+    # Post Description
+
+    displayPostDescription = true
+
+
+    ######################################
+    # Post Meta Info
+
+    enablePostMeta = true
+    # Note: *global settings*
+    #       `meta` in post’s Front Matter
+    #       has a higher priority than here
+
+    enablePostMetaInHome = true
+    # Note: valid for the `posts` and
+    #       `page` homepage layout only
+
+    postMetaDateFormat = "2006.1.2"
+    # ATTENTION: be sure to follow the
+    #            specified format
+    #            https://gohugo.io/functions/format/
+
+    displayPublishedDate = true
+    publishedDateIcon = "calendar-alt"
+
+    displayModifiedDate = true
+    modifiedDateIcon = "calendar-check"
+
+    displayExpiredDate = true
+    expiredDateIcon = "calendar-times"
+
+    displayCategory = true
+    categoryIcon = "folder"
+    categoryDelimiter = "/"
+
+    displayWordCount = true
+    wordCountIcon = "pencil-alt"
+
+    displayReadingTime = true
+    readingTimeIcon = "clock"
+
+
+    ######################################
+    # Table of Contents
+
+    enableTOC = false
+    # Note: *global settings*
+    #       `toc` in post’s Front Matter
+    #       has a higher priority than here
+
+    displayTOCTitle = true
+
+    linkHeadingsToTOC = true
+
+
+    ######################################
+    # Headings Anchor
+
+    enableHeadingsAnchor = true
+
+    # Level range of headings
+    headingsOpt = "1-6"
+    # Note: regex format, default value
+    #       is 1-6, which is 1|2|3|4|5|6,
+    #       which is h1 to h6.
+
+    anchorSymbol = "#"
+    # Note: the anchorIcon has a higher
+    #       priority than anchorSybol
+    #       Default: §
+
+    anchorIcon = "link"
+    # Note: you can leave it empty("") to
+    #       fallback to the anchorSymbol
+
+    enableAnchorLink = true
+
+    enableAnchorAutoHide = true
+
+
+    ######################################
+    # Caption
+
+    enableCaption = true
+
+    captionPrefix = "◎ "
+
+
+    ######################################
+    # Image Hosting
+
+    # Note: render only in production
+    #       environment
+    #
+    #       only support absolute URLs
+    #       relative to root, e.g.
+    #       /images/meme.jpg
+
+    enableImageHost = false
+
+    imageHostURL = "https://example.com/"
+
+    # Replace the image link in the HTML
+    # head meta also?
+    headAlso = false
+
+
+    ######################################
+    # Video Hosting
+
+    # Note: render only in production
+    #       environment
+    #
+    #       only support absolute URLs
+    #       relative to root, e.g.
+    #       /videos/meme.mp4
+
+    enableVideoHost = false
+
+    videoHostURL = "https://example.com/"
+
+
+    ######################################
+    # Footnotes
+
+    # Use the square brackets to wrap
+    # the reference number?
+    squareBrackets = true
+
+    # Replace the text in footnote return
+    # link with icon?
+    footnoteReturnLinkIcon = "angle-up"
+    # Note: will replace
+    #       `footnoteReturnLinkContents`
+    #       with icon if it’s not
+    #       empty("")
+
+    # Insert horizontal rule by yourself?
+    insertHrBySelf = true
+    # Note: If true, the automatically
+    #       generated horizontal rule
+    #       (<hr>) will be removed. In
+    #       fact, the horizontal rule you
+    #       added will be removed. This
+    #       option is very useful if you
+    #       prefer to add `---` to separate
+    #       the content from the footnote
+    #       in the Markdown file.
+
+
+    ######################################
+    # Typography
+
+    ######################################
+    ## Font Family
+
+    #   Note: any option is empty(""),
+    #         fallback to `fontFamilyBody`
+    #         it will. Therefore, it is not
+    #         necessary to set all.
+    #         Additionally, you can leave
+    #         `fontFamilySiteBrand` empty("")
+    #         if you use SVG as your site
+    #         brand.
+
+    # Site brand
+    fontFamilySiteBrand = ""
+    # Menu bar
+    fontFamilyMenu = ""
+    # Post title, post subtitle, list title, year and month title of the list, related posts title, previous/next post title
+    fontFamilyTitle = "Comfortaa, sans-serif"
+    # Headings, toc title
+    fontFamilyHeadings = "Comfortaa, sans-serif"
+    # Code, superscript, post meta info, post updated badge, post gitinfo, minimal footer
+    fontFamilyCode = "'Source Code Pro', monospace"
+    # Blockquotes
+    fontFamilyQuote = ""
+    # Table of contents
+    fontFamilyTOC = ""
+    # Caption
+    fontFamilyCaption = ""
+    # Footer
+    fontFamilyFooter = ""
+    # Body
+    fontFamilyBody = "'IBM Plex Serif', serif"
+
+    # Embed fonts link
+    fontsLink = "https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,400i,500,700,700i|Source+Code+Pro:400,400i,700,700i|Comfortaa:700&display=swap"
+    # Note: In order for the reader to
+    #       experience the fonts you set,
+    #       it is best to use web fonts.
+    #       MemE currently only supports
+    #       Google Fonts, please go to
+    #       https://fonts.google.com/ to
+    #       get the link. If this is left
+    #       empty(""), web fonts will not
+    #       be used.
+
+    ######################################
+    ## Font Size (unit: px)
+
+    fontSize = 20
+
+    ######################################
+    ## Line Height
+
+    lineHeight = 1.618
+    # Note: apply to post paragraph & toc
+    #       only
+
+    ######################################
+    ## Paragraph Indents
+
+    enableParagraphIndent = true
+
+    paragraphStyle = "margin"
+    # Note: margin or indent
+    #       *global settings*
+    #       `indent` in post’s Front Matter
+    #       has a higher priority than here
+
+    ######################################
+    ## Text Justification
+
+    enableJustify = false
+    # Note: *global settings*
+    #       `align` in post’s Front Matter
+    #       has a higher priority than here
+
+    ######################################
+    ## Drop Cap
+
+    enableDropCap = true
+    # Note: *global settings*
+    #       `dropCap` in post’s Front Matter
+    #       has a higher priority than here
+
+    # Enable drop cap after every
+    # horizontal rule tag?
+    enableDropCapAfterHr = false
+    # Note: *global settings*
+    #       `dropCapAfterHr` in post’s Front Matter
+    #       has a higher priority than here
+
+    # Delete horizontal rule tag before
+    # drop cap?
+    deleteHrBeforeDropCap = false
+    # Note: *global settings*
+    #       `deleteHrBeforeDropCap` in post’s Front Matter
+    #       has a higher priority than here
+
+    ######################################
+    ## Small Caps
+
+    enableSmallCaps = true
+    # Note: apply to headings & post toc
+    #       title only
+    #       *global settings*
+    #       `smallCaps` in post’s Front Matter
+    #       has a higher priority than here
+
+    ######################################
+    ## Emphasis Point (Chinese)
+
+    # Note: new Markdown syntax created by MemE
+    #       `..文本..`
+
+    enableEmphasisPoint = false
+
+    ######################################
+    ## Chinese Punctuation Glyph Correction
+
+    enableChinesePunctuationGlyphCorrection = false
+
+
+    ######################################
+    # Post Copyright
+
+    enablePostCopyright = true
+
+    displayPostCopyright = true
+    # Note: *global settings*
+    #       `displayCopyright` in post’s Front Matter
+    #       has a higher priority than here
+
+
+    ######################################
+    # Post Updated Badge
+
+    enablePostUpdatedBadge = true
+
+    displayUpdatedBadge = true
+    # Note: *global settings*
+    #       `badge` in post’s Front Matter
+    #       has a higher priority than here
+
+    # Add `title` attribute?
+    enableBadgeTitle = true
+    badgeTitlePrefix = "Updated @ "
+
+
+    ######################################
+    # Post Gitinfo
+
+    enablePostGitInfo = false
+
+    displayPostGitInfo = false
+    # Note: *global settings*
+    #       `gitinfo` in post’s Front Matter
+    #       has a higher priority than here
+
+    repoURL = ""
+    repoEditURL = ""
+
+    gitIcon = "code-branch"
+    displayCommitHash = true
+
+    displayCommitMessage = true
+    msgIcon = "info"
+
+    displayFeedback = true
+    feedbackIcon = "question"
+    feedbackText = "Feedback"
+
+    displayEditLink = true
+    editIcon = "edit"
+    editText = "Edit Me?"
+
+
+    ######################################
+    # Related Posts
+
+    enableRelatedPosts = true
+
+    displayRelatedPosts = true
+    # Note: *global settings*
+    #       `related` in post’s Front Matter
+    #       has a higher priority than here
+
+    relatedPostsNumber = 5
+
+    relatedPostsIcon = "plus-circle"
+
+
+    ######################################
+    # Post Tags
+
+    enablePostTags = true
+
+    postTagsIcon = "tag"
+
+
+    ######################################
+    # Previous/Next Post
+
+    # Note: In MemE, it is designed from a
+    #       spatial perspective rather
+    #       than a time perspective like
+    #       most other themes do.
+    #       Therefore, you will get a
+    #       newer post if you click prev
+    #       on the left; you will get an
+    #       older post if you click next
+    #       on the right.
+
+    enablePostNav = true
+
+    # Apply to posts that below the same
+    # top level section only?
+    postNavInSection = true
+
+
+    ######################################
+    # Minimal Footer
+
+    enableMinimalFooter = false
+
+    enableAboutPageMinimalFooter = false
+
+
+    ######################################
+    # Back to Top
+
+    enableBackToTop = true
+
+    displayBackToTopInHome = true
+
+    backToTopIcon = "arrow-up"
+
+
+    ######################################
+    # Footer
+
+    enableFooter = true
+    # Note: homepage layout `poetry`,
+    #       `footage`, and 404 page have
+    #       no footer
+
+    displayCopyrightSymbol = true
+
+    displaySiteCreatedYear = true
+
+    iconBetweenYearAndAuthor = "heart"
+    iconColor = "#f06292"
+    # Enable heartbeat animation?
+    iconAnimation = true
+
+    # Display links to Hugo and MemE?
+    displayPoweredBy = true
+
+    displaySiteCopyright = true
+
+    # Custom Footer (Markdown supported)
+    customFooter = ""
+
+
+    ######################################
+    # Multilingual
+
+    enableLangToggle = false
+
+    hideLangToggleInHome = false
+
+    autoHideLangToggle = true
+    # Note: in other words, the toggle is
+    #       displayed only when the post
+    #       has a translated version
+
+
+    ######################################
+    # Syntax Highlighting
+
+    enableHighlight = true
+
+
+    ######################################
+    # Fingerprinting and SRI
+
+    enableFingerprint = true
+    # Note: valid for CSS and JS generated
+    #       by MemE only
+
+
+    ######################################
+    # 404 Page
+
+    fofPoster = ""
+
+    fofVideoWebm = ""
+    fofVideoMp4 = ""
+    # Note: you can leave these two
+    #       options empty("")

@@ -33,13 +33,13 @@ You can check this [report](https://www.webpagetest.org/result/190827_95_55731f5
 
 ## Details
 
-### Home page layout
+### Homepage layout
 
-For home page layout, MemE has three different kinds: posts, poetry, footage.
+For homepage layout, MemE has three different types: posts, poetry, footage.
 
-1. [Posts](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-posts.png), live demo: https://meme-test.netlify.com
-2. [Poetry](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-poetry.png), live demo: https://io-oi.me
-3. [Footage](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/home-layout-footage.png), live demo: https://yixiuer.me
+1. [Posts](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/homepage-layout-posts.png), live demo: https://meme-test.netlify.com
+2. [Poetry](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/homepage-layout-poetry.png), live demo: https://io-oi.me
+3. [Footage](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/homepage-layout-footage.png), live demo: https://yixiuer.me
 
 Also, you can set `homeLayout` equal to `page` and add `_index.md` to site’s content folder, which will get a layout like normal page/post.
 
@@ -102,11 +102,16 @@ How to update MemE to the latest version?
 
 ### Blogging
 
-1. Replace `config.toml` with demo site’s [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
+1. Replace `config.toml` with [config.toml](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/en-us/config.toml).
 
-2. Add some files to `content` directory or just copy demo site’s [content](https://github.com/reuixiy/meme-test/tree/master/content).
+2. Create a new post and the about page:
+   ```
+   ~/blog $ hugo new "posts/hello-world.md"
+   ~/blog $ hugo new "about/_index.md"
+   ```
 
-3. ```
+3. Now:
+   ```
    ~/blog $ hugo server -D
    ```
 
@@ -114,7 +119,7 @@ How to update MemE to the latest version?
 
 #### Basic
 
-See [config.toml](https://github.com/reuixiy/meme-test/blob/master/config.toml).
+See [config.toml](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/en-us/config.toml).
 
 #### Service Worker
 
@@ -154,16 +159,15 @@ gitinfo | display post-gitinfo | boolean, override `displayPostGitInfo` in `conf
 related | display related-posts | boolean, override `displayRelatedPosts` in `config.toml`, theme only
 katex | add KaTeX support | boolean, override `enableKaTeX` in `config.toml`, theme only
 comments | set `false` to disable comments in postSections or set `true` to enable comments in non-postSections | boolean, theme only
-original | original? You can add the following 9 terms if you set `false`. The `author` is required, other optional | boolean, override `original` in `config.toml`, theme only
+original | original? You can add the following 8 terms if you set `false`. The `author` is required, other optional | boolean, override `original` in `config.toml`, theme only
 author | author of original post | string, theme only
 link | link of original post | string, URL, theme only
 copyright | license of the post | string, Markdown supported, theme only
 website | author’s website | string, theme only
 email | author’s email | string, theme only
-motto | author’s description | string, Markdown supported, theme only
+motto | author’s description | string, theme only
 avatar | author’s avatar | string, URL, theme only
 twitter | author’s twitter id | string, theme only
-facebook | author’s facebook id | string, theme only
 smallCaps | small caps? | boolean, override `enableSmallCaps` in `config.toml`, theme only
 dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, theme only
 dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, override `enableDropCapAfterHr` in `config.toml`, theme only
