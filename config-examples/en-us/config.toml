@@ -122,7 +122,7 @@ uglyURLs = false
     home = ["HTML", "SectionsAtom", "SectionsRSS"]
     section = ["HTML"]
     # Taxonomy
-    taxonomyTerm = ["HTML", "RSS"]
+    taxonomyTerm = ["HTML"]
     # Taxonomy term
     taxonomy = ["HTML"]
     # Note: https://github.com/gohugoio/hugo/issues/4528#issuecomment-508488859
