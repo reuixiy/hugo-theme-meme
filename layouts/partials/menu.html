@@ -1,7 +1,12 @@
 {{ if or (and .IsHome .Site.Params.displayMenuInHome) (and (not .IsHome) .Site.Params.enableMenu) }}
     <nav class="nav">
         <ul class="menu" id="menu">
-            {{ $currentPage := .Site.GetPage (printf `/%s` .Section) }}
+            {{ if .Site.Params.activeInSection }}
+                {{ .Scratch.Set "currentPage" (.Site.GetPage (printf `/%s` .Section)) }}
+            {{ else }}
+                {{ .Scratch.Set "currentPage" . }}
+            {{ end }}
+            {{ $currentPage := .Scratch.Get "currentPage" }}
             {{ range .Site.Menus.main }}
                 <li class="menu-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}">
                     {{- $linkType := (string .Pre) -}}
