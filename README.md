@@ -1,5 +1,5 @@
 English | 
-<a href="https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-cn.md">简体中文</a>
+[简体中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-cn.md)
 
 <div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
 
@@ -79,7 +79,7 @@ https://gohugo.io/getting-started/quick-start/
 
 For Arch Linux users:
 
-```
+```sh
 ~ $ sudo pacman -S hugo
 ~ $ hugo new site blog
 ```
@@ -88,7 +88,7 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 
 #### MemE
 
-```
+```sh
 ~ $ cd blog
 ~/blog $ git init
 ~/blog $ git submodule add https://github.com/reuixiy/hugo-theme-meme.git themes/meme
@@ -96,7 +96,7 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 
 How to update MemE to the latest version?
 
-```
+```sh
 ~/blog $ git submodule update --rebase --remote
 ```
 
@@ -105,13 +105,13 @@ How to update MemE to the latest version?
 1. Replace `config.toml` with [config.toml](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/en-us/config.toml).
 
 2. Create a new post and the about page:
-   ```
+   ```sh
    ~/blog $ hugo new "posts/hello-world.md"
    ~/blog $ hugo new "about/_index.md"
    ```
 
 3. Now:
-   ```
+   ```sh
    ~/blog $ hugo server -D
    ```
 
