@@ -145,7 +145,7 @@ uglyURLs = false
 # url           链接地址
 # name          文本（留空（""）则无）
 # weight        位置
-# pre           内链或外链
+# pre           内链（internal）或外链（external）
 # post          图标（留空（""）则无）
 # identifier    图标的 Class 名（菜单栏无效）
 
