@@ -44,6 +44,7 @@ pygmentsOptions = "linenos=table"
 
 # URL 相关
 disablePathToLower = false
+relativeURLs = false
 uglyURLs = false
 
 # URL 结构
