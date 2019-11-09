@@ -1,12 +1,12 @@
 +++
-author = "Hugo Authors"
 title = "Emoji Support"
 date = "2019-03-05"
 description = "Guide to emoji usage in Hugo"
 categories = ["themes"]
 tags = ["emoji"]
-dropCap = false
+
 original = false
+author = "Hugo Authors"
 website = "https://gohugo.io/"
 link = "https://git.io/fjbhZ"
 copyright = "[Some rights reserved.](https://github.com/gohugoio/hugoBasicExample/blob/master/LICENSE)"

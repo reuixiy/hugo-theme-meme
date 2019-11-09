@@ -13,8 +13,6 @@ MemE 是一个强大且可高度定制的 [GoHugo](https://github.com/gohugoio/h
 
 ![lighthouse-report.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/lighthouse-report.png)
 
-你可以[在线查看这份 Lighthouse 报告](https://www.webpagetest.org/result/190827_95_55731f51a7aecf418c2f4de3ce7c14b4/)，或者你也可以[再自行测试](https://www.webpagetest.org/lighthouse)一下。
-
 ## 快速开始
 
 https://gohugo.io/getting-started/quick-start/
