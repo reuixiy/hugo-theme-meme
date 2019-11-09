@@ -13,8 +13,6 @@ MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/
 
 ![lighthouse-report.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/lighthouse-report.png)
 
-You can check this [report](https://www.webpagetest.org/result/190827_95_55731f51a7aecf418c2f4de3ce7c14b4/) online or [test again](https://www.webpagetest.org/lighthouse) by yourself.
-
 ## Quick Start
 
 https://gohugo.io/getting-started/quick-start/

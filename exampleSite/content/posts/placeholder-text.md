@@ -1,22 +1,23 @@
 +++
-author = "Hugo Authors"
 title = "Placeholder Text"
 date = "2019-03-09"
 description = "Lorem Ipsum Dolor Si Amet"
-tags = [
-    "markdown",
-    "text"
-]
-toc = false
-dropCap = false
+categories = ["themes", "syntax"]
+tags = ["markdown", "text"]
+
 original = false
+author = "Hugo Authors"
 website = "https://gohugo.io/"
 link = "https://git.io/fjbhZ"
 copyright = "[Some rights reserved.](https://github.com/gohugoio/hugoBasicExample/blob/master/LICENSE)"
 +++
 
 Lorem est tota propiore conpellat pectoribus de
-pectora summo. <!--more-->Redit teque digerit hominumque toris verebor lumina non cervice
+pectora summo.
+
+<!--more-->
+
+Redit teque digerit hominumque toris verebor lumina non cervice
 subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc
 caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis
 lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.

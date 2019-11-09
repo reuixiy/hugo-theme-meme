@@ -1,20 +1,12 @@
 +++
-author = "Hugo Authors"
 title = "Markdown Syntax Guide"
 date = "2019-03-11"
 description = "Sample article showcasing basic Markdown syntax and formatting for HTML elements."
-tags = [
-    "markdown",
-    "css",
-    "html",
-    "themes"
-]
-categories = [
-    "themes",
-    "syntax"
-]
-series = ["Themes Guide"]
+categories = ["themes", "syntax"]
+tags = ["markdown", "css", "html"]
+
 original = false
+author = "Hugo Authors"
 website = "https://gohugo.io/"
 link = "https://git.io/fjbhZ"
 copyright = "[Some rights reserved.](https://github.com/gohugoio/hugoBasicExample/blob/master/LICENSE)"

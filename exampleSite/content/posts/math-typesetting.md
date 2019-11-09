@@ -1,18 +1,14 @@
 +++
-author = "Hugo Authors"
 title = "Math Typesetting"
 date = "2019-03-08"
 description = "A brief guide to setup KaTeX"
+categories = ["math"]
+tags = ["themes", "katex"]
+
 katex = true
-categories = [
-    "math"
-]
-tags = [
-    "themes",
-    "katex"
-]
-toc = false
+
 original = false
+author = "Hugo Authors"
 website = "https://gohugo.io/"
 link = "https://git.io/fjbhZ"
 copyright = "[Some rights reserved.](https://github.com/gohugoio/hugoBasicExample/blob/master/LICENSE)"
