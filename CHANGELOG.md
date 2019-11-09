@@ -1,6 +1,6 @@
 # [3.0.0](https://github.com/reuixiy/hugo-theme-meme/compare/v2.3.7...v3.0.0) (2019-11-09)
 
-MemE has a brand `config.toml` (in config-examples folder) with detailed instructions now! I highly recommend you replace your existing config.toml with it. Although this may take a while to reconfigure the configuration.
+MemE has a brand new `config.toml` (in config-examples folder) with detailed instructions now! I highly recommend you replace your existing config.toml with it. Although this may take a while to reconfigure the configuration.
 
 Moreover, MemE modifies the color values ​​of dark mode to make dark mode less depressed. Please change `primaryColorDark` to `201, 65%, 62%` if you are not using the latest version of `config.toml`.
 
@@ -29,11 +29,9 @@ MemE 主题现在有一个全新的 `config.toml` 了（在 config-examples 文�
 ### BREAKING CHANGES
 
 * `darkImage` option is removed
-
 You can delete `darkImage` in config.toml or post’s Front Matter now.
 
 * config.toml changed
-
 Please change `primaryColorDark` to `201, 65%, 62%` by yourself.
 
 
