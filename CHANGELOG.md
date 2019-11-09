@@ -1,4 +1,44 @@
-# [2.3.7](https://github.com/reuixiy/hugo-theme-meme/compare/v2.1.5...v2.3.7) (2019-10-09)
+# [3.0.0](https://github.com/reuixiy/hugo-theme-meme/compare/v2.3.7...v3.0.0) (2019-11-09)
+
+MemE has a brand `config.toml` (in config-examples folder) with detailed instructions now! I highly recommend you replace your existing config.toml with it. Although this may take a while to reconfigure the configuration.
+
+Moreover, MemE modifies the color values ​​of dark mode to make dark mode less depressed. Please change `primaryColorDark` to `201, 65%, 62%` if you are not using the latest version of `config.toml`.
+
+MemE 主题现在有一个全新的 `config.toml` 了（在 config-examples 文件夹内），且里面包含详细的说明！我强烈建议你用它替换你现有的 config.toml 文件，尽管这可能需要一些时间重新配置。
+
+此外，MemE 主题修改了一些深色模式的颜色值，以使深色模式不那么压抑。对于这点，如果你没有使用最新版本的 `config.toml`，请你将其中的 `primaryColorDark` 设置为 `201, 65%, 62%`。
+
+### Bug Fixes
+
+* contrast ratio of highlight style ([39da81c](https://github.com/reuixiy/hugo-theme-meme/commit/39da81c))
+* contrast ratio of highlight style ([22480e6](https://github.com/reuixiy/hugo-theme-meme/commit/22480e6))
+* headings link style ([fc99fc6](https://github.com/reuixiy/hugo-theme-meme/commit/fc99fc6))
+* make the color less depressed ([4c37e04](https://github.com/reuixiy/hugo-theme-meme/commit/4c37e04))
+* post-copyright style ([a7dedde](https://github.com/reuixiy/hugo-theme-meme/commit/a7dedde))
+* post-copyright style again ([37d275e](https://github.com/reuixiy/hugo-theme-meme/commit/37d275e))
+* regex of emphasis point ([6babe81](https://github.com/reuixiy/hugo-theme-meme/commit/6babe81))
+
+
+### Features
+
+* new image filter for dark mode ([5beb752](https://github.com/reuixiy/hugo-theme-meme/commit/5beb752))
+* new option for current menu item ([edc7dc8](https://github.com/reuixiy/hugo-theme-meme/commit/edc7dc8))
+* **#15:** new home page layout `page` ([7ae2902](https://github.com/reuixiy/hugo-theme-meme/commit/7ae2902)), closes [#15](https://github.com/reuixiy/hugo-theme-meme/issues/15)
+
+
+### BREAKING CHANGES
+
+* `darkImage` option is removed
+
+You can delete `darkImage` in config.toml or post’s Front Matter now.
+
+* config.toml changed
+
+Please change `primaryColorDark` to `201, 65%, 62%` by yourself.
+
+
+
+## [2.3.7](https://github.com/reuixiy/hugo-theme-meme/compare/v2.1.5...v2.3.7) (2019-10-09)
 
 
 ### Bug Fixes
@@ -10,7 +50,7 @@
 
 
 
-# [2.1.5](https://github.com/reuixiy/hugo-theme-meme/compare/v2.1.3...v2.1.5) (2019-10-04)
+## [2.1.5](https://github.com/reuixiy/hugo-theme-meme/compare/v2.1.3...v2.1.5) (2019-10-04)
 
 
 ### Bug Fixes
@@ -58,7 +98,7 @@ If you have customized `fonts.scss`, be sure to check this change before updatin
 
 
 
-# [2.1.3](https://github.com/reuixiy/hugo-theme-meme/compare/v2.0.0...v2.1.3) (2019-09-09)
+## [2.1.3](https://github.com/reuixiy/hugo-theme-meme/compare/v2.0.0...v2.1.3) (2019-09-09)
 
 
 ### Bug Fixes
@@ -193,6 +233,3 @@ config.toml
 * config.toml option changed
 displayHeader -> enableHeader
 displayMenu   -> enableMenu
-
-
-
