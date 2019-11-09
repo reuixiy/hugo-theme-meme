@@ -37,9 +37,9 @@ MemE 是一个强大且可高度定制的 [GoHugo](https://github.com/gohugoio/h
 
 对于首页布局，MemE 主题提供了三种不同的样式：文章摘要（posts）、诗意人生（poetry）、视频片段（footage）。
 
-1. [文章摘要](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/homepage-layout-posts.png)，在线预览：https://meme-test.netlify.com
-2. [诗意人生](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/homepage-layout-poetry.png)，在线预览：https://io-oi.me
-3. [视频片段](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/homepage-layout-footage.png)，在线预览：https://yixiuer.me
+1. 文章摘要，在线预览：https://meme-test.netlify.com
+2. 诗意人生，在线预览：https://io-oi.me
+3. 视频片段，在线预览：https://yixiuer.me
 
 同时，你也可以通过设置 `homeLayout` 为 `page`，并在站点的 content 文件夹下添加 `_index.md` 文件，以得到一个类似普通页面╱文章的首页布局。
 
