@@ -391,28 +391,16 @@ uglyURLs = false
 
 
     ######################################
-    # 分区范围
+    # 文章分区范围
 
     # 说明：分区的名字即站点的 content 目录下
     #      的文件夹的名字。
 
-    # 文章分区
-    postSections = ["posts"]
-
-    # 主分区
-    mainSections = ["posts"]
-    # 说明：MemE 主题没有使用此项，但 Hugo 的
-    #      一些内建模板（比如 RSS）可能使用了
-    #      此项。故如果你需额外地使用 Hugo 的
-    #      内建模板，请将此项与 postSections
-    #      保持一致。
+    # mainSections = ["posts"]
 
 
     ######################################
     # Atom & RSS
-
-    # 订阅的分区范围
-    feedSections = ["posts"]
 
     # 是否包括全文内容
     includeContent = true

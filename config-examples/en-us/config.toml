@@ -417,28 +417,17 @@ uglyURLs = false
 
 
     ######################################
-    # Sections
+    # Post Sections
 
     # Note: the name of the section is the
     #       name of the folder under the
     #       site’s `content` directory.
 
-    postSections = ["posts"]
-
-    mainSections = ["posts"]
-    # Note: MemE does not use this object,
-    #       but some of Hugo’s built-in
-    #       templates (such as RSS) may
-    #       use this. So keep this same
-    #       as `postSections` if you need
-    #       to use Hugo’s built-in
-    #       templates extra.
+    # mainSections = ["posts"]
 
 
     ######################################
     # Atom & RSS
-
-    feedSections = ["posts"]
 
     # Include full content?
     includeContent = true

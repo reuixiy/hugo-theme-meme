@@ -13,7 +13,7 @@
     {{ end }}
     {{ if .Site.Params.displayCategory }}
         {{ $icon := replace (index $.Site.Data.SVG $.Site.Params.categoryIcon) "icon" "icon post-meta-icon" | safeHTML }}
-        {{ if and (eq .Site.Params.categoryBy "sections") (in .Site.Params.postSections .Section) }}
+        {{ if and (eq .Site.Params.categoryBy "sections") (in .Site.Params.mainSections .Section) }}
             {{ with .File }}
                 {{ $sections := split (strings.TrimSuffix "/" (.Dir | default $.Section)) "/" }}
                 {{ with $sections }}

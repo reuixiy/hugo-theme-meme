@@ -18,7 +18,7 @@
                     {{ if (eq .Kind "section") }}
                         <!-- Archives -->
                         {{ if (eq .Section "archives") }}
-                            {{ $pages := (where .Site.RegularPages "Section" "in" .Site.Params.postSections) }}
+                            {{ $pages := (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
                             {{ $.Scratch.Set "pages" $pages }}
                         <!-- Regular Section -->
                         {{ else }}

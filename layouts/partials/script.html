@@ -90,7 +90,7 @@
 {{ end }}
 
 {{ if and (.Params.comments | default .Site.Params.enableComments) (eq hugo.Environment "production") }}
-    {{ if or (in .Site.Params.postSections .Section) .Params.comments }}
+    {{ if or (in .Site.Params.mainSections .Section) .Params.comments }}
         {{ if .Site.Params.enableDisqus }}
             {{ partial "third-party/disqus.html" . }}
         {{ end }}

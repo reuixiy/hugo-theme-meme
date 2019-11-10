@@ -1,7 +1,7 @@
 <!-- https://gohugo.io/functions/findre/ -->
 <!-- https://gohugo.io/functions/replacere/ -->
 <!-- https://regex101.com/ -->
-{{- if and .IsPage (in .Site.Params.postSections .Section) -}}
+{{- if and .IsPage (in .Site.Params.mainSections .Section) -}}
     {{- $imgs := findRE `<img src="/?([^"]+)` .Content -}}
     {{- with $imgs -}}
         {{- $.Scratch.Delete "imgsURL" -}}

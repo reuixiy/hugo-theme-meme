@@ -29,7 +29,7 @@
         <rights>{{ . | plainify }}</rights>
     {{- end }}
     <generator uri="https://gohugo.io/" version="{{ printf "%s" hugo.Version | safeHTML }}">Hugo</generator>
-    {{- range (where $pages "Section" "in" .Site.Params.feedSections) }}
+    {{- range (where $pages "Section" "in" .Site.Params.mainSections) }}
         {{ $page := . }}
         {{- partial "components/author.html" $page -}}
         {{- $author := ($page.Scratch.Get "author") -}}
