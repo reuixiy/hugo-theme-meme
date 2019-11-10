@@ -148,7 +148,7 @@
             {{ end }}
         {{ end }}
 
-        {{ if and .Site.Params.enableMinimalFooter (in .Site.Params.postSections .Section) }}
+        {{ if and .Site.Params.enableMinimalFooter (in .Site.Params.mainSections .Section) }}
             <footer class="minimal-footer">
                 {{ with .Params.tags }}
                     {{ $length := sub (len .) 1 }}
@@ -283,7 +283,7 @@
             </footer>
         {{ end }}
 
-        {{ if and .Site.Params.enablePostNav (in .Site.Params.postSections .Section) }}
+        {{ if and .Site.Params.enablePostNav (in .Site.Params.mainSections .Section) }}
             {{ if .Site.Params.postNavInSection }}
                 {{ .Scratch.Set "prev" .PrevInSection }}
                 {{ .Scratch.Set "next" .NextInSection }}
@@ -310,7 +310,7 @@
         {{ end }}
 
         {{ if and (.Params.comments | default .Site.Params.enableComments) (eq hugo.Environment "production") }}
-            {{ if or (in .Site.Params.postSections .Section) .Params.comments }}
+            {{ if or (in .Site.Params.mainSections .Section) .Params.comments }}
                 {{ if .Site.Params.enableDisqus }}
                     <div class="load-comments">
                         <div id="load-comments" onclick="loadComments()">{{ i18n "loadComments" }}</div>

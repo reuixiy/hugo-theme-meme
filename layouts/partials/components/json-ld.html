@@ -69,7 +69,7 @@
         "name": {{ $rawTitle }}
     }
 </script>
-{{- else if and $Deliver.IsPage (in $Deliver.Site.Params.postSections $Deliver.Section) -}}
+{{- else if and $Deliver.IsPage (in $Deliver.Site.Params.mainSections $Deliver.Section) -}}
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",

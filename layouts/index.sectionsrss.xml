@@ -32,7 +32,7 @@
         {{ with .OutputFormats.Get "SectionsRSS" }}
             {{ printf `<atom:link rel="self" type=%q href=%q />` .MediaType .Permalink | safeHTML }}
         {{ end }}
-        {{ range (where $pages "Section" "in" .Site.Params.feedSections) }}
+        {{ range (where $pages "Section" "in" .Site.Params.mainSections) }}
             {{ $page := . }}
             {{- partial "components/author.html" $page -}}
             {{- $author := ($page.Scratch.Get "author") -}}

@@ -61,7 +61,7 @@
     {{ if eq .Site.Params.homeLayout "posts" }}
         <main class="main single" id="main">
             <div class="main-inner">
-                {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.postSections) }}
+                {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
                 {{ range $paginator.Pages }}
                     <article class="content post home">
                         <h2 class="post-title">

@@ -26,24 +26,24 @@
         {{- end -}}
     {{- end -}}
     {{- with .Section -}}
-        {{- if and (eq $.Site.Params.categoryBy "sections") (in $.Site.Params.postSections $.Section) -}}
+        {{- if and (eq $.Site.Params.categoryBy "sections") (in $.Site.Params.mainSections $.Section) -}}
             {{- with $.File -}}
                 {{- $.Scratch.Delete "Dir" -}}
-                {{- $.Scratch.Delete "postSections" -}}
+                {{- $.Scratch.Delete "mainSections" -}}
                 {{- $sections := split (strings.TrimSuffix "/" .Dir) "/" -}}
                 {{- range $sections -}}
                     {{- $section := . -}}
                     {{- $.Scratch.Add "Dir" (printf `/%s` $section) -}}
                     {{- with $.Site.GetPage ($.Scratch.Get "Dir") -}}
                         {{- if (eq .Kind "section") -}}
-                            {{- $.Scratch.Add "postSections" (printf "%s, " $section) -}}
+                            {{- $.Scratch.Add "mainSections" (printf "%s, " $section) -}}
                         {{- end -}}
                     {{- end -}}
                 {{- end -}}
             {{- end -}}
         {{- end -}}
     {{- end -}}
-    {{- $keywordsPost := (replace (delimit (union (split (strings.TrimSuffix ", " ($.Scratch.Get "keywordsPost")) ", ") (split (strings.TrimSuffix ", " ($.Scratch.Get "postSections")) ", ")) " ") " " ", ") -}}
+    {{- $keywordsPost := (replace (delimit (union (split (strings.TrimSuffix ", " ($.Scratch.Get "keywordsPost")) ", ") (split (strings.TrimSuffix ", " ($.Scratch.Get "mainSections")) ", ")) " ") " " ", ") -}}
     {{- $.Scratch.Set "keywordsPost" $keywordsPost -}}
 {{- end -}}
 <!-- keywordsFrontMatter -->

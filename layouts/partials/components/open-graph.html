@@ -64,7 +64,7 @@
     {{ end -}}
 {{- end -}}
 
-{{- if and $Deliver.IsPage (in $Deliver.Site.Params.postSections $Deliver.Section) -}}
+{{- if and $Deliver.IsPage (in $Deliver.Site.Params.mainSections $Deliver.Section) -}}
     <meta property="og:type" content="article" />
     {{ printf `<meta property="article:published_time" content="%s" />` $pubDate | safeHTML }}
     {{ printf `<meta property="article:modified_time" content="%s" />` $modDate | safeHTML }}
