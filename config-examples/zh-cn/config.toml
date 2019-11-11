@@ -678,8 +678,9 @@ uglyURLs = false
 
     # 说明：仅在生产环境（production）下渲染
     #
-    #      只支持相对于站点根目录的绝对链接
+    #      只支持相对于网站根目录的绝对链接
     #      比如：/images/meme.jpg
+    #      (~/blog/static/images/meme.jpg)
 
     # 是否开启
     enableImageHost = false

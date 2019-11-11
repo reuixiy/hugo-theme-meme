@@ -716,6 +716,7 @@ uglyURLs = false
     #       only support absolute URLs
     #       relative to root, e.g.
     #       /images/meme.jpg
+    #       (~/blog/static/images/meme.jpg)
 
     enableImageHost = false
 
