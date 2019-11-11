@@ -775,14 +775,14 @@ uglyURLs = false
     ######################################
     ## Font Family
 
-    #   Note: any option is empty(""),
-    #         fallback to `fontFamilyBody`
-    #         it will. Therefore, it is not
-    #         necessary to set all.
-    #         Additionally, you can leave
-    #         `fontFamilySiteBrand` empty("")
-    #         if you use SVG as your site
-    #         brand.
+    # Note: any option is empty(""),
+    #       fallback to `fontFamilyBody`
+    #       it will. Therefore, it is not
+    #       necessary to set all.
+    #       Additionally, you can leave
+    #       `fontFamilySiteBrand` empty("")
+    #       if you use SVG as your site
+    #       brand.
 
     # Site brand
     fontFamilySiteBrand = ""
