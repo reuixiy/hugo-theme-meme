@@ -1,7 +1,7 @@
 <main class="main single" id="main">
     <div class="main-inner">
         <article class="content post">
-            
+
             <h1 class="post-title">{{ .Title }}</h1>
 
             {{ with .Params.subtitle }}
@@ -20,12 +20,12 @@
 
             {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
             {{- if $enableTOC -}}
-                {{- partial "toc.html" . -}}
+                {{- partial "components/toc.html" . -}}
                 {{- $toc := .Scratch.Get "toc" }}
                 {{ $toc -}}
             {{- end -}}
 
-            {{- partial "content.html" . -}}
+            {{- partial "components/content.html" . -}}
             {{- $Content := .Scratch.Get "Content" -}}
             <div class="post-body{{ if ne .Type "poetry" }}{{ if (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) }} indent{{ end }}{{ end }}">
                 {{- $Content -}}
@@ -33,292 +33,23 @@
 
         </article>
 
-        {{ if and .Site.Params.enablePostCopyright (.Params.displayCopyright | default .Site.Params.displayPostCopyright) }}
-            {{ partial "components/author.html" . }}
-            {{ $author := .Scratch.Get "author" }}
-            {{ with $author.name }}
-                <ul class="post-copyright">
-                    <li class="copyright-item author">{{ with $author.website }}{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightAuthor") . $author.name | safeHTML }}{{ else }}{{ printf `%s%s` (i18n "copyrightAuthor") $author.name }}{{ end }}</li>
-                    {{ if $.Params.original | default $.Site.Params.original }}
-                        <li class="copyright-item link">{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightLink") $.RelPermalink $.Permalink | safeHTML }}</li>
-                    {{ else }}
-                        {{ with $.Params.link }}
-                            <li class="copyright-item link">{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightLink") . . | safeHTML }}</li>
-                        {{ end }}
-                    {{ end }}
-                    {{ with $author.copyright }}
-                        <li class="copyright-item license">{{ printf `%s%s` (i18n "copyrightLicense") (. | markdownify) | safeHTML }}</li>
-                    {{ end }}
-                </ul>
-            {{ end }}
-        {{ end }}
+        {{ partial "post-copyright.html" . }}
 
-        {{ if and .Site.Params.enablePostUpdatedBadge (.Params.badge | default .Site.Params.displayUpdatedBadge) }}
-            <div class="updated-badge-container">
-                {{- if .Site.Params.enableBadgeTitle -}}
-                    {{- $date := .Lastmod.Format "2006-01-02 15:04:05 MST" -}}
-                    {{- $title := (printf ` title="%s%s"` .Site.Params.badgeTitlePrefix $date) -}}
-                    {{- .Scratch.Set "title" $title -}}
-                {{- else -}}
-                    {{- .Scratch.Set "title" "" -}}
-                {{- end }}
-                {{- $title := .Scratch.Get "title" | safeHTML -}}
-                {{- $date := .Lastmod.Format "2006-01-02" -}}
-                {{- with $title -}}{{- printf `<div%s style="cursor:help;display:inline-block">` $title | safeHTML -}}{{- end -}}
-                    {{- partial "components/updated-badge.html" (dict "date" $date) -}}
-                {{- with $title -}}</div>{{- end -}}
-            </div>
-        {{ end }}
+        {{ partial "post-updated-badge.html" . }}
 
-        {{ if .GitInfo }}
-            {{ if and .Site.Params.enablePostGitInfo (.Params.gitinfo | default .Site.Params.displayPostGitInfo) }}
-                <div class="post-gitinfo">
-                    {{ if or .Site.Params.displayCommitHash .Site.Params.displayCommitMessage }}
-                        <div class="post-gitinfo-left">
-                            {{ if .Site.Params.displayCommitHash }}
-                                {{ $icon := (replace (index .Site.Data.SVG .Site.Params.gitIcon) "icon" "icon git-icon") }}
-                                <div class="gitinfo-item commit">
-                                    {{- with .Site.Params.repoURL -}}
-                                        {{- $commit := (printf `<a href="%s/commit/%s" target="_blank">%s%s</a>` . $.GitInfo.Hash $icon $.GitInfo.AbbreviatedHash) -}}
-                                        {{- $.Scratch.Set "commit" $commit -}}
-                                    {{- else -}}
-                                        {{- $.Scratch.Set "commit" $.GitInfo.AbbreviatedHash -}}
-                                    {{- end -}}
-                                    {{- $commit := .Scratch.Get "commit" -}}
-                                    {{- printf `%s` $commit | safeHTML -}}
-                                </div>
-                            {{ end }}
-                            {{ if .Site.Params.displayCommitMessage }}
-                                {{ with .GitInfo.Subject }}
-                                    {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.msgIcon) "icon" "icon msg-icon") }}
-                                    <div class="gitinfo-item commit-msg">{{ printf `%s%s` $icon . | safeHTML }}</div>
-                                {{ end }}
-                            {{ end }}
-                        </div>
-                    {{ end }}
-                    {{ if or .Site.Params.displayFeedback .Site.Params.displayEditLink }}
-                        <div class="post-gitinfo-right">
-                            {{ if .Site.Params.displayFeedback }}
-                                {{ with .Site.Params.repoURL }}
-                                    {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.feedbackIcon) "icon" "icon feedback-icon") }}
-                                    <div class="gitinfo-item feedback">{{ printf `<a href="%s/issues" target="_blank">%s%s</a>` . $icon $.Site.Params.feedbackText | safeHTML }}</div>
-                                {{ end }}
-                            {{ end }}
-                            {{ if .Site.Params.displayEditLink }}
-                                {{ with .Site.Params.repoEditURL }}
-                                    {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.editIcon) "icon" "icon edit-icon") }}
-                                    {{ $contentDir := $.Site.Params.contentDir }}
-                                    {{ $content := (cond $.Site.IsMultiLingual (printf `/%s/` $contentDir) (printf `/content/`)) }}
-                                    <div class="gitinfo-item edit">{{ printf `<a href="%s%s%s" target="_blank">%s%s</a>` . $content $.Path $icon $.Site.Params.editText | safeHTML }}</div>
-                                {{ end }}
-                            {{ end }}
-                        </div>
-                    {{ end }}
-                </div>
-            {{ end }}
-        {{ end }}
+        {{ partial "post-gitinfo.html" . }}
 
-        {{ if and .Site.Params.enableRelatedPosts (.Params.related | default .Site.Params.displayRelatedPosts) }}
-            {{ $related := .Site.RegularPages.Related . | first (.Site.Params.relatedPostsNumber | default 5) }}
-            {{ with $related }}
-                <div class="related-posts">
-                    <h2 class="related-title">{{ i18n "relatedPosts" }}{{ replace (index $.Site.Data.SVG $.Site.Params.relatedPostsIcon) "icon" "icon related-icon" | safeHTML }}</h2>
-                    <ul class="related-list">
-                        {{ range . }}
-                            <li class="related-item">
-                                <a href="{{ .RelPermalink }}" class="related-link">{{ .LinkTitle }}</a>
-                            </li>
-                        {{ end }}
-                    </ul>
-                </div>
-            {{ end }}
-        {{ end }}
+        {{ partial "related-posts.html" . }}
 
-        {{ if .Site.Params.enablePostTags }}
-            {{ with .Params.tags }}
-                <div class="post-tags">
-                    {{ range . }}
-                        {{ $tag := . }}
-                        {{ with $.Site.GetPage (printf `/tags/%s` .) }}
-                            {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.postTagsIcon) "icon" "icon tag-icon") }}
-                            <a href="{{ .RelPermalink }}" rel="tag" class="post-tags-link">{{ $icon | safeHTML }}{{ .LinkTitle | default $tag }}</a>
-                        {{ end }}
-                    {{ end }}
-                </div>
-            {{ end }}
-        {{ end }}
+        {{ partial "post-tags.html" . }}
 
-        {{ if and .Site.Params.enableMinimalFooter (in .Site.Params.mainSections .Section) }}
-            <footer class="minimal-footer">
-                {{ with .Params.tags }}
-                    {{ $length := sub (len .) 1 }}
-                    <div class="post-tag">
-                        {{- range $index, $tag := . -}}
-                            {{- with $.Site.GetPage (printf `/tags/%s` $tag) -}}
-                                <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default $tag | lower }}</a>
-                                {{- if lt $index $length -}}
-                                    &nbsp;
-                                {{- end -}}
-                            {{- end -}}
-                        {{- end -}}
-                    </div>
-                {{ end }}
-                {{ if eq .Site.Params.categoryBy "sections" }}
-                    <div class="post-category">
-                        {{ partial "components/tree-sections.html" . }}
-                        {{ $sections := (split (strings.TrimSuffix ", " (.Scratch.Get "sections")) ", ") }}
-                        {{ $pages := (.Scratch.Get "pages") }}
-                        {{ if eq (len $sections) 2 }}
-                            <a href="{{ .CurrentSection.RelPermalink }}" class="post-category-link active">{{ .Section | lower }}</a>
-                            {{- printf `%s` " | " | safeHTML -}}
-                            {{- range $page, $name := $pages -}}
-                                {{- with $.Site.GetPage $page -}}
-                                    {{- if ne $name $.Section -}}
-                                        <a href="{{ .RelPermalink }}" class="post-category-link">{{ $name | lower }}</a>
-                                    {{- end -}}
-                                {{- end -}}
-                            {{- end -}}
-                        {{ else }}
-                            {{ with .File }}
-                                {{ $sections := split (strings.TrimSuffix "/" (.Dir | default $.Section)) "/" }}
-                                {{ with $sections }}
-                                    {{ $.Scratch.Delete "sectionsDirMeta" }}
-                                    {{ $.Scratch.Delete "sectionsMeta" }}
-                                    {{ $.Scratch.Set "index" 0 }}
-                                    {{ range $sections }}
-                                        {{ $section := . }}
-                                        {{ $.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
-                                        {{ with $.Site.GetPage ($.Scratch.Get "sectionsDirMeta") }}
-                                            {{ if (eq .Kind "section") }}
-                                                {{ $.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($.Scratch.Get "index")) .RelPermalink) $section }}
-                                                {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
-                                            {{ end }}
-                                        {{ end }}
-                                    {{ end }}
-                                {{ end }}
-                            {{ end }}
-                            {{ $sections := .Scratch.Get "sectionsMeta" }}
-                            {{ with $sections }}
-                                {{ $length := (sub (len $sections) 1) }}
-                                {{- range $link, $title := $sections -}}
-                                    {{- $index := $link | replaceRE `(\d+)/.+` `$1` | int -}}
-                                    {{- if lt $index $length -}}
-                                        {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
-                                    {{- else -}}
-                                        {{- $.Scratch.Set "delimiter" "" -}}
-                                    {{- end -}}
-                                    {{- $delimiter := ($.Scratch.Get "delimiter") -}}
-                                    {{- printf `<a href="%s" class="post-category-link">%s</a>%s` ($link | replaceRE `\d+/(.+)` `$1`) ($title | lower) $delimiter | safeHTML -}}
-                                {{- end -}}
-                            {{ end }}
-                        {{ end }}
-                    </div>
-                {{ end }}
-                {{ if eq .Site.Params.categoryBy "categories" }}
-                    {{ with .Params.categories }}
-                        <div class="post-category">
-                            {{ if eq (len $.Site.Taxonomies.categories) 2 }}
-                                {{- $categoryNow := (delimit . " ") -}}
-                                {{- with $.Site.GetPage (printf `/categories/%s` $categoryNow) -}}
-                                    <a href="{{ .RelPermalink }}" class="post-category-link active">{{ $categoryNow | lower }}</a>
-                                {{- end -}}
-                                {{- printf `%s` " | " | safeHTML -}}
-                                {{- range $category, $pages := $.Site.Taxonomies.categories -}}
-                                    {{- if ne (string $category) (string $categoryNow) -}}
-                                        {{- with $.Site.GetPage (printf `/categories/%s` $category) -}}
-                                            <a href="{{ .RelPermalink }}" class="post-category-link">{{ $category | lower }}</a>
-                                        {{- end -}}
-                                    {{- end -}}
-                                {{- end -}}
-                            {{ else }}
-                                {{ $length := sub (len .) 1 }}
-                                {{- range $index, $category := . -}}
-                                    {{- if lt $index $length -}}
-                                        {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
-                                    {{- else -}}
-                                        {{- $.Scratch.Set "delimiter" "" -}}
-                                    {{- end -}}
-                                    {{- $delimiter := ($.Scratch.Get "delimiter") -}}
-                                    {{- with $.Site.GetPage (printf `/categories/%s` .) -}}
-                                        {{- printf `<a href="%s" class="post-category-link">%s</a>%s` .RelPermalink (.LinkTitle | default $category) $delimiter | safeHTML -}}
-                                    {{- end -}}
-                                {{- end -}}
-                            {{ end }}
-                        </div>
-                    {{ end }}
-                {{ end }}
-            </footer>
-        {{ end }}
+        {{ partial "minimal-footer.html" . }}
 
-        {{ if and .Site.Params.enableAboutPageMinimalFooter (eq .Section "about") }}
-            <footer class="minimal-footer-about">
-                {{ with .Site.Menus.socials }}
-                    <div class="about-socials">
-                        {{ $length := sub (len .) 1 }}
-                        {{ range $index, $value := . }}
-                            {{- $linkType := (string .Pre) -}}
-                            {{- $iconName := (string .Post) -}}
-                            {{- $icon := (index $.Site.Data.SVG $iconName) -}}
-                            <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
-                            {{- if lt $index $length -}}
-                                &nbsp;
-                            {{- end -}}
-                        {{ end }}
-                    </div>
-                {{ end }}
-                {{ with .Site.Menus.links }}
-                    <div class="about-links">
-                        {{ $length := sub (len .) 1 }}
-                        {{ range $index, $value := . }}
-                            {{- $linkType := (string .Pre) -}}
-                            {{- $iconName := (string .Post) -}}
-                            {{- $icon := (index $.Site.Data.SVG $iconName) -}}
-                            <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
-                            {{- if lt $index $length -}}
-                                &nbsp;
-                            {{- end -}}
-                        {{ end }}
-                    </div>
-                {{ end }}
-            </footer>
-        {{ end }}
+        {{ partial "minimal-footer-about.html" . }}
 
-        {{ if and .Site.Params.enablePostNav (in .Site.Params.mainSections .Section) }}
-            {{ if .Site.Params.postNavInSection }}
-                {{ .Scratch.Set "prev" .PrevInSection }}
-                {{ .Scratch.Set "next" .NextInSection }}
-            {{ else }}
-                {{ .Scratch.Set "prev" .PrevPage }}
-                {{ .Scratch.Set "next" .NextPage }}
-            {{ end }}
-            {{ $prev := .Scratch.Get "prev" }}
-            {{ $next := .Scratch.Get "next" }}
-            {{ if or $prev $next }}
-                <ul class="post-nav">
-                    {{ if $next }}
-                        <li class="post-nav-prev">
-                            <a href="{{ $next.RelPermalink }}" rel="prev">{{ printf `< %s` $next.LinkTitle | safeHTML }}</a>
-                        </li>
-                    {{ end }}
-                    {{ if $prev }}
-                        <li class="post-nav-next">
-                            <a href="{{ $prev.RelPermalink }}" rel="next">{{ printf `%s >` $prev.LinkTitle | safeHTML }}</a>
-                        </li>
-                    {{ end }}
-                </ul>
-            {{ end }}
-        {{ end }}
+        {{ partial "post-nav.html" . }}
 
-        {{ if and (.Params.comments | default .Site.Params.enableComments) (eq hugo.Environment "production") }}
-            {{ if or (in .Site.Params.mainSections .Section) .Params.comments }}
-                {{ if .Site.Params.enableDisqus }}
-                    <div class="load-comments">
-                        <div id="load-comments" onclick="loadComments()">{{ i18n "loadComments" }}</div>
-                    </div>
-                    <div id="disqus_thread"></div>
-                {{ end }}
-            {{ end }}
-        {{ end }}
-        
+        {{ partial "comments.html" . }}
+
     </div>
 </main>

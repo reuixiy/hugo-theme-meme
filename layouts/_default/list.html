@@ -79,10 +79,10 @@
                                     {{ end }}
                                     {{ $month := $.Scratch.Get "month" }}
                                     <h3 class="list-month">{{ $month }}</h3>
-                                    {{ partial "list-item.html" . }}
+                                    {{ partial "components/list-item.html" . }}
                                 {{ end }}
                             {{ else }}
-                                {{ partial "list-item.html" . }}
+                                {{ partial "components/list-item.html" . }}
                             {{ end }}
                         </ul>
                     {{ end }}

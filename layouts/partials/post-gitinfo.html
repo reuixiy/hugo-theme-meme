@@ -1,0 +1,47 @@
+{{ if .GitInfo }}
+    {{ if and .Site.Params.enablePostGitInfo (.Params.gitinfo | default .Site.Params.displayPostGitInfo) }}
+        <div class="post-gitinfo">
+            {{ if or .Site.Params.displayCommitHash .Site.Params.displayCommitMessage }}
+                <div class="post-gitinfo-left">
+                    {{ if .Site.Params.displayCommitHash }}
+                        {{ $icon := (replace (index .Site.Data.SVG .Site.Params.gitIcon) "icon" "icon git-icon") }}
+                        <div class="gitinfo-item commit">
+                            {{- with .Site.Params.repoURL -}}
+                                {{- $commit := (printf `<a href="%s/commit/%s" target="_blank">%s%s</a>` . $.GitInfo.Hash $icon $.GitInfo.AbbreviatedHash) -}}
+                                {{- $.Scratch.Set "commit" $commit -}}
+                            {{- else -}}
+                                {{- $.Scratch.Set "commit" $.GitInfo.AbbreviatedHash -}}
+                            {{- end -}}
+                            {{- $commit := .Scratch.Get "commit" -}}
+                            {{- printf `%s` $commit | safeHTML -}}
+                        </div>
+                    {{ end }}
+                    {{ if .Site.Params.displayCommitMessage }}
+                        {{ with .GitInfo.Subject }}
+                            {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.msgIcon) "icon" "icon msg-icon") }}
+                            <div class="gitinfo-item commit-msg">{{ printf `%s%s` $icon . | safeHTML }}</div>
+                        {{ end }}
+                    {{ end }}
+                </div>
+            {{ end }}
+            {{ if or .Site.Params.displayFeedback .Site.Params.displayEditLink }}
+                <div class="post-gitinfo-right">
+                    {{ if .Site.Params.displayFeedback }}
+                        {{ with .Site.Params.repoURL }}
+                            {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.feedbackIcon) "icon" "icon feedback-icon") }}
+                            <div class="gitinfo-item feedback">{{ printf `<a href="%s/issues" target="_blank">%s%s</a>` . $icon $.Site.Params.feedbackText | safeHTML }}</div>
+                        {{ end }}
+                    {{ end }}
+                    {{ if .Site.Params.displayEditLink }}
+                        {{ with .Site.Params.repoEditURL }}
+                            {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.editIcon) "icon" "icon edit-icon") }}
+                            {{ $contentDir := $.Site.Params.contentDir }}
+                            {{ $content := (cond $.Site.IsMultiLingual (printf `/%s/` $contentDir) (printf `/content/`)) }}
+                            <div class="gitinfo-item edit">{{ printf `<a href="%s%s%s" target="_blank">%s%s</a>` . $content $.Path $icon $.Site.Params.editText | safeHTML }}</div>
+                        {{ end }}
+                    {{ end }}
+                </div>
+            {{ end }}
+        </div>
+    {{ end }}
+{{ end }}

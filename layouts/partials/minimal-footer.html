@@ -1,0 +1,101 @@
+{{ if and .Site.Params.enableMinimalFooter (in .Site.Params.mainSections .Section) }}
+    <footer class="minimal-footer">
+        {{ with .Params.tags }}
+            {{ $length := sub (len .) 1 }}
+            <div class="post-tag">
+                {{- range $index, $tag := . -}}
+                    {{- with $.Site.GetPage (printf `/tags/%s` $tag) -}}
+                        <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default $tag | lower }}</a>
+                        {{- if lt $index $length -}}
+                            &nbsp;
+                        {{- end -}}
+                    {{- end -}}
+                {{- end -}}
+            </div>
+        {{ end }}
+        {{ if eq .Site.Params.categoryBy "sections" }}
+            <div class="post-category">
+                {{ partial "components/tree-sections.html" . }}
+                {{ $sections := (split (strings.TrimSuffix ", " (.Scratch.Get "sections")) ", ") }}
+                {{ $pages := (.Scratch.Get "pages") }}
+                {{ if eq (len $sections) 2 }}
+                    <a href="{{ .CurrentSection.RelPermalink }}" class="post-category-link active">{{ .Section | lower }}</a>
+                    {{- printf `%s` " | " | safeHTML -}}
+                    {{- range $page, $name := $pages -}}
+                        {{- with $.Site.GetPage $page -}}
+                            {{- if ne $name $.Section -}}
+                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ $name | lower }}</a>
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+                {{ else }}
+                    {{ with .File }}
+                        {{ $sections := split (strings.TrimSuffix "/" (.Dir | default $.Section)) "/" }}
+                        {{ with $sections }}
+                            {{ $.Scratch.Delete "sectionsDirMeta" }}
+                            {{ $.Scratch.Delete "sectionsMeta" }}
+                            {{ $.Scratch.Set "index" 0 }}
+                            {{ range $sections }}
+                                {{ $section := . }}
+                                {{ $.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
+                                {{ with $.Site.GetPage ($.Scratch.Get "sectionsDirMeta") }}
+                                    {{ if (eq .Kind "section") }}
+                                        {{ $.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($.Scratch.Get "index")) .RelPermalink) $section }}
+                                        {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
+                                    {{ end }}
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                    {{ $sections := .Scratch.Get "sectionsMeta" }}
+                    {{ with $sections }}
+                        {{ $length := (sub (len $sections) 1) }}
+                        {{- range $link, $title := $sections -}}
+                            {{- $index := $link | replaceRE `(\d+)/.+` `$1` | int -}}
+                            {{- if lt $index $length -}}
+                                {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
+                            {{- else -}}
+                                {{- $.Scratch.Set "delimiter" "" -}}
+                            {{- end -}}
+                            {{- $delimiter := ($.Scratch.Get "delimiter") -}}
+                            {{- printf `<a href="%s" class="post-category-link">%s</a>%s` ($link | replaceRE `\d+/(.+)` `$1`) ($title | lower) $delimiter | safeHTML -}}
+                        {{- end -}}
+                    {{ end }}
+                {{ end }}
+            </div>
+        {{ end }}
+        {{ if eq .Site.Params.categoryBy "categories" }}
+            {{ with .Params.categories }}
+                <div class="post-category">
+                    {{ if eq (len $.Site.Taxonomies.categories) 2 }}
+                        {{- $categoryNow := (delimit . " ") -}}
+                        {{- with $.Site.GetPage (printf `/categories/%s` $categoryNow) -}}
+                            <a href="{{ .RelPermalink }}" class="post-category-link active">{{ $categoryNow | lower }}</a>
+                        {{- end -}}
+                        {{- printf `%s` " | " | safeHTML -}}
+                        {{- range $category, $pages := $.Site.Taxonomies.categories -}}
+                            {{- if ne (string $category) (string $categoryNow) -}}
+                                {{- with $.Site.GetPage (printf `/categories/%s` $category) -}}
+                                    <a href="{{ .RelPermalink }}" class="post-category-link">{{ $category | lower }}</a>
+                                {{- end -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{ else }}
+                        {{ $length := sub (len .) 1 }}
+                        {{- range $index, $category := . -}}
+                            {{- if lt $index $length -}}
+                                {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
+                            {{- else -}}
+                                {{- $.Scratch.Set "delimiter" "" -}}
+                            {{- end -}}
+                            {{- $delimiter := ($.Scratch.Get "delimiter") -}}
+                            {{- with $.Site.GetPage (printf `/categories/%s` .) -}}
+                                {{- printf `<a href="%s" class="post-category-link">%s</a>%s` .RelPermalink (.LinkTitle | default $category) $delimiter | safeHTML -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{ end }}
+                </div>
+            {{ end }}
+        {{ end }}
+    </footer>
+{{ end }}

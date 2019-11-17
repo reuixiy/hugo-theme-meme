@@ -1,0 +1,19 @@
+{{ if and .Site.Params.enablePostCopyright (.Params.displayCopyright | default .Site.Params.displayPostCopyright) }}
+    {{ partial "components/author.html" . }}
+    {{ $author := .Scratch.Get "author" }}
+    {{ with $author.name }}
+        <ul class="post-copyright">
+            <li class="copyright-item author">{{ with $author.website }}{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightAuthor") . $author.name | safeHTML }}{{ else }}{{ printf `%s%s` (i18n "copyrightAuthor") $author.name }}{{ end }}</li>
+            {{ if $.Params.original | default $.Site.Params.original }}
+                <li class="copyright-item link">{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightLink") $.RelPermalink $.Permalink | safeHTML }}</li>
+            {{ else }}
+                {{ with $.Params.link }}
+                    <li class="copyright-item link">{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightLink") . . | safeHTML }}</li>
+                {{ end }}
+            {{ end }}
+            {{ with $author.copyright }}
+                <li class="copyright-item license">{{ printf `%s%s` (i18n "copyrightLicense") (. | markdownify) | safeHTML }}</li>
+            {{ end }}
+        </ul>
+    {{ end }}
+{{ end }}

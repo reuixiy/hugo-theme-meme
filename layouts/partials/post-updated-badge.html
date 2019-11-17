@@ -1,0 +1,16 @@
+{{ if and .Site.Params.enablePostUpdatedBadge (.Params.badge | default .Site.Params.displayUpdatedBadge) }}
+    <div class="updated-badge-container">
+        {{- if .Site.Params.enableBadgeTitle -}}
+            {{- $date := .Lastmod.Format "2006-01-02 15:04:05 MST" -}}
+            {{- $title := (printf ` title="%s%s"` .Site.Params.badgeTitlePrefix $date) -}}
+            {{- .Scratch.Set "title" $title -}}
+        {{- else -}}
+            {{- .Scratch.Set "title" "" -}}
+        {{- end }}
+        {{- $title := .Scratch.Get "title" | safeHTML -}}
+        {{- $date := .Lastmod.Format "2006-01-02" -}}
+        {{- with $title -}}{{- printf `<div%s style="cursor:help;display:inline-block">` $title | safeHTML -}}{{- end -}}
+            {{- partial "components/updated-badge.html" (dict "date" $date) -}}
+        {{- with $title -}}</div>{{- end -}}
+    </div>
+{{ end }}

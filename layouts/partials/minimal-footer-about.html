@@ -1,0 +1,32 @@
+{{ if and .Site.Params.enableAboutPageMinimalFooter (eq .Section "about") }}
+    <footer class="minimal-footer-about">
+        {{ with .Site.Menus.socials }}
+            <div class="about-socials">
+                {{ $length := sub (len .) 1 }}
+                {{ range $index, $value := . }}
+                    {{- $linkType := (string .Pre) -}}
+                    {{- $iconName := (string .Post) -}}
+                    {{- $icon := (index $.Site.Data.SVG $iconName) -}}
+                    <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
+                    {{- if lt $index $length -}}
+                        &nbsp;
+                    {{- end -}}
+                {{ end }}
+            </div>
+        {{ end }}
+        {{ with .Site.Menus.links }}
+            <div class="about-links">
+                {{ $length := sub (len .) 1 }}
+                {{ range $index, $value := . }}
+                    {{- $linkType := (string .Pre) -}}
+                    {{- $iconName := (string .Post) -}}
+                    {{- $icon := (index $.Site.Data.SVG $iconName) -}}
+                    <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
+                    {{- if lt $index $length -}}
+                        &nbsp;
+                    {{- end -}}
+                {{ end }}
+            </div>
+        {{ end }}
+    </footer>
+{{ end }}
