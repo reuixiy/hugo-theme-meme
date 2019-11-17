@@ -73,8 +73,10 @@
                     {{ range $taxonomy, $terms := . }}
                         {{ with $page.Param $taxonomy }}
                             {{ range $index, $term := . }}
-                                {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy ($term | anchorize)) }}
-                                    <category domain="{{ .Permalink }}">{{ $term }}</category>
+                                {{ $url := urls.Parse ($term | urlize) }}
+                                {{ $path := $url.Path }}
+                                {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy $path) }}
+                                    <category domain="{{ .Permalink }}">{{ .Title | default $term }}</category>
                                 {{ end }}
                             {{ end }}
                         {{ end }}

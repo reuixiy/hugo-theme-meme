@@ -4,7 +4,9 @@
             {{ $length := sub (len .) 1 }}
             <div class="post-tag">
                 {{- range $index, $tag := . -}}
-                    {{- with $.Site.GetPage (printf `/tags/%s` $tag) -}}
+                    {{- $url := urls.Parse ($tag | urlize) -}}
+                    {{- $path := $url.Path -}}
+                    {{- with $.Site.GetPage (printf `/tags/%s` $path) -}}
                         <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default $tag | lower }}</a>
                         {{- if lt $index $length -}}
                             &nbsp;
