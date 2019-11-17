@@ -1,0 +1,15 @@
+{{ if and .Site.Params.enableRelatedPosts (.Params.related | default .Site.Params.displayRelatedPosts) }}
+    {{ $related := .Site.RegularPages.Related . | first (.Site.Params.relatedPostsNumber | default 5) }}
+    {{ with $related }}
+        <div class="related-posts">
+            <h2 class="related-title">{{ i18n "relatedPosts" }}{{ replace (index $.Site.Data.SVG $.Site.Params.relatedPostsIcon) "icon" "icon related-icon" | safeHTML }}</h2>
+            <ul class="related-list">
+                {{ range . }}
+                    <li class="related-item">
+                        <a href="{{ .RelPermalink }}" class="related-link">{{ .LinkTitle }}</a>
+                    </li>
+                {{ end }}
+            </ul>
+        </div>
+    {{ end }}
+{{ end }}

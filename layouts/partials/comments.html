@@ -1,0 +1,10 @@
+{{ if and (.Params.comments | default .Site.Params.enableComments) (eq hugo.Environment "production") }}
+    {{ if or (in .Site.Params.mainSections .Section) .Params.comments }}
+        {{ if .Site.Params.enableDisqus }}
+            <div class="load-comments">
+                <div id="load-comments" onclick="loadComments()">{{ i18n "loadComments" }}</div>
+            </div>
+            <div id="disqus_thread"></div>
+        {{ end }}
+    {{ end }}
+{{ end }}

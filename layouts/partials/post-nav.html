@@ -1,0 +1,25 @@
+{{ if and .Site.Params.enablePostNav (in .Site.Params.mainSections .Section) }}
+    {{ if .Site.Params.postNavInSection }}
+        {{ .Scratch.Set "prev" .PrevInSection }}
+        {{ .Scratch.Set "next" .NextInSection }}
+    {{ else }}
+        {{ .Scratch.Set "prev" .PrevPage }}
+        {{ .Scratch.Set "next" .NextPage }}
+    {{ end }}
+    {{ $prev := .Scratch.Get "prev" }}
+    {{ $next := .Scratch.Get "next" }}
+    {{ if or $prev $next }}
+        <ul class="post-nav">
+            {{ if $next }}
+                <li class="post-nav-prev">
+                    <a href="{{ $next.RelPermalink }}" rel="prev">{{ printf `< %s` $next.LinkTitle | safeHTML }}</a>
+                </li>
+            {{ end }}
+            {{ if $prev }}
+                <li class="post-nav-next">
+                    <a href="{{ $prev.RelPermalink }}" rel="next">{{ printf `%s >` $prev.LinkTitle | safeHTML }}</a>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+{{ end }}
