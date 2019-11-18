@@ -2,7 +2,7 @@
     <footer id="footer" class="footer">
         <div class="footer-inner">
             {{ if .Site.Params.displayCopyrightSymbol }}
-                {{ .Scratch.Set "siteInfoCopyright" "©" }}
+                {{ .Scratch.Set "siteInfoCopyright" "©&nbsp;" }}
             {{ else }}
                 {{ .Scratch.Set "siteInfoCopyright" "" }}
             {{ end }}
@@ -15,12 +15,14 @@
             {{ end }}
             {{ $siteInfoCreatedYear := .Scratch.Get "siteInfoCreatedYear" }}
 
-            {{ with .Site.Params.iconBetweenYearAndAuthor | default "heart" }}
-                {{ $.Scratch.Set "siteInfoIcon" (index $.Site.Data.SVG .) }}
+            {{ with .Site.Params.iconBetweenYearAndAuthor }}
+                {{ $.Scratch.Set "siteInfoIcon" (replace (index $.Site.Data.SVG .) "icon" "icon footer-icon") }}
+            {{ else }}
+                {{ $.Scratch.Set "siteInfoIcon" "&nbsp;" }}
             {{ end }}
-            {{ $siteInfoIcon := (replace (.Scratch.Get "siteInfoIcon") "icon" "icon footer-icon") }}
+            {{ $siteInfoIcon := .Scratch.Get "siteInfoIcon" }}
 
-            <div class="site-info">{{ printf `%s %s%s%s` $siteInfoCopyright $siteInfoCreatedYear $siteInfoIcon .Site.Author.name | safeHTML }}</div>
+            <div class="site-info">{{ printf `%s%s%s%s` $siteInfoCopyright $siteInfoCreatedYear $siteInfoIcon .Site.Author.name | safeHTML }}</div>
 
             {{ if .Site.Params.displayPoweredBy }}
                 <div class="powered-by">{{ printf `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [MemE](https://github.com/reuixiy/hugo-theme-meme)` | markdownify | safeHTML }}</div>
