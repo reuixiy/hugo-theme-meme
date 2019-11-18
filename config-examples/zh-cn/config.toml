@@ -733,10 +733,10 @@ uglyURLs = false
     ######################################
     ## 字体
 
-    # 说明：任何一项留空，浏览器都会回退到主体字
-    #      体 `fontFamilyBody`，故没必要全部
-    #      设置。此外，如果你的品牌栏用的 SVG，
-    #      则可留空品牌栏字体。
+    # 说明：任何一项留空（""），浏览器都会回退到
+    #      主体字体 `fontFamilyBody`，故没必
+    #      要全部设置。此外，如果你的品牌栏用的
+    #      SVG，则可留空（""）品牌栏字体。
 
     # 品牌栏
     fontFamilySiteBrand = ""
@@ -765,7 +765,7 @@ uglyURLs = false
     #      采用网络字体。MemE 主题目前仅支持
     #      Google Fonts 的链接，请前往
     #      https://fonts.google.com/ 获取。
-    #      此项留空，则不会采用网络字体。
+    #      此项留空（""），则不会采用网络字体。
 
     ######################################
     ## 字号（单位：px）
@@ -993,7 +993,7 @@ uglyURLs = false
     # 是否显示站点的创建年份
     displaySiteCreatedYear = true
 
-    # 年份与作者之间的图标
+    # 年份与作者之间的图标，留空（""）则无
     iconBetweenYearAndAuthor = "heart"
     # 图标颜色
     iconColor = "#f06292"
@@ -1049,4 +1049,4 @@ uglyURLs = false
     # 视频地址
     fofVideoWebm = ""
     fofVideoMp4 = ""
-    # 说明：视频地址可留空
+    # 说明：视频地址可留空（""）

@@ -1022,6 +1022,8 @@ uglyURLs = false
 
     displaySiteCreatedYear = true
 
+    # Leave it empty("") if you don’t want
+    # the icon
     iconBetweenYearAndAuthor = "heart"
     iconColor = "#f06292"
     # Enable heartbeat animation?
