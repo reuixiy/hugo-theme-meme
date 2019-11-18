@@ -7,7 +7,7 @@
                     {{- $url := urls.Parse ($tag | urlize) -}}
                     {{- $path := $url.Path -}}
                     {{- with $.Site.GetPage (printf `/tags/%s` $path) -}}
-                        <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default $tag | lower }}</a>
+                        <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default .LinkTitle | default $tag | lower | anchorize }}</a>
                         {{- if lt $index $length -}}
                             &nbsp;
                         {{- end -}}
