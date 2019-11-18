@@ -56,13 +56,15 @@
                 <span class="post-meta-item category">
                     {{- $icon -}}
                     {{- range $index, $category := . -}}
+                        {{- $url := urls.Parse ($category | urlize) -}}
+                        {{- $path := $url.Path -}}
                         {{- if lt $index $length -}}
                             {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
                         {{- else -}}
                             {{- $.Scratch.Set "delimiter" "" -}}
                         {{- end -}}
                         {{- $delimiter := ($.Scratch.Get "delimiter") -}}
-                        {{- with $.Site.GetPage (printf `/categories/%s` .) -}}
+                        {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
                             {{- printf `<a href="%s" class="category-link">%s</a>%s` .RelPermalink (.LinkTitle | default $category) $delimiter | safeHTML -}}
                         {{- end -}}
                     {{- end -}}
