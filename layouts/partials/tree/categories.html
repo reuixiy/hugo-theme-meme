@@ -8,7 +8,16 @@
                 {{ .Scratch.Delete "categories" }}
                 {{ range $.Site.RegularPages }}
                     {{ with .Param "categories" }}
-                        {{ $category := (printf `/%s` (replace (delimit . " ") " " "/")) }}
+                        {{ $.Scratch.Delete "category" }}
+                        {{ $length := sub (len .) 1 }}
+                        {{ range $index, $category := . }}
+                            {{ $category := (printf `/%s` ($category | urlize)) }}
+                            {{ $.Scratch.Add "category" $category }}
+                            {{ if lt $index $length }}
+                                {{ $.Scratch.Add "categories" (slice ($.Scratch.Get "category")) }}
+                            {{ end }}
+                        {{ end }}
+                        {{ $category := $.Scratch.Get "category" }}
                         {{ $.Scratch.Add "categories" (slice $category) }}
                     {{ end }}
                 {{ end }}
@@ -18,9 +27,11 @@
                     {{ $depth := (len $categoryTerms) }}
                     {{ $padding := (mul $depth 2) }}
                     {{ $lastTerm := (delimit (last 1 $categoryTerms) " ") }}
-                    {{ with $.Site.GetPage (printf `/categories/%s` $lastTerm) }}
+                    {{ $url := urls.Parse $lastTerm }}
+                    {{ $path := $url.Path }}
+                    {{ with $.Site.GetPage (printf `/categories/%s` $path) }}
                         <p style="padding-left: {{ $padding }}em">
-                            <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default .Data.Term | default $lastTerm }}</a>
+                            <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default .Data.Term | default $path }}</a>
                             {{ if $.Site.Params.displayPostsCount }}
                                 <span class="category-count">{{ printf "(%d)" (len .Data.category) }}</span>
                             {{ end }}
@@ -31,7 +42,12 @@
                         {{ range $.Site.RegularPages }}
                             {{ $page := . }}
                             {{ with .Param "categories" }}
-                                {{ $category := (printf `/%s` (replace (delimit . " ") " " "/")) }}
+                                {{ $.Scratch.Delete "category" }}
+                                {{ range . }}
+                                    {{ $category := (printf `/%s` (. | urlize)) }}
+                                    {{ $.Scratch.Add "category" $category }}
+                                {{ end }}
+                                {{ $category := $.Scratch.Get "category" }}
                                 {{ if eq $context $category }}
                                     <p style="padding-left: {{ add $padding 2 }}em">
                                         <a href="{{ $page.RelPermalink }}" class="category-post">{{ $page.LinkTitle }}</a>

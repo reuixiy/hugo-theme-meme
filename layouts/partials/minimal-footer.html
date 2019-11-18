@@ -70,15 +70,23 @@
             {{ with .Params.categories }}
                 <div class="post-category">
                     {{ if eq (len $.Site.Taxonomies.categories) 2 }}
-                        {{- $categoryNow := (delimit . " ") -}}
-                        {{- with $.Site.GetPage (printf `/categories/%s` $categoryNow) -}}
-                            <a href="{{ .RelPermalink }}" class="post-category-link active">{{ $categoryNow | lower }}</a>
+                        {{- range . -}}
+                            {{- $categoryNow := (. | urlize) -}}
+                            {{- $.Scratch.Set "categoryNow" $categoryNow -}}
+                        {{- end -}}
+                        {{- $categoryNow := $.Scratch.Get "categoryNow" -}}
+                        {{- $url := urls.Parse $categoryNow -}}
+                        {{- $path := $url.Path -}}
+                        {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
+                            <a href="{{ .RelPermalink }}" class="post-category-link active">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                         {{- end -}}
                         {{- printf `%s` " | " | safeHTML -}}
                         {{- range $category, $pages := $.Site.Taxonomies.categories -}}
+                            {{- $category := urls.Parse ($category | urlize) -}}
                             {{- if ne (string $category) (string $categoryNow) -}}
-                                {{- with $.Site.GetPage (printf `/categories/%s` $category) -}}
-                                    <a href="{{ .RelPermalink }}" class="post-category-link">{{ $category | lower }}</a>
+                                {{- $path := $category.Path -}}
+                                {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
+                                    <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                                 {{- end -}}
                             {{- end -}}
                         {{- end -}}
@@ -91,8 +99,10 @@
                                 {{- $.Scratch.Set "delimiter" "" -}}
                             {{- end -}}
                             {{- $delimiter := ($.Scratch.Get "delimiter") -}}
-                            {{- with $.Site.GetPage (printf `/categories/%s` .) -}}
-                                {{- printf `<a href="%s" class="post-category-link">%s</a>%s` .RelPermalink (.LinkTitle | default $category) $delimiter | safeHTML -}}
+                            {{- $url := urls.Parse ($category | urlize) -}}
+                            {{- $path := $url.Path -}}
+                            {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
+                                {{- printf `<a href="%s" class="post-category-link">%s</a>%s` .RelPermalink (.Slug | default .LinkTitle | default $category | lower | anchorize) $delimiter | safeHTML -}}
                             {{- end -}}
                         {{- end -}}
                     {{ end }}
