@@ -9,16 +9,11 @@
                 {{ range $.Site.RegularPages }}
                     {{ with .Param "categories" }}
                         {{ $.Scratch.Delete "category" }}
-                        {{ $length := sub (len .) 1 }}
                         {{ range $index, $category := . }}
                             {{ $category := (printf `/%s` ($category | urlize)) }}
                             {{ $.Scratch.Add "category" $category }}
-                            {{ if lt $index $length }}
-                                {{ $.Scratch.Add "categories" (slice ($.Scratch.Get "category")) }}
-                            {{ end }}
+                            {{ $.Scratch.Add "categories" (slice ($.Scratch.Get "category")) }}
                         {{ end }}
-                        {{ $category := $.Scratch.Get "category" }}
-                        {{ $.Scratch.Add "categories" (slice $category) }}
                     {{ end }}
                 {{ end }}
                 {{ $categories := uniq (.Scratch.Get "categories") | sort }}
