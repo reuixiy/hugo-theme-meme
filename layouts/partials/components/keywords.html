@@ -2,12 +2,18 @@
 {{- $.Scratch.Delete "keywordsDefault" -}}
 {{- range $taxonomy, $terms := .Site.Taxonomies -}}
     {{- range $term, $value := $terms -}}
-        {{- $.Scratch.Add "keywordsDefault" (printf "%s, " $term) -}}
+        {{- $.Scratch.Add "keywordsDefault" (printf "%s, " ($term | anchorize)) -}}
     {{- end -}}
 {{- end -}}
 {{- if (eq $.Site.Params.categoryBy "sections") -}}
     {{- partial "components/tree-sections.html" . -}}
-    {{- $keywordsDefault := (replace (delimit (union (split (strings.TrimSuffix ", " ($.Scratch.Get "keywordsDefault")) ", ") (split (strings.TrimSuffix ", " ($.Scratch.Get "sections")) ", ")) " ") " " ", ") -}}
+    {{ $sections := (split (strings.TrimSuffix ", " ($.Scratch.Get "sections")) ", ") }}
+    {{- $.Scratch.Delete "sections" -}}
+    {{- range $sections -}}
+        {{- $section := . | anchorize -}}
+        {{- $.Scratch.Add "sections" (slice $section) -}}
+    {{- end -}}
+    {{- $keywordsDefault := (replace (delimit (union (split (strings.TrimSuffix ", " ($.Scratch.Get "keywordsDefault")) ", ") ($.Scratch.Get "sections")) " ") " " ", ") -}}
     {{- $.Scratch.Set "keywordsDefault" $keywordsDefault -}}
 {{- end -}}
 <!-- keywordsSite -->
@@ -36,14 +42,14 @@
                     {{- $.Scratch.Add "Dir" (printf `/%s` $section) -}}
                     {{- with $.Site.GetPage ($.Scratch.Get "Dir") -}}
                         {{- if (eq .Kind "section") -}}
-                            {{- $.Scratch.Add "mainSections" (printf "%s, " $section) -}}
+                            {{- $.Scratch.Add "mainSections" (slice ($section | anchorize)) -}}
                         {{- end -}}
                     {{- end -}}
                 {{- end -}}
             {{- end -}}
         {{- end -}}
     {{- end -}}
-    {{- $keywordsPost := (replace (delimit (union (split (strings.TrimSuffix ", " ($.Scratch.Get "keywordsPost")) ", ") (split (strings.TrimSuffix ", " ($.Scratch.Get "mainSections")) ", ")) " ") " " ", ") -}}
+    {{- $keywordsPost := (replace (delimit (union (split (strings.TrimSuffix ", " ($.Scratch.Get "keywordsPost")) ", ") ($.Scratch.Get "mainSections")) " ") " " ", ") -}}
     {{- $.Scratch.Set "keywordsPost" $keywordsPost -}}
 {{- end -}}
 <!-- keywordsFrontMatter -->
