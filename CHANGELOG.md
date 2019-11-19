@@ -1,3 +1,28 @@
+## [3.2.7](https://github.com/reuixiy/hugo-theme-meme/compare/v3.0.0...v3.2.7) (2019-11-19)
+
+
+### Bug Fixes
+
+* chmod 644 instantclick.js ([02f130f](https://github.com/reuixiy/hugo-theme-meme/commit/02f130f))
+* link text of tags in minimal-footer ([5806692](https://github.com/reuixiy/hugo-theme-meme/commit/5806692))
+* missing categories problem ([5c44452](https://github.com/reuixiy/hugo-theme-meme/commit/5c44452))
+* missing tags when its name is complicated ([aa106a7](https://github.com/reuixiy/hugo-theme-meme/commit/aa106a7))
+* whitespace problem in site-info in footer ([f471af6](https://github.com/reuixiy/hugo-theme-meme/commit/f471af6))
+* wrong keywords when its name has whitespaces ([c8d534e](https://github.com/reuixiy/hugo-theme-meme/commit/c8d534e))
+
+
+### Code Refactoring
+
+* use `mainSections` and more ([c6a38e5](https://github.com/reuixiy/hugo-theme-meme/commit/c6a38e5)), closes [gohugoio/hugoThemes#756](https://github.com/gohugoio/hugoThemes/issues/756)
+* modular for better customization ([0f1f9ca](https://github.com/reuixiy/hugo-theme-meme/commit/0f1f9ca))
+
+
+### BREAKING CHANGES
+
+* postSections & feedSections is removed
+
+
+
 # [3.0.0](https://github.com/reuixiy/hugo-theme-meme/compare/v2.3.7...v3.0.0) (2019-11-09)
 
 MemE has a brand new `config.toml` (in config-examples folder) with detailed instructions now! I highly recommend you replace your existing config.toml with it. Although this may take a while to reconfigure the configuration.
