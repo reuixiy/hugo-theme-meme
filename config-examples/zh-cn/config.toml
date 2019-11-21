@@ -11,6 +11,9 @@ copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0
 # 主题选择
 theme = "meme"
 
+# `hugo new` 新建文章自动打开的文本编辑器
+newContentEditor = ""
+
 # i18n
 defaultContentLanguage = "zh-cn"
 defaultContentLanguageInSubdir = false
