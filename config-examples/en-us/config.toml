@@ -11,6 +11,9 @@ copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0
 # Name of theme
 theme = "meme"
 
+# `hugo new` automatically opened text editor
+newContentEditor = ""
+
 # i18n
 defaultContentLanguage = "en-us"
 defaultContentLanguageInSubdir = false
