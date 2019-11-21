@@ -121,4 +121,6 @@
     {{- if and .Site.Params.enableGoogleAnalytics (eq hugo.Environment "production") }}
         {{ partial "third-party/google-analytics.html" . }}
     {{- end }}
+
+    {{ partial "custom/footer.html" . }}
 </head>

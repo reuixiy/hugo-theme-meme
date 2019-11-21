@@ -35,6 +35,8 @@
             {{ with .Site.Params.customFooter }}
                 <div class="custom-footer">{{ . | markdownify | safeHTML }}</div>
             {{ end }}
+
+            {{ partial "custom/footer.html" . }}
         </div>
     </footer>
 {{ end }}
