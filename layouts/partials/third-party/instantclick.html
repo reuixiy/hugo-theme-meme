@@ -30,12 +30,10 @@
 {{ end -}}
 
 {{ if and .Site.Params.enableGoogleAnalytics (eq hugo.Environment "production") -}}
-    {{- $id := .Site.Params.trackingID -}}
-
     {{ if eq .Site.Params.trackingCodeType "gtag" -}}
         <script data-no-instant>
             InstantClick.on('change', function () {
-                gtag('config', '{{ $id }}', {
+                gtag('config', '{{ .Site.Params.trackingID }}', {
                     'page_path': location.pathname + location.search
                 });
             });
