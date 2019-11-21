@@ -33,6 +33,10 @@
 
         </article>
 
+        {{ if and .Site.Params.enableGoogleAdUnits (eq hugo.Environment "production") -}}
+            {{ partial "third-party/google-adsense-unit.html" . }}
+        {{- end }}
+
         {{ partial "post-copyright.html" . }}
 
         {{ partial "post-updated-badge.html" . }}

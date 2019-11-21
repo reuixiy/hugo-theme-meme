@@ -541,6 +541,21 @@ uglyURLs = false
 
 
     ######################################
+    # Google AdSense
+
+    # 说明：仅在生产环境（production）下渲染
+
+    googleAdClient = ""
+
+    ## 自动广告
+    enableGoogleAutoAds = false
+
+    ## 广告单元
+    enableGoogleAdUnits = false
+    googleAdSlot = ""
+
+
+    ######################################
     # 文章设置
 
     # 超链接的颜色变化持续时间（单位：秒）
