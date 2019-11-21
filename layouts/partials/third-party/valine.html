@@ -1,0 +1,23 @@
+<script>
+    function loadComments() {
+        document.querySelector('#load-comments').style = "display:none";
+        new Valine({
+            el: '#vcomments',
+            appId: '{{ .Site.Params.valineAppId }}',
+            appKey: '{{ .Site.Params.valineAppKey }}',
+            placeholder: '{{ .Site.Params.valinePlaceholder }}',
+            notify: {{ .Site.Params.valineNotify }},
+            verify: {{ .Site.Params.valineVerify }},
+            path: '{{ .Site.Params.valinePath }}',
+            avatar: '{{ .Site.Params.valineAvatar }}',
+            meta: {{ .Site.Params.valineMeta }},
+            pageSize: {{ .Site.Params.valinePageSize }},
+            lang: '{{ .Site.Params.valineLang }}',
+            visitor: {{ .Site.Params.valineVisitor }},
+            highlight: {{ .Site.Params.valineHighlight }},
+            avatarForce: {{ .Site.Params.avatarForce }},
+            recordIP: {{ .Site.Params.valineRecordIP }},
+            serverURLs: '{{ .Site.Params.valineServerURLs }}'
+        });
+    }
+</script>
