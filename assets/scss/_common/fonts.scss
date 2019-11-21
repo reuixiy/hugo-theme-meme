@@ -11,7 +11,7 @@
 }
 
 @if variable-exists("fontFamilyTitle") {
-    .list-title, .term-title, .list-year, .list-month, .post-title, .post-subtitle, .related-title, .post-nav {
+    .list-title, .term-title, .list-year, .list-month, .post-title, .post-subtitle, .related-title, .post-nav, thead, dt {
         font-family: $fontFamilyTitle;
     }
 }

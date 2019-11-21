@@ -824,7 +824,7 @@ uglyURLs = false
     fontFamilySiteBrand = ""
     # Menu bar
     fontFamilyMenu = ""
-    # Post title, post subtitle, list title, year and month title of the list, related posts title, previous/next post title
+    # Post title, post subtitle, list title, year and month title of the list, related posts title, previous/next post title, header of table, term/name in a definition list
     fontFamilyTitle = "Comfortaa, sans-serif"
     # Headings, toc title
     fontFamilyHeadings = "Comfortaa, sans-serif"
