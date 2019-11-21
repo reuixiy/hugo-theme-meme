@@ -5,7 +5,11 @@
         <ul class="post-copyright">
             <li class="copyright-item author">{{ with $author.website }}{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightAuthor") . $author.name | safeHTML }}{{ else }}{{ printf `%s%s` (i18n "copyrightAuthor") $author.name }}{{ end }}</li>
             {{ if $.Params.original | default $.Site.Params.original }}
-                <li class="copyright-item link">{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightLink") $.RelPermalink $.Permalink | safeHTML }}</li>
+                {{ $url := urls.Parse $.Permalink }}
+                {{ $decodedPath := $url.Path }}
+                {{ $baseURLWithLangFix := (strings.TrimSuffix "/" (print `/` | absLangURL)) }}
+                {{ $decodedPermalink := (printf `%s%s` $baseURLWithLangFix $decodedPath) }}
+                <li class="copyright-item link">{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightLink") $.RelPermalink $decodedPermalink | safeHTML }}</li>
             {{ else }}
                 {{ with $.Params.link }}
                     <li class="copyright-item link">{{ printf `%s<a href="%s" target="_blank">%s</a>` (i18n "copyrightLink") . . | safeHTML }}</li>
