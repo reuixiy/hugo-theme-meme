@@ -31,58 +31,8 @@
 {{- end -}}
 
 {{- if .Site.Params.enableInstantClick -}}
-    <script data-no-instant>InstantClick.init();</script>
-
-    {{ if .Site.Params.enableDarkMode -}}
-        {{- $themeColor := .Site.Params.themeColor -}}
-        {{- $themeColorDark := .Site.Params.themeColorDark }}
-        <script data-no-instant>
-            InstantClick.on('change', function () {
-                const theme = localStorage.getItem('theme');
-                if (theme === "dark") {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColorDark }}');
-                    document.getElementById("theme-toggle").innerHTML = "🌙";
-
-                    var els = [].slice.apply(document.getElementsByClassName("chroma"));
-                    for (var i = 0; i < els.length; i++) {
-                        els[i].className = els[i].className.replace(/ *\bchroma\b/g, "chroma-dark");
-                    }
-                } else if (theme === "light") {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                    document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColor }}');
-                    document.getElementById("theme-toggle").innerHTML = "🌞";
-
-                    var els = [].slice.apply(document.getElementsByClassName("chroma-dark"));
-                    for (var i = 0; i < els.length; i++) {
-                        els[i].className = els[i].className.replace(/ *\bchroma-dark\b/g, "chroma");
-                    }
-                }
-            });
-        </script>
-    {{ end -}}
-
-    {{ if and .Site.Params.enableGoogleAnalytics (eq hugo.Environment "production") -}}
-        {{- $id := .Site.Params.trackingID -}}
-
-        {{ if eq .Site.Params.trackingCodeType "gtag" -}}
-            <script data-no-instant>
-                InstantClick.on('change', function () {
-                    gtag('config', '{{ $id }}', {
-                        'page_path': location.pathname + location.search
-                    });
-                });
-            </script>
-        {{ end -}}
-
-        {{ if eq .Site.Params.trackingCodeType "analytics" -}}
-            <script data-no-instant>
-                InstantClick.on('change', function () {
-                    ga('send', 'pageview', location.pathname + location.search);
-                });
-            </script>
-        {{ end -}}
-    {{ end -}}
+    {{ partial "third-party/instantclick.html" . }}
+    {{ partial "custom/instantclick.html" . }}
 {{- end -}}
 
 {{ if .Params.katex | default .Site.Params.enableKaTeX }}
