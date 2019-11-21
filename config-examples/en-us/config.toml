@@ -567,6 +567,25 @@ uglyURLs = false
     enableDisqus = false
     disqusShortname = ""
 
+    ## Valine
+    enableValine = false
+    valineAppId = ""
+    valineAppKey = ""
+    valinePlaceholder = "Just go go"
+    valineNotify = false
+    valineVerify = false
+    valinePath = "window.location.pathname"
+    valineAvatar = "mm"
+    valineMeta = ["nick", "mail", "link"]
+    valinePageSize = 10
+    valineLang = "en"
+    valineVisitor = false
+    valineHighlight = true
+    avatarForce = false
+    valineRecordIP = false
+    valineServerURLs = "http[s]://[tab/us].avoscloud.com"
+    # Note: https://valine.js.org/
+
 
     ######################################
     # Google Analytics

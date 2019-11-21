@@ -41,9 +41,15 @@
 
 {{ if and (.Params.comments | default .Site.Params.enableComments) (eq hugo.Environment "production") }}
     {{ if or (in .Site.Params.mainSections .Section) .Params.comments }}
+
         {{ if .Site.Params.enableDisqus }}
             {{ partial "third-party/disqus.html" . }}
         {{ end }}
+
+        {{ if .Site.Params.enableValine }}
+            {{ partial "third-party/valine.html" . }}
+        {{ end }}
+
     {{ end }}
 {{ end }}
 
