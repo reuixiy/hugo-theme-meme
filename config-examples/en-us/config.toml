@@ -589,6 +589,22 @@ uglyURLs = false
 
 
     ######################################
+    # Google AdSense
+
+    # Note: render only in production
+    #       environment
+
+    googleAdClient = ""
+
+    ## Auto Ads
+    enableGoogleAutoAds = false
+
+    ## Ad Units
+    enableGoogleAdUnits = false
+    googleAdSlot = ""
+
+
+    ######################################
     # Post Settings
 
     # The color change duration of the

@@ -122,5 +122,15 @@
         {{ partial "third-party/google-analytics.html" . }}
     {{- end }}
 
+    {{- if or .Site.Params.enableGoogleAutoAds .Site.Params.enableGoogleAdUnits }}
+        {{ if eq hugo.Environment "production" }}
+            {{ partial "third-party/google-adsense.html" . }}
+        {{ end }}
+    {{- end }}
+
+    {{- if and .Site.Params.enableGoogleAutoAds (eq hugo.Environment "production") -}}
+        {{ partial "third-party/google-adsense-auto.html" . }}
+    {{- end }}
+
     {{ partial "custom/head.html" . }}
 </head>
