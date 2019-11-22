@@ -529,7 +529,7 @@ uglyURLs = false
     valinePlaceholder = "Just go go"
     valineNotify = false
     valineVerify = false
-    valinePath = "window.location.pathname"
+    valinePath = ""
     valineAvatar = "mm"
     valineMeta = ["nick", "mail", "link"]
     valinePageSize = 10
@@ -538,7 +538,7 @@ uglyURLs = false
     valineHighlight = true
     avatarForce = false
     valineRecordIP = false
-    valineServerURLs = "http[s]://[tab/us].avoscloud.com"
+    valineServerURLs = ""
     # 说明：https://valine.js.org/
 
 
