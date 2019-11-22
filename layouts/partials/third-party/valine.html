@@ -8,7 +8,7 @@
             placeholder: '{{ .Site.Params.valinePlaceholder }}',
             notify: {{ .Site.Params.valineNotify }},
             verify: {{ .Site.Params.valineVerify }},
-            path: '{{ .Site.Params.valinePath }}',
+            path: {{ .Site.Params.valinePath | default "location.pathname" | safeJS }},
             avatar: '{{ .Site.Params.valineAvatar }}',
             meta: {{ .Site.Params.valineMeta }},
             pageSize: {{ .Site.Params.valinePageSize }},
