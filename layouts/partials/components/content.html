@@ -100,9 +100,9 @@
     {{- .Scratch.Set "Content" $Content -}}
 {{- end -}}
 
-<!-- Image Footnote -->
+<!-- Image & Video Footnote -->
 {{- $Content := .Scratch.Get "Content" -}}
-{{- $regexPatternFootnoteImage := `(<sup)(.+</sup><img)` -}}
+{{- $regexPatternFootnoteImage := `(<sup)(.+</sup><(img|video))` -}}
 {{- $regexReplacementFootnoteImage := `$1 style="float:right"$2` -}}
 {{- $Content := $Content | replaceRE $regexPatternFootnoteImage $regexReplacementFootnoteImage | safeHTML -}}
 {{- .Scratch.Set "Content" $Content -}}
@@ -135,7 +135,7 @@
 {{- $Content := $Content | replaceRE $regexPatternVideo $regexReplacementVideo | safeHTML -}}
 {{- .Scratch.Set "Content" $Content -}}
 
-<!-- Image / Video Caption -->
+<!-- Image & Video Caption -->
 {{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.enableCaption -}}
     {{- $captionPrefix := .Site.Params.captionPrefix -}}
