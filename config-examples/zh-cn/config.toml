@@ -64,6 +64,10 @@ uglyURLs = false
 [frontmatter]
     lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
 
+# v0.60.0
+[markup]
+    defaultMarkdownHandler = "blackfriday"
+
 # Markdown 渲染器
 [blackfriday]
     # 是否开启智能标点符号替换
