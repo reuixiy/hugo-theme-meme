@@ -66,6 +66,10 @@ uglyURLs = false
 [frontmatter]
     lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
 
+# v0.60.0
+[markup]
+    defaultMarkdownHandler = "blackfriday"
+
 # Markdown rendering engine
 [blackfriday]
     # Enable smart punctuation substitutions?
