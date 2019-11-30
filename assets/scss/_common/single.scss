@@ -196,16 +196,12 @@ pre {
     code {
         background-color: unset;
         font-size: inherit;
+        padding: 0;
     }
 }
 .highlight {
     font-size: 0.8em;
     margin: ($fontSize * 2) 0;
-    code {
-        margin: 0;
-        padding: 0;
-        font-size: 1em;
-    }
     pre {
         margin: 0 !important;
         overflow: auto hidden;
