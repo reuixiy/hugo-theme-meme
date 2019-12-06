@@ -1,23 +1,38 @@
 <script>
     function loadComments() {
         document.querySelector('#load-comments').style = "display:none";
-        new Valine({
-            el: '#vcomments',
-            appId: '{{ .Site.Params.valineAppId }}',
-            appKey: '{{ .Site.Params.valineAppKey }}',
-            placeholder: '{{ .Site.Params.valinePlaceholder }}',
-            notify: {{ .Site.Params.valineNotify }},
-            verify: {{ .Site.Params.valineVerify }},
-            path: {{ .Site.Params.valinePath | default "location.pathname" | safeJS }},
-            avatar: '{{ .Site.Params.valineAvatar }}',
-            meta: {{ .Site.Params.valineMeta }},
-            pageSize: {{ .Site.Params.valinePageSize }},
-            lang: '{{ .Site.Params.valineLang }}',
-            visitor: {{ .Site.Params.valineVisitor }},
-            highlight: {{ .Site.Params.valineHighlight }},
-            avatarForce: {{ .Site.Params.avatarForce }},
-            recordIP: {{ .Site.Params.valineRecordIP }},
-            serverURLs: '{{ .Site.Params.valineServerURLs }}'
+        var getScript = (options) => {
+            var script = document.createElement('script');
+            script.defer = true;
+            script.crossOrigin = 'anonymous';
+            script['data-no-instant'] = true;
+            Object.keys(options).forEach((key) => {
+                script[key] = options[key];
+            });
+            document.body.appendChild(script);
+        };
+        getScript({
+            src: 'https://unpkg.com/valine/dist/Valine.min.js',
+            onload: () => {
+                new Valine({
+                    el: '#vcomments',
+                    appId: '{{ .Site.Params.valineAppId }}',
+                    appKey: '{{ .Site.Params.valineAppKey }}',
+                    placeholder: '{{ .Site.Params.valinePlaceholder }}',
+                    notify: {{ .Site.Params.valineNotify }},
+                    verify: {{ .Site.Params.valineVerify }},
+                    path: {{ .Site.Params.valinePath | default "location.pathname" | safeJS }},
+                    avatar: '{{ .Site.Params.valineAvatar }}',
+                    meta: {{ .Site.Params.valineMeta }},
+                    pageSize: {{ .Site.Params.valinePageSize }},
+                    lang: '{{ .Site.Params.valineLang }}',
+                    visitor: {{ .Site.Params.valineVisitor }},
+                    highlight: {{ .Site.Params.valineHighlight }},
+                    avatarForce: {{ .Site.Params.avatarForce }},
+                    recordIP: {{ .Site.Params.valineRecordIP }},
+                    serverURLs: '{{ .Site.Params.valineServerURLs }}'
+                });
+            }
         });
     }
 </script>
