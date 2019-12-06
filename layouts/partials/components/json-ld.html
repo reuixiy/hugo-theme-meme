@@ -144,6 +144,9 @@
         {{ with $Deliver.Site.Params.siteLogo -}}
         "image": {{ . | absURL }},
         {{ end -}}
+        {{ with $author.copyright -}}
+        "license": {{ . | plainify }},
+        {{ end -}}
         "publisher": {
             "@type": "Organization",
             "name": {{ $Deliver.Site.Title }},
