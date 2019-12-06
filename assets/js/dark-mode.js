@@ -13,11 +13,11 @@ if (theme === "dark") {
     goLight();
 } else if (userPrefers === "dark") {
     goDarkMeta();
-    window.localStorage.setItem('theme', 'dark');
+    setDark();
     goDark();
 } else if (userPrefers === "light") {
     goLightMeta();
-    window.localStorage.setItem('theme', 'light');
+    setLight();
     goLight();
 }
 
@@ -25,14 +25,38 @@ function modeSwitcher() {
     const currentMode = document.documentElement.getAttribute('data-theme');
     if (currentMode === "dark") {
         goLightMeta();
-        window.localStorage.setItem('theme', 'light');
+        setLight();
         goLight();
     } else {
         goDarkMeta();
-        window.localStorage.setItem('theme', 'dark');
+        setDark();
         goDark();
     }
 }
+
+// Reactive Dark Mode
+// https://web.dev/prefers-color-scheme/#reacting-on-dark-mode-changes
+// https://twitter.com/ChromeDevTools/status/1197175265643745282
+
+const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+darkModeMediaQuery.addListener((e) => {
+    const darkModeOn = e.matches;
+    if (darkModeOn) {
+        goDarkMeta();
+        setDark();
+        goDark();
+    }
+});
+
+const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+lightModeMediaQuery.addListener((e) => {
+    const lightModeOn = e.matches;
+    if (lightModeOn) {
+        goLightMeta();
+        setLight();
+        goLight();
+    }
+});
 
 // Sync Across Tabs
 // https://codepen.io/tevko/pen/GgWYpg
@@ -57,6 +81,14 @@ function goDarkMeta() {
 function goLightMeta() {
     document.documentElement.setAttribute('data-theme', 'light');
     document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColor }}');
+}
+
+function setDark() {
+    window.localStorage.setItem('theme', 'dark');
+}
+
+function setLight() {
+    window.localStorage.setItem('theme', 'light');
 }
 
 function goDark() {
