@@ -3,66 +3,34 @@
 {{ $themeColor := .Site.Params.themeColor }}
 {{ $themeColorDark := .Site.Params.themeColorDark }}
 
+// `content` is defined in assets/scss/main.scss via CSS media query `prefers-color-scheme`
 const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
 
+// `theme` is defined in layouts/partials/head.html
 if (theme === "dark") {
-    document.getElementById("theme-toggle").innerHTML = "🌙";
-    
-    var els = [].slice.apply(document.getElementsByClassName("chroma"));
-    for (var i = 0; i < els.length; i++) {
-        els[i].className = els[i].className.replace(/ *\bchroma\b/g, "chroma-dark");
-    }
+    goDark();
 } else if (theme === "light") {
-    document.getElementById("theme-toggle").innerHTML = "🌞";
-
-    var els = [].slice.apply(document.getElementsByClassName("chroma-dark"));
-    for (var i = 0; i < els.length; i++) {
-        els[i].className = els[i].className.replace(/ *\bchroma-dark\b/g, "chroma");
-    }
+    goLight();
 } else if (userPrefers === "dark") {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColorDark }}');
+    goDarkMeta();
     window.localStorage.setItem('theme', 'dark');
-    document.getElementById("theme-toggle").innerHTML = "🌙";
-
-    var els = [].slice.apply(document.getElementsByClassName("chroma"));
-    for (var i = 0; i < els.length; i++) {
-        els[i].className = els[i].className.replace(/ *\bchroma\b/g, "chroma-dark");
-    }
+    goDark();
 } else if (userPrefers === "light") {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColor }}');
+    goLightMeta();
     window.localStorage.setItem('theme', 'light');
-    document.getElementById("theme-toggle").innerHTML = "🌞";
-
-    var els = [].slice.apply(document.getElementsByClassName("chroma-dark"));
-    for (var i = 0; i < els.length; i++) {
-        els[i].className = els[i].className.replace(/ *\bchroma-dark\b/g, "chroma");
-    }
+    goLight();
 }
 
 function modeSwitcher() {
     const currentMode = document.documentElement.getAttribute('data-theme');
     if (currentMode === "dark") {
-        document.documentElement.setAttribute('data-theme', 'light');
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColor }}');
+        goLightMeta();
         window.localStorage.setItem('theme', 'light');
-        document.getElementById("theme-toggle").innerHTML = "🌞";
-
-        var els = [].slice.apply(document.getElementsByClassName("chroma-dark"));
-        for (var i = 0; i < els.length; i++) {
-            els[i].className = els[i].className.replace(/ *\bchroma-dark\b/g, "chroma");
-        }
+        goLight();
     } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColorDark }}');
+        goDarkMeta();
         window.localStorage.setItem('theme', 'dark');
-        document.getElementById("theme-toggle").innerHTML = "🌙";
-
-        var els = [].slice.apply(document.getElementsByClassName("chroma"));
-        for (var i = 0; i < els.length; i++) {
-            els[i].className = els[i].className.replace(/ *\bchroma\b/g, "chroma-dark");
-        }
+        goDark();
     }
 }
 
@@ -71,22 +39,40 @@ function modeSwitcher() {
 
 window.addEventListener('storage', function (event) {
     if (event.newValue === "dark") {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColorDark }}');
-        document.getElementById("theme-toggle").innerHTML = "🌙";
-
-        var els = [].slice.apply(document.getElementsByClassName("chroma"));
-        for (var i = 0; i < els.length; i++) {
-            els[i].className = els[i].className.replace(/ *\bchroma\b/g, "chroma-dark");
-        }
+        goDarkMeta();
+        goDark();
     } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColor }}');
-        document.getElementById("theme-toggle").innerHTML = "🌞";
-
-        var els = [].slice.apply(document.getElementsByClassName("chroma-dark"));
-        for (var i = 0; i < els.length; i++) {
-            els[i].className = els[i].className.replace(/ *\bchroma-dark\b/g, "chroma");
-        }
+        goLightMeta();
+        goLight();
     }
 });
+
+// Functions
+
+function goDarkMeta() {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColorDark }}');
+}
+
+function goLightMeta() {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColor }}');
+}
+
+function goDark() {
+    document.getElementById("theme-toggle").innerHTML = "🌙";
+
+    var els = [].slice.apply(document.getElementsByClassName("chroma"));
+    for (var i = 0; i < els.length; i++) {
+        els[i].className = els[i].className.replace(/ *\bchroma\b/g, "chroma-dark");
+    }
+}
+
+function goLight() {
+    document.getElementById("theme-toggle").innerHTML = "🌞";
+
+    var els = [].slice.apply(document.getElementsByClassName("chroma-dark"));
+    for (var i = 0; i < els.length; i++) {
+        els[i].className = els[i].className.replace(/ *\bchroma-dark\b/g, "chroma");
+    }
+}

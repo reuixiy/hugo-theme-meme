@@ -28,9 +28,9 @@
 {{- else -}}
     {{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify -}}
     {{- printf `<script src="%s" data-no-instant></script>` $script.RelPermalink | safeHTML -}}
-{{- end -}}
+{{- end }}
 
-{{- if .Site.Params.enableInstantClick -}}
+{{ if .Site.Params.enableInstantClick }}
     {{ partial "third-party/instantclick.html" . }}
     {{ partial "custom/instantclick.html" . }}
 {{- end -}}
