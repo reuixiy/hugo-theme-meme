@@ -1,5 +1,5 @@
 <head {{ if .Site.Params.openGraph }}prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"{{ end }}>
-    {{- $themeColor := .Site.Params.themeColor -}}
+    {{ $themeColor := .Site.Params.themeColor -}}
     {{- $themeColorDark := .Site.Params.themeColorDark -}}
     {{- with .Site.Params.defaultTheme | default "light" -}}
         {{- if eq . "light" -}}
