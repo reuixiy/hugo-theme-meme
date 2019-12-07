@@ -18,10 +18,16 @@
     {{- end -}}
 {{- end -}}
 
-<!-- Type: poetry -->
+<!-- Type -->
 {{- .Scratch.Delete "type" -}}
-{{- if and (eq .Type "poetry") .IsPage -}}
-    {{- $.Scratch.Set "type" "poetry" -}}
+{{- with .Type -}}
+    {{- $.Scratch.Set "type" . -}}
+{{- end -}}
+
+<!-- Layout -->
+{{- .Scratch.Delete "layout" -}}
+{{- with .Params.layout -}}
+    {{- $.Scratch.Set "layout" . -}}
 {{- end -}}
 
 <!-- Paragraph Indent -->
