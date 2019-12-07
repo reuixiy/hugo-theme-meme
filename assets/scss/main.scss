@@ -115,7 +115,9 @@
 
 @import "_common/fonts.scss";
 
-@import "_common/fonts-src.scss";
+{{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
+    @import "_common/fonts-src.scss";
+{{ end }}
 
 {{ if .Site.Params.enableHeader }}
     @import "_common/header.scss";
