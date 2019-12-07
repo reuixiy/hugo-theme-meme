@@ -1,3 +1,4 @@
+{{- .Scratch.Delete "author" -}}
 {{- if .Params.original | default .Site.Params.original -}}
     {{- with .Site.Author.name -}}
         {{- $.Scratch.SetInMap "author" "name" . -}}

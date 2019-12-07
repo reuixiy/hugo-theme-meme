@@ -1,9 +1,11 @@
 <!-- Small Caps -->
+{{- .Scratch.Delete "smallCaps" -}}
 {{- if .Params.smallCaps | default .Site.Params.enableSmallCaps -}}
     {{- .Scratch.Set "smallCaps" true -}}
 {{- end -}}
 
 <!-- Align -->
+{{- .Scratch.Delete "align" -}}
 {{- with .Params.align | default "default" -}}
     {{- if eq . "justify" -}}
         {{- $.Scratch.Set "align" "justify" -}}
@@ -17,11 +19,13 @@
 {{- end -}}
 
 <!-- Type: poetry -->
+{{- .Scratch.Delete "type" -}}
 {{- if and (eq .Type "poetry") .IsPage -}}
     {{- $.Scratch.Set "type" "poetry" -}}
 {{- end -}}
 
 <!-- Paragraph Indent -->
+{{- .Scratch.Delete "indent" -}}
 {{- if ne .Type "poetry" -}}
     {{- if (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) -}}
         {{- .Scratch.Set "indent" true -}}

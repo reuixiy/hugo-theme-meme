@@ -14,16 +14,17 @@
                         {{ end }}
                     {{ end }}
 
+                    {{ .Scratch.Delete "pages" }}
+
                     <!-- Section -->
                     {{ if (eq .Kind "section") }}
                         <!-- Archives -->
                         {{ if (eq .Section "archives") }}
                             {{ $pages := (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
-                            {{ $.Scratch.Set "pages" $pages }}
+                            {{ .Scratch.Set "pages" $pages }}
                         <!-- Regular Section -->
                         {{ else }}
                             {{ $sectionPage := .CurrentSection }}
-                            {{ .Scratch.Delete "pages" }}
                             {{ range .Site.RegularPages }}
                                 {{ if (.IsDescendant $sectionPage) }}
                                     {{ $.Scratch.Add "pages" (slice .) }}
@@ -46,11 +47,13 @@
                     {{ $pages := .Scratch.Get "pages" }}
                     {{ range $pages.GroupByDate "2006" }}
                         <ul class="list-part">
+                            {{ $.Scratch.Delete "zodiacName" }}
                             {{ if $.Site.Params.chineseZodiac }}
                                 {{ $zodiacName := (index $.Site.Data.ChineseZodiac (string (mod .Key 12))) }}
                                 {{ $.Scratch.Set "zodiacName" $zodiacName }}
                             {{ end }}
                             {{ $zodiacName := $.Scratch.Get "zodiacName" }}
+                            {{ $.Scratch.Delete "year" }}
                             {{ if $.Site.Params.i18nYear }}
                                 {{ $key := .Key }}
                                 {{ $.Scratch.Delete "num" }}
@@ -71,6 +74,7 @@
                             <h2 class="list-year">{{ $year }}{{ if $.Site.Params.chineseZodiac }}{{ replace (index $.Site.Data.SVG $zodiacName) "icon" "icon chinese-zodiac" | safeHTML }}{{ end }}</h2>
                             {{ if $.Site.Params.groupByMonth }}
                                 {{ range .Pages.GroupByDate "January" }}
+                                    {{ $.Scratch.Delete "month" }}
                                     {{ if $.Site.Params.i18nMonth }}
                                         {{ $month := i18n (lower .Key) }}
                                         {{ $.Scratch.Set "month" $month }}

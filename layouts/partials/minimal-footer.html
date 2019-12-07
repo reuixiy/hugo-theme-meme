@@ -70,6 +70,7 @@
             {{ with .Params.categories }}
                 <div class="post-category">
                     {{ if eq (len $.Site.Taxonomies.categories) 2 }}
+                        {{- $.Scratch.Delete "categoryNow" -}}
                         {{- range . -}}
                             {{- $categoryNow := (. | urlize) -}}
                             {{- $.Scratch.Set "categoryNow" $categoryNow -}}
