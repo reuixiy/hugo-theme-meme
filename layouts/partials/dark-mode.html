@@ -6,6 +6,10 @@
             {{ $.Scratch.Set "text" "🌙" }}
         {{ end }}
         {{ $text := $.Scratch.Get "text" }}
-        <div id="theme-toggle" onclick="modeSwitcher()">{{ $text }}</div>
+        {{- if or (and $.IsHome $.Site.Params.hideThemeToggleInHome) (and (not $.IsHome) $.Site.Params.hideThemeToggle) -}}
+            {{- $.Scratch.Set "hide" true -}}
+        {{- end -}}
+        {{- $hide := $.Scratch.Get "hide" -}}
+        <div id="theme-toggle" onclick="modeSwitcher()"{{ if $hide }} data-hide="true"{{ end }}>{{ $text }}</div>
     {{ end }}
 {{ end }}
