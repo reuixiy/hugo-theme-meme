@@ -5,9 +5,10 @@
         {{- $smallCaps := .Scratch.Get "smallCaps" -}}
         {{- $align := .Scratch.Get "align" -}}
         {{- $type := .Scratch.Get "type" -}}
+        {{- $layout := .Scratch.Get "layout" -}}
         {{- $indent := .Scratch.Get "indent" -}}
 
-        <article class="content post"{{ if $smallCaps }} data-small-caps="true"{{ end }}{{ with $align }} data-align="{{ . }}"{{ end }}{{ with $type }} data-type="{{ . }}"{{ end }}{{ if $indent }} data-indent="true"{{ end }}>
+        <article class="content post"{{ if $smallCaps }} data-small-caps="true"{{ end }}{{ with $align }} data-align="{{ . }}"{{ end }}{{ with $type }} data-type="{{ . }}"{{ end }}{{ with $layout }} data-layout="{{ . }}"{{ end }}{{ if $indent }} data-indent="true"{{ end }}>
 
             <h1 class="post-title">{{ .Title }}</h1>
 
