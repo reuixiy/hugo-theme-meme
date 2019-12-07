@@ -22,8 +22,8 @@
     {{- $.Scratch.Add "keywordsSite" (printf "%s, " .) -}}
 {{- end -}}
 <!-- keywordsPost -->
+{{- $.Scratch.Delete "keywordsPost" -}}
 {{- if .IsPage -}}
-    {{- $.Scratch.Delete "keywordsPost" -}}
     {{- range $taxonomy, $terms := .Site.Taxonomies -}}
         {{- with $.Param $taxonomy -}}
             {{- range $index, $term := . -}}

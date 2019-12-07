@@ -6,6 +6,7 @@
             {{ $.Scratch.Set "text" "🌙" }}
         {{ end }}
         {{ $text := $.Scratch.Get "text" }}
+        {{- $.Scratch.Delete "hide" -}}
         {{- if or (and $.IsHome $.Site.Params.hideThemeToggleInHome) (and (not $.IsHome) $.Site.Params.hideThemeToggle) -}}
             {{- $.Scratch.Set "hide" true -}}
         {{- end -}}

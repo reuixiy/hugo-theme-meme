@@ -6,6 +6,7 @@
     {{- with $imgs -}}
         {{- $.Scratch.Delete "imgsURL" -}}
         {{- range . -}}
+            {{- $.Scratch.Delete "replacement" -}}
             {{- if and $.Site.Params.enableImageHost $.Site.Params.headAlso -}}
                 {{- if (eq hugo.Environment "production") -}}
                     {{- $url := replaceRE `<img src="/?([^"]+)` `$1` . -}}

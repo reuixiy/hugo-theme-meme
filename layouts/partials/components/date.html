@@ -1,3 +1,4 @@
+{{- $.Scratch.Delete "pubDate" -}}
 {{- if .PublishDate.IsZero -}}
     {{- $pubDate := dateFormat "2006-01-02T15:04:05-07:00" (time .Site.Params.siteCreatedTime) -}}
     {{- $.Scratch.Set "pubDate" $pubDate -}}
@@ -5,6 +6,7 @@
     {{- $pubDate := .PublishDate.Format "2006-01-02T15:04:05-07:00" -}}
     {{- $.Scratch.Set "pubDate" $pubDate -}}
 {{- end -}}
+{{- $.Scratch.Delete "modDate" -}}
 {{- if .Lastmod.IsZero -}}
     {{- $modDate := dateFormat "2006-01-02T15:04:05-07:00" (time .Site.Params.siteCreatedTime) -}}
     {{- $.Scratch.Set "modDate" $modDate -}}
