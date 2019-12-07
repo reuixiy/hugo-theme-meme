@@ -100,7 +100,7 @@
         position: relative;
         z-index: 4;
     }
-    html[data-theme='dark'] .post img {
+    [data-theme="dark"] .post img {
         filter: brightness(50%);
     }
 {{ end }}
@@ -110,6 +110,8 @@
 {{ end }}
 
 @import "_common/base.scss";
+
+@import "_common/data-attributes.scss";
 
 @import "_common/fonts.scss";
 

@@ -13,14 +13,8 @@
 {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
 
 {{- if .Site.Params.displayTOCTitle -}}
-    {{- .Scratch.Set "regexReplacementTOCTitle" (printf `$1<h2 id="contents" class="contents-title">%s</h2>$2` (i18n "tocTitle")) -}}
-    {{- if ne .Type "poetry" -}}
-        {{- if (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) -}}
-            {{- .Scratch.Set "regexReplacementTOCTitle" (printf `$1<h2 id="contents" class="contents-title-indent">%s</h2>$2` (i18n "tocTitle")) -}}
-        {{- end -}}
-    {{- end -}}
     {{- $regexPatternTOC := `(<nav class="contents">\n)(<ol class="toc">)` -}}
-    {{- $regexReplacementTOC := .Scratch.Get "regexReplacementTOCTitle" -}}
+    {{- $regexReplacementTOC := (printf `$1<h2 id="contents" class="contents-title">%s</h2>$2` (i18n "tocTitle")) -}}
     {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
     {{- .Scratch.Set "toc" $toc -}}
 {{- end -}}

@@ -1,5 +1,18 @@
 {{ if and .Site.IsMultiLingual .Site.Params.enableLangToggle }}
-    <div class="lang-toggle" onmouseover="langSwitcherOver()" onmouseout="langSwitcherOut()">{{ i18n "flag" }}
+    {{- if .IsHome -}}
+        {{- if .Site.Params.hideLangToggleInHome -}}
+            {{- .Scratch.Set "hide" true -}}
+        {{- end -}}
+    {{- else -}}
+        {{- if .Site.Params.autoHideLangToggle -}}
+            {{- if not .IsTranslated -}}
+                {{- .Scratch.Set "hide" true -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+    {{- $hide := .Scratch.Get "hide" -}}
+    <div class="lang-toggle" onmouseover="langSwitcherOver()" onmouseout="langSwitcherOut()"{{ if $hide }} data-hide="true"{{ end }}>
+        {{ i18n "flag" }}
         {{ if .IsTranslated }}
             <ul id="langs">
                 {{ range .Translations }}

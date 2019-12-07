@@ -1,6 +1,13 @@
 <main class="main single" id="main">
     <div class="main-inner">
-        <article class="content post">
+
+        {{ partial "components/data-attributes.html" . }}
+        {{- $smallCaps := .Scratch.Get "smallCaps" -}}
+        {{- $align := .Scratch.Get "align" -}}
+        {{- $type := .Scratch.Get "type" -}}
+        {{- $indent := .Scratch.Get "indent" -}}
+
+        <article class="content post"{{ if $smallCaps }} data-small-caps="true"{{ end }}{{ with $align }} data-align="{{ . }}"{{ end }}{{ with $type }} data-type="{{ . }}"{{ end }}{{ if $indent }} data-indent="true"{{ end }}>
 
             <h1 class="post-title">{{ .Title }}</h1>
 
@@ -27,7 +34,7 @@
 
             {{- partial "components/content.html" . -}}
             {{- $Content := .Scratch.Get "Content" -}}
-            <div class="post-body{{ if ne .Type "poetry" }}{{ if (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) }} indent{{ end }}{{ end }}">
+            <div class="post-body">
                 {{- $Content -}}
             </div>
 
