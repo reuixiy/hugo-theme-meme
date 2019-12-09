@@ -1108,6 +1108,19 @@ uglyURLs = false
 
 
     ######################################
+    # Force HTTPS Redirection
+
+    # Note: render only in production
+    #       environment
+
+    enableForceHTTPS = false
+    # Note: use JavaScript for redirection.
+    #       You can enable this if your
+    #       server does not support forced
+    #       HTTPS.
+
+
+    ######################################
     # 404 Page
 
     fofPoster = ""

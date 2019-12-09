@@ -1,4 +1,6 @@
 <head {{ if .Site.Params.openGraph }}prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"{{ end }}>
+    <meta charset="UTF-8" />
+
     {{ $themeColor := .Site.Params.themeColor -}}
     {{- $themeColorDark := .Site.Params.themeColorDark -}}
     {{- with .Site.Params.defaultTheme | default "light" -}}
@@ -23,7 +25,17 @@
         </script>
     {{- end }}
 
-    <meta charset="UTF-8" />
+    <!-- Force HTTPS Redirection -->
+    {{- if and .Site.Params.enableForceHTTPS (eq hugo.Environment "production") }}
+        {{ $url := urls.Parse .Site.BaseURL }}
+        {{ $host := $url.Host }}
+        <script>
+            if (window.location.host == "{{ $host | safeJS }}" && window.location.protocol != "https:") {
+                window.location.protocol = "https";
+            }
+        </script>
+    {{- end }}
+
     <!-- Responsive Web Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
     <!-- Old Old IE -->
