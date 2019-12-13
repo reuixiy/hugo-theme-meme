@@ -322,7 +322,9 @@ uglyURLs = false
     # 注意：如果你设置为 `sections`，请务必将
     #      此配置文件中的类别（taxonomies）中
     #      的 `categories` 删除，不然分类页
-    #      面会失效。
+    #      面会失效。同时，你还需要自己新建一个
+    #      `content/categories/_index.md`
+    #      文件。
 
 
     ######################################

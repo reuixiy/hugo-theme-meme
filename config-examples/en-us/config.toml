@@ -347,7 +347,10 @@ uglyURLs = false
     #            in `taxonomies` at the top
     #            of this file. Otherwise,
     #            the categories page will
-    #            be invalid.
+    #            be invalid. Also, you need
+    #            to create a new
+    #            `content/categories/_index.md`
+    #            file by yourself.
 
 
     ######################################
