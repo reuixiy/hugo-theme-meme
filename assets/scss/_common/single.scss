@@ -224,7 +224,7 @@ span.lnt {
     padding: 0 !important;
 }
 
-.katex-display {
+.katex-display, mjx-container[jax="CHTML"][display="true"] {
     overflow: auto hidden;
     text-indent: 0;
 }
