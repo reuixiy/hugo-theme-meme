@@ -94,6 +94,7 @@ badge | display updated-badge | boolean, override `displayUpdatedBadge` in `conf
 gitinfo | display post-gitinfo | boolean, override `displayPostGitInfo` in `config.toml`, theme only
 related | display related-posts | boolean, override `displayRelatedPosts` in `config.toml`, theme only
 katex | add KaTeX support | boolean, override `enableKaTeX` in `config.toml`, theme only
+mathjax | add MathJax support | boolean, override `enableMathJax` in `config.toml`, theme only
 comments | set `false` to disable comments in mainSections or set `true` to enable comments in non-mainSections | boolean, theme only
 smallCaps | small caps? | boolean, override `enableSmallCaps` in `config.toml`, theme only
 dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, theme only
