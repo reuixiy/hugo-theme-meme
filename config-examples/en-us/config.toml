@@ -563,6 +563,15 @@ uglyURLs = false
 
 
     ######################################
+    # MathJax (chemical equation supported)
+
+    enableMathJax = false
+    # Note: *global settings*
+    #       `mathjax` in post’s Front Matter
+    #       has a higher priority than here
+
+
+    ######################################
     # Comments
 
     # Note: render only in production
