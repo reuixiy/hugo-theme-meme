@@ -1013,6 +1013,10 @@ uglyURLs = false
 
     # 是否开启
     enableMinimalFooter = false
+    enableVerticalBarStructure = false
+    # 说明：如果开启此项，显示在右边的部类或分区
+    #      将会包含全部的第一级部类或分区，并且
+    #      以竖线（|）分隔开来。
 
     # 是否开启关于页面的极简页脚
     enableAboutPageMinimalFooter = false

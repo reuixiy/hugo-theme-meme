@@ -17,16 +17,20 @@
         {{ end }}
         {{ if eq .Site.Params.categoryBy "sections" }}
             <div class="post-category">
-                {{ partial "components/tree-sections.html" . }}
-                {{ $sections := (split (strings.TrimSuffix ", " (.Scratch.Get "sections")) ", ") }}
-                {{ $pages := (.Scratch.Get "pages") }}
-                {{ if eq (len $sections) 2 }}
-                    <a href="{{ .CurrentSection.RelPermalink }}" class="post-category-link active">{{ .Section | lower }}</a>
-                    {{- printf `%s` " | " | safeHTML -}}
-                    {{- range $page, $name := $pages -}}
-                        {{- with $.Site.GetPage $page -}}
-                            {{- if ne $name $.Section -}}
-                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ $name | lower }}</a>
+                {{ if .Site.Params.enableVerticalBarStructure }}
+                    {{- with .Site.GetPage .Section -}}
+                        <a href="{{ .RelPermalink }}" class="post-category-link active">{{ .Slug | default .Params.url | default .LinkTitle | default $.Section | lower | anchorize }}</a>
+                    {{- end -}}
+                    {{- if gt (len .Site.Params.mainSections) 1 -}}
+                        {{- printf `%s` " | " | safeHTML -}}
+                        {{- $sections := (.Site.Params.mainSections | symdiff (slice .Section)) -}}
+                        {{- $length := sub (len $sections) 1 -}}
+                        {{- range $index, $section := $sections -}}
+                            {{- with $.Site.GetPage $section -}}
+                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .Params.url | default .LinkTitle | default $section | lower | anchorize }}</a>
+                                {{- if lt $index $length -}}
+                                    {{- printf `%s` " | " | safeHTML -}}
+                                {{- end -}}
                             {{- end -}}
                         {{- end -}}
                     {{- end -}}
@@ -42,7 +46,7 @@
                                 {{ $.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
                                 {{ with $.Site.GetPage ($.Scratch.Get "sectionsDirMeta") }}
                                     {{ if (eq .Kind "section") }}
-                                        {{ $.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($.Scratch.Get "index")) .RelPermalink) $section }}
+                                        {{ $.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($.Scratch.Get "index")) .RelPermalink) (.Slug | default .Params.url | default .LinkTitle | default $section | lower | anchorize) }}
                                         {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
                                     {{ end }}
                                 {{ end }}
@@ -69,25 +73,33 @@
         {{ if eq .Site.Params.categoryBy "categories" }}
             {{ with .Params.categories }}
                 <div class="post-category">
-                    {{ if eq (len $.Site.Taxonomies.categories) 2 }}
-                        {{- $.Scratch.Delete "categoryNow" -}}
-                        {{- range . -}}
-                            {{- $categoryNow := (. | urlize) -}}
-                            {{- $.Scratch.Set "categoryNow" $categoryNow -}}
-                        {{- end -}}
-                        {{- $categoryNow := $.Scratch.Get "categoryNow" -}}
-                        {{- $url := urls.Parse $categoryNow -}}
+                    {{ if $.Site.Params.enableVerticalBarStructure }}
+                        {{- $currentTopLevelCategory := (delimit (first 1 .) "") -}}
+                        {{- $url := urls.Parse ($currentTopLevelCategory | urlize) -}}
                         {{- $path := $url.Path -}}
                         {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
                             <a href="{{ .RelPermalink }}" class="post-category-link active">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                         {{- end -}}
-                        {{- printf `%s` " | " | safeHTML -}}
-                        {{- range $category, $pages := $.Site.Taxonomies.categories -}}
-                            {{- $category := urls.Parse ($category | urlize) -}}
-                            {{- if ne (string $category) (string $categoryNow) -}}
+                        {{- $.Scratch.Delete "topLevelCategories" -}}
+                        {{- range $.Site.RegularPages -}}
+                            {{- with .Param "categories" -}}
+                                {{- $topLevelCategory := (delimit (first 1 .) "" | urlize) -}}
+                                {{- $.Scratch.Add "topLevelCategories" (slice $topLevelCategory) -}}
+                            {{- end -}}
+                        {{- end -}}
+                        {{- $categories := uniq ($.Scratch.Get "topLevelCategories") -}}
+                        {{- if gt (len $categories) 1 -}}
+                            {{- printf `%s` " | " | safeHTML -}}
+                            {{- $categories := ($categories | symdiff (slice ($currentTopLevelCategory | urlize))) -}}
+                            {{- $length := sub (len $categories) 1 -}}
+                            {{- range $index, $category := $categories -}}
+                                {{- $category := urls.Parse $category -}}
                                 {{- $path := $category.Path -}}
                                 {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
                                     <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
+                                    {{- if lt $index $length -}}
+                                        {{- printf `%s` " | " | safeHTML -}}
+                                    {{- end -}}
                                 {{- end -}}
                             {{- end -}}
                         {{- end -}}

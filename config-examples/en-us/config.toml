@@ -1050,6 +1050,13 @@ uglyURLs = false
     # Minimal Footer
 
     enableMinimalFooter = false
+    enableVerticalBarStructure = false
+    # Note: If you enable this, the
+    #       categories or sections that
+    #       displayed on the right will
+    #       include all top-level
+    #       categories or sections and are
+    #       separated by vertical bar(|).
 
     enableAboutPageMinimalFooter = false
 
