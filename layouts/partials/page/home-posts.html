@@ -1,0 +1,39 @@
+<main class="main single" id="main">
+    <div class="main-inner">
+        {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
+        {{ range $paginator.Pages }}
+            <article class="content post home">
+                <h2 class="post-title">
+                    <a href="{{ .RelPermalink }}" class="summary-title-link">{{ .LinkTitle }}</a>
+                </h2>
+                {{ if $.Site.Params.enablePostMetaInHome }}
+                    {{ partial "post-meta.html" . }}
+                {{ end }}
+                <summary class="summary">
+                    {{ partial "components/summary.html" . }}
+                    {{ $summary := (.Scratch.Get "summary") | replaceRE `(</p>)……` `$1` }}
+                    {{ $summary | safeHTML }}
+                </summary>
+                {{ if .Truncated }}
+                    <div class="read-more-container">
+                        <a href="{{ .RelPermalink }}" class="read-more-link">{{ i18n "readMore" }} »</a>
+                    </div>
+                {{ end }}
+            </article>
+        {{ end }}
+        {{ if or $paginator.HasPrev $paginator.HasNext }}
+            <ul class="pagination">
+                {{ if $paginator.HasPrev }}
+                    <li class="pagination-prev">
+                        <a href="{{ $paginator.Prev.URL }}" rel="prev">{{ printf `< %s` (i18n "prevPage") | safeHTML }}</a>
+                    </li>
+                {{ end }}
+                {{ if $paginator.HasNext }}
+                    <li class="pagination-next">
+                        <a href="{{ $paginator.Next.URL }}" rel="next">{{ printf `%s >` (i18n "nextPage") | safeHTML }}</a>
+                    </li>
+                {{ end }}
+            </ul>
+        {{ end }}
+    </div>
+</main>
