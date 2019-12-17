@@ -80,15 +80,14 @@ a {
 }
 
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 4px;
+    width: 0.4em;
+    height: 0.2em;
 }
 ::-webkit-scrollbar-track {
     background-color: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
     background-color: var(--color-contrast-low);
-    border-radius: 1em;
     &:hover {
         background-color: alpha(var(--color-primary), 0.5);
     }
