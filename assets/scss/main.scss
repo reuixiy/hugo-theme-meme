@@ -230,9 +230,6 @@
 
 @import "_common/list.scss";
 {{ if eq .Site.Params.listDatePosition "right" }}
-    .list-item-title {
-        flex: 1;
-    }
     .list-item-time {
         margin-left: 1em;
     }
@@ -240,9 +237,6 @@
 {{ if eq .Site.Params.listDatePosition "left" }}
     .list-item {
         flex-direction: row-reverse;
-    }
-    .list-item-time {
-        flex: 1;
     }
     .list-item-title {
         text-align: right;

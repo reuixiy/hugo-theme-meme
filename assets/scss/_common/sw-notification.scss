@@ -13,10 +13,9 @@
 }
 .app-refresh-wrap {
     display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     color: #fff;
-}
-.app-refresh-wrap label {
-    flex: 1;
 }
 .app-refresh-show {
     height: 3em;

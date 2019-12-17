@@ -2,23 +2,22 @@
     font-size: 80%;
     margin-top: ($fontSize * 5);
     display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     line-height: 2;
 }
 
-.post-tag {
-    flex: 1;
-    margin-right: 2em;
-    width: 50%;
+.post-tag, .post-category {
+    max-width: 42%;
 }
 
 .post-category {
-    max-width: 50%;
     .active {
         color: var(--color-contrast-high);
     }
 }
 
-.post-tag-link {
+.post-tag-link, .post-category-link {
     display: inline-block;
 }
 

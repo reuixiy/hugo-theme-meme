@@ -2,6 +2,8 @@
     font-size: 80%;
     margin-top: ($fontSize * 5);
     display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     line-height: 2;
     a {
         display: inline-block;
@@ -12,8 +14,6 @@
     }
 }
 
-.about-socials {
-    flex: 1;
-    margin-right: 2em;
-    width: 42%;
+.about-socials, .about-links {
+    max-width: 42%;
 }
