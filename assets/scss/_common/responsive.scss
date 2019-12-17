@@ -14,7 +14,7 @@
     @return $number;
 }
 
-$maxWidth: $fontSize * (strip-unit($smallerWidth) + 5);
+@import "_variables/max-width.scss";
 
 @media (max-width: $maxWidth) {
     .main-inner {
