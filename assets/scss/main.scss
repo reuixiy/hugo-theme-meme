@@ -4,6 +4,12 @@
 {{ with .Site.Params.lineHeight | default 2 }}
     $lineHeight: {{ . }};
 {{ end }}
+{{ with .Site.Params.postWidth | default 42 }}
+    $postWidth: {{ . }}em;
+{{ end }}
+{{ with .Site.Params.listWidth | default 42 }}
+    $listWidth: {{ . }}em;
+{{ end }}
 
 {{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
     {{ .Scratch.Set "glyph" "'glyph-correction', " }}
@@ -156,32 +162,6 @@
 {{ end }}
 
 @import "_common/single.scss";
-{{ with .Site.Params.postWidth }}
-    .single .main-inner {
-        width: {{ . }}em;
-    }
-    @media (max-width: {{ mul (add . 5) $.Site.Params.fontSize }}px) {
-        .single .main-inner {
-            width: auto;
-        }
-        .anchor-link {
-            position: relative;
-            transform: none;
-            float: right;
-        }
-        .menu {
-            display: flex;
-        }
-        .menu-item {
-            flex: 1;
-            margin: 0;
-        }
-        .menu-item-name {
-            display: block !important;
-        }
-    }
-    $postWidth: {{ . }};
-{{ end }}
 {{ if .Site.Params.enableAnchorAutoHide }}
     :root {
         --anchor-opacity: 0;
@@ -249,32 +229,6 @@
 {{ end }}
 
 @import "_common/list.scss";
-{{ with .Site.Params.listWidth }}
-    .list .main-inner {
-        width: {{ . }}em;
-    }
-    @media (max-width: {{ mul (add . 5) $.Site.Params.fontSize }}px) {
-        .list .main-inner {
-            width: auto;
-        }
-        .anchor-link {
-            position: relative;
-            transform: none;
-            float: right;
-        }
-        .menu {
-            display: flex;
-        }
-        .menu-item {
-            flex: 1;
-            margin: 0;
-        }
-        .menu-item-name {
-            display: block !important;
-        }
-    }
-    $listWidth: {{ . }};
-{{ end }}
 {{ if eq .Site.Params.listDatePosition "right" }}
     .list-item-title {
         flex: 1;
@@ -365,5 +319,7 @@
 {{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
     @import "_common/sw-notification.scss";
 {{ end }}
+
+@import "_common/responsive.scss";
 
 @import "_custom/custom.scss";
