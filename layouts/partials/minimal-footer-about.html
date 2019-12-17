@@ -9,7 +9,7 @@
                     {{- $icon := (index $.Site.Data.SVG $iconName) -}}
                     <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
                     {{- if lt $index $length -}}
-                        &nbsp;
+                        {{- print " " -}}
                     {{- end -}}
                 {{ end }}
             </div>
@@ -23,7 +23,7 @@
                     {{- $icon := (index $.Site.Data.SVG $iconName) -}}
                     <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
                     {{- if lt $index $length -}}
-                        &nbsp;
+                        {{- print " " -}}
                     {{- end -}}
                 {{ end }}
             </div>

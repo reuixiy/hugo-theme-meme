@@ -9,7 +9,7 @@
                     {{- with $.Site.GetPage (printf `/tags/%s` $path) -}}
                         <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default .LinkTitle | default $tag | lower | anchorize }}</a>
                         {{- if lt $index $length -}}
-                            &nbsp;
+                            {{- print " " -}}
                         {{- end -}}
                     {{- end -}}
                 {{- end -}}
