@@ -1,0 +1,38 @@
+@if ($postWidth > $listWidth) {
+    $smallerWidth: $listWidth !global;
+} @else {
+    $smallerWidth: $postWidth !global;
+}
+
+// Remove the unit of a length
+// https://css-tricks.com/snippets/sass/strip-unit-function/
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
+$maxWidth: $fontSize * (strip-unit($smallerWidth) + 5);
+
+@media (max-width: $maxWidth) {
+    .main-inner {
+        width: auto !important;
+    }
+    .anchor-link {
+        position: relative;
+        transform: none;
+        float: right;
+    }
+    .menu {
+        display: flex;
+    }
+    .menu-item {
+        flex: 1;
+        margin: 0;
+    }
+    .menu-item-name {
+        display: block !important;
+    }
+}

@@ -25,28 +25,8 @@ body {
 }
 
 .main-inner {
-    width: 42em;
     margin: 0 auto;
-}
-@media (max-width: $fontSize * (42 + 5)) {
-    .main-inner {
-        width: auto;
-    }
-    .anchor-link {
-        position: relative;
-        transform: none;
-        float: right;
-    }
-    .menu {
-        display: flex;
-    }
-    .menu-item {
-        flex: 1;
-        margin: 0;
-    }
-    .menu-item-name {
-        display: block !important;
-    }
+    display: block;
 }
 
 .icon {
