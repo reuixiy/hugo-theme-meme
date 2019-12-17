@@ -27,12 +27,10 @@ $maxWidth: $fontSize * (strip-unit($smallerWidth) + 5);
     }
     .menu {
         display: flex;
+        justify-content: space-around;
+        word-break: break-all;
     }
     .menu-item {
-        flex: 1;
         margin: 0;
-    }
-    .menu-item-name {
-        display: block !important;
     }
 }
