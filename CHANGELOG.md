@@ -1,3 +1,55 @@
+## [3.3.9](https://github.com/reuixiy/hugo-theme-meme/compare/v3.2.7...v3.3.9) (2019-12-18)
+
+
+### Bug Fixes
+
+* add `MathJax.texReset();` ([fc08a2c](https://github.com/reuixiy/hugo-theme-meme/commit/fc08a2c))
+* change margin of `<blockquote>` to `2em, 0` ([d04efe7](https://github.com/reuixiy/hugo-theme-meme/commit/d04efe7)), closes [#39](https://github.com/reuixiy/hugo-theme-meme/issues/39)
+* chaos caused by unreset `.Scratch` ([3e862b4](https://github.com/reuixiy/hugo-theme-meme/commit/3e862b4))
+* load fonts-src on demand ([d4edbff](https://github.com/reuixiy/hugo-theme-meme/commit/d4edbff))
+* minimal-footer style ([6729a2e](https://github.com/reuixiy/hugo-theme-meme/commit/6729a2e))
+* missing license info in json-ld ([20f7eef](https://github.com/reuixiy/hugo-theme-meme/commit/20f7eef))
+* srcollbar style ([288a00d](https://github.com/reuixiy/hugo-theme-meme/commit/288a00d))
+* style of code in pre ([dce3462](https://github.com/reuixiy/hugo-theme-meme/commit/dce3462))
+* style of mathjax ([8efdca6](https://github.com/reuixiy/hugo-theme-meme/commit/8efdca6))
+* style of thead, th, td, dt ([6a11b06](https://github.com/reuixiy/hugo-theme-meme/commit/6a11b06))
+* ugly encoded URLs in post-copyright ([0efad4c](https://github.com/reuixiy/hugo-theme-meme/commit/0efad4c)), closes [#24](https://github.com/reuixiy/hugo-theme-meme/issues/24)
+* use greater width for max-width ([8c4aae2](https://github.com/reuixiy/hugo-theme-meme/commit/8c4aae2))
+* use U+0020 instead of `&nbsp;` No-Break Space ([46660e2](https://github.com/reuixiy/hugo-theme-meme/commit/46660e2))
+* valine comment [#22](https://github.com/reuixiy/hugo-theme-meme/issues/22) ([935c9d5](https://github.com/reuixiy/hugo-theme-meme/commit/935c9d5))
+* wrong whitespace position ([56578ac](https://github.com/reuixiy/hugo-theme-meme/commit/56578ac))
+
+
+### Code Refactoring
+
+* modular instantclick & fix a mistake ([6a49a25](https://github.com/reuixiy/hugo-theme-meme/commit/6a49a25))
+* simplify dark mode ([cc7b36b](https://github.com/reuixiy/hugo-theme-meme/commit/cc7b36b))
+* using data attributes ([13a67ac](https://github.com/reuixiy/hugo-theme-meme/commit/13a67ac))
+* better responsive design ([c4dad06](https://github.com/reuixiy/hugo-theme-meme/commit/c4dad06))
+* use `justify-content` ([a9ccb77](https://github.com/reuixiy/hugo-theme-meme/commit/a9ccb77)), closes [#38](https://github.com/reuixiy/hugo-theme-meme/issues/38)
+* separate `maxWidth` from responsive.scss ([88e66e1](https://github.com/reuixiy/hugo-theme-meme/commit/88e66e1))
+* modular homepage for better customization ([4aeb5e2](https://github.com/reuixiy/hugo-theme-meme/commit/4aeb5e2))
+
+
+### Features
+
+* *reactive* dark mode! ([8d24690](https://github.com/reuixiy/hugo-theme-meme/commit/8d24690))
+* add something for better customization ([0679e3b](https://github.com/reuixiy/hugo-theme-meme/commit/0679e3b))
+* Force HTTPS Redirection ([355e0c8](https://github.com/reuixiy/hugo-theme-meme/commit/355e0c8))
+* new data attribute `data-layout` ([1a8df79](https://github.com/reuixiy/hugo-theme-meme/commit/1a8df79))
+* support Google AdSense [#23](https://github.com/reuixiy/hugo-theme-meme/issues/23) ([9cbb874](https://github.com/reuixiy/hugo-theme-meme/commit/9cbb874))
+* support Valine comment [#22](https://github.com/reuixiy/hugo-theme-meme/issues/22) ([15a86ac](https://github.com/reuixiy/hugo-theme-meme/commit/15a86ac))
+* support video footnote ([8324b3d](https://github.com/reuixiy/hugo-theme-meme/commit/8324b3d))
+* Version 3.0 of MathJax [#34](https://github.com/reuixiy/hugo-theme-meme/issues/34) ([8746889](https://github.com/reuixiy/hugo-theme-meme/commit/8746889))
+* vertical bar structure for minimal footer ([12a326b](https://github.com/reuixiy/hugo-theme-meme/commit/12a326b)), closes [#35](https://github.com/reuixiy/hugo-theme-meme/issues/35)
+
+
+### Performance Improvements
+
+* load valine.js only when button is clicked ([dee283f](https://github.com/reuixiy/hugo-theme-meme/commit/dee283f))
+
+
+
 ## [3.2.7](https://github.com/reuixiy/hugo-theme-meme/compare/v3.0.0...v3.2.7) (2019-11-19)
 
 
