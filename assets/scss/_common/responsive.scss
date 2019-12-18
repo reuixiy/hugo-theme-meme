@@ -1,7 +1,7 @@
 @if ($postWidth > $listWidth) {
-    $smallerWidth: $listWidth !global;
+    $greaterWidth: $postWidth !global;
 } @else {
-    $smallerWidth: $postWidth !global;
+    $greaterWidth: $listWidth !global;
 }
 
 // Remove the unit of a length
