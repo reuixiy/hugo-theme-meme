@@ -1,38 +1,38 @@
+{{ $Deliver := .Deliver }}
+{{ $isHome := .isHome }}
 <div class="post-meta">
-    {{ if and .Site.Params.displayPublishedDate (not .PublishDate.IsZero) }}
-        {{ $icon := replace (index $.Site.Data.SVG $.Site.Params.publishedDateIcon) "icon" "icon post-meta-icon" }}
-        {{ printf `<time datetime="%s" class="post-meta-item published">%s%s</time>` (.PublishDate.Format "2006-01-02T15:04:05-07:00") $icon (.PublishDate.Format .Site.Params.postMetaDateFormat) | safeHTML }}
+    {{ if and $Deliver.Site.Params.displayPublishedDate (not $Deliver.PublishDate.IsZero) }}
+        {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.publishedDateIcon) "icon" "icon post-meta-icon" }}
+        {{ printf `<time datetime="%s" class="post-meta-item published">%s%s</time>` ($Deliver.PublishDate.Format "2006-01-02T15:04:05-07:00") $icon ($Deliver.PublishDate.Format $Deliver.Site.Params.postMetaDateFormat) | safeHTML }}
     {{ end }}
-    {{ if and .Site.Params.displayModifiedDate (not .Lastmod.IsZero) }}
-        {{ $icon := replace (index $.Site.Data.SVG $.Site.Params.modifiedDateIcon) "icon" "icon post-meta-icon" }}
-        {{ printf `<time datetime="%s" class="post-meta-item modified">%s%s</time>` (.Lastmod.Format "2006-01-02T15:04:05-07:00") $icon (.Lastmod.Format .Site.Params.postMetaDateFormat) | safeHTML }}
+    {{ if and $Deliver.Site.Params.displayModifiedDate (not $Deliver.Lastmod.IsZero) }}
+        {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.modifiedDateIcon) "icon" "icon post-meta-icon" }}
+        {{ printf `<time datetime="%s" class="post-meta-item modified">%s%s</time>` ($Deliver.Lastmod.Format "2006-01-02T15:04:05-07:00") $icon ($Deliver.Lastmod.Format $Deliver.Site.Params.postMetaDateFormat) | safeHTML }}
     {{ end }}
-    {{ if and .Site.Params.displayExpiredDate (not .ExpiryDate.IsZero) }}
-        {{ $icon := replace (index $.Site.Data.SVG $.Site.Params.expiredDateIcon) "icon" "icon post-meta-icon" }}
-        {{ printf `<time datetime="%s" class="post-meta-item expired">%s%s</time>` (.ExpiryDate.Format "2006-01-02T15:04:05-07:00") $icon (.ExpiryDate.Format .Site.Params.postMetaDateFormat) | safeHTML }}
+    {{ if and $Deliver.Site.Params.displayExpiredDate (not $Deliver.ExpiryDate.IsZero) }}
+        {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.expiredDateIcon) "icon" "icon post-meta-icon" }}
+        {{ printf `<time datetime="%s" class="post-meta-item expired">%s%s</time>` ($Deliver.ExpiryDate.Format "2006-01-02T15:04:05-07:00") $icon ($Deliver.ExpiryDate.Format $Deliver.Site.Params.postMetaDateFormat) | safeHTML }}
     {{ end }}
-    {{ if .Site.Params.displayCategory }}
-        {{ $icon := replace (index $.Site.Data.SVG $.Site.Params.categoryIcon) "icon" "icon post-meta-icon" | safeHTML }}
-        {{ if and (eq .Site.Params.categoryBy "sections") (in .Site.Params.mainSections .Section) }}
-            {{ with .File }}
-                {{ $sections := split (strings.TrimSuffix "/" (.Dir | default $.Section)) "/" }}
-                {{ with $sections }}
-                    {{ $.Scratch.Delete "sectionsDirMeta" }}
-                    {{ $.Scratch.Delete "sectionsMeta" }}
-                    {{ $.Scratch.Set "index" 0 }}
-                    {{ range $sections }}
-                        {{ $section := . }}
-                        {{ $.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
-                        {{ with $.Site.GetPage ($.Scratch.Get "sectionsDirMeta") }}
-                            {{ if (eq .Kind "section") }}
-                                {{ $.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($.Scratch.Get "index")) .RelPermalink) (.LinkTitle | default $section) }}
-                                {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
-                            {{ end }}
+    {{ if $Deliver.Site.Params.displayCategory }}
+        {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.categoryIcon) "icon" "icon post-meta-icon" | safeHTML }}
+        {{ if and (eq $Deliver.Site.Params.categoryBy "sections") (in $Deliver.Site.Params.mainSections $Deliver.Section) }}
+            {{ $sections := split (strings.TrimSuffix "/" ($Deliver.File.Dir | default $Deliver.Section)) "/" }}
+            {{ with $sections }}
+                {{ $Deliver.Scratch.Delete "sectionsDirMeta" }}
+                {{ $Deliver.Scratch.Delete "sectionsMeta" }}
+                {{ $Deliver.Scratch.Set "index" 0 }}
+                {{ range $sections }}
+                    {{ $section := . }}
+                    {{ $Deliver.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
+                    {{ with $Deliver.Site.GetPage ($Deliver.Scratch.Get "sectionsDirMeta") }}
+                        {{ if (eq .Kind "section") }}
+                            {{ $Deliver.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($Deliver.Scratch.Get "index")) .RelPermalink) (.LinkTitle | default $section) }}
+                            {{ $Deliver.Scratch.Set "index" (add ($Deliver.Scratch.Get "index") 1) }}
                         {{ end }}
                     {{ end }}
                 {{ end }}
             {{ end }}
-            {{ $sections := .Scratch.Get "sectionsMeta" }}
+            {{ $sections := $Deliver.Scratch.Get "sectionsMeta" }}
             {{ with $sections }}
                 {{ $length := (sub (len $sections) 1) }}
                 <span class="post-meta-item category">
@@ -40,18 +40,18 @@
                     {{- range $link, $title := $sections -}}
                         {{- $index := $link | replaceRE `(\d+)/.+` `$1` | int -}}
                         {{- if lt $index $length -}}
-                            {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
+                            {{- $Deliver.Scratch.Set "delimiter" ($Deliver.Site.Params.categoryDelimiter | default "/") -}}
                         {{- else -}}
-                            {{- $.Scratch.Set "delimiter" "" -}}
+                            {{- $Deliver.Scratch.Set "delimiter" "" -}}
                         {{- end -}}
-                        {{- $delimiter := ($.Scratch.Get "delimiter") -}}
+                        {{- $delimiter := ($Deliver.Scratch.Get "delimiter") -}}
                         {{- printf `<a href="%s" class="category-link">%s</a>%s` ($link | replaceRE `\d+/(.+)` `$1`) $title $delimiter | safeHTML -}}
                     {{- end -}}
                 </span>
             {{ end }}
         {{ end }}
-        {{ if eq .Site.Params.categoryBy "categories" }}
-            {{ with .Params.categories }}
+        {{ if eq $Deliver.Site.Params.categoryBy "categories" }}
+            {{ with $Deliver.Params.categories }}
                 {{ $length := sub (len .) 1 }}
                 <span class="post-meta-item category">
                     {{- $icon -}}
@@ -59,12 +59,12 @@
                         {{- $url := urls.Parse ($category | urlize) -}}
                         {{- $path := $url.Path -}}
                         {{- if lt $index $length -}}
-                            {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
+                            {{- $Deliver.Scratch.Set "delimiter" ($Deliver.Site.Params.categoryDelimiter | default "/") -}}
                         {{- else -}}
-                            {{- $.Scratch.Set "delimiter" "" -}}
+                            {{- $Deliver.Scratch.Set "delimiter" "" -}}
                         {{- end -}}
-                        {{- $delimiter := ($.Scratch.Get "delimiter") -}}
-                        {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
+                        {{- $delimiter := ($Deliver.Scratch.Get "delimiter") -}}
+                        {{- with $Deliver.Site.GetPage (printf `/categories/%s` $path) -}}
                             {{- printf `<a href="%s" class="category-link">%s</a>%s` .RelPermalink (.LinkTitle | default $category) $delimiter | safeHTML -}}
                         {{- end -}}
                     {{- end -}}
@@ -72,12 +72,18 @@
             {{ end }}
         {{ end }}
     {{ end }}
-    {{ if .Site.Params.displayWordCount }}
-        {{ $icon := replace (index $.Site.Data.SVG $.Site.Params.wordCountIcon) "icon" "icon post-meta-icon" | safeHTML }}
-        <span class="post-meta-item wordcount">{{ $icon }}{{ .WordCount }}</span>
+    {{ if $Deliver.Site.Params.displayWordCount }}
+        {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.wordCountIcon) "icon" "icon post-meta-icon" | safeHTML }}
+        <span class="post-meta-item wordcount">{{ $icon }}{{ $Deliver.WordCount }}</span>
     {{ end }}
-    {{ if .Site.Params.displayReadingTime }}
-        {{ $icon := replace (index $.Site.Data.SVG $.Site.Params.readingTimeIcon) "icon" "icon post-meta-icon" | safeHTML }}
-        <span class="post-meta-item readingtime">{{ $icon }}{{ .ReadingTime }}&nbsp;{{ i18n "minute" .ReadingTime }}</span>
+    {{ if $Deliver.Site.Params.displayReadingTime }}
+        {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.readingTimeIcon) "icon" "icon post-meta-icon" | safeHTML }}
+        <span class="post-meta-item reading-time">{{ $icon }}{{ $Deliver.ReadingTime }}&nbsp;{{ i18n "minute" $Deliver.ReadingTime }}</span>
+    {{ end }}
+    {{ if and $Deliver.Site.Params.displayBusuanziPagePV (eq hugo.Environment "production") }}
+        {{ if not $isHome }}
+            {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.busuanziPagePVIcon) "icon" "icon post-meta-icon" | safeHTML }}
+            <span class="post-meta-item busuanzi-page-pv" id="busuanzi_container_page_pv">{{ $icon }}<span id="busuanzi_value_page_pv"></span></span>
+        {{ end }}
     {{ end }}
 </div>

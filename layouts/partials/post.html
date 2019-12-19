@@ -23,7 +23,7 @@
             {{ end }}
 
             {{ if .Params.meta | default .Site.Params.enablePostMeta }}
-                {{ partial "post-meta.html" . }}
+                {{ partial "post-meta.html" (dict "Deliver" . "isHome" false) }}
             {{ end }}
 
             {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
