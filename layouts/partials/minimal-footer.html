@@ -35,20 +35,18 @@
                         {{- end -}}
                     {{- end -}}
                 {{ else }}
-                    {{ with .File }}
-                        {{ $sections := split (strings.TrimSuffix "/" (.Dir | default $.Section)) "/" }}
-                        {{ with $sections }}
-                            {{ $.Scratch.Delete "sectionsDirMeta" }}
-                            {{ $.Scratch.Delete "sectionsMeta" }}
-                            {{ $.Scratch.Set "index" 0 }}
-                            {{ range $sections }}
-                                {{ $section := . }}
-                                {{ $.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
-                                {{ with $.Site.GetPage ($.Scratch.Get "sectionsDirMeta") }}
-                                    {{ if (eq .Kind "section") }}
-                                        {{ $.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($.Scratch.Get "index")) .RelPermalink) (.Slug | default .Params.url | default .LinkTitle | default $section | lower | anchorize) }}
-                                        {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
-                                    {{ end }}
+                    {{ $sections := split (strings.TrimSuffix "/" ($.File.Dir | default $.Section)) "/" }}
+                    {{ with $sections }}
+                        {{ $.Scratch.Delete "sectionsDirMeta" }}
+                        {{ $.Scratch.Delete "sectionsMeta" }}
+                        {{ $.Scratch.Set "index" 0 }}
+                        {{ range $sections }}
+                            {{ $section := . }}
+                            {{ $.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
+                            {{ with $.Site.GetPage ($.Scratch.Get "sectionsDirMeta") }}
+                                {{ if (eq .Kind "section") }}
+                                    {{ $.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($.Scratch.Get "index")) .RelPermalink) (.Slug | default .Params.url | default .LinkTitle | default $section | lower | anchorize) }}
+                                    {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
                                 {{ end }}
                             {{ end }}
                         {{ end }}

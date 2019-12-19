@@ -36,6 +36,20 @@
                 <div class="custom-footer">{{ . | markdownify | safeHTML }}</div>
             {{ end }}
 
+            {{ if and .Site.Params.displayBusuanziSiteUVAndPV (eq hugo.Environment "production") }}
+                {{ $busuanziSiteUVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSiteUVIcon) "icon" "icon busuanzi-site-uv" }}
+                {{ $busuanziSitePVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSitePVIcon) "icon" "icon busuanzi-site-pv" }}
+                <div class="busuanzi-site-uv-and-pv">
+                    <span id="busuanzi_container_site_uv">
+                        {{ printf `%s %s %s` .Site.Params.busuanziSiteUVText $busuanziSiteUVIcon `<span id="busuanzi_value_site_uv"></span>` | safeHTML }}
+                    </span>
+                    {{- print " | " -}}
+                    <span id="busuanzi_container_site_pv">
+                        {{ printf `%s %s %s` .Site.Params.busuanziSitePVText $busuanziSitePVIcon `<span id="busuanzi_value_site_pv"></span>` | safeHTML }}
+                    </span>
+                </div>
+            {{ end }}
+
             {{ partial "custom/footer.html" . }}
         </div>
     </footer>

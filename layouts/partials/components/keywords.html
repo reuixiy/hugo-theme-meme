@@ -33,17 +33,15 @@
     {{- end -}}
     {{- with .Section -}}
         {{- if and (eq $.Site.Params.categoryBy "sections") (in $.Site.Params.mainSections $.Section) -}}
-            {{- with $.File -}}
-                {{- $.Scratch.Delete "Dir" -}}
-                {{- $.Scratch.Delete "mainSections" -}}
-                {{- $sections := split (strings.TrimSuffix "/" .Dir) "/" -}}
-                {{- range $sections -}}
-                    {{- $section := . -}}
-                    {{- $.Scratch.Add "Dir" (printf `/%s` $section) -}}
-                    {{- with $.Site.GetPage ($.Scratch.Get "Dir") -}}
-                        {{- if (eq .Kind "section") -}}
-                            {{- $.Scratch.Add "mainSections" (slice ($section | anchorize)) -}}
-                        {{- end -}}
+            {{- $.Scratch.Delete "Dir" -}}
+            {{- $.Scratch.Delete "mainSections" -}}
+            {{- $sections := split (strings.TrimSuffix "/" $.File.Dir) "/" -}}
+            {{- range $sections -}}
+                {{- $section := . -}}
+                {{- $.Scratch.Add "Dir" (printf `/%s` $section) -}}
+                {{- with $.Site.GetPage ($.Scratch.Get "Dir") -}}
+                    {{- if (eq .Kind "section") -}}
+                        {{- $.Scratch.Add "mainSections" (slice ($section | anchorize)) -}}
                     {{- end -}}
                 {{- end -}}
             {{- end -}}

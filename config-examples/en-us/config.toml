@@ -714,6 +714,13 @@ uglyURLs = false
     displayReadingTime = true
     readingTimeIcon = "clock"
 
+    displayBusuanziPagePV = false
+    busuanziPagePVIcon = "eye"
+    # Note: render only in production
+    #       environment
+    #       Homepage is not supported yet
+    #       https://busuanzi.ibruce.info/
+
 
     ######################################
     # Table of Contents
@@ -1097,6 +1104,17 @@ uglyURLs = false
 
     # Custom Footer (Markdown supported)
     customFooter = ""
+
+    displayBusuanziSiteUVAndPV = false
+    busuanziSiteUVText = "Site UV"
+    busuanziSiteUVIcon = "user"
+    busuanziSitePVText = "Site PV"
+    busuanziSitePVIcon = "eye"
+    # Note: render only in production
+    #       environment
+    #       Leave it empty("") if you
+    #       don’t need the text or icon
+    #       https://busuanzi.ibruce.info/
 
 
     ######################################

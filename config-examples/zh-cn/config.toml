@@ -672,6 +672,14 @@ uglyURLs = false
     # 阅读时长的图标
     readingTimeIcon = "clock"
 
+    # 是否显示不蒜子页面浏览量
+    displayBusuanziPagePV = false
+    # 不蒜子页面浏览量的图标
+    busuanziPagePVIcon = "eye"
+    # 说明：仅在生产环境（production）下渲染
+    #      首页暂不支持
+    #      https://busuanzi.ibruce.info/
+
 
     ######################################
     # 文章目录
@@ -1064,6 +1072,15 @@ uglyURLs = false
 
     # 自定义页脚（支持 Markdown）
     customFooter = ""
+
+    displayBusuanziSiteUVAndPV = false
+    busuanziSiteUVText = "本站访客数"
+    busuanziSiteUVIcon = "user"
+    busuanziSitePVText = "本站访问量"
+    busuanziSitePVIcon = "eye"
+    # 说明：仅在生产环境（production）下渲染
+    #      文本或图标，留空（""）则无
+    #      https://busuanzi.ibruce.info/
 
 
     ######################################
