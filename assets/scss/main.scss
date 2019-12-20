@@ -89,16 +89,6 @@
         {{ end }}
     {{ end }}
     @import "_variables/dark.scss";
-    @media (prefers-color-scheme: dark) {
-        html {
-            content: "dark";
-        }
-    }
-    @media (prefers-color-scheme: light) {
-        html {
-            content: "light";
-        }
-    }
     #theme-toggle {
         padding: 1em;
         cursor: pointer;

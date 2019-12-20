@@ -1,110 +1,98 @@
-// Note: Original code from https://derekkedziora.com/blog/dark-mode
+// Back to Previous Mode & Respect System Preferences
+// `userPrefers`, `darkModeMediaQuery`, `lightModeMediaQuery` is defined in layouts/partials/head.html
 
-{{ $themeColor := .Site.Params.themeColor }}
-{{ $themeColorDark := .Site.Params.themeColorDark }}
-
-// `content` is defined in assets/scss/main.scss via CSS media query `prefers-color-scheme`
-const userPrefers = getComputedStyle(document.documentElement).getPropertyValue('content');
-
-// `theme` is defined in layouts/partials/head.html
-if (theme === "dark") {
-    goDark();
-} else if (theme === "light") {
-    goLight();
-} else if (userPrefers === "dark") {
-    goDarkMeta();
-    setDark();
-    goDark();
+if (userPrefers === "dark") {
+    changeMode("🌙", "chroma", "chroma-dark");
 } else if (userPrefers === "light") {
-    goLightMeta();
-    setLight();
-    goLight();
-}
-
-function modeSwitcher() {
-    const currentMode = document.documentElement.getAttribute('data-theme');
-    if (currentMode === "dark") {
-        goLightMeta();
-        setLight();
-        goLight();
-    } else {
-        goDarkMeta();
-        setDark();
-        goDark();
-    }
+    changeMode("🌞", "chroma-dark", "chroma");
+} else if (darkModeMediaQuery.matches) {
+    changeMode("🌙", "chroma", "chroma-dark");
+} else if (lightModeMediaQuery.matches) {
+    changeMode("🌞", "chroma-dark", "chroma");
 }
 
 // Reactive Dark Mode
 // https://web.dev/prefers-color-scheme/#reacting-on-dark-mode-changes
 // https://twitter.com/ChromeDevTools/status/1197175265643745282
 
-const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 darkModeMediaQuery.addListener((e) => {
     const darkModeOn = e.matches;
     if (darkModeOn) {
-        goDarkMeta();
-        setDark();
-        goDark();
+        changeModeMeta("dark");
+        changeMode("🌙", "chroma", "chroma-dark");
+        setMode("dark");
     }
 });
 
-const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
 lightModeMediaQuery.addListener((e) => {
     const lightModeOn = e.matches;
     if (lightModeOn) {
-        goLightMeta();
-        setLight();
-        goLight();
+        changeModeMeta("light");
+        changeMode("🌞", "chroma-dark", "chroma");
+        setMode("light");
     }
 });
+
+// Mode Switcher
+// https://derekkedziora.com/blog/dark-mode
+
+function modeSwitcher() {
+    const currentMode = document.documentElement.getAttribute('data-theme');
+    if (currentMode === "dark") {
+        changeModeMeta("light");
+        changeMode("🌞", "chroma-dark", "chroma");
+        setMode("light");
+    } else {
+        changeModeMeta("dark");
+        changeMode("🌙", "chroma", "chroma-dark");
+        setMode("dark");
+    }
+}
 
 // Sync Across Tabs
 // https://codepen.io/tevko/pen/GgWYpg
 
 window.addEventListener('storage', function (event) {
     if (event.newValue === "dark") {
-        goDarkMeta();
-        goDark();
+        changeModeMeta("dark");
+        changeMode("🌙", "chroma", "chroma-dark");
     } else {
-        goLightMeta();
-        goLight();
+        changeModeMeta("light");
+        changeMode("🌞", "chroma-dark", "chroma");
     }
 });
 
 // Functions
 
-function goDarkMeta() {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColorDark }}');
-}
+function changeMode() {
+    document.getElementById("theme-toggle").innerHTML = arguments[0];
 
-function goLightMeta() {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColor }}');
-}
-
-function setDark() {
-    window.localStorage.setItem('theme', 'dark');
-}
-
-function setLight() {
-    window.localStorage.setItem('theme', 'light');
-}
-
-function goDark() {
-    document.getElementById("theme-toggle").innerHTML = "🌙";
-
-    var els = [].slice.apply(document.getElementsByClassName("chroma"));
+    var els = [].slice.apply(document.getElementsByClassName(arguments[1]));
     for (var i = 0; i < els.length; i++) {
-        els[i].className = els[i].className.replace(/ *\bchroma\b/g, "chroma-dark");
+        els[i].className = els[i].className.replace(/ *\bchroma\b/g, arguments[2]);
     }
+
+    // Utterances
+    // https://github.com/utterance/utterances/issues/229
+    {{ if .Site.Params.enableUtterances }}
+        if (arguments[0] === "🌙") {
+            changeUtterancesTheme("{{ .Site.Params.utterancesThemeDark }}");
+        } else {
+            changeUtterancesTheme("{{ .Site.Params.utterancesTheme }}");
+        }
+        function changeUtterancesTheme() {
+            const iframe = document.querySelector('.utterances-frame');
+            if (iframe !== null) {
+                const message = {
+                    type: 'set-theme',
+                    theme: arguments[0]
+                };
+                iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+            }
+        }
+    {{ end }}
 }
 
-function goLight() {
-    document.getElementById("theme-toggle").innerHTML = "🌞";
-
-    var els = [].slice.apply(document.getElementsByClassName("chroma-dark"));
-    for (var i = 0; i < els.length; i++) {
-        els[i].className = els[i].className.replace(/ *\bchroma-dark\b/g, "chroma");
-    }
+function setMode() {
+    window.localStorage.setItem('theme', arguments[0]);
 }

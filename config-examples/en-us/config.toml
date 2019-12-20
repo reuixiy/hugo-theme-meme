@@ -605,6 +605,15 @@ uglyURLs = false
     valineServerURLs = ""
     # Note: https://valine.js.org/
 
+    ## Utterances
+    enableUtterances = false
+    utterancesRepo = ""
+    utterancesIssueTerm = "pathname"
+    utterancesTheme = "github-light"
+    utterancesThemeDark = "photon-dark"
+    utterancesLabel = ""
+    # Note: https://utteranc.es/
+
 
     ######################################
     # Google Analytics

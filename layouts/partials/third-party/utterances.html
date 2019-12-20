@@ -1,0 +1,48 @@
+{{- if .Site.Params.enableDarkMode -}}
+    {{- with .Site.Params.defaultTheme | default "light" -}}
+        {{- if eq . "light" -}}
+            {{- $.Scratch.Set "theme" $.Site.Params.utterancesTheme -}}
+        {{- else -}}
+            {{- $.Scratch.Set "theme" $.Site.Params.utterancesThemeDark -}}
+        {{- end -}}
+    {{- end -}}
+{{- else -}}
+    {{- $.Scratch.Set "theme" $.Site.Params.utterancesTheme -}}
+{{- end -}}
+{{- $theme := $.Scratch.Get "theme" -}}
+<script>
+    function loadComments() {
+        document.querySelector('#load-comments').style = "display:none";
+        (function () {
+            var utterances = document.getElementById("utterances");
+            var script = document.createElement('script');
+            script.src = 'https://utteranc.es/client.js';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.setAttribute('repo', '{{ .Site.Params.utterancesRepo }}');
+            script.setAttribute('issue-term', '{{ .Site.Params.utterancesIssueTerm }}');
+            {{ template "theme" (dict "Deliver" . "theme" $theme) }}
+            {{ with .Site.Params.utterancesLabel }}
+                script.setAttribute('label', '{{ . }}');
+            {{ end }}
+            utterances.appendChild(script);
+        })();
+    }
+</script>
+{{- define "theme" -}}
+    {{- $Deliver := .Deliver -}}
+    {{- $theme := .theme -}}
+    {{- if $Deliver.Site.Params.enableDarkMode -}}
+        if (userPrefers === "dark") {
+            script.setAttribute('theme', '{{ $Deliver.Site.Params.utterancesThemeDark }}');
+        } else if (userPrefers === "light") {
+            script.setAttribute('theme', '{{ $Deliver.Site.Params.utterancesTheme }}');
+        } else if (darkModeMediaQuery.matches) {
+            script.setAttribute('theme', '{{ $Deliver.Site.Params.utterancesThemeDark }}');
+        } else if (lightModeMediaQuery.matches) {
+            script.setAttribute('theme', '{{ $Deliver.Site.Params.utterancesTheme }}');
+        }
+    {{- else -}}
+        script.setAttribute('theme', '{{ $theme }}');
+    {{- end -}}
+{{- end -}}

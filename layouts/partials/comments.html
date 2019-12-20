@@ -13,5 +13,9 @@
             <div id="vcomments"></div>
         {{ end }}
 
+        {{ if .Site.Params.enableUtterances }}
+            <div id="utterances"></div>
+        {{ end }}
+
     {{ end }}
 {{ end }}
