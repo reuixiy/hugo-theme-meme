@@ -54,6 +54,10 @@
             {{ partial "third-party/valine.html" . }}
         {{ end }}
 
+        {{ if .Site.Params.enableUtterances }}
+            {{ partial "third-party/utterances.html" . }}
+        {{ end }}
+
     {{ end }}
 {{ end }}
 

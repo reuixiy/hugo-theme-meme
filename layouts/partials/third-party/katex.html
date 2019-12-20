@@ -5,7 +5,6 @@
             var script = document.createElement('script');
             script.defer = true;
             script.crossOrigin = 'anonymous';
-            script['data-no-instant'] = true;
             Object.keys(options).forEach((key) => {
                 script[key] = options[key];
             });
@@ -23,17 +22,7 @@
                             src: 'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/contrib/auto-render.min.js',
                             integrity: 'sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI',
                             onload: () => {
-                                renderMathInElement(
-                                    document.body,
-                                    {
-                                        delimiters: [
-                                            {left: "$$", right: "$$", display: true},
-                                            {left: "\\[", right: "\\]", display: true},
-                                            {left: "$", right: "$", display: false},
-                                            {left: "\\(", right: "\\)", display: false}
-                                        ]
-                                    }
-                                );
+                                renderKaTex();
                             }
                         });
                     }
@@ -41,6 +30,9 @@
             }
         });
     } else {
+        renderKaTex();
+    }
+    function renderKaTex() {
         renderMathInElement(
             document.body,
             {

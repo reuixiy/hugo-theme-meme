@@ -1,26 +1,39 @@
 <head{{ if .Site.Params.openGraph }} prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"{{ end }}>
     <meta charset="UTF-8" />
 
-    {{ $themeColor := .Site.Params.themeColor -}}
-    {{- $themeColorDark := .Site.Params.themeColorDark -}}
     {{- with .Site.Params.defaultTheme | default "light" -}}
         {{- if eq . "light" -}}
-            <meta name="theme-color" content="{{ $themeColor }}" />
-        {{- end -}}
-        {{- if eq . "dark" -}}
-            <meta name="theme-color" content="{{ $themeColorDark }}" />
+            <meta name="theme-color" content="{{ $.Site.Params.themeColor }}" />
+        {{- else -}}
+            <meta name="theme-color" content="{{ $.Site.Params.themeColorDark }}" />
         {{- end -}}
     {{- end -}}
+
     <!-- Dark Mode -->
     {{- if .Site.Params.enableDarkMode }}
         <script>
-            const theme = localStorage.getItem('theme');
-            if (theme === "dark") {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColorDark }}');
-            } else if (theme === "light") {
-                document.documentElement.setAttribute('data-theme', 'light');
-                document.querySelector('meta[name="theme-color"]').setAttribute('content', '{{ $themeColor }}');
+            const userPrefers = localStorage.getItem('theme');
+            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+            if (userPrefers === "dark") {
+                changeModeMeta("dark");
+            } else if (userPrefers === "light") {
+                changeModeMeta("light");
+            } else if (darkModeMediaQuery.matches) {
+                changeModeMeta("dark");
+            } else if (lightModeMediaQuery.matches) {
+                changeModeMeta("light");
+            }
+            function changeModeMeta() {
+                document.documentElement.setAttribute('data-theme', arguments[0]);
+                if (arguments[0] === "dark") {
+                    changeThemeColor("{{ .Site.Params.themeColorDark }}");
+                } else {
+                    changeThemeColor("{{ .Site.Params.themeColor }}");
+                }
+            }
+            function changeThemeColor() {
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', arguments[0]);
             }
         </script>
     {{- end }}
