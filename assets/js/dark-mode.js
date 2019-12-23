@@ -74,7 +74,7 @@ function changeMode() {
 
     // Utterances
     // https://github.com/utterance/utterances/issues/229
-    {{ if .Site.Params.enableUtterances }}
+    {{ if and .Site.Params.enableUtterances (eq hugo.Environment "production") }}
         if (arguments[0] === "🌙") {
             changeUtterancesTheme("{{ .Site.Params.utterancesThemeDark }}");
         } else {
