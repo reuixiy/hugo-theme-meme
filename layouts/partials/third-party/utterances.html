@@ -33,6 +33,9 @@
     {{- $Deliver := .Deliver -}}
     {{- $theme := .theme -}}
     {{- if $Deliver.Site.Params.enableDarkMode -}}
+        const userPrefers = localStorage.getItem('theme');
+        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
         if (userPrefers === "dark") {
             script.setAttribute('theme', '{{ $Deliver.Site.Params.utterancesThemeDark }}');
         } else if (userPrefers === "light") {
