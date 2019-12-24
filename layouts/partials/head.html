@@ -114,6 +114,7 @@
     <meta name="msapplication-TileImage" content="{{ $msApplicationTileImage }}" />
     <link rel="manifest" href="{{ $manifest | relURL }}" />
 
+  
     <!-- Atom / RSS -->
     {{ with .OutputFormats.Get "SectionsAtom" -}}
         {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType .Permalink $.Site.Title | safeHTML }}

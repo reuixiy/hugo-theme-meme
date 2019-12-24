@@ -1,6 +1,9 @@
+
 {{ if and .Site.Params.enableFooter (not (and .IsHome (in (slice "poetry" "footage") .Site.Params.homeLayout))) }}
+    
     <footer id="footer" class="footer">
         <div class="footer-inner">
+            
             {{ if .Site.Params.displayCopyrightSymbol }}
                 {{ .Scratch.Set "siteInfoCopyright" "©&nbsp;" }}
             {{ else }}
@@ -49,6 +52,8 @@
                     </span>
                 </div>
             {{ end }}
+
+            
 
             {{ partial "custom/footer.html" . }}
         </div>

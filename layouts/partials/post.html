@@ -63,5 +63,9 @@
 
         {{ partial "comments.html" . }}
 
+        {{ if not (.Params.noshare) }}
+            {{ partial "share.html" . }}
+        {{ end }}
+
     </div>
 </main>
