@@ -63,7 +63,7 @@
                         {{ $.Scratch.Add "sectionDir" (printf `/%s` .) }}
                         {{ with $.Site.GetPage ($.Scratch.Get "sectionDir") }}
                             {{ if (eq .Kind "section") }}
-                                <category domain="{{ printf "%s/" ($.Scratch.Get "sectionDir" | urlize | absLangURL) }}">{{ $section }}</category>
+                                <category domain="{{ .Permalink }}">{{ $section }}</category>
                             {{ end }}
                         {{ end }}
                     {{ end }}
