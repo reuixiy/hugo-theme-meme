@@ -267,6 +267,9 @@
             animation: heartbeat 1.33s ease-in-out infinite;
         }
     {{ end }}
+    {{ if and .Site.Params.displayBusuanziSiteUVAndPV (eq hugo.Environment "production") }}
+        @import "_common/busuanzi.scss";
+    {{ end }}
 {{ end }}
 
 {{ if eq .Site.Params.homeLayout "poetry" }}

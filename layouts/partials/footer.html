@@ -1,54 +1,78 @@
 {{ if and .Site.Params.enableFooter (not (and .IsHome (in (slice "poetry" "footage") .Site.Params.homeLayout))) }}
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            {{ if .Site.Params.displayCopyrightSymbol }}
-                {{ .Scratch.Set "siteInfoCopyright" "©&nbsp;" }}
-            {{ else }}
-                {{ .Scratch.Set "siteInfoCopyright" "" }}
-            {{ end }}
-            {{ $siteInfoCopyright := .Scratch.Get "siteInfoCopyright" }}
+            {{- if .Site.Params.displayCopyrightSymbol -}}
+                {{- .Scratch.Set "siteInfoCopyright" "©&nbsp;" -}}
+            {{- else -}}
+                {{- .Scratch.Set "siteInfoCopyright" "" -}}
+            {{- end -}}
+            {{- $siteInfoCopyright := .Scratch.Get "siteInfoCopyright" -}}
 
-            {{ if .Site.Params.displaySiteCreatedYear }}
-                {{ .Scratch.Set "siteInfoCreatedYear" (printf `%s–%s` (dateFormat "2006" (time .Site.Params.siteCreatedTime)) (now.Format "2006")) }}
-            {{ else }}
-                {{ .Scratch.Set "siteInfoCreatedYear" (now.Format "2006") }}
-            {{ end }}
-            {{ $siteInfoCreatedYear := .Scratch.Get "siteInfoCreatedYear" }}
+            {{- if .Site.Params.displaySiteCreatedYear -}}
+                {{- .Scratch.Set "siteInfoCreatedYear" (printf `%s–%s` (dateFormat "2006" (time .Site.Params.siteCreatedTime)) (now.Format "2006")) -}}
+            {{- else -}}
+                {{- .Scratch.Set "siteInfoCreatedYear" (now.Format "2006") -}}
+            {{- end -}}
+            {{- $siteInfoCreatedYear := .Scratch.Get "siteInfoCreatedYear" -}}
 
-            {{ with .Site.Params.iconBetweenYearAndAuthor }}
-                {{ $.Scratch.Set "siteInfoIcon" (replace (index $.Site.Data.SVG .) "icon" "icon footer-icon") }}
-            {{ else }}
-                {{ $.Scratch.Set "siteInfoIcon" "&nbsp;" }}
-            {{ end }}
-            {{ $siteInfoIcon := .Scratch.Get "siteInfoIcon" }}
+            {{- with .Site.Params.iconBetweenYearAndAuthor -}}
+                {{- $.Scratch.Set "siteInfoIcon" (printf `&nbsp;%s&nbsp;` (replace (index $.Site.Data.SVG .) "icon" "icon footer-icon")) -}}
+            {{- else -}}
+                {{- $.Scratch.Set "siteInfoIcon" "&nbsp;" -}}
+            {{- end -}}
+            {{- $siteInfoIcon := .Scratch.Get "siteInfoIcon" -}}
 
             <div class="site-info">{{ printf `%s%s%s%s` $siteInfoCopyright $siteInfoCreatedYear $siteInfoIcon .Site.Author.name | safeHTML }}</div>
 
-            {{ if .Site.Params.displayPoweredBy }}
+            {{- if .Site.Params.displayPoweredBy }}
                 <div class="powered-by">{{ printf `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [MemE](https://github.com/reuixiy/hugo-theme-meme)` | markdownify | safeHTML }}</div>
-            {{ end }}
+            {{- end }}
 
-            {{ if .Site.Params.displaySiteCopyright }}
+            {{- if .Site.Params.displaySiteCopyright }}
                 <div class="site-copyright">{{ .Site.Copyright | markdownify | safeHTML }}</div>
-            {{ end }}
+            {{- end }}
 
-            {{ with .Site.Params.customFooter }}
+            {{- with .Site.Params.customFooter }}
                 <div class="custom-footer">{{ . | markdownify | safeHTML }}</div>
-            {{ end }}
+            {{- end }}
 
-            {{ if and .Site.Params.displayBusuanziSiteUVAndPV (eq hugo.Environment "production") }}
-                {{ $busuanziSiteUVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSiteUVIcon) "icon" "icon busuanzi-site-uv" }}
-                {{ $busuanziSitePVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSitePVIcon) "icon" "icon busuanzi-site-pv" }}
+            {{- if and .Site.Params.displayBusuanziSiteUVAndPV (eq hugo.Environment "production") }}
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">
-                        {{ printf `%s %s %s` .Site.Params.busuanziSiteUVText $busuanziSiteUVIcon `<span id="busuanzi_value_site_uv"></span>` | safeHTML }}
+                        {{- with .Site.Params.busuanziSiteUVText -}}
+                            {{- $.Scratch.Set "busuanziSiteUVText" (printf `%s&nbsp;` .) -}}
+                        {{- else -}}
+                            {{- $.Scratch.Set "busuanziSiteUVText" "" -}}
+                        {{- end -}}
+                        {{- $busuanziSiteUVText := .Scratch.Get "busuanziSiteUVText" -}}
+                        {{- with .Site.Params.busuanziSiteUVIcon -}}
+                            {{- $busuanziSiteUVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSiteUVIcon) "icon" "icon busuanzi-site-uv" -}}
+                            {{- $.Scratch.Set "busuanziSiteUVIcon" (printf `%s&nbsp;` $busuanziSiteUVIcon) -}}
+                        {{- else -}}
+                            {{- $.Scratch.Set "busuanziSiteUVIcon" "" -}}
+                        {{- end -}}
+                        {{- $busuanziSiteUVIcon := .Scratch.Get "busuanziSiteUVIcon" -}}
+                        {{- printf `%s%s%s` $busuanziSiteUVText $busuanziSiteUVIcon `<span id="busuanzi_value_site_uv"></span>` | safeHTML -}}
                     </span>
-                    {{- print " | " -}}
+                    {{- print "&nbsp;|&nbsp;" | safeHTML -}}
                     <span id="busuanzi_container_site_pv">
-                        {{ printf `%s %s %s` .Site.Params.busuanziSitePVText $busuanziSitePVIcon `<span id="busuanzi_value_site_pv"></span>` | safeHTML }}
+                        {{- with .Site.Params.busuanziSitePVText -}}
+                            {{- $.Scratch.Set "busuanziSitePVText" (printf `%s&nbsp;` .) -}}
+                        {{- else -}}
+                            {{- $.Scratch.Set "busuanziSitePVText" "" -}}
+                        {{- end -}}
+                        {{- $busuanziSitePVText := .Scratch.Get "busuanziSitePVText" -}}
+                        {{- with .Site.Params.busuanziSitePVIcon -}}
+                            {{- $busuanziSitePVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSitePVIcon) "icon" "icon busuanzi-site-pv" -}}
+                            {{- $.Scratch.Set "busuanziSitePVIcon" (printf `%s&nbsp;` $busuanziSitePVIcon) -}}
+                        {{- else -}}
+                            {{- $.Scratch.Set "busuanziSitePVIcon" "" -}}
+                        {{- end -}}
+                        {{- $busuanziSitePVIcon := .Scratch.Get "busuanziSitePVIcon" -}}
+                        {{- printf `%s%s%s` $busuanziSitePVText $busuanziSitePVIcon `<span id="busuanzi_value_site_pv"></span>` | safeHTML -}}
                     </span>
                 </div>
-            {{ end }}
+            {{- end }}
 
             {{ partial "custom/footer.html" . }}
         </div>

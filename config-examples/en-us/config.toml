@@ -863,7 +863,7 @@ uglyURLs = false
     fontFamilyTitle = "Comfortaa, sans-serif"
     # Headings, toc title
     fontFamilyHeadings = "Comfortaa, sans-serif"
-    # Code, superscript, post meta info, post updated badge, post gitinfo, minimal footer
+    # Code, superscript, post meta info, post updated badge, post gitinfo, minimal footer, busuanzi site view counter
     fontFamilyCode = "'Source Code Pro', monospace"
     # Blockquotes
     fontFamilyQuote = ""

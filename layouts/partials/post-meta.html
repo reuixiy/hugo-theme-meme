@@ -3,15 +3,15 @@
 <div class="post-meta">
     {{ if and $Deliver.Site.Params.displayPublishedDate (not $Deliver.PublishDate.IsZero) }}
         {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.publishedDateIcon) "icon" "icon post-meta-icon" }}
-        {{ printf `<time datetime="%s" class="post-meta-item published">%s%s</time>` ($Deliver.PublishDate.Format "2006-01-02T15:04:05-07:00") $icon ($Deliver.PublishDate.Format $Deliver.Site.Params.postMetaDateFormat) | safeHTML }}
+        {{ printf `<time datetime="%s" class="post-meta-item published">%s&nbsp;%s</time>` ($Deliver.PublishDate.Format "2006-01-02T15:04:05-07:00") $icon ($Deliver.PublishDate.Format $Deliver.Site.Params.postMetaDateFormat) | safeHTML }}
     {{ end }}
     {{ if and $Deliver.Site.Params.displayModifiedDate (not $Deliver.Lastmod.IsZero) }}
         {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.modifiedDateIcon) "icon" "icon post-meta-icon" }}
-        {{ printf `<time datetime="%s" class="post-meta-item modified">%s%s</time>` ($Deliver.Lastmod.Format "2006-01-02T15:04:05-07:00") $icon ($Deliver.Lastmod.Format $Deliver.Site.Params.postMetaDateFormat) | safeHTML }}
+        {{ printf `<time datetime="%s" class="post-meta-item modified">%s&nbsp;%s</time>` ($Deliver.Lastmod.Format "2006-01-02T15:04:05-07:00") $icon ($Deliver.Lastmod.Format $Deliver.Site.Params.postMetaDateFormat) | safeHTML }}
     {{ end }}
     {{ if and $Deliver.Site.Params.displayExpiredDate (not $Deliver.ExpiryDate.IsZero) }}
         {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.expiredDateIcon) "icon" "icon post-meta-icon" }}
-        {{ printf `<time datetime="%s" class="post-meta-item expired">%s%s</time>` ($Deliver.ExpiryDate.Format "2006-01-02T15:04:05-07:00") $icon ($Deliver.ExpiryDate.Format $Deliver.Site.Params.postMetaDateFormat) | safeHTML }}
+        {{ printf `<time datetime="%s" class="post-meta-item expired">%s&nbsp;%s</time>` ($Deliver.ExpiryDate.Format "2006-01-02T15:04:05-07:00") $icon ($Deliver.ExpiryDate.Format $Deliver.Site.Params.postMetaDateFormat) | safeHTML }}
     {{ end }}
     {{ if $Deliver.Site.Params.displayCategory }}
         {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.categoryIcon) "icon" "icon post-meta-icon" | safeHTML }}
@@ -36,7 +36,7 @@
             {{ with $sections }}
                 {{ $length := (sub (len $sections) 1) }}
                 <span class="post-meta-item category">
-                    {{- $icon -}}
+                    {{- printf `%s&nbsp;` $icon | safeHTML -}}
                     {{- range $link, $title := $sections -}}
                         {{- $index := $link | replaceRE `(\d+)/.+` `$1` | int -}}
                         {{- if lt $index $length -}}
@@ -54,7 +54,7 @@
             {{ with $Deliver.Params.categories }}
                 {{ $length := sub (len .) 1 }}
                 <span class="post-meta-item category">
-                    {{- $icon -}}
+                    {{- printf `%s&nbsp;` $icon | safeHTML -}}
                     {{- range $index, $category := . -}}
                         {{- $url := urls.Parse ($category | urlize) -}}
                         {{- $path := $url.Path -}}
@@ -74,16 +74,16 @@
     {{ end }}
     {{ if $Deliver.Site.Params.displayWordCount }}
         {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.wordCountIcon) "icon" "icon post-meta-icon" | safeHTML }}
-        <span class="post-meta-item wordcount">{{ $icon }}{{ $Deliver.WordCount }}</span>
+        <span class="post-meta-item wordcount">{{ $icon }}&nbsp;{{ $Deliver.WordCount }}</span>
     {{ end }}
     {{ if $Deliver.Site.Params.displayReadingTime }}
         {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.readingTimeIcon) "icon" "icon post-meta-icon" | safeHTML }}
-        <span class="post-meta-item reading-time">{{ $icon }}{{ $Deliver.ReadingTime }}&nbsp;{{ i18n "minute" $Deliver.ReadingTime }}</span>
+        <span class="post-meta-item reading-time">{{ $icon }}&nbsp;{{ $Deliver.ReadingTime }}&nbsp;{{ i18n "minute" $Deliver.ReadingTime }}</span>
     {{ end }}
     {{ if and $Deliver.Site.Params.displayBusuanziPagePV (eq hugo.Environment "production") }}
         {{ if not $isHome }}
             {{ $icon := replace (index $Deliver.Site.Data.SVG $Deliver.Site.Params.busuanziPagePVIcon) "icon" "icon post-meta-icon" | safeHTML }}
-            <span class="post-meta-item busuanzi-page-pv" id="busuanzi_container_page_pv">{{ $icon }}<span id="busuanzi_value_page_pv"></span></span>
+            <span class="post-meta-item busuanzi-page-pv" id="busuanzi_container_page_pv">{{ $icon }}&nbsp;<span id="busuanzi_value_page_pv"></span></span>
         {{ end }}
     {{ end }}
 </div>
