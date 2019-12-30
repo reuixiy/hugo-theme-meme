@@ -2,7 +2,20 @@
     font-size: 90%;
     color: var(--color-contrast-medium);
     position: fixed;
-    bottom: 1em;
     right: 1em;
     z-index: 1;
+}
+
+@if ($enableBackToTopAutoHide) {
+    .back-to-top {
+        bottom: -2em;
+        transition: bottom 0.3s ease-in-out;
+        &.show {
+            bottom: 1em;
+        }
+    }
+} @else {
+    .back-to-top {
+        bottom: 1em;
+    }
 }

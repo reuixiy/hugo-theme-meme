@@ -1,5 +1,13 @@
 <script data-no-instant>InstantClick.init();</script>
 
+{{ if .Site.Params.enableBackToTopAutoHide }}
+    <script data-no-instant>
+        InstantClick.on('change', function () {
+            backToTop();
+        });
+    </script>
+{{ end }}
+
 {{ if .Site.Params.enableDarkMode }}
     <script data-no-instant>
         InstantClick.on('change', function () {

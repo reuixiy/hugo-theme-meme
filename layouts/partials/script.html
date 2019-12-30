@@ -1,10 +1,15 @@
 {{- $main := resources.Get "js/main.js" | resources.ExecuteAsTemplate "js/main-rendered.js" . -}}
+{{- $backToTop := resources.Get "js/back-to-top.js" | resources.ExecuteAsTemplate "js/back-to-top-rendered.js" . -}}
 {{- $darkMode := resources.Get "js/dark-mode.js" | resources.ExecuteAsTemplate "js/dark-mode-rendered.js" . -}}
 {{- $lang := resources.Get "js/multilingual.js" | resources.ExecuteAsTemplate "js/multilingual-rendered.js" . -}}
 {{- $instantClick := resources.Get "js/instantclick.js" | resources.ExecuteAsTemplate "js/instantclick-rendered.js" . -}}
 {{- $custom := resources.Get "js/custom.js" | resources.ExecuteAsTemplate "js/custom-rendered.js" . -}}
 
 {{- .Scratch.Set "script" (slice $main) -}}
+
+{{- if .Site.Params.enableBackToTopAutoHide -}}
+    {{- .Scratch.Add "script" (slice $backToTop) -}}
+{{- end -}}
 
 {{- if .Site.Params.enableDarkMode -}}
     {{- .Scratch.Add "script" (slice $darkMode) -}}

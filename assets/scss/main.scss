@@ -11,6 +11,12 @@
     $listWidth: {{ . }}em;
 {{ end }}
 
+{{ if .Site.Params.enableBackToTopAutoHide }}
+    $enableBackToTopAutoHide: true;
+{{ else }}
+    $enableBackToTopAutoHide: false;
+{{ end }}
+
 {{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
     {{ .Scratch.Set "glyph" "'glyph-correction', " }}
     $glyph: true;
