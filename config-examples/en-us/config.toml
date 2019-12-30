@@ -1082,6 +1082,8 @@ uglyURLs = false
 
     enableBackToTop = true
 
+    enableBackToTopAutoHide = true
+
     displayBackToTopInHome = true
 
     backToTopIcon = "arrow-up"

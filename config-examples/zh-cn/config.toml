@@ -1045,6 +1045,9 @@ uglyURLs = false
     # 是否开启
     enableBackToTop = true
 
+    # 是否开启自动隐藏
+    enableBackToTopAutoHide = true
+
     # 是否在首页显示
     displayBackToTopInHome = true
 
