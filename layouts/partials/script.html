@@ -40,6 +40,10 @@
     {{ partial "custom/instantclick.html" . }}
 {{- end -}}
 
+{{ if .Site.Params.enableSmoothScroll }}
+    {{ partial "third-party/smooth-scroll.html" . }}
+{{ end }}
+
 {{ if .Params.katex | default .Site.Params.enableKaTeX }}
     {{ partial "third-party/katex.html" . }}
 {{ end }}

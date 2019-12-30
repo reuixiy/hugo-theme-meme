@@ -1138,6 +1138,14 @@ uglyURLs = false
 
 
     ######################################
+    # 平滑滚动
+
+    # 是否开启
+    enableSmoothScroll = true
+    # 说明：https://github.com/cferdinandi/smooth-scroll
+
+
+    ######################################
     # 404 页面
 
     # 视频封面
