@@ -69,7 +69,7 @@ function changeMode() {
 
     var els = [].slice.apply(document.getElementsByClassName(arguments[1]));
     for (var i = 0; i < els.length; i++) {
-        els[i].className = els[i].className.replace(/ *\bchroma\b/g, arguments[2]);
+        els[i].className = arguments[2];
     }
 
     // Utterances
