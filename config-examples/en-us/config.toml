@@ -1169,6 +1169,13 @@ uglyURLs = false
 
 
     ######################################
+    # Smooth Scroll
+
+    enableSmoothScroll = true
+    # Note: https://github.com/cferdinandi/smooth-scroll
+
+
+    ######################################
     # 404 Page
 
     fofPoster = ""
