@@ -70,6 +70,10 @@
     {{ end }}
 {{ end }}
 
+{{ if .Site.Params.enableMediumZoom }}
+    {{ partial "third-party/medium-zoom.html" . }}
+{{ end }}
+
 {{ partial "third-party/service-worker.html" . }}
 
 {{ partial "third-party/busuanzi.html" . }}

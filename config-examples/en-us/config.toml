@@ -1176,6 +1176,13 @@ uglyURLs = false
 
 
     ######################################
+    # Medium Zoom
+
+    enableMediumZoom = true
+    # Note: https://github.com/francoischalifour/medium-zoom
+
+
+    ######################################
     # 404 Page
 
     fofPoster = ""
