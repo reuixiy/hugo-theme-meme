@@ -894,6 +894,11 @@ uglyURLs = false
     fontSize = 20
 
     ######################################
+    ## Tab Size
+
+    tabSize = 4
+
+    ######################################
     ## Line Height
 
     lineHeight = 1.618

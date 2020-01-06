@@ -17,6 +17,10 @@
     $enableBackToTopAutoHide: false;
 {{ end }}
 
+{{ with .Site.Params.tabSize | default 4 }}
+    $tabSize: {{ . }};
+{{ end }}
+
 {{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
     {{ .Scratch.Set "glyph" "'glyph-correction', " }}
     $glyph: true;
