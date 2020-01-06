@@ -6,6 +6,7 @@ html, body {
 
 body {
     font-size: $fontSize;
+    tab-size: $tabSize;
     color: var(--color-contrast-high);
     background-color: var(--color-bg);
     overflow-wrap: break-word;
