@@ -1,3 +1,30 @@
+## [3.4.5](https://github.com/reuixiy/hugo-theme-meme/compare/v3.3.9...v3.4.5) (2020-01-08)
+
+
+### Bug Fixes
+
+* cannot change highlight theme in dark-mode.js ([b81d551](https://github.com/reuixiy/hugo-theme-meme/commit/b81d551))
+* style of back-to-top ([e5bda3a](https://github.com/reuixiy/hugo-theme-meme/commit/e5bda3a))
+* style of post-meta, busuanzi-site-uv-and-pv ([a4e4137](https://github.com/reuixiy/hugo-theme-meme/commit/a4e4137))
+* style related to flex ([ad0f403](https://github.com/reuixiy/hugo-theme-meme/commit/ad0f403))
+* Use .Permalink instead of combining URLs ([f1d4906](https://github.com/reuixiy/hugo-theme-meme/commit/f1d4906))
+* wrong utterances theme after theme is changed ([4389ddf](https://github.com/reuixiy/hugo-theme-meme/commit/4389ddf))
+
+
+### Features
+
+* add "custom/content.html" partial ([3cc100b](https://github.com/reuixiy/hugo-theme-meme/commit/3cc100b))
+* add "custom/script.html" partial ([d442001](https://github.com/reuixiy/hugo-theme-meme/commit/d442001))
+* autohide back-to-top toggle ([6659f25](https://github.com/reuixiy/hugo-theme-meme/commit/6659f25))
+* medium zoom for images ([b7cf602](https://github.com/reuixiy/hugo-theme-meme/commit/b7cf602))
+* new `disableMathJaxMenu` option ([b759b6e](https://github.com/reuixiy/hugo-theme-meme/commit/b759b6e))
+* smooth scroll ([aaa5a42](https://github.com/reuixiy/hugo-theme-meme/commit/aaa5a42))
+* support `tab-size` CSS property ([56a9e1d](https://github.com/reuixiy/hugo-theme-meme/commit/56a9e1d))
+* support busuanzi view counter [#40](https://github.com/reuixiy/hugo-theme-meme/issues/40) ([09e9976](https://github.com/reuixiy/hugo-theme-meme/commit/09e9976))
+* support utterances and a couple of bug fixes ([8339f71](https://github.com/reuixiy/hugo-theme-meme/commit/8339f71))
+
+
+
 ## [3.3.9](https://github.com/reuixiy/hugo-theme-meme/compare/v3.2.7...v3.3.9) (2019-12-18)
 
 
