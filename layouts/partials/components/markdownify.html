@@ -1,0 +1,59 @@
+{{- $Deliver := .Deliver -}}
+{{- $raw := .raw -}}
+
+{{- $Deliver.Scratch.Set "Content" $raw -}}
+
+{{- $enableEmoji := replaceRE `enableEmoji = (.+)` `$1` (delimit (readFile "config.toml" | findRE `enableEmoji = (.+)` | uniq) "") -}}
+
+<!-- Emoji -->
+{{- $Content := $Deliver.Scratch.Get "Content" -}}
+{{- if eq $enableEmoji "true" -}}
+    {{- $Content := $Content | emojify -}}
+    {{- $Deliver.Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- LaTeX -->
+{{- $Content := $Deliver.Scratch.Get "Content" -}}
+{{- if $Deliver.Site.Params.compatibleWithLaTeX -}}
+    {{- if or ($Deliver.Params.katex | default $Deliver.Site.Params.enableKaTeX) ($Deliver.Params.mathjax | default $Deliver.Site.Params.enableMathJax) -}}
+        {{- $regexLaTeX := `([^\$]|\n)\$(.+)\$` -}}
+        {{- $replacementLaTeX := `$1<span>$$${2}$$</span>` -}}
+        {{- $Content := $Content | replaceRE $regexLaTeX $replacementLaTeX -}}
+
+        {{- $regexLaTeX := `\$\$((.|\s)[^\$]+)\$\$` -}}
+        {{- $replacementLaTeX := `<div>$$$$${1}$$$$</div>` -}}
+        {{- $Content := $Content | replaceRE $regexLaTeX $replacementLaTeX -}}
+
+        {{- $Deliver.Scratch.Set "Content" $Content -}}
+    {{- end -}}
+{{- end -}}
+
+<!-- New Markdown Syntax: Emphasis Point `..text..` -->
+{{- $Content := $Deliver.Scratch.Get "Content" -}}
+{{- if $Deliver.Site.Params.enableEmphasisPoint -}}
+    {{- $regexPatternEmphasisPoint := `([^\.\x60])\.\.([^\.\s\n\/\\]+)\.\.([^\.\x60])` -}}
+    {{- $regexReplacementEmphasisPoint := `$1<strong class="emphasis-point">$2</strong>$3` -}}
+    {{- $Content := $Content | replaceRE $regexPatternEmphasisPoint $regexReplacementEmphasisPoint | safeHTML -}}
+    {{- $Deliver.Scratch.Set "Content" $Content -}}
+{{- end -}}
+
+<!-- Markdown -->
+{{- $Content := $Deliver.Scratch.Get "Content" -}}
+{{- $Content := $Content | markdownify -}}
+{{- $Deliver.Scratch.Set "Content" $Content -}}
+
+<!-- External Links -->
+{{- $Content := $Deliver.Scratch.Get "Content" -}}
+{{- if $Deliver.Site.Params.hrefTargetBlank -}}
+    {{- $temps := findRE `(<a href="[^"]+")` $Content | uniq -}}
+    {{- with $temps -}}
+        {{- range . -}}
+            {{- if eq (substr . 9 4) "http" -}}
+                {{- $raw := replaceRE `(<a href="[^"]+")` `$1` . -}}
+                {{- $replacement := printf `%s target="_blank" rel="noopener"` $raw -}}
+                {{- $Content := ($Deliver.Scratch.Get "Content") | replaceRE . $replacement | safeHTML -}}
+                {{- $Deliver.Scratch.Set "Content" $Content -}}
+            {{- end -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}

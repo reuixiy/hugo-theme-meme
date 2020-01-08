@@ -1,3 +1,4 @@
+{{- $Deliver := . -}}
 {{ if and .Site.Params.enableFooter (not (and .IsHome (in (slice "poetry" "footage") .Site.Params.homeLayout))) }}
     <footer id="footer" class="footer">
         <div class="footer-inner">
@@ -25,15 +26,24 @@
             <div class="site-info">{{ printf `%s%s%s%s` $siteInfoCopyright $siteInfoCreatedYear $siteInfoIcon .Site.Author.name | safeHTML }}</div>
 
             {{- if .Site.Params.displayPoweredBy }}
-                <div class="powered-by">{{ printf `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [MemE](https://github.com/reuixiy/hugo-theme-meme)` | markdownify | safeHTML }}</div>
+                {{- $raw := `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [MemE](https://github.com/reuixiy/hugo-theme-meme)` -}}
+                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw) -}}
+                {{- $Content := .Scratch.Get "Content" -}}
+                <div class="powered-by">{{ $Content | safeHTML }}</div>
             {{- end }}
 
             {{- if .Site.Params.displaySiteCopyright }}
-                <div class="site-copyright">{{ .Site.Copyright | markdownify | safeHTML }}</div>
+                {{- $raw := .Site.Copyright -}}
+                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw) -}}
+                {{- $Content := .Scratch.Get "Content" -}}
+                <div class="site-copyright">{{ $Content | safeHTML }}</div>
             {{- end }}
 
             {{- with .Site.Params.customFooter }}
-                <div class="custom-footer">{{ . | markdownify | safeHTML }}</div>
+                {{- $raw := . -}}
+                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw) -}}
+                {{- $Content := $Deliver.Scratch.Get "Content" -}}
+                <div class="custom-footer">{{ $Content | safeHTML }}</div>
             {{- end }}
 
             {{- if and .Site.Params.displayBusuanziSiteUVAndPV (eq hugo.Environment "production") }}

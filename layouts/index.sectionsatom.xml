@@ -57,7 +57,10 @@
             {{- end }}
             {{- partial "components/summary.html" $page -}}
             {{- $summary := .Description | default ($page.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) -}}
-            {{ printf `<summary type="html"><![CDATA[%s]]></summary>` ($summary | markdownify | htmlUnescape) | safeHTML }}
+            {{- $raw := $summary -}}
+            {{- partial "components/markdownify.html" (dict "Deliver" $page "raw" $raw) -}}
+            {{- $summary := $page.Scratch.Get "Content" -}}
+            {{ printf `<summary type="html"><![CDATA[%s]]></summary>` ($summary | htmlUnescape) | safeHTML }}
             {{ if $.Site.Params.includeContent }}
                 {{ printf `<content type="html"><![CDATA[%s]]></content>` .Content | safeHTML }}
             {{ end }}

@@ -46,6 +46,9 @@
             ol {
                 margin: ($fontSize * 1.618) 0 0;
                 list-style-position: outside;
+                p {
+                    display: block;
+                }
             }
         }
         dl {

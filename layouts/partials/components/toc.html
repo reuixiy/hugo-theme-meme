@@ -1,19 +1,18 @@
 {{- $toc := .TableOfContents -}}
 
-{{- $regexPatternTOC := `<nav id="TableOfContents">((.|\s)+)</nav>` -}}
-{{- $regexReplacementTOC := `<nav class="contents">$1</nav>` -}}
+<!-- Change TOC Attribute -->
+{{- $regexPatternTOC := `<nav id="TableOfContents">` -}}
+{{- $regexReplacementTOC := `<nav class="contents">` -}}
 {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
 
-{{- $regexPatternTOC := `(</?)ul>` -}}
-{{- $regexReplacementTOC := `${1}ol>` -}}
-{{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
-
-{{- $regexPatternTOC := `(<nav class="contents">\n)<ol>` -}}
+<!-- Inject Class Attribute -->
+{{- $regexPatternTOC := `(<nav class="contents">\n.+)<ol>` -}}
 {{- $regexReplacementTOC := `$1<ol class="toc">` -}}
 {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
 
+<!-- Inject TOC Title -->
 {{- if .Site.Params.displayTOCTitle -}}
-    {{- $regexPatternTOC := `(<nav class="contents">\n)(<ol class="toc">)` -}}
+    {{- $regexPatternTOC := `(<nav class="contents">\n.+)(<ol class="toc">)` -}}
     {{- $regexReplacementTOC := (printf `$1<h2 id="contents" class="contents-title">%s</h2>$2` (i18n "tocTitle")) -}}
     {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
     {{- .Scratch.Set "toc" $toc -}}
@@ -28,12 +27,5 @@
     {{- .Scratch.Set "toc" $toc -}}
 {{ end }}
 
-<!-- Delete Useless First Level When Post is Not Start With Heading 1 -->
 {{- $toc := .Scratch.Get "toc" | default $toc -}}
-{{- $regexPatternTOC := `(<ol class="toc">)\n<li>\n<ol>(([\n].+)*)\n</ol></li>(\n</ol>)` -}}
-{{- $regexReplacementTOC := `$1$2$4` -}}
-{{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
-{{- .Scratch.Set "toc" $toc -}}
-
-{{- $toc := .Scratch.Get "toc" -}}
 {{- .Scratch.Set "toc" $toc -}}
