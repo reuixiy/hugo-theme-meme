@@ -10,7 +10,7 @@
             {{ range .Site.Menus.main }}
                 <li class="menu-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}">
                     {{- $linkType := (string .Pre) -}}
-                    <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external"{{ end }}>
+                    <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>
                         {{- $iconName := (string .Post) -}}
                         {{- $icon := (index $.Site.Data.SVG $iconName) -}}
                         {{- printf `%s` (replace $icon "icon" "icon menu-item-icon") | safeHTML -}}

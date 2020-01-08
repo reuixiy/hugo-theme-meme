@@ -52,7 +52,10 @@
                 {{ else }}
                     {{- partial "components/summary.html" $page -}}
                     {{- $summary := .Description | default ($page.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) -}}
-                    {{ printf `<description><![CDATA[%s]]></description>` ($summary | markdownify | htmlUnescape) | safeHTML }}
+                    {{- $raw := $summary -}}
+                    {{- partial "components/markdownify.html" (dict "Deliver" $page "raw" $raw) -}}
+                    {{- $summary := $page.Scratch.Get "Content" -}}
+                    {{ printf `<description><![CDATA[%s]]></description>` ($summary | htmlUnescape) | safeHTML }}
                 {{ end }}
                 <!-- Sections -->
                 {{ if eq $.Site.Params.categoryBy "sections" }}

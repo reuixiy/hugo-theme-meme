@@ -7,7 +7,7 @@
                         {{ $icon := (replace (index .Site.Data.SVG .Site.Params.gitIcon) "icon" "icon git-icon") }}
                         <div class="gitinfo-item commit">
                             {{- with .Site.Params.repoURL -}}
-                                {{- $commit := (printf `<a href="%s/commit/%s" target="_blank">%s%s</a>` . $.GitInfo.Hash $icon $.GitInfo.AbbreviatedHash) -}}
+                                {{- $commit := (printf `<a href="%s/commit/%s" target="_blank" rel="noopener">%s%s</a>` . $.GitInfo.Hash $icon $.GitInfo.AbbreviatedHash) -}}
                                 {{- $.Scratch.Set "commit" $commit -}}
                             {{- else -}}
                                 {{- $.Scratch.Set "commit" $.GitInfo.AbbreviatedHash -}}
@@ -29,7 +29,7 @@
                     {{ if .Site.Params.displayFeedback }}
                         {{ with .Site.Params.repoURL }}
                             {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.feedbackIcon) "icon" "icon feedback-icon") }}
-                            <div class="gitinfo-item feedback">{{ printf `<a href="%s/issues" target="_blank">%s%s</a>` . $icon $.Site.Params.feedbackText | safeHTML }}</div>
+                            <div class="gitinfo-item feedback">{{ printf `<a href="%s/issues" target="_blank" rel="noopener">%s%s</a>` . $icon $.Site.Params.feedbackText | safeHTML }}</div>
                         {{ end }}
                     {{ end }}
                     {{ if .Site.Params.displayEditLink }}
@@ -37,7 +37,7 @@
                             {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.editIcon) "icon" "icon edit-icon") }}
                             {{ $contentDir := $.Site.Params.contentDir }}
                             {{ $content := (cond $.Site.IsMultiLingual (printf `/%s/` $contentDir) (printf `/content/`)) }}
-                            <div class="gitinfo-item edit">{{ printf `<a href="%s%s%s" target="_blank">%s%s</a>` . $content $.Path $icon $.Site.Params.editText | safeHTML }}</div>
+                            <div class="gitinfo-item edit">{{ printf `<a href="%s%s%s" target="_blank" rel="noopener">%s%s</a>` . $content $.Path $icon $.Site.Params.editText | safeHTML }}</div>
                         {{ end }}
                     {{ end }}
                 </div>

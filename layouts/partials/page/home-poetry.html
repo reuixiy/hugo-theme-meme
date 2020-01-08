@@ -1,7 +1,11 @@
+{{- $Deliver := . -}}
 <main class="home">
     <div class="poetry">
         {{ range .Site.Params.homePoetry }}
-            <p>{{ . | markdownify }}</p>
+            {{- $raw := . -}}
+            {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw) -}}
+            {{- $Content := $Deliver.Scratch.Get "Content" -}}
+            <p>{{ $Content | safeHTML }}</p>
         {{ end }}
     </div>
     <div class="links">

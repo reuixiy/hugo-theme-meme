@@ -32,7 +32,7 @@
 {{- $author := ($Deliver.Scratch.Get "author") -}}
 <!-- languageCode -->
 {{- if $Deliver.Site.IsMultiLingual -}}
-    {{- $languageCode := readFile "config.toml" | findRE `languageCode = "([^"]+)` -}}
+    {{- $languageCode := readFile "config.toml" | findRE `languageCode = "([^"]+)` | uniq -}}
     {{- with $languageCode -}}
         {{- $Deliver.Scratch.Delete "languageCode" -}}
         {{- range . -}}

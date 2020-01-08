@@ -41,12 +41,6 @@ enableRobotsTXT = true
 # layout in MemE)
 paginate = 5
 
-# GitHub flavoured code fences
-pygmentsCodefences = true
-pygmentsUseClasses = true
-pygmentsCodefencesGuessSyntax = true
-pygmentsOptions = "linenos=table"
-
 # URL related
 disablePathToLower = false
 relativeURLs = false
@@ -66,18 +60,36 @@ uglyURLs = false
 [frontmatter]
     lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
 
-# v0.60.0
+# Markdown renderer
 [markup]
-    defaultMarkdownHandler = "blackfriday"
-
-# Markdown rendering engine
-[blackfriday]
-    # Enable smart punctuation substitutions?
-    smartypants = true
-    # Open external links in a new window or tab?
-    hrefTargetBlank = true
-    # Disable some Blackfriday’s Markdown extensions
-    extensionsmask = ["hardLineBreak", "backslashLineBreak"]
+    defaultMarkdownHandler = "goldmark"
+    [markup.goldmark]
+        [markup.goldmark.extensions]
+            definitionList = true
+            footnote = true
+            linkify = true
+            strikethrough = true
+            table = true
+            taskList = true
+            typographer = true
+        [markup.goldmark.parser]
+            attribute = true
+            autoHeadingID = true
+            autoHeadingIDType = "github"
+        [markup.goldmark.renderer]
+            hardWraps = false
+            unsafe = true
+            xHTML = false
+    [markup.highlight]
+        codeFences = true
+        guessSyntax = false
+        lineNos = true
+        lineNumbersInTable = true
+        noClasses = false
+    [markup.tableOfContents]
+        startLevel = 2
+        endLevel = 6
+        ordered = true
 
 # Author’s information
 [author]
@@ -731,6 +743,16 @@ uglyURLs = false
     #       environment
     #       Homepage is not supported yet
     #       https://busuanzi.ibruce.info/
+
+
+    ######################################
+    # Markdown Related
+
+    # Open external links in a new tab?
+    hrefTargetBlank = true
+
+    # Compatibility with LaTeX?
+    compatibleWithLaTeX = false
 
 
     ######################################

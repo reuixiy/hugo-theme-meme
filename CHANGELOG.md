@@ -1,3 +1,28 @@
+# [4.0.0](https://github.com/reuixiy/hugo-theme-meme/compare/v3.4.5...v4.0.0) (2020-01-08)
+
+
+As I described in [#26](https://github.com/reuixiy/hugo-theme-meme/issues/26), I want to make MemE support Hugo's new default Markdown rendering engine Goldmark, and this is it. In this version, MemE will support Goldmark and *no longer support* Blackfriday.
+
+### Notes
+
+1. Goldmark problems, see [#43 (comment)](https://github.com/reuixiy/hugo-theme-meme/issues/43#issuecomment-571074162)
+
+2. Compatibility with LaTeX, see [gohugoio/hugo#6544](https://github.com/gohugoio/hugo/issues/6544)
+
+    [Previously](https://github.com/reuixiy/hugo-theme-meme/issues/12), I suggested adding some backslashes to escape some characters to solve the syntax conflict between Markdown and LaTeX. Now, I think that is not the *right* way -- it's troublesome and stupid.
+
+    In v4.0.0, MemE adds a new `compatibleWithLaTeX` option as a temporary workaround. But note that it has some limitations, such as it can't exclude equations inside code block, it supports `$ ... $` and `$$ ... $$` only.
+
+    And at last, apology for my wrong suggestion, which may take some of your time to modify the equations again.
+
+3. With Hugo brand new Markdown renderer Goldmark, [#14](https://github.com/reuixiy/hugo-theme-meme/issues/14) should be fixed.
+
+### ATTENTION
+
+**MemE v4.0.0 requires Hugo v0.62.2 or higher.**
+
+
+
 ## [3.4.5](https://github.com/reuixiy/hugo-theme-meme/compare/v3.3.9...v3.4.5) (2020-01-08)
 
 

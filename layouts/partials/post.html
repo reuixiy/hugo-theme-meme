@@ -1,3 +1,4 @@
+{{- $Deliver := . -}}
 <main class="main single" id="main">
     <div class="main-inner">
 
@@ -13,12 +14,18 @@
             <h1 class="post-title">{{ .Title }}</h1>
 
             {{ with .Params.subtitle }}
-                <div class="post-subtitle">{{ . | markdownify | safeHTML }}</div>
+                {{- $raw := . -}}
+                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw) -}}
+                {{- $Content := $Deliver.Scratch.Get "Content" -}}
+                <div class="post-subtitle">{{ $Content | safeHTML }}</div>
             {{ end }}
 
             {{ if .Site.Params.displayPostDescription }}
                 {{ with .Params.description }}
-                    <div class="post-description">{{ . | markdownify | safeHTML }}</div>
+                    {{- $raw := . -}}
+                    {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw) -}}
+                    {{- $Content := $Deliver.Scratch.Get "Content" -}}
+                    <div class="post-description">{{ $Content | safeHTML }}</div>
                 {{ end }}
             {{ end }}
 

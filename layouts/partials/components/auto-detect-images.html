@@ -2,7 +2,7 @@
 <!-- https://gohugo.io/functions/replacere/ -->
 <!-- https://regex101.com/ -->
 {{- if and .IsPage (in .Site.Params.mainSections .Section) -}}
-    {{- $imgs := findRE `<img src="/?([^"]+)` .Content -}}
+    {{- $imgs := findRE `<img src="/?([^"]+)` .Content | uniq -}}
     {{- with $imgs -}}
         {{- $.Scratch.Delete "imgsURL" -}}
         {{- range . -}}
