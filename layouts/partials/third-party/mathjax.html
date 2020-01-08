@@ -4,6 +4,13 @@
             loader: {
                 load: ['[tex]/mhchem']
             },
+            {{ if .Site.Params.disableMathJaxMenu }}
+                options: {
+                    renderActions: {
+                        addMenu: [0, '', '']
+                    }
+                },
+            {{ end }}
             tex: {
                 inlineMath: {'[+]': [['$', '$']]},
                 tags: 'ams',
