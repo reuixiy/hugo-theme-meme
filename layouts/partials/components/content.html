@@ -122,7 +122,7 @@
 
 <!-- Video -->
 {{- $Content := .Scratch.Get "Content" -}}
-{{- $regexPatternVideo := `(<img)( src="[^"]+\.(mp4|webm|ogg)")( alt="[^"]+.)?(.+)?( />)` -}}
+{{- $regexPatternVideo := `(<img)( src="[^"]+\.(mp4|webm|ogg)")( alt="[^"]+.)?(.[^>]+)?( />|>)` -}}
 {{- $regexReplacementVideo := `<video$2$5 controls></video>` -}}
 {{- $Content := $Content | replaceRE $regexPatternVideo $regexReplacementVideo | safeHTML -}}
 {{- .Scratch.Set "Content" $Content -}}
@@ -198,7 +198,7 @@
 <!-- Medium Zoom -->
 {{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.enableMediumZoom -}}
-    {{- $regexPatternMediumZoom := `(<img)(.+)( />)` -}}
+    {{- $regexPatternMediumZoom := `(<img)(.[^>]+)( />|>)` -}}
     {{- $regexReplacementMediumZoom := `$1$2 data-zoomable$3` -}}
     {{- $Content := $Content | replaceRE $regexPatternMediumZoom $regexReplacementMediumZoom | safeHTML -}}
     {{- .Scratch.Set "Content" $Content -}}
