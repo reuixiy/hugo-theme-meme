@@ -522,6 +522,9 @@ uglyURLs = false
     # 说明：文章的 Front Matter 中的 `mathjax`
     #      的优先级高于此处
 
+    # 是否禁用 MathJax 的右键菜单
+    disableMathJaxMenu = false
+
 
     ######################################
     # 评论
