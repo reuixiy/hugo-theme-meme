@@ -141,6 +141,9 @@ ol.toc {
     ol {
         margin: ($fontSize * 1.618) 0 0;
         padding: 0 $fontSize 0 ($fontSize * 2);
+        p {
+            text-align: left !important;
+        }
     }
 }
 
