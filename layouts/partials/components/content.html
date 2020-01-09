@@ -177,7 +177,7 @@
 {{- $Content := .Scratch.Get "Content" -}}
 {{- if ne .Type "poetry" -}}
     {{- if (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) -}}
-        {{- $regexPatternIndent := `(</p>\n<p)(>)(.+(<br />|<br>))` -}}
+        {{- $regexPatternIndent := `(<p)(>)(.+(<br />|<br>))` -}}
         {{- $regexReplacementIndent := `$1 style="text-indent:0;padding-left:2em;margin:1em 0"$2$3` -}}
         {{- $Content := $Content | replaceRE $regexPatternIndent $regexReplacementIndent | safeHTML -}}
         {{- .Scratch.Set "Content" $Content -}}
