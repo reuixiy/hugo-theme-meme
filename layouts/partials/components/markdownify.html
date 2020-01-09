@@ -42,6 +42,13 @@
 {{- $Content := $Content | markdownify -}}
 {{- $Deliver.Scratch.Set "Content" $Content -}}
 
+<!-- https://github.com/reuixiy/hugo-theme-meme/issues/49 -->
+{{- $Content := $Deliver.Scratch.Get "Content" -}}
+{{- if and (not (strings.HasPrefix $Content "<p>")) $isContent -}}
+    {{- $Content := (printf `<p>%s</p>` $Content) | safeHTML -}}
+    {{- $Deliver.Scratch.Set "Content" $Content -}}
+{{- end -}}
+
 <!-- External Links -->
 {{- $Content := $Deliver.Scratch.Get "Content" -}}
 {{- if $Deliver.Site.Params.hrefTargetBlank -}}

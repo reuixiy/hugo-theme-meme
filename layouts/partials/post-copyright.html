@@ -18,7 +18,7 @@
             {{ end }}
             {{ with $author.copyright }}
                 {{- $raw := . -}}
-                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw) -}}
+                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := $Deliver.Scratch.Get "Content" -}}
                 <li class="copyright-item license">{{ printf `%s%s` (i18n "copyrightLicense") $Content | safeHTML }}</li>
             {{ end }}

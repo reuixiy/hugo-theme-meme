@@ -3,7 +3,7 @@
     <div class="poetry">
         {{ range .Site.Params.homePoetry }}
             {{- $raw := . -}}
-            {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw) -}}
+            {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
             {{- $Content := $Deliver.Scratch.Get "Content" -}}
             <p>{{ $Content | safeHTML }}</p>
         {{ end }}
