@@ -1,3 +1,14 @@
+## [4.0.1](https://github.com/reuixiy/hugo-theme-meme/compare/v4.0.0...v4.0.1) (2020-01-09)
+
+
+### Bug Fixes
+
+* missing `<p>` tag when content has one line ([d7f4b8f](https://github.com/reuixiy/hugo-theme-meme/commit/d7f4b8f)), closes [#49](https://github.com/reuixiy/hugo-theme-meme/issues/49)
+* regex of content.html ([01039b7](https://github.com/reuixiy/hugo-theme-meme/commit/01039b7))
+* style of footnotes ([f4a3dd0](https://github.com/reuixiy/hugo-theme-meme/commit/f4a3dd0))
+
+
+
 # [4.0.0](https://github.com/reuixiy/hugo-theme-meme/compare/v3.4.5...v4.0.0) (2020-01-08)
 
 
