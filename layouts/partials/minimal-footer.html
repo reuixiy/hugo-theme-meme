@@ -72,7 +72,7 @@
             {{ with .Params.categories }}
                 <div class="post-category">
                     {{ if $.Site.Params.enableVerticalBarStructure }}
-                        {{- $currentTopLevelCategory := (delimit (first 1 .) "") -}}
+                        {{- $currentTopLevelCategory := (delimit (first 1 .) " ") -}}
                         {{- $url := urls.Parse ($currentTopLevelCategory | urlize) -}}
                         {{- $path := $url.Path -}}
                         {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
@@ -81,7 +81,7 @@
                         {{- $.Scratch.Delete "topLevelCategories" -}}
                         {{- range $.Site.RegularPages -}}
                             {{- with .Param "categories" -}}
-                                {{- $topLevelCategory := (delimit (first 1 .) "" | urlize) -}}
+                                {{- $topLevelCategory := ((delimit (first 1 .) " ") | urlize) -}}
                                 {{- $.Scratch.Add "topLevelCategories" (slice $topLevelCategory) -}}
                             {{- end -}}
                         {{- end -}}

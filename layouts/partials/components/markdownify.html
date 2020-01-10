@@ -4,7 +4,7 @@
 
 {{- $Deliver.Scratch.Set "Content" $raw -}}
 
-{{- $enableEmoji := replaceRE `enableEmoji = (.+)` `$1` (delimit (readFile "config.toml" | findRE `enableEmoji = (.+)` | uniq) "") -}}
+{{- $enableEmoji := replaceRE `enableEmoji = (.+)` `$1` (delimit (readFile "config.toml" | findRE `enableEmoji = (.+)` | uniq) " ") -}}
 
 <!-- Emoji -->
 {{- $Content := $Deliver.Scratch.Get "Content" -}}
