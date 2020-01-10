@@ -187,6 +187,9 @@
         }
     }
 {{ end }}
+{{ if .Site.Params.enableEmphasisPoint }}
+    @import "_common/emphasis-point.scss";
+{{ end }}
 
 {{ if .Site.Params.enableParagraphIndent }}
     @import "_common/indent.scss";
@@ -322,6 +325,7 @@
 }
 
 {{ if .Site.Params.enableHighlight }}
+    @import "_common/highlight.scss";
     @import "_common/_highlight/light.scss";
     .chroma {
         color: var(--color-contrast-high);
