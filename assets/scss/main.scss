@@ -292,8 +292,17 @@
 {{ end }}
 {{ if eq .Site.Params.homeLayout "footage" }}
     @import "_common/_page/home-footage.scss";
+
+    {{ if strings.HasPrefix .Site.Params.homePoster "." }}
+        {{ $homePoster := printf `.%s` .Site.Params.homePoster }}
+        {{ .Scratch.Set "homePoster" $homePoster }}
+    {{ else }}
+        {{ .Scratch.Set "homePoster" .Site.Params.homePoster }}
+    {{ end }}
+    {{ $homePoster := .Scratch.Get "homePoster" }}
+
     .home::before {
-        background-image: url({{ .Site.Params.homePoster }});
+        background-image: url({{ $homePoster }});
     }
 {{ end }}
 {{ if eq .Site.Params.homeLayout "posts" }}
@@ -301,8 +310,15 @@
 {{ end }}
 
 @import "_common/_page/404.scss";
+{{ if strings.HasPrefix .Site.Params.fofPoster "." }}
+    {{ $fofPoster := printf `.%s` .Site.Params.fofPoster }}
+    {{ .Scratch.Set "fofPoster" $fofPoster }}
+{{ else }}
+    {{ .Scratch.Set "fofPoster" .Site.Params.fofPoster }}
+{{ end }}
+{{ $fofPoster := .Scratch.Get "fofPoster" }}
 .fof::before {
-    background-image: url({{ .Site.Params.fofPoster }});
+    background-image: url({{ $fofPoster }});
 }
 
 {{ if .Site.Params.enableHighlight }}
