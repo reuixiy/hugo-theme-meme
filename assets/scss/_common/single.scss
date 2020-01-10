@@ -83,16 +83,6 @@ blockquote {
     }
 }
 
-.emphasis-point {
-    font-weight: normal;
-    text-emphasis: '•';
-    -webkit-text-emphasis: '•';
-    -moz-text-emphasis: '•';
-    text-emphasis-position: under;
-    -webkit-text-emphasis-position: under;
-    -moz-text-emphasis-position: under;
-}
-
 .drop-cap {
     float: left;
     font-size: $fontSize * 3 + 2px;
@@ -206,31 +196,6 @@ pre {
         font-size: inherit;
         padding: 0;
     }
-}
-.highlight {
-    font-size: 0.8em;
-    margin: ($fontSize * 2) 0;
-    pre {
-        margin: 0 !important;
-        overflow: auto hidden;
-        background-color: unset;
-    }
-    th, td {
-        font-size: inherit;
-    }
-    table > tbody > tr:nth-of-type(odd) {
-        background-color: inherit;
-    }
-    table > tbody > tr:hover {
-        background-color: inherit;
-    }
-}
-span.lnt {
-    user-select: none;
-    display: block;
-    margin-right: -1em !important;
-    padding: 0 !important;
-    text-align: right;
 }
 
 .katex-display, mjx-container[jax="CHTML"][display="true"] {
