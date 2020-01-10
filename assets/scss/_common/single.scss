@@ -158,13 +158,14 @@ ol.toc {
 }
 
 table {
-    width: 100%;
+    display: block;
     border-collapse: collapse;
     border-spacing: 0;
-    border: 1px solid var(--color-contrast-lower);
+    border-color: var(--color-contrast-lower);
     margin: 2em 0;
+    overflow-x: auto;
 }
-thead {
+th {
     font-weight: 700;
 }
 th, td {
@@ -172,10 +173,10 @@ th, td {
     padding: 0.4em;
     border: 1px solid var(--color-contrast-lower);
 }
-table>tbody>tr:nth-of-type(odd) {
+table > tbody > tr:nth-of-type(odd) {
     background-color: alpha(var(--color-contrast-lower), 0.5);
 }
-table>tbody>tr:hover {
+table > tbody > tr:hover {
     background-color: var(--color-contrast-lower);
 }
 
@@ -217,10 +218,10 @@ pre {
     th, td {
         font-size: inherit;
     }
-    table>tbody>tr:nth-of-type(odd) {
+    table > tbody > tr:nth-of-type(odd) {
         background-color: inherit;
     }
-    table>tbody>tr:hover {
+    table > tbody > tr:hover {
         background-color: inherit;
     }
 }
@@ -229,6 +230,7 @@ span.lnt {
     display: block;
     margin-right: -1em !important;
     padding: 0 !important;
+    text-align: right;
 }
 
 .katex-display, mjx-container[jax="CHTML"][display="true"] {
