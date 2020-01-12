@@ -340,6 +340,10 @@
     {{ end }}
 {{ end }}
 
+{{ if .Site.Params.enableMediumZoom }}
+    @import "_common/medium-zoom.scss";
+{{ end }}
+
 {{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
     @import "_common/sw-notification.scss";
 {{ end }}
