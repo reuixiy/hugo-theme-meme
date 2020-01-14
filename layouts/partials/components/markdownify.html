@@ -59,7 +59,7 @@
             {{- if eq (substr . 9 4) "http" -}}
                 {{- $raw := replaceRE `(<a href="[^"]+")` `$1` . -}}
                 {{- $replacement := printf `%s target="_blank" rel="noopener"` $raw -}}
-                {{- $Content := ($Deliver.Scratch.Get "Content") | replaceRE . $replacement | safeHTML -}}
+                {{- $Content := replace ($Deliver.Scratch.Get "Content") . $replacement | safeHTML -}}
                 {{- $Deliver.Scratch.Set "Content" $Content -}}
             {{- end -}}
         {{- end -}}

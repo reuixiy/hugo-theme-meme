@@ -148,7 +148,7 @@
                 {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
                 {{- $prefix := replaceRE `(<(img) src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
-                {{- $Content := ($.Scratch.Get "Content") | replaceRE . $replacement | safeHTML -}}
+                {{- $Content := replace ($.Scratch.Get "Content") . $replacement | safeHTML -}}
                 {{- $.Scratch.Set "Content" $Content -}}
             {{- end -}}
         {{- end -}}
@@ -166,7 +166,7 @@
                 {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
                 {{- $prefix := replaceRE `(<(video) src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
-                {{- $Content := ($.Scratch.Get "Content") | replaceRE . $replacement | safeHTML -}}
+                {{- $Content := replace ($.Scratch.Get "Content") . $replacement | safeHTML -}}
                 {{- $.Scratch.Set "Content" $Content -}}
             {{- end -}}
         {{- end -}}
