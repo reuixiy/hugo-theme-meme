@@ -55,7 +55,7 @@
 {{- end -}}
 {{- $enableDropCap := .Scratch.Get "enableDropCap" -}}
 {{- if $enableDropCap -}}
-    {{- $regexPatternDropCap := `(<p)(>)(.)([^<]+)` -}}
+    {{- $regexPatternDropCap := `(<p)(>)([^<])(.+(</p>|\n))` -}}
     {{- $regexReplacementDropCap := `$1 style="text-indent:0"$2<span class="drop-cap">$3</span>$4` -}}
     {{- $firstParagraphOld := (delimit (findRE $regexPatternDropCap $Content 1) " ") -}}
     {{- $firstParagraphNew := (replaceRE $regexPatternDropCap $regexReplacementDropCap $firstParagraphOld) -}}
@@ -77,7 +77,7 @@
         {{- end -}}
         {{- $replacement := .Scratch.Get "replacement" -}}
 
-        {{- $regexPatternDropCapAfterHr := `(\n(<hr />|<hr>))(\n<p)(>)(.)` -}}
+        {{- $regexPatternDropCapAfterHr := `(\n(<hr />|<hr>))(\n<p)(>)([^<])` -}}
         {{- $regexReplacementDropCapAfterHr := $replacement -}}
         {{- $Content := $Content | replaceRE $regexPatternDropCapAfterHr $regexReplacementDropCapAfterHr | safeHTML -}}
         {{- .Scratch.Set "Content" $Content -}}
@@ -200,10 +200,10 @@
         {{- end -}}
         {{- $Content := .Scratch.Get "Content" -}}
         {{- if not $enableDropCapAfterHr -}}
-            {{- $regex := `((</h[1-6]>|<hr>|<hr />)\n<p)(>)` -}}
+            {{- $regex := `((</h[1-6]>|<hr>|<hr />)\n<p)(>)[^<]` -}}
             {{- $.Scratch.Set "regex" $regex -}}
         {{- else -}}
-            {{- $regex := `((</h[1-6]>)\n<p)(>)` -}}
+            {{- $regex := `((</h[1-6]>)\n<p)(>)[^<]` -}}
             {{- $.Scratch.Set "regex" $regex -}}
         {{- end -}}
         {{- $regex := .Scratch.Get "regex" -}}
