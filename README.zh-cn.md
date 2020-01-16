@@ -101,6 +101,7 @@ dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, theme 
 dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, override `enableDropCapAfterHr` in `config.toml`, theme only
 deleteHrBeforeDropCap | delete horizontal rule tag before drop cap? | boolean, override `deleteHrBeforeDropCap` in `config.toml`, theme only
 indent | indent instead of margin? | boolean, override `paragraphStyle` in `config.toml`, theme only
+indentFirstParagraph | indent the first paragraph? | boolean, override `indentFirstParagraph` in `config.toml`, theme only
 align | normal, justify, center | srting, if euqal to "normal", will override `enableJustify` in `config.toml`, theme only
 original | original? You can add the following 8 terms if you set `false`. The `author` is required, other optional | boolean, override `original` in `config.toml`, theme only
 author | author of original post | string, theme only

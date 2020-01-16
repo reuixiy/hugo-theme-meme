@@ -934,6 +934,11 @@ uglyURLs = false
 
     enableParagraphIndent = true
 
+    indentFirstParagraph = false
+    # Note: *global settings*
+    #       `indentFirstParagraph` in post’s Front Matter
+    #       has a higher priority than here
+
     paragraphStyle = "margin"
     # Note: margin or indent
     #       *global settings*
