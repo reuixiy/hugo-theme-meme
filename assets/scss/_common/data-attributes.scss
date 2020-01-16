@@ -14,7 +14,7 @@
 }
 
 [data-align="justify"] {
-    .post-body p {
+    .post-body p, li, dd {
         text-align: justify;
         text-justify: distribute;
     }

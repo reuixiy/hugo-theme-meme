@@ -72,9 +72,6 @@ blockquote {
     padding: 0 1em;
     color: var(--color-contrast-medium);
     border-left: 3px solid var(--color-contrast-low);
-    p {
-        text-align: left !important;
-    }
     a {
         color: var(--color-contrast-medium);
         &:hover {
@@ -129,11 +126,8 @@ ol.toc {
         }
     }
     ol {
-        margin: ($fontSize * 1.618) 0 0;
-        padding: 0 $fontSize 0 ($fontSize * 2);
-        p {
-            text-align: left !important;
-        }
+        margin: ($fontSize * 1.618) 0 0 !important;
+        padding: 0 $fontSize 0 ($fontSize * 2) !important;
     }
 }
 
@@ -175,7 +169,6 @@ dt {
 }
 dd {
     margin-left: 2em;
-    text-align: left;
 }
 
 code {
