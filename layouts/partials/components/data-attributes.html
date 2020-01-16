@@ -7,11 +7,10 @@
 <!-- Align -->
 {{- .Scratch.Delete "align" -}}
 {{- with .Params.align | default "default" -}}
-    {{- if eq . "justify" -}}
-        {{- $.Scratch.Set "align" "justify" -}}
-    {{- end -}}
-    {{- if and $.Site.Params.enableJustify (eq . "default") -}}
-        {{- $.Scratch.Set "align" "justify" -}}
+    {{- if ne $.Type "poetry" -}}
+        {{- if or (eq . "justify") (and $.Site.Params.enableJustify (eq . "default")) -}}
+            {{- $.Scratch.Set "align" "justify" -}}
+        {{- end -}}
     {{- end -}}
     {{- if eq . "center" -}}
         {{- $.Scratch.Set "align" "center" -}}
