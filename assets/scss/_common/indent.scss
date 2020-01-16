@@ -36,19 +36,14 @@
         }
         ol, ul {
             margin: 0;
-            list-style-position: inside;
+            padding-left: 4em;
             p {
                 text-indent: 0;
-                display: inline-block;
             }
         }
-        .footnotes {
-            ol {
-                margin: ($fontSize * 1.618) 0 0;
-                list-style-position: outside;
-                p {
-                    display: block;
-                }
+        li {
+            ol, ul {
+                padding-left: 2em;
             }
         }
         dl {
