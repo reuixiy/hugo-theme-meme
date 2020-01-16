@@ -883,6 +883,11 @@ uglyURLs = false
     # 是否开启
     enableParagraphIndent = true
 
+    # 是否缩进第一段（全局设置）
+    indentFirstParagraph = false
+    # 说明：文章的 Front Matter 中的 `indentFirstParagraph`
+    #      的优先级高于此处
+
     # 分段样式（全局设置）
     paragraphStyle = "margin"
     # 说明：段间距式（margin）或段首缩排（indent）

@@ -55,7 +55,7 @@
 {{- end -}}
 {{- $enableDropCap := .Scratch.Get "enableDropCap" -}}
 {{- if $enableDropCap -}}
-    {{- $regexPatternDropCap := `(<p)(>)([^<])(.+(</p>|\n))` -}}
+    {{- $regexPatternDropCap := `(<p)(>)(.)([^<]+)` -}}
     {{- $regexReplacementDropCap := `$1 style="text-indent:0"$2<span class="drop-cap">$3</span>$4` -}}
     {{- $firstParagraphOld := (delimit (findRE $regexPatternDropCap .Content 1) " ") -}}
     {{- $firstParagraphNew := (replaceRE $regexPatternDropCap $regexReplacementDropCap $firstParagraphOld) -}}
@@ -65,18 +65,19 @@
 
 <!-- Drop Cap After `<hr />` -->
 {{- $Content := .Scratch.Get "Content" -}}
+{{- $enableDropCapAfterHr := and .Site.Params.enableDropCap (.Params.dropCapAfterHr | default .Site.Params.enableDropCapAfterHr) -}}
 {{- if ne .Type "poetry" -}}
-    {{- if and .Site.Params.enableDropCap (.Params.dropCapAfterHr | default .Site.Params.enableDropCapAfterHr) -}}
+    {{- if $enableDropCapAfterHr -}}
         {{- if .Params.deleteHrBeforeDropCap | default .Site.Params.deleteHrBeforeDropCap -}}
-            {{- $replacement := `$3 style="text-indent:0"$4<span class="drop-cap">$5</span>$6` -}}
+            {{- $replacement := `$3 style="text-indent:0"$4<span class="drop-cap">$5</span>` -}}
             {{- $.Scratch.Set "replacement" $replacement -}}
         {{- else -}}
-            {{- $replacement := `$1$3 style="text-indent:0"$4<span class="drop-cap">$5</span>$6` -}}
+            {{- $replacement := `$1$3 style="text-indent:0"$4<span class="drop-cap">$5</span>` -}}
             {{- $.Scratch.Set "replacement" $replacement -}}
         {{- end -}}
         {{- $replacement := .Scratch.Get "replacement" -}}
 
-        {{- $regexPatternDropCapAfterHr := `(\n(<hr />|<hr>))(\n\n?<p)(>)([^<])(.+(</p>|\n))` -}}
+        {{- $regexPatternDropCapAfterHr := `(\n(<hr />|<hr>))(\n<p)(>)(.)` -}}
         {{- $regexReplacementDropCapAfterHr := $replacement -}}
         {{- $Content := $Content | replaceRE $regexPatternDropCapAfterHr $regexReplacementDropCapAfterHr | safeHTML -}}
         {{- .Scratch.Set "Content" $Content -}}
@@ -175,11 +176,39 @@
 
 <!-- Paragraph Indent -->
 {{- $Content := .Scratch.Get "Content" -}}
+{{- $enableIndent := (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) -}}
 {{- if ne .Type "poetry" -}}
-    {{- if (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) -}}
+    {{- if $enableIndent -}}
         {{- $regexPatternIndent := `((</p>|<blockquote>)\n<p)(>)(.+(<br />|<br>))` -}}
         {{- $regexReplacementIndent := `$1 style="text-indent:0;padding-left:2em;margin:1em 0"$3$4` -}}
         {{- $Content := $Content | replaceRE $regexPatternIndent $regexReplacementIndent | safeHTML -}}
+        {{- .Scratch.Set "Content" $Content -}}
+    {{- end -}}
+{{- end -}}
+
+<!-- Do NOT Indent The First Paragraph -->
+{{- $Content := .Scratch.Get "Content" -}}
+{{- if and (not (.Params.indentFirstParagraph | default .Site.Params.indentFirstParagraph)) $enableIndent -}}
+    {{- if ne .Type "poetry" -}}
+        {{- if not $enableDropCap -}}
+            {{- $regex := `(<p)(>[^<]+)` -}}
+            {{- $replacement := `$1 style="text-indent:0"$2` -}}
+            {{- $firstParagraphOld := (delimit (findRE $regex .Content 1) " ") -}}
+            {{- $firstParagraphNew := (replaceRE $regex $replacement $firstParagraphOld) -}}
+            {{- $Content := replace $Content $firstParagraphOld $firstParagraphNew | safeHTML -}}
+            {{- .Scratch.Set "Content" $Content -}}
+        {{- end -}}
+        {{- $Content := .Scratch.Get "Content" -}}
+        {{- if not $enableDropCapAfterHr -}}
+            {{- $regex := `((</h[1-6]>|<hr>|<hr />)\n<p)(>)` -}}
+            {{- $.Scratch.Set "regex" $regex -}}
+        {{- else -}}
+            {{- $regex := `((</h[1-6]>)\n<p)(>)` -}}
+            {{- $.Scratch.Set "regex" $regex -}}
+        {{- end -}}
+        {{- $regex := .Scratch.Get "regex" -}}
+        {{- $replacement := `$1 style="text-indent:0"$3` -}}
+        {{- $Content := $Content | replaceRE $regex $replacement | safeHTML -}}
         {{- .Scratch.Set "Content" $Content -}}
     {{- end -}}
 {{- end -}}
