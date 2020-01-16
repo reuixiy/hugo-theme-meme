@@ -57,7 +57,7 @@
 {{- if $enableDropCap -}}
     {{- $regexPatternDropCap := `(<p)(>)(.)([^<]+)` -}}
     {{- $regexReplacementDropCap := `$1 style="text-indent:0"$2<span class="drop-cap">$3</span>$4` -}}
-    {{- $firstParagraphOld := (delimit (findRE $regexPatternDropCap .Content 1) " ") -}}
+    {{- $firstParagraphOld := (delimit (findRE $regexPatternDropCap $Content 1) " ") -}}
     {{- $firstParagraphNew := (replaceRE $regexPatternDropCap $regexReplacementDropCap $firstParagraphOld) -}}
     {{- $Content := replace $Content $firstParagraphOld $firstParagraphNew | safeHTML -}}
     {{- .Scratch.Set "Content" $Content -}}
@@ -193,7 +193,7 @@
         {{- if not $enableDropCap -}}
             {{- $regex := `(<p)(>[^<]+)` -}}
             {{- $replacement := `$1 style="text-indent:0"$2` -}}
-            {{- $firstParagraphOld := (delimit (findRE $regex .Content 1) " ") -}}
+            {{- $firstParagraphOld := (delimit (findRE $regex $Content 1) " ") -}}
             {{- $firstParagraphNew := (replaceRE $regex $replacement $firstParagraphOld) -}}
             {{- $Content := replace $Content $firstParagraphOld $firstParagraphNew | safeHTML -}}
             {{- .Scratch.Set "Content" $Content -}}
