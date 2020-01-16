@@ -14,9 +14,11 @@
 }
 
 [data-align="justify"] {
-    .post-body p, li, dd {
-        text-align: justify;
-        text-justify: distribute;
+    .post-body {
+        p, li, dd {
+            text-align: justify;
+            text-justify: distribute;
+        }
     }
 }
 [data-align="center"] {
