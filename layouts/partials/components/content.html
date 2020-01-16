@@ -200,14 +200,14 @@
         {{- end -}}
         {{- $Content := .Scratch.Get "Content" -}}
         {{- if not $enableDropCapAfterHr -}}
-            {{- $regex := `((</h[1-6]>|<hr>|<hr />)\n<p)(>[^<])` -}}
+            {{- $regex := `((</h[1-6]>|<hr>|<hr />)\n(<blockquote>\n)?<p)(>[^<])` -}}
             {{- $.Scratch.Set "regex" $regex -}}
         {{- else -}}
-            {{- $regex := `((</h[1-6]>)\n<p)(>[^<])` -}}
+            {{- $regex := `((</h[1-6]>)\n(<blockquote>\n)?<p)(>[^<])` -}}
             {{- $.Scratch.Set "regex" $regex -}}
         {{- end -}}
         {{- $regex := .Scratch.Get "regex" -}}
-        {{- $replacement := `$1 style="text-indent:0"$3` -}}
+        {{- $replacement := `$1 style="text-indent:0"$4` -}}
         {{- $Content := $Content | replaceRE $regex $replacement | safeHTML -}}
         {{- .Scratch.Set "Content" $Content -}}
     {{- end -}}
