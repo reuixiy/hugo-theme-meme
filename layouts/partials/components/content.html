@@ -200,10 +200,10 @@
         {{- end -}}
         {{- $Content := .Scratch.Get "Content" -}}
         {{- if not $enableDropCapAfterHr -}}
-            {{- $regex := `((</h[1-6]>|<hr>|<hr />)\n<p)(>)[^<]` -}}
+            {{- $regex := `((</h[1-6]>|<hr>|<hr />)\n<p)(>[^<])` -}}
             {{- $.Scratch.Set "regex" $regex -}}
         {{- else -}}
-            {{- $regex := `((</h[1-6]>)\n<p)(>)[^<]` -}}
+            {{- $regex := `((</h[1-6]>)\n<p)(>[^<])` -}}
             {{- $.Scratch.Set "regex" $regex -}}
         {{- end -}}
         {{- $regex := .Scratch.Get "regex" -}}
