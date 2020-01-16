@@ -45,7 +45,7 @@
 
 <!-- https://github.com/reuixiy/hugo-theme-meme/issues/49 -->
 {{- $Content := $Deliver.Scratch.Get "Content" -}}
-{{- if and (not (strings.HasPrefix $Content "<p>")) $isContent -}}
+{{- if and (not (strings.HasPrefix $Content "<")) $isContent -}}
     {{- $Content := (printf `<p>%s</p>` $Content) | safeHTML -}}
     {{- $Deliver.Scratch.Set "Content" $Content -}}
 {{- end -}}
