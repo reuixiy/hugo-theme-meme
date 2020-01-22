@@ -17,7 +17,7 @@
 {{- $Content := $Deliver.Scratch.Get "Content" -}}
 {{- if $Deliver.Site.Params.compatibleWithLaTeX -}}
     {{- if or ($Deliver.Params.katex | default $Deliver.Site.Params.enableKaTeX) ($Deliver.Params.mathjax | default $Deliver.Site.Params.enableMathJax) -}}
-        {{- $regexLaTeX := `([^\$]|\n)\$([^\$]+)\$` -}}
+        {{- $regexLaTeX := `([^\$]|\n)\$([^\$\n]+)\$` -}}
         {{- $replacementLaTeX := `$1<span>$$${2}$$</span>` -}}
         {{- $Content := $Content | replaceRE $regexLaTeX $replacementLaTeX -}}
 
