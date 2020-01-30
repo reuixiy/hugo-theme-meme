@@ -10,22 +10,18 @@
     </div>
 
     <script>
-        if('serviceWorker' in navigator) {
-            {{ printf `navigator.serviceWorker.register('%s')` $url | safeJS }}
-            .then(reg => {
-                reg.addEventListener('updatefound', () => {
-                    newWorker = reg.installing;
-                    newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed') {
-                            if (navigator.serviceWorker.controller) {
-                                showNotification();
-                            }
-                        }
-                    });
+        if ('serviceWorker' in navigator) {
+            if (navigator.serviceWorker.controller) {
+                navigator.serviceWorker.addEventListener('controllerchange', function() {
+                    showNotification();
                 });
+            }
+
+            window.addEventListener('load', function() {
+                {{ printf `navigator.serviceWorker.register('%s')` $url | safeJS }}
             });
         }
-        
+
         function showNotification() {
             document.querySelector('meta[name=theme-color]').content = '#000';
             document.getElementById('app-refresh').className += ' app-refresh-show';
