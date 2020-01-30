@@ -93,13 +93,6 @@
     {{- .Scratch.Set "Content" $Content -}}
 {{- end -}}
 
-<!-- Image & Video Footnote -->
-{{- $Content := .Scratch.Get "Content" -}}
-{{- $regexPatternFootnoteImage := `(<sup)(.+</sup><(img|video))` -}}
-{{- $regexReplacementFootnoteImage := `$1 style="float:right"$2` -}}
-{{- $Content := $Content | replaceRE $regexPatternFootnoteImage $regexReplacementFootnoteImage | safeHTML -}}
-{{- .Scratch.Set "Content" $Content -}}
-
 <!-- Delete Footnote `<hr />` -->
 {{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.insertHrBySelf -}}
@@ -121,11 +114,11 @@
     {{- $.Scratch.Set "Content" $Content -}}
 {{- end -}}
 
-<!-- Video -->
+<!-- Image & Video Footnote -->
 {{- $Content := .Scratch.Get "Content" -}}
-{{- $regexPatternVideo := `(<img)( src="[^"]+\.(mp4|webm|ogg)")( alt="[^"]+.)?(.[^>]+)?( />|>)` -}}
-{{- $regexReplacementVideo := `<video$2$5 controls></video>` -}}
-{{- $Content := $Content | replaceRE $regexPatternVideo $regexReplacementVideo | safeHTML -}}
+{{- $regexPatternFootnoteImage := `(<sup)(.+</sup><(img|video))` -}}
+{{- $regexReplacementFootnoteImage := `$1 style="float:right"$2` -}}
+{{- $Content := $Content | replaceRE $regexPatternFootnoteImage $regexReplacementFootnoteImage | safeHTML -}}
 {{- .Scratch.Set "Content" $Content -}}
 
 <!-- Image & Video Caption -->

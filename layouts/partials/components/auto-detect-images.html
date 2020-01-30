@@ -23,9 +23,7 @@
             {{- end -}}
             {{- $replacement := $.Scratch.Get "replacement" -}}
             {{- $imgsURL := replaceRE `<img src="/?([^"]+)` $replacement . -}}
-            {{- if not (in (slice ".mp4" ".webm" ".ogg") (path.Ext $imgsURL)) -}}
-                {{- $.Scratch.Add "imgsURL" (slice $imgsURL) -}}
-            {{- end -}}
+            {{- $.Scratch.Add "imgsURL" (slice $imgsURL) -}}
         {{- end -}}
     {{- end -}}
 {{- end -}}
