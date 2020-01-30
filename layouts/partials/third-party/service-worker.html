@@ -18,7 +18,7 @@
             }
 
             window.addEventListener('load', function() {
-                {{ printf `navigator.serviceWorker.register('%s')` $url | safeJS }}
+                {{ printf `navigator.serviceWorker.register('%s');` $url | safeJS }}
             });
         }
 
