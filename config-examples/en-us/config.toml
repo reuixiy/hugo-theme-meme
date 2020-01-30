@@ -830,6 +830,9 @@ uglyURLs = false
     #       only support absolute URLs
     #       relative to root, e.g.
     #       /videos/meme.mp4
+    #
+    #       and the HTML code you add must
+    #       start with `<video src="`
 
     enableVideoHost = false
 
