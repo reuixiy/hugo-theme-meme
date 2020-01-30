@@ -1,3 +1,44 @@
+# [4.1.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.0.1...v4.1.0) (2020-01-30)
+
+
+### Bug Fixes
+
+* `homePoster`, `fofPoster` in main.scss ([e6105a9](https://github.com/reuixiy/hugo-theme-meme/commit/e6105a9)), closes [#51](https://github.com/reuixiy/hugo-theme-meme/issues/51)
+* data-attributes.scss ([67bf0f5](https://github.com/reuixiy/hugo-theme-meme/commit/67bf0f5))
+* delimit function ([1ab41b1](https://github.com/reuixiy/hugo-theme-meme/commit/1ab41b1))
+* do not justify if its type is poetry ([0bd42e7](https://github.com/reuixiy/hugo-theme-meme/commit/0bd42e7))
+* regex of compatibleWithLaTeX ([b2bed6b](https://github.com/reuixiy/hugo-theme-meme/commit/b2bed6b))
+* regex of compatibleWithLaTeX again ([af1de8b](https://github.com/reuixiy/hugo-theme-meme/commit/af1de8b))
+* regex of content.html ([6bb169d](https://github.com/reuixiy/hugo-theme-meme/commit/6bb169d))
+* regex of drop cap and indent ([e4d4fd8](https://github.com/reuixiy/hugo-theme-meme/commit/e4d4fd8))
+* regex of external links and hosting ([ca47e40](https://github.com/reuixiy/hugo-theme-meme/commit/ca47e40))
+* regex of indent ([d49e3a6](https://github.com/reuixiy/hugo-theme-meme/commit/d49e3a6))
+* regex of indent again ([09f4e53](https://github.com/reuixiy/hugo-theme-meme/commit/09f4e53))
+* regex of markdownify.html ([853db3d](https://github.com/reuixiy/hugo-theme-meme/commit/853db3d))
+* regex of paragraph indent ([c7ce9bb](https://github.com/reuixiy/hugo-theme-meme/commit/c7ce9bb))
+* regex of paragraph indent again ([88ea2c6](https://github.com/reuixiy/hugo-theme-meme/commit/88ea2c6))
+* style of medium zoom ([8918a4b](https://github.com/reuixiy/hugo-theme-meme/commit/8918a4b))
+* style of table and highlight ([5e7b9cc](https://github.com/reuixiy/hugo-theme-meme/commit/5e7b9cc))
+* styles related to text-align and indent ([0c46faa](https://github.com/reuixiy/hugo-theme-meme/commit/0c46faa))
+
+
+### Code Refactoring
+
+* load highlight, emphasis-point on demand ([bd6ca2b](https://github.com/reuixiy/hugo-theme-meme/commit/bd6ca2b))
+* simplify service worker notification ([ff1d110](https://github.com/reuixiy/hugo-theme-meme/commit/ff1d110))
+
+
+### Features
+
+* do not indent the first paragraph ([eaefda4](https://github.com/reuixiy/hugo-theme-meme/commit/eaefda4)), closes [#36](https://github.com/reuixiy/hugo-theme-meme/issues/36)
+
+
+### Performance Improvements
+
+* remove useless video regex ([011fc32](https://github.com/reuixiy/hugo-theme-meme/commit/011fc32))
+
+
+
 ## [4.0.1](https://github.com/reuixiy/hugo-theme-meme/compare/v4.0.0...v4.0.1) (2020-01-09)
 
 
