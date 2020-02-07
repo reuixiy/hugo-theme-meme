@@ -14,14 +14,14 @@
 {{- end -}}
 {{- $imgsURL := ($Deliver.Scratch.Get "imgsURL") -}}
 <!-- Image absURL -->
-{{ with $Deliver.Params.images | default $imgsURL -}}
-    {{- $Deliver.Scratch.Delete "image" -}}
+{{- with $Deliver.Params.images | default $imgsURL -}}
+    {{- $Deliver.Scratch.Delete "images" -}}
     {{- range . -}}
         {{- $image := . | absURL | safeHTML -}}
-        {{- $Deliver.Scratch.Add "image" (printf "%s, " $image) -}}
+        {{- $Deliver.Scratch.Add "images" (slice $image) -}}
     {{- end -}}
-{{ end }}
-{{- $image := (split (strings.TrimSuffix ", " ($Deliver.Scratch.Get "image")) ", ") -}}
+{{- end -}}
+{{- $images := $Deliver.Scratch.Get "images" -}}
 <!-- Author -->
 {{- partial "components/author.html" $Deliver -}}
 {{- $author := ($Deliver.Scratch.Get "author") -}}
@@ -83,8 +83,8 @@
         "inLanguage" : "{{ $Deliver.Site.LanguageCode }}",
         "articleSection": {{ $Deliver.Section }},
         "wordCount": {{ $Deliver.WordCount }},
-        {{ with $Deliver.Params.images | default $imgsURL -}}
-        "image": {{ $image }},
+        {{ with $images -}}
+        "image": {{ . }},
         {{ else -}}
         {{ with $Deliver.Site.Params.siteLogo -}}
         "image": {{ . | absURL }},
