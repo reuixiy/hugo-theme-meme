@@ -10,8 +10,8 @@
                 {{ range $page, $name := $pages }}
                     {{ $depth := (len (split (strings.TrimPrefix "/" $page) "/")) }}
                     {{ with $.Site.GetPage $page }}
-                        {{ $padding := (mul $depth (mul 2 (mul 1.2 .Site.Params.fontSize))) }}
-                        <p style="padding-left: {{ $padding }}px">
+                        {{ $padding := (mul (mul $depth 2) 1.2) }}
+                        <p style="padding-left: {{ $padding }}em">
                             <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default $name }}</a>
                             {{ if $.Site.Params.displayPostsCount }}
                                 {{ $sectionPage := .CurrentSection }}
@@ -35,7 +35,7 @@
                             {{ end }}
                             {{ $pages := $.Scratch.Get "pages" }}
                             {{ range $pages }}
-                                <p style="padding-left: {{ add $padding (mul 2 (mul 1.2 .Site.Params.fontSize)) }}px">
+                                <p style="padding-left: {{ add $padding (mul 2 1.2) }}em">
                                     <a href="{{ .RelPermalink }}" class="category-post">{{ .LinkTitle }}</a>
                                 </p>
                             {{ end }}

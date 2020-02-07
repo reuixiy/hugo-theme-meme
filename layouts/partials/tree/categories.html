@@ -20,7 +20,7 @@
                 {{ range $categories }}
                     {{ $categoryTerms := (split (strings.TrimPrefix "/" .) "/") }}
                     {{ $depth := (len $categoryTerms) }}
-                    {{ $padding := (mul $depth 2) }}
+                    {{ $padding := (mul (mul $depth 2) 1.2) }}
                     {{ $lastTerm := (delimit (last 1 $categoryTerms) " ") }}
                     {{ $url := urls.Parse $lastTerm }}
                     {{ $path := $url.Path }}
@@ -44,7 +44,7 @@
                                 {{ end }}
                                 {{ $category := $.Scratch.Get "category" }}
                                 {{ if eq $context $category }}
-                                    <p style="padding-left: {{ add $padding 2 }}em">
+                                    <p style="padding-left: {{ add $padding (mul 2 1.2) }}em">
                                         <a href="{{ $page.RelPermalink }}" class="category-post">{{ $page.LinkTitle }}</a>
                                     </p>
                                 {{ end }}
