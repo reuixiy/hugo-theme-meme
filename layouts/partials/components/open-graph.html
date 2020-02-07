@@ -15,14 +15,14 @@
 {{- end -}}
 {{- $imgsURL := ($Deliver.Scratch.Get "imgsURL") -}}
 <!-- Image absURL -->
-{{ with $Deliver.Params.images | default $imgsURL -}}
-    {{- $Deliver.Scratch.Delete "image" -}}
+{{- with $Deliver.Params.images | default $imgsURL -}}
+    {{- $Deliver.Scratch.Delete "images" -}}
     {{- range . -}}
         {{- $image := . | absURL | safeHTML -}}
-        {{- $Deliver.Scratch.Add "image" (printf "%s, " $image) -}}
+        {{- $Deliver.Scratch.Add "images" (slice $image) -}}
     {{- end -}}
-{{ end }}
-{{- $image := (split (strings.TrimSuffix ", " ($Deliver.Scratch.Get "image")) ", ") -}}
+{{- end -}}
+{{- $images := $Deliver.Scratch.Get "images" -}}
 <!-- Date -->
 {{- partial "components/date.html" $Deliver -}}
 {{- $pubDate := ($Deliver.Scratch.Get "pubDate") -}}
@@ -56,8 +56,8 @@
     {{- end -}}
 {{- end -}}
 
-{{- with $imgsURL -}}
-    <meta property="og:image" content="{{ index $image 0 }}" />
+{{- with $images -}}
+    <meta property="og:image" content="{{ index . 0 }}" />
 {{ else -}}
     {{ with $Deliver.Site.Params.siteLogo -}}
         <meta property="og:image" content="{{ . | absURL }}" />
