@@ -8,27 +8,16 @@
 <!-- Title -->
 {{- partial "components/title.html" $Deliver -}}
 {{- $rawTitle := $Deliver.Scratch.Get "rawTitle" -}}
-<!-- Auto Detect Images -->
-{{- if $Deliver.Site.Params.autoDetectImages -}}
-    {{- partial "components/auto-detect-images.html" $Deliver -}}
-{{- end -}}
-{{- $imgsURL := ($Deliver.Scratch.Get "imgsURL") -}}
-<!-- Image absURL -->
-{{- with $Deliver.Params.images | default $imgsURL -}}
-    {{- $Deliver.Scratch.Delete "images" -}}
-    {{- range . -}}
-        {{- $image := . | absURL | safeHTML -}}
-        {{- $Deliver.Scratch.Add "images" (slice $image) -}}
-    {{- end -}}
-{{- end -}}
-{{- $images := $Deliver.Scratch.Get "images" -}}
-<!-- Author -->
-{{- partial "components/author.html" $Deliver -}}
-{{- $author := ($Deliver.Scratch.Get "author") -}}
 <!-- Date -->
 {{- partial "components/date.html" $Deliver -}}
-{{- $pubDate := ($Deliver.Scratch.Get "pubDate") -}}
-{{- $modDate := ($Deliver.Scratch.Get "modDate") -}}
+{{- $pubDate := $Deliver.Scratch.Get "pubDate" -}}
+{{- $modDate := $Deliver.Scratch.Get "modDate" -}}
+<!-- Author -->
+{{- partial "components/author.html" $Deliver -}}
+{{- $author := $Deliver.Scratch.Get "author" -}}
+<!-- Images -->
+{{- partial "components/images.html" $Deliver -}}
+{{- $images := $Deliver.Scratch.Get "images" -}}
 
 {{- if $Deliver.IsHome -}}
 <script type="application/ld+json">

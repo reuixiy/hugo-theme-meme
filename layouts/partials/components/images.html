@@ -1,0 +1,34 @@
+<!-- Auto Detect Images -->
+{{- if .Site.Params.autoDetectImages -}}
+    {{- partial "components/auto-detect-images.html" . -}}
+{{- end -}}
+{{- $imgsURL := .Scratch.Get "imgsURL" -}}
+
+<!-- Image Hosting -->
+{{- .Scratch.Delete "imagesParam" -}}
+{{- with .Params.images -}}
+    {{- if and $.Site.Params.enableImageHost $.Site.Params.headAlso -}}
+        {{- if (eq hugo.Environment "production") -}}
+            {{- range . -}}
+                {{- if ne (substr . 0 4) "http" -}}
+                    {{- $image := printf `%s%s` $.Site.Params.imageHostURL (strings.TrimPrefix "/" .) -}}
+                    {{- $.Scratch.Add "imagesParam" (slice $image) -}}
+                {{- else -}}
+                    {{- $.Scratch.Add "imagesParam" (slice .) -}}
+                {{- end -}}
+            {{- end -}}
+        {{- end -}}
+    {{- else -}}
+        {{- $.Scratch.Set "imagesParam" . -}}
+    {{- end -}}
+{{- end -}}
+{{- $imagesParam := .Scratch.Get "imagesParam" -}}
+
+<!-- Image absURL -->
+{{- .Scratch.Delete "images" -}}
+{{- with $imagesParam | default $imgsURL -}}
+    {{- range . -}}
+        {{- $image := . | absURL | safeHTML -}}
+        {{- $.Scratch.Add "images" (slice $image) -}}
+    {{- end -}}
+{{- end -}}

@@ -2,16 +2,14 @@
 <!-- https://cards-dev.twitter.com/validator -->
 <!-- https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/twitter_cards.html -->
 {{- $Deliver := .Deliver -}}
-<!-- Auto Detect Images -->
-{{- if $Deliver.Site.Params.autoDetectImages -}}
-    {{- partial "components/auto-detect-images.html" $Deliver -}}
-{{- end -}}
-{{- $imgsURL := ($Deliver.Scratch.Get "imgsURL") -}}
 <!-- Author -->
 {{- partial "components/author.html" $Deliver -}}
-{{- $author := ($Deliver.Scratch.Get "author") -}}
+{{- $author := $Deliver.Scratch.Get "author" -}}
+<!-- Images -->
+{{- partial "components/images.html" $Deliver -}}
+{{- $images := $Deliver.Scratch.Get "images" -}}
 
-{{- with $Deliver.Params.images | default $imgsURL -}}
+{{- with $images -}}
     <meta name="twitter:card" content="summary_large_image" />
 {{ else -}}
     <meta name="twitter:card" content="summary" />
