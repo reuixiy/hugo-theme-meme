@@ -1057,6 +1057,28 @@ uglyURLs = false
 
 
     ######################################
+    # Post Share
+
+    enablePostShare = true
+
+    displayPostShare = true
+    # Note: *global settings*
+    #       `share` in post’s Front Matter
+    #       has a higher priority than here
+
+    shareOnTwitter = true
+    shareOnFacebook = true
+    shareOnLinkedIn = true
+    shareOnTelegram = true
+    shareOnWeibo = true
+    shareOnDouban = true
+    shareOnQQ = true
+    shareOnQzone = true
+
+    shareViaQRCode = true
+
+
+    ######################################
     # Related Posts
 
     enableRelatedPosts = true

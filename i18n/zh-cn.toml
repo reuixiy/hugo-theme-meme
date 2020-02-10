@@ -29,6 +29,15 @@ other = "链接："
 [copyrightLicense]
 other = "版权："
 
+[shareOn]
+other = "分享："
+
+[shareOnTitle]
+other = "分享到"
+
+[shareViaTitle]
+other = "通过"
+
 [relatedPosts]
 other = "相关文章："
 
@@ -43,6 +52,34 @@ other = "已更新最新版本"
 
 [serviceWorkerUpdatedAction]
 other = "点击刷新"
+
+
+[twitter]
+other = "「Twitter」"
+
+[facebook]
+other = "「Facebook」"
+
+[linkedin]
+other = "「LinkedIn」"
+
+[telegram]
+other = "「Telegram」"
+
+[weibo]
+other = "「微博」"
+
+[douban]
+other = "「豆瓣」"
+
+[qq]
+other = "「QQ」"
+
+[qzone]
+other = "「QQ 空间」"
+
+[qrcode]
+other = "「二维码」"
 
 
 [january]

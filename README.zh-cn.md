@@ -92,6 +92,7 @@ toc | display TOC | boolean, override `enableTOC` in `config.toml`, MemE only
 displayCopyright | display post-copyright | boolean, override `displayPostCopyright` in `config.toml`, MemE only
 badge | display updated-badge | boolean, override `displayUpdatedBadge` in `config.toml`, MemE only
 gitinfo | display post-gitinfo | boolean, override `displayPostGitInfo` in `config.toml`, MemE only
+share | display post-share | boolean, override `displayPostShare` in `config.toml`, MemE only
 related | display related-posts | boolean, override `displayRelatedPosts` in `config.toml`, MemE only
 katex | add KaTeX support | boolean, override `enableKaTeX` in `config.toml`, MemE only
 mathjax | add MathJax support | boolean, override `enableMathJax` in `config.toml`, MemE only
