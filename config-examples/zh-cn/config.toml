@@ -1025,9 +1025,9 @@ uglyURLs = false
     enablePostShare = true
 
     shareOnTwitter = true
-    shareOnTelegram = true
     shareOnFacebook = true
     shareOnLinkedIn = true
+    shareOnTelegram = true
     shareOnWeibo = true
     shareOnQQ = true
 

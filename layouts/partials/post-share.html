@@ -2,63 +2,65 @@
 
     <div class="post-share">
 
-        {{ if .Site.Params.shareOnQQ }}
-            {{ $icon := (replace .Site.Data.SVG.qq "icon" "icon qq-icon") }}
-            <div class="share-item qq">
-                <a href="http://connect.qq.com/widget/shareqq/index.html?url={{ .Permalink }}&title={{ .Title }}{{ with $.Params.description }}&desc={{ . }}{{ end }}{{ with $.Params.featured_image }}&pics={{ . }}{{ end }}" target="_blank" title="Share on QQ">
-                    {{- printf `%s` $icon | safeHTML -}}
-                </a>
-            </div>
-        {{ end }}
+        <div class="share-text">分享：</div> 
 
-        {{ if .Site.Params.shareOnWeibo }}
-            {{ $icon := (replace .Site.Data.SVG.weibo "icon" "icon weibo-icon") }}
-            <div class="share-item weibo">
-                <a href="https://service.weibo.com/share/share.php?appkey=&title={{ .Title }}&url={{ .Permalink }}{{ with $.Params.featured_image }}&pic={{ . }}{{ end }}&searchPic=true&style=simple" target="_blank" title="Share on Weibo">
-                    {{- printf `%s` $icon | safeHTML -}}
-                </a>
-            </div>
-        {{ end }}
+        <div class="share-items">
 
-        {{ if .Site.Params.shareOnFacebook }}
-            {{ $icon := (replace .Site.Data.SVG.facebook "icon" "icon facebook-icon") }}
-            <div class="share-item facebook">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" title="Share on Facebook">
-                    {{- printf `%s` $icon | safeHTML -}}
-                </a>
-            </div>
-        {{ end }}
+            {{ if .Site.Params.shareOnTwitter }}
+                {{ $icon := (replace .Site.Data.SVG.twitter "icon" "icon twitter-icon") }}
+                <div class="share-item twitter">
+                    <a href="https://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{ .Site.Params.siteTwitter }}" target="_blank" title="Share on Twitter">
+                        {{- printf `%s` $icon | safeHTML -}}
+                    </a>
+                </div>
+            {{ end }}
 
-        {{ if .Site.Params.shareOnLinkedIn }}
-            {{ $icon := (replace .Site.Data.SVG.linkedin "icon" "icon linkedin-icon") }}
-            <div class="share-item linkedin">
-                <a href="http://www.linkedin.com/shareArticle?mini=true&ro=true&title={{ .Title }}&url={{ .Permalink }}{{ with $.Params.description }}&summary={{ . }}{{ end }}{{ with $.Params.featured_image }}&source={{ . }}{{ end }}&armin=armin" target="_blank" title="Share on LinkedIn">
-                    {{- printf `%s` $icon | safeHTML -}}
-                </a>
-            </div>
-        {{ end }}
+            {{ if .Site.Params.shareOnFacebook }}
+                {{ $icon := (replace .Site.Data.SVG.facebook "icon" "icon facebook-icon") }}
+                <div class="share-item facebook">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" title="Share on Facebook">
+                        {{- printf `%s` $icon | safeHTML -}}
+                    </a>
+                </div>
+            {{ end }}
 
-        {{ if .Site.Params.shareOnTelegram }}
-            {{ $icon := (replace .Site.Data.SVG.telegram "icon" "icon telegram-icon") }}
-            <div class="share-item telegram">
-                <a href="https://t.me/share/url?url={{ .Permalink }}&text={{ .Title }}" target="_blank" title="Share on Telegram">
-                    {{- printf `%s` $icon | safeHTML -}}
-                </a>
-            </div>
-        {{ end }}
+            {{ if .Site.Params.shareOnLinkedIn }}
+                {{ $icon := (replace .Site.Data.SVG.linkedin "icon" "icon linkedin-icon") }}
+                <div class="share-item linkedin">
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&ro=true&title={{ .Title }}&url={{ .Permalink }}{{ with $.Params.description }}&summary={{ . }}{{ end }}{{ with $.Params.featured_image }}&source={{ . }}{{ end }}&armin=armin" target="_blank" title="Share on LinkedIn">
+                        {{- printf `%s` $icon | safeHTML -}}
+                    </a>
+                </div>
+            {{ end }}
 
-        {{ if .Site.Params.shareOnTwitter }}
-            {{ $icon := (replace .Site.Data.SVG.twitter "icon" "icon twitter-icon") }}
-            <div class="share-item twitter">
-                <a href="https://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{ .Site.Params.siteTwitter }}" target="_blank" title="Share on Twitter">
-                    {{- printf `%s` $icon | safeHTML -}}
-                </a>
-            </div>
-        {{ end }}
+            {{ if .Site.Params.shareOnTelegram }}
+                {{ $icon := (replace .Site.Data.SVG.telegram "icon" "icon telegram-icon") }}
+                <div class="share-item telegram">
+                    <a href="https://t.me/share/url?url={{ .Permalink }}&text={{ .Title }}" target="_blank" title="Share on Telegram">
+                        {{- printf `%s` $icon | safeHTML -}}
+                    </a>
+                </div>
+            {{ end }}
 
-        <div class="share-text">
-            <span>分享：</span>
-        </div> 
+            {{ if .Site.Params.shareOnWeibo }}
+                {{ $icon := (replace .Site.Data.SVG.weibo "icon" "icon weibo-icon") }}
+                <div class="share-item weibo">
+                    <a href="https://service.weibo.com/share/share.php?appkey=&title={{ .Title }}&url={{ .Permalink }}{{ with $.Params.featured_image }}&pic={{ . }}{{ end }}&searchPic=true&style=simple" target="_blank" title="Share on Weibo">
+                        {{- printf `%s` $icon | safeHTML -}}
+                    </a>
+                </div>
+            {{ end }}
+
+            {{ if .Site.Params.shareOnQQ }}
+                {{ $icon := (replace .Site.Data.SVG.qq "icon" "icon qq-icon") }}
+                <div class="share-item qq">
+                    <a href="http://connect.qq.com/widget/shareqq/index.html?url={{ .Permalink }}&title={{ .Title }}{{ with $.Params.description }}&desc={{ . }}{{ end }}{{ with $.Params.featured_image }}&pics={{ . }}{{ end }}" target="_blank" title="Share on QQ">
+                        {{- printf `%s` $icon | safeHTML -}}
+                    </a>
+                </div>
+            {{ end }}
+
+        </div>
 
     </div>
 

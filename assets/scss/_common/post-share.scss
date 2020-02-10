@@ -1,8 +1,9 @@
 .post-share {
-    font-size: 90%;
     margin-top: ($fontSize * 5);
-    text-align: right;
     color: alpha(var(--color-contrast-medium), 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     overflow: auto hidden;
     a {
         color: alpha(var(--color-contrast-medium), 0.8);
@@ -13,13 +14,14 @@
 }
 
 .share-text {
-    float: left;
+    font-size: 90%;
+    white-space: nowrap;
+}
+
+.share-items {
+    display: flex;
 }
 
 .share-item {
-    float: right;
-}
-
-.twitter, .telegram, .facebook, .linkedin, .weibo {
-    margin-right: 1em;
+    margin-left: 1em;
 }
