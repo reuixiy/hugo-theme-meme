@@ -903,7 +903,7 @@ uglyURLs = false
     # 是否开启（全局设置）
     enableJustify = true
     # 说明：文章的 Front Matter 中的 `align`
-    #      的的优先级高于此处
+    #      的优先级高于此处
 
     ######################################
     ## 首字下沉
@@ -911,17 +911,17 @@ uglyURLs = false
     # 是否开启（全局设置）
     enableDropCap = false
     # 说明：文章的 Front Matter 中的 `dropCap`
-    #      的的优先级高于此处
+    #      的优先级高于此处
 
     # 是否在每一分隔线之后首字下沉（全局设置）
     enableDropCapAfterHr = false
     # 说明：文章的 Front Matter 中的 `dropCapAfterHr`
-    #      的的优先级高于此处
+    #      的优先级高于此处
 
     # 是否删除首字下沉前的分隔线（全局设置）
     deleteHrBeforeDropCap = false
     # 说明：文章的 Front Matter 中的 `deleteHrBeforeDropCap`
-    #      的的优先级高于此处
+    #      的优先级高于此处
 
     ######################################
     ## 大型小写（英文）
@@ -930,7 +930,7 @@ uglyURLs = false
     enableSmallCaps = false
     # 说明：只会应用到分节标题和目录标题
     #      文章的 Front Matter 中的 `smallCaps`
-    #      的的优先级高于此处
+    #      的优先级高于此处
 
     ######################################
     ## 着重号
@@ -957,7 +957,7 @@ uglyURLs = false
     # 是否显示（全局设置）
     displayPostCopyright = true
     # 说明：文章的 Front Matter 中的 `displayCopyright`
-    #      的的优先级高于此处
+    #      的优先级高于此处
 
 
     ######################################
@@ -969,7 +969,7 @@ uglyURLs = false
     # 是否显示（全局设置）
     displayUpdatedBadge = true
     # 说明：文章的 Front Matter 中的 `badge`
-    #      的的优先级高于此处
+    #      的优先级高于此处
 
     # 是否添加 `title`
     enableBadgeTitle = true
@@ -986,7 +986,7 @@ uglyURLs = false
     # 是否显示（全局设置）
     displayPostGitInfo = false
     # 说明：文章的 Front Matter 中的 `gitinfo`
-    #      的的优先级高于此处
+    #      的优先级高于此处
 
     # 仓库地址
     repoURL = ""
@@ -1027,7 +1027,7 @@ uglyURLs = false
     # 是否显示（全局设置）
     displayRelatedPosts = true
     # 说明：文章的 Front Matter 中的 `related`
-    #      的的优先级高于此处
+    #      的优先级高于此处
 
     # 相关文章数
     relatedPostsNumber = 5
