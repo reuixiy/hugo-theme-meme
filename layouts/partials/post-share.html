@@ -1,5 +1,13 @@
 {{ if and .Site.Params.enablePostShare (.Params.share | default .Site.Params.displayPostShare) }}
 
+    {{- partial "components/summary.html" . -}}
+    {{- $description := .Description | default (.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) | default .Site.Params.siteDescription | plainify -}}
+
+    {{- partial "components/images.html" . -}}
+    {{- $images := .Scratch.Get "images" -}}
+    {{- $images := .Scratch.Add "images" (slice (.Site.Params.siteLogo | absURL)) -}}
+    {{- $images := (index (.Scratch.Get "images") 0) -}}
+
     <div class="post-share">
 
         <div class="share-text">{{ i18n "shareOn" }}</div>
@@ -9,8 +17,9 @@
             {{ if .Site.Params.shareOnTwitter }}
                 {{ $icon := (replace .Site.Data.SVG.twitter "icon" "icon twitter-icon") }}
                 <div class="share-item twitter">
-                    <a href="https://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{ .Site.Params.siteTwitter }}" target="_blank" title="{{ i18n "shareOnTitle" }}{{ i18n "twitter" }}">
-                        {{- printf `%s` $icon | safeHTML -}}
+                    {{ $url := (printf `https://twitter.com/share?url=%s&text=%s&via=%s` .Permalink .Title .Site.Params.siteTwitter) }}
+                    <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "twitter" }}" target="_blank" rel="noopener">
+                        {{- $icon | safeHTML -}}
                     </a>
                 </div>
             {{ end }}
@@ -18,8 +27,9 @@
             {{ if .Site.Params.shareOnFacebook }}
                 {{ $icon := (replace .Site.Data.SVG.facebook "icon" "icon facebook-icon") }}
                 <div class="share-item facebook">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" title="{{ i18n "shareOnTitle" }}{{ i18n "facebook" }}">
-                        {{- printf `%s` $icon | safeHTML -}}
+                    {{ $url := (printf `https://www.facebook.com/sharer/sharer.php?u=%s` .Permalink) }}
+                    <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "facebook" }}" target="_blank" rel="noopener">
+                        {{- $icon | safeHTML -}}
                     </a>
                 </div>
             {{ end }}
@@ -27,8 +37,9 @@
             {{ if .Site.Params.shareOnLinkedIn }}
                 {{ $icon := (replace .Site.Data.SVG.linkedin "icon" "icon linkedin-icon") }}
                 <div class="share-item linkedin">
-                    <a href="http://www.linkedin.com/shareArticle?mini=true&ro=true&title={{ .Title }}&url={{ .Permalink }}{{ with $.Params.description }}&summary={{ . }}{{ end }}{{ with $.Params.featured_image }}&source={{ . }}{{ end }}&armin=armin" target="_blank" title="{{ i18n "shareOnTitle" }}{{ i18n "linkedin" }}">
-                        {{- printf `%s` $icon | safeHTML -}}
+                    {{ $url := (printf `https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s&summary=%s&source=%s` .Permalink .Title $description .Site.Title) }}
+                    <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "linkedin" }}" target="_blank" rel="noopener">
+                        {{- $icon | safeHTML -}}
                     </a>
                 </div>
             {{ end }}
@@ -36,8 +47,9 @@
             {{ if .Site.Params.shareOnTelegram }}
                 {{ $icon := (replace .Site.Data.SVG.telegram "icon" "icon telegram-icon") }}
                 <div class="share-item telegram">
-                    <a href="https://t.me/share/url?url={{ .Permalink }}&text={{ .Title }}" target="_blank" title="{{ i18n "shareOnTitle" }}{{ i18n "telegram" }}">
-                        {{- printf `%s` $icon | safeHTML -}}
+                    {{ $url := (printf `https://t.me/share/url?url=%s&text=%s` .Permalink .Title) }}
+                    <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "telegram" }}" target="_blank" rel="noopener">
+                        {{- $icon | safeHTML -}}
                     </a>
                 </div>
             {{ end }}
@@ -45,8 +57,9 @@
             {{ if .Site.Params.shareOnWeibo }}
                 {{ $icon := (replace .Site.Data.SVG.weibo "icon" "icon weibo-icon") }}
                 <div class="share-item weibo">
-                    <a href="https://service.weibo.com/share/share.php?appkey=&title={{ .Title }}&url={{ .Permalink }}{{ with $.Params.featured_image }}&pic={{ . }}{{ end }}&searchPic=true&style=simple" target="_blank" title="{{ i18n "shareOnTitle" }}{{ i18n "weibo" }}">
-                        {{- printf `%s` $icon | safeHTML -}}
+                    {{ $url := (printf `https://service.weibo.com/share/share.php?&url=%s&title=%s&pic=%s&searchPic=false` .Permalink .Title $images) }}
+                    <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "weibo" }}" target="_blank" rel="noopener">
+                        {{- $icon | safeHTML -}}
                     </a>
                 </div>
             {{ end }}
@@ -54,8 +67,9 @@
             {{ if .Site.Params.shareOnQQ }}
                 {{ $icon := (replace .Site.Data.SVG.qq "icon" "icon qq-icon") }}
                 <div class="share-item qq">
-                    <a href="http://connect.qq.com/widget/shareqq/index.html?url={{ .Permalink }}&title={{ .Title }}{{ with $.Params.description }}&desc={{ . }}{{ end }}{{ with $.Params.featured_image }}&pics={{ . }}{{ end }}" target="_blank" title="{{ i18n "shareOnTitle" }}{{ i18n "qq" }}">
-                        {{- printf `%s` $icon | safeHTML -}}
+                    {{ $url := (printf `https://connect.qq.com/widget/shareqq/index.html?url=%s&title=%s&summary=%s&pics=%s&site=%s` .Permalink .Title $description $images .Site.Title) }}
+                    <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "qq" }}" target="_blank" rel="noopener">
+                        {{- $icon | safeHTML -}}
                     </a>
                 </div>
             {{ end }}
