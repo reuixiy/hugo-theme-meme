@@ -1022,7 +1022,7 @@ uglyURLs = false
     # 文章分享
     enablePostShare = true
     ShareTwitter = true
-    ShareGoogle = true
+    ShareTelegram = true
     ShareFacebook = true
     ShareLinkedin = true
     ShareWeibo = true
