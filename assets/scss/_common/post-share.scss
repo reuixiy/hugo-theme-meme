@@ -1,5 +1,4 @@
 .post-share {
-    font-size: 90%;
     margin-top: ($fontSize * 5);
     color: alpha(var(--color-contrast-medium), 0.8);
     a {
@@ -83,7 +82,7 @@
 #qrcode-img {
     opacity: 0;
     position: absolute;
-    transform: translateX(-80%) translateY(-125%);
+    transform: translateX(-89%) translateY(-125%);
     transition: all $duration;
     img {
         display: none;
