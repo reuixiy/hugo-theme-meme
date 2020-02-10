@@ -157,5 +157,9 @@
         {{ partial "third-party/google-adsense-auto.html" . }}
     {{- end }}
 
+    {{ if and .Site.Params.enablePostShare .Site.Params.shareViaQRCode }}
+        {{ partial "third-party/qrcode-generator.html" . }}
+    {{ end }}
+
     {{ partial "custom/head.html" . }}
 </head>

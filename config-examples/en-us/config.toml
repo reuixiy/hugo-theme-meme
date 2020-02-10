@@ -1075,6 +1075,8 @@ uglyURLs = false
     shareOnQQ = true
     shareOnQzone = true
 
+    shareViaQRCode = true
+
 
     ######################################
     # Related Posts

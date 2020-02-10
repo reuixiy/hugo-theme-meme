@@ -35,6 +35,9 @@ other = "Share on:"
 [shareOnTitle]
 other = "Share on "
 
+[shareViaTitle]
+other = "Share via "
+
 [relatedPosts]
 other = "See Also:"
 
@@ -76,6 +79,9 @@ other = "QQ"
 
 [qzone]
 other = "Qzone"
+
+[qrcode]
+other = "QR Code"
 
 
 # Months

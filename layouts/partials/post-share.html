@@ -94,6 +94,24 @@
                 </div>
             {{ end }}
 
+            {{ if .Site.Params.shareViaQRCode }}
+                {{ $icon := (replace .Site.Data.SVG.qrcode "icon" "icon qrcode-icon") }}
+                <div class="share-item qrcode">
+                    <div class="qrcode-container" title="{{ i18n "shareViaTitle" }}{{ i18n "qrcode" }}">
+                        {{- $icon | safeHTML -}}
+                        <div id="qrcode-img"></div>
+                    </div>
+                    <script>
+                        var typeNumber = 4;
+                        var errorCorrectionLevel = 'L';
+                        var qr = qrcode(typeNumber, errorCorrectionLevel);
+                        qr.addData('{{ .Permalink }}');
+                        qr.make();
+                        document.getElementById('qrcode-img').innerHTML = qr.createImgTag();
+                    </script>
+                </div>
+            {{ end }}
+
         </div>
 
     </div>

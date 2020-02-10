@@ -1038,6 +1038,8 @@ uglyURLs = false
     shareOnQQ = true
     shareOnQzone = true
 
+    shareViaQRCode = true
+
 
     ######################################
     # 相关文章
