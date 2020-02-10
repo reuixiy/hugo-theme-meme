@@ -29,6 +29,15 @@ other = "Link: "
 [copyrightLicense]
 other = "License: "
 
+[shareOn]
+other = "Share on:"
+
+[shareOnTitle]
+other = "Share on "
+
+[shareViaTitle]
+other = "Share via "
+
 [relatedPosts]
 other = "See Also:"
 
@@ -43,6 +52,36 @@ other = "New Update Available"
 
 [serviceWorkerUpdatedAction]
 other = "Refresh"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
 
 
 # Months

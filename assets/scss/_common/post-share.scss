@@ -1,0 +1,101 @@
+.post-share {
+    font-size: 90%;
+    margin-top: ($fontSize * 5);
+    color: alpha(var(--color-contrast-medium), 0.8);
+    a {
+        color: alpha(var(--color-contrast-medium), 0.8);
+        &:hover {
+            color: inherit;
+        }
+    }
+}
+
+.share-text {
+    float: left;
+}
+
+.share-items {
+    text-align: right;
+}
+
+.share-item {
+    display: inline-block;
+    margin-left: 1em;
+    .icon {
+        transition: fill $duration;
+    }
+}
+
+.twitter-icon {
+    &:hover {
+        fill: #1DA1F2;
+    }
+}
+
+.facebook-icon {
+    &:hover {
+        fill: #1877F2;
+    }
+}
+
+.linkedin-icon {
+    &:hover {
+        fill: #0077B5;
+    }
+}
+
+.telegram-icon {
+    &:hover {
+        fill: #2CA5E0;
+    }
+}
+
+.weibo-icon {
+    &:hover {
+        fill: #E6162D;
+    }
+}
+
+.douban-icon {
+    &:hover {
+        fill: #007722;
+    }
+}
+
+.qq-icon {
+    &:hover {
+        fill: #12B7F5;
+    }
+}
+
+.qzone-icon {
+    &:hover {
+        fill: #FECE00;
+    }
+}
+
+.qrcode-icon {
+    &:hover {
+        fill: var(--color-primary);
+    }
+}
+
+#qrcode-img {
+    opacity: 0;
+    position: absolute;
+    transform: translateX(-80%) translateY(-125%);
+    transition: all $duration;
+    img {
+        display: none;
+        border: 1px solid var(--color-contrast-lower);
+    }
+}
+
+.qrcode-container {
+    &:hover #qrcode-img {
+        opacity: 1;
+        img {
+            display: inline;
+        }
+    }
+}
