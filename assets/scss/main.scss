@@ -207,6 +207,10 @@
     @import "_common/post-gitinfo.scss";
 {{ end }}
 
+{{ if .Site.Params.enablePostShare }}
+    @import "_common/post-share.scss";
+{{ end }}
+
 {{ if .Site.Params.enableRelatedPosts }}
     @import "_common/related-posts.scss";
 {{ end }}

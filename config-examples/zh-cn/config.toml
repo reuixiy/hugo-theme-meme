@@ -1019,6 +1019,17 @@ uglyURLs = false
 
 
     ######################################
+    # 文章分享
+    enablePostShare = true
+    ShareTwitter = true
+    ShareGoogle = true
+    ShareFacebook = true
+    ShareLinkedin = true
+    ShareWeibo = true
+    ShareQQ = true
+
+
+    ######################################
     # 相关文章
 
     # 是否开启

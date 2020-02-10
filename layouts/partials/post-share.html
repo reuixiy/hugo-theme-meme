@@ -1,0 +1,64 @@
+<!--各平台分享链接示例-->
+<!--
+qzone: 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{URL}}&title={{TITLE}}&desc={{DESCRIPTION}}&summary={{SUMMARY}}&site={{SOURCE}}&pics={{IMAGE}}',
+qq: 'http://connect.qq.com/widget/shareqq/index.html?url={{URL}}&title={{TITLE}}&source={{SOURCE}}&desc={{DESCRIPTION}}&pics={{IMAGE}}&summary="{{SUMMARY}}"',
+weibo: 'https://service.weibo.com/share/share.php?url={{URL}}&title={{TITLE}}&pic={{IMAGE}}&appkey={{WEIBOKEY}}',
+douban: 'http://shuo.douban.com/!service/share?href={{URL}}&name={{TITLE}}&text={{DESCRIPTION}}&image={{IMAGE}}&starid=0&aid=0&style=11',
+linkedin: 'http://www.linkedin.com/shareArticle?mini=true&ro=true&title={{TITLE}}&url={{URL}}&summary={{SUMMARY}}&source={{SOURCE}}&armin=armin',
+facebook: 'https://www.facebook.com/sharer/sharer.php?u={{URL}}',
+twitter: 'https://twitter.com/intent/tweet?text={{TITLE}}&url={{URL}}&via={{ORIGIN}}',
+google: 'https://plus.google.com/share?url={{URL}}'
+-->
+{{ if .Site.Params.enablePostShare }}
+    <div class="post-share">
+        {{ if .Site.Params.ShareTwitter }}
+            {{ $icon := (replace .Site.Data.SVG.twitter "icon" "icon twitter-icon") }}
+            <div class="share-item twitter">
+                <a href="https://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{ .Site.Params.siteTwitter }}" target="_blank" title="Share on Twitter">
+                    {{ printf `%s` $icon | safeHTML }}
+                </a>
+            </div>   
+        {{ end }}
+        {{ if .Site.Params.ShareGoogle }}
+            {{ $icon := (replace .Site.Data.SVG.google "icon" "icon google-icon") }}
+                <div class="share-item google">
+                    <a href="https://plus.google.com/share?url={{ .Permalink }}" target="_blank" title="Share on Google">
+                        {{ printf `%s` $icon | safeHTML }}
+                    </a>
+                </div>        
+        {{ end }}
+        {{ if .Site.Params.ShareFacebook }}
+            {{ $icon := (replace .Site.Data.SVG.facebook "icon" "icon facebook-icon") }}
+                <div class="share-item facebook">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" title="Share on Facebook">
+                        {{ printf `%s` $icon | safeHTML }}
+                    </a>
+                </div>        
+        {{ end }}
+        {{ if .Site.Params.ShareLinkedin }}
+            {{ $icon := (replace .Site.Data.SVG.linkedin "icon" "icon linkedin-icon") }}
+                <div class="share-item linkedin">
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&ro=true&title={{ .Title }}&url={{ .Permalink }}{{ with $.Params.description }}&summary={{ . }}{{ with $.Params.featured_image }}&source={{ . }}&armin=armin" target="_blank" title="Share on linkedin">
+                        {{ printf `%s` $icon | safeHTML }}
+                    </a>
+                </div>        
+        {{ end }}
+        {{ if .Site.Params.ShareWeibo }}
+            {{ $icon := (replace .Site.Data.SVG.weibo "icon" "icon weibo-icon") }}
+                <div class="share-item weibo">
+                    <a href="https://service.weibo.com/share/share.php?appkey=&title={{ .Title }}&url={{ .Permalink }}{{ with $.Params.featured_image }}&pic={{ . }}{{ end }}&searchPic=true&style=simple" target="_blank" title="Share on Weibo">
+                        {{ printf `%s` $icon | safeHTML }}
+                    </a>
+                </div>        
+        {{ end }}
+        {{ if .Site.Params.ShareQQ }}
+            {{ $icon := (replace .Site.Data.SVG.qq "icon" "icon qq-icon") }}
+                <div class="share-item qq">
+                    <a href="http://connect.qq.com/widget/shareqq/index.html?url={{ .Permalink }}&title={{ .Title }}{{ with $.Params.description }}&desc={{ . }}{{ with $.Params.featured_image }}&pics={{ . }}" target="_blank" title="Share on QQ">
+                        {{ printf `%s` $icon | safeHTML }}
+                    </a>
+                </div>        
+        {{ end }}    
+    </div>
+{{ end }}
+
