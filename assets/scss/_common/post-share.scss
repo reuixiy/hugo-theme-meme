@@ -1,6 +1,6 @@
 .post-share {
-    font-size: 100%;
-    margin-top: ($fontSize * 2);
+    font-size: 90%;
+    margin-top: ($fontSize * 5);
     text-align: right;
     color: alpha(var(--color-contrast-medium), 0.8);
     overflow: auto hidden;
@@ -12,7 +12,7 @@
     }
 }
 
-.share-text{
+.share-text {
     float: left;
 }
 
@@ -20,10 +20,6 @@
     float: right;
 }
 
-.telegram, .linkedin, .qq, .weibo, .twitter {
+.twitter, .telegram, .facebook, .linkedin, .weibo {
     margin-right: 1em;
-}
-
-.twitter-icon, .weibo-icon,.telegram-icon, .facebook-icon, .linkedin-icon, .qq-icon {
-    margin: 0 0.3em 0.3em 0;
 }
