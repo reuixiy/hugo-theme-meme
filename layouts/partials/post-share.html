@@ -1,8 +1,8 @@
-{{ if .Site.Params.enablePostShare }}
+{{ if and .Site.Params.enablePostShare (.Params.share | default .Site.Params.displayPostShare) }}
 
     <div class="post-share">
 
-        <div class="share-text">分享：</div> 
+        <div class="share-text">分享：</div>
 
         <div class="share-items">
 
