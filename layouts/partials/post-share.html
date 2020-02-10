@@ -64,11 +64,31 @@
                 </div>
             {{ end }}
 
+            {{ if .Site.Params.shareOnDouban }}
+                {{ $icon := (replace .Site.Data.SVG.douban "icon" "icon douban-icon") }}
+                <div class="share-item douban">
+                    {{ $url := (printf `https://www.douban.com/share/service?href=%s&name=%s&text=%s` .Permalink .Title $description) }}
+                    <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "douban" }}" target="_blank" rel="noopener">
+                        {{- $icon | safeHTML -}}
+                    </a>
+                </div>
+            {{ end }}
+
             {{ if .Site.Params.shareOnQQ }}
                 {{ $icon := (replace .Site.Data.SVG.qq "icon" "icon qq-icon") }}
                 <div class="share-item qq">
                     {{ $url := (printf `https://connect.qq.com/widget/shareqq/index.html?url=%s&title=%s&summary=%s&pics=%s&site=%s` .Permalink .Title $description $images .Site.Title) }}
                     <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "qq" }}" target="_blank" rel="noopener">
+                        {{- $icon | safeHTML -}}
+                    </a>
+                </div>
+            {{ end }}
+
+            {{ if .Site.Params.shareOnQzone }}
+                {{ $icon := (replace .Site.Data.SVG.qzone "icon" "icon qzone-icon") }}
+                <div class="share-item qzone">
+                    {{ $url := (printf `https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=%s&title=%s&summary=%s&pics=%s&site=%s` .Permalink .Title $description $images .Site.Title) }}
+                    <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "qzone" }}" target="_blank" rel="noopener">
                         {{- $icon | safeHTML -}}
                     </a>
                 </div>

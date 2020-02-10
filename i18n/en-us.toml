@@ -68,8 +68,14 @@ other = "Telegram"
 [weibo]
 other = "Weibo"
 
+[douban]
+other = "Douban"
+
 [qq]
 other = "QQ"
+
+[qzone]
+other = "Qzone"
 
 
 # Months

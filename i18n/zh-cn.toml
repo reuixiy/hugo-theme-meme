@@ -66,8 +66,14 @@ other = " Telegram"
 [weibo]
 other = "微博"
 
+[douban]
+other = "豆瓣"
+
 [qq]
 other = " QQ"
+
+[qzone]
+other = " QQ 空间"
 
 
 [january]

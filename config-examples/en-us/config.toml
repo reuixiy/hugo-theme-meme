@@ -1071,7 +1071,9 @@ uglyURLs = false
     shareOnLinkedIn = true
     shareOnTelegram = true
     shareOnWeibo = true
+    shareOnDouban = true
     shareOnQQ = true
+    shareOnQzone = true
 
 
     ######################################
