@@ -1066,6 +1066,8 @@ uglyURLs = false
     #       `share` in post’s Front Matter
     #       has a higher priority than here
 
+    displayShareOnText = false
+
     shareOnTwitter = true
     shareOnFacebook = true
     shareOnLinkedIn = true

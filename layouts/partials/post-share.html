@@ -10,7 +10,9 @@
 
     <div class="post-share">
 
-        <div class="share-text">{{ i18n "shareOn" }}</div>
+        {{ if .Site.Params.displayShareOnText }}
+            <div class="share-text">{{ i18n "shareOn" }}</div>
+        {{ end }}
 
         <div class="share-items">
 
