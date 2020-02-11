@@ -104,7 +104,7 @@
                         <div id="qrcode-img"></div>
                     </div>
                     <script>
-                        var typeNumber = 15;
+                        var typeNumber = 0;
                         var errorCorrectionLevel = 'L';
                         var qr = qrcode(typeNumber, errorCorrectionLevel);
                         qr.addData('{{ .Permalink }}');
