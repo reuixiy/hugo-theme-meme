@@ -1029,6 +1029,8 @@ uglyURLs = false
     # 说明：文章的 Front Matter 中的 `share`
     #      的优先级高于此处
 
+    displayShareOnText = false
+
     shareOnTwitter = true
     shareOnFacebook = true
     shareOnLinkedIn = true

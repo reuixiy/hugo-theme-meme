@@ -11,6 +11,18 @@
     $listWidth: {{ . }}em;
 {{ end }}
 
+{{ if and .Site.Params.displayShareOnText }}
+    $displayShareOnText: true;
+{{ else }}
+    $displayShareOnText: false;
+{{ end }}
+
+{{ if and .Site.Params.shareViaQRCode }}
+    $shareViaQRCode: true;
+{{ else }}
+    $shareViaQRCode: false;
+{{ end }}
+
 {{ if .Site.Params.enableBackToTopAutoHide }}
     $enableBackToTopAutoHide: true;
 {{ else }}
