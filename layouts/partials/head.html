@@ -1,6 +1,8 @@
 <head{{ if .Site.Params.openGraph }} prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"{{ end }}>
     <meta charset="UTF-8" />
 
+    {{ hugo.Generator }}
+
     {{- with .Site.Params.defaultTheme | default "light" -}}
         {{- if eq . "light" -}}
             <meta name="theme-color" content="{{ $.Site.Params.themeColor }}" />
@@ -51,18 +53,12 @@
 
     <!-- Responsive Web Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
-    <!-- Old Old IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <!-- Avoid Automatic Format Detection -->
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
     <!-- Avoid Transcoding -->
     <meta http-equiv="Cache-Control" content="no-transform" />
     <!-- Avoid Baidu Mobile Search Transcoding -->
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <!-- Dual-core Browser -->
-    <meta name="renderer" content="webkit" />
-
-    {{ hugo.Generator }}
 
     {{ partial "components/title.html" . }}
     {{- $title := .Scratch.Get "title" -}}
@@ -87,7 +83,7 @@
     {{- $keywordsFrontMatter := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsFrontMatter")) -}}
     {{- $keywords := $keywordsFrontMatter | default $keywordsPost | default $keywordsSite | default $keywordsDefault -}}
     <meta name="keywords" content="{{ $keywords }}" />
-    
+
     <!-- Favicon, Icons, Web App -->
     {{- $favicon := "favicon.ico" -}}
     {{- $safariMaskIcon := "icons/safari-pinned-tab.svg" -}}
