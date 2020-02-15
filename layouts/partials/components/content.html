@@ -65,7 +65,7 @@
 
 <!-- Drop Cap After `<hr />` -->
 {{- $Content := .Scratch.Get "Content" -}}
-{{- $enableDropCapAfterHr := and .Site.Params.enableDropCap (.Params.dropCapAfterHr | default .Site.Params.enableDropCapAfterHr) -}}
+{{- $enableDropCapAfterHr := .Params.dropCapAfterHr | default .Site.Params.enableDropCapAfterHr -}}
 {{- if ne .Type "poetry" -}}
     {{- if $enableDropCapAfterHr -}}
         {{- if .Params.deleteHrBeforeDropCap | default .Site.Params.deleteHrBeforeDropCap -}}
