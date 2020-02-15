@@ -194,6 +194,7 @@
     .footnote-icon {
         fill: alpha(var(--color-contrast-high), 0.5);
         transition: fill $duration;
+        margin-bottom: 0.3em;
         &:hover {
             fill: var(--color-primary);
         }

@@ -82,9 +82,9 @@ blockquote {
 
 .drop-cap {
     float: left;
-    font-size: $fontSize * 3 + 2px;
+    font-size: $fontSize * 3;
     margin-right: $lineHeight * $fontSize - $fontSize;
-    margin-top: $fontSize / 2;
+    margin-top: $fontSize / $lineHeight;
     line-height: $lineHeight * $fontSize;
 }
 
