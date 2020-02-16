@@ -70,7 +70,7 @@ h6 {
 a {
     color: var(--color-contrast-high);
     text-decoration: none;
-    transition: color $duration;
+    transition: all $duration;
     &:hover {
         color: var(--color-primary);
     }
@@ -81,8 +81,8 @@ a {
 }
 
 ::-webkit-scrollbar {
-    width: 0.4em;
-    height: 0.2em;
+    width: $fontSize * 0.4;
+    height: $fontSize * 0.2;
 }
 ::-webkit-scrollbar-track {
     background-color: var(--color-bg);

@@ -23,6 +23,10 @@
     margin-top: 5em !important;
     a {
         text-decoration: underline;
+        text-decoration-color: var(--color-contrast-low);
+        &:hover {
+            text-decoration-color: alpha(var(--color-primary), 0.5);
+        }
     }
 }
 
@@ -174,7 +178,6 @@ dd {
 code {
     padding: ($fontSize / 8) ($fontSize / 4);
     background-color: var(--color-contrast-lower);
-    border-radius: 3px;
     font-size: 80%;
 }
 pre {
