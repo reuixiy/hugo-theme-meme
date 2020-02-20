@@ -1,3 +1,49 @@
+# [4.2.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.1.0...v4.2.0) (2020-02-20)
+
+
+### Bug Fixes
+
+* correct zh-cn translation of weibo ([9937e20](https://github.com/reuixiy/hugo-theme-meme/commit/9937e20))
+* drop cap after hr ([223b67b](https://github.com/reuixiy/hugo-theme-meme/commit/223b67b))
+* emphasis point position U+2022 `•` ([b07107b](https://github.com/reuixiy/hugo-theme-meme/commit/b07107b))
+* fonts-src.scss & drop outdated code ([ebccc0f](https://github.com/reuixiy/hugo-theme-meme/commit/ebccc0f))
+* generate qrcode fails when url is too long ([73a0d30](https://github.com/reuixiy/hugo-theme-meme/commit/73a0d30))
+* json-ld, open-graph ([6dc995a](https://github.com/reuixiy/hugo-theme-meme/commit/6dc995a))
+* make color in dark mode less dazzling ([262ddb1](https://github.com/reuixiy/hugo-theme-meme/commit/262ddb1))
+* render minimal-footer-about only if it exists ([3be7996](https://github.com/reuixiy/hugo-theme-meme/commit/3be7996))
+* style of blockquote ([a31369a](https://github.com/reuixiy/hugo-theme-meme/commit/a31369a))
+* style of footnote-icon, drop-cap ([ac0684c](https://github.com/reuixiy/hugo-theme-meme/commit/ac0684c))
+* style of layout home-poetry, home-footage ([76018fb](https://github.com/reuixiy/hugo-theme-meme/commit/76018fb)), closes [#59](https://github.com/reuixiy/hugo-theme-meme/issues/59)
+* style of qrcode ([5c81c01](https://github.com/reuixiy/hugo-theme-meme/commit/5c81c01))
+* style of qrcode again ([1e6791b](https://github.com/reuixiy/hugo-theme-meme/commit/1e6791b))
+* style of text-decoration, scrollbar, code ([b553842](https://github.com/reuixiy/hugo-theme-meme/commit/b553842))
+* style of tree categories page ([d2ea8c0](https://github.com/reuixiy/hugo-theme-meme/commit/d2ea8c0))
+* subset glyph-correction ([ffc6aa7](https://github.com/reuixiy/hugo-theme-meme/commit/ffc6aa7))
+* tree-categories, tree-sections ([04bde37](https://github.com/reuixiy/hugo-theme-meme/commit/04bde37))
+* twitter-cards ([123eea1](https://github.com/reuixiy/hugo-theme-meme/commit/123eea1))
+
+
+### Code Refactoring
+
+* main.scss and scss folder structure ([abba97f](https://github.com/reuixiy/hugo-theme-meme/commit/abba97f)), closes [#52](https://github.com/reuixiy/hugo-theme-meme/issues/52)
+* restructure partials folder ([299c218](https://github.com/reuixiy/hugo-theme-meme/commit/299c218)), closes [#68](https://github.com/reuixiy/hugo-theme-meme/issues/68)
+
+
+### Features
+
+* add `displayShareOnText` param ([77d1ee4](https://github.com/reuixiy/hugo-theme-meme/commit/77d1ee4))
+* support share on socials ([#62](https://github.com/reuixiy/hugo-theme-meme/issues/62)) ([eae4359](https://github.com/reuixiy/hugo-theme-meme/commit/eae4359))
+* use `Page.GetTerms` ([110064a](https://github.com/reuixiy/hugo-theme-meme/commit/110064a)), closes [#67](https://github.com/reuixiy/hugo-theme-meme/issues/67)
+* **third-party:** update mathjax to v3.0.1 ([d6ea45b](https://github.com/reuixiy/hugo-theme-meme/commit/d6ea45b))
+
+
+### BREAKING CHANGES
+
+* partials folder structure is changed
+* scss folder structure is changed
+
+
+
 # [4.1.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.0.1...v4.1.0) (2020-01-30)
 
 
