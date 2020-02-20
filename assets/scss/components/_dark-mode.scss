@@ -1,0 +1,11 @@
+#theme-toggle {
+    padding: 1em;
+    cursor: pointer;
+    float: right;
+    position: relative;
+    z-index: 4;
+}
+
+[data-theme="dark"] img {
+    filter: brightness(50%);
+}

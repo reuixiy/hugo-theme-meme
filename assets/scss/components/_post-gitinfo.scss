@@ -1,0 +1,34 @@
+.post-gitinfo {
+    font-size: 70%;
+    margin-top: calc(var(--font-size) * 5);
+    display: flex;
+    justify-content: space-between;
+    color: alpha(var(--color-contrast-medium), 0.8);
+    overflow: auto hidden;
+    a {
+        color: alpha(var(--color-contrast-medium), 0.8);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.post-gitinfo-left, .post-gitinfo-right {
+    display: flex;
+}
+
+.post-gitinfo-right {
+    text-align: right;
+}
+
+.commit, .commit-msg {
+    margin-right: 1em;
+}
+
+.edit {
+    margin-left: 1em;
+}
+
+.git-icon, .msg-icon, .feedback-icon, .edit-icon {
+    margin: 0 0.3em 0.3em 0;
+}

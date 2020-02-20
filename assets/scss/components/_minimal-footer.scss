@@ -1,0 +1,27 @@
+.minimal-footer {
+    font-size: 80%;
+    margin-top: calc(var(--font-size) * 5);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    line-height: 2;
+}
+
+.post-tag, .post-category {
+    max-width: 42%;
+}
+
+.post-category {
+    text-align: right;
+    .active {
+        color: var(--color-contrast-high);
+    }
+}
+
+.post-tag-link, .post-category-link {
+    display: inline-block;
+}
+
+.post-tag-link, .post-category-link, .post-category {
+    color: alpha(var(--color-contrast-medium), 0.9);
+}

@@ -1,0 +1,23 @@
+.tree {
+    margin-left: -2.4em;
+    overflow: auto hidden;
+    white-space: nowrap;
+}
+
+.category-item {
+    color: var(--color-primary);
+    font-size: 1.2em;
+    &:hover {
+        color: alpha(var(--color-primary), 0.75);
+    }
+}
+
+.category-count {
+    color: var(--color-contrast-medium);
+}
+
+.category-post {
+    &:hover {
+        color: var(--color-contrast-medium);
+    }
+}

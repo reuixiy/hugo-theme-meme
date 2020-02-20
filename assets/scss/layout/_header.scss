@@ -1,0 +1,36 @@
+.header {
+    z-index: 3;
+    position: relative;
+}
+
+.site-brand {
+    text-align: center;
+}
+
+@if ($siteBrandSVG) {
+    .brand {
+        width: $siteBrandSVGWidth;
+        height: $siteBrandSVGHeight;
+        fill: $siteBrandSVGFill;
+    }
+} @else {
+    .brand {
+        font-size: $siteBrandFontSize;
+        color: $siteBrandFontColor;
+        text-decoration: none;
+        &:hover {
+            color: $siteBrandFontColor;
+        }
+    }
+}
+
+@if variable-exists("siteBrandBackgroundColor") {
+    .site-brand {
+        background-color: $siteBrandBackgroundColor;
+    }
+}
+@if variable-exists("siteBrandBackgroundImage") {
+    .site-brand {
+        background-image: $siteBrandBackgroundImage;
+    }
+}

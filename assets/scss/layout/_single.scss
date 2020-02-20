@@ -1,0 +1,228 @@
+.single .main-inner {
+    width: $postWidth;
+}
+
+.post-title {
+    text-align: center;
+}
+
+.post-subtitle {
+    font-size: 1.8em;
+    text-align: center;
+    font-weight: 700;
+    margin-top: -0.618em;
+}
+
+.post-description {
+    text-align: center;
+    margin: var(--font-size) 0;
+    font-size: 90%;
+}
+
+.post-body {
+    margin-top: 5em !important;
+    a {
+        text-decoration: underline;
+        text-decoration-color: var(--color-contrast-low);
+        &:hover {
+            text-decoration-color: alpha(var(--color-primary), 0.5);
+        }
+    }
+}
+
+.post {
+    p {
+        margin: 0 0 1em;
+        line-height: var(--line-height);
+    }
+    img {
+        display: block;
+        margin: 2em auto;
+        max-width: 100%;
+        border: 1px solid var(--color-contrast-lower);
+        clear: both;
+    }
+    video {
+        display: block;
+        max-width: 100%;
+        margin: 2em auto;
+        clear: both;
+    }
+    sup {
+        font-size: 70%;
+        vertical-align: super;
+        a {
+            text-decoration: none;
+        }
+    }
+    ol, ul {
+        padding-left: 2em;
+        line-height: var(--line-height);
+    }
+    hr {
+        border: none;
+        margin: 2.427em 0 1.5em;
+        text-align: center;
+        &::after {
+            content: "···";
+            letter-spacing: 2em;
+            padding-left: 2em;
+        }
+    }
+}
+
+blockquote {
+    margin: 2em 0;
+    padding-left: 1em;
+    color: var(--color-contrast-medium);
+    border-left: 3px solid var(--color-contrast-low);
+    a {
+        color: var(--color-contrast-medium);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.drop-cap {
+    float: left;
+    font-size: calc(var(--font-size) * 3);
+    margin-right: calc(calc(var(--line-height) * var(--font-size)) - var(--font-size));
+    margin-top: calc(var(--font-size) / var(--line-height));
+    line-height: calc(var(--line-height) * var(--font-size));
+}
+
+.caption {
+    display: block;
+    text-align: center;
+    margin: -1em 0 0;
+    font-size: 90%;
+    color: var(--color-contrast-medium);
+}
+
+.contents {
+    margin-top: 5em;
+    ol {
+        list-style: none;
+        counter-reset: item;
+        li::before {
+            content: counters(item, ".") ". ";
+            counter-increment: item;
+        }
+    }
+}
+ol.toc {
+    padding: 0;
+    overflow: auto hidden;
+    white-space: nowrap;
+}
+
+.footnotes {
+    font-size: 90%;
+    margin-top: calc(var(--font-size) * 5);
+    hr {
+        margin: 0;
+        height: 1px;
+        border: none;
+        background-color: var(--color-contrast-medium);
+        &::after {
+            content: none;
+        }
+    }
+    ol {
+        margin: calc(var(--font-size) * 1.618) 0 0 !important;
+        padding: 0 var(--font-size) 0 calc(var(--font-size) * 2) !important;
+    }
+}
+
+@if ($footnoteReturnLinkIcon) {
+    .footnote-icon {
+        fill: alpha(var(--color-contrast-high), 0.5);
+        transition: fill $duration;
+        margin-bottom: 0.3em;
+        &:hover {
+            fill: var(--color-primary);
+        }
+    }
+}
+
+.anchor-link {
+    position: absolute;
+    transform: translate(-150%);
+}
+.anchor-icon {
+    width: 0.75em;
+    height: 0.75em;
+    vertical-align: baseline;
+}
+
+@if ($enableAnchorAutoHide) {
+    :root {
+        --anchor-opacity: 0;
+    }
+    .anchor-link {
+        opacity: var(--anchor-opacity);
+        transition: all ($duration / 2);
+    }
+    .post {
+        h1, h2, h3, h4, h5, h6, .anchor-link {
+            &:hover {
+                --anchor-opacity: 1;
+            }
+        }
+    }
+}
+
+table {
+    display: block;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: var(--color-contrast-lower);
+    margin: 2em 0;
+    overflow-x: auto;
+}
+th {
+    font-weight: 700;
+}
+th, td {
+    font-size: 0.9em;
+    padding: 0.4em;
+    border: 1px solid var(--color-contrast-lower);
+}
+table > tbody > tr:nth-of-type(odd) {
+    background-color: alpha(var(--color-contrast-lower), 0.5);
+}
+table > tbody > tr:hover {
+    background-color: var(--color-contrast-lower);
+}
+
+dt {
+    font-weight: 700;
+}
+dd {
+    margin-left: 2em;
+}
+
+code {
+    padding: calc(var(--font-size) / 8) calc(var(--font-size) / 4);
+    background-color: var(--color-contrast-lower);
+    font-size: 80%;
+}
+pre {
+    overflow: auto hidden;
+    font-size: calc(var(--font-size) * 0.8);
+    margin: calc(var(--font-size) * 2) 0;
+    padding: 1em;
+    line-height: 1.618;
+    background-color: alpha(var(--color-contrast-lower), 0.75);
+    code {
+        background-color: unset;
+        font-size: inherit;
+        padding: 0;
+    }
+}
+
+.katex-display, mjx-container[jax="CHTML"][display="true"] {
+    overflow: auto hidden;
+    text-indent: 0;
+}

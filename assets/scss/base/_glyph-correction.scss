@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'glyph-correction';
+    font-display: swap;
+    font-weight: inherit;
+    font-style: inherit;
+    src: url('/fonts/glyph-correction.woff2') format('woff2'),
+         url('/fonts/glyph-correction.woff') format('woff'),
+         url('/fonts/glyph-correction.ttf') format('truetype'),
+         url('/fonts/glyph-correction.eot') format('embedded-opentype');
+    unicode-range: U+00B7, U+2014, U+2022, U+2026;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.drop-cap {
+    margin-top: var(--font-size) !important;
+}

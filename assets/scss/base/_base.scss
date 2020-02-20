@@ -1,0 +1,98 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-size: var(--font-size);
+    tab-size: $tabSize;
+    color: var(--color-contrast-high);
+    background-color: var(--color-bg);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    line-height: 1.618;
+}
+
+.container {
+    min-height: 100%;
+    min-width: 100%;
+    position: relative;
+}
+
+.main {
+    padding: 2em 1em 15em;
+    display: block;
+}
+
+.main-inner {
+    margin: 0 auto;
+    display: block;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display: inline-block;
+}
+svg {
+    vertical-align: middle;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1.618em 0 1em;
+    color: var(--color-contrast-higher);
+    a {
+        text-decoration: none !important;
+        color: var(--color-contrast-higher);
+    }
+}
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.8em;
+}
+h3 {
+    font-size: 1.6em;
+}
+h4 {
+    font-size: 1.4em;
+}
+h5 {
+    font-size: 1.2em;
+}
+h6 {
+    font-size: 1em;
+}
+
+a {
+    color: var(--color-contrast-high);
+    text-decoration: none;
+    transition: all $duration;
+    &:hover {
+        color: var(--color-primary);
+    }
+}
+
+::selection {
+    background-color: alpha(var(--color-primary), 0.3);
+}
+
+::-webkit-scrollbar {
+    width: calc(var(--font-size) * 0.4);
+    height: calc(var(--font-size) * 0.2);
+}
+::-webkit-scrollbar-track {
+    background-color: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-contrast-low);
+    &:hover {
+        background-color: alpha(var(--color-primary), 0.5);
+    }
+    &:active {
+        background-color: alpha(var(--color-primary), 0.75);
+    }
+}

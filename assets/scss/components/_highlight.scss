@@ -1,0 +1,30 @@
+.highlight {
+    font-size: 0.8em;
+    margin: calc(var(--font-size) * 2) 0;
+    pre {
+        margin: 0 !important;
+        overflow: auto hidden;
+        background-color: unset;
+    }
+    th, td {
+        font-size: inherit;
+    }
+    table > tbody > tr:nth-of-type(odd) {
+        background-color: inherit;
+    }
+    table > tbody > tr:hover {
+        background-color: inherit;
+    }
+}
+span.lnt {
+    user-select: none;
+    display: block;
+    margin-right: -1em !important;
+    padding: 0 !important;
+    text-align: right;
+}
+
+.chroma, .chroma-dark {
+    color: var(--color-contrast-high);
+    background-color: alpha(var(--color-contrast-lower), 0.5);
+}

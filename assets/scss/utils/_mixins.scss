@@ -1,0 +1,5 @@
+// https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables
+
+@mixin defineColorHSL($color, $hue, $saturation, $lightness){
+    #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");#{$color}-h: #{$hue};#{$color}-s: #{$saturation};#{$color}-l: #{$lightness};
+}
