@@ -1,7 +1,7 @@
 {{ define "main" }}
     {{ if .Site.Params.enableTagCloud }}
-        {{ partial "tag-cloud.html" . }}
+        {{ partial "pages/tag-cloud.html" . }}
     {{ else }}
-        {{ partial "taxonomy.html" . }}
+        {{ partial "pages/taxonomy.html" . }}
     {{ end }}
 {{ end }}

@@ -1,6 +1,6 @@
 {{- $Deliver := . -}}
 {{- $raw := .RawContent -}}
-{{- partial "components/markdownify.html" (dict "Deliver" . "raw" $raw "isContent" true) -}}
+{{- partial "utils/markdownify.html" (dict "Deliver" . "raw" $raw "isContent" true) -}}
 
 <!-- Link Headings to TOC -->
 {{- $Content := .Scratch.Get "Content" -}}

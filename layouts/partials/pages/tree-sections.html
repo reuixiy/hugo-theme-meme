@@ -5,7 +5,7 @@
                 <h1 class="list-title">{{ .Title | default (.Type | title) }}</h1>
             {{ end }}
             <div class="tree">
-                {{ partial "components/tree-sections.html" . }}
+                {{ partial "utils/tree-sections.html" . }}
                 {{ $pages := (.Scratch.Get "pages") }}
                 {{ range $page, $name := $pages }}
                     {{ $depth := (len (split (strings.TrimPrefix "/" $page) "/")) }}

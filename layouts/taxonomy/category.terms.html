@@ -1,7 +1,7 @@
 {{ define "main" }}
     {{ if .Site.Params.enableTree }}
-        {{ partial "tree/categories.html" . }}
+        {{ partial "pages/tree-categories.html" . }}
     {{ else }}
-        {{ partial "taxonomy.html" . }}
+        {{ partial "pages/taxonomy.html" . }}
     {{ end }}
 {{ end }}

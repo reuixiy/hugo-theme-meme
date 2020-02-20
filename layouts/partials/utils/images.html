@@ -1,6 +1,6 @@
 <!-- Auto Detect Images -->
 {{- if .Site.Params.autoDetectImages -}}
-    {{- partial "components/auto-detect-images.html" . -}}
+    {{- partial "utils/auto-detect-images.html" . -}}
 {{- end -}}
 {{- $imgsURL := .Scratch.Get "imgsURL" -}}
 

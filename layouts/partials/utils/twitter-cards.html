@@ -3,10 +3,10 @@
 <!-- https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/twitter_cards.html -->
 {{- $Deliver := .Deliver -}}
 <!-- Author -->
-{{- partial "components/author.html" $Deliver -}}
+{{- partial "utils/author.html" $Deliver -}}
 {{- $author := $Deliver.Scratch.Get "author" -}}
 <!-- Images -->
-{{- partial "components/images.html" $Deliver -}}
+{{- partial "utils/images.html" $Deliver -}}
 {{- $images := $Deliver.Scratch.Get "images" -}}
 
 {{- with $images -}}

@@ -31,7 +31,7 @@
     <generator uri="https://gohugo.io/" version="{{ printf "%s" hugo.Version | safeHTML }}">Hugo</generator>
     {{- range (where $pages "Section" "in" .Site.Params.mainSections) }}
         {{ $page := . }}
-        {{- partial "components/author.html" $page -}}
+        {{- partial "utils/author.html" $page -}}
         {{- $author := ($page.Scratch.Get "author") -}}
         <entry>
             <title type="text">{{ .Title | safeHTML }}</title>
@@ -55,10 +55,10 @@
             {{ with $author.copyright -}}
                 <rights>{{ . | plainify }}</rights>
             {{- end }}
-            {{- partial "components/summary.html" $page -}}
+            {{- partial "utils/summary.html" $page -}}
             {{- $summary := .Description | default ($page.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) -}}
             {{- $raw := $summary -}}
-            {{- partial "components/markdownify.html" (dict "Deliver" $page "raw" $raw "isContent" false) -}}
+            {{- partial "utils/markdownify.html" (dict "Deliver" $page "raw" $raw "isContent" false) -}}
             {{- $summary := $page.Scratch.Get "Content" -}}
             {{ printf `<summary type="html"><![CDATA[%s]]></summary>` ($summary | htmlUnescape) | safeHTML }}
             {{ if $.Site.Params.includeContent }}

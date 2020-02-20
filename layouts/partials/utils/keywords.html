@@ -6,7 +6,7 @@
     {{- end -}}
 {{- end -}}
 {{- if (eq $.Site.Params.categoryBy "sections") -}}
-    {{- partial "components/tree-sections.html" . -}}
+    {{- partial "utils/tree-sections.html" . -}}
     {{ $sections := (split (strings.TrimSuffix ", " ($.Scratch.Get "sections")) ", ") }}
     {{- $.Scratch.Delete "sections" -}}
     {{- range $sections -}}

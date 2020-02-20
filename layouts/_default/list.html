@@ -1,6 +1,6 @@
 {{ define "main" }}
     {{ if and (eq .Kind "section") .Content }}
-        {{ partial "post.html" . }}
+        {{ partial "pages/post.html" . }}
     {{ else }}
         <main class="main list" id="main">
             <div class="main-inner">
@@ -83,10 +83,10 @@
                                     {{ end }}
                                     {{ $month := $.Scratch.Get "month" }}
                                     <h3 class="list-month">{{ $month }}</h3>
-                                    {{ partial "components/list-item.html" . }}
+                                    {{ partial "utils/list-item.html" . }}
                                 {{ end }}
                             {{ else }}
-                                {{ partial "components/list-item.html" . }}
+                                {{ partial "utils/list-item.html" . }}
                             {{ end }}
                         </ul>
                     {{ end }}
