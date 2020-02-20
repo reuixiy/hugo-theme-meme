@@ -82,12 +82,8 @@
             {{ with $.Site.Taxonomies }}
                 {{ range $taxonomy, $terms := . }}
                     {{ with $page.Param $taxonomy }}
-                        {{ range $index, $term := . }}
-                            {{ $url := urls.Parse ($term | urlize) }}
-                            {{ $path := $url.Path }}
-                            {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy $path) }}
-                                <category scheme="{{ .Permalink }}" term="{{ .Title | default $term }}" label="{{ .Title | default $term }}" />
-                            {{ end }}
+                        {{ range ($page.GetTerms $taxonomy) }}
+                            <category scheme="{{ .Permalink }}" term="{{ .Title }}" label="{{ .Title }}" />
                         {{ end }}
                     {{ end }}
                 {{ end }}

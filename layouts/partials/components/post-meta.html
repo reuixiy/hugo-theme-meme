@@ -55,18 +55,14 @@
                 {{ $length := sub (len .) 1 }}
                 <span class="post-meta-item category">
                     {{- printf `%s&nbsp;` $icon | safeHTML -}}
-                    {{- range $index, $category := . -}}
-                        {{- $url := urls.Parse ($category | urlize) -}}
-                        {{- $path := $url.Path -}}
+                    {{- range $index, $category := ($Deliver.GetTerms "categories") -}}
                         {{- if lt $index $length -}}
                             {{- $Deliver.Scratch.Set "delimiter" ($Deliver.Site.Params.categoryDelimiter | default "/") -}}
                         {{- else -}}
                             {{- $Deliver.Scratch.Set "delimiter" "" -}}
                         {{- end -}}
                         {{- $delimiter := ($Deliver.Scratch.Get "delimiter") -}}
-                        {{- with $Deliver.Site.GetPage (printf `/categories/%s` $path) -}}
-                            {{- printf `<a href="%s" class="category-link">%s</a>%s` .RelPermalink (.LinkTitle | default $category) $delimiter | safeHTML -}}
-                        {{- end -}}
+                        {{- printf `<a href="%s" class="category-link">%s</a>%s` .RelPermalink (.LinkTitle | default $category) $delimiter | safeHTML -}}
                     {{- end -}}
                 </span>
             {{ end }}
