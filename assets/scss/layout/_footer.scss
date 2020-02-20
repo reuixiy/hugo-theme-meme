@@ -1,0 +1,45 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 90%;
+    color: var(--color-contrast-medium);
+    a {
+        color: var(--color-contrast-medium);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.footer-inner {
+    padding: 1em;
+    text-align: center;
+}
+
+.footer-icon {
+    margin: 0 0.25em 0.3em;
+}
+
+@if variable-exists("iconColor") {
+    .footer-icon {
+        fill: $iconColor;
+    }
+}
+
+@if ($iconAnimation) {
+    @keyframes heartbeat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        10%, 30% {
+            transform: scale(0.9);
+        }
+        20%, 40%, 50%, 60%, 70%, 80% {
+            transform: scale(1.1);
+        }
+    }
+    .footer-icon {
+        animation: heartbeat 1.33s ease-in-out infinite;
+    }
+}

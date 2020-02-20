@@ -1,0 +1,27 @@
+.back-to-top {
+    position: fixed;
+    right: 0;
+    z-index: 1;
+    a {
+        display: block;
+        padding: 1em;
+        color: var(--color-contrast-medium);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+@if ($enableBackToTopAutoHide) {
+    .back-to-top {
+        bottom: -5em;
+        transition: bottom 0.3s ease-in-out;
+        &.show {
+            bottom: 0;
+        }
+    }
+} @else {
+    .back-to-top {
+        bottom: 0;
+    }
+}

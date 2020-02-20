@@ -1,0 +1,17 @@
+.post-tags {
+    margin-top: calc(var(--font-size) * 5);
+    text-align: center;
+    font-size: 90%;
+}
+
+.post-tags-link {
+    color: alpha(var(--color-contrast-medium), 0.9);
+    margin: 0 0.5em;
+    line-height: 2;
+    display: inline-block;
+}
+
+.tag-icon {
+    margin-right: 0.3em;
+    font-size: 80%;
+}

@@ -1,0 +1,60 @@
+[data-indent="true"] {
+    .contents-title {
+        text-align: center;
+    }
+    .post-body {
+        p {
+            text-indent: 2em;
+            margin: 0;
+        }
+        .caption {
+            text-indent: 0;
+            margin: 0 0 1em;
+        }
+        blockquote {
+            margin: 1em 0;
+            padding: 0;
+            border: none;
+        }
+        img, video {
+            margin: 1em auto;
+        }
+        table {
+            margin: 1em 0;
+        }
+        pre, .highlight {
+            margin: var(--font-size) 0;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+        }
+        .anchor-link {
+            position: relative;
+            transform: none;
+            display: block;
+            float: none;
+        }
+        ol, ul {
+            margin: 0;
+            padding-left: 4em;
+            p {
+                text-indent: 0;
+            }
+        }
+        li {
+            ol, ul {
+                padding-left: 2em;
+            }
+        }
+        dl {
+            text-indent: 2em;
+            dd {
+                text-indent: 0;
+                margin-left: 4em;
+            }
+            p {
+                text-indent: 0;
+            }
+        }
+    }
+}

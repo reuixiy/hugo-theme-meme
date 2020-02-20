@@ -1,0 +1,23 @@
+.minimal-footer-about {
+    font-size: 80%;
+    margin-top: calc(var(--font-size) * 5);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    line-height: 2;
+    a {
+        display: inline-block;
+        color: alpha(var(--color-contrast-medium), 0.9);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.about-socials, .about-links {
+    max-width: 42%;
+}
+
+.about-links {
+    text-align: right;
+}

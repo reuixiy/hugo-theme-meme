@@ -1,9 +1,13 @@
 {{ with .Site.Params.fontSize | default 16 }}
     $fontSize: {{ . }}px;
 {{ end }}
+{{ with .Site.Params.tabSize | default 4 }}
+    $tabSize: {{ . }};
+{{ end }}
 {{ with .Site.Params.lineHeight | default 2 }}
     $lineHeight: {{ . }};
 {{ end }}
+
 {{ with .Site.Params.postWidth | default 42 }}
     $postWidth: {{ . }}em;
 {{ end }}
@@ -11,34 +15,29 @@
     $listWidth: {{ . }}em;
 {{ end }}
 
-{{ if and .Site.Params.displayShareOnText }}
-    $displayShareOnText: true;
-{{ else }}
-    $displayShareOnText: false;
+{{ with .Site.Params.duration | default 0.5 }}
+    $duration: {{ . }}s;
 {{ end }}
 
-{{ if and .Site.Params.shareViaQRCode }}
-    $shareViaQRCode: true;
-{{ else }}
-    $shareViaQRCode: false;
-{{ end }}
 
-{{ if .Site.Params.enableBackToTopAutoHide }}
-    $enableBackToTopAutoHide: true;
-{{ else }}
-    $enableBackToTopAutoHide: false;
-{{ end }}
+// Utilities
 
-{{ with .Site.Params.tabSize | default 4 }}
-    $tabSize: {{ . }};
-{{ end }}
+@import "utils/variables";
+@import "utils/functions";
+@import "utils/mixins";
+
+
+// Base
+
+@import "base/base";
+
+
+// Typography
+
+// Font Family
 
 {{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
     {{ .Scratch.Set "glyph" "'glyph-correction', " }}
-    $glyph: true;
-    .drop-cap {
-        margin-top: $fontSize !important;
-    }
 {{ else }}
     {{ .Scratch.Set "glyph" "" }}
 {{ end }}
@@ -75,9 +74,30 @@
     $fontFamilyBody: {{ $glyph }}{{ . }};
 {{ end }}
 
-{{ with .Site.Params.duration | default 0.5 }}
-    $duration: {{ . }}s;
+@import "base/font-family";
+
+// Chinese Punctuation Glyph Correction
+
+{{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
+    @import "base/glyph-correction";
 {{ end }}
+
+// Emphasis Point
+
+{{ if .Site.Params.enableEmphasisPoint }}
+    @import "base/emphasis-point";
+{{ end }}
+
+// Paragraph Indents
+
+{{ if .Site.Params.enableParagraphIndent }}
+    @import "base/indent";
+{{ end }}
+
+
+// Themes
+
+// Light
 
 {{ with .Site.Params.primaryColorLight | default "220, 90%, 56%" }}
     {{ $number := (split (replace . "%" "") ", ") }}
@@ -93,7 +113,10 @@
         {{ end }}
     {{ end }}
 {{ end }}
-@import "_variables/light.scss";
+
+@import "themes/light";
+
+// Dark Mode
 
 {{ if .Site.Params.enableDarkMode }}
     {{ with .Site.Params.primaryColorDark | default "201, 65%, 62%" }}
@@ -110,209 +133,183 @@
             {{ end }}
         {{ end }}
     {{ end }}
-    @import "_variables/dark.scss";
-    #theme-toggle {
-        padding: 1em;
-        cursor: pointer;
-        float: right;
-        position: relative;
-        z-index: 4;
-    }
-    [data-theme="dark"] img {
-        filter: brightness(50%);
-    }
-{{ end }}
 
-{{ if and .Site.IsMultiLingual .Site.Params.enableLangToggle }}
-    @import "_common/multilingual.scss";
-{{ end }}
+    @import "themes/dark";
+    @import "components/dark-mode";
 
-@import "_common/base.scss";
-
-@import "_common/data-attributes.scss";
-
-@import "_common/fonts.scss";
-
-{{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
-    @import "_common/fonts-src.scss";
-{{ end }}
-
-{{ if .Site.Params.enableHeader }}
-    @import "_common/header.scss";
-    .site-brand {
-        {{ with .Site.Params.siteBrandBackgroundColor }}
-            background-color: {{ . }}
-        {{ end }}
-        {{ with .Site.Params.siteBrandBackgroundImage }}
-            background-image: {{ . }};
-        {{ end }}
-    }
-    {{ if .Site.Params.siteBrandSVG }}
-        .brand {
-            width: {{ .Site.Params.siteBrandSVGWidth }}px;
-            height: {{ .Site.Params.siteBrandSVGHeight }}px;
-            fill: {{ .Site.Params.siteBrandSVGFill }};
-        }
-    {{ else }}
-        .brand {
-            font-size: {{ .Site.Params.siteBrandFontSize }}em;
-            color: {{ .Site.Params.siteBrandFontColor }};
-            text-decoration: none;
-            &:hover {
-                color: {{ .Site.Params.siteBrandFontColor }};
-            }
-        }
+    {{ if .Site.Params.enableHighlight }}
+        @import "themes/highlight/dark";
     {{ end }}
 {{ end }}
 
+
+// Header
+
+{{ if .Site.Params.enableHeader }}
+    {{ if .Site.Params.siteBrandSVG }}
+        $siteBrandSVG: true;
+        $siteBrandSVGWidth: {{ .Site.Params.siteBrandSVGWidth }}px;
+        $siteBrandSVGHeight: {{ .Site.Params.siteBrandSVGHeight }}px;
+        $siteBrandSVGFill: {{ .Site.Params.siteBrandSVGFill }};
+    {{ else }}
+        $siteBrandSVG: false;
+        $siteBrandFontSize: {{ .Site.Params.siteBrandFontSize }}em;
+        $siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
+        $siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
+    {{ end }}
+
+    {{ with .Site.Params.siteBrandBackgroundColor }}
+        $siteBrandBackgroundColor: {{ . }};
+    {{ end }}
+    {{ with .Site.Params.siteBrandBackgroundImage }}
+        $siteBrandBackgroundImage: {{ . }};
+    {{ end }}
+
+    @import 'layout/header';
+{{ end }}
+
+
+// Menu Bar
+
 {{ if .Site.Params.enableMenu }}
-    @import "_common/menu.scss";
+    @import 'layout/menu';
+{{ end }}
+
+
+// List Page
+
+{{ if eq .Site.Params.listDatePosition "right" }}
+    $listDatePosition: right;
+{{ end }}
+{{ if eq .Site.Params.listDatePosition "left" }}
+    $listDatePosition: left;
+{{ end }}
+
+@import "layout/list";
+
+
+// Single Page
+
+{{ if .Site.Params.enableAnchorAutoHide }}
+    $enableAnchorAutoHide: true;
+{{ else }}
+    $enableAnchorAutoHide: false;
+{{ end }}
+
+{{ with .Site.Params.footnoteReturnLinkIcon }}
+    $footnoteReturnLinkIcon: true;
+{{ else }}
+    $footnoteReturnLinkIcon: false;
+{{ end }}
+
+@import "layout/single";
+
+
+// Footer
+
+{{ if .Site.Params.enableFooter }}
+    {{ with .Site.Params.iconColor }}
+        $iconColor: {{ . }};
+    {{ end }}
+
+    {{ if .Site.Params.iconAnimation }}
+        $iconAnimation: true;
+    {{ else }}
+        $iconAnimation: false;
+    {{ end }}
+
+    @import "layout/footer";
+{{ end }}
+
+
+// Components
+
+{{ if and .Site.IsMultiLingual .Site.Params.enableLangToggle }}
+    @import "components/multilingual";
 {{ end }}
 
 {{ if or .Site.Params.enablePostMeta .Site.Params.enablePostMetaInHome }}
-    @import "_common/post-meta.scss";
-{{ end }}
-
-@import "_common/single.scss";
-{{ if .Site.Params.enableAnchorAutoHide }}
-    :root {
-        --anchor-opacity: 0;
-    }
-    .anchor-link {
-        opacity: var(--anchor-opacity);
-        transition: all ($duration / 2);
-    }
-    .post {
-        h1, h2, h3, h4, h5, h6, .anchor-link {
-            &:hover {
-                --anchor-opacity: 1;
-            }
-        }
-    }
-{{ end }}
-{{ with .Site.Params.footnoteReturnLinkIcon }}
-    .footnote-icon {
-        fill: alpha(var(--color-contrast-high), 0.5);
-        transition: fill $duration;
-        margin-bottom: 0.3em;
-        &:hover {
-            fill: var(--color-primary);
-        }
-    }
-{{ end }}
-{{ if .Site.Params.enableEmphasisPoint }}
-    @import "_common/emphasis-point.scss";
-{{ end }}
-
-{{ if .Site.Params.enableParagraphIndent }}
-    @import "_common/indent.scss";
+    @import "components/post-meta";
 {{ end }}
 
 {{ if .Site.Params.enablePostCopyright }}
-    @import "_common/post-copyright.scss";
+    @import "components/post-copyright";
 {{ end }}
 
 {{ if .Site.Params.enablePostUpdatedBadge }}
-    @import "_common/updated-badge.scss";
+    @import "components/updated-badge";
 {{ end }}
 
 {{ if .Site.Params.enablePostGitInfo }}
-    @import "_common/post-gitinfo.scss";
+    @import "components/post-gitinfo";
 {{ end }}
 
 {{ if .Site.Params.enablePostShare }}
-    @import "_common/post-share.scss";
+    {{ if and .Site.Params.displayShareOnText }}
+        $displayShareOnText: true;
+    {{ else }}
+        $displayShareOnText: false;
+    {{ end }}
+
+    {{ if and .Site.Params.shareViaQRCode }}
+        $shareViaQRCode: true;
+    {{ else }}
+        $shareViaQRCode: false;
+    {{ end }}
+
+    @import "components/post-share";
 {{ end }}
 
 {{ if .Site.Params.enableRelatedPosts }}
-    @import "_common/related-posts.scss";
+    @import "components/related-posts";
 {{ end }}
 
 {{ if .Site.Params.enablePostTags }}
-    @import "_common/post-tags.scss";
+    @import "components/post-tags";
 {{ end }}
 
 {{ if .Site.Params.enableMinimalFooter }}
-    @import "_common/minimal-footer.scss";
+    @import "components/minimal-footer";
 {{ end }}
 
 {{ if .Site.Params.enableAboutPageMinimalFooter }}
-    @import "_common/minimal-footer-about.scss";
+    @import "components/minimal-footer-about";
 {{ end }}
 
 {{ if .Site.Params.enablePostNav }}
-    @import "_common/post-nav.scss";
+    @import "components/post-nav";
 {{ end }}
 
 {{ if .Site.Params.enableComments }}
-    @import "_common/comments.scss";
-{{ end }}
-
-@import "_common/list.scss";
-{{ if eq .Site.Params.listDatePosition "right" }}
-    .list-item-title {
-        flex: 1;
-    }
-    .list-item-time {
-        text-align: right;
-        margin-left: 1em;
-    }
-{{ end }}
-{{ if eq .Site.Params.listDatePosition "left" }}
-    .list-item {
-        flex-direction: row-reverse;
-    }
-    .list-item-time {
-        flex: 1;
-    }
-    .list-item-title {
-        text-align: right;
-        margin-left: 1em;
-    }
+    @import "components/comments";
 {{ end }}
 
 {{ if .Site.Params.enableBackToTop }}
-    @import "_common/back-to-top.scss";
+    {{ if .Site.Params.enableBackToTopAutoHide }}
+        $enableBackToTopAutoHide: true;
+    {{ else }}
+        $enableBackToTopAutoHide: false;
+    {{ end }}
+
+    @import "components/back-to-top";
 {{ end }}
 
-{{ if .Site.Params.enableFooter }}
-    @import "_common/footer.scss";
-    {{ with .Site.Params.iconColor }}
-        .footer-icon {
-            fill: {{ . }};
-        }
-    {{ end }}
-    {{ if .Site.Params.iconAnimation }}
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-            10%, 30% {
-                transform: scale(0.9);
-            }
-            20%, 40%, 50%, 60%, 70%, 80% {
-                transform: scale(1.1);
-            }
-        }
-        .footer-icon {
-            animation: heartbeat 1.33s ease-in-out infinite;
-        }
-    {{ end }}
-    {{ if and .Site.Params.displayBusuanziSiteUVAndPV (eq hugo.Environment "production") }}
-        @import "_common/busuanzi.scss";
-    {{ end }}
+{{ if .Site.Params.enableHighlight }}
+    @import "themes/highlight/light";
+    @import "components/highlight";
 {{ end }}
+
+
+// Homepage Layout
 
 {{ if eq .Site.Params.homeLayout "poetry" }}
-    @import "_common/_page/home-poetry.scss";
-    .links-item {
-        padding: {{ .Site.Params.homeLinksPadding }}em;
-        display: inline-block;
-    }
-{{ end }}
-{{ if eq .Site.Params.homeLayout "footage" }}
-    @import "_common/_page/home-footage.scss";
+    $homeLinksPadding: {{ .Site.Params.homeLinksPadding }}em;
 
+    @import "pages/home-poetry";
+{{ end }}
+
+{{ if eq .Site.Params.homeLayout "footage" }}
+    // https://github.com/reuixiy/hugo-theme-meme/issues/51
     {{ if strings.HasPrefix .Site.Params.homePoster "." }}
         {{ $homePoster := printf `.%s` .Site.Params.homePoster }}
         {{ .Scratch.Set "homePoster" $homePoster }}
@@ -321,15 +318,33 @@
     {{ end }}
     {{ $homePoster := .Scratch.Get "homePoster" }}
 
-    .home::before {
-        background-image: url({{ $homePoster }});
-    }
-{{ end }}
-{{ if eq .Site.Params.homeLayout "posts" }}
-    @import "_common/_page/home-posts.scss";
+    $homePoster: url({{ $homePoster }});
+
+    @import "pages/home-footage";
 {{ end }}
 
-@import "_common/_page/404.scss";
+{{ if eq .Site.Params.homeLayout "posts" }}
+    @import "pages/home-posts";
+{{ end }}
+
+
+// Categories Page
+
+{{ if .Site.Params.enableTree }}
+    @import "pages/tree-categories";
+{{ end }}
+
+
+// Tags Page
+
+{{ if .Site.Params.enableTagCloud }}
+    @import "pages/tag-cloud";
+{{ end }}
+
+
+// 404 Page
+
+// https://github.com/reuixiy/hugo-theme-meme/issues/51
 {{ if strings.HasPrefix .Site.Params.fofPoster "." }}
     {{ $fofPoster := printf `.%s` .Site.Params.fofPoster }}
     {{ .Scratch.Set "fofPoster" $fofPoster }}
@@ -337,34 +352,52 @@
     {{ .Scratch.Set "fofPoster" .Site.Params.fofPoster }}
 {{ end }}
 {{ $fofPoster := .Scratch.Get "fofPoster" }}
-.fof::before {
-    background-image: url({{ $fofPoster }});
-}
 
-{{ if .Site.Params.enableHighlight }}
-    @import "_common/highlight.scss";
-    @import "_common/_highlight/light.scss";
-    .chroma {
-        color: var(--color-contrast-high);
-        background-color: alpha(var(--color-contrast-lower), 0.5);
-    }
-    {{ if .Site.Params.enableDarkMode }}
-        @import "_common/_highlight/dark.scss";
-        .chroma-dark {
-            color: var(--color-contrast-high);
-            background-color: alpha(var(--color-contrast-lower), 0.5);
-        }
+$fofPoster: url({{ $fofPoster }});
+
+@import "pages/404";
+
+
+// Third Party
+
+// Medium Zoom
+
+{{ if .Site.Params.enableMediumZoom }}
+    @import "third-party/medium-zoom";
+{{ end }}
+
+// Service Worker
+
+{{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
+    @import "third-party/sw-notification";
+{{ end }}
+
+// Busuanzi Site UV And PV
+
+{{ if .Site.Params.enableFooter }}
+    {{ if and .Site.Params.displayBusuanziSiteUVAndPV (eq hugo.Environment "production") }}
+        @import "third-party/busuanzi";
     {{ end }}
 {{ end }}
 
-{{ if .Site.Params.enableMediumZoom }}
-    @import "_common/medium-zoom.scss";
-{{ end }}
 
-{{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
-    @import "_common/sw-notification.scss";
-{{ end }}
+// Responsive
 
-@import "_common/responsive.scss";
+@if ($postWidth > $listWidth) {
+    $greaterWidth: $postWidth !global;
+} @else {
+    $greaterWidth: $listWidth !global;
+}
 
-@import "_custom/custom.scss";
+@import "base/max-width";
+@import "base/responsive";
+
+
+// Data Attributes
+
+@import "base/data-attributes";
+
+
+// Custom
+
+@import "custom/custom";

@@ -1,0 +1,18 @@
+@media (max-width: $maxWidth) {
+    .main-inner {
+        width: auto !important;
+    }
+    .anchor-link {
+        position: relative;
+        transform: none;
+        float: right;
+    }
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        word-break: break-all;
+    }
+    .menu-item {
+        margin: 0;
+    }
+}

@@ -1,0 +1,31 @@
+// https://codyhouse.co/blog/post/how-to-combine-sass-color-functions-and-css-variables
+
+// return css color variable with different opacity value
+@function alpha($color, $opacity){
+    $color: str-replace($color, 'var(');
+    $color: str-replace($color, ')');
+    $color-h: var(#{$color+'-h'});
+    $color-s: var(#{$color+'-s'});
+    $color-l: var(#{$color+'-l'});
+    @return hsla($color-h, $color-s, $color-l, $opacity);
+}
+
+// replace substring with another string
+// credits: https://css-tricks.com/snippets/sass/str-replace-function/
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
+// Remove the unit of a length
+// https://css-tricks.com/snippets/sass/strip-unit-function/
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}

@@ -1,0 +1,35 @@
+[data-hide="true"] {
+    display: none;
+}
+
+[data-small-caps="true"] {
+    .post-body {
+        h1, h2, h3, h4, h5, h6 {
+            font-variant: small-caps;
+        }
+    }
+    .contents-title {
+        font-variant: small-caps;
+    }
+}
+
+[data-align="justify"] {
+    .post-body {
+        p, li, dd {
+            text-align: justify;
+            text-justify: distribute;
+        }
+    }
+}
+[data-align="center"] {
+    .post-body p {
+        text-align: center;
+    }
+}
+
+[data-type="poetry"] {
+    .post-body {
+        display: table;
+        margin: 0 auto;
+    }
+}

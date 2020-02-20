@@ -1,0 +1,35 @@
+.nav {
+    z-index: 3;
+    position: relative;
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    background: var(--color-contrast-lower);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.menu-item {
+    display: inline-block;
+    margin: 0 1em;
+    a {
+        color: var(--color-contrast-medium);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.active {
+    a {
+        color: var(--color-primary);
+    }
+}
+
+.menu-item-name {
+    display: flex;
+}

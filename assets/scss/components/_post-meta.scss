@@ -1,0 +1,28 @@
+.post-meta {
+    color: var(--color-contrast-medium);
+    font-size: 80%;
+    text-align: center;
+    margin: var(--font-size) 0;
+    a {
+        color: var(--color-contrast-medium);
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}
+
+.home {
+    .post-meta {
+        margin: var(--font-size) 0;
+    }
+}
+
+.post-meta-item {
+    margin: 0.5em;
+    display: inline-block;
+}
+
+.post-meta-icon {
+    fill: alpha(var(--color-contrast-medium), 0.5);
+    margin-bottom: 0.3em;
+}
