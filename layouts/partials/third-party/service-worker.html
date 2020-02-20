@@ -1,5 +1,5 @@
 {{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
-    {{- partial "components/relative-url.html" (dict "Deliver" . "filename" "sw.js") -}}
+    {{- partial "utils/relative-url.html" (dict "Deliver" . "filename" "sw.js") -}}
     {{- $url := .Scratch.Get "url" }}
 
     <div class="app-refresh" id="app-refresh">

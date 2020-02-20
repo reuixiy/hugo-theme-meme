@@ -2,7 +2,7 @@
 <main class="main single" id="main">
     <div class="main-inner">
 
-        {{ partial "components/data-attributes.html" . }}
+        {{ partial "utils/data-attributes.html" . }}
         {{- $smallCaps := .Scratch.Get "smallCaps" -}}
         {{- $align := .Scratch.Get "align" -}}
         {{- $type := .Scratch.Get "type" -}}
@@ -15,7 +15,7 @@
 
             {{ with .Params.subtitle }}
                 {{- $raw := . -}}
-                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
+                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := $Deliver.Scratch.Get "Content" -}}
                 <div class="post-subtitle">{{ $Content | safeHTML }}</div>
             {{ end }}
@@ -23,24 +23,24 @@
             {{ if .Site.Params.displayPostDescription }}
                 {{ with .Params.description }}
                     {{- $raw := . -}}
-                    {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
+                    {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                     {{- $Content := $Deliver.Scratch.Get "Content" -}}
                     <div class="post-description">{{ $Content | safeHTML }}</div>
                 {{ end }}
             {{ end }}
 
             {{ if .Params.meta | default .Site.Params.enablePostMeta }}
-                {{ partial "post-meta.html" (dict "Deliver" . "isHome" false) }}
+                {{ partial "components/post-meta.html" (dict "Deliver" . "isHome" false) }}
             {{ end }}
 
             {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
             {{- if $enableTOC -}}
-                {{- partial "components/toc.html" . -}}
+                {{- partial "utils/toc.html" . -}}
                 {{- $toc := .Scratch.Get "toc" }}
                 {{ $toc -}}
             {{- end -}}
 
-            {{- partial "components/content.html" . -}}
+            {{- partial "utils/content.html" . -}}
             {{- $Content := .Scratch.Get "Content" -}}
             <div class="post-body">
                 {{- $Content -}}
@@ -52,25 +52,25 @@
             {{ partial "third-party/google-adsense-unit.html" . }}
         {{- end }}
 
-        {{ partial "post-copyright.html" . }}
+        {{ partial "components/post-copyright.html" . }}
 
-        {{ partial "post-updated-badge.html" . }}
+        {{ partial "components/post-updated-badge.html" . }}
 
-        {{ partial "post-gitinfo.html" . }}
+        {{ partial "components/post-gitinfo.html" . }}
 
-        {{ partial "post-share.html" . }}
+        {{ partial "components/post-share.html" . }}
 
-        {{ partial "related-posts.html" . }}
+        {{ partial "components/related-posts.html" . }}
 
-        {{ partial "post-tags.html" . }}
+        {{ partial "components/post-tags.html" . }}
 
-        {{ partial "minimal-footer.html" . }}
+        {{ partial "components/minimal-footer.html" . }}
 
-        {{ partial "minimal-footer-about.html" . }}
+        {{ partial "components/minimal-footer-about.html" . }}
 
-        {{ partial "post-nav.html" . }}
+        {{ partial "components/post-nav.html" . }}
 
-        {{ partial "comments.html" . }}
+        {{ partial "components/comments.html" . }}
 
     </div>
 </main>

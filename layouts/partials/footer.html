@@ -27,21 +27,21 @@
 
             {{- if .Site.Params.displayPoweredBy }}
                 {{- $raw := `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [MemE](https://github.com/reuixiy/hugo-theme-meme)` -}}
-                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
+                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := .Scratch.Get "Content" -}}
                 <div class="powered-by">{{ $Content | safeHTML }}</div>
             {{- end }}
 
             {{- if .Site.Params.displaySiteCopyright }}
                 {{- $raw := .Site.Copyright -}}
-                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
+                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := .Scratch.Get "Content" -}}
                 <div class="site-copyright">{{ $Content | safeHTML }}</div>
             {{- end }}
 
             {{- with .Site.Params.customFooter }}
                 {{- $raw := . -}}
-                {{- partial "components/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
+                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := $Deliver.Scratch.Get "Content" -}}
                 <div class="custom-footer">{{ $Content | safeHTML }}</div>
             {{- end }}

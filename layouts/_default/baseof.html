@@ -5,10 +5,10 @@
         <div class="container">
             {{ partial "header.html" . }}
             {{ partial "menu.html" . }}
-            {{ partial "multilingual.html" . }}
-            {{ partial "dark-mode.html" . }}
+            {{ partial "components/multilingual.html" . }}
+            {{ partial "components/dark-mode.html" . }}
             {{ block "main" . }}{{ end }}
-            {{ partial "back-to-top.html" . }}
+            {{ partial "components/back-to-top.html" . }}
             {{ partial "footer.html" . }}
         </div>
         {{ partial "script.html" . }}

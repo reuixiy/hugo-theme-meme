@@ -1,9 +1,9 @@
 {{ if and .Site.Params.enablePostShare (.Params.share | default .Site.Params.displayPostShare) }}
 
-    {{- partial "components/summary.html" . -}}
+    {{- partial "utils/summary.html" . -}}
     {{- $description := .Description | default (.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) | default .Site.Params.siteDescription | plainify -}}
 
-    {{- partial "components/images.html" . -}}
+    {{- partial "utils/images.html" . -}}
     {{- $images := .Scratch.Get "images" -}}
     {{- $images := .Scratch.Add "images" (slice (.Site.Params.siteLogo | absURL)) -}}
     {{- $images := (index (.Scratch.Get "images") 0) -}}

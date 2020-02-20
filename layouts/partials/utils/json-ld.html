@@ -6,17 +6,17 @@
 {{- $keywords := .keywords -}}
 {{- $baseURLWithLangFix := print `/` | absLangURL -}}
 <!-- Title -->
-{{- partial "components/title.html" $Deliver -}}
+{{- partial "utils/title.html" $Deliver -}}
 {{- $rawTitle := $Deliver.Scratch.Get "rawTitle" -}}
 <!-- Date -->
-{{- partial "components/date.html" $Deliver -}}
+{{- partial "utils/date.html" $Deliver -}}
 {{- $pubDate := $Deliver.Scratch.Get "pubDate" -}}
 {{- $modDate := $Deliver.Scratch.Get "modDate" -}}
 <!-- Author -->
-{{- partial "components/author.html" $Deliver -}}
+{{- partial "utils/author.html" $Deliver -}}
 {{- $author := $Deliver.Scratch.Get "author" -}}
 <!-- Images -->
-{{- partial "components/images.html" $Deliver -}}
+{{- partial "utils/images.html" $Deliver -}}
 {{- $images := $Deliver.Scratch.Get "images" -}}
 
 {{- if $Deliver.IsHome -}}

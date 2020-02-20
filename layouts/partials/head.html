@@ -60,7 +60,7 @@
     <!-- Avoid Baidu Mobile Search Transcoding -->
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    {{ partial "components/title.html" . }}
+    {{ partial "utils/title.html" . }}
     {{- $title := .Scratch.Get "title" -}}
     <title>{{ $title }}</title>
 
@@ -73,10 +73,10 @@
     {{- end }}
 
     <meta name="author" content="{{ .Params.author | default .Site.Author.name }}" />
-    {{ partial "components/summary.html" . }}
+    {{ partial "utils/summary.html" . }}
     {{- $description := .Description | default (.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) | default .Site.Params.siteDescription | plainify -}}
     <meta name="description" content="{{ $description }}" />
-    {{ partial "components/keywords.html" . }}
+    {{ partial "utils/keywords.html" . }}
     {{- $keywordsDefault := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsDefault")) -}}
     {{- $keywordsSite := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsSite")) -}}
     {{- $keywordsPost := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsPost")) -}}
@@ -89,11 +89,11 @@
     {{- $safariMaskIcon := "icons/safari-pinned-tab.svg" -}}
     {{- $safariMaskColor := .Site.Params.safariMaskColor -}}
     {{- $appleTouchIcon := "icons/apple-touch-icon.png" -}}
-    {{- partial "components/relative-url.html" (dict "Deliver" . "filename" "") -}}
+    {{- partial "utils/relative-url.html" (dict "Deliver" . "filename" "") -}}
     {{- $url := .Scratch.Get "url" -}}
     {{- $msApplicationStartURL := $url -}}
     {{- $msApplicationTileColor := .Site.Params.msApplicationTileColor -}}
-    {{- partial "components/relative-url.html" (dict "Deliver" . "filename" "icons/mstile-150x150.png") -}}
+    {{- partial "utils/relative-url.html" (dict "Deliver" . "filename" "icons/mstile-150x150.png") -}}
     {{- $url := .Scratch.Get "url" -}}
     {{- $msApplicationTileImage := $url -}}
     {{- $manifest := "manifest.json" -}}
@@ -123,16 +123,16 @@
     {{- $Deliver := . -}}
     <!-- JSON-LD -->
     {{- with .Site.Params.jsonLD -}}
-        {{ partial "components/json-ld.html" (dict "Deliver" $Deliver "description" $description "keywords" $keywords) }}
+        {{ partial "utils/json-ld.html" (dict "Deliver" $Deliver "description" $description "keywords" $keywords) }}
     {{- end }}
 
     <!-- Twitter Cards -->
     {{- with .Site.Params.twitterCards -}}
-        {{ partial "components/twitter-cards.html" (dict "Deliver" $Deliver) }}
+        {{ partial "utils/twitter-cards.html" (dict "Deliver" $Deliver) }}
     {{- end }}
     <!-- Open Graph -->
     {{- with .Site.Params.openGraph -}}
-        {{ partial "components/open-graph.html" (dict "Deliver" $Deliver "description" $description "keywords" $keywords) }}
+        {{ partial "utils/open-graph.html" (dict "Deliver" $Deliver "description" $description "keywords" $keywords) }}
     {{- end }}
 
     {{- with .Site.Params.googleSiteVerification }}

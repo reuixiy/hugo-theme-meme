@@ -1,18 +1,18 @@
 {{ define "main" }}
     <!-- Layout Poetry -->
     {{ if eq .Site.Params.homeLayout "poetry" }}
-        {{ partial "page/home-poetry.html" . }}
+        {{ partial "pages/home-poetry.html" . }}
     {{ end }}
     <!-- Layout Footage -->
     {{ if eq .Site.Params.homeLayout "footage" }}
-        {{ partial "page/home-footage.html" . }}
+        {{ partial "pages/home-footage.html" . }}
     {{ end }}
     <!-- Layout Posts -->
     {{ if eq .Site.Params.homeLayout "posts" }}
-        {{ partial "page/home-posts.html" . }}
+        {{ partial "pages/home-posts.html" . }}
     {{ end }}
     <!-- Layout Page -->
     {{ if eq .Site.Params.homeLayout "page" }}
-        {{ partial "post.html" . }}
+        {{ partial "pages/post.html" . }}
     {{ end }}
 {{ end }}

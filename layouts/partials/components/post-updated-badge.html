@@ -10,7 +10,7 @@
         {{- $title := .Scratch.Get "title" | safeHTML -}}
         {{- $date := .Lastmod.Format "2006-01-02" -}}
         {{- with $title -}}{{- printf `<div%s style="cursor:help;display:inline-block">` $title | safeHTML -}}{{- end -}}
-            {{- partial "components/updated-badge.html" (dict "date" $date) -}}
+            {{- partial "utils/updated-badge.html" (dict "date" $date) -}}
         {{- with $title -}}</div>{{- end -}}
     </div>
 {{ end }}
