@@ -1,3 +1,12 @@
+## [4.2.1](https://github.com/reuixiy/hugo-theme-meme/compare/v4.2.0...v4.2.1) (2020-02-20)
+
+
+### Revert
+
+* cancel use `Page.GetTerms` ([1331c92](https://github.com/reuixiy/hugo-theme-meme/commit/1331c92))
+
+
+
 # [4.2.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.1.0...v4.2.0) (2020-02-20)
 
 
