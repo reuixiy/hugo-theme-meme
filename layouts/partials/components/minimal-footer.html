@@ -3,10 +3,14 @@
         {{ with .Params.tags }}
             {{ $length := sub (len .) 1 }}
             <div class="post-tag">
-                {{- range $index, $tag := ($.GetTerms "tags") -}}
-                    <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default .LinkTitle | default $tag | lower | anchorize }}</a>
-                    {{- if lt $index $length -}}
-                        {{- print " " -}}
+                {{- range $index, $tag := . -}}
+                    {{- $url := urls.Parse ($tag | urlize) -}}
+                    {{- $path := $url.Path -}}
+                    {{- with $.Site.GetPage (printf `/tags/%s` $path) -}}
+                        <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default .LinkTitle | default $tag | lower | anchorize }}</a>
+                        {{- if lt $index $length -}}
+                            {{- print " " -}}
+                        {{- end -}}
                     {{- end -}}
                 {{- end -}}
             </div>
@@ -99,14 +103,18 @@
                         {{- end -}}
                     {{ else }}
                         {{ $length := sub (len .) 1 }}
-                        {{- range $index, $category := ($.GetTerms "categories") -}}
+                        {{- range $index, $category := . -}}
                             {{- if lt $index $length -}}
                                 {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
                             {{- else -}}
                                 {{- $.Scratch.Set "delimiter" "" -}}
                             {{- end -}}
                             {{- $delimiter := ($.Scratch.Get "delimiter") -}}
-                            {{- printf `<a href="%s" class="post-category-link">%s</a>%s` .RelPermalink (.Slug | default .LinkTitle | default $category | lower | anchorize) $delimiter | safeHTML -}}
+                            {{- $url := urls.Parse ($category | urlize) -}}
+                            {{- $path := $url.Path -}}
+                            {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
+                                {{- printf `<a href="%s" class="post-category-link">%s</a>%s` .RelPermalink (.Slug | default .LinkTitle | default $category | lower | anchorize) $delimiter | safeHTML -}}
+                            {{- end -}}
                         {{- end -}}
                     {{ end }}
                 </div>
