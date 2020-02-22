@@ -17,25 +17,25 @@
             const userPrefers = localStorage.getItem('theme');
             const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
             const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
-            if (userPrefers === "dark") {
-                changeModeMeta("dark");
-            } else if (userPrefers === "light") {
-                changeModeMeta("light");
+            if (userPrefers === 'dark') {
+                changeModeMeta('dark');
+            } else if (userPrefers === 'light') {
+                changeModeMeta('light');
             } else if (darkModeMediaQuery.matches) {
-                changeModeMeta("dark");
+                changeModeMeta('dark');
             } else if (lightModeMediaQuery.matches) {
-                changeModeMeta("light");
+                changeModeMeta('light');
             }
-            function changeModeMeta() {
-                document.documentElement.setAttribute('data-theme', arguments[0]);
-                if (arguments[0] === "dark") {
-                    changeThemeColor("{{ .Site.Params.themeColorDark }}");
+            function changeModeMeta(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                if (theme === 'dark') {
+                    changeThemeColor('{{ .Site.Params.themeColorDark }}');
                 } else {
-                    changeThemeColor("{{ .Site.Params.themeColor }}");
+                    changeThemeColor('{{ .Site.Params.themeColor }}');
                 }
             }
-            function changeThemeColor() {
-                document.querySelector('meta[name="theme-color"]').setAttribute('content', arguments[0]);
+            function changeThemeColor(themeColor) {
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
             }
         </script>
     {{- end }}
