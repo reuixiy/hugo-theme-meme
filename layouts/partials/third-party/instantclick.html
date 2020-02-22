@@ -14,18 +14,18 @@
             const userPrefers = localStorage.getItem('theme');
             const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
             const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
-            if (userPrefers === "dark") {
-                changeModeMeta("dark");
-                changeMode("🌙", "chroma", "chroma-dark");
-            } else if (userPrefers === "light") {
-                changeModeMeta("light");
-                changeMode("🌞", "chroma-dark", "chroma");
+            if (userPrefers === 'dark') {
+                changeModeMeta('dark');
+                changeMode('dark');
+            } else if (userPrefers === 'light') {
+                changeModeMeta('light');
+                changeMode('light');
             } else if (darkModeMediaQuery.matches) {
-                changeModeMeta("dark");
-                changeMode("🌙", "chroma", "chroma-dark");
+                changeModeMeta('dark');
+                changeMode('dark');
             } else if (lightModeMediaQuery.matches) {
-                changeModeMeta("light");
-                changeMode("🌞", "chroma-dark", "chroma");
+                changeModeMeta('light');
+                changeMode('light');
             }
         });
     </script>
