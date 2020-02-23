@@ -3,7 +3,6 @@
 <!-- https://search.google.com/structured-data/testing-tool -->
 {{- $Deliver := .Deliver -}}
 {{- $description := .description -}}
-{{- $keywords := .keywords -}}
 {{- $baseURLWithLangFix := print `/` | absLangURL -}}
 <!-- Title -->
 {{- partial "utils/title.html" $Deliver -}}
@@ -28,7 +27,6 @@
         "dateModified": {{ $modDate }},
         "url": {{ $baseURLWithLangFix }},
         "description": {{ $description }},
-        "keywords": {{ $keywords }},
         {{ with $Deliver.Site.Params.siteLogo -}}
         "image": {{ . | absURL }},
         {{ end -}}
@@ -68,7 +66,6 @@
         "url": {{ $Deliver.Permalink }},
         "headline": {{ $rawTitle }},
         "description": {{ $description }},
-        "keywords": {{ $keywords }},
         "inLanguage" : "{{ $Deliver.Site.LanguageCode }}",
         "articleSection": {{ $Deliver.Section }},
         "wordCount": {{ $Deliver.WordCount }},
@@ -129,7 +126,6 @@
         "url": {{ $Deliver.Permalink }},
         "name": {{ $rawTitle }},
         "description": {{ $description }},
-        "keywords": {{ $keywords }},
         {{ with $Deliver.Site.Params.siteLogo -}}
         "image": {{ . | absURL }},
         {{ end -}}

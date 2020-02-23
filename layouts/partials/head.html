@@ -76,13 +76,6 @@
     {{ partial "utils/summary.html" . }}
     {{- $description := .Description | default (.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) | default .Site.Params.siteDescription | plainify -}}
     <meta name="description" content="{{ $description }}" />
-    {{ partial "utils/keywords.html" . }}
-    {{- $keywordsDefault := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsDefault")) -}}
-    {{- $keywordsSite := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsSite")) -}}
-    {{- $keywordsPost := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsPost")) -}}
-    {{- $keywordsFrontMatter := (strings.TrimSuffix ", " ($.Scratch.Get "keywordsFrontMatter")) -}}
-    {{- $keywords := $keywordsFrontMatter | default $keywordsPost | default $keywordsSite | default $keywordsDefault -}}
-    <meta name="keywords" content="{{ $keywords }}" />
 
     <!-- Favicon, Icons, Web App -->
     {{- $favicon := "favicon.ico" -}}
@@ -123,7 +116,7 @@
     {{- $Deliver := . -}}
     <!-- JSON-LD -->
     {{- with .Site.Params.jsonLD -}}
-        {{ partial "utils/json-ld.html" (dict "Deliver" $Deliver "description" $description "keywords" $keywords) }}
+        {{ partial "utils/json-ld.html" (dict "Deliver" $Deliver "description" $description) }}
     {{- end }}
 
     <!-- Twitter Cards -->
@@ -132,7 +125,7 @@
     {{- end }}
     <!-- Open Graph -->
     {{- with .Site.Params.openGraph -}}
-        {{ partial "utils/open-graph.html" (dict "Deliver" $Deliver "description" $description "keywords" $keywords) }}
+        {{ partial "utils/open-graph.html" (dict "Deliver" $Deliver "description" $description) }}
     {{- end }}
 
     {{- with .Site.Params.googleSiteVerification }}
