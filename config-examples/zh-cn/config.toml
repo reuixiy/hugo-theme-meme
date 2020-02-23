@@ -299,11 +299,6 @@ uglyURLs = false
     # 说明：用于 HTML 的头部元数据、JSON-LD、
     #      Open Graph、Atom、RSS
 
-    # 站点的关键词
-    siteKeywords = []
-    # 说明：如果留空（[]），则会取站点的所有类别名、分
-    #      区名（如果按分区分类）作为默认值
-
     # 站点的创建时间
     siteCreatedTime = "1969-07-20T20:17:43+00:00"
     # 注意：请保持此格式，更改数字

@@ -5,7 +5,6 @@
 <!-- https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/opengraph.html -->
 {{- $Deliver := .Deliver -}}
 {{- $description := .description -}}
-{{- $keywords := .keywords -}}
 <!-- Title -->
 {{- partial "utils/title.html" $Deliver -}}
 {{- $rawTitle := $Deliver.Scratch.Get "rawTitle" -}}
@@ -61,7 +60,6 @@
         {{ printf `<meta property="article:expiration_time" content="%s" />` ($Deliver.ExpiryDate.Format "2006-01-02T15:04:05-07:00") | safeHTML }}
     {{- end }}
     <meta property="article:section" content="{{ $Deliver.Section }}" />
-    <meta property="article:tag" content="{{ $keywords }}" />
 {{ else -}}
     <meta property="og:type" content="website" />
 {{- end }}
