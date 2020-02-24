@@ -33,7 +33,7 @@
 {{- $Content := $Deliver.Scratch.Get "Content" -}}
 {{- if $Deliver.Site.Params.enableEmphasisPoint -}}
     {{- $regexPatternEmphasisPoint := `([^\.\x60])\.\.([^\.\s\n\/\\]+)\.\.([^\.\x60])` -}}
-    {{- $regexReplacementEmphasisPoint := `$1<strong class="emphasis-point">$2</strong>$3` -}}
+    {{- $regexReplacementEmphasisPoint := `$1<em class="emphasis-point">$2</em>$3` -}}
     {{- $Content := $Content | replaceRE $regexPatternEmphasisPoint $regexReplacementEmphasisPoint | safeHTML -}}
     {{- $Deliver.Scratch.Set "Content" $Content -}}
 {{- end -}}
