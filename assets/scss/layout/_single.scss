@@ -173,13 +173,15 @@ ol.toc {
     }
 }
 
+.table-container {
+    margin: 2em 0;
+    overflow-x: auto;
+}
 table {
-    display: block;
+    width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
     border-color: var(--color-contrast-lower);
-    margin: 2em 0;
-    overflow-x: auto;
 }
 th {
     font-weight: 700;
