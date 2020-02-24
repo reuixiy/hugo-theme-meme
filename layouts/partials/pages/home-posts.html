@@ -11,7 +11,7 @@
                 {{ end }}
                 <summary class="summary">
                     {{ partial "utils/summary.html" . }}
-                    {{ $summary := (.Scratch.Get "summary") | replaceRE `(</p>)……` `$1` }}
+                    {{ $summary := .Scratch.Get "summary" }}
                     {{ $summary | safeHTML }}
                 </summary>
                 {{ if .Truncated }}
