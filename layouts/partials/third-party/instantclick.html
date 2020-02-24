@@ -1,5 +1,11 @@
 <script data-no-instant>InstantClick.init();</script>
 
+<script data-no-instant>
+    InstantClick.on('change', function () {
+        wrapTable();
+    });
+</script>
+
 {{ if .Site.Params.enableBackToTopAutoHide }}
     <script data-no-instant>
         InstantClick.on('change', function () {
