@@ -51,11 +51,8 @@
                     {{ printf `<description><![CDATA[%s]]></description>` .Content | safeHTML }}
                 {{ else }}
                     {{- partial "utils/summary.html" $page -}}
-                    {{- $summary := .Description | default ($page.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) -}}
-                    {{- $raw := $summary -}}
-                    {{- partial "utils/markdownify.html" (dict "Deliver" $page "raw" $raw "isContent" false) -}}
-                    {{- $summary := $page.Scratch.Get "Content" -}}
-                    {{ printf `<description><![CDATA[%s]]></description>` ($summary | htmlUnescape) | safeHTML }}
+                    {{- $summary := .Description | default ($page.Scratch.Get "summary") -}}
+                    {{ printf `<description><![CDATA[%s]]></description>` $summary | safeHTML }}
                 {{ end }}
                 <!-- Sections -->
                 {{ if eq $.Site.Params.categoryBy "sections" }}

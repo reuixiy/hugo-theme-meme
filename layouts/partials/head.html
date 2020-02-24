@@ -74,7 +74,7 @@
 
     <meta name="author" content="{{ .Params.author | default .Site.Author.name }}" />
     {{ partial "utils/summary.html" . }}
-    {{- $description := .Description | default (.Scratch.Get "summary" | plainify | replaceRE `\n……` ``) | default .Site.Params.siteDescription | plainify -}}
+    {{- $description := .Description | default (.Scratch.Get "summary") | default .Site.Params.siteDescription | plainify -}}
     <meta name="description" content="{{ $description }}" />
 
     <!-- Favicon, Icons, Web App -->
