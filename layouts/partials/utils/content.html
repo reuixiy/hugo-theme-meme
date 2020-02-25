@@ -217,15 +217,6 @@
     {{- end -}}
 {{- end -}}
 
-<!-- Medium Zoom -->
-{{- $Content := .Scratch.Get "Content" -}}
-{{- if .Site.Params.enableMediumZoom -}}
-    {{- $regexPatternMediumZoom := `(<img)(.[^>]+)( />|>)` -}}
-    {{- $regexReplacementMediumZoom := `$1$2 data-zoomable$3` -}}
-    {{- $Content := $Content | replaceRE $regexPatternMediumZoom $regexReplacementMediumZoom | safeHTML -}}
-    {{- .Scratch.Set "Content" $Content -}}
-{{- end -}}
-
 <!-- Custom -->
 {{- partial "custom/content.html" . -}}
 
