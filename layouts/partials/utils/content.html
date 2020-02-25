@@ -210,7 +210,7 @@
 {{- if .Site.Params.enableHighlight -}}
     {{- if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") -}}
         {{- $Content := .Scratch.Get "Content" -}}
-        {{- $regexPatternDarkmode := `(<pre class=")(chroma)(">)` -}}
+        {{- $regexPatternDarkmode := `(<(div|pre) class=")chroma(">)` -}}
         {{- $regexReplacementDarkmode := `${1}chroma-dark${3}` -}}
         {{- $Content := $Content | replaceRE $regexPatternDarkmode $regexReplacementDarkmode | safeHTML -}}
         {{- .Scratch.Set "Content" $Content -}}
