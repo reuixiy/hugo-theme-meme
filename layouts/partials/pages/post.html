@@ -8,8 +8,15 @@
         {{- $type := .Scratch.Get "type" -}}
         {{- $layout := .Scratch.Get "layout" -}}
         {{- $indent := .Scratch.Get "indent" -}}
+        {{- $tocNum := .Scratch.Get "tocNum" -}}
 
-        <article class="content post"{{ if $smallCaps }} data-small-caps="true"{{ end }}{{ with $align }} data-align="{{ . }}"{{ end }}{{ with $type }} data-type="{{ . }}"{{ end }}{{ with $layout }} data-layout="{{ . }}"{{ end }}{{ if $indent }} data-indent="true"{{ end }}>
+        <article class="content post"
+        {{- if $smallCaps }} data-small-caps="true"{{ end }}
+        {{- with $align }} data-align="{{ . }}"{{ end }}
+        {{- with $type }} data-type="{{ . }}"{{ end }}
+        {{- with $layout }} data-layout="{{ . }}"{{ end }}
+        {{- if $indent }} data-indent="true"{{ end }}
+        {{- if $tocNum }} data-toc-num="true"{{ end }}>
 
             <h1 class="post-title">{{ .Title }}</h1>
 

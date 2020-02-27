@@ -759,6 +759,11 @@ uglyURLs = false
 
     displayTOCTitle = true
 
+    displayTOCNum = true
+    # Note: *global settings*
+    #       `tocNum` in post’s Front Matter
+    #       has a higher priority than here
+
     linkHeadingsToTOC = true
 
 

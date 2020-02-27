@@ -33,3 +33,22 @@
         margin: 0 auto;
     }
 }
+
+[data-toc-num="true"] {
+    .contents {
+        ol {
+            counter-reset: item;
+            li {
+                &::before {
+                    counter-increment: item;
+                    content: counters(item, ".") ". ";
+                }
+            }
+        }
+    }
+    .toc li > ol > li {
+        &::before {
+            content: counters(item, ".") " ";
+        }
+    }
+}
