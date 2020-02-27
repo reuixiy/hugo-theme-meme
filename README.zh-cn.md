@@ -89,6 +89,7 @@ aliases | * | array
 markup | * | string
 meta | set `false` to disable post-meta | boolean, MemE only
 toc | display TOC | boolean, override `enableTOC` in `config.toml`, MemE only
+tocNum | display TOC number | boolean, override `displayTOCNum` in `config.toml`, MemE only
 displayCopyright | display post-copyright | boolean, override `displayPostCopyright` in `config.toml`, MemE only
 badge | display updated-badge | boolean, override `displayUpdatedBadge` in `config.toml`, MemE only
 gitinfo | display post-gitinfo | boolean, override `displayPostGitInfo` in `config.toml`, MemE only

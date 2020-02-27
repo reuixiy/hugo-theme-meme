@@ -36,3 +36,9 @@
         {{- .Scratch.Set "indent" true -}}
     {{- end -}}
 {{- end -}}
+
+<!-- TOC Number -->
+{{- .Scratch.Delete "tocNum" -}}
+{{- with .Params.tocNum | default .Site.Params.displayTOCNum -}}
+    {{- $.Scratch.Set "tocNum" . -}}
+{{- end -}}

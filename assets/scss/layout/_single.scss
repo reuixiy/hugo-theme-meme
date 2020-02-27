@@ -104,11 +104,6 @@ blockquote {
     margin-top: 5em;
     ol {
         list-style: none;
-        counter-reset: item;
-        li::before {
-            content: counters(item, ".") ". ";
-            counter-increment: item;
-        }
     }
 }
 ol.toc {
