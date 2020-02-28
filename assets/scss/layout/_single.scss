@@ -102,11 +102,11 @@ blockquote {
 
 .contents {
     margin-top: 5em;
-    ol {
+    ol, ul {
         list-style: none;
     }
 }
-ol {
+ol, ul {
     &.toc {
         padding: 0;
         overflow: auto hidden;
