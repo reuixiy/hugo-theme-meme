@@ -5,6 +5,7 @@
 
     {{- partial "utils/images.html" . -}}
     {{- $images := .Scratch.Get "images" -}}
+    {{- $images := .Scratch.Add "images" (slice (.Params.featured_image | absURL)) -}}
     {{- $images := .Scratch.Add "images" (slice (.Site.Params.siteLogo | absURL)) -}}
     {{- $images := (index (.Scratch.Get "images") 0) -}}
 
