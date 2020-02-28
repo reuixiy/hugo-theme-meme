@@ -106,10 +106,12 @@ blockquote {
         list-style: none;
     }
 }
-ol.toc {
-    padding: 0;
-    overflow: auto hidden;
-    white-space: nowrap;
+ol {
+    &.toc {
+        padding: 0;
+        overflow: auto hidden;
+        white-space: nowrap;
+    }
 }
 
 .footnotes {
