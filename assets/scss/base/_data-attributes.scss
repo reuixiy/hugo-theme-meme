@@ -41,12 +41,18 @@
             li {
                 &::before {
                     counter-increment: item;
-                    content: counters(item, ".") ". ";
                 }
             }
         }
     }
-    .toc li > ol > li {
+    // First level
+    .contents > ol > li {
+        &::before {
+            content: counters(item, ".") ". ";
+        }
+    }
+    // Sub level
+    .contents li > ol > li {
         &::before {
             content: counters(item, ".") " ";
         }
