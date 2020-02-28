@@ -6,13 +6,13 @@
 {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
 
 <!-- Inject Class Attribute -->
-{{- $regexPatternTOC := `(<nav class="contents">\n.+)<ol>` -}}
-{{- $regexReplacementTOC := `$1<ol class="toc">` -}}
+{{- $regexPatternTOC := `(<nav class="contents">\n.+)<(ol|ul)>` -}}
+{{- $regexReplacementTOC := `$1<$2 class="toc">` -}}
 {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
 
 <!-- Inject TOC Title -->
 {{- if .Site.Params.displayTOCTitle -}}
-    {{- $regexPatternTOC := `(<nav class="contents">\n.+)(<ol class="toc">)` -}}
+    {{- $regexPatternTOC := `(<nav class="contents">\n.+)(<(ol|ul) class="toc">)` -}}
     {{- $regexReplacementTOC := (printf `$1<h2 id="contents" class="contents-title">%s</h2>$2` (i18n "tocTitle")) -}}
     {{- $toc := $toc | replaceRE $regexPatternTOC $regexReplacementTOC | safeHTML -}}
     {{- .Scratch.Set "toc" $toc -}}
