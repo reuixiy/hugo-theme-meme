@@ -4,6 +4,9 @@ other = "🇺🇸"
 [ellipsis]
 other = "..."
 
+[colon]
+other = ": "
+
 [minute]
 one = "min"
 other = "mins"
@@ -21,13 +24,13 @@ other = "Newer"
 other = "Older"
 
 [copyrightAuthor]
-other = "Author: "
+other = "Author"
 
 [copyrightLink]
-other = "Link: "
+other = "Link"
 
 [copyrightLicense]
-other = "License: "
+other = "License"
 
 [shareOn]
 other = "Share on:"

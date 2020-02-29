@@ -4,6 +4,9 @@ other = "🇨🇳"
 [ellipsis]
 other = "……"
 
+[colon]
+other = "："
+
 [minute]
 one = "分钟"
 other = "分钟"
@@ -21,13 +24,13 @@ other = "上一页"
 other = "下一页"
 
 [copyrightAuthor]
-other = "作者："
+other = "作者"
 
 [copyrightLink]
-other = "链接："
+other = "链接"
 
 [copyrightLicense]
-other = "许可："
+other = "许可"
 
 [shareOn]
 other = "分享："
