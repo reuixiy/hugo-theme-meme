@@ -80,6 +80,11 @@
 
 {{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
     @import "base/glyph-correction";
+
+    // Magic adjustment for zh-cn
+    .drop-cap {
+        margin-top: var(--font-size) !important;
+    }
 {{ end }}
 
 // Emphasis Point
