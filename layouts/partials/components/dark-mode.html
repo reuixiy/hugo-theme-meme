@@ -11,6 +11,6 @@
             {{- $.Scratch.Set "hide" true -}}
         {{- end -}}
         {{- $hide := $.Scratch.Get "hide" -}}
-        <div id="theme-toggle" onclick="modeSwitcher()"{{ if $hide }} data-hide="true"{{ end }}>{{ $text }}</div>
+        <div id="theme-switcher"{{ if $hide }} data-hide="true"{{ end }}>{{ $text }}</div>
     {{ end }}
 {{ end }}
