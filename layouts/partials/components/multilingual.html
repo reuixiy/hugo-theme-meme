@@ -12,7 +12,7 @@
         {{- end -}}
     {{- end -}}
     {{- $hide := .Scratch.Get "hide" -}}
-    <div class="lang-toggle" onmouseover="langSwitcherOver()" onmouseout="langSwitcherOut()"{{ if $hide }} data-hide="true"{{ end }}>
+    <div id="lang-switcher"{{ if $hide }} data-hide="true"{{ end }}>
         {{ i18n "flag" }}
         {{ if .IsTranslated }}
             <ul id="langs">

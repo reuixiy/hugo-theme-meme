@@ -2,9 +2,8 @@
 {{- $rawTitle := .Scratch.Get "rawTitle" -}}
 <script>
     function loadComments() {
-        document.querySelector('#load-comments').style = "display:none";
         if (typeof DISQUS === 'undefined') {
-            var disqus_config = function () {
+            var disqus_config = function() {
                 {{ with .Params.disqus_url | default .Permalink }}this.page.url = '{{ . }}';{{ end }}
                 {{ with .Params.disqus_identifier | default .RelPermalink }}this.page.identifier = '{{ . }}';{{ end }}
                 {{ with .Params.disqus_title | default $rawTitle }}this.page.title = '{{ . }}';{{ end }}
@@ -18,7 +17,7 @@
         } else {
             DISQUS.reset({
                 reload: true,
-                config: function () {
+                config: function() {
                     {{ with .Params.disqus_url | default .Permalink }}this.page.url = '{{ . }}';{{ end }}
                     {{ with .Params.disqus_identifier | default .RelPermalink }}this.page.identifier = '{{ . }}';{{ end }}
                     {{ with .Params.disqus_title | default $rawTitle }}this.page.title = '{{ . }}';{{ end }}

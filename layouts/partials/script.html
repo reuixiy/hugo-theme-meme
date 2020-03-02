@@ -3,6 +3,7 @@
 {{- $darkMode := resources.Get "js/dark-mode.js" | resources.ExecuteAsTemplate "js/dark-mode-rendered.js" . -}}
 {{- $lang := resources.Get "js/multilingual.js" | resources.ExecuteAsTemplate "js/multilingual-rendered.js" . -}}
 {{- $instantClick := resources.Get "js/instantclick.js" | resources.ExecuteAsTemplate "js/instantclick-rendered.js" . -}}
+{{- $comments := resources.Get "js/comments.js" | resources.ExecuteAsTemplate "js/comments-rendered.js" . -}}
 {{- $custom := resources.Get "js/custom.js" | resources.ExecuteAsTemplate "js/custom-rendered.js" . -}}
 
 {{- .Scratch.Set "script" (slice $main) -}}
@@ -21,6 +22,10 @@
 
 {{- if .Site.Params.enableInstantClick -}}
     {{- .Scratch.Add "script" (slice $instantClick) -}}
+{{- end -}}
+
+{{- if and .Site.Params.enableComments (eq hugo.Environment "production") -}}
+    {{- .Scratch.Add "script" (slice $comments) -}}
 {{- end -}}
 
 {{- .Scratch.Add "script" (slice $custom) -}}

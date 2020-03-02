@@ -2,7 +2,7 @@
     {{ if or (in .Site.Params.mainSections .Section) .Params.comments }}
 
         <div class="load-comments">
-            <div id="load-comments" onclick="loadComments()">{{ i18n "loadComments" }}</div>
+            <div id="load-comments">{{ i18n "loadComments" }}</div>
         </div>
 
         {{ if .Site.Params.enableDisqus }}

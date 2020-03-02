@@ -1,25 +1,22 @@
 <script data-no-instant>InstantClick.init();</script>
 
 <script data-no-instant>
-    InstantClick.on('change', function () {
+    InstantClick.on('change', function() {
         wrapTable();
-    });
-</script>
 
-{{ if .Site.Params.enableBackToTopAutoHide }}
-    <script data-no-instant>
-        InstantClick.on('change', function () {
+        {{ if .Site.Params.enableBackToTopAutoHide }}
             backToTop();
-        });
-    </script>
-{{ end }}
+        {{ end }}
 
-{{ if .Site.Params.enableDarkMode }}
-    <script data-no-instant>
-        InstantClick.on('change', function () {
+        {{ if and .Site.IsMultiLingual .Site.Params.enableLangToggle }}
+            langSwitch();
+        {{ end }}
+
+        {{ if .Site.Params.enableDarkMode }}
             const userPrefers = localStorage.getItem('theme');
             const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
             const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+
             if (userPrefers === 'dark') {
                 changeModeMeta('dark');
                 changeMode('dark');
@@ -33,26 +30,24 @@
                 changeModeMeta('light');
                 changeMode('light');
             }
-        });
-    </script>
-{{ end -}}
 
-{{ if and .Site.Params.enableGoogleAnalytics (eq hugo.Environment "production") -}}
-    {{ if eq .Site.Params.trackingCodeType "gtag" -}}
-        <script data-no-instant>
-            InstantClick.on('change', function () {
+            themeSwitch();
+        {{ end -}}
+
+        {{ if and .Site.Params.enableComments (eq hugo.Environment "production") }}
+            comments();
+        {{ end }}
+
+        {{ if and .Site.Params.enableGoogleAnalytics (eq hugo.Environment "production") -}}
+            {{ if eq .Site.Params.trackingCodeType "gtag" -}}
                 gtag('config', '{{ .Site.Params.trackingID }}', {
                     'page_path': location.pathname + location.search
                 });
-            });
-        </script>
-    {{ end -}}
+            {{ end -}}
 
-    {{ if eq .Site.Params.trackingCodeType "analytics" -}}
-        <script data-no-instant>
-            InstantClick.on('change', function () {
+            {{ if eq .Site.Params.trackingCodeType "analytics" -}}
                 ga('send', 'pageview', location.pathname + location.search);
-            });
-        </script>
-    {{ end -}}
-{{ end -}}
+            {{ end -}}
+        {{ end -}}
+    });
+</script>

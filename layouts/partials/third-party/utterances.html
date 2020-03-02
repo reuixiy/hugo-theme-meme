@@ -12,8 +12,7 @@
 {{- $theme := $.Scratch.Get "theme" -}}
 <script>
     function loadComments() {
-        document.querySelector('#load-comments').style = "display:none";
-        (function () {
+        (function() {
             var utterances = document.getElementById("utterances");
             var script = document.createElement('script');
             script.src = 'https://utteranc.es/client.js';

@@ -33,21 +33,28 @@ lightModeMediaQuery.addListener((e) => {
     }
 });
 
-// Mode Switcher
+// Theme Switcher
 // https://derekkedziora.com/blog/dark-mode
 
-function modeSwitcher() {
-    const currentMode = document.documentElement.getAttribute('data-theme');
-    if (currentMode === 'dark') {
-        changeModeMeta('light');
-        changeMode('light');
-        setMode('light');
-    } else {
-        changeModeMeta('dark');
-        changeMode('dark');
-        setMode('dark');
-    }
+function themeSwitch() {
+    const themeSwitcher = document.getElementById('theme-switcher');
+
+    themeSwitcher.addEventListener('click', function() {
+        const currentMode = document.documentElement.getAttribute('data-theme');
+
+        if (currentMode === 'dark') {
+            changeModeMeta('light');
+            changeMode('light');
+            setMode('light');
+        } else {
+            changeModeMeta('dark');
+            changeMode('dark');
+            setMode('dark');
+        }
+    });
 }
+
+themeSwitch();
 
 // Sync Across Tabs
 // https://codepen.io/tevko/pen/GgWYpg
@@ -68,7 +75,7 @@ function changeMode(theme) {
     var isDark = theme === 'dark';
 
     // Change Theme Toggle Emoji
-    document.getElementById('theme-toggle').innerHTML = isDark ? '🌙' : '🌞';
+    document.getElementById('theme-switcher').innerHTML = isDark ? '🌙' : '🌞';
 
     // Change Chroma Code Highlight Theme
     var oldChromaTheme = isDark ? 'chroma' : 'chroma-dark';
