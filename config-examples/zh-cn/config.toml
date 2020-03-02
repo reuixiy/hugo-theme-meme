@@ -1210,6 +1210,13 @@ uglyURLs = false
 
 
     ######################################
+    # Instant Page
+
+    enableInstantPage = true
+    # 说明：https://github.com/instantpage/instant.page
+
+
+    ######################################
     # 404 页面
 
     # 视频封面

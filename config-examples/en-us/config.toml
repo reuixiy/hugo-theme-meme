@@ -1237,6 +1237,13 @@ uglyURLs = false
 
 
     ######################################
+    # Instant Page
+
+    enableInstantPage = true
+    # Note: https://github.com/instantpage/instant.page
+
+
+    ######################################
     # 404 Page
 
     fofPoster = ""
