@@ -74,10 +74,9 @@ function changeMode(theme) {
     var oldChromaTheme = isDark ? 'chroma' : 'chroma-dark';
     var newChromaTheme = isDark ? 'chroma-dark' : 'chroma';
 
-    var els = [].slice.apply(document.getElementsByClassName(oldChromaTheme));
-    for (var i = 0; i < els.length; i++) {
-        els[i].className = newChromaTheme;
-    }
+    [].slice.apply(document.getElementsByClassName(oldChromaTheme)).forEach((e) => {
+        e.className = newChromaTheme;
+    });
 
     {{ if and .Site.Params.enableUtterances (eq hugo.Environment "production") }}
         // Change Utterances Comments Theme

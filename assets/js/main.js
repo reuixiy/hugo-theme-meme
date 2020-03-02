@@ -1,15 +1,10 @@
-wrapTable();
+// Wrap `<table>` to make it responsive
+// Reference: https://github.com/stone-zeng/stone-zeng.github.io/blob/master/js/script.js
 
 function wrapTable() {
-    const tables = document.querySelectorAll('div.post-body table');
-
-    for (let i = 0; i < tables.length; i++) {
-        const parent = tables[i].parentNode;
-        const wrapper = document.createElement('div');
-
-        wrapper.className = 'table-container';
-
-        parent.replaceChild(wrapper, tables[i]);
-        wrapper.appendChild(tables[i]);
-    }
+    document.querySelectorAll('table').forEach((e) => {
+        e.outerHTML = `<div class="table-container">${e.outerHTML}</div>`;
+    });
 }
+
+wrapTable();
