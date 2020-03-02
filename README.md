@@ -33,7 +33,7 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 ```sh
 ~ $ cd blog
 ~/blog $ git init
-~/blog $ git submodule add https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+~/blog $ git submodule add --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
 ```
 
 How to update MemE to the latest version?
