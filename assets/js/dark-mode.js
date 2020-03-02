@@ -36,25 +36,21 @@ lightModeMediaQuery.addListener((e) => {
 // Theme Switcher
 // https://derekkedziora.com/blog/dark-mode
 
-function themeSwitch() {
-    const themeSwitcher = document.getElementById('theme-switcher');
+const themeSwitcher = document.getElementById('theme-switcher');
 
-    themeSwitcher.addEventListener('click', function() {
-        const currentMode = document.documentElement.getAttribute('data-theme');
+themeSwitcher.addEventListener('click', function() {
+    const currentMode = document.documentElement.getAttribute('data-theme');
 
-        if (currentMode === 'dark') {
-            changeModeMeta('light');
-            changeMode('light');
-            setMode('light');
-        } else {
-            changeModeMeta('dark');
-            changeMode('dark');
-            setMode('dark');
-        }
-    });
-}
-
-themeSwitch();
+    if (currentMode === 'dark') {
+        changeModeMeta('light');
+        changeMode('light');
+        setMode('light');
+    } else {
+        changeModeMeta('dark');
+        changeMode('dark');
+        setMode('dark');
+    }
+});
 
 // Sync Across Tabs
 // https://codepen.io/tevko/pen/GgWYpg
