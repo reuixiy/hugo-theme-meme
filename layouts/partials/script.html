@@ -69,6 +69,10 @@
     {{ partial "third-party/medium-zoom.html" . }}
 {{ end }}
 
+{{ if .Site.Params.enableInstantPage }}
+    {{ partial "third-party/instant-page.html" . }}
+{{ end }}
+
 {{ partial "third-party/service-worker.html" . }}
 
 {{ partial "third-party/busuanzi.html" . }}
