@@ -497,12 +497,6 @@ uglyURLs = false
 
 
     ######################################
-    # InstantClick
-
-    enableInstantClick = true
-
-
-    ######################################
     # Service Worker
 
     # 说明：仅在生产环境（production）下渲染

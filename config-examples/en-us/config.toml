@@ -543,12 +543,6 @@ uglyURLs = false
 
 
     ######################################
-    # InstantClick
-
-    enableInstantClick = true
-
-
-    ######################################
     # Service Worker
 
     # Note: render only in production
