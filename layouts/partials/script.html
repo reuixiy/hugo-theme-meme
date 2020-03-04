@@ -1,4 +1,6 @@
 {{- $main := resources.Get "js/main.js" | resources.ExecuteAsTemplate "js/main-rendered.js" . -}}
+{{- $header := resources.Get "js/header.js" | resources.ExecuteAsTemplate "js/header-rendered.js" . -}}
+{{- $navToggle := resources.Get "js/nav-toggle.js" | resources.ExecuteAsTemplate "js/nav-toggle-rendered.js" . -}}
 {{- $backToTop := resources.Get "js/back-to-top.js" | resources.ExecuteAsTemplate "js/back-to-top-rendered.js" . -}}
 {{- $darkMode := resources.Get "js/dark-mode.js" | resources.ExecuteAsTemplate "js/dark-mode-rendered.js" . -}}
 {{- $lang := resources.Get "js/multilingual.js" | resources.ExecuteAsTemplate "js/multilingual-rendered.js" . -}}
@@ -6,6 +8,14 @@
 {{- $custom := resources.Get "js/custom.js" | resources.ExecuteAsTemplate "js/custom-rendered.js" . -}}
 
 {{- .Scratch.Set "script" (slice $main) -}}
+
+{{- if and .Site.Params.enableHeader (eq .Site.Params.headerLayout "flex") -}}
+    {{- .Scratch.Add "script" (slice $header) -}}
+
+    {{- if .Site.Params.enableNavToggle -}}
+        {{- .Scratch.Add "script" (slice $navToggle) -}}
+    {{- end -}}
+{{- end -}}
 
 {{- if .Site.Params.enableBackToTopAutoHide -}}
     {{- .Scratch.Add "script" (slice $backToTop) -}}

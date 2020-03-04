@@ -7,15 +7,12 @@
     padding: 0;
     margin: 0;
     list-style: none;
-    text-align: center;
-    background: var(--color-contrast-lower);
     line-height: 1.5;
     font-weight: 500;
 }
 
 .menu-item {
     display: inline-block;
-    margin: 0 1em;
     a {
         color: var(--color-contrast-medium);
         &:hover {
@@ -30,6 +27,29 @@
     }
 }
 
-.menu-item-name {
-    display: flex;
+@if ($headerLayoutFlex) {
+    .nav {
+        text-align: right;
+        font-size: 80%;
+    }
+    .menu-item {
+        margin-left: 0.5em;
+        .icon {
+            margin-bottom: 0.2em;
+        }
+    }
+    .menu-item-name {
+        margin-left: 0.3em;
+    }
+} @else {
+    .menu {
+        text-align: center;
+        background: var(--color-contrast-lower);
+    }
+    .menu-item {
+        margin: 0 1em;
+    }
+    .menu-item-name {
+        display: flex;
+    }
 }

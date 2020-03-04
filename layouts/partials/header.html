@@ -1,11 +1,25 @@
-{{ if or (and .IsHome .Site.Params.displayHeaderInHome) (and (not .IsHome) .Site.Params.enableHeader) }}
-    <header class="header">
-        <div class="site-brand">
-            {{ if .Site.Params.siteBrandSVG }}
-            <a href="{{ print `/` | relLangURL }}">{{ .Site.Data.SVG.brand | safeHTML }}</a>
-            {{ else }}
-            <a href="{{ print `/` | relLangURL }}" class="brand">{{ .Site.Title }}</a>
-            {{ end }}
-        </div>
+{{ if or (or (and .IsHome .Site.Params.displayHeaderInHome) (eq .Site.Params.headerLayout "flex")) (and (not .IsHome) .Site.Params.enableHeader) }}
+    <header class="header"{{ if and (eq .Site.Params.headerLayout "flex") .Site.Params.enableSmoothScroll }} data-scroll-header{{ end }}>
+        {{ if eq .Site.Params.headerLayout "flex" }}
+            <div class="header-wrapper">
+                <div class="header-inner">
+                    {{ template "site-brand" . }}
+                    {{ partial "menu.html" . }}
+                </div>
+            </div>
+            {{ partial "components/nav-toggle.html" . }}
+        {{ else }}
+            {{ template "site-brand" . }}
+        {{ end }}
     </header>
+{{ end }}
+
+{{ define "site-brand" }}
+    <div class="site-brand">
+        {{ if .Site.Params.siteBrandSVG }}
+            <a href="{{ print `/` | relLangURL }}">{{ .Site.Data.SVG.brand | safeHTML }}</a>
+        {{ else }}
+            <a href="{{ print `/` | relLangURL }}" class="brand">{{ .Site.Title }}</a>
+        {{ end }}
+    </div>
 {{ end }}

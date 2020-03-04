@@ -7,12 +7,129 @@
         transform: none;
         float: right;
     }
-    .menu {
-        display: flex;
-        justify-content: space-around;
-        word-break: break-all;
-    }
-    .menu-item {
-        margin: 0;
+    @if ($headerLayoutFlex) {
+        @if ($enableNavToggle) {
+            .header-inner {
+                display: block;
+                margin: 0;
+            }
+            .header-inner {
+                width: 100%;
+            }
+            .site-brand {
+                margin-left: 1em;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .nav {
+                display: none;
+                text-align: center;
+                margin: 2em 0;
+            }
+            .menu {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                align-items: center;
+            }
+            .menu-item {
+                margin: 0;
+                padding: 1em;
+                .icon {
+                    margin: 0;
+                }
+            }
+            .menu-item-name {
+                display: block;
+                margin: 0;
+            }
+            .header.open {
+                .nav {
+                    display: block;
+                    animation: appear $duration;
+                    animation-iteration-count: 1;
+                    animation-fill-mode: forwards;
+                }
+                @keyframes appear {
+                    0% {
+                        opacity: 0;
+                        height: 0;
+                        margin: 0;
+                        transform: scaleY(0);
+                        transform-origin: top;
+                    }
+                    100% {
+                        opacity: 1;
+                        height: $navHeight;
+                        margin: 2em 0;
+                        transform: scaleY(1);
+                        transform-origin: top;
+                    }
+                }
+                .nav-curtain {
+                    animation: appearCurtain $duration;
+                    animation-iteration-count: 1;
+                    animation-fill-mode: forwards;
+                }
+                @keyframes appearCurtain {
+                    0% {
+                        visibility: hidden;
+                        opacity: 0;
+                    }
+                    100% {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }
+            }
+            .header.fade {
+                .nav {
+                    display: block;
+                    animation: fade $duration;
+                    animation-iteration-count: 1;
+                    animation-fill-mode: forwards;
+                }
+                @keyframes fade {
+                    0% {
+                        opacity: 1;
+                        height: $navHeight;
+                        margin: 2em 0;
+                        transform: scaleY(1);
+                        transform-origin: top;
+                    }
+                    100% {
+                        opacity: 0;
+                        height: 0;
+                        margin: 0;
+                        transform: scaleY(0);
+                        transform-origin: top;
+                    }
+                }
+                .nav-curtain {
+                    animation: fadeCurtain $duration;
+                    animation-iteration-count: 1;
+                    animation-fill-mode: forwards;
+                }
+                @keyframes fadeCurtain {
+                    0% {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                    100% {
+                        visibility: hidden;
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    } @else {
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            word-break: break-all;
+        }
+        .menu-item {
+            margin: 0;
+        }
     }
 }

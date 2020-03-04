@@ -4,9 +4,13 @@
     <body>
         <div class="container">
             {{ partial "header.html" . }}
-            {{ partial "menu.html" . }}
-            {{ partial "components/multilingual.html" . }}
-            {{ partial "components/dark-mode.html" . }}
+            {{ if ne .Site.Params.headerLayout "flex" }}
+                {{ if or (and .IsHome .Site.Params.displayMenuInHome) (and (not .IsHome) .Site.Params.enableMenu) }}
+                    {{ partial "menu.html" . }}
+                {{ end }}
+                {{ partial "components/multilingual.html" . }}
+                {{ partial "components/dark-mode.html" . }}
+            {{ end }}
             {{ block "main" . }}{{ end }}
             {{ partial "components/back-to-top.html" . }}
             {{ partial "footer.html" . }}
