@@ -155,7 +155,8 @@ uglyURLs = false
 # 菜单配置
 
 # MemE 主题支持以下四种菜单：
-# 1. main       顶栏下方的菜单栏
+# 1. main       顶栏下方（居中布局）或里面（弹性
+#               布局）的菜单栏
 # 2. home       首页的底部链接（适用于「诗意
 #               人生」和「视频片段」布局）
 # 3. socials    社交栏（关于页面的极简页脚）
@@ -167,16 +168,19 @@ uglyURLs = false
 # weight        位置
 # pre           内链（internal）或外链（external）
 # post          图标（留空（""）则无）
-# identifier    图标的 Class 名（菜单栏无效）
+# identifier    图标的 Class 名
+#               （对于弹性布局的顶栏有两个特殊
+#               的值：`theme-switcher`、
+#               `lang-switcher`）
 
 [menu]
     ## 菜单栏
-    [[menu.main]]
-        url = "/"
-        name = "首页"
-        weight = 1
-        pre = "internal"
-        post = "home"
+    # [[menu.main]]
+    #     url = "/"
+    #     name = "首页"
+    #     weight = 1
+    #     pre = "internal"
+    #     post = "home"
     [[menu.main]]
         url = "/posts/"
         name = "文章"
@@ -201,6 +205,12 @@ uglyURLs = false
         weight = 5
         pre = "internal"
         post = "user-circle"
+    [[menu.main]]
+        weight = 6
+        identifier = "theme-switcher"
+    [[menu.main]]
+        weight = 7
+        identifier = "lang-switcher"
 
 
 
@@ -216,13 +226,36 @@ uglyURLs = false
 
     # 是否在首页显示
     displayHeaderInHome = true
+    # 说明：对弹性布局的顶栏无效
+
+    # 背景
+    headerBackground = "linear-gradient(90deg, #f795331a 0, #f370551a 15%, #ef4e7b1a 30%, #a166ab1a 44%, #5073b81a 58%, #1098ad1a 72%, #07b39b1a 86%, #6dba821a 100%)"
+    # 说明：https://developer.mozilla.org/zh-CN/docs/Web/CSS/background
+
+    # 顶栏布局
+    headerLayout = "flex"
+    # 说明：居中布局（center）或弹性布局（flex）
+
+    # 顶栏宽度的回退值
+    headerFallbackWidth = "36em"
+    # 说明：默认情况，MemE 使用 main-inner 元素
+    #      的宽度作为顶栏宽度，但是在一些页面（比
+    #      如「诗意人生」和「视频片段」布局的首页），
+    #      不存在 main-inner 元素，所以你需要为
+    #      这种情况给一个回退值。
+
+    # 在窄视图下隐藏菜单栏并显示一个按钮？
+    enableNavToggle = true
+
+    navHeight = "10em"
+    # 说明：菜单栏展开时的高度
 
 
     ######################################
     # 品牌栏（在顶栏内）
 
     # 是否使用 SVG 图片
-    siteBrandSVG = true
+    siteBrandSVG = false
     # 如果是，请将你的 SVG 放到 `SVG.toml` 文
     # 件内，并配置以下项。单位：px。
     siteBrandSVGWidth = 250
@@ -231,14 +264,8 @@ uglyURLs = false
     # 如果否，则会使用你的站点标题作为默认值，并
     # 以文字的形式显示，下方可配置字号和字色。字
     # 体请到底部的字体部分配置。单位：em。
-    siteBrandFontSize = 5
-    siteBrandFontColor = "#fff"
-
-    # 背景色
-    # siteBrandBackgroundColor = "hsl(240, 8%, 12%)"
-    # 背景图片
-    siteBrandBackgroundImage = "linear-gradient(90deg, #f79533 0, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%)"
-    # 注意：背景色和背景图片只能二选一
+    siteBrandFontSize = 1
+    siteBrandFontColor = "var(--color-contrast-high)"
 
 
     ######################################
@@ -246,9 +273,11 @@ uglyURLs = false
 
     # 是否开启
     enableMenu = true
+    # 说明：对弹性布局的顶栏无效
 
     # 是否在首页显示
     displayMenuInHome = true
+    # 说明：对弹性布局的顶栏无效
 
     # 是否按文章分区高亮当前菜单项
     activeInSection = false

@@ -1,11 +1,25 @@
 #theme-switcher {
-    padding: 1em;
     cursor: pointer;
-    float: right;
     position: relative;
     z-index: 4;
 }
 
-[data-theme="dark"] img {
-    filter: brightness(50%);
+[data-theme="dark"] {
+    img {
+        filter: brightness(50%);
+    }
+    #theme-switcher, #lang-switcher {
+        opacity: 0.5;
+    }
+}
+
+@if ($headerLayoutFlex) {
+    #theme-switcher {
+        padding: 0;
+    }
+} @else {
+    #theme-switcher {
+        padding: 1em;
+        float: right;
+    }
 }

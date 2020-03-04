@@ -1,13 +1,27 @@
 #lang-switcher {
-    padding: 1em;
-    float: left;
     position: relative;
     z-index: 4;
 }
 
 #langs {
+    display: none;
+    position: absolute;
     margin: 0;
     padding: 0;
     list-style: none;
-    display: none;
+}
+
+@if ($headerLayoutFlex) {
+    #lang-switcher {
+        padding: 0;
+    }
+    #langs {
+        left: 0;
+        right: 0;
+    }
+} @else {
+    #lang-switcher {
+        padding: 1em;
+        float: left;
+    }
 }

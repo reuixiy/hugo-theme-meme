@@ -25,6 +25,12 @@ body {
     display: block;
 }
 
+@if ($headerLayoutFlex) {
+    .main {
+        padding-top: 7em;
+    }
+}
+
 .main-inner {
     margin: 0 auto;
     display: block;

@@ -19,6 +19,22 @@
     $duration: {{ . }}s;
 {{ end }}
 
+{{ if eq .Site.Params.headerLayout "flex" }}
+    $headerLayoutFlex: true;
+{{ else }}
+    $headerLayoutFlex: false;
+{{ end }}
+
+{{ if .Site.Params.enableNavToggle }}
+    $enableNavToggle: true;
+
+    {{ with .Site.Params.navHeight | default "10em" }}
+        $navHeight: {{ . }};
+    {{ end }}
+{{ else }}
+    $enableNavToggle: false;
+{{ end }}
+
 
 // Utilities
 
@@ -151,6 +167,10 @@
 // Header
 
 {{ if .Site.Params.enableHeader }}
+    {{ with .Site.Params.headerBackground }}
+        $headerBackground: {{ . }};
+    {{ end }}
+
     {{ if .Site.Params.siteBrandSVG }}
         $siteBrandSVG: true;
         $siteBrandSVGWidth: {{ .Site.Params.siteBrandSVGWidth }}px;
@@ -163,20 +183,17 @@
         $siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
     {{ end }}
 
-    {{ with .Site.Params.siteBrandBackgroundColor }}
-        $siteBrandBackgroundColor: {{ . }};
-    {{ end }}
-    {{ with .Site.Params.siteBrandBackgroundImage }}
-        $siteBrandBackgroundImage: {{ . }};
-    {{ end }}
-
     @import 'layout/header';
+
+    {{ if and (eq .Site.Params.headerLayout "flex") .Site.Params.enableNavToggle }}
+        @import 'components/nav-toggle';
+    {{ end }}
 {{ end }}
 
 
 // Menu Bar
 
-{{ if .Site.Params.enableMenu }}
+{{ if or .Site.Params.enableMenu (eq .Site.Params.headerLayout "flex") }}
     @import 'layout/menu';
 {{ end }}
 

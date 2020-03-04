@@ -158,6 +158,8 @@ uglyURLs = false
 
 # MemE supports the following four menus:
 # 1. main       Menu bar below the header
+#               (center layout) or inside
+#               the header (flex layout)
 # 2. home       Links at the bottom of the
 #               homepage (valid for the
 #               `poetry` and `footage`
@@ -179,17 +181,20 @@ uglyURLs = false
 # post          Icon (won’t display if it
 #               is left empty("") or does
 #               not exist)
-# identifier    Icon’s class name (invalid
-#               for the `main` menu)
+# identifier    Icon’s class name
+#               (there are two speacial
+#               values for header layout
+#               flex: `theme-switcher`,
+#               `lang-switcher`)
 
 [menu]
     ## Menu bar
-    [[menu.main]]
-        url = "/"
-        name = "Home"
-        weight = 1
-        pre = "internal"
-        post = "home"
+    # [[menu.main]]
+    #     url = "/"
+    #     name = "Home"
+    #     weight = 1
+    #     pre = "internal"
+    #     post = "home"
     [[menu.main]]
         url = "/posts/"
         name = "Posts"
@@ -214,6 +219,12 @@ uglyURLs = false
         weight = 5
         pre = "internal"
         post = "user-circle"
+    [[menu.main]]
+        weight = 6
+        identifier = "theme-switcher"
+    [[menu.main]]
+        weight = 7
+        identifier = "lang-switcher"
 
 
 
@@ -227,13 +238,37 @@ uglyURLs = false
     enableHeader = true
 
     displayHeaderInHome = true
+    # Note: invalid for header layout flex
+
+    headerBackground = "linear-gradient(90deg, #f795331a 0, #f370551a 15%, #ef4e7b1a 30%, #a166ab1a 44%, #5073b81a 58%, #1098ad1a 72%, #07b39b1a 86%, #6dba821a 100%)"
+    # Note: https://developer.mozilla.org/en-US/docs/Web/CSS/background
+
+    headerLayout = "flex"
+    # Note: center or flex
+
+    headerFallbackWidth = "32em"
+    # Note: by default, MemE uses main-inner’s
+    #       width for `headerWidth`, but in
+    #       some pages (e.g. homepage layout
+    #       poetry, footage), there is no
+    #       main-inner, so you need to give
+    #       a fallback value for this
+    #       situation.
+
+    # Hide menu bar and display a toggle
+    # on narrow screen?
+    enableNavToggle = true
+
+    navHeight = "10em"
+    # Note: menu bar height when it’s
+    #       toggled
 
 
     ######################################
     # Brand Bar (inside header)
 
     # Use SVG?
-    siteBrandSVG = true
+    siteBrandSVG = false
     # If true, put your SVG in the `SVG.toml`
     # file and configure the following options.
     # Unit: px
@@ -247,21 +282,18 @@ uglyURLs = false
     # family can be configured in typography
     # section at the bottom of this file.
     # Unit: em
-    siteBrandFontSize = 5
-    siteBrandFontColor = "#fff"
-
-    # siteBrandBackgroundColor = "hsl(240, 8%, 12%)"
-    siteBrandBackgroundImage = "linear-gradient(90deg, #f79533 0, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%)"
-    # ATTENTION: These two items cannot be
-    #            set together!
+    siteBrandFontSize = 1
+    siteBrandFontColor = "var(--color-contrast-high)"
 
 
     ######################################
     # Menu Bar
 
     enableMenu = true
+    # Note: invalid for header layout flex
 
     displayMenuInHome = true
+    # Note: invalid for header layout flex
 
     # Highlight current menu item by section?
     activeInSection = false
