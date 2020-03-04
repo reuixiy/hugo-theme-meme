@@ -1146,8 +1146,9 @@ uglyURLs = false
 
     # 是否开启
     enableFooter = true
-    # 说明：「诗意人生」和「视频片段」首页布局
-    #      的首页没有页脚
+
+    # 是否在首页显示
+    displayFooterInHome = true
 
     # 是否显示版权符号（©）
     displayCopyrightSymbol = true

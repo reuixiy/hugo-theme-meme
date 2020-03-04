@@ -1,5 +1,5 @@
 {{- $Deliver := . -}}
-{{ if and .Site.Params.enableFooter (not (and .IsHome (in (slice "poetry" "footage") .Site.Params.homeLayout))) }}
+{{ if or (and .IsHome .Site.Params.displayFooterInHome) (and (not .IsHome) .Site.Params.enableFooter) }}
     <footer id="footer" class="footer">
         <div class="footer-inner">
             {{- if .Site.Params.displayCopyrightSymbol -}}

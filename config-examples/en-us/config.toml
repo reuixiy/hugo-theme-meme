@@ -1179,9 +1179,8 @@ uglyURLs = false
     # Footer
 
     enableFooter = true
-    # Note: homepage layout `poetry`,
-    #       `footage`, and 404 page have
-    #       no footer
+
+    displayFooterInHome = true
 
     displayCopyrightSymbol = true
 
