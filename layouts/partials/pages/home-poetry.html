@@ -8,12 +8,14 @@
             <p>{{ $Content | safeHTML }}</p>
         {{ end }}
     </div>
-    <div class="links">
-        {{ range .Site.Menus.home }}
-            {{- $linkType := (string .Pre) -}}
-            {{- $iconName := (string .Post) -}}
-            {{- $icon := (index $.Site.Data.SVG $iconName) -}}
-            <a href="{{ .URL }}" class="links-item"{{ if eq $linkType "external" }} target="_blank" rel="noopener"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
-        {{ end }}
-    </div>
+    {{ with .Site.Menus.home }}
+        <div class="links">
+            {{ range . }}
+                {{- $linkType := (string .Pre) -}}
+                {{- $iconName := (string .Post) -}}
+                {{- $icon := (index $.Site.Data.SVG $iconName) -}}
+                <a href="{{ .URL }}" class="links-item"{{ if eq $linkType "external" }} target="_blank" rel="noopener"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
+            {{ end }}
+        </div>
+    {{ end }}
 </main>
