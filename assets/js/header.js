@@ -18,3 +18,20 @@ if (mainInner !== null) {
         headerInner.style.setProperty('--main-inner', '{{ . }}');
     {{ end }}
 }
+
+
+// Hide switcher's parentNode if it has `data-hide`
+
+function addDisplayNone(e) {
+    const ele = document.getElementById(e);
+    if (ele !== null) {
+        const hide = ele.getAttribute('data-hide');
+        if (hide !== null) {
+            ele.parentNode.style = 'display: none';
+        }
+    }
+}
+
+addDisplayNone('theme-switcher');
+
+addDisplayNone('lang-switcher');
