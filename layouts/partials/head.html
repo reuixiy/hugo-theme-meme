@@ -69,7 +69,10 @@
 
     <!-- Fonts -->
     {{- with .Site.Params.fontsLink -}}
-        {{ printf `<link rel="stylesheet" href="%s" />` . | safeHTML }}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="preload" href="{{ . }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        <noscript><link rel="stylesheet" href="{{ . }}" /></noscript>
     {{- end }}
 
     <meta name="author" content="{{ .Params.author | default .Site.Author.name }}" />
@@ -133,6 +136,8 @@
     {{- end }}
 
     {{- if and .Site.Params.enableGoogleAnalytics (eq hugo.Environment "production") }}
+        <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+
         {{ partial "third-party/google-analytics.html" . }}
     {{- end }}
 
