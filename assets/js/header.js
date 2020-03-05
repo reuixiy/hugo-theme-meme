@@ -1,23 +1,21 @@
 // Header Inner Width
 
+{{ with .Site.Params.headerFallbackWidth | default "32em" }}
+    const headerFallbackWidth = '{{ . }}';
+{{ end }}
+
 const headerInner = document.querySelector('.header-inner');
 const mainInner = document.querySelector('.main-inner');
 
-function setHeaderInnerWidth() {
+if (mainInner !== null) {
     const mainInnerWidth = window.getComputedStyle(mainInner, null).getPropertyValue('width');
 
     headerInner.style.setProperty('--main-inner', mainInnerWidth);
-}
-
-if (mainInner !== null) {
-    setHeaderInnerWidth();
-
-    window.addEventListener('resize', setHeaderInnerWidth);
 } else {
-    {{ with .Site.Params.headerFallbackWidth | default "32em" }}
-        headerInner.style.setProperty('--main-inner', '{{ . }}');
-    {{ end }}
+    headerInner.style.setProperty('--main-inner', headerFallbackWidth);
 }
+
+headerInner.style.setProperty('opacity', 1);
 
 
 // Hide switcher's parentNode if it has `data-hide`
