@@ -71,7 +71,7 @@
     {{- with .Site.Params.fontsLink -}}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        <link rel="preload" href="{{ . }}" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        <link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'" />
         <noscript><link rel="stylesheet" href="{{ . }}" /></noscript>
     {{- end }}
 
