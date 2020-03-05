@@ -7,6 +7,9 @@
         transform: none;
         float: right;
     }
+    #back-to-top {
+        display: none;
+    }
     @if ($headerLayoutFlex) {
         @if ($enableNavToggle) {
             .header-inner {
