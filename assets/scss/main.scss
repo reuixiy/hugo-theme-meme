@@ -420,6 +420,11 @@ $fofPoster: url({{ $fofPoster }});
 @import "base/data-attributes";
 
 
+// @supports()
+
+@import "base/supports";
+
+
 // Custom
 
 @import "custom/custom";
