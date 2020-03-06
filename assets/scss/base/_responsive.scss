@@ -11,16 +11,16 @@
         display: none;
     }
     @if ($headerLayoutFlex) {
+        .header-inner {
+            width: 100%;
+        }
+        .site-brand {
+            margin-left: 1em;
+        }
         @if ($enableNavToggle) {
             .header-inner {
                 display: block;
                 margin: 0;
-            }
-            .header-inner {
-                width: 100%;
-            }
-            .site-brand {
-                margin-left: 1em;
             }
             .nav-toggle {
                 display: block;
@@ -123,6 +123,10 @@
                         opacity: 0;
                     }
                 }
+            }
+        } @else {
+            .nav {
+                margin-right: 1em;
             }
         }
     } @else {
