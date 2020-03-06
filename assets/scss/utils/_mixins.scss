@@ -3,3 +3,11 @@
 @mixin defineColorHSL($color, $hue, $saturation, $lightness){
     #{$color}: unquote("hsl(#{$hue}, #{$saturation}, #{$lightness})");#{$color}-h: #{$hue};#{$color}-s: #{$saturation};#{$color}-l: #{$lightness};
 }
+
+
+// Backdrop
+
+@mixin blur {
+    -webkit-backdrop-filter: saturate(180%) blur(1em);
+    backdrop-filter:         saturate(180%) blur(1em);
+}
