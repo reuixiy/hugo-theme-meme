@@ -52,9 +52,19 @@ navCurtain.addEventListener('animationend', (e) => {
 
 // Close nav when window is scrolled or resized by user
 
-window.addEventListener('scroll', closeNav);
+window.addEventListener(
+    'scroll',
+    throttle(function() {
+        closeNav();
+    }, delayTime)
+);
 
-window.addEventListener('resize', closeNav);
+window.addEventListener(
+    'resize',
+    throttle(function() {
+        closeNav();
+    }, delayTime)
+);
 
 function closeNav() {
     if (navToggle.checked) {
