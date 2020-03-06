@@ -9,7 +9,7 @@
     }
     .header-wrapper {
         padding: 1em 0;
-        backdrop-filter: saturate(180%) blur(1em);
+        @include blur;
         background: $headerBackground;
     }
     .header-inner {

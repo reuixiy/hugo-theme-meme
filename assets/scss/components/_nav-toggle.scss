@@ -58,6 +58,6 @@
 .nav-curtain {
     height: 100vh;
     width: 100vw;
-    backdrop-filter: saturate(180%) blur(1em);
+    @include blur;
     background: $headerBackground rgba(0, 0, 0, 0.5);
 }
