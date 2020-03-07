@@ -15,7 +15,7 @@
 
 @if ($headerLayoutFlex) {
     #theme-switcher {
-        padding: 0;
+        display: inline-block;
     }
 } @else {
     #theme-switcher {

@@ -17,7 +17,7 @@
 
 @if ($headerLayoutFlex) {
     #lang-switcher {
-        padding: 0;
+        display: inline-block;
     }
     #langs {
         left: 0;
