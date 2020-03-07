@@ -35,11 +35,8 @@
     .menu-item {
         margin-left: 0.5em;
         .icon {
-            margin-bottom: 0.2em;
+            margin: 0 0.3em 0.2em 0;
         }
-    }
-    .menu-item-name {
-        margin-left: 0.3em;
     }
 } @else {
     .menu {
