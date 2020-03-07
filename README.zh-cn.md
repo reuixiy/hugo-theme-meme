@@ -44,7 +44,7 @@ https://gohugo.io/getting-started/quick-start/
 
 ### 开始写作
 
-1. 将 `config.toml` 替换为 [config.toml](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
+1. 将 `config.toml` 替换为[示例配置](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
 
 2. 新建一篇文章和一个关于页面：
    ```sh

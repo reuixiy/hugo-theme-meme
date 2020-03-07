@@ -13,11 +13,11 @@
     {{- end -}}
     {{- $hide := .Scratch.Get "hide" -}}
     <div id="lang-switcher"{{ if $hide }} data-hide="true"{{ end }}>
-        {{ i18n "flag" }}
+        {{ .Site.Language.LanguageName }}
         {{ if .IsTranslated }}
             <ul id="langs">
                 {{ range .Translations }}
-                    <li><a rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ index $.Site.Data.Flags .Lang }}</a></li>
+                    <li><a rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .Language.LanguageName }}</a></li>
                 {{ end }}
             </ul>
         {{ else }}
@@ -25,7 +25,7 @@
                 <ul id="langs">
                     {{ range .Site.Languages }}
                         {{ if ne $.Site.Language.Lang .Lang }}
-                            <li><a rel="alternate" href="{{ .Lang | relURL }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ index $.Site.Data.Flags .Lang }}</a></li>
+                            <li><a rel="alternate" href="{{ .Lang | relURL }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .LanguageName }}</a></li>
                         {{ end }}
                     {{ end }}
                 </ul>
