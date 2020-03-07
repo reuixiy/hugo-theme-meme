@@ -180,7 +180,6 @@
         $siteBrandSVG: false;
         $siteBrandFontSize: {{ .Site.Params.siteBrandFontSize }}em;
         $siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
-        $siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
     {{ end }}
 
     @import 'layout/header';
