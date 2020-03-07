@@ -124,6 +124,9 @@
                     }
                 }
             }
+            #langs li {
+                width: auto;
+            }
         } @else {
             .nav {
                 margin-right: 1em;
