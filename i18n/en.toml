@@ -1,6 +1,3 @@
-[flag]
-other = "de"
-
 [ellipsis]
 other = "..."
 
@@ -9,52 +6,52 @@ other = ": "
 
 [minute]
 one = "min"
-other = "min"
+other = "mins"
 
 [tocTitle]
-other = "Inhalt"
+other = "Contents"
 
 [readMore]
-other = "Weiterlesen"
+other = "Read More"
 
 [prevPage]
-other = "Neuer"
+other = "Newer"
 
 [nextPage]
-other = "Älter"
+other = "Older"
 
 [copyrightAuthor]
-other = "Autor"
+other = "Author"
 
 [copyrightLink]
 other = "Link"
 
 [copyrightLicense]
-other = "Lizenz"
+other = "License"
 
 [shareOn]
-other = "Teile auf:"
+other = "Share on:"
 
 [shareOnTitle]
-other = "Teile auf "
+other = "Share on "
 
 [shareViaTitle]
-other = "Teile mit "
+other = "Share via "
 
 [relatedPosts]
-other = "Siehe auch:"
+other = "See Also:"
 
 [loadComments]
-other = "Kommentare laden?"
+other = "Load Comments?"
 
 [fofLinkText]
-other = "Zur Hauptseite"
+other = "Take Me Home"
 
 [serviceWorkerUpdatedText]
-other = "Neue Updates verfügbar"
+other = "New Update Available"
 
 [serviceWorkerUpdatedAction]
-other = "Neu laden"
+other = "Refresh"
 
 
 # Socials
@@ -91,25 +88,25 @@ other = "QR Code"
 # Used for `i18nMonth`
 
 [january]
-other = "Januar"
+other = "January"
 
 [february]
-other = "Februar"
+other = "February"
 
 [march]
-other = "März"
+other = "March"
 
 [april]
 other = "April"
 
 [may]
-other = "Mai"
+other = "May"
 
 [june]
-other = "Juni"
+other = "June"
 
 [july]
-other = "Juli"
+other = "July"
 
 [august]
 other = "August"
@@ -118,13 +115,13 @@ other = "August"
 other = "September"
 
 [october]
-other = "Oktober"
+other = "October"
 
 [november]
 other = "November"
 
 [december]
-other = "Dezember"
+other = "December"
 
 
 # Numbers

@@ -3,7 +3,7 @@
 
 baseURL = "https://example.com/"
 title = "Hugo Theme MemE"
-languageCode = "en-US"
+languageCode = "en"
 hasCJKLanguage = false
 # Copyright information (Markdown supported)
 copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
@@ -15,7 +15,7 @@ theme = "meme"
 newContentEditor = ""
 
 # i18n
-defaultContentLanguage = "en-us"
+defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 
 # Pluralize titles in lists?

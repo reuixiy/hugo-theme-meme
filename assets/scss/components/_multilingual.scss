@@ -1,6 +1,7 @@
 #lang-switcher {
     position: relative;
     z-index: 4;
+    color: var(--color-contrast-medium);
 }
 
 #langs {
@@ -9,6 +10,9 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    li {
+        width: max-content;
+    }
 }
 
 @if ($headerLayoutFlex) {

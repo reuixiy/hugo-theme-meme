@@ -44,7 +44,7 @@ How to update MemE to the latest version?
 
 ### Blogging
 
-1. Replace `config.toml` with [config.toml](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/en-us/config.toml).
+1. Replace `config.toml` with [config examples](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/en/config.toml).
 
 2. Create a new post and the about page:
    ```sh
