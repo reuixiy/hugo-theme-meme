@@ -55,13 +55,13 @@
         position: absolute;
         left: 0.618em;
         top: 0.618em;
-        width: calc(var(--font-size) / 3);
-        height: calc(var(--font-size) / 3);
+        width: $fontSize / 3;
+        height: $fontSize / 3;
         background: var(--color-contrast-low);
         border-radius: 50%;
         border: 1px solid var(--color-bg);
         transition: background $duration;
-        font-size: var(--font-size);
+        font-size: 1rem;
     }
 }
 .list-item-title {

@@ -38,7 +38,6 @@
 
 // Utilities
 
-@import "utils/variables";
 @import "utils/functions";
 @import "utils/mixins";
 
@@ -99,7 +98,7 @@
 
     // Magic adjustment for zh-cn
     .drop-cap {
-        margin-top: var(--font-size) !important;
+        margin-top: 1rem !important;
     }
 {{ end }}
 

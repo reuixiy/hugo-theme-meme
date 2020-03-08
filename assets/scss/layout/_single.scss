@@ -15,7 +15,7 @@
 
 .post-description {
     text-align: center;
-    margin: var(--font-size) 0;
+    margin: 1rem 0;
     font-size: 90%;
 }
 
@@ -33,7 +33,7 @@
 .post {
     p {
         margin: 0 0 1em;
-        line-height: var(--line-height);
+        line-height: $lineHeight;
     }
     img {
         display: block;
@@ -57,7 +57,7 @@
     }
     ol, ul {
         padding-left: 2em;
-        line-height: var(--line-height);
+        line-height: $lineHeight;
     }
     hr {
         border: none;
@@ -86,10 +86,10 @@ blockquote {
 
 .drop-cap {
     float: left;
-    font-size: calc(var(--font-size) * 3);
-    margin-right: calc(calc(var(--line-height) * var(--font-size)) - var(--font-size));
-    margin-top: calc(var(--font-size) / var(--line-height));
-    line-height: calc(var(--line-height) * var(--font-size));
+    font-size: $fontSize * 3;
+    margin-right: $lineHeight * $fontSize - $fontSize;
+    margin-top: $fontSize / $lineHeight;
+    line-height: $lineHeight * $fontSize;
 }
 
 .caption {
@@ -116,7 +116,7 @@ ol, ul {
 
 .footnotes {
     font-size: 90%;
-    margin-top: calc(var(--font-size) * 5);
+    margin-top: 5rem;
     hr {
         margin: 0;
         height: 1px;
@@ -127,8 +127,8 @@ ol, ul {
         }
     }
     ol {
-        margin: calc(var(--font-size) * 1.618) 0 0 !important;
-        padding: 0 var(--font-size) 0 calc(var(--font-size) * 2) !important;
+        margin: 1.618rem 0 0 !important;
+        padding: 0 1rem 0 2rem !important;
     }
 }
 
@@ -203,14 +203,14 @@ dd {
 }
 
 code {
-    padding: calc(var(--font-size) / 8) calc(var(--font-size) / 4);
+    padding: ($fontSize / 8) ($fontSize / 4);
     background-color: var(--color-contrast-lower);
     font-size: 80%;
 }
 pre {
     overflow: auto hidden;
-    font-size: calc(var(--font-size) * 0.8);
-    margin: calc(var(--font-size) * 2) 0;
+    font-size: 0.8rem;
+    margin: 2rem 0;
     padding: 1em;
     line-height: 1.618;
     background-color: alpha(var(--color-contrast-lower), 0.75);
