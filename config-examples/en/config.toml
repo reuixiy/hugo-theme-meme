@@ -606,6 +606,15 @@ uglyURLs = false
 
 
     ######################################
+    # Mermaid (https://github.com/mermaid-js/mermaid)
+
+    enableMermaid = false
+    # Note: *global settings*
+    #       `mermaid` in post’s Front Matter
+    #       has a higher priority than here
+
+
+    ######################################
     # Comments
 
     # Note: render only in production

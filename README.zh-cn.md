@@ -100,6 +100,7 @@ share | display post-share | boolean, override `displayPostShare` in `config.tom
 related | display related-posts | boolean, override `displayRelatedPosts` in `config.toml`, MemE only
 katex | add KaTeX support | boolean, override `enableKaTeX` in `config.toml`, MemE only
 mathjax | add MathJax support | boolean, override `enableMathJax` in `config.toml`, MemE only
+mermaid | add Mermaid support | boolean, override `enableMermaid` in `config.toml`, MemE only
 comments | set `false` to disable comments in mainSections or set `true` to enable comments in non-mainSections | boolean, MemE only
 smallCaps | small caps? | boolean, override `enableSmallCaps` in `config.toml`, MemE only
 dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, MemE only
