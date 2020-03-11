@@ -780,9 +780,6 @@ uglyURLs = false
     # Open external links in a new tab?
     hrefTargetBlank = true
 
-    # Compatibility with LaTeX?
-    compatibleWithLaTeX = false
-
 
     ######################################
     # Table of Contents

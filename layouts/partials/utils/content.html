@@ -1,5 +1,5 @@
 {{- $Deliver := . -}}
-{{- $raw := .RawContent -}}
+{{- $raw := .Content -}}
 {{- partial "utils/markdownify.html" (dict "Deliver" . "raw" $raw "isContent" true) -}}
 
 <!-- Link Headings to TOC -->

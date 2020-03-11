@@ -738,9 +738,6 @@ uglyURLs = false
     # 在新标签页打开外链？
     hrefTargetBlank = true
 
-    # 与 LaTeX 的兼容性？
-    compatibleWithLaTeX = false
-
 
     ######################################
     # 文章目录
