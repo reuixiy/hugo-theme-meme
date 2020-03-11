@@ -557,6 +557,15 @@ uglyURLs = false
 
 
     ######################################
+    # Mermaid (https://github.com/mermaid-js/mermaid)
+
+    # 是否开启（全局设置）
+    enableMermaid = false
+    # 说明：文章的 Front Matter 中的 `mermaid`
+    #      的优先级高于此处
+
+
+    ######################################
     # 评论
 
     # 说明：仅在生产环境（production）下渲染
