@@ -20,6 +20,12 @@ other = "Newer"
 [nextPage]
 other = "Older"
 
+[copy]
+other = "Copy"
+
+[copied]
+other = "Copied!"
+
 [copyrightAuthor]
 other = "Author"
 

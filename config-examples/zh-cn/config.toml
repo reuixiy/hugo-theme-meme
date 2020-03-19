@@ -1204,10 +1204,19 @@ uglyURLs = false
 
 
     ######################################
-    # 代码高亮
+    # 代码块
 
-    # 是否开启
+    # 是否开启高亮
     enableHighlight = true
+
+    # 是否开启竖直滚动
+    enableOverflowY = true
+    # 最大高度
+    maxHeight = 20
+    # 单位：em
+
+    # 是否开启复制
+    enableCopy = true
 
 
     ######################################

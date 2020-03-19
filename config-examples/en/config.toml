@@ -1233,9 +1233,15 @@ uglyURLs = false
 
 
     ######################################
-    # Syntax Highlighting
+    # Code Blocks
 
     enableHighlight = true
+
+    enableOverflowY = true
+    maxHeight = 20
+    # Unit: em
+
+    enableCopy = true
 
 
     ######################################

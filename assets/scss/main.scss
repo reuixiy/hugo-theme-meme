@@ -35,6 +35,22 @@
     $enableNavToggle: false;
 {{ end }}
 
+{{ if .Site.Params.enableOverflowY }}
+    $enableOverflowY: true;
+{{ else }}
+    $enableOverflowY: false;
+{{ end }}
+
+{{ with .Site.Params.maxHeight | default 20 }}
+    $maxHeight: {{ . }}em;
+{{ end }}
+
+{{ if .Site.Params.enableCopy }}
+    $enableCopy: true;
+{{ else }}
+    $enableCopy: false;
+{{ end }}
+
 
 // Utilities
 

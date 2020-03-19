@@ -20,6 +20,12 @@ other = "上一页"
 [nextPage]
 other = "下一页"
 
+[copy]
+other = "复制"
+
+[copied]
+other = "已复制！"
+
 [copyrightAuthor]
 other = "作者"
 

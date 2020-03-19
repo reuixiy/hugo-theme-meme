@@ -88,7 +88,7 @@ a {
 
 ::-webkit-scrollbar {
     width: 0.4rem;
-    height: 0.2rem;
+    height: 0.4rem;
 }
 ::-webkit-scrollbar-track {
     background-color: var(--color-bg);
@@ -101,4 +101,7 @@ a {
     &:active {
         background-color: alpha(var(--color-primary), 0.75);
     }
+}
+::-webkit-scrollbar-corner {
+    background-color: var(--color-bg);
 }
