@@ -221,6 +221,13 @@ pre {
     }
 }
 
+@if ($enableOverflowY) {
+    pre {
+        max-height: $maxHeight;
+        overflow: auto;
+    }
+}
+
 .katex-display, mjx-container[jax="CHTML"][display="true"] {
     overflow: auto hidden;
     text-indent: 0;

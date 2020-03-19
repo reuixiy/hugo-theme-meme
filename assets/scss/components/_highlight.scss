@@ -3,7 +3,10 @@
     margin: 2rem 0;
     pre {
         margin: 0 !important;
+        max-height: unset;
         overflow: auto hidden;
+    }
+    .lntd pre {
         background-color: unset;
     }
     th, td {
@@ -27,4 +30,27 @@ span.lnt {
 .chroma, .chroma-dark {
     color: var(--color-contrast-high);
     background-color: alpha(var(--color-contrast-lower), 0.5);
+}
+
+@if ($enableOverflowY) {
+    .lntable, .highlight > pre {
+        max-height: $maxHeight;
+        overflow: auto;
+    }
+}
+
+@if (enableCopy) {
+    .copy-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
+        color: var(--color-bg);
+        background-color: alpha(var(--color-contrast-medium), 0.5);
+        transition: background-color $duration;
+        cursor: pointer;
+        &:hover {
+            background-color: alpha(var(--color-primary), 0.5);
+        }
+    }
 }
