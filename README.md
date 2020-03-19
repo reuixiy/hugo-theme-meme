@@ -36,12 +36,6 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 ~/blog $ git submodule add --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
 ```
 
-How to update MemE to the latest version?
-
-```sh
-~/blog $ git submodule update --rebase --remote
-```
-
 ### Blogging
 
 1. Replace `config.toml` with [config examples](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/en/config.toml).
@@ -59,6 +53,26 @@ How to update MemE to the latest version?
    ```sh
    ~/blog $ hugo server -D
    ```
+
+## Update MemE
+
+```sh
+~/blog $ git submodule update --rebase --remote
+```
+
+If failed, try:
+
+1. Delete `meme` folder, e.g.
+   ```sh
+   ~/blog $ rm -rf themes/meme
+   ```
+
+2. Clone MemE again
+   ```sh
+   ~/blog $ git clone --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+   ```
+
+**Note that** MemE makes some brand new features or *breaking changes* sometimes, so please be sure to check [the modification history of `config.toml`](https://github.com/reuixiy/hugo-theme-meme/commits/master/config-examples) and update the related items after the update!
 
 ## Awesome MemE
 
