@@ -228,6 +228,29 @@ pre {
     }
 }
 
+@if ($enableCopy) {
+    .copy-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
+        color: var(--color-bg);
+        background-color: alpha(var(--color-contrast-medium), 0.5);
+        transition: all $duration;
+        cursor: pointer;
+        &:hover {
+            background-color: alpha(var(--color-primary), 0.5);
+        }
+    }
+
+    @if ($enableCopyAutoHide) {
+        .copy-button {
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
+}
+
 .katex-display, mjx-container[jax="CHTML"][display="true"] {
     overflow: auto hidden;
     text-indent: 0;

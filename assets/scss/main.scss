@@ -51,6 +51,12 @@
     $enableCopy: false;
 {{ end }}
 
+{{ if .Site.Params.enableCopyAutoHide }}
+    $enableCopyAutoHide: true;
+{{ else }}
+    $enableCopyAutoHide: false;
+{{ end }}
+
 
 // Utilities
 

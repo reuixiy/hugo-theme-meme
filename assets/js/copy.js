@@ -47,6 +47,16 @@ function addCopyButtons(clipboard) {
         });
 
         containerEl.appendChild(button);
+
+        {{ if .Site.Params.enableCopyAutoHide }}
+            containerEl.parentNode.addEventListener('mouseover', () => {
+                button.style = 'visibility: visible; opacity: 1';
+            });
+
+            containerEl.parentNode.addEventListener('mouseout', () => {
+                button.style = 'visibility: hidden; opacity: 0';
+            });
+        {{ end }}
     });
 }
 
