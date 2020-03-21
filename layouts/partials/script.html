@@ -1,13 +1,13 @@
-{{- $main := resources.Get "js/main.js" | resources.ExecuteAsTemplate "js/main-rendered.js" . -}}
-{{- $header := resources.Get "js/header.js" | resources.ExecuteAsTemplate "js/header-rendered.js" . -}}
-{{- $navToggle := resources.Get "js/nav-toggle.js" | resources.ExecuteAsTemplate "js/nav-toggle-rendered.js" . -}}
-{{- $backToTop := resources.Get "js/back-to-top.js" | resources.ExecuteAsTemplate "js/back-to-top-rendered.js" . -}}
-{{- $darkMode := resources.Get "js/dark-mode.js" | resources.ExecuteAsTemplate "js/dark-mode-rendered.js" . -}}
-{{- $lang := resources.Get "js/multilingual.js" | resources.ExecuteAsTemplate "js/multilingual-rendered.js" . -}}
-{{- $wrapTable := resources.Get "js/wrap-table.js" | resources.ExecuteAsTemplate "js/wrap-table-rendered.js" . -}}
-{{- $copy := resources.Get "js/copy.js" | resources.ExecuteAsTemplate "js/copy-rendered.js" . -}}
-{{- $comments := resources.Get "js/comments.js" | resources.ExecuteAsTemplate "js/comments-rendered.js" . -}}
-{{- $custom := resources.Get "js/custom.js" | resources.ExecuteAsTemplate "js/custom-rendered.js" . -}}
+{{- $main := resources.Get "js/main.js" | resources.ExecuteAsTemplate (printf "%s/js/main-rendered.js" .Lang) . -}}
+{{- $header := resources.Get "js/header.js" | resources.ExecuteAsTemplate (printf "%s/js/header-rendered.js" .Lang) . -}}
+{{- $navToggle := resources.Get "js/nav-toggle.js" | resources.ExecuteAsTemplate (printf "%s/js/nav-toggle-rendered.js" .Lang) . -}}
+{{- $backToTop := resources.Get "js/back-to-top.js" | resources.ExecuteAsTemplate (printf "%s/js/back-to-top-rendered.js" .Lang) . -}}
+{{- $darkMode := resources.Get "js/dark-mode.js" | resources.ExecuteAsTemplate (printf "%s/js/dark-mode-rendered.js" .Lang) . -}}
+{{- $lang := resources.Get "js/multilingual.js" | resources.ExecuteAsTemplate (printf "%s/js/multilingual-rendered.js" .Lang) . -}}
+{{- $wrapTable := resources.Get "js/wrap-table.js" | resources.ExecuteAsTemplate (printf "%s/js/wrap-table-rendered.js" .Lang) . -}}
+{{- $copy := resources.Get "js/copy.js" | resources.ExecuteAsTemplate (printf "%s/js/copy-rendered.js" .Lang) . -}}
+{{- $comments := resources.Get "js/comments.js" | resources.ExecuteAsTemplate (printf "%s/js/comments-rendered.js" .Lang) . -}}
+{{- $custom := resources.Get "js/custom.js" | resources.ExecuteAsTemplate (printf "%s/js/custom-rendered.js" .Lang) . -}}
 
 {{- .Scratch.Set "script" (slice $main) -}}
 
