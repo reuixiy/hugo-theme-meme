@@ -545,7 +545,7 @@ uglyURLs = false
     #       content (the path of the icons).
 
     themeColor = "#fff"
-    themeColorDark = "#1c1c21"
+    themeColorDark = "#282a36"
     safariMaskColor = "#2a6df4"
     msApplicationTileColor = "#fff"
 
