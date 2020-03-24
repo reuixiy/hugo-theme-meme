@@ -1,9 +1,11 @@
+// https://github.com/dracula/dracula-theme/
+
 [data-theme="dark"] {
     @include defineColorHSL(--color-primary, $primaryColorDarkH, $primaryColorDarkS, $primaryColorDarkL);
-    @include defineColorHSL(--color-bg, 240, 8%, 12%);
-    @include defineColorHSL(--color-contrast-lower, 240, 6%, 19%);
-    @include defineColorHSL(--color-contrast-low, 240, 3%, 27%);
-    @include defineColorHSL(--color-contrast-medium, 240, 1%, 57%);
-    @include defineColorHSL(--color-contrast-high, 0, 0%, 75%);
-    @include defineColorHSL(--color-contrast-higher, 0, 0%, 90%);
+    @include defineColorHSL(--color-bg, 231, 15%, 18%);
+    @include defineColorHSL(--color-contrast-lower, 231, 11%, 24%);
+    @include defineColorHSL(--color-contrast-low, 234, 5%, 38%);
+    @include defineColorHSL(--color-contrast-medium, 210, 1%, 70%);
+    @include defineColorHSL(--color-contrast-high, 60, 14%, 93%);
+    @include defineColorHSL(--color-contrast-higher, 60, 30%, 96%);
 }
