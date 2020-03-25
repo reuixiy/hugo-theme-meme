@@ -12,6 +12,7 @@ body {
     overflow-wrap: break-word;
     word-wrap: break-word;
     line-height: 1.618;
+    transition: all $duration;
 }
 
 .container {

@@ -3,9 +3,9 @@
     bottom: 0;
     width: 100%;
     font-size: 90%;
-    color: var(--color-contrast-medium);
+    color: alpha(var(--color-contrast-medium), 0.8);
     a {
-        color: var(--color-contrast-medium);
+        color: alpha(var(--color-contrast-medium), 0.8);
         &:hover {
             color: var(--color-primary);
         }
