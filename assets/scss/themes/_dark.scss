@@ -3,9 +3,9 @@
 [data-theme="dark"] {
     @include defineColorHSL(--color-primary, $primaryColorDarkH, $primaryColorDarkS, $primaryColorDarkL);
     @include defineColorHSL(--color-bg, 231, 15%, 18%);
-    @include defineColorHSL(--color-contrast-lower, 231, 11%, 24%);
-    @include defineColorHSL(--color-contrast-low, 234, 5%, 38%);
-    @include defineColorHSL(--color-contrast-medium, 210, 1%, 70%);
-    @include defineColorHSL(--color-contrast-high, 60, 14%, 93%);
+    @include defineColorHSL(--color-contrast-lower, 231, 12%, 21%);
+    @include defineColorHSL(--color-contrast-low, 235, 7%, 30%);
+    @include defineColorHSL(--color-contrast-medium, 240, 2%, 58%);
+    @include defineColorHSL(--color-contrast-high, 75, 6%, 87%);
     @include defineColorHSL(--color-contrast-higher, 60, 30%, 96%);
 }
