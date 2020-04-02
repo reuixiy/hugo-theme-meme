@@ -234,6 +234,7 @@ pre {
         top: 0;
         right: 0;
         border: 0;
+        font-size: inherit;
         color: var(--color-bg);
         background-color: alpha(var(--color-contrast-medium), 0.5);
         transition: all $duration;
