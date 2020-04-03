@@ -1,3 +1,25 @@
+## [4.3.1](https://github.com/reuixiy/hugo-theme-meme/compare/v4.3.0...v4.3.1) (2020-04-03)
+
+
+### Bug Fixes
+
+* **style:** add transition, fix color contrast ([e9880d7](https://github.com/reuixiy/hugo-theme-meme/commit/e9880d7))
+* **style:** font-size of copy button ([ed015a9](https://github.com/reuixiy/hugo-theme-meme/commit/ed015a9))
+* **style:** make color in dark mode less dazzling ([c0e0927](https://github.com/reuixiy/hugo-theme-meme/commit/c0e0927))
+* **style:** make color in dark mode less dazzling ([cef984d](https://github.com/reuixiy/hugo-theme-meme/commit/cef984d))
+* **style:** make the bg-color of dark mode darker ([676fee1](https://github.com/reuixiy/hugo-theme-meme/commit/676fee1))
+* clipboard polyfill ([05a365b](https://github.com/reuixiy/hugo-theme-meme/commit/05a365b))
+* i18n of script and style ([e7871bb](https://github.com/reuixiy/hugo-theme-meme/commit/e7871bb))
+* make dark mode more gorgeous ([06f79af](https://github.com/reuixiy/hugo-theme-meme/commit/06f79af))
+* make dark mode respect system preferences ([10d6cca](https://github.com/reuixiy/hugo-theme-meme/commit/10d6cca))
+
+
+### Features
+
+* change default highlight theme ([e7e61d4](https://github.com/reuixiy/hugo-theme-meme/commit/e7e61d4))
+
+
+
 # [4.3.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.2.1...v4.3.0) (2020-03-20)
 
 
