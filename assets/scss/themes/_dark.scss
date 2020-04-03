@@ -1,11 +1,12 @@
+// https://codyhouse.co/ds/globals/colors
 // https://github.com/dracula/dracula-theme/
 
 [data-theme="dark"] {
     @include defineColorHSL(--color-primary, $primaryColorDarkH, $primaryColorDarkS, $primaryColorDarkL);
-    @include defineColorHSL(--color-bg, 231, 14%, 10%);
-    @include defineColorHSL(--color-contrast-lower, 240, 5%, 19%);
-    @include defineColorHSL(--color-contrast-low, 240, 2%, 25%);
-    @include defineColorHSL(--color-contrast-medium, 80, 1%, 50%);
-    @include defineColorHSL(--color-contrast-high, 60, 6%, 72%);
-    @include defineColorHSL(--color-contrast-higher, 60, 10%, 80%);
+    @include defineColorHSL(--color-bg, 231, 14%, 10%); // 0%
+    @include defineColorHSL(--color-contrast-lower, 230, 8%, 15%); // 8%
+    @include defineColorHSL(--color-contrast-low, 240, 2%, 25%); // 25%
+    @include defineColorHSL(--color-contrast-medium, 80, 1%, 50%); // 60%
+    @include defineColorHSL(--color-contrast-high, 69, 4%, 68%); // 85%
+    @include defineColorHSL(--color-contrast-higher, 60, 10%, 80%); // 100%
 }
