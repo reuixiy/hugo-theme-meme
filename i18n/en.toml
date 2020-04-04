@@ -1,0 +1,164 @@
+[ellipsis]
+other = "..."
+
+[colon]
+other = ": "
+
+[minute]
+one = "min"
+other = "mins"
+
+[tocTitle]
+other = "Contents"
+
+[readMore]
+other = "Read More"
+
+[prevPage]
+other = "Newer"
+
+[nextPage]
+other = "Older"
+
+[copy]
+other = "Copy"
+
+[copied]
+other = "Copied!"
+
+[copyrightAuthor]
+other = "Author"
+
+[copyrightLink]
+other = "Link"
+
+[copyrightLicense]
+other = "License"
+
+[shareOn]
+other = "Share on:"
+
+[shareOnTitle]
+other = "Share on "
+
+[shareViaTitle]
+other = "Share via "
+
+[relatedPosts]
+other = "See Also:"
+
+[loadComments]
+other = "Load Comments?"
+
+[fofLinkText]
+other = "Take Me Home"
+
+[serviceWorkerUpdatedText]
+other = "New Update Available"
+
+[serviceWorkerUpdatedAction]
+other = "Refresh"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "January"
+
+[february]
+other = "February"
+
+[march]
+other = "March"
+
+[april]
+other = "April"
+
+[may]
+other = "May"
+
+[june]
+other = "June"
+
+[july]
+other = "July"
+
+[august]
+other = "August"
+
+[september]
+other = "September"
+
+[october]
+other = "October"
+
+[november]
+other = "November"
+
+[december]
+other = "December"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"

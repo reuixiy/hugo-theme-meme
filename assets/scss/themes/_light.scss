@@ -1,3 +1,5 @@
+// https://codyhouse.co/ds/globals/colors
+
 :root {
     @include defineColorHSL(--color-primary, $primaryColorLightH, $primaryColorLightS, $primaryColorLightL);
     @include defineColorHSL(--color-bg, 0, 0%, 100%);

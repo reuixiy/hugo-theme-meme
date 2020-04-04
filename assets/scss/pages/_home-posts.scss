@@ -1,9 +1,13 @@
+article.content.post.home {
+    margin-top: 5em;
+}
+
 .summary-title-link {
     color: var(--color-contrast-higher);
 }
 
 .summary {
-    line-height: var(--line-height);
+    line-height: $lineHeight;
     display: block;
 }
 

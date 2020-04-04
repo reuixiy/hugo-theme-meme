@@ -18,27 +18,15 @@
 <!-- Images -->
 {{- partial "utils/images.html" $Deliver -}}
 {{- $images := $Deliver.Scratch.Get "images" -}}
-<!-- languageCode -->
-{{- if $Deliver.Site.IsMultiLingual -}}
-    {{- $languageCode := readFile "config.toml" | findRE `languageCode = "([^"]+)` | uniq -}}
-    {{- with $languageCode -}}
-        {{- $Deliver.Scratch.Delete "languageCode" -}}
-        {{- range . -}}
-            {{- $languageCode := replaceRE `languageCode = "([^"]+)` `$1` . -}}
-            {{- $Deliver.Scratch.Add "languageCode" (slice $languageCode) -}}
-        {{- end -}}
-    {{- end -}}
-{{- end -}}
-{{- $languageCode := $Deliver.Scratch.Get "languageCode" -}}
 
 <meta property="og:title" content="{{ $rawTitle }}" />
 <meta property="og:description" content="{{ $description }}" />
 <meta property="og:url" content="{{ $Deliver.Permalink }}" />
 <meta property="og:site_name" content="{{ $Deliver.Site.Title }}" />
-<meta property="og:locale" content="{{ $Deliver.Site.LanguageCode }}" />
-{{- if $Deliver.Site.IsMultiLingual -}}
-    {{- range $languageCode -}}
-        {{ if ne . $Deliver.Site.LanguageCode }}
+<meta property="og:locale" content="{{ $Deliver.Site.Language.Lang }}" />
+{{- if and $Deliver.Site.IsMultiLingual $Deliver.IsTranslated -}}
+    {{- range $Deliver.Site.Languages -}}
+        {{ if ne .Lang $Deliver.Site.Language.Lang }}
             <meta property="og:locale:alternate" content="{{ . }}" />
         {{ end }}
     {{- end -}}

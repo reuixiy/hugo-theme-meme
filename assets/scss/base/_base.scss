@@ -2,16 +2,17 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
+    font-size: $fontSize;
 }
 
 body {
-    font-size: var(--font-size);
     tab-size: $tabSize;
     color: var(--color-contrast-high);
     background-color: var(--color-bg);
     overflow-wrap: break-word;
     word-wrap: break-word;
     line-height: 1.618;
+    transition: all $duration;
 }
 
 .container {
@@ -87,8 +88,8 @@ a {
 }
 
 ::-webkit-scrollbar {
-    width: calc(var(--font-size) * 0.4);
-    height: calc(var(--font-size) * 0.2);
+    width: 0.4rem;
+    height: 0.4rem;
 }
 ::-webkit-scrollbar-track {
     background-color: var(--color-bg);
@@ -101,4 +102,7 @@ a {
     &:active {
         background-color: alpha(var(--color-primary), 0.75);
     }
+}
+::-webkit-scrollbar-corner {
+    background-color: var(--color-bg);
 }

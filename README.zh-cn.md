@@ -36,15 +36,12 @@ https://gohugo.io/getting-started/quick-start/
 ~/blog $ git submodule add --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
 ```
 
-如何将 MemE 更新到最新版本？
-
-```sh
-~/blog $ git submodule update --rebase --remote
-```
-
 ### 开始写作
 
-1. 将 `config.toml` 替换为 [config.toml](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
+1. 将 `config.toml` 替换为[示例配置](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
+   ```sh
+   ~/blog $ rm config.toml && cp themes/meme/config-examples/zh-cn/config.toml config.toml
+   ```
 
 2. 新建一篇文章和一个关于页面：
    ```sh
@@ -56,6 +53,26 @@ https://gohugo.io/getting-started/quick-start/
    ```sh
    ~/blog $ hugo server -D
    ```
+
+## 更新 MemE
+
+```sh
+~/blog $ git submodule update --rebase --remote
+```
+
+如果失败了，请尝试：
+
+1. 删除 `meme` 文件夹，比如
+   ```sh
+   ~/blog $ rm -rf themes/meme
+   ```
+
+2. 重新克隆 MemE
+   ```sh
+   ~/blog $ git clone --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+   ```
+
+**特别注意**：MemE 主题有时会新增一些全新功能或一些毁灭改动，所以在你更新完后，请务必检查 [`config.toml` 的改动历史](https://github.com/reuixiy/hugo-theme-meme/commits/master/config-examples)并将相应内容也更新！
 
 ## Awesome MemE
 
@@ -97,6 +114,7 @@ share | display post-share | boolean, override `displayPostShare` in `config.tom
 related | display related-posts | boolean, override `displayRelatedPosts` in `config.toml`, MemE only
 katex | add KaTeX support | boolean, override `enableKaTeX` in `config.toml`, MemE only
 mathjax | add MathJax support | boolean, override `enableMathJax` in `config.toml`, MemE only
+mermaid | add Mermaid support | boolean, override `enableMermaid` in `config.toml`, MemE only
 comments | set `false` to disable comments in mainSections or set `true` to enable comments in non-mainSections | boolean, MemE only
 smallCaps | small caps? | boolean, override `enableSmallCaps` in `config.toml`, MemE only
 dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, MemE only

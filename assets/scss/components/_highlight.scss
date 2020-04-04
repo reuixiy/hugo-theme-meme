@@ -1,9 +1,12 @@
 .highlight {
     font-size: 0.8em;
-    margin: calc(var(--font-size) * 2) 0;
+    margin: 2rem 0;
     pre {
         margin: 0 !important;
+        max-height: unset;
         overflow: auto hidden;
+    }
+    .lntd pre {
         background-color: unset;
     }
     th, td {
@@ -27,4 +30,11 @@ span.lnt {
 .chroma, .chroma-dark {
     color: var(--color-contrast-high);
     background-color: alpha(var(--color-contrast-lower), 0.5);
+}
+
+@if ($enableOverflowY) {
+    .lntable, .highlight > pre {
+        max-height: $maxHeight;
+        overflow: auto;
+    }
 }

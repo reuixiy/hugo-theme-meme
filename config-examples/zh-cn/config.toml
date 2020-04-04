@@ -15,7 +15,7 @@ theme = "meme"
 newContentEditor = ""
 
 # i18n
-defaultContentLanguage = "zh-cn"
+defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = false
 
 # 是否复数化列表页面的标题
@@ -502,7 +502,7 @@ uglyURLs = false
     #      （图标的路径）。
 
     themeColor = "#fff"
-    themeColorDark = "#1c1c21"
+    themeColorDark = "#16171d"
     safariMaskColor = "#2a6df4"
     msApplicationTileColor = "#fff"
 
@@ -554,6 +554,15 @@ uglyURLs = false
 
     # 是否禁用 MathJax 的右键菜单
     disableMathJaxMenu = false
+
+
+    ######################################
+    # Mermaid (https://github.com/mermaid-js/mermaid)
+
+    # 是否开启（全局设置）
+    enableMermaid = false
+    # 说明：文章的 Front Matter 中的 `mermaid`
+    #      的优先级高于此处
 
 
     ######################################
@@ -728,9 +737,6 @@ uglyURLs = false
 
     # 在新标签页打开外链？
     hrefTargetBlank = true
-
-    # 与 LaTeX 的兼容性？
-    compatibleWithLaTeX = false
 
 
     ######################################
@@ -1198,10 +1204,21 @@ uglyURLs = false
 
 
     ######################################
-    # 代码高亮
+    # 代码块
 
-    # 是否开启
+    # 是否开启高亮
     enableHighlight = true
+
+    # 是否开启竖直滚动
+    enableOverflowY = true
+    # 最大高度
+    maxHeight = 20
+    # 单位：em
+
+    # 是否开启复制
+    enableCopy = true
+    # 是否开启自动隐藏
+    enableCopyAutoHide = true
 
 
     ######################################

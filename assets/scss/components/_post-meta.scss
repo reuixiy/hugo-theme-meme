@@ -2,7 +2,7 @@
     color: var(--color-contrast-medium);
     font-size: 80%;
     text-align: center;
-    margin: var(--font-size) 0;
+    margin: 1rem 0;
     a {
         color: var(--color-contrast-medium);
         &:hover {
@@ -13,7 +13,7 @@
 
 .home {
     .post-meta {
-        margin: var(--font-size) 0;
+        margin: 1rem 0;
     }
 }
 

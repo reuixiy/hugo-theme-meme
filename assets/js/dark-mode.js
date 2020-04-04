@@ -20,7 +20,6 @@ darkModeMediaQuery.addListener((e) => {
     if (darkModeOn) {
         changeModeMeta('dark');
         changeMode('dark');
-        setMode('dark');
     }
 });
 
@@ -29,7 +28,6 @@ lightModeMediaQuery.addListener((e) => {
     if (lightModeOn) {
         changeModeMeta('light');
         changeMode('light');
-        setMode('light');
     }
 });
 
@@ -44,11 +42,11 @@ themeSwitcher.addEventListener('click', function() {
     if (currentMode === 'dark') {
         changeModeMeta('light');
         changeMode('light');
-        setMode('light');
+        storePrefers('light');
     } else {
         changeModeMeta('dark');
         changeMode('dark');
-        setMode('dark');
+        storePrefers('dark');
     }
 });
 
@@ -102,6 +100,6 @@ function changeMode(theme) {
     {{ end }}
 }
 
-function setMode(theme) {
+function storePrefers(theme) {
     window.localStorage.setItem('theme', theme);
 }

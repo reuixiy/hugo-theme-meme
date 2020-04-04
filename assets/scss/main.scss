@@ -35,10 +35,31 @@
     $enableNavToggle: false;
 {{ end }}
 
+{{ if .Site.Params.enableOverflowY }}
+    $enableOverflowY: true;
+{{ else }}
+    $enableOverflowY: false;
+{{ end }}
+
+{{ with .Site.Params.maxHeight | default 20 }}
+    $maxHeight: {{ . }}em;
+{{ end }}
+
+{{ if .Site.Params.enableCopy }}
+    $enableCopy: true;
+{{ else }}
+    $enableCopy: false;
+{{ end }}
+
+{{ if .Site.Params.enableCopyAutoHide }}
+    $enableCopyAutoHide: true;
+{{ else }}
+    $enableCopyAutoHide: false;
+{{ end }}
+
 
 // Utilities
 
-@import "utils/variables";
 @import "utils/functions";
 @import "utils/mixins";
 
@@ -99,7 +120,7 @@
 
     // Magic adjustment for zh-cn
     .drop-cap {
-        margin-top: var(--font-size) !important;
+        margin-top: 1rem !important;
     }
 {{ end }}
 
@@ -179,7 +200,6 @@
     {{ else }}
         $siteBrandSVG: false;
         $siteBrandFontSize: {{ .Site.Params.siteBrandFontSize }}em;
-        $siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
         $siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
     {{ end }}
 

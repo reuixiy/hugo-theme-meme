@@ -3,7 +3,7 @@
 
 baseURL = "https://example.com/"
 title = "Hugo Theme MemE"
-languageCode = "en-US"
+languageCode = "en"
 hasCJKLanguage = false
 # Copyright information (Markdown supported)
 copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
@@ -15,7 +15,7 @@ theme = "meme"
 newContentEditor = ""
 
 # i18n
-defaultContentLanguage = "en-us"
+defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 
 # Pluralize titles in lists?
@@ -545,7 +545,7 @@ uglyURLs = false
     #       content (the path of the icons).
 
     themeColor = "#fff"
-    themeColorDark = "#1c1c21"
+    themeColorDark = "#16171d"
     safariMaskColor = "#2a6df4"
     msApplicationTileColor = "#fff"
 
@@ -603,6 +603,15 @@ uglyURLs = false
     #       has a higher priority than here
 
     disableMathJaxMenu = false
+
+
+    ######################################
+    # Mermaid (https://github.com/mermaid-js/mermaid)
+
+    enableMermaid = false
+    # Note: *global settings*
+    #       `mermaid` in post’s Front Matter
+    #       has a higher priority than here
 
 
     ######################################
@@ -770,9 +779,6 @@ uglyURLs = false
 
     # Open external links in a new tab?
     hrefTargetBlank = true
-
-    # Compatibility with LaTeX?
-    compatibleWithLaTeX = false
 
 
     ######################################
@@ -1227,9 +1233,16 @@ uglyURLs = false
 
 
     ######################################
-    # Syntax Highlighting
+    # Code Blocks
 
     enableHighlight = true
+
+    enableOverflowY = true
+    maxHeight = 20
+    # Unit: em
+
+    enableCopy = true
+    enableCopyAutoHide = true
 
 
     ######################################
