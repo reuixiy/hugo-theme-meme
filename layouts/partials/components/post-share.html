@@ -1,5 +1,21 @@
 {{ if and .Site.Params.enablePostShare (.Params.share | default .Site.Params.displayPostShare) }}
 
+    {{- $hashtags := newScratch -}}
+    {{ if .Site.Params.addHashtags }}
+        {{ with .Params.tags }}
+            {{ range . }}
+                {{ $url := urls.Parse (. | urlize) }}
+                {{ $path := $url.Path }}
+                {{ with $.Site.GetPage (printf `/tags/%s` $path) }}
+                    {{ $hashtags.Add "tags" (replace (.LinkTitle | default .) " " "") }}
+                {{ end }}
+                {{ $hashtags.Add "tags" "," }}
+            {{ end }}
+        {{ end }}
+        {{ $hashtags.Set "firsttag" "%23" }}
+        {{ $hashtags.Add "firsttag" (index (split ($hashtags.Get "tags") ",") 0) }}
+    {{ end }}
+
     {{- partial "utils/summary.html" . -}}
     {{- $description := .Description | default (.Scratch.Get "summary") | default .Site.Params.siteDescription | plainify -}}
 
@@ -19,7 +35,7 @@
             {{ if .Site.Params.shareOnTwitter }}
                 {{ $icon := (replace .Site.Data.SVG.twitter "icon" "icon twitter-icon") }}
                 <div class="share-item twitter">
-                    {{ $url := (printf `https://twitter.com/share?url=%s&text=%s&via=%s` .Permalink .Title .Site.Params.siteTwitter) }}
+                    {{ $url := (printf `https://twitter.com/share?url=%s&text=%s&hashtags=%s&via=%s` .Permalink .Title ($hashtags.Get "tags" | default "") .Site.Params.siteTwitter) }}
                     <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "twitter" }}" target="_blank" rel="noopener">
                         {{- $icon | safeHTML -}}
                     </a>
@@ -29,7 +45,7 @@
             {{ if .Site.Params.shareOnFacebook }}
                 {{ $icon := (replace .Site.Data.SVG.facebook "icon" "icon facebook-icon") }}
                 <div class="share-item facebook">
-                    {{ $url := (printf `https://www.facebook.com/sharer/sharer.php?u=%s` .Permalink) }}
+                    {{ $url := (printf `https://www.facebook.com/sharer/sharer.php?u=%s&hashtag=%s` .Permalink ($hashtags.Get "firsttag" | default "")) }}
                     <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "facebook" }}" target="_blank" rel="noopener">
                         {{- $icon | safeHTML -}}
                     </a>
