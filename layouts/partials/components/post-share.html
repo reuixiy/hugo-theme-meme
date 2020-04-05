@@ -11,7 +11,12 @@
     {{- $hashtags := newScratch -}}
     {{- with .Params.tags -}}
         {{- range . -}}
-            {{- $hashtags.Add "tags" (replace . " " "") -}}
+            {{- $tag := . -}}
+            {{- $url := urls.Parse (. | urlize) -}}
+            {{- $path := $url.Path -}}
+            {{- with $.Site.GetPage (printf `/tags/%s` $path) -}}
+                {{- $hashtags.Add "tags" (replace (.LinkTitle | default $tag) " " "") -}}
+            {{- end -}}
             {{- $hashtags.Add "tags" "," -}}
         {{- end -}}
     {{- end -}}
