@@ -11,7 +11,7 @@
     {{- $hashtags := newScratch -}}
     {{- with .Params.tags -}}
         {{- range . -}}
-            {{- $hashtags.Add "tags" (. | anchorize) -}}
+            {{- $hashtags.Add "tags" (replace . " " "") -}}
             {{- $hashtags.Add "tags" "," -}}
         {{- end -}}
     {{- end -}}
