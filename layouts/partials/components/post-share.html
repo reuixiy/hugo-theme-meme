@@ -1,20 +1,18 @@
 {{ if and .Site.Params.enablePostShare (.Params.share | default .Site.Params.displayPostShare) }}
 
     {{- $hashtags := newScratch -}}
-    {{ if .Site.Params.addHashtags }}
-        {{ with .Params.tags }}
-            {{ range . }}
-                {{ $url := urls.Parse (. | urlize) }}
-                {{ $path := $url.Path }}
-                {{ with $.Site.GetPage (printf `/tags/%s` $path) }}
-                    {{ $hashtags.Add "tags" (replace (.LinkTitle | default .) " " "") }}
-                {{ end }}
-                {{ $hashtags.Add "tags" "," }}
+    {{ with .Params.tags }}
+        {{ range . }}
+            {{ $url := urls.Parse (. | urlize) }}
+            {{ $path := $url.Path }}
+            {{ with $.Site.GetPage (printf `/tags/%s` $path) }}
+                {{ $hashtags.Add "tags" (replace (.LinkTitle | default .) " " "") }}
             {{ end }}
+            {{ $hashtags.Add "tags" "," }}
         {{ end }}
-        {{ $hashtags.Set "firsttag" "%23" }}
-        {{ $hashtags.Add "firsttag" (index (split ($hashtags.Get "tags") ",") 0) }}
     {{ end }}
+    {{ $hashtags.Set "firsttag" "%23" }}
+    {{ $hashtags.Add "firsttag" (index (split ($hashtags.Get "tags") ",") 0) }}
 
     {{- partial "utils/summary.html" . -}}
     {{- $description := .Description | default (.Scratch.Get "summary") | default .Site.Params.siteDescription | plainify -}}
