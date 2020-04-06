@@ -50,8 +50,11 @@ other = "Veja também:"
 [loadComments]
 other = "Carregar comentários?"
 
+[pageNotFound]
+other = "404 - Page not found"
+
 [fofLinkText]
-other = "Leve-me para casa"
+other = "Leve-me para página inicial"
 
 [serviceWorkerUpdatedText]
 other = "Nova atualização disponível"
