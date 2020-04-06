@@ -1,0 +1,164 @@
+[ellipsis]
+other = "..."
+
+[colon]
+other = ": "
+
+[minute]
+one = "min"
+other = "mins"
+
+[tocTitle]
+other = "Conteúdo"
+
+[readMore]
+other = "Leia mais"
+
+[prevPage]
+other = "Recentes"
+
+[nextPage]
+other = "Anteriores"
+
+[copy]
+other = "Copiar"
+
+[copied]
+other = "Copiado!"
+
+[copyrightAuthor]
+other = "Autor"
+
+[copyrightLink]
+other = "Link"
+
+[copyrightLicense]
+other = "Licença"
+
+[shareOn]
+other = "Compartilhar em:"
+
+[shareOnTitle]
+other = "Compartilhar em "
+
+[shareViaTitle]
+other = "Compartilhar via "
+
+[relatedPosts]
+other = "Veja também:"
+
+[loadComments]
+other = "Carregar comentários?"
+
+[fofLinkText]
+other = "Leve-me para casa"
+
+[serviceWorkerUpdatedText]
+other = "Nova atualização disponível"
+
+[serviceWorkerUpdatedAction]
+other = "Recarregar"
+
+
+# Redes Sociais
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Meses
+# Utilizado em `i18nMonth`
+
+[january]
+other = "Janeiro"
+
+[february]
+other = "Fevereiro"
+
+[march]
+other = "Março"
+
+[april]
+other = "Abril"
+
+[may]
+other = "Maio"
+
+[june]
+other = "Junho"
+
+[july]
+other = "Julho"
+
+[august]
+other = "Agosto"
+
+[september]
+other = "Setembro"
+
+[october]
+other = "Outubro"
+
+[november]
+other = "Novembro"
+
+[december]
+other = "Dezembro"
+
+
+# Números
+# Utilizado em `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"
