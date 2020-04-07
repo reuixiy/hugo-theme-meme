@@ -11,3 +11,11 @@
     -webkit-backdrop-filter: saturate(180%) blur(1em);
     backdrop-filter:         saturate(180%) blur(1em);
 }
+
+
+// Tab Size
+
+@mixin tabSize {
+    -moz-tab-size: $tabSize;
+    tab-size: $tabSize;
+}
