@@ -8,8 +8,8 @@
 {{- $pages = $pages | first $limit -}}
 {{- end -}}
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ .Site.LanguageCode }}">
-    <title type="text">{{ .Site.Title | safeHTML }}</title>
-    <subtitle type="html">{{ .Site.Params.siteDescription | safeHTML }}</subtitle>
+    <title type="text">{{ .Site.Title }}</title>
+    <subtitle type="html">{{ .Site.Params.siteDescription }}</subtitle>
     <updated>{{ now.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
     <id>{{ .Permalink }}</id>
     <link rel="alternate" type="text/html" href="{{ .Permalink }}" />
@@ -28,13 +28,13 @@
     {{ with .Site.Copyright -}}
         <rights>{{ . | plainify }}</rights>
     {{- end }}
-    <generator uri="https://gohugo.io/" version="{{ printf "%s" hugo.Version | safeHTML }}">Hugo</generator>
+    <generator uri="https://gohugo.io/" version="{{ hugo.Version }}">Hugo</generator>
     {{- range (where $pages "Section" "in" .Site.Params.mainSections) }}
         {{ $page := . }}
         {{- partial "utils/author.html" $page -}}
         {{- $author := ($page.Scratch.Get "author") -}}
         <entry>
-            <title type="text">{{ .Title | safeHTML }}</title>
+            <title type="text">{{ .Title }}</title>
             <link rel="alternate" type="text/html" href="{{ .Permalink }}" />
             <id>{{ .Permalink }}</id>
             <updated>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>

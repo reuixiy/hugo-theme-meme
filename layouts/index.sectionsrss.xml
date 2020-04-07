@@ -12,10 +12,10 @@
 {{- end }}
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>{{ .Site.Title | safeHTML }}</title>
+        <title>{{ .Site.Title }}</title>
         <link>{{ .Permalink }}</link>
-        <description>{{ .Site.Params.siteDescription | safeHTML }}</description>
-        {{ printf `<generator>Hugo %s https://gohugo.io/</generator>` hugo.Version | safeHTML }}
+        <description>{{ .Site.Params.siteDescription }}</description>
+        <generator>Hugo {{ hugo.Version }} https://gohugo.io/</generator>
         {{ with .Site.LanguageCode }}
             <language>{{ . }}</language>
         {{ end }}
@@ -37,7 +37,7 @@
             {{- partial "utils/author.html" $page -}}
             {{- $author := ($page.Scratch.Get "author") -}}
             <item>
-                <title>{{ .Title | safeHTML }}</title>
+                <title>{{ .Title }}</title>
                 <link>{{ .Permalink }}</link>
                 <guid isPermaLink="true">{{ .Permalink }}</guid>
                 <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
