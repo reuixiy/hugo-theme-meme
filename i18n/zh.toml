@@ -50,6 +50,9 @@ other = "相关文章："
 [loadComments]
 other = "加载评论"
 
+[pageNotFound]
+other = "404 - 页面不存在"
+
 [fofLinkText]
 other = "送我回主页"
 

@@ -6,25 +6,25 @@ other = ": "
 
 [minute]
 one = "min"
-other = "min"
+other = "mins"
 
 [tocTitle]
-other = "Inhalt"
+other = "Conteúdo"
 
 [readMore]
-other = "Weiterlesen"
+other = "Leia mais"
 
 [prevPage]
-other = "Neuer"
+other = "Recentes"
 
 [nextPage]
-other = "Älter"
+other = "Anteriores"
 
 [copy]
-other = "Kopieren"
+other = "Copiar"
 
 [copied]
-other = "Kopiert!"
+other = "Copiado!"
 
 [copyrightAuthor]
 other = "Autor"
@@ -33,37 +33,37 @@ other = "Autor"
 other = "Link"
 
 [copyrightLicense]
-other = "Lizenz"
+other = "Licença"
 
 [shareOn]
-other = "Teile auf:"
+other = "Compartilhar em:"
 
 [shareOnTitle]
-other = "Teile auf "
+other = "Compartilhar em "
 
 [shareViaTitle]
-other = "Teile mit "
+other = "Compartilhar via "
 
 [relatedPosts]
-other = "Siehe auch:"
+other = "Veja também:"
 
 [loadComments]
-other = "Kommentare laden?"
+other = "Carregar comentários?"
 
 [pageNotFound]
-other = "404 - Seite nicht gefunden"
+other = "404 - Página não encontrada"
 
 [fofLinkText]
-other = "Zur Hauptseite"
+other = "Leve-me para página inicial"
 
 [serviceWorkerUpdatedText]
-other = "Neue Updates verfügbar"
+other = "Nova atualização disponível"
 
 [serviceWorkerUpdatedAction]
-other = "Neu laden"
+other = "Recarregar"
 
 
-# Socials
+# Redes Sociais
 
 [twitter]
 other = "Twitter"
@@ -93,48 +93,48 @@ other = "Qzone"
 other = "QR Code"
 
 
-# Months
-# Used for `i18nMonth`
+# Meses
+# Utilizado em `i18nMonth`
 
 [january]
-other = "Januar"
+other = "Janeiro"
 
 [february]
-other = "Februar"
+other = "Fevereiro"
 
 [march]
-other = "März"
+other = "Março"
 
 [april]
-other = "April"
+other = "Abril"
 
 [may]
-other = "Mai"
+other = "Maio"
 
 [june]
-other = "Juni"
+other = "Junho"
 
 [july]
-other = "Juli"
+other = "Julho"
 
 [august]
-other = "August"
+other = "Agosto"
 
 [september]
-other = "September"
+other = "Setembro"
 
 [october]
-other = "Oktober"
+other = "Outubro"
 
 [november]
-other = "November"
+other = "Novembro"
 
 [december]
-other = "Dezember"
+other = "Dezembro"
 
 
-# Numbers
-# Used for `i18nYear`
+# Números
+# Utilizado em `i18nYear`
 
 [0]
 other = "0"
