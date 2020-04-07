@@ -50,6 +50,9 @@ other = "See Also:"
 [loadComments]
 other = "Load Comments?"
 
+[pageNotFound]
+other = "404 - Page not found"
+
 [fofLinkText]
 other = "Take Me Home"
 
