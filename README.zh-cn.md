@@ -54,6 +54,14 @@ https://gohugo.io/getting-started/quick-start/
    ~/blog $ hugo server -D
    ```
 
+## 定制 MemE
+
+MemE 通过 Hugo 管道实现使用 SCSS 生成 CSS，而非静态的 CSS 文件，同时提供一个 [`_custom.scss`](https://github.com/reuixiy/hugo-theme-meme/blob/master/assets/scss/custom/_custom.scss) 文件以供用户定制。
+
+直接新建一个 `~/blog/assets/scss/custom/_custom.scss` 并将你自己的样式加入其中，就能覆盖主题的 `~/blog/themes/meme/assets/scss/custom/_custom.scss` 文件，且其会正确地被应用。
+
+事实上，在 Hugo 中你可以覆盖主题的任何模板，见这个非官方的镜像网页：<https://gohugobrasil.netlify.com/themes/customizing/>
+
 ## 更新 MemE
 
 ```sh
