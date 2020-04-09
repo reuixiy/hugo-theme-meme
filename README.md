@@ -54,6 +54,15 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
    ~/blog $ hugo server -D
    ```
 
+### Customize  and override CSS.
+MemE uses SCSS via [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) to generate CSS instead of static CSS file.
+
+MemE provides a **_custom.scss** for customization.  
+
+Just create a `~/blog/assets/scss/custom/_custom.scss` and add your own styles into this file.  
+
+Your **_custom.scss** will override `~/blog/themes/meme/assets/scss/custom/_custom.scss` and your custom CSS will be applied correctly.
+
 ## Update MemE
 
 ```sh
