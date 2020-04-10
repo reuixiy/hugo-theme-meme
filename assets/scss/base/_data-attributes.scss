@@ -32,6 +32,28 @@
         display: table;
         margin: 0 auto;
     }
+    .post-body > p:first-child {
+        img, video {
+            margin-top: 0;
+        }
+    }
+    .post-body > blockquote:first-child {
+        margin-top: 0;
+    }
+    .post-body > blockquote:last-child {
+        margin-bottom: 0;
+    }
+    .post-body > p:last-child {
+        margin: 0;
+    }
+    .post-body > p:last-child {
+        img, video {
+            margin-bottom: 0;
+        }
+    }
+    section.footnotes > ol > li:last-child > p:last-child {
+        margin: 0;
+    }
 }
 
 [data-toc-num="true"] {
