@@ -1,16 +1,13 @@
 .highlight {
-    font-size: 0.8em;
+    font-size: 0.8rem;
     margin: 2rem 0;
     pre {
         margin: 0 !important;
         max-height: unset;
-        overflow: auto hidden;
     }
     .lntd pre {
         background-color: unset;
-    }
-    th, td {
-        font-size: inherit;
+        overflow: visible;
     }
     table > tbody > tr:nth-of-type(odd) {
         background-color: inherit;
@@ -35,6 +32,5 @@ span.lnt {
 @if ($enableOverflowY) {
     .lntable, .highlight > pre {
         max-height: $maxHeight;
-        overflow: auto;
     }
 }
