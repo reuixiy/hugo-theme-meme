@@ -208,7 +208,9 @@ code {
     font-size: 80%;
 }
 pre {
-    overflow: auto hidden;
+    overflow: auto;
+    overflow-wrap: normal;
+    word-wrap: normal;
     font-size: 0.8rem;
     margin: 2rem 0;
     padding: 1em;
@@ -216,7 +218,7 @@ pre {
     background-color: alpha(var(--color-contrast-lower), 0.75);
     code {
         background-color: unset;
-        font-size: inherit;
+        font-size: 0.8rem;
         padding: 0;
     }
 }
@@ -224,7 +226,6 @@ pre {
 @if ($enableOverflowY) {
     pre {
         max-height: $maxHeight;
-        overflow: auto;
     }
 }
 
