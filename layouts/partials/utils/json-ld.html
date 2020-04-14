@@ -126,8 +126,12 @@
         "url": {{ $Deliver.Permalink }},
         "name": {{ $rawTitle }},
         "description": {{ $description }},
+        {{ with $images -}}
+        "image": {{ . }},
+        {{ else -}}
         {{ with $Deliver.Site.Params.siteLogo -}}
         "image": {{ . | absURL }},
+        {{ end -}}
         {{ end -}}
         {{ with $author.copyright -}}
         "license": {{ . | plainify }},
