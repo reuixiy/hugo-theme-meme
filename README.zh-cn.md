@@ -17,7 +17,7 @@ MemE 是一个强大且可高度定制的 [GoHugo](https://github.com/gohugoio/h
 
 https://gohugo.io/getting-started/quick-start/
 
-### 安装 Hugo（扩展版）
+### 安装 Hugo（`extended` 扩展版）
 
 对于 Arch Linux 的用户：
 
