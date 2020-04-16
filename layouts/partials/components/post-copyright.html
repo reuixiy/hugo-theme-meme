@@ -4,7 +4,13 @@
     {{ $author := .Scratch.Get "author" }}
     {{ with $author.name }}
         <ul class="post-copyright">
-            <li class="copyright-item author">{{ with $author.website }}{{ printf `<span class="copyright-item-text">%s</span>%s<a href="%s" target="_blank" rel="noopener">%s</a>` (i18n "copyrightAuthor") (i18n "colon") . $author.name | safeHTML }}{{ else }}{{ printf `%s%s` (i18n "copyrightAuthor") $author.name }}{{ end }}</li>
+            <li class="copyright-item author">
+                {{- with $author.website -}}
+                    {{ printf `<span class="copyright-item-text">%s</span>%s<a href="%s" target="_blank" rel="noopener">%s</a>` (i18n "copyrightAuthor") (i18n "colon") . $author.name | safeHTML }}
+                {{- else -}}
+                    {{ printf `<span class="copyright-item-text">%s</span>%s%s` (i18n "copyrightAuthor") (i18n "colon") $author.name | safeHTML }}
+                {{- end -}}
+            </li>
             {{ if $.Params.original | default $.Site.Params.original }}
                 {{ $url := urls.Parse $.Permalink }}
                 {{ $decodedPath := $url.Path }}
