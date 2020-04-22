@@ -100,7 +100,6 @@ expiryDate | * | string
 `<taxonomies>` eg: categories, tags, series | * | array
 description | * | string, Markdown supported
 summary | * | string, Markdown supported
-keywords | * | array
 images | * | array
 slug | * | string
 url | * | string
