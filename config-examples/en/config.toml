@@ -773,10 +773,6 @@ uglyURLs = false
     #       Homepage is not supported yet
     #       https://busuanzi.ibruce.info/
 
-    # Socials
-    enableSocials = true
-    # Note: see data/Socials.toml
-
 
     ######################################
     # Markdown Related
@@ -1221,6 +1217,10 @@ uglyURLs = false
     #       Leave it empty("") if you
     #       don’t need the text or icon
     #       https://busuanzi.ibruce.info/
+
+    # Socials
+    enableSocials = true
+    # Note: see data/Socials.toml
 
 
     ######################################
