@@ -1,0 +1,22 @@
+.socials {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.socials-item {
+    display: inline-block;
+    margin: 0.5em;
+    border-radius: 50%;
+    background-color: var(--color-contrast-medium);
+    transition: background-color $duration;
+
+    &:hover {
+        background-color: var(--color-primary);
+    }
+}
+
+.social-icon {
+    fill: var(--color-bg);
+    padding: 0.5em;
+}

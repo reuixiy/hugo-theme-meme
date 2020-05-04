@@ -341,6 +341,10 @@
     @import "components/highlight";
 {{ end }}
 
+{{ if .Site.Params.enableSocials }}
+    @import "components/socials";
+{{ end }}
+
 
 // Homepage Layout
 

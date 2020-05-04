@@ -1,0 +1,13 @@
+{{ if .Site.Params.enableSocials }}
+    {{ with .Site.Data.Socials }}
+        <ul class="socials">
+            {{- range sort .socials "weight" -}}
+                <li class="socials-item">
+                    <a href="{{ .url }}" target="_blank" rel="external noopener" title="{{ .title }}">
+                        {{- replace (index $.Site.Data.SVG .icon) "icon" "icon social-icon" | safeHTML -}}
+                    </a>
+                </li>
+            {{- end -}}
+        </ul>
+    {{ end }}
+{{ end }}
