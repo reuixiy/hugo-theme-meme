@@ -47,10 +47,10 @@
 
 {{- if .Site.Params.enableFingerprint -}}
     {{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
-    {{- printf `<script src="%s" integrity="%s"></script>` $script.RelPermalink $script.Data.Integrity | safeHTML -}}
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
 {{- else -}}
     {{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify -}}
-    {{- printf `<script src="%s"></script>` $script.RelPermalink | safeHTML -}}
+    <script src="{{ $script.RelPermalink }}"></script>
 {{- end }}
 
 {{ if .Site.Params.enableSmoothScroll }}
