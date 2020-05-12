@@ -42,7 +42,7 @@
                             {{- $Deliver.Site.Params.categoryDelimiter | default "/" -}}
                         {{- end -}}
                         <a href="{{- $link | replaceRE `\d+/(.+)` `$1` -}}" class="category-link">
-                          {{- $title -}}
+                            {{- $title -}}
                         </a>
                     {{- end -}}
                 </span>
@@ -58,7 +58,7 @@
                         {{- end -}}
                         {{- with $Deliver.Site.GetPage (printf `/categories/%s` ($category | urlize)) -}}
                             <a href="{{- .RelPermalink -}}" class="category-link">
-                              {{- .LinkTitle | default $category -}}
+                                {{- .LinkTitle | default $category -}}
                             </a>
                         {{- end -}}
                     {{- end -}}
