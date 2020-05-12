@@ -27,10 +27,9 @@
                     {{- $linkType := (string .Pre) -}}
                     <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>
                         {{- $iconName := (string .Post) -}}
-                        {{- $icon := (index $.Site.Data.SVG $iconName) -}}
-                        {{- printf `%s` (replace $icon "icon" (printf `icon %s` .Identifier)) | safeHTML -}}
+                        {{- partial "utils/icon.html" (dict "Deliver" $ "name" $iconName "class" .Identifier) -}}
                         {{- with .Name -}}
-                            {{- printf `<span class="menu-item-name">%s</span>` . | safeHTML -}}
+                            <span class="menu-item-name">{{ . }}</span>
                         {{- end -}}
                     </a>
                 </li>
