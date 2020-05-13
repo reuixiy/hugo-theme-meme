@@ -105,8 +105,8 @@
 <!-- Replace `footnoteReturnLinkContents` with icon -->
 {{- $Content := .Scratch.Get "Content" -}}
 {{- with .Site.Params.footnoteReturnLinkIcon -}}
-    {{- $icon := (replace (index $.Site.Data.SVG .) "icon" "icon footnote-icon") -}}
-    {{- $replacement := (printf `${1}%s$3` $icon) | safeHTML -}}
+    {{- $icon := (partial "utils/icon.html" (dict "Deliver" $ "name" . "class" "footnote-icon")) -}}
+    {{- $replacement := (printf `${1}%s$3` $icon) -}}
 
     {{- $regexPatternfootnoteReturnLinkIcon := `(href="#fnref[^>]+>)([^<]+)(.+)` -}}
     {{- $regexReplacementfootnoteReturnLinkIcon := $replacement -}}
