@@ -2,14 +2,14 @@
 <!-- https://gohugo.io/functions/replacere/ -->
 <!-- https://regex101.com/ -->
 {{- if and .IsPage (in .Site.Params.mainSections .Section) -}}
-    {{- $imgs := findRE `<img src="/?([^"]+)` .Content | uniq -}}
+    {{- $imgs := findRE `<img(?:\s+[\w-]+="[^"]*")*\s+src="/?([^"]+)` .Content | uniq -}}
     {{- with $imgs -}}
         {{- $.Scratch.Delete "imgsURL" -}}
         {{- range . -}}
             {{- $.Scratch.Delete "replacement" -}}
             {{- if and $.Site.Params.enableImageHost $.Site.Params.headAlso -}}
                 {{- if (eq hugo.Environment "production") -}}
-                    {{- $url := replaceRE `<img src="/?([^"]+)` `$1` . -}}
+                    {{- $url := replaceRE `<img(?:\s+[\w-]+="[^"]*")*\s+src="/?([^"]+)` `$1` . -}}
                     {{- if ne (substr $url 0 4) "http" -}}
                         {{- $hostURL := $.Site.Params.imageHostURL -}}
                         {{- $replacement := (printf `%s$1` $hostURL) -}}
@@ -22,7 +22,7 @@
                 {{- $.Scratch.Set "replacement" `$1` -}}
             {{- end -}}
             {{- $replacement := $.Scratch.Get "replacement" -}}
-            {{- $imgsURL := replaceRE `<img src="/?([^"]+)` $replacement . -}}
+            {{- $imgsURL := replaceRE `<img(?:\s+[\w-]+="[^"]*")*\s+src="/?([^"]+)` $replacement . -}}
             {{- $.Scratch.Add "imgsURL" (slice $imgsURL) -}}
         {{- end -}}
     {{- end -}}
