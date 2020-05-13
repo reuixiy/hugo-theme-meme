@@ -50,8 +50,7 @@
                 {{ if $.Site.Params.includeContent }}
                     <description>{{ .Content | html }}</description>
                 {{ else }}
-                    {{- partial "utils/summary.html" $page -}}
-                    {{- $summary := .Description | default ($page.Scratch.Get "summary") -}}
+                    {{- $summary := .Description | default (partial "utils/summary.html" $page) -}}
                     <description>{{ $summary | html }}</description>
                 {{ end }}
                 <!-- Sections -->
