@@ -85,10 +85,6 @@
     {{- $safariMaskIcon := "icons/safari-pinned-tab.svg" -}}
     {{- $safariMaskColor := .Site.Params.safariMaskColor -}}
     {{- $appleTouchIcon := "icons/apple-touch-icon.png" -}}
-    {{- $baseUrl := (urls.Parse .Site.BaseURL).Path -}}
-    {{- if not (strings.HasSuffix $baseUrl "/") -}}
-        {{- $baseUrl = (printf "%s%s" $baseUrl "/") -}}
-    {{- end -}}
     {{- $manifest := "manifest.json" -}}
     <link rel="shortcut icon" href="{{ $favicon | relURL }}" type="image/x-icon" />
     <link rel="mask-icon" href="{{ $safariMaskIcon | relURL }}" color="{{ $safariMaskColor }}" />
@@ -98,9 +94,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="{{ .Site.Title }}" />
-    <meta name="msapplication-starturl" content="{{ $baseUrl }}" />
+    <meta name="msapplication-starturl" content="{{ "/" | relURL }}" />
     <meta name="msapplication-TileColor" content="{{ .Site.Params.msApplicationTileColor }}" />
-    <meta name="msapplication-TileImage" content="{{ $baseUrl }}icons/mstile-150x150.png" />
+    <meta name="msapplication-TileImage" content="{{ "icons/mstile-150x150.png" | relURL }}" />
     <link rel="manifest" href="{{ $manifest | relURL }}" />
 
     <!-- Atom / RSS -->
