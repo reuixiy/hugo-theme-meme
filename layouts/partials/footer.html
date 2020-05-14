@@ -46,36 +46,34 @@
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">
                         {{- with .Site.Params.busuanziSiteUVText -}}
-                            {{- $.Scratch.Set "busuanziSiteUVText" (printf `%s&nbsp;` .) -}}
-                        {{- else -}}
-                            {{- $.Scratch.Set "busuanziSiteUVText" "" -}}
+                            {{- . -}}
+                            &nbsp;
                         {{- end -}}
-                        {{- $busuanziSiteUVText := .Scratch.Get "busuanziSiteUVText" -}}
+
                         {{- with .Site.Params.busuanziSiteUVIcon -}}
-                            {{- $busuanziSiteUVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSiteUVIcon) "icon" "icon busuanzi-site-uv" -}}
-                            {{- $.Scratch.Set "busuanziSiteUVIcon" (printf `%s&nbsp;` $busuanziSiteUVIcon) -}}
-                        {{- else -}}
-                            {{- $.Scratch.Set "busuanziSiteUVIcon" "" -}}
+                            {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.busuanziSiteUVIcon "class" "busuanzi-site-uv") -}}
+                            &nbsp;
                         {{- end -}}
-                        {{- $busuanziSiteUVIcon := .Scratch.Get "busuanziSiteUVIcon" -}}
-                        {{- printf `%s%s%s` $busuanziSiteUVText $busuanziSiteUVIcon `<span id="busuanzi_value_site_uv"></span>` | safeHTML -}}
+
+                        <!-- Avoid extra spaces -->
+                        {{- print `<span id="busuanzi_value_site_uv"></span>` | safeHTML -}}
                     </span>
+
                     {{- print "&nbsp;|&nbsp;" | safeHTML -}}
+
                     <span id="busuanzi_container_site_pv">
                         {{- with .Site.Params.busuanziSitePVText -}}
-                            {{- $.Scratch.Set "busuanziSitePVText" (printf `%s&nbsp;` .) -}}
-                        {{- else -}}
-                            {{- $.Scratch.Set "busuanziSitePVText" "" -}}
+                            {{- . -}}
+                            &nbsp;
                         {{- end -}}
-                        {{- $busuanziSitePVText := .Scratch.Get "busuanziSitePVText" -}}
+
                         {{- with .Site.Params.busuanziSitePVIcon -}}
-                            {{- $busuanziSitePVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSitePVIcon) "icon" "icon busuanzi-site-pv" -}}
-                            {{- $.Scratch.Set "busuanziSitePVIcon" (printf `%s&nbsp;` $busuanziSitePVIcon) -}}
-                        {{- else -}}
-                            {{- $.Scratch.Set "busuanziSitePVIcon" "" -}}
+                            {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.busuanziSitePVIcon "class" "busuanzi-site-pv") -}}
+                            &nbsp;
                         {{- end -}}
-                        {{- $busuanziSitePVIcon := .Scratch.Get "busuanziSitePVIcon" -}}
-                        {{- printf `%s%s%s` $busuanziSitePVText $busuanziSitePVIcon `<span id="busuanzi_value_site_pv"></span>` | safeHTML -}}
+
+                        <!-- Avoid extra spaces -->
+                        {{- print `<span id="busuanzi_value_site_pv"></span>` | safeHTML -}}
                     </span>
                 </div>
             {{- end }}
