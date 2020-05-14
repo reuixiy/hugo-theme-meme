@@ -6,9 +6,9 @@
         <ul class="post-copyright">
             <li class="copyright-item author">
                 {{- with $author.website -}}
-                    {{ printf `<span class="copyright-item-text">%s</span>%s<a href="%s" target="_blank" rel="noopener">%s</a>` (i18n "copyrightAuthor") (i18n "colon") . $author.name | safeHTML }}
+                    <span class="copyright-item-text">{{ i18n "copyrightAuthor" }}</span>{{ i18n "colon" }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $author.name }}</a>
                 {{- else -}}
-                    {{ printf `<span class="copyright-item-text">%s</span>%s%s` (i18n "copyrightAuthor") (i18n "colon") $author.name | safeHTML }}
+                    <span class="copyright-item-text">{{ i18n "copyrightAuthor" }}</span>{{ i18n "colon" }}{{ $author.name }}
                 {{- end -}}
             </li>
             {{ if $.Params.original | default $.Site.Params.original }}
@@ -16,17 +16,17 @@
                 {{ $decodedPath := $url.Path }}
                 {{ $baseURLWithLangFix := (strings.TrimSuffix "/" (print `/` | absLangURL)) }}
                 {{ $decodedPermalink := (printf `%s%s` $baseURLWithLangFix $decodedPath) }}
-                <li class="copyright-item link">{{ printf `<span class="copyright-item-text">%s</span>%s<a href="%s" target="_blank" rel="noopener">%s</a>` (i18n "copyrightLink") (i18n "colon") $.RelPermalink $decodedPermalink | safeHTML }}</li>
+                <li class="copyright-item link"><span class="copyright-item-text">{{ i18n "copyrightLink" }}</span>{{ i18n "colon" }}<a href="{{ $.RelPermalink }}" target="_blank" rel="noopener">{{ $decodedPermalink }}</a></li>
             {{ else }}
                 {{ with $.Params.link }}
-                    <li class="copyright-item link">{{ printf `<span class="copyright-item-text">%s</span>%s<a href="%s" target="_blank" rel="noopener">%s</a>` (i18n "copyrightLink") (i18n "colon") . . | safeHTML }}</li>
+                    <li class="copyright-item link"><span class="copyright-item-text">{{ i18n "copyrightLink" }}</span>{{ i18n "colon" }}<a href="{{ . }}" target="_blank" rel="noopener">{{ . }}</a></li>
                 {{ end }}
             {{ end }}
             {{ with $author.copyright }}
                 {{- $raw := . -}}
                 {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                <li class="copyright-item license">{{ printf `<span class="copyright-item-text">%s</span>%s%s` (i18n "copyrightLicense") (i18n "colon") $Content | safeHTML }}</li>
+                <li class="copyright-item license"><span class="copyright-item-text">{{ i18n "copyrightLicense" }}</span>{{ i18n "colon" }}{{ $Content }}</li>
             {{ end }}
         </ul>
     {{ end }}

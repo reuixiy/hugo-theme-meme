@@ -76,8 +76,7 @@
     {{- end }}
 
     <meta name="author" content="{{ .Params.author | default .Site.Author.name }}" />
-    {{ partial "utils/summary.html" . }}
-    {{- $description := .Description | default (.Scratch.Get "summary") | default .Site.Params.siteDescription | plainify -}}
+    {{- $description := .Description | default (partial "utils/summary.html" .) | default .Site.Params.siteDescription | plainify -}}
     <meta name="description" content="{{ $description }}" />
 
     <!-- Favicon, Icons, Web App -->
@@ -108,10 +107,10 @@
 
     <!-- Atom / RSS -->
     {{ with .OutputFormats.Get "SectionsAtom" -}}
-        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType .Permalink $.Site.Title | safeHTML }}
+        <link rel="{{ .Rel }}" type="{{ .MediaType }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}" />
     {{ end -}}
     {{ with .OutputFormats.Get "SectionsRSS" -}}
-        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType .Permalink $.Site.Title | safeHTML }}
+        <link rel="{{ .Rel }}" type="{{ .MediaType }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}" />
     {{ end }}
 
     <!-- SEO -->

@@ -5,7 +5,7 @@
             {{- $raw := . -}}
             {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
             {{- $Content := $Deliver.Scratch.Get "Content" -}}
-            <p>{{ $Content | safeHTML }}</p>
+            <p>{{ $Content }}</p>
         {{ end }}
     </div>
     {{ with .Site.Menus.home }}
@@ -13,8 +13,7 @@
             {{ range . }}
                 {{- $linkType := (string .Pre) -}}
                 {{- $iconName := (string .Post) -}}
-                {{- $icon := (index $.Site.Data.SVG $iconName) -}}
-                <a href="{{ .URL }}" class="links-item"{{ if eq $linkType "external" }} target="_blank" rel="noopener"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
+                <a href="{{ .URL }}" class="links-item"{{ if eq $linkType "external" }} target="_blank" rel="noopener"{{ end }}>{{ partial "utils/icon.html" (dict "Deliver" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
             {{ end }}
         </div>
     {{ end }}

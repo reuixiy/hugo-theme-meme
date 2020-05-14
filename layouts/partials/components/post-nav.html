@@ -12,12 +12,12 @@
         <ul class="post-nav">
             {{ if $next }}
                 <li class="post-nav-prev">
-                    <a href="{{ $next.RelPermalink }}" rel="prev">{{ printf `< %s` $next.LinkTitle | safeHTML }}</a>
+                    <a href="{{ $next.RelPermalink }}" rel="prev">&lt; {{$next.LinkTitle}}</a>
                 </li>
             {{ end }}
             {{ if $prev }}
                 <li class="post-nav-next">
-                    <a href="{{ $prev.RelPermalink }}" rel="next">{{ printf `%s >` $prev.LinkTitle | safeHTML }}</a>
+                    <a href="{{ $prev.RelPermalink }}" rel="next">{{ $prev.LinkTitle }} &gt;</a>
                 </li>
             {{ end }}
         </ul>
