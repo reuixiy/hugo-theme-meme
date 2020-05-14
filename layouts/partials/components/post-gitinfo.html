@@ -4,22 +4,24 @@
             {{ if or .Site.Params.displayCommitHash .Site.Params.displayCommitMessage }}
                 <div class="post-gitinfo-left">
                     {{ if .Site.Params.displayCommitHash }}
-                        {{ $icon := (replace (index .Site.Data.SVG .Site.Params.gitIcon) "icon" "icon git-icon") }}
                         <div class="gitinfo-item commit">
                             {{- with .Site.Params.repoURL -}}
-                                {{- $commit := (printf `<a href="%s/commit/%s" target="_blank" rel="noopener">%s%s</a>` . $.GitInfo.Hash $icon $.GitInfo.AbbreviatedHash) -}}
-                                {{- $.Scratch.Set "commit" $commit -}}
+                                <a href="{{ . }}/commit/{{ $.GitInfo.Hash }}" target="_blank" rel="noopener">
+                                    {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.gitIcon "class" "git-icon") -}}
+                                    {{- $.GitInfo.AbbreviatedHash -}}
+                                </a>
                             {{- else -}}
-                                {{- $.Scratch.Set "commit" $.GitInfo.AbbreviatedHash -}}
+                                {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.gitIcon "class" "git-icon") -}}
+                                {{- $.GitInfo.AbbreviatedHash -}}
                             {{- end -}}
-                            {{- $commit := .Scratch.Get "commit" -}}
-                            {{- printf `%s` $commit | safeHTML -}}
                         </div>
                     {{ end }}
                     {{ if .Site.Params.displayCommitMessage }}
                         {{ with .GitInfo.Subject }}
-                            {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.msgIcon) "icon" "icon msg-icon") }}
-                            <div class="gitinfo-item commit-msg">{{ printf `%s%s` $icon . | safeHTML }}</div>
+                            <div class="gitinfo-item commit-msg">
+                                {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.msgIcon "class" "msg-icon") -}}
+                                {{- . -}}
+                            </div>
                         {{ end }}
                     {{ end }}
                 </div>
@@ -28,16 +30,23 @@
                 <div class="post-gitinfo-right">
                     {{ if .Site.Params.displayFeedback }}
                         {{ with .Site.Params.repoURL }}
-                            {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.feedbackIcon) "icon" "icon feedback-icon") }}
-                            <div class="gitinfo-item feedback">{{ printf `<a href="%s/issues" target="_blank" rel="noopener">%s%s</a>` . $icon $.Site.Params.feedbackText | safeHTML }}</div>
+                            <div class="gitinfo-item feedback">
+                                <a href="{{ . }}/issues" target="_blank" rel="noopener">
+                                    {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.feedbackIcon "class" "feedback-icon") -}}
+                                    {{- $.Site.Params.feedbackText -}}
+                                </a>
+                            </div>
                         {{ end }}
                     {{ end }}
                     {{ if .Site.Params.displayEditLink }}
                         {{ with .Site.Params.repoEditURL }}
-                            {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.editIcon) "icon" "icon edit-icon") }}
-                            {{ $contentDir := $.Site.Params.contentDir }}
-                            {{ $content := (cond $.Site.IsMultiLingual (printf `/%s/` $contentDir) (printf `/content/`)) }}
-                            <div class="gitinfo-item edit">{{ printf `<a href="%s%s%s" target="_blank" rel="noopener">%s%s</a>` . $content $.Path $icon $.Site.Params.editText | safeHTML }}</div>
+                            {{ $contentDir := (cond $.Site.IsMultiLingual (printf `/%s/` $.Site.Params.contentDir) "/content/") }}
+                            <div class="gitinfo-item edit">
+                                <a href="{{ . }}{{ $contentDir }}{{ $.Path }}" target="_blank" rel="noopener">
+                                    {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.editIcon "class" "edit-icon") -}}
+                                    {{- $.Site.Params.editText -}}
+                                </a>
+                            </div>
                         {{ end }}
                     {{ end }}
                 </div>

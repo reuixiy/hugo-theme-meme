@@ -3,11 +3,11 @@
         <div class="post-tags">
             {{ range . }}
                 {{ $tag := . }}
-                {{ $url := urls.Parse (. | urlize) }}
-                {{ $path := $url.Path }}
+                <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                {{ $path := (urls.Parse ($tag | urlize)).Path }}
                 {{ with $.Site.GetPage (printf `/tags/%s` $path) }}
-                    {{ $icon := (replace (index $.Site.Data.SVG $.Site.Params.postTagsIcon) "icon" "icon tag-icon") }}
-                    <a href="{{ .RelPermalink }}" rel="tag" class="post-tags-link">{{ $icon | safeHTML }}{{ .LinkTitle | default $tag }}</a>
+                    {{ $icon := partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.postTagsIcon "class" "tag-icon") }}
+                    <a href="{{ .RelPermalink }}" rel="tag" class="post-tags-link">{{ $icon  }}{{ .LinkTitle | default $path }}</a>
                 {{ end }}
             {{ end }}
         </div>

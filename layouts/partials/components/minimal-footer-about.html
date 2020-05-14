@@ -3,29 +3,21 @@
         <footer class="minimal-footer-about">
             {{ with $.Site.Menus.socials }}
                 <div class="about-socials">
-                    {{ $length := sub (len .) 1 }}
                     {{ range $index, $value := . }}
                         {{- $linkType := (string .Pre) -}}
                         {{- $iconName := (string .Post) -}}
                         {{- $icon := (index $.Site.Data.SVG $iconName) -}}
-                        <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
-                        {{- if lt $index $length -}}
-                            {{- print " " -}}
-                        {{- end -}}
+                        <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "Deliver" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
                     {{ end }}
                 </div>
             {{ end }}
             {{ with $.Site.Menus.links }}
                 <div class="about-links">
-                    {{ $length := sub (len .) 1 }}
                     {{ range $index, $value := . }}
                         {{- $linkType := (string .Pre) -}}
                         {{- $iconName := (string .Post) -}}
                         {{- $icon := (index $.Site.Data.SVG $iconName) -}}
-                        <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ replace $icon "icon" (printf `icon %s` .Identifier) | safeHTML }}{{ .Name }}</a>
-                        {{- if lt $index $length -}}
-                            {{- print " " -}}
-                        {{- end -}}
+                        <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "Deliver" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
                     {{ end }}
                 </div>
             {{ end }}

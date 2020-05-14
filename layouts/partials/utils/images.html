@@ -28,7 +28,7 @@
 {{- .Scratch.Delete "images" -}}
 {{- with $imagesParam | default $imgsURL -}}
     {{- range . -}}
-        {{- $image := . | absURL | safeHTML -}}
+        {{- $image := . | absURL -}}
         {{- $.Scratch.Add "images" (slice $image) -}}
     {{- end -}}
 {{- end -}}

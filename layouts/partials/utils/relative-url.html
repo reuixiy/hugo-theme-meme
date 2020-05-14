@@ -5,7 +5,7 @@
 {{- $depth := (len (split (strings.TrimSuffix "/" $url) "/")) -}}
 
 {{- if eq $depth 1 -}}
-    {{- $url := printf "./%s" $filename | safeHTML -}}
+    {{- $url := printf "./%s" $filename -}}
     {{- $Deliver.Scratch.Set "url" $url -}}
 {{- else -}}
     {{- $Deliver.Scratch.Set "level" "" -}}

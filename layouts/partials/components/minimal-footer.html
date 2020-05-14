@@ -1,16 +1,15 @@
 {{ if and .Site.Params.enableMinimalFooter (in .Site.Params.mainSections .Section) }}
     <footer class="minimal-footer">
         {{ with .Params.tags }}
-            {{ $length := sub (len .) 1 }}
             <div class="post-tag">
                 {{- range $index, $tag := . -}}
-                    {{- $url := urls.Parse ($tag | urlize) -}}
-                    {{- $path := $url.Path -}}
+                    <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                    {{- $path := (urls.Parse ($tag | urlize)).Path -}}
                     {{- with $.Site.GetPage (printf `/tags/%s` $path) -}}
-                        <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default .LinkTitle | default $tag | lower | anchorize }}</a>
-                        {{- if lt $index $length -}}
-                            {{- print " " -}}
+                        {{- if gt $index 0 -}}
+                            {{- " " -}}
                         {{- end -}}
+                        <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                     {{- end -}}
                 {{- end -}}
             </div>
@@ -21,48 +20,32 @@
                     {{- with .Site.GetPage .Section -}}
                         <a href="{{ .RelPermalink }}" class="post-category-link active">{{ .Slug | default .Params.url | default .LinkTitle | default $.Section | lower | anchorize }}</a>
                     {{- end -}}
-                    {{- if gt (len .Site.Params.mainSections) 1 -}}
-                        {{- printf `%s` " | " | safeHTML -}}
-                        {{- $sections := (.Site.Params.mainSections | symdiff (slice .Section)) -}}
-                        {{- $length := sub (len $sections) 1 -}}
-                        {{- range $index, $section := $sections -}}
-                            {{- with $.Site.GetPage $section -}}
-                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .Params.url | default .LinkTitle | default $section | lower | anchorize }}</a>
-                                {{- if lt $index $length -}}
-                                    {{- printf `%s` " | " | safeHTML -}}
-                                {{- end -}}
-                            {{- end -}}
+                    {{- $sections := .Site.Params.mainSections | symdiff (slice .Section) -}}
+                    {{- range $index, $section := $sections -}}
+                        {{- " | " -}}
+                        {{- with $.Site.GetPage $section -}}
+                            <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .Params.url | default .LinkTitle | default $section | lower | anchorize }}</a>
                         {{- end -}}
                     {{- end -}}
                 {{ else }}
-                    {{ $sections := split (strings.TrimSuffix "/" ($.File.Dir | default $.Section)) "/" }}
-                    {{ with $sections }}
-                        {{ $.Scratch.Delete "sectionsDirMeta" }}
-                        {{ $.Scratch.Delete "sectionsMeta" }}
-                        {{ $.Scratch.Set "index" 0 }}
-                        {{ range $sections }}
-                            {{ $section := . }}
-                            {{ $.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
-                            {{ with $.Site.GetPage ($.Scratch.Get "sectionsDirMeta") }}
+                    {{ $pathParts := split (strings.TrimSuffix "/" ($.File.Dir | default $.Section)) "/" }}
+                    {{ $sections := dict }}
+                    {{ with $pathParts }}
+                        {{ range $index, $section := $pathParts }}
+                            {{ with $.Site.GetPage (printf `/%s` $section) }}
                                 {{ if (eq .Kind "section") }}
-                                    {{ $.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($.Scratch.Get "index")) .RelPermalink) (.Slug | default .Params.url | default .LinkTitle | default $section | lower | anchorize) }}
-                                    {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
+                                    {{ $sections = merge $sections (dict (printf `%s/%s` (string $index) .RelPermalink) (.Slug | default .Params.url | default .LinkTitle | default $section | lower | anchorize)) }}
                                 {{ end }}
                             {{ end }}
                         {{ end }}
                     {{ end }}
-                    {{ $sections := .Scratch.Get "sectionsMeta" }}
                     {{ with $sections }}
-                        {{ $length := (sub (len $sections) 1) }}
                         {{- range $link, $title := $sections -}}
                             {{- $index := $link | replaceRE `(\d+)/.+` `$1` | int -}}
-                            {{- if lt $index $length -}}
-                                {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
-                            {{- else -}}
-                                {{- $.Scratch.Set "delimiter" "" -}}
+                            {{- if gt $index 0 -}}
+                                {{- $.Site.Params.categoryDelimiter | default "/" -}}
                             {{- end -}}
-                            {{- $delimiter := ($.Scratch.Get "delimiter") -}}
-                            {{- printf `<a href="%s" class="post-category-link">%s</a>%s` ($link | replaceRE `\d+/(.+)` `$1`) ($title | lower) $delimiter | safeHTML -}}
+                            <a href="{{ $link | replaceRE `\d+/(.+)` `$1` }}" class="post-category-link">{{ $title | lower }}</a>
                         {{- end -}}
                     {{ end }}
                 {{ end }}
@@ -72,48 +55,37 @@
             {{ with .Params.categories }}
                 <div class="post-category">
                     {{ if $.Site.Params.enableVerticalBarStructure }}
-                        {{- $currentTopLevelCategory := (delimit (first 1 .) " ") -}}
-                        {{- $url := urls.Parse ($currentTopLevelCategory | urlize) -}}
-                        {{- $path := $url.Path -}}
+                        {{- $currentTopLevelCategory := (index . 0) -}}
+                        <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                        {{- $path := (urls.Parse ($currentTopLevelCategory | urlize)).Path -}}
                         {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
                             <a href="{{ .RelPermalink }}" class="post-category-link active">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                         {{- end -}}
-                        {{- $.Scratch.Delete "topLevelCategories" -}}
+                        {{- $categories := slice -}}
                         {{- range $.Site.RegularPages -}}
                             {{- with .Param "categories" -}}
-                                {{- $topLevelCategory := ((delimit (first 1 .) " ") | urlize) -}}
-                                {{- $.Scratch.Add "topLevelCategories" (slice $topLevelCategory) -}}
+                                {{- $topLevelCategory := (index . 0) -}}
+                                {{- $categories = union $categories (slice $topLevelCategory) -}}
                             {{- end -}}
                         {{- end -}}
-                        {{- $categories := uniq ($.Scratch.Get "topLevelCategories") -}}
-                        {{- if gt (len $categories) 1 -}}
-                            {{- printf `%s` " | " | safeHTML -}}
-                            {{- $categories := ($categories | symdiff (slice ($currentTopLevelCategory | urlize))) -}}
-                            {{- $length := sub (len $categories) 1 -}}
-                            {{- range $index, $category := $categories -}}
-                                {{- $category := urls.Parse $category -}}
-                                {{- $path := $category.Path -}}
-                                {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
-                                    <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
-                                    {{- if lt $index $length -}}
-                                        {{- printf `%s` " | " | safeHTML -}}
-                                    {{- end -}}
-                                {{- end -}}
+                        {{- $categories = uniq $categories | symdiff (slice $currentTopLevelCategory) -}}
+                        {{- range $index, $category := $categories -}}
+                            {{- " | " -}}
+                            <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                            {{- $path := (urls.Parse ($category | urlize)).Path -}}
+                            {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
+                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                             {{- end -}}
                         {{- end -}}
                     {{ else }}
-                        {{ $length := sub (len .) 1 }}
                         {{- range $index, $category := . -}}
-                            {{- if lt $index $length -}}
-                                {{- $.Scratch.Set "delimiter" ($.Site.Params.categoryDelimiter | default "/") -}}
-                            {{- else -}}
-                                {{- $.Scratch.Set "delimiter" "" -}}
+                            {{- if gt $index 0 -}}
+                                {{- $.Site.Params.categoryDelimiter | default "/" -}}
                             {{- end -}}
-                            {{- $delimiter := ($.Scratch.Get "delimiter") -}}
-                            {{- $url := urls.Parse ($category | urlize) -}}
-                            {{- $path := $url.Path -}}
+                            <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                            {{- $path := (urls.Parse ($category | urlize)).Path -}}
                             {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
-                                {{- printf `<a href="%s" class="post-category-link">%s</a>%s` .RelPermalink (.Slug | default .LinkTitle | default $category | lower | anchorize) $delimiter | safeHTML -}}
+                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                             {{- end -}}
                         {{- end -}}
                     {{ end }}

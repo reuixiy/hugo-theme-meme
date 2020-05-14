@@ -2,7 +2,7 @@
     {{ $related := .Site.RegularPages.Related . | first (.Site.Params.relatedPostsNumber | default 5) }}
     {{ with $related }}
         <div class="related-posts">
-            <h2 class="related-title">{{ i18n "relatedPosts" }}{{ replace (index $.Site.Data.SVG $.Site.Params.relatedPostsIcon) "icon" "icon related-icon" | safeHTML }}</h2>
+            <h2 class="related-title">{{ i18n "relatedPosts" }}{{ partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.relatedPostsIcon "class" "related-icon") }}</h2>
             <ul class="related-list">
                 {{ range . }}
                     <li class="related-item">

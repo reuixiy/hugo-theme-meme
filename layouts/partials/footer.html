@@ -2,84 +2,78 @@
 {{ if or (and .IsHome .Site.Params.displayFooterInHome) (and (not .IsHome) .Site.Params.enableFooter) }}
     <footer id="footer" class="footer">
         <div class="footer-inner">
-            {{- if .Site.Params.displayCopyrightSymbol -}}
-                {{- .Scratch.Set "siteInfoCopyright" "©&nbsp;" -}}
-            {{- else -}}
-                {{- .Scratch.Set "siteInfoCopyright" "" -}}
-            {{- end -}}
-            {{- $siteInfoCopyright := .Scratch.Get "siteInfoCopyright" -}}
+            <div class="site-info">
+              {{- if .Site.Params.displayCopyrightSymbol -}}
+                  ©&nbsp;
+              {{- end -}}
 
-            {{- if .Site.Params.displaySiteCreatedYear -}}
-                {{- .Scratch.Set "siteInfoCreatedYear" (printf `%s–%s` (dateFormat "2006" (time .Site.Params.siteCreatedTime)) (now.Format "2006")) -}}
-            {{- else -}}
-                {{- .Scratch.Set "siteInfoCreatedYear" (now.Format "2006") -}}
-            {{- end -}}
-            {{- $siteInfoCreatedYear := .Scratch.Get "siteInfoCreatedYear" -}}
+              {{- if .Site.Params.displaySiteCreatedYear -}}
+                  {{- dateFormat "2006" (time .Site.Params.siteCreatedTime) -}}–
+              {{- end -}}
+              {{- now.Format "2006" -}}
 
-            {{- with .Site.Params.iconBetweenYearAndAuthor -}}
-                {{- $.Scratch.Set "siteInfoIcon" (printf `&nbsp;%s&nbsp;` (replace (index $.Site.Data.SVG .) "icon" "icon footer-icon")) -}}
-            {{- else -}}
-                {{- $.Scratch.Set "siteInfoIcon" "&nbsp;" -}}
-            {{- end -}}
-            {{- $siteInfoIcon := .Scratch.Get "siteInfoIcon" -}}
+              {{- with .Site.Params.iconBetweenYearAndAuthor -}}
+                  &nbsp;{{- partial "utils/icon.html" (dict "Deliver" $Deliver "name" . "class" "footer-icon") -}}&nbsp;
+              {{- else -}}
+                  &nbsp;
+              {{- end -}}
 
-            <div class="site-info">{{ printf `%s%s%s%s` $siteInfoCopyright $siteInfoCreatedYear $siteInfoIcon .Site.Author.name | safeHTML }}</div>
+              {{- .Site.Author.name -}}
+            </div>
 
             {{- if .Site.Params.displayPoweredBy }}
                 {{- $raw := `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [MemE](https://github.com/reuixiy/hugo-theme-meme)` -}}
                 {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := .Scratch.Get "Content" -}}
-                <div class="powered-by">{{ $Content | safeHTML }}</div>
+                <div class="powered-by">{{ $Content }}</div>
             {{- end }}
 
             {{- if .Site.Params.displaySiteCopyright }}
                 {{- $raw := .Site.Copyright -}}
                 {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := .Scratch.Get "Content" -}}
-                <div class="site-copyright">{{ $Content | safeHTML }}</div>
+                <div class="site-copyright">{{ $Content }}</div>
             {{- end }}
 
             {{- with .Site.Params.customFooter }}
                 {{- $raw := . -}}
                 {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                <div class="custom-footer">{{ $Content | safeHTML }}</div>
+                <div class="custom-footer">{{ $Content }}</div>
             {{- end }}
 
             {{- if and .Site.Params.displayBusuanziSiteUVAndPV (eq hugo.Environment "production") }}
                 <div class="busuanzi-site-uv-and-pv">
                     <span id="busuanzi_container_site_uv">
                         {{- with .Site.Params.busuanziSiteUVText -}}
-                            {{- $.Scratch.Set "busuanziSiteUVText" (printf `%s&nbsp;` .) -}}
-                        {{- else -}}
-                            {{- $.Scratch.Set "busuanziSiteUVText" "" -}}
+                            {{- . -}}
+                            &nbsp;
                         {{- end -}}
-                        {{- $busuanziSiteUVText := .Scratch.Get "busuanziSiteUVText" -}}
+
                         {{- with .Site.Params.busuanziSiteUVIcon -}}
-                            {{- $busuanziSiteUVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSiteUVIcon) "icon" "icon busuanzi-site-uv" -}}
-                            {{- $.Scratch.Set "busuanziSiteUVIcon" (printf `%s&nbsp;` $busuanziSiteUVIcon) -}}
-                        {{- else -}}
-                            {{- $.Scratch.Set "busuanziSiteUVIcon" "" -}}
+                            {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.busuanziSiteUVIcon "class" "busuanzi-site-uv") -}}
+                            &nbsp;
                         {{- end -}}
-                        {{- $busuanziSiteUVIcon := .Scratch.Get "busuanziSiteUVIcon" -}}
-                        {{- printf `%s%s%s` $busuanziSiteUVText $busuanziSiteUVIcon `<span id="busuanzi_value_site_uv"></span>` | safeHTML -}}
+
+                        <!-- Avoid extra spaces -->
+                        {{- print `<span id="busuanzi_value_site_uv"></span>` | safeHTML -}}
                     </span>
+
                     {{- print "&nbsp;|&nbsp;" | safeHTML -}}
+
                     <span id="busuanzi_container_site_pv">
                         {{- with .Site.Params.busuanziSitePVText -}}
-                            {{- $.Scratch.Set "busuanziSitePVText" (printf `%s&nbsp;` .) -}}
-                        {{- else -}}
-                            {{- $.Scratch.Set "busuanziSitePVText" "" -}}
+                            {{- . -}}
+                            &nbsp;
                         {{- end -}}
-                        {{- $busuanziSitePVText := .Scratch.Get "busuanziSitePVText" -}}
+
                         {{- with .Site.Params.busuanziSitePVIcon -}}
-                            {{- $busuanziSitePVIcon := replace (index $.Site.Data.SVG $.Site.Params.busuanziSitePVIcon) "icon" "icon busuanzi-site-pv" -}}
-                            {{- $.Scratch.Set "busuanziSitePVIcon" (printf `%s&nbsp;` $busuanziSitePVIcon) -}}
-                        {{- else -}}
-                            {{- $.Scratch.Set "busuanziSitePVIcon" "" -}}
+                            {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.busuanziSitePVIcon "class" "busuanzi-site-pv") -}}
+                            &nbsp;
                         {{- end -}}
-                        {{- $busuanziSitePVIcon := .Scratch.Get "busuanziSitePVIcon" -}}
-                        {{- printf `%s%s%s` $busuanziSitePVText $busuanziSitePVIcon `<span id="busuanzi_value_site_pv"></span>` | safeHTML -}}
+
+                        <!-- Avoid extra spaces -->
+                        {{- print `<span id="busuanzi_value_site_pv"></span>` | safeHTML -}}
                     </span>
                 </div>
             {{- end }}

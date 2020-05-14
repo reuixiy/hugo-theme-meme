@@ -11,8 +11,6 @@
                 {{ end }}
                 <summary class="summary">
                     {{ partial "utils/summary.html" . }}
-                    {{ $summary := .Scratch.Get "summary" }}
-                    {{ $summary | safeHTML }}
                 </summary>
                 {{ if .Truncated }}
                     <div class="read-more-container">
@@ -25,12 +23,12 @@
             <ul class="pagination">
                 {{ if $paginator.HasPrev }}
                     <li class="pagination-prev">
-                        <a href="{{ $paginator.Prev.URL }}" rel="prev">{{ printf `< %s` (i18n "prevPage") | safeHTML }}</a>
+                        <a href="{{ $paginator.Prev.URL }}" rel="prev">&lt; {{ i18n "prevPage" }}</a>
                     </li>
                 {{ end }}
                 {{ if $paginator.HasNext }}
                     <li class="pagination-next">
-                        <a href="{{ $paginator.Next.URL }}" rel="next">{{ printf `%s >` (i18n "nextPage") | safeHTML }}</a>
+                        <a href="{{ $paginator.Next.URL }}" rel="next">{{ i18n "nextPage" }} &gt;</a>
                     </li>
                 {{ end }}
             </ul>

@@ -42,10 +42,10 @@
 
 {{- if and $Deliver.IsPage (in $Deliver.Site.Params.mainSections $Deliver.Section) -}}
     <meta property="og:type" content="article" />
-    {{ printf `<meta property="article:published_time" content="%s" />` $pubDate | safeHTML }}
-    {{ printf `<meta property="article:modified_time" content="%s" />` $modDate | safeHTML }}
+    <meta property="article:published_time" content="{{ $pubDate }}" />
+    <meta property="article:modified_time" content="{{ $modDate }}" />
     {{ if not $Deliver.ExpiryDate.IsZero -}}
-        {{ printf `<meta property="article:expiration_time" content="%s" />` ($Deliver.ExpiryDate.Format "2006-01-02T15:04:05-07:00") | safeHTML }}
+        <meta property="article:expiration_time" content="{{ $Deliver.ExpiryDate.Format "2006-01-02T15:04:05-07:00" }}" />
     {{- end }}
     <meta property="article:section" content="{{ $Deliver.Section }}" />
 {{ else -}}

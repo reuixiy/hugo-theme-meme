@@ -71,7 +71,7 @@
                                 {{ $.Scratch.Set "year" .Key }}
                             {{ end }}
                             {{ $year := $.Scratch.Get "year" }}
-                            <h2 class="list-year">{{ $year }}{{ if $.Site.Params.chineseZodiac }}{{ replace (index $.Site.Data.SVG $zodiacName) "icon" "icon chinese-zodiac" | safeHTML }}{{ end }}</h2>
+                            <h2 class="list-year">{{ $year }}{{ if $.Site.Params.chineseZodiac }}{{ partial "utils/icon.html" (dict "Deliver" $ "name" $zodiacName "class" "chinese-zodiac") }}{{ end }}</h2>
                             {{ if $.Site.Params.groupByMonth }}
                                 {{ range .Pages.GroupByDate "January" }}
                                     {{ $.Scratch.Delete "month" }}

@@ -24,7 +24,7 @@
                 {{- $raw := . -}}
                 {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                 {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                <div class="post-subtitle">{{ $Content | safeHTML }}</div>
+                <div class="post-subtitle">{{ $Content }}</div>
             {{ end }}
 
             {{ if .Site.Params.displayPostDescription }}
@@ -32,7 +32,7 @@
                     {{- $raw := . -}}
                     {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
                     {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                    <div class="post-description">{{ $Content | safeHTML }}</div>
+                    <div class="post-description">{{ $Content }}</div>
                 {{ end }}
             {{ end }}
 
