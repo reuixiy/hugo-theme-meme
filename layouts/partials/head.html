@@ -94,9 +94,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="{{ .Site.Title }}" />
-    <meta name="msapplication-starturl" content="{{ "/" | relURL }}" />
+    <meta name="msapplication-starturl" content="{{ (.Site.GetPage "/").RelPermalink }}" />
     <meta name="msapplication-TileColor" content="{{ .Site.Params.msApplicationTileColor }}" />
-    <meta name="msapplication-TileImage" content="{{ "icons/mstile-150x150.png" | relURL }}" />
+    <meta name="msapplication-TileImage" content="{{ (.Site.GetPage "/").RelPermalink }}icons/mstile-150x150.png" />
     <link rel="manifest" href="{{ $manifest | relURL }}" />
 
     <!-- Atom / RSS -->
