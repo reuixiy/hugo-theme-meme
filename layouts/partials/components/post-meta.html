@@ -56,9 +56,11 @@
                         {{- if ne $index 0 -}}
                             {{- $Deliver.Site.Params.categoryDelimiter | default "/" -}}
                         {{- end -}}
-                        {{- with $Deliver.Site.GetPage (printf `/categories/%s` ($category | urlize)) -}}
+                        <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                        {{- $path := (urls.Parse ($category | urlize)).Path -}}
+                        {{- with $Deliver.Site.GetPage (printf `/categories/%s` $path) -}}
                             <a href="{{- .RelPermalink -}}" class="category-link">
-                                {{- .LinkTitle | default $category -}}
+                                {{- .LinkTitle | default $path -}}
                             </a>
                         {{- end -}}
                     {{- end -}}

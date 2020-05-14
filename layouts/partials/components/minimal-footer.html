@@ -3,11 +3,13 @@
         {{ with .Params.tags }}
             <div class="post-tag">
                 {{- range $index, $tag := . -}}
-                    {{- with $.Site.GetPage (printf `/tags/%s` ($tag | urlize)) -}}
+                    <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                    {{- $path := (urls.Parse ($tag | urlize)).Path -}}
+                    {{- with $.Site.GetPage (printf `/tags/%s` $path) -}}
                         {{- if gt $index 0 -}}
                             {{- " " -}}
                         {{- end -}}
-                        <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default .LinkTitle | default $tag | lower | anchorize }}</a>
+                        <a href="{{ .RelPermalink }}" rel="tag" class="post-tag-link">#{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                     {{- end -}}
                 {{- end -}}
             </div>
@@ -54,21 +56,25 @@
                 <div class="post-category">
                     {{ if $.Site.Params.enableVerticalBarStructure }}
                         {{- $currentTopLevelCategory := (index . 0) -}}
-                        {{- with $.Site.GetPage (printf `/categories/%s` ($currentTopLevelCategory | urlize)) -}}
-                            <a href="{{ .RelPermalink }}" class="post-category-link active">{{ .Slug | default .LinkTitle | default $currentTopLevelCategory | lower | anchorize }}</a>
+                        <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                        {{- $path := (urls.Parse ($currentTopLevelCategory | urlize)).Path -}}
+                        {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
+                            <a href="{{ .RelPermalink }}" class="post-category-link active">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                         {{- end -}}
                         {{- $categories := slice -}}
                         {{- range $.Site.RegularPages -}}
                             {{- with .Param "categories" -}}
-                                {{- $topLevelCategory := (index . 0 | urlize) -}}
+                                {{- $topLevelCategory := (index . 0) -}}
                                 {{- $categories = union $categories (slice $topLevelCategory) -}}
                             {{- end -}}
                         {{- end -}}
                         {{- $categories = uniq $categories | symdiff (slice $currentTopLevelCategory) -}}
                         {{- range $index, $category := $categories -}}
                             {{- " | " -}}
-                            {{- with $.Site.GetPage (printf `/categories/%s` $category) -}}
-                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .LinkTitle | default $category | lower | anchorize }}</a>
+                            <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                            {{- $path := (urls.Parse ($category | urlize)).Path -}}
+                            {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
+                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                             {{- end -}}
                         {{- end -}}
                     {{ else }}
@@ -76,8 +82,10 @@
                             {{- if gt $index 0 -}}
                                 {{- $.Site.Params.categoryDelimiter | default "/" -}}
                             {{- end -}}
-                            {{- with $.Site.GetPage (printf `/categories/%s` ($category | urlize )) -}}
-                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .LinkTitle | default $category | lower | anchorize }}</a>
+                            <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
+                            {{- $path := (urls.Parse ($category | urlize)).Path -}}
+                            {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
+                                <a href="{{ .RelPermalink }}" class="post-category-link">{{ .Slug | default .LinkTitle | default $path | lower | anchorize }}</a>
                             {{- end -}}
                         {{- end -}}
                     {{ end }}
