@@ -8,7 +8,7 @@
               {{- end -}}
 
               {{- if .Site.Params.displaySiteCreatedYear -}}
-                  {{- dateFormat "2006" (time .Site.Params.siteCreatedTime) -}}-
+                  {{- dateFormat "2006" (time .Site.Params.siteCreatedTime) -}}–
               {{- end -}}
               {{- now.Format "2006" -}}
 
