@@ -85,7 +85,6 @@
             {{ end }}
 
             {{ if .Site.Params.shareOnQQ }}
-                {{ $icon := (replace .Site.Data.SVG.qq "icon" "icon qq-icon") }}
                 <div class="share-item qq">
                     {{ $url := (printf `https://connect.qq.com/widget/shareqq/index.html?url=%s&title=%s&summary=%s&pics=%s&site=%s` .Permalink .Title $description $images .Site.Title) }}
                     <a href="{{ $url | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "qq" }}" target="_blank" rel="noopener">
