@@ -1,7 +1,6 @@
 {{- $Deliver := . -}}
 {{ if and .Site.Params.enablePostCopyright (.Params.displayCopyright | default .Site.Params.displayPostCopyright) }}
-    {{ partial "utils/author.html" . }}
-    {{ $author := .Scratch.Get "author" }}
+    {{ $author := partial "utils/author.html" . }}
     {{ with $author.name }}
         <ul class="post-copyright">
             <li class="copyright-item author">

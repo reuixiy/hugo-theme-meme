@@ -12,9 +12,6 @@
 {{- partial "utils/date.html" $Deliver -}}
 {{- $pubDate := $Deliver.Scratch.Get "pubDate" -}}
 {{- $modDate := $Deliver.Scratch.Get "modDate" -}}
-<!-- Author -->
-{{- partial "utils/author.html" $Deliver -}}
-{{- $author := $Deliver.Scratch.Get "author" -}}
 <!-- Images -->
 {{- partial "utils/images.html" $Deliver -}}
 {{- $images := $Deliver.Scratch.Get "images" -}}
