@@ -14,8 +14,7 @@
 <!-- Author -->
 {{- $author := partial "utils/author.html" $Deliver -}}
 <!-- Images -->
-{{- partial "utils/images.html" $Deliver -}}
-{{- $images := $Deliver.Scratch.Get "images" -}}
+{{- $images := partial "utils/images.html" $Deliver -}}
 
 {{- if $Deliver.IsHome -}}
 <script type="application/ld+json">

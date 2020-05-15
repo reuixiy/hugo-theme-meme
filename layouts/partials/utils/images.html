@@ -1,34 +1,28 @@
-<!-- Auto Detect Images -->
-{{- if .Site.Params.autoDetectImages -}}
-    {{- partial "utils/auto-detect-images.html" . -}}
-{{- end -}}
-{{- $imgsURL := .Scratch.Get "imgsURL" -}}
+{{- $imgs := .Params.images -}}
 
-<!-- Image Hosting -->
-{{- .Scratch.Delete "imagesParam" -}}
-{{- with .Params.images -}}
-    {{- if and $.Site.Params.enableImageHost $.Site.Params.headAlso -}}
-        {{- if (eq hugo.Environment "production") -}}
-            {{- range . -}}
+<!-- Auto Detect Images -->
+{{- if and (not $imgs) .Site.Params.autoDetectImages -}}
+    {{- $imgs = partial "utils/auto-detect-images.html" . -}}
+{{- end -}}
+
+{{- with $imgs -}}
+    {{- $translated := slice -}}
+    {{- range $index, $img := $imgs -}}
+        <!-- Image Hosting -->
+        {{- if and $.Site.Params.enableImageHost $.Site.Params.headAlso -}}
+            {{- if (eq hugo.Environment "production") -}}
                 {{- if ne (substr . 0 4) "http" -}}
-                    {{- $image := printf `%s%s` $.Site.Params.imageHostURL (strings.TrimPrefix "/" .) -}}
-                    {{- $.Scratch.Add "imagesParam" (slice $image) -}}
-                {{- else -}}
-                    {{- $.Scratch.Add "imagesParam" (slice .) -}}
+                    {{- $img = printf `%s%s` $.Site.Params.imageHostURL (strings.TrimPrefix "/" $img) -}}
                 {{- end -}}
             {{- end -}}
         {{- end -}}
-    {{- else -}}
-        {{- $.Scratch.Set "imagesParam" . -}}
-    {{- end -}}
-{{- end -}}
-{{- $imagesParam := .Scratch.Get "imagesParam" -}}
 
-<!-- Image absURL -->
-{{- .Scratch.Delete "images" -}}
-{{- with $imagesParam | default $imgsURL -}}
-    {{- range . -}}
-        {{- $image := . | absURL -}}
-        {{- $.Scratch.Add "images" (slice $image) -}}
+        <!-- Make URLs absolute -->
+        {{- $img = $img | absURL -}}
+
+        {{- $translated = union $translated (slice $img) -}}
     {{- end -}}
+    {{- $imgs = $translated -}}
 {{- end -}}
+
+{{- return $imgs -}}

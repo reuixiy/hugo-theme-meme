@@ -13,8 +13,7 @@
 {{- $pubDate := $Deliver.Scratch.Get "pubDate" -}}
 {{- $modDate := $Deliver.Scratch.Get "modDate" -}}
 <!-- Images -->
-{{- partial "utils/images.html" $Deliver -}}
-{{- $images := $Deliver.Scratch.Get "images" -}}
+{{- $images := partial "utils/images.html" $Deliver -}}
 
 <meta property="og:title" content="{{ $rawTitle }}" />
 <meta property="og:description" content="{{ $description }}" />
