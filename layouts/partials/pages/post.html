@@ -22,17 +22,13 @@
 
             {{ with .Params.subtitle }}
                 {{- $raw := . -}}
-                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
-                {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                <div class="post-subtitle">{{ $Content }}</div>
+                <div class="post-subtitle">{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</div>
             {{ end }}
 
             {{ if .Site.Params.displayPostDescription }}
                 {{ with .Params.description }}
                     {{- $raw := . -}}
-                    {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
-                    {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                    <div class="post-description">{{ $Content }}</div>
+                    <div class="post-description">{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</div>
                 {{ end }}
             {{ end }}
 
@@ -47,10 +43,8 @@
                 {{ $toc -}}
             {{- end -}}
 
-            {{- partial "utils/content.html" . -}}
-            {{- $Content := .Scratch.Get "Content" -}}
             <div class="post-body">
-                {{- $Content -}}
+              {{ partial "utils/content.html" . }}
             </div>
 
         </article>

@@ -1,19 +1,15 @@
 {{- $Deliver := . -}}
-{{- $raw := .Content -}}
-{{- partial "utils/markdownify.html" (dict "Deliver" . "raw" $raw "isContent" true) -}}
+{{- $Content := partial "utils/markdownify.html" (dict "Deliver" . "raw" .Content "isContent" true) -}}
 
 <!-- Link Headings to TOC -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
 {{- if and $enableTOC .Site.Params.linkHeadingsToTOC -}}
     {{- $regexPatternLinkHeadings := `(<h[1-6] id="([^"]+)">)(.+)?(</h[1-6]+>)` -}}
     {{- $regexReplacementLinkHeadings := `$1<a href="#contents:$2" class="headings">$3</a>$4` -}}
-    {{- $Content := $Content | replaceRE $regexPatternLinkHeadings $regexReplacementLinkHeadings | safeHTML -}}
-    {{- .Scratch.Set "Content" $Content -}}
+    {{- $Content = $Content | replaceRE $regexPatternLinkHeadings $regexReplacementLinkHeadings -}}
 {{- end -}}
 
 <!-- Headings Anchor -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.enableHeadingsAnchor -}}
     {{- with .Site.Params.headingsOpt -}}
         {{- $headings := . -}}
@@ -40,12 +36,10 @@
 
     {{- $regexPatternHeadingsAnchor := (printf `(<h[%s] id="([^"]+)">)(.+)?(</h[%s]+>)` $headings $headings) -}}
     {{- $regexReplacementHeadingsAnchor := $replacement -}}
-    {{- $Content := $Content | replaceRE $regexPatternHeadingsAnchor $regexReplacementHeadingsAnchor | safeHTML -}}
-    {{- .Scratch.Set "Content" $Content -}}
+    {{- $Content = $Content | replaceRE $regexPatternHeadingsAnchor $regexReplacementHeadingsAnchor -}}
 {{- end -}}
 
 <!-- Drop Cap -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- if eq .Type "poetry" -}}
     {{- $enableDropCap := .Params.dropCap | default false -}}
     {{- .Scratch.Set "enableDropCap" $enableDropCap -}}
@@ -59,12 +53,10 @@
     {{- $regexReplacementDropCap := `$1 style="text-indent:0"$2<span class="drop-cap">$3</span>$4` -}}
     {{- $firstParagraphOld := (delimit (findRE $regexPatternDropCap $Content 1) " ") -}}
     {{- $firstParagraphNew := (replaceRE $regexPatternDropCap $regexReplacementDropCap $firstParagraphOld) -}}
-    {{- $Content := replace $Content $firstParagraphOld $firstParagraphNew | safeHTML -}}
-    {{- .Scratch.Set "Content" $Content -}}
+    {{- $Content = replace $Content $firstParagraphOld $firstParagraphNew -}}
 {{- end -}}
 
 <!-- Drop Cap After `<hr />` -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- $enableDropCapAfterHr := .Params.dropCapAfterHr | default .Site.Params.enableDropCapAfterHr -}}
 {{- if ne .Type "poetry" -}}
     {{- if $enableDropCapAfterHr -}}
@@ -79,60 +71,48 @@
 
         {{- $regexPatternDropCapAfterHr := `(\n(<hr />|<hr>))(\n<p)(>)([^<])` -}}
         {{- $regexReplacementDropCapAfterHr := $replacement -}}
-        {{- $Content := $Content | replaceRE $regexPatternDropCapAfterHr $regexReplacementDropCapAfterHr | safeHTML -}}
-        {{- .Scratch.Set "Content" $Content -}}
+        {{- $Content = $Content | replaceRE $regexPatternDropCapAfterHr $regexReplacementDropCapAfterHr -}}
     {{- end -}}
 {{- end -}}
 
 <!-- Footnote Ref with Square Brackets `[]` -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.squareBrackets -}}
     {{- $regexPatternFootnoteRef := `(<sup id="fnref:\d+"><a href="#fn:\d+"[^>]+>)(\d+)(</a></sup>)` -}}
     {{- $regexReplacementFootnoteRef := `$1[$2]$3` -}}
-    {{- $Content := $Content | replaceRE $regexPatternFootnoteRef $regexReplacementFootnoteRef | safeHTML -}}
-    {{- .Scratch.Set "Content" $Content -}}
+    {{- $Content = $Content | replaceRE $regexPatternFootnoteRef $regexReplacementFootnoteRef -}}
 {{- end -}}
 
 <!-- Delete Footnote `<hr />` -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.insertHrBySelf -}}
     {{- $regexPatternDeleteHr := `(<hr />|<hr>)\n(<section class="footnotes" role="doc-endnotes">)` -}}
     {{- $regexReplacementDeleteHr := `$2` -}}
-    {{- $Content := $Content | replaceRE $regexPatternDeleteHr $regexReplacementDeleteHr | safeHTML -}}
-    {{- .Scratch.Set "Content" $Content -}}
+    {{- $Content = $Content | replaceRE $regexPatternDeleteHr $regexReplacementDeleteHr -}}
 {{- end -}}
 
 <!-- Replace `footnoteReturnLinkContents` with icon -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- with .Site.Params.footnoteReturnLinkIcon -}}
     {{- $icon := (partial "utils/icon.html" (dict "Deliver" $ "name" . "class" "footnote-icon")) -}}
     {{- $replacement := (printf `${1}%s$3` $icon) -}}
 
     {{- $regexPatternfootnoteReturnLinkIcon := `(href="#fnref[^>]+>)([^<]+)(.+)` -}}
     {{- $regexReplacementfootnoteReturnLinkIcon := $replacement -}}
-    {{- $Content := $Content | replaceRE $regexPatternfootnoteReturnLinkIcon $regexReplacementfootnoteReturnLinkIcon | safeHTML -}}
-    {{- $.Scratch.Set "Content" $Content -}}
+    {{- $Content = $Content | replaceRE $regexPatternfootnoteReturnLinkIcon $regexReplacementfootnoteReturnLinkIcon -}}
 {{- end -}}
 
 <!-- Image & Video Footnote -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- $regexPatternFootnoteImage := `(<sup)(.+</sup><(img|video))` -}}
 {{- $regexReplacementFootnoteImage := `$1 style="float:right"$2` -}}
-{{- $Content := $Content | replaceRE $regexPatternFootnoteImage $regexReplacementFootnoteImage | safeHTML -}}
-{{- .Scratch.Set "Content" $Content -}}
+{{- $Content = $Content | replaceRE $regexPatternFootnoteImage $regexReplacementFootnoteImage -}}
 
 <!-- Image & Video Caption -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- if .Site.Params.enableCaption -}}
     {{- $captionPrefix := .Site.Params.captionPrefix -}}
     {{- $regexPatternCaption := `(<(img|video).+) title="([^"]+)"( controls)?( />|>)(</video>)?` -}}
     {{- $regexReplacementCaption := (printf `$1$4$5$6<span class="caption">%s$3</span>` $captionPrefix) -}}
-    {{- $Content := $Content | replaceRE $regexPatternCaption $regexReplacementCaption | safeHTML -}}
-    {{- .Scratch.Set "Content" $Content -}}
+    {{- $Content = $Content | replaceRE $regexPatternCaption $regexReplacementCaption -}}
 {{- end -}}
 
 <!-- Image Hosting -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- if and .Site.Params.enableImageHost (eq hugo.Environment "production") -}}
     {{- $hostURL := .Site.Params.imageHostURL -}}
     {{- $temps := findRE `<(img) src="/?([^":]+)` $Content | uniq -}}
@@ -142,15 +122,13 @@
                 {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
                 {{- $prefix := replaceRE `(<(img) src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
-                {{- $Content := replace ($.Scratch.Get "Content") . $replacement | safeHTML -}}
-                {{- $.Scratch.Set "Content" $Content -}}
+                {{- $Content = replace $Content . $replacement -}}
             {{- end -}}
         {{- end -}}
     {{- end -}}
 {{- end -}}
 
 <!-- Video Hosting -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- if and .Site.Params.enableVideoHost (eq hugo.Environment "production") -}}
     {{- $hostURL := .Site.Params.videoHostURL -}}
     {{- $temps := findRE `<(video) src="/?([^":]+)` $Content | uniq -}}
@@ -160,27 +138,23 @@
                 {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
                 {{- $prefix := replaceRE `(<(video) src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
-                {{- $Content := replace ($.Scratch.Get "Content") . $replacement | safeHTML -}}
-                {{- $.Scratch.Set "Content" $Content -}}
+                {{- $Content = replace $Content . $replacement -}}
             {{- end -}}
         {{- end -}}
     {{- end -}}
 {{- end -}}
 
 <!-- Paragraph Indent -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- $enableIndent := (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) -}}
 {{- if ne .Type "poetry" -}}
     {{- if $enableIndent -}}
         {{- $regexPatternIndent := `((</p>|<blockquote>)\n<p)(>)(.+(<br />|<br>))` -}}
         {{- $regexReplacementIndent := `$1 style="text-indent:0;padding-left:2em;margin:1em 0"$3$4` -}}
-        {{- $Content := $Content | replaceRE $regexPatternIndent $regexReplacementIndent | safeHTML -}}
-        {{- .Scratch.Set "Content" $Content -}}
+        {{- $Content = $Content | replaceRE $regexPatternIndent $regexReplacementIndent -}}
     {{- end -}}
 {{- end -}}
 
 <!-- Do NOT Indent The First Paragraph -->
-{{- $Content := .Scratch.Get "Content" -}}
 {{- if and (not (.Params.indentFirstParagraph | default .Site.Params.indentFirstParagraph)) $enableIndent -}}
     {{- if ne .Type "poetry" -}}
         {{- if not $enableDropCap -}}
@@ -188,10 +162,8 @@
             {{- $replacement := `$1 style="text-indent:0"$2` -}}
             {{- $firstParagraphOld := (delimit (findRE $regex $Content 1) " ") -}}
             {{- $firstParagraphNew := (replaceRE $regex $replacement $firstParagraphOld) -}}
-            {{- $Content := replace $Content $firstParagraphOld $firstParagraphNew | safeHTML -}}
-            {{- .Scratch.Set "Content" $Content -}}
+            {{- $Content = replace $Content $firstParagraphOld $firstParagraphNew -}}
         {{- end -}}
-        {{- $Content := .Scratch.Get "Content" -}}
         {{- if not $enableDropCapAfterHr -}}
             {{- $regex := `((</h[1-6]>|<hr>|<hr />)\n(<blockquote>\n)?<p)(>[^<])` -}}
             {{- $.Scratch.Set "regex" $regex -}}
@@ -201,19 +173,16 @@
         {{- end -}}
         {{- $regex := .Scratch.Get "regex" -}}
         {{- $replacement := `$1 style="text-indent:0"$4` -}}
-        {{- $Content := $Content | replaceRE $regex $replacement | safeHTML -}}
-        {{- .Scratch.Set "Content" $Content -}}
+        {{- $Content = $Content | replaceRE $regex $replacement -}}
     {{- end -}}
 {{- end -}}
 
 <!-- Dark Mode -->
 {{- if .Site.Params.enableHighlight -}}
     {{- if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") -}}
-        {{- $Content := .Scratch.Get "Content" -}}
         {{- $regexPatternDarkmode := `(<(div|pre) class=")chroma(">)` -}}
         {{- $regexReplacementDarkmode := `${1}chroma-dark${3}` -}}
-        {{- $Content := $Content | replaceRE $regexPatternDarkmode $regexReplacementDarkmode | safeHTML -}}
-        {{- .Scratch.Set "Content" $Content -}}
+        {{- $Content = $Content | replaceRE $regexPatternDarkmode $regexReplacementDarkmode -}}
     {{- end -}}
 {{- end -}}
 
@@ -221,5 +190,4 @@
 {{- partial "custom/content.html" . -}}
 
 <!-- Final Content -->
-{{- $Content := .Scratch.Get "Content" -}}
-{{- .Scratch.Set "Content" $Content -}}
+{{- $Content | safeHTML -}}
