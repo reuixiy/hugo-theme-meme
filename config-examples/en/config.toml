@@ -36,7 +36,7 @@ enableGitInfo = false
 # Enable generation of `robots.txt` file?
 enableRobotsTXT = true
 
-# Number of items per page in paginated 
+# Number of items per page in paginated
 # lists (valid for the `posts` homepage
 # layout in MemE)
 paginate = 5
@@ -427,6 +427,10 @@ uglyURLs = false
     #       Unit: em
 
     displayListTitle = true
+
+    # Set to a non-negative number to limit the number of posts displayed per
+    # taxonomy term.
+    limitEntriesLimit = -1
 
     listDateFormat = "January 2"
     # ATTENTION: be sure to follow the
