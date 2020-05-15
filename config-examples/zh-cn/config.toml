@@ -434,6 +434,9 @@ uglyURLs = false
     # 是否显示每一类别项下的文章数
     displayTaxonomyTermCount = true
 
+    # 设置一个非负数来限制每一类别项下展示的文章数
+    limitEntriesLimit = -1
+
 
     ######################################
     # 文章分区范围
