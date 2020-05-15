@@ -7,18 +7,16 @@
             {{ $type := .Type }}
             {{ range .Data.Terms.ByCount }}
                 {{ $name := .Name }}
-                <ul class="list-part">
-                    <h2 class="term-title">
-                        {{ $page := $.Site.GetPage (printf "/%s/%s" $type $name) }}
-                        {{ with $page }}
-                            <a href="{{ .RelPermalink }}" class="term-title-link">{{ .LinkTitle | default .Data.Term | default $name }}</a>
-                        {{ end }}
-                        {{ if $.Site.Params.displayTaxonomyTermCount }}
-                            <span class="term-count">{{ printf "(%d)" .Count }}</span>
-                        {{ end }}
-                    </h2>
-                    {{ partial "utils/list-item.html" (dict "Deliver" . "linkTarget" $page) }}
-                </ul>
+                <h2 class="term-title">
+                    {{ $page := $.Site.GetPage (printf "/%s/%s" $type $name) }}
+                    {{ with $page }}
+                        <a href="{{ .RelPermalink }}" class="term-title-link">{{ .LinkTitle | default .Data.Term | default $name }}</a>
+                    {{ end }}
+                    {{ if $.Site.Params.displayTaxonomyTermCount }}
+                        <span class="term-count">{{ printf "(%d)" .Count }}</span>
+                    {{ end }}
+                </h2>
+                {{ partial "utils/list-item.html" (dict "Deliver" . "linkTarget" $page) }}
             {{ end }}
         </div>
     </div>
