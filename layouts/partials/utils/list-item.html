@@ -17,8 +17,8 @@
 {{ end }}
 {{ if and (gt $limit 0) (gt (len .Deliver.Pages) $limit) }}
     {{ with $linkTarget }}
-        <li class="list-item">
-            <a href="{{ $linkTarget.RelPermalink }}" class="list-item-title">{{ i18n "readMore" }} »</a>
+        <li class="list-read-more">
+            <a href="{{ $linkTarget.RelPermalink }}">{{ i18n "readMore" }} »</a>
         </li>
     {{ end }}
 {{ end }}
