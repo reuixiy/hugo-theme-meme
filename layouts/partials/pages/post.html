@@ -2,21 +2,15 @@
 <main class="main single" id="main">
     <div class="main-inner">
 
-        {{ partial "utils/data-attributes.html" . }}
-        {{- $smallCaps := .Scratch.Get "smallCaps" -}}
-        {{- $align := .Scratch.Get "align" -}}
-        {{- $type := .Scratch.Get "type" -}}
-        {{- $layout := .Scratch.Get "layout" -}}
-        {{- $indent := .Scratch.Get "indent" -}}
-        {{- $tocNum := .Scratch.Get "tocNum" -}}
+        {{ $attrs := partial "utils/data-attributes.html" . }}
 
         <article class="content post"
-        {{- if $smallCaps }} data-small-caps="true"{{ end }}
-        {{- with $align }} data-align="{{ . }}"{{ end }}
-        {{- with $type }} data-type="{{ . }}"{{ end }}
-        {{- with $layout }} data-layout="{{ . }}"{{ end }}
-        {{- if $indent }} data-indent="true"{{ end }}
-        {{- if $tocNum }} data-toc-num="true"{{ end }}>
+        {{- if $attrs.smallCaps }} data-small-caps="true"{{ end }}
+        {{- with $attrs.align }} data-align="{{ . }}"{{ end }}
+        {{- with $attrs.type }} data-type="{{ . }}"{{ end }}
+        {{- with $attrs.layout }} data-layout="{{ . }}"{{ end }}
+        {{- if $attrs.indent }} data-indent="true"{{ end }}
+        {{- if $attrs.tocNum }} data-toc-num="true"{{ end }}>
 
             <h1 class="post-title">{{ .Title }}</h1>
 
