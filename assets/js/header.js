@@ -23,13 +23,13 @@ headerInner.style.setProperty('opacity', 1);
 function addDisplayNone(e) {
     const ele = document.querySelector(e);
     if (ele !== null) {
-        const hide = ele.getAttribute('data-hide');
+        const hide = ele.getAttribute('data-hide') | ele.getAttribute('aria-hidden');
         if (hide !== null) {
             ele.parentNode.style = 'display: none';
         }
     }
 }
 
-addDisplayNone('.switcher-label');
+addDisplayNone('#theme-switcher');
 
 addDisplayNone('#lang-switcher');
