@@ -9,16 +9,20 @@
 {{- if ge $limit 0 -}}
     {{- $pages = $pages | first $limit -}}
 {{- end -}}
-{{ range $pages }}
-    <li class="list-item">
-        <a href="{{ .RelPermalink }}" class="list-item-title">{{ .LinkTitle }}</a>
-        <time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="list-item-time">{{ .PublishDate.Format .Site.Params.listDateFormat }}</time>
-    </li>
-{{ end }}
-{{ if and (gt $limit 0) (gt (len .Deliver.Pages) $limit) }}
-    {{ with $linkTarget }}
-        <li class="list-read-more">
-            <a href="{{ $linkTarget.RelPermalink }}">{{ i18n "readMore" }} »</a>
-        </li>
-    {{ end }}
+{{- with $pages -}}
+    <ul class="list-part">
+        {{ range . }}
+            <li class="list-item">
+                <a href="{{ .RelPermalink }}" class="list-item-title">{{ .LinkTitle }}</a>
+                <time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="list-item-time">{{ .PublishDate.Format .Site.Params.listDateFormat }}</time>
+            </li>
+        {{ end }}
+        {{ if and (gt $limit 0) (gt (len $.Deliver.Pages) $limit) }}
+            {{ with $linkTarget }}
+                <li class="list-read-more">
+                    <a href="{{ $linkTarget.RelPermalink }}">{{ i18n "readMore" }} »</a>
+                </li>
+            {{ end }}
+        {{ end }}
+    </ul>
 {{ end }}
