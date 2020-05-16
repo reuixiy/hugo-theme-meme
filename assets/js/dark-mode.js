@@ -1,3 +1,6 @@
+const themeIconLight = '{{ index .Site.Data.SVG "sun" }}';
+const themeIconDark = '{{ index .Site.Data.SVG "moon" }}';
+
 // Back to Previous Mode & Respect System Preferences
 // `userPrefers`, `darkModeMediaQuery`, `lightModeMediaQuery` is defined in layouts/partials/head.html
 
@@ -36,10 +39,8 @@ lightModeMediaQuery.addListener((e) => {
 
 const themeSwitcher = document.getElementById('theme-switcher');
 
-themeSwitcher.addEventListener('click', function() {
-    const currentMode = document.documentElement.getAttribute('data-theme');
-
-    if (currentMode === 'dark') {
+themeSwitcher.addEventListener('change', (e) => {
+    if (!e.target.checked) {
         changeModeMeta('light');
         changeMode('light');
         storePrefers('light');
@@ -66,14 +67,15 @@ window.addEventListener('storage', function (event) {
 // Functions
 
 function changeMode(theme) {
-    var isDark = theme === 'dark';
+    const isDark = theme === 'dark';
 
-    // Change Theme Toggle Emoji
-    document.getElementById('theme-switcher').innerHTML = isDark ? '🌙' : '🌞';
+    document.getElementById('theme-switcher').checked = isDark ? true : false;
+
+    document.querySelector('.switcher-label').innerHTML = isDark ? themeIconDark : themeIconLight;
 
     // Change Chroma Code Highlight Theme
-    var oldChromaTheme = isDark ? 'chroma' : 'chroma-dark';
-    var newChromaTheme = isDark ? 'chroma-dark' : 'chroma';
+    const oldChromaTheme = isDark ? 'chroma' : 'chroma-dark';
+    const newChromaTheme = isDark ? 'chroma-dark' : 'chroma';
 
     [].slice.apply(document.getElementsByClassName(oldChromaTheme)).forEach((e) => {
         e.className = newChromaTheme;

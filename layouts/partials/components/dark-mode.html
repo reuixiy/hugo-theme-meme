@@ -1,16 +1,25 @@
 {{ if .Site.Params.enableDarkMode }}
     {{ with .Site.Params.defaultTheme | default "light" }}
-        {{ if eq . "light" }}
-            {{ $.Scratch.Set "text" "🌞" }}
-        {{ else }}
-            {{ $.Scratch.Set "text" "🌙" }}
-        {{ end }}
-        {{ $text := $.Scratch.Get "text" }}
-        {{- $.Scratch.Delete "hide" -}}
+        {{- $hide := false -}}
         {{- if or (and $.IsHome $.Site.Params.hideThemeToggleInHome) (and (not $.IsHome) $.Site.Params.hideThemeToggle) -}}
-            {{- $.Scratch.Set "hide" true -}}
+            {{- $hide = true -}}
         {{- end -}}
-        {{- $hide := $.Scratch.Get "hide" -}}
-        <div id="theme-switcher"{{ if $hide }} data-hide="true"{{ end }}>{{ $text }}</div>
+        <input
+            type="checkbox"
+            id="theme-switcher"
+            {{ if eq . "dark" }}checked{{ end }}
+            {{ if $hide }}aria-hidden="true"{{ end }}
+        />
+        <label
+            for="theme-switcher"
+            class="switcher-label"
+            {{ if $hide }} data-hide="true"{{ end }}
+        >
+            {{- $icon := "sun" -}}
+            {{- if eq . "dark" -}}
+                {{- $icon = "moon" -}}
+            {{- end -}}
+            {{- partial "utils/icon.html" (dict "Deliver" $ "name" $icon) -}}
+        </label>
     {{ end }}
 {{ end }}
