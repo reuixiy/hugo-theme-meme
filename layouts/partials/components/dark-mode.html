@@ -13,13 +13,10 @@
         <label
             for="theme-switcher"
             class="switcher-label"
-            {{ if $hide }} data-hide="true"{{ end }}
+            {{ if $hide }}data-hide="true"{{ end }}
         >
-            {{- $icon := "sun" -}}
-            {{- if eq . "dark" -}}
-                {{- $icon = "moon" -}}
-            {{- end -}}
-            {{- partial "utils/icon.html" (dict "Deliver" $ "name" $icon) -}}
+            {{- partial "utils/icon.html" (dict "Deliver" $ "name" "sun" "class" "icon theme-icon-light") -}}
+            {{- partial "utils/icon.html" (dict "Deliver" $ "name" "moon" "class" "icon theme-icon-dark") -}}
         </label>
     {{ end }}
 {{ end }}

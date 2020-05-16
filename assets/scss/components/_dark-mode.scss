@@ -4,6 +4,23 @@
     width: 1px;
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
+
+    ~ .switcher-label {
+        .theme-icon-dark {
+            display: none;
+        }
+    }
+
+    &:checked {
+        ~ .switcher-label {
+            .theme-icon-light {
+                display: none;
+            }
+            .theme-icon-dark {
+                display: inline-block;
+            }
+        }
+    }
 }
 
 .switcher-label {

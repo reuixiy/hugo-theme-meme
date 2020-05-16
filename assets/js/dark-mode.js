@@ -1,6 +1,3 @@
-const themeIconLight = '{{ index .Site.Data.SVG "sun" }}';
-const themeIconDark = '{{ index .Site.Data.SVG "moon" }}';
-
 // Back to Previous Mode & Respect System Preferences
 // `userPrefers`, `darkModeMediaQuery`, `lightModeMediaQuery` is defined in layouts/partials/head.html
 
@@ -70,8 +67,6 @@ function changeMode(theme) {
     const isDark = theme === 'dark';
 
     document.getElementById('theme-switcher').checked = isDark ? true : false;
-
-    document.querySelector('.switcher-label').innerHTML = isDark ? themeIconDark : themeIconLight;
 
     // Change Chroma Code Highlight Theme
     const oldChromaTheme = isDark ? 'chroma' : 'chroma-dark';
