@@ -4,6 +4,9 @@
             <div class="header-wrapper">
                 <div class="header-inner">
                     {{ template "site-brand" . }}
+                    {{ if .Site.Params.enableNavToggle }}
+                        <input type="checkbox" id="nav-toggle" />
+                    {{ end }}
                     {{ partial "menu.html" . }}
                     {{ partial "custom/header.html" . }}
                 </div>
