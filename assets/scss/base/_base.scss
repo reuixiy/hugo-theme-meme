@@ -86,6 +86,10 @@ a {
     }
 }
 
+:focus {
+    outline: var(--color-primary), auto, 1px;
+}
+
 ::selection {
     background-color: alpha(var(--color-primary), 0.3);
 }
