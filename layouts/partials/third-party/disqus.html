@@ -1,5 +1,4 @@
-{{- partial "utils/title.html" . -}}
-{{- $rawTitle := .Scratch.Get "rawTitle" -}}
+{{- $rawTitle := (partial "utils/title.html" .).rawTitle -}}
 <script>
     function loadComments() {
         if (typeof DISQUS === 'undefined') {

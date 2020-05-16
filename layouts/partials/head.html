@@ -60,9 +60,7 @@
     <!-- Avoid Baidu Mobile Search Transcoding -->
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    {{ partial "utils/title.html" . }}
-    {{- $title := .Scratch.Get "title" -}}
-    <title>{{ $title }}</title>
+    <title>{{ (partial "utils/title.html" .).title }}</title>
 
     <!-- CSS -->
     {{- partial "style.html" . }}

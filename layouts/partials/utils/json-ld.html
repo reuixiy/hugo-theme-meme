@@ -5,8 +5,7 @@
 {{- $description := .description -}}
 {{- $baseURLWithLangFix := print `/` | absLangURL -}}
 <!-- Title -->
-{{- partial "utils/title.html" $Deliver -}}
-{{- $rawTitle := $Deliver.Scratch.Get "rawTitle" -}}
+{{- $rawTitle := (partial "utils/title.html" $Deliver).rawTitle -}}
 <!-- Date -->
 {{- $dates := partial "utils/date.html" $Deliver -}}
 <!-- Author -->

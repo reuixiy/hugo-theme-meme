@@ -1,33 +1,27 @@
 <!-- Home -->
+{{- $rawTitle := .Title -}}
 {{- if eq .Kind "home" -}}
-    {{- $title := .Title | default .Site.Title -}}
-    {{- .Scratch.Set "rawTitle" $title -}}
-    {{- .Scratch.Set "title" $title -}}
+    {{- $rawTitle = $rawTitle | default .Site.Title -}}
 <!-- Taxonomy -->
 {{- else if eq .Kind "taxonomyTerm" -}}
-    {{- $rawTitle := (.Title | default (.Type | title)) -}}
-    {{- $title := printf "%s | %s" $rawTitle .Site.Title -}}
-    {{- .Scratch.Set "rawTitle" $rawTitle -}}
-    {{- .Scratch.Set "title" $title -}}
+    {{- $rawTitle = $rawTitle | default (.Type | title) -}}
 <!-- Taxonomy Term -->
 {{- else if eq .Kind "taxonomy" -}}
-    {{- $taxonomyTermTitle := .Title | default .Data.Term | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") -}}
+    {{- $taxonomyTermTitle := $rawTitle | default .Data.Term | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") -}}
     {{- with .Site.GetPage (printf "/%s" .Data.Plural) -}}
-        {{- $rawTitle := printf "%s: %s" (.Title | default (.Type | title)) $taxonomyTermTitle -}}
-        {{- $title := printf "%s | %s" $rawTitle .Site.Title -}}
-        {{- $.Scratch.Set "rawTitle" $rawTitle -}}
-        {{- $.Scratch.Set "title" $title -}}
+        {{- $rawTitle = printf "%s: %s" (.Title | default (.Type | title)) $taxonomyTermTitle -}}
     {{- end -}}
 <!-- Section -->
 {{- else if eq .Kind "section" -}}
-    {{- $rawTitle := .Title | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") | plainify -}}
-    {{- $title := printf "%s | %s" $rawTitle .Site.Title -}}
-    {{- .Scratch.Set "rawTitle" $rawTitle -}}
-    {{- .Scratch.Set "title" $title -}}
+    {{- $rawTitle = $rawTitle | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") | plainify -}}
 <!-- Page -->
 {{- else -}}
-    {{- $rawTitle := .Title | plainify -}}
-    {{- $title := printf "%s | %s" $rawTitle .Site.Title -}}
-    {{- .Scratch.Set "rawTitle" $rawTitle -}}
-    {{- .Scratch.Set "title" $title -}}
+    {{- $rawTitle = $rawTitle | plainify -}}
 {{- end -}}
+
+{{- $title := $rawTitle -}}
+{{- if ne .Kind "home" -}}
+    {{- $title = printf "%s | %s" $title .Site.Title -}}
+{{- end -}}
+
+{{- return dict "rawTitle" $rawTitle "title" $title -}}

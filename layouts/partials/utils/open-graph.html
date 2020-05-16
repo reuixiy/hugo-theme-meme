@@ -5,15 +5,12 @@
 <!-- https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/opengraph.html -->
 {{- $Deliver := .Deliver -}}
 {{- $description := .description -}}
-<!-- Title -->
-{{- partial "utils/title.html" $Deliver -}}
-{{- $rawTitle := $Deliver.Scratch.Get "rawTitle" -}}
 <!-- Date -->
 {{- $dates := partial "utils/date.html" $Deliver -}}
 <!-- Images -->
 {{- $images := partial "utils/images.html" $Deliver -}}
 
-<meta property="og:title" content="{{ $rawTitle }}" />
+<meta property="og:title" content="{{ (partial "utils/title.html" $Deliver).rawTitle }}" />
 <meta property="og:description" content="{{ $description }}" />
 <meta property="og:url" content="{{ $Deliver.Permalink }}" />
 <meta property="og:site_name" content="{{ $Deliver.Site.Title }}" />
