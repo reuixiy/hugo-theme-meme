@@ -1,9 +1,6 @@
 {{ if .Site.Params.enableDarkMode }}
     {{ with .Site.Params.defaultTheme | default "light" }}
-        {{- $hide := false -}}
-        {{- if or (and $.IsHome $.Site.Params.hideThemeToggleInHome) (and (not $.IsHome) $.Site.Params.hideThemeToggle) -}}
-            {{- $hide = true -}}
-        {{- end -}}
+        {{- $hide := or (and $.IsHome $.Site.Params.hideThemeToggleInHome) (and (not $.IsHome) $.Site.Params.hideThemeToggle) -}}
         <input
             type="checkbox"
             id="theme-switcher"
