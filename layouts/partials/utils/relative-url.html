@@ -1,20 +1,12 @@
 {{- $Deliver := .Deliver -}}
 {{- $filename := .filename -}}
 
-{{- $url := $Deliver.RelPermalink -}}
-{{- $depth := (len (split (strings.TrimSuffix "/" $url) "/")) -}}
-
-{{- if eq $depth 1 -}}
-    {{- $url := printf "./%s" $filename -}}
-    {{- $Deliver.Scratch.Set "url" $url -}}
-{{- else -}}
-    {{- $Deliver.Scratch.Set "level" "" -}}
-    {{- range $index, $value := (split (strings.TrimSuffix "/" $url) "/") -}}
-        {{- if lt $index (sub $depth 1) -}}
-            {{- $level := printf `../%s` ($Deliver.Scratch.Get "level") -}}
-            {{- $Deliver.Scratch.Set "level" $level -}}
-            {{- $url := printf `%s%s` $level $filename -}}
-            {{- $Deliver.Scratch.Set "url" $url -}}
-        {{- end -}}
+{{- $url := $filename -}}
+{{- $pathParts := split ($Deliver.RelPermalink | strings.TrimPrefix "/" | strings.TrimSuffix "/") "/" -}}
+{{- range $pathParts -}}
+    {{- with . -}}
+        {{- $url = printf `../%s` $url -}}
     {{- end -}}
 {{- end -}}
+
+{{- return $url -}}

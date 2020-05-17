@@ -5,26 +5,21 @@
 {{- $description := .description -}}
 {{- $baseURLWithLangFix := print `/` | absLangURL -}}
 <!-- Title -->
-{{- partial "utils/title.html" $Deliver -}}
-{{- $rawTitle := $Deliver.Scratch.Get "rawTitle" -}}
+{{- $rawTitle := (partial "utils/title.html" $Deliver).rawTitle -}}
 <!-- Date -->
-{{- partial "utils/date.html" $Deliver -}}
-{{- $pubDate := $Deliver.Scratch.Get "pubDate" -}}
-{{- $modDate := $Deliver.Scratch.Get "modDate" -}}
+{{- $dates := partial "utils/date.html" $Deliver -}}
 <!-- Author -->
-{{- partial "utils/author.html" $Deliver -}}
-{{- $author := $Deliver.Scratch.Get "author" -}}
+{{- $author := partial "utils/author.html" $Deliver -}}
 <!-- Images -->
-{{- partial "utils/images.html" $Deliver -}}
-{{- $images := $Deliver.Scratch.Get "images" -}}
+{{- $images := partial "utils/images.html" $Deliver -}}
 
 {{- if $Deliver.IsHome -}}
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "datePublished": {{ $pubDate }},
-        "dateModified": {{ $modDate }},
+        "datePublished": {{ $dates.pubDate }},
+        "dateModified": {{ $dates.modDate }},
         "url": {{ $baseURLWithLangFix }},
         "description": {{ $description }},
         {{ with $Deliver.Site.Params.siteLogo -}}
@@ -61,8 +56,8 @@
     {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "datePublished": {{ $pubDate }},
-        "dateModified": {{ $modDate }},
+        "datePublished": {{ $dates.pubDate }},
+        "dateModified": {{ $dates.modDate }},
         "url": {{ $Deliver.Permalink }},
         "headline": {{ $rawTitle }},
         "description": {{ $description }},
@@ -121,8 +116,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "datePublished": {{ $pubDate }},
-        "dateModified": {{ $modDate }},
+        "datePublished": {{ $dates.pubDate }},
+        "dateModified": {{ $dates.modDate }},
         "url": {{ $Deliver.Permalink }},
         "name": {{ $rawTitle }},
         "description": {{ $description }},

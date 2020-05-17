@@ -1,7 +1,6 @@
 {{- $Deliver := . -}}
 {{ if and .Site.Params.enablePostCopyright (.Params.displayCopyright | default .Site.Params.displayPostCopyright) }}
-    {{ partial "utils/author.html" . }}
-    {{ $author := .Scratch.Get "author" }}
+    {{ $author := partial "utils/author.html" . }}
     {{ with $author.name }}
         <ul class="post-copyright">
             <li class="copyright-item author">
@@ -24,9 +23,7 @@
             {{ end }}
             {{ with $author.copyright }}
                 {{- $raw := . -}}
-                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
-                {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                <li class="copyright-item license"><span class="copyright-item-text">{{ i18n "copyrightLicense" }}</span>{{ i18n "colon" }}{{ $Content }}</li>
+                <li class="copyright-item license"><span class="copyright-item-text">{{ i18n "copyrightLicense" }}</span>{{ i18n "colon" }}{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</li>
             {{ end }}
         </ul>
     {{ end }}

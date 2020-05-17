@@ -23,23 +23,17 @@
 
             {{- if .Site.Params.displayPoweredBy }}
                 {{- $raw := `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [MemE](https://github.com/reuixiy/hugo-theme-meme)` -}}
-                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
-                {{- $Content := .Scratch.Get "Content" -}}
-                <div class="powered-by">{{ $Content }}</div>
+                <div class="powered-by">{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</div>
             {{- end }}
 
             {{- if .Site.Params.displaySiteCopyright }}
                 {{- $raw := .Site.Copyright -}}
-                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
-                {{- $Content := .Scratch.Get "Content" -}}
-                <div class="site-copyright">{{ $Content }}</div>
+                <div class="site-copyright">{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</div>
             {{- end }}
 
             {{- with .Site.Params.customFooter }}
                 {{- $raw := . -}}
-                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
-                {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                <div class="custom-footer">{{ $Content }}</div>
+                <div class="custom-footer">{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</div>
             {{- end }}
 
             {{- if and .Site.Params.displayBusuanziSiteUVAndPV (eq hugo.Environment "production") }}
