@@ -2,10 +2,7 @@
 <main class="home">
     <div class="poetry">
         {{ range .Site.Params.homePoetry }}
-            {{- $raw := . -}}
-            {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
-            {{- $Content := $Deliver.Scratch.Get "Content" -}}
-            <p>{{ $Content }}</p>
+            <p>{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" . "isContent" false) }}</p>
         {{ end }}
     </div>
     {{ with .Site.Menus.home }}

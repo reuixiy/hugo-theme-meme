@@ -2,10 +2,9 @@
 
     {{- $description := .Description | default (partial "utils/summary.html" .) | default .Site.Params.siteDescription | plainify -}}
 
-    {{- partial "utils/images.html" . -}}
-    {{- $images := .Scratch.Get "images" -}}
-    {{- $images := .Scratch.Add "images" (slice (.Site.Params.siteLogo | absURL)) -}}
-    {{- $images := (index (.Scratch.Get "images") 0) -}}
+    {{- $images := partial "utils/images.html" . -}}
+    {{- $images = union $images (slice (.Site.Params.siteLogo | absURL)) -}}
+    {{- $images = index $images 0 -}}
 
     {{- $hashtags := newScratch -}}
     {{- with .Params.tags -}}

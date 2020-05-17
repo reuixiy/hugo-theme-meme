@@ -5,21 +5,12 @@
 <!-- https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/opengraph.html -->
 {{- $Deliver := .Deliver -}}
 {{- $description := .description -}}
-<!-- Title -->
-{{- partial "utils/title.html" $Deliver -}}
-{{- $rawTitle := $Deliver.Scratch.Get "rawTitle" -}}
 <!-- Date -->
-{{- partial "utils/date.html" $Deliver -}}
-{{- $pubDate := $Deliver.Scratch.Get "pubDate" -}}
-{{- $modDate := $Deliver.Scratch.Get "modDate" -}}
-<!-- Author -->
-{{- partial "utils/author.html" $Deliver -}}
-{{- $author := $Deliver.Scratch.Get "author" -}}
+{{- $dates := partial "utils/date.html" $Deliver -}}
 <!-- Images -->
-{{- partial "utils/images.html" $Deliver -}}
-{{- $images := $Deliver.Scratch.Get "images" -}}
+{{- $images := partial "utils/images.html" $Deliver -}}
 
-<meta property="og:title" content="{{ $rawTitle }}" />
+<meta property="og:title" content="{{ (partial "utils/title.html" $Deliver).rawTitle }}" />
 <meta property="og:description" content="{{ $description }}" />
 <meta property="og:url" content="{{ $Deliver.Permalink }}" />
 <meta property="og:site_name" content="{{ $Deliver.Site.Title }}" />
@@ -42,8 +33,8 @@
 
 {{- if and $Deliver.IsPage (in $Deliver.Site.Params.mainSections $Deliver.Section) -}}
     <meta property="og:type" content="article" />
-    <meta property="article:published_time" content="{{ $pubDate }}" />
-    <meta property="article:modified_time" content="{{ $modDate }}" />
+    <meta property="article:published_time" content="{{ $dates.pubDate }}" />
+    <meta property="article:modified_time" content="{{ $dates.modDate }}" />
     {{ if not $Deliver.ExpiryDate.IsZero -}}
         <meta property="article:expiration_time" content="{{ $Deliver.ExpiryDate.Format "2006-01-02T15:04:05-07:00" }}" />
     {{- end }}

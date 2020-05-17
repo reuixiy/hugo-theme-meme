@@ -2,37 +2,27 @@
 <main class="main single" id="main">
     <div class="main-inner">
 
-        {{ partial "utils/data-attributes.html" . }}
-        {{- $smallCaps := .Scratch.Get "smallCaps" -}}
-        {{- $align := .Scratch.Get "align" -}}
-        {{- $type := .Scratch.Get "type" -}}
-        {{- $layout := .Scratch.Get "layout" -}}
-        {{- $indent := .Scratch.Get "indent" -}}
-        {{- $tocNum := .Scratch.Get "tocNum" -}}
+        {{ $attrs := partial "utils/data-attributes.html" . }}
 
         <article class="content post"
-        {{- if $smallCaps }} data-small-caps="true"{{ end }}
-        {{- with $align }} data-align="{{ . }}"{{ end }}
-        {{- with $type }} data-type="{{ . }}"{{ end }}
-        {{- with $layout }} data-layout="{{ . }}"{{ end }}
-        {{- if $indent }} data-indent="true"{{ end }}
-        {{- if $tocNum }} data-toc-num="true"{{ end }}>
+        {{- if $attrs.smallCaps }} data-small-caps="true"{{ end }}
+        {{- with $attrs.align }} data-align="{{ . }}"{{ end }}
+        {{- with $attrs.type }} data-type="{{ . }}"{{ end }}
+        {{- with $attrs.layout }} data-layout="{{ . }}"{{ end }}
+        {{- if $attrs.indent }} data-indent="true"{{ end }}
+        {{- if $attrs.tocNum }} data-toc-num="true"{{ end }}>
 
             <h1 class="post-title">{{ .Title }}</h1>
 
             {{ with .Params.subtitle }}
                 {{- $raw := . -}}
-                {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
-                {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                <div class="post-subtitle">{{ $Content }}</div>
+                <div class="post-subtitle">{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</div>
             {{ end }}
 
             {{ if .Site.Params.displayPostDescription }}
                 {{ with .Params.description }}
                     {{- $raw := . -}}
-                    {{- partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) -}}
-                    {{- $Content := $Deliver.Scratch.Get "Content" -}}
-                    <div class="post-description">{{ $Content }}</div>
+                    <div class="post-description">{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</div>
                 {{ end }}
             {{ end }}
 
@@ -43,14 +33,10 @@
             {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
             {{- if $enableTOC -}}
                 {{- partial "utils/toc.html" . -}}
-                {{- $toc := .Scratch.Get "toc" }}
-                {{ $toc -}}
             {{- end -}}
 
-            {{- partial "utils/content.html" . -}}
-            {{- $Content := .Scratch.Get "Content" -}}
             <div class="post-body">
-                {{- $Content -}}
+              {{ partial "utils/content.html" . }}
             </div>
 
         </article>

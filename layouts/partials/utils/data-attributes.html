@@ -1,44 +1,29 @@
 <!-- Small Caps -->
-{{- .Scratch.Delete "smallCaps" -}}
-{{- if .Params.smallCaps | default .Site.Params.enableSmallCaps -}}
-    {{- .Scratch.Set "smallCaps" true -}}
-{{- end -}}
+{{- $smallCaps := .Params.smallCaps | default .Site.Params.enableSmallCaps | default false -}}
 
 <!-- Align -->
-{{- .Scratch.Delete "align" -}}
-{{- with .Params.align | default "default" -}}
-    {{- if ne $.Type "poetry" -}}
-        {{- if or (eq . "justify") (and $.Site.Params.enableJustify (eq . "default")) -}}
-            {{- $.Scratch.Set "align" "justify" -}}
-        {{- end -}}
-    {{- end -}}
-    {{- if eq . "center" -}}
-        {{- $.Scratch.Set "align" "center" -}}
+{{- $align := .Params.align | default "default" -}}
+{{- if ne .Type "poetry" -}}
+    {{- if and $.Site.Params.enableJustify (eq $align "default") -}}
+        {{- $align = "justify" -}}
     {{- end -}}
 {{- end -}}
 
 <!-- Type -->
-{{- .Scratch.Delete "type" -}}
-{{- with .Type -}}
-    {{- $.Scratch.Set "type" . -}}
-{{- end -}}
+{{- $type := .Type -}}
 
 <!-- Layout -->
-{{- .Scratch.Delete "layout" -}}
-{{- with .Params.layout -}}
-    {{- $.Scratch.Set "layout" . -}}
-{{- end -}}
+{{- $layout := .Params.layout -}}
 
 <!-- Paragraph Indent -->
-{{- .Scratch.Delete "indent" -}}
-{{- if ne .Type "poetry" -}}
-    {{- if (and .Site.Params.enableParagraphIndent .Params.indent) | default (and .Site.Params.enableParagraphIndent (eq .Site.Params.paragraphStyle "indent")) -}}
-        {{- .Scratch.Set "indent" true -}}
+{{- $indent := false -}}
+{{- if and .Site.Params.enableParagraphIndent (ne .Type "poetry") -}}
+    {{- if or .Params.indent (eq .Site.Params.paragraphStyle "indent") -}}
+        {{- $indent = true -}}
     {{- end -}}
 {{- end -}}
 
 <!-- TOC Number -->
-{{- .Scratch.Delete "tocNum" -}}
-{{- with .Params.tocNum | default .Site.Params.displayTOCNum -}}
-    {{- $.Scratch.Set "tocNum" . -}}
-{{- end -}}
+{{- $tocNum := .Params.tocNum | default .Site.Params.displayTOCNum -}}
+
+{{- return dict "smallCaps" $smallCaps "align" $align "type" $type "layout" $layout "indent" $indent "tocNum" $tocNum -}}

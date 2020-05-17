@@ -60,9 +60,7 @@
     <!-- Avoid Baidu Mobile Search Transcoding -->
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    {{ partial "utils/title.html" . }}
-    {{- $title := .Scratch.Get "title" -}}
-    <title>{{ $title }}</title>
+    <title>{{ (partial "utils/title.html" .).title }}</title>
 
     <!-- CSS -->
     {{- partial "style.html" . }}
@@ -84,13 +82,9 @@
     {{- $safariMaskIcon := "icons/safari-pinned-tab.svg" -}}
     {{- $safariMaskColor := .Site.Params.safariMaskColor -}}
     {{- $appleTouchIcon := "icons/apple-touch-icon.png" -}}
-    {{- partial "utils/relative-url.html" (dict "Deliver" . "filename" "") -}}
-    {{- $url := .Scratch.Get "url" -}}
-    {{- $msApplicationStartURL := $url -}}
+    {{- $msApplicationStartURL := partial "utils/relative-url.html" (dict "Deliver" . "filename" "") -}}
     {{- $msApplicationTileColor := .Site.Params.msApplicationTileColor -}}
-    {{- partial "utils/relative-url.html" (dict "Deliver" . "filename" "icons/mstile-150x150.png") -}}
-    {{- $url := .Scratch.Get "url" -}}
-    {{- $msApplicationTileImage := $url -}}
+    {{- $msApplicationTileImage := partial "utils/relative-url.html" (dict "Deliver" . "filename" "icons/mstile-150x150.png") -}}
     {{- $manifest := "manifest.json" -}}
     <link rel="shortcut icon" href="{{ $favicon | relURL }}" type="image/x-icon" />
     <link rel="mask-icon" href="{{ $safariMaskIcon | relURL }}" color="{{ $safariMaskColor }}" />
