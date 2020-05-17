@@ -21,15 +21,15 @@ headerInner.style.setProperty('opacity', 1);
 // Hide switcher's parentNode if it has `data-hide`
 
 function addDisplayNone(e) {
-    const ele = document.getElementById(e);
+    const ele = document.querySelector(e);
     if (ele !== null) {
-        const hide = ele.getAttribute('data-hide');
+        const hide = ele.getAttribute('data-hide') || ele.getAttribute('aria-hidden');
         if (hide !== null) {
             ele.parentNode.style = 'display: none';
         }
     }
 }
 
-addDisplayNone('theme-switcher');
+addDisplayNone('#theme-switcher');
 
-addDisplayNone('lang-switcher');
+addDisplayNone('#lang-switcher');
