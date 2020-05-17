@@ -1,24 +1,56 @@
 #theme-switcher {
-    cursor: pointer;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+
+    ~ .switcher-label {
+        .theme-icon-dark {
+            display: none;
+        }
+    }
+
+    &:checked {
+        ~ .switcher-label {
+            .theme-icon-light {
+                display: none;
+            }
+            .theme-icon-dark {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.switcher-label {
     position: relative;
+    color: var(--color-contrast-medium);
+    transition: color $duration;
+    cursor: pointer;
     z-index: 4;
+
+    .icon {
+        margin-right: 0 !important;
+    }
+
+    &:hover {
+        color: var(--color-primary);
+    }
 }
 
 [data-theme="dark"] {
     img {
         filter: brightness(50%);
     }
-    #theme-switcher, #lang-switcher {
-        opacity: 0.5;
-    }
 }
 
 @if ($headerLayoutFlex) {
-    #theme-switcher {
+    .switcher-label {
         display: inline-block;
     }
 } @else {
-    #theme-switcher {
+    .switcher-label {
         padding: 1em;
         float: right;
     }
