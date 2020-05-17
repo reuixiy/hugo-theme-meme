@@ -33,8 +33,6 @@
             {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
             {{- if $enableTOC -}}
                 {{- partial "utils/toc.html" . -}}
-                {{- $toc := .Scratch.Get "toc" }}
-                {{ $toc -}}
             {{- end -}}
 
             <div class="post-body">
