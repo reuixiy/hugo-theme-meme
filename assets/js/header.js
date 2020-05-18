@@ -26,18 +26,3 @@ headerInner.style.setProperty('opacity', 1);
         document.documentElement.style.setProperty('--header-height', headerHeight);
     }
 }
-
-
-// Hide switcher's parentNode if it has `data-hide`
-
-function addDisplayNone(e) {
-    const ele = document.querySelector(e);
-    if (ele !== null) {
-        const hide = ele.getAttribute('data-hide');
-        if (hide !== null) {
-            ele.parentNode.style = 'display: none';
-        }
-    }
-}
-
-addDisplayNone('#lang-switcher');

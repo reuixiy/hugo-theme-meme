@@ -1,35 +1,25 @@
-{{ if and .Site.IsMultiLingual .Site.Params.enableLangToggle }}
-    {{- .Scratch.Delete "hide" -}}
-    {{- if .IsHome -}}
-        {{- if .Site.Params.hideLangToggleInHome -}}
-            {{- .Scratch.Set "hide" true -}}
-        {{- end -}}
-    {{- else -}}
-        {{- if .Site.Params.autoHideLangToggle -}}
-            {{- if not .IsTranslated -}}
-                {{- .Scratch.Set "hide" true -}}
-            {{- end -}}
-        {{- end -}}
-    {{- end -}}
-    {{- $hide := .Scratch.Get "hide" -}}
-    <div id="lang-switcher"{{ if $hide }} data-hide="true"{{ end }}>
-        {{ .Site.Language.LanguageName }}
-        {{ if .IsTranslated }}
-            <ul id="langs">
-                {{ range .Translations }}
-                    <li><a rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .Language.LanguageName }}</a></li>
-                {{ end }}
-            </ul>
-        {{ else }}
-            {{ if not .Site.Params.autoHideLangToggle }}
+{{- if and .Site.IsMultiLingual .Site.Params.enableLangToggle -}}
+    {{- $hide := or (and .IsHome .Site.Params.hideLangToggleInHome) (and (not .IsHome) (and .Site.Params.autoHideLangToggle (not .IsTranslated))) -}}
+    {{- if not $hide -}}
+        <div id="lang-switcher">
+            <span>{{ .Site.Language.LanguageName }}</span>
+            {{ if .IsTranslated }}
                 <ul id="langs">
-                    {{ range .Site.Languages }}
-                        {{ if ne $.Site.Language.Lang .Lang }}
-                            <li><a rel="alternate" href="{{ .Lang | relURL }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .LanguageName }}</a></li>
-                        {{ end }}
+                    {{ range .Translations }}
+                        <li><a rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .Language.LanguageName }}</a></li>
                     {{ end }}
                 </ul>
+            {{ else }}
+                {{ if not .Site.Params.autoHideLangToggle }}
+                    <ul id="langs">
+                        {{ range .Site.Languages }}
+                            {{ if ne $.Site.Language.Lang .Lang }}
+                                <li><a rel="alternate" href="{{ .Lang | relURL }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .LanguageName }}</a></li>
+                            {{ end }}
+                        {{ end }}
+                    </ul>
+                {{ end }}
             {{ end }}
-        {{ end }}
-    </div>
-{{ end }}
+        </div>
+    {{- end -}}
+{{- end -}}
