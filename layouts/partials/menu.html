@@ -20,9 +20,12 @@
             {{ else if eq .Identifier "lang-switcher" }}
                 {{ if and $.Site.IsMultiLingual $.Site.Params.enableLangToggle }}
                     {{ if eq $.Site.Params.headerLayout "flex" }}
-                        <li class="menu-item">
-                            {{ partial "components/multilingual.html" $ctx }}
-                        </li>
+                        {{ $switcher := partial "components/multilingual.html" $ctx }}
+                        {{ with $switcher }}
+                            <li class="menu-item">
+                                {{ . }}
+                            </li>
+                        {{ end }}
                     {{ end }}
                 {{ end }}
             {{ else }}
