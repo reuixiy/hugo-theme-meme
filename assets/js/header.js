@@ -18,6 +18,16 @@ if (mainInner !== null) {
 headerInner.style.setProperty('opacity', 1);
 
 
+// Measure header height for the scrolling fix
+{
+    const header = document.querySelector('.header');
+    if (header) {
+        const headerHeight = window.getComputedStyle(header, null).getPropertyValue('height');
+        document.documentElement.style.setProperty('--header-height', headerHeight);
+    }
+}
+
+
 // Hide switcher's parentNode if it has `data-hide`
 
 function addDisplayNone(e) {
