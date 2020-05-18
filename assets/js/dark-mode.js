@@ -36,17 +36,20 @@ lightModeMediaQuery.addListener((e) => {
 
 const themeSwitcher = document.getElementById('theme-switcher');
 
-themeSwitcher.addEventListener('change', (e) => {
-    if (!e.target.checked) {
-        changeModeMeta('light');
-        changeMode('light');
-        storePrefers('light');
-    } else {
-        changeModeMeta('dark');
-        changeMode('dark');
-        storePrefers('dark');
-    }
-});
+if (themeSwitcher) {
+    themeSwitcher.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (document.documentElement.dataset.theme == "dark") {
+            changeModeMeta('light');
+            changeMode('light');
+            storePrefers('light');
+        } else {
+            changeModeMeta('dark');
+            changeMode('dark');
+            storePrefers('dark');
+        }
+    });
+}
 
 // Sync Across Tabs
 // https://codepen.io/tevko/pen/GgWYpg
@@ -65,8 +68,6 @@ window.addEventListener('storage', function (event) {
 
 function changeMode(theme) {
     const isDark = theme === 'dark';
-
-    document.getElementById('theme-switcher').checked = isDark ? true : false;
 
     // Change Chroma Code Highlight Theme
     const oldChromaTheme = isDark ? 'chroma' : 'chroma-dark';
