@@ -187,7 +187,7 @@
 {{- end -}}
 
 <!-- Custom -->
-{{- partial "custom/content.html" . -}}
+{{- $Content = partial "custom/content.html" (dict "Deliver" $Deliver "Content" $Content) | default $Content -}}
 
 <!-- Final Content -->
 {{- $Content | safeHTML -}}
