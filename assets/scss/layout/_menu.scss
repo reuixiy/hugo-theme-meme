@@ -21,6 +21,10 @@
     }
 }
 
+.menu-item:empty{
+    display: none;
+}
+
 .active {
     a {
         color: var(--color-primary);

@@ -11,7 +11,7 @@
             {{ if and (eq .Identifier "theme-switcher") $.Site.Params.enableDarkMode }}
                 {{ if eq $.Site.Params.headerLayout "flex" }}
                     <li class="menu-item">
-                        {{ partial "components/dark-mode.html" $ctx }}
+                        {{- partial "components/dark-mode.html" $ctx -}}
                     </li>
                 {{ end }}
             {{ else if eq .Identifier "lang-switcher" }}

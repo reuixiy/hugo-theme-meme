@@ -40,6 +40,4 @@ function addDisplayNone(e) {
     }
 }
 
-addDisplayNone('#theme-switcher');
-
 addDisplayNone('#lang-switcher');
