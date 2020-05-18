@@ -1,20 +1,9 @@
-{{ if .Site.Params.enableDarkMode }}
-    {{ with .Site.Params.defaultTheme | default "light" }}
-        {{- $hide := or (and $.IsHome $.Site.Params.hideThemeToggleInHome) (and (not $.IsHome) $.Site.Params.hideThemeToggle) -}}
-        <input
-            type="checkbox"
-            id="theme-switcher"
-            {{ if eq . "dark" }}checked{{ end }}
-            {{ if $hide }}aria-hidden="true"{{ end }}
-        />
-        <label
-            for="theme-switcher"
-            class="switcher-label"
-        >
-            {{- if not $hide -}}
-                {{- partial "utils/icon.html" (dict "Deliver" $ "name" "sun" "class" "theme-icon-light") -}}
-                {{- partial "utils/icon.html" (dict "Deliver" $ "name" "moon" "class" "theme-icon-dark") -}}
-            {{- end -}}
-        </label>
-    {{ end }}
-{{ end }}
+{{- if .Site.Params.enableDarkMode -}}
+    {{- $hide := or (and $.IsHome $.Site.Params.hideThemeToggleInHome) (and (not $.IsHome) $.Site.Params.hideThemeToggle) -}}
+    {{- if not $hide -}}
+        <a id="theme-switcher" href="#">
+            {{- partial "utils/icon.html" (dict "Deliver" $ "name" "sun" "class" "theme-icon-light") -}}
+            {{- partial "utils/icon.html" (dict "Deliver" $ "name" "moon" "class" "theme-icon-dark") -}}
+        </a>
+    {{- end -}}
+{{- end -}}

@@ -10,9 +10,12 @@
         {{ range .Site.Menus.main }}
             {{ if and (eq .Identifier "theme-switcher") $.Site.Params.enableDarkMode }}
                 {{ if eq $.Site.Params.headerLayout "flex" }}
-                    <li class="menu-item">
-                        {{ partial "components/dark-mode.html" $ctx }}
-                    </li>
+                    {{ $switcher := partial "components/dark-mode.html" $ctx }}
+                    {{ with $switcher }}
+                      <li class="menu-item">
+                          {{ . }}
+                      </li>
+                    {{ end }}
                 {{ end }}
             {{ else if eq .Identifier "lang-switcher" }}
                 {{ if and $.Site.IsMultiLingual $.Site.Params.enableLangToggle }}

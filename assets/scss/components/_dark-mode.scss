@@ -1,41 +1,27 @@
 #theme-switcher {
-    position: absolute;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-
-    ~ .switcher-label {
-        .theme-icon-dark {
-            display: none;
-        }
-    }
-
-    &:checked {
-        ~ .switcher-label {
-            .theme-icon-light {
-                display: none;
-            }
-            .theme-icon-dark {
-                display: inline-block;
-            }
-        }
-    }
-}
-
-.switcher-label {
-    position: relative;
     color: var(--color-contrast-medium);
     transition: color $duration;
-    cursor: pointer;
     z-index: 4;
-
-    .icon {
-        margin-right: 0 !important;
-    }
 
     &:hover {
         color: var(--color-primary);
+    }
+
+    .theme-icon-dark {
+        display: none;
+    }
+
+    [data-theme="dark"] & {
+        .theme-icon-light {
+            display: none;
+        }
+        .theme-icon-dark {
+            display: inline-block;
+        }
+    }
+
+    .icon {
+        margin-right: 0 !important;
     }
 }
 
@@ -45,12 +31,8 @@
     }
 }
 
-@if ($headerLayoutFlex) {
-    .switcher-label {
-        display: inline-block;
-    }
-} @else {
-    .switcher-label {
+@if (not $headerLayoutFlex) {
+    #theme-switcher {
         padding: 1em;
         float: right;
     }
