@@ -18,7 +18,7 @@
 <!-- Paragraph Indent -->
 {{- $indent := false -}}
 {{- if and .Site.Params.enableParagraphIndent (ne .Type "poetry") -}}
-    {{- if or .Params.indent (eq .Site.Params.paragraphStyle "indent") -}}
+    {{- if .Params.indent | default (eq .Site.Params.paragraphStyle "indent") -}}
         {{- $indent = true -}}
     {{- end -}}
 {{- end -}}
