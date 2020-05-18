@@ -1,4 +1,4 @@
-简体中文 | 
+简体中文 |
 [English](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.md)
 
 <div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
@@ -129,7 +129,7 @@ dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, override `
 deleteHrBeforeDropCap | delete horizontal rule tag before drop cap? | boolean, override `deleteHrBeforeDropCap` in `config.toml`, MemE only
 indent | indent instead of margin? | boolean, override `paragraphStyle` in `config.toml`, MemE only
 indentFirstParagraph | indent the first paragraph? | boolean, override `indentFirstParagraph` in `config.toml`, MemE only
-align | normal, justify, center | srting, if euqal to "normal", will override `enableJustify` in `config.toml`, MemE only
+align | normal, justify, center | string, if equal to "normal", will override `enableJustify` in `config.toml`, MemE only
 original | original? You can add the following 8 terms if you set `false`. The `author` is required, other optional | boolean, override `original` in `config.toml`, MemE only
 author | author of original post | string, MemE only
 link | link of original post | string, URL, MemE only
