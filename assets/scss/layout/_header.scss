@@ -67,7 +67,7 @@ $brandHeight: null;
         );
 
         /* Work-around for anchors being hidden below the header */
-        p, div, ul, form, main, footer, nav, section, h1, h2, h3, h4, h5, h6
+        p, div, form, section, h1, h2, h3, h4, h5, h6
         {
           &[id]::before
           {
