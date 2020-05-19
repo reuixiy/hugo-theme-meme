@@ -186,7 +186,7 @@ uglyURLs = false
 # post          Icon (won’t display if it
 #               is left empty("") or does
 #               not exist)
-# identifier    Special widget
+# identifier    Icon’s class name
 #               (there are three special
 #               values for header layout
 #               flex: `theme-switcher`,
