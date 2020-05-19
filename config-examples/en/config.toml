@@ -781,13 +781,12 @@ uglyURLs = false
 
     displayBusuanziPagePV = false
     busuanziPagePVIcon = "eye"
-
-    searchIcon = "search"
-
     # Note: render only in production
     #       environment
     #       Homepage is not supported yet
     #       https://busuanzi.ibruce.info/
+
+    searchIcon = "search"
 
 
     ######################################
