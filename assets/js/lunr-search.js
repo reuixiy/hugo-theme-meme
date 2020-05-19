@@ -36,6 +36,13 @@
         request.responseType = "json";
         request.addEventListener("load", function(event) {
             let documents = request.response;
+            if (!documents)
+            {
+                console.error("Search index could not be downloaded, was it generated?");
+                searchDone();
+                return;
+            }
+
             lookup = {};
             index = lunr(function() {
                 this.ref("uri");
