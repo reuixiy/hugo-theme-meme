@@ -1,0 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script>
+
+{{- $script := resources.Get "js/lunr-search.js" | resources.ExecuteAsTemplate (printf "%s/js/lunr-search.js" .Lang) . -}}
+{{- .Scratch.Add "script" (slice $script) -}}

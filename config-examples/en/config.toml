@@ -136,10 +136,15 @@ uglyURLs = false
     mediaType = "application/rss+xml"
     baseName = "rss"
 
+# Search index for lunr.js
+[outputFormats.SearchIndex]
+    mediaType = "application/json"
+    baseName = "search"
+
 # Hugo’s output control
 [outputs]
     page = ["HTML"]
-    home = ["HTML", "SectionsAtom", "SectionsRSS"]
+    home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex"]
     section = ["HTML"]
     # Taxonomy
     taxonomyTerm = ["HTML"]
@@ -181,11 +186,11 @@ uglyURLs = false
 # post          Icon (won’t display if it
 #               is left empty("") or does
 #               not exist)
-# identifier    Icon’s class name
-#               (there are two speacial
+# identifier    Special widget
+#               (there are three speacial
 #               values for header layout
 #               flex: `theme-switcher`,
-#               `lang-switcher`)
+#               `lang-switcher`, `search`)
 
 [menu]
     ## Menu bar
@@ -225,6 +230,9 @@ uglyURLs = false
     [[menu.main]]
         weight = 7
         identifier = "lang-switcher"
+    [[menu.main]]
+        weight = 8
+        identifier = "search"
 
 
 
@@ -773,6 +781,9 @@ uglyURLs = false
 
     displayBusuanziPagePV = false
     busuanziPagePVIcon = "eye"
+
+    searchIcon = "search"
+
     # Note: render only in production
     #       environment
     #       Homepage is not supported yet
@@ -1294,6 +1305,16 @@ uglyURLs = false
 
     enableInstantPage = true
     # Note: https://github.com/instantpage/instant.page
+
+
+    ######################################
+    # Lunr search
+
+    # Note: This requires SearchIndex
+    # output to be enabled.
+
+    enableLunrSearch = true
+    # Note: https://lunrjs.com/
 
 
     ######################################

@@ -28,6 +28,12 @@
                         {{ end }}
                     {{ end }}
                 {{ end }}
+            {{ else if eq .Identifier "search" }}
+                {{ if and $.Site.Params.enableLunrSearch (eq $.Site.Params.headerLayout "flex") }}
+                    <li class="menu-item search-item">
+                        {{ partial "components/search.html" $ctx }}
+                    </li>
+                {{ end }}
             {{ else }}
                 <li class="menu-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}">
                     {{- $linkType := (string .Pre) -}}
