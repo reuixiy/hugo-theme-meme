@@ -83,6 +83,7 @@
                 title.textContent = "{{ i18n "searchResultsTitle" (dict "Count" 13579 "Term" "{}") }}".replace("{}", term).replace("13579", results.length);
             }
             target.appendChild(title);
+            document.title = title.textContent;
 
             let template = document.getElementById("search-result");
             for (let result of results) {
