@@ -67,10 +67,8 @@
                 target.removeChild(target.firstChild);
             }
 
-            let div = document.createElement("div");
-            div.id = div.className = "search-results";
-
             let title = document.createElement("h1");
+            title.id = "search-results";
             title.className = "list-title";
 
             // This is an overly simple pluralization scheme, it will only work
@@ -84,7 +82,7 @@
             else {
                 title.textContent = "{{ i18n "searchResultsTitle" (dict "Count" 13579 "Term" "{}") }}".replace("{}", term).replace("13579", results.length);
             }
-            div.appendChild(title);
+            target.appendChild(title);
 
             let template = document.getElementById("search-result");
             for (let result of results) {
@@ -94,10 +92,9 @@
                 element.querySelector(".summary-title-link").href = element.querySelector(".read-more-link").href = doc.uri;
                 element.querySelector(".summary-title-link").textContent = doc.title;
                 element.querySelector(".summary").textContent = truncateToEndOfSentence(doc.content, 70);
-                div.appendChild(element);
+                target.appendChild(element);
             }
-            target.appendChild(div);
-            div.scrollIntoView(true);
+            title.scrollIntoView(true);
 
             {{ if .Site.Params.enableNavToggle }}
                 if (navToggleLabel.classList.contains("open")) {
