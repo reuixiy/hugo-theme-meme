@@ -187,7 +187,7 @@ uglyURLs = false
 #               is left empty("") or does
 #               not exist)
 # identifier    Special widget
-#               (there are three speacial
+#               (there are three special
 #               values for header layout
 #               flex: `theme-switcher`,
 #               `lang-switcher`, `search`)
