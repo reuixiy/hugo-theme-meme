@@ -2,6 +2,7 @@
     let index = null;
     let lookup = null;
     let queuedTerm = null;
+    let origContent = null;
 
     const form = document.getElementById("search");
     const input = document.getElementById("search-input");
@@ -23,6 +24,25 @@
         else {
             queuedTerm = term;
             initIndex();
+        }
+    }, false);
+
+    window.addEventListener("popstate", function(event) {
+        if (event.state && event.state.type == "search")
+        {
+            search(event.state.term, true);
+        }
+        else if (!event.state && origContent)
+        {
+            let target = document.querySelector(".main-inner");
+            while (target.firstChild) {
+                target.removeChild(target.firstChild);
+            }
+
+            for (let node of origContent) {
+                target.appendChild(node);
+            }
+            origContent = null;
         }
     }, false);
 
@@ -65,13 +85,18 @@
         request.send(null);
     }
 
-    function search(term) {
+    function search(term, existingState) {
         try {
             let results = index.search(term);
 
             let target = document.querySelector(".main-inner");
+            let replaced = [];
             while (target.firstChild) {
+                replaced.push(target.firstChild);
                 target.removeChild(target.firstChild);
+            }
+            if (!origContent) {
+                origContent = replaced;
             }
 
             let title = document.createElement("h1");
@@ -103,6 +128,10 @@
                 target.appendChild(element);
             }
             title.scrollIntoView(true);
+
+            if (!existingState) {
+                history.pushState({type: "search", term: term}, title.textContent);
+            }
 
             {{ if .Site.Params.enableNavToggle }}
                 if (navToggleLabel.classList.contains("open")) {
