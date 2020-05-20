@@ -236,14 +236,6 @@ uglyURLs = false
     headerLayout = "flex"
     # 说明：居中布局（center）或弹性布局（flex）
 
-    # 顶栏宽度的回退值
-    headerFallbackWidth = "36em"
-    # 说明：默认情况，MemE 使用 main-inner 元素
-    #      的宽度作为顶栏宽度，但是在一些页面（比
-    #      如「诗意人生」和「视频片段」布局的首页），
-    #      不存在 main-inner 元素，所以你需要为
-    #      这种情况给一个回退值。
-
     # 在窄视图下隐藏菜单栏并显示一个按钮？
     enableNavToggle = true
 

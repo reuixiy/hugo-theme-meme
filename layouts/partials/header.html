@@ -2,7 +2,7 @@
     <header class="header"{{ if and (eq .Site.Params.headerLayout "flex") .Site.Params.enableSmoothScroll }} data-scroll-header{{ end }}>
         {{ if eq .Site.Params.headerLayout "flex" }}
             <div class="header-wrapper">
-                <div class="header-inner">
+                <div class="header-inner {{ cond (or .IsHome (eq (len .Pages) 0)) "single" "list"}}">
                     {{ template "site-brand" . }}
                     {{ partial "menu.html" . }}
                     {{ partial "custom/header.html" . }}
