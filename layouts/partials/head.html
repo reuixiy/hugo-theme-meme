@@ -45,7 +45,7 @@
         {{ $url := urls.Parse .Site.BaseURL }}
         {{ $host := $url.Host }}
         <script>
-            if (window.location.host == "{{ $host | safeJS }}" && window.location.protocol != "https:") {
+            if (window.location.host == "{{ $host }}" && window.location.protocol != "https:") {
                 window.location.protocol = "https";
             }
         </script>
