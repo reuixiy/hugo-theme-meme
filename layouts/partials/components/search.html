@@ -1,7 +1,8 @@
+{{- $Deliver := .Deliver -}}
+{{- $iconName := .iconName | default "search" -}}
 <form id="search" class="search" role="search">
     <label for="search-input">
-        {{- $iconName := .Site.Params.searchIcon | default "search" -}}
-        {{- partial "utils/icon.html" (dict "Deliver" . "name" $iconName "class" "search-icon") -}}
+        {{- partial "utils/icon.html" (dict "Deliver" $Deliver "name" $iconName "class" "search-icon") -}}
     </label>
     <input type="search" id="search-input" class="search-input">
 </form>

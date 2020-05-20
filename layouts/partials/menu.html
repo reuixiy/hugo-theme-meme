@@ -30,8 +30,9 @@
                 {{ end }}
             {{ else if eq .Identifier "search" }}
                 {{ if and $.Site.Params.enableLunrSearch (eq $.Site.Params.headerLayout "flex") }}
+                    {{- $iconName := (string .Post) -}}
                     <li class="menu-item search-item">
-                        {{ partial "components/search.html" $ctx }}
+                        {{ partial "components/search.html" (dict "Deliver" $ctx "iconName" $iconName) }}
                     </li>
                 {{ end }}
             {{ else }}

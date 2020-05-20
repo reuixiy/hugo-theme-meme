@@ -233,6 +233,7 @@ uglyURLs = false
     [[menu.main]]
         weight = 8
         identifier = "search"
+        post = "search"
 
 
 
@@ -785,8 +786,6 @@ uglyURLs = false
     #       environment
     #       Homepage is not supported yet
     #       https://busuanzi.ibruce.info/
-
-    searchIcon = "search"
 
 
     ######################################
