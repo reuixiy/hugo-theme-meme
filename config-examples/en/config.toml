@@ -246,15 +246,6 @@ uglyURLs = false
     headerLayout = "flex"
     # Note: center or flex
 
-    headerFallbackWidth = "32em"
-    # Note: by default, MemE uses main-inner’s
-    #       width for `headerWidth`, but in
-    #       some pages (e.g. homepage layout
-    #       poetry, footage), there is no
-    #       main-inner, so you need to give
-    #       a fallback value for this
-    #       situation.
-
     # Hide menu bar and display a toggle
     # on narrow screen?
     enableNavToggle = true

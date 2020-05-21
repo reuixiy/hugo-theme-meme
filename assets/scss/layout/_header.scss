@@ -13,12 +13,14 @@
         background: $headerBackground;
     }
     .header-inner {
-        opacity: 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: var(--main-inner);
         margin: 0 auto;
+        max-width: $postWidth;
+    }
+    .header-inner.list {
+        max-width: $listWidth;
     }
     .site-brand {
         margin-right: 1em;
