@@ -69,6 +69,7 @@ other = "Found {{ .Count }} results for “{{ .Term }}”"
 [searchResultsNone]
 other = "No results found for “{{ .Term }}”"
 
+
 # Socials
 
 [twitter]

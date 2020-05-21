@@ -62,6 +62,13 @@ other = "已更新最新版本"
 [serviceWorkerUpdatedAction]
 other = "点击刷新"
 
+[searchResultsTitle]
+one = "找到 1 条关于「{{ .Term }}」的结果"
+other = "找到 {{ .Count }} 条关于「{{ .Term }}」的结果"
+
+[searchResultsNone]
+other = "没有找到关于「{{ .Term }}」的结果"
+
 
 [twitter]
 other = "「Twitter」"
