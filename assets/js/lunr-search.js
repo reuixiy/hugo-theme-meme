@@ -2,6 +2,7 @@
     let index = null;
     let lookup = null;
     let queuedTerm = null;
+    let queuedDoNotAddState = false;
     let origContent = null;
 
     const form = document.getElementById("search");
@@ -13,27 +14,20 @@
         if (!term) {
             return;
         }
-
-        form.setAttribute("data-running", "true");
-        if (index) {
-            search(term);
-        }
-        else if (queuedTerm) {
-            queuedTerm = term;
-        }
-        else {
-            queuedTerm = term;
-            initIndex();
-        }
+        startSearch(term, false);
     }, false);
 
-    window.addEventListener("popstate", function(event) {
-        if (event.state && event.state.type == "search")
-        {
-            search(event.state.term, true);
+    window.addEventListener("load", function(event) {
+        if (history.state && history.state.type == "search") {
+            startSearch(history.state.term, true);
         }
-        else if (!event.state && origContent)
-        {
+    });
+
+    window.addEventListener("popstate", function(event) {
+        if (event.state && event.state.type == "search") {
+            startSearch(event.state.term, true);
+        }
+        else if (!event.state && origContent) {
             let target = document.querySelector(".main-inner");
             while (target.firstChild) {
                 target.removeChild(target.firstChild);
@@ -46,8 +40,27 @@
         }
     }, false);
 
+    function startSearch(term, doNotAddState) {
+        input.value = term;
+        form.setAttribute("data-running", "true");
+        if (index) {
+            search(term, doNotAddState);
+        }
+        else if (queuedTerm) {
+            queuedTerm = term;
+            queuedDoNotAddState = doNotAddState;
+        }
+        else {
+            queuedTerm = term;
+            queuedDoNotAddState = doNotAddState;
+            initIndex();
+        }
+    }
+
     function searchDone() {
         form.removeAttribute("data-running");
+        queuedTerm = null;
+        queuedDoNotAddState = false;
     }
 
     function initIndex() {
@@ -79,13 +92,13 @@
                 }
             });
 
-            search(queuedTerm);
+            search(queuedTerm, queuedDoNotAddState);
         }, false);
         request.addEventListener("error", searchDone, false);
         request.send(null);
     }
 
-    function search(term, existingState) {
+    function search(term, doNotAddState) {
         try {
             let results = index.search(term);
 
@@ -129,7 +142,7 @@
             }
             title.scrollIntoView(true);
 
-            if (!existingState) {
+            if (!doNotAddState) {
                 history.pushState({type: "search", term: term}, title.textContent);
             }
 
