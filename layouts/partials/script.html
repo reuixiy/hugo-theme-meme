@@ -41,18 +41,6 @@
     {{- .Scratch.Add "script" (slice $comments) -}}
 {{- end -}}
 
-{{- .Scratch.Add "script" (slice $custom) -}}
-
-{{- $path := (strings.TrimPrefix "/" (printf `%s/js/meme.js` .Site.LanguagePrefix)) -}}
-
-{{- if .Site.Params.enableFingerprint -}}
-    {{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
-    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
-{{- else -}}
-    {{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify -}}
-    <script src="{{ $script.RelPermalink }}"></script>
-{{- end }}
-
 {{ if .Site.Params.enableSmoothScroll }}
     {{ partial "third-party/smooth-scroll.html" . }}
 {{ end }}
@@ -95,8 +83,24 @@
     {{ partial "third-party/instant-page.html" . }}
 {{ end }}
 
+{{ if .Site.Params.enableLunrSearch }}
+    {{ partial "third-party/lunr-search.html" . }}
+{{ end }}
+
 {{ partial "third-party/service-worker.html" . }}
 
 {{ partial "third-party/busuanzi.html" . }}
 
 {{ partial "custom/script.html" . }}
+
+{{- .Scratch.Add "script" (slice $custom) -}}
+
+{{- $path := (strings.TrimPrefix "/" (printf `%s/js/meme.js` .Site.LanguagePrefix)) -}}
+
+{{- if .Site.Params.enableFingerprint -}}
+    {{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{- else -}}
+    {{- $script := .Scratch.Get "script" | resources.Concat $path | resources.Minify -}}
+    <script src="{{ $script.RelPermalink }}"></script>
+{{- end }}

@@ -1,0 +1,27 @@
+[
+    {{- range $index, $page := .Site.RegularPages -}}
+        {{- if gt $index 0 -}}
+            ,
+        {{- end -}}
+        {{- $entry := dict "uri" $page.RelPermalink "title" $page.Title "content" ($page.Plain | htmlUnescape) -}}
+        {{- if $page.Params.subtitle -}}
+            {{- $subtitle := partial "utils/markdownify.html" (dict "Deliver" $page "raw" $page.Params.subtitle "isContent" false) -}}
+            {{- $entry = merge $entry (dict "subtitle" ($subtitle | plainify)) -}}
+        {{- end -}}
+        {{- if .Site.Params.displayPostDescription -}}
+            {{- $description := partial "utils/markdownify.html" (dict "Deliver" $page "raw" $page.Description "isContent" false) -}}
+            {{- $entry = merge $entry (dict "description" ($description | plainify)) -}}
+        {{- end -}}
+        {{- if .Site.Params.displayCategory -}}
+            {{- if eq .Site.Params.categoryBy "sections" -}}
+                {{- $entry = merge $entry (dict "categories" (slice $page.Section)) -}}
+            {{- else if eq .Site.Params.categoryBy "categories" -}}
+                {{- $entry = merge $entry (dict "categories" $page.Params.categories) -}}
+            {{- end -}}
+        {{- end -}}
+        {{- if .Site.Params.enablePostTags -}}
+            {{- $entry = merge $entry (dict "tags" $page.Params.tags) -}}
+        {{- end -}}
+        {{- $entry | jsonify -}}
+    {{- end -}}
+]
