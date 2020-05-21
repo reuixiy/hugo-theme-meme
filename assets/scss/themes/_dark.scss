@@ -1,7 +1,8 @@
 // https://codyhouse.co/ds/globals/colors
 // https://github.com/dracula/dracula-theme/
 
-[data-theme="dark"] {
+@mixin dark-theme {
+    --theme-name: "dark";
     @include defineColorHSL(--color-primary, $primaryColorDarkH, $primaryColorDarkS, $primaryColorDarkL);
     @include defineColorHSL(--color-bg, 231, 14%, 10%); // 0%
     @include defineColorHSL(--color-contrast-lower, 230, 8%, 15%); // 8%
@@ -9,4 +10,28 @@
     @include defineColorHSL(--color-contrast-medium, 80, 1%, 50%); // 60%
     @include defineColorHSL(--color-contrast-high, 69, 4%, 68%); // 85%
     @include defineColorHSL(--color-contrast-higher, 60, 10%, 80%); // 100%
+    .theme-icon-light {
+        display: none;
+    }
+    .theme-icon-dark {
+        display: inline-block;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme])
+    {
+        @include dark-theme;
+    }
+}
+
+@if $defaultTheme == dark {
+    :root {
+        @include dark-theme;
+    }
+}
+@else {
+    :root[data-theme="dark"] {
+        @include dark-theme;
+    }
 }
