@@ -126,6 +126,16 @@
             #langs li {
                 width: auto;
             }
+            @if ($enableLunrSearch) {
+                .search-item {
+                    grid-column: 1 / -1;
+                }
+
+                .search .search-input {
+                    margin-left: 0.5em;
+                    flex: 1;
+                }
+            }
         } @else {
             .nav {
                 margin-right: 1em;

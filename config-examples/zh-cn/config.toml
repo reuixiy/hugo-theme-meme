@@ -134,10 +134,15 @@ uglyURLs = false
     mediaType = "application/rss+xml"
     baseName = "rss"
 
+# lunr.js 的搜索索引
+[outputFormats.SearchIndex]
+    mediaType = "application/json"
+    baseName = "search"
+
 # Hugo 的输出控制
 [outputs]
     page = ["HTML"]
-    home = ["HTML", "SectionsAtom", "SectionsRSS"]
+    home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex"]
     section = ["HTML"]
     # 类别
     taxonomyTerm = ["HTML"]
@@ -169,9 +174,9 @@ uglyURLs = false
 # pre           内链（internal）或外链（external）
 # post          图标（留空（""）则无）
 # identifier    图标的 Class 名
-#               （对于弹性布局的顶栏有两个特殊
+#               （对于弹性布局的顶栏有三个特殊
 #               的值：`theme-switcher`、
-#               `lang-switcher`）
+#               `lang-switcher`、`search`）
 
 [menu]
     ## 菜单栏
@@ -211,6 +216,10 @@ uglyURLs = false
     [[menu.main]]
         weight = 7
         identifier = "lang-switcher"
+    [[menu.main]]
+        weight = 8
+        identifier = "search"
+        post = "search"
 
 
 
@@ -1260,6 +1269,15 @@ uglyURLs = false
 
     enableInstantPage = true
     # 说明：https://github.com/instantpage/instant.page
+
+
+    ######################################
+    # Lunr 搜索（暂不支持中文）
+
+    # 说明：需要开启 `SearchIndex` 的输出
+
+    enableLunrSearch = true
+    # 说明：https://lunrjs.com/
 
 
     ######################################

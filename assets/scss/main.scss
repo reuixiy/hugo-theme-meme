@@ -432,6 +432,14 @@ $fofPoster: url({{ $fofPoster }});
     {{ end }}
 {{ end }}
 
+// Lunr search
+
+{{ if and (eq .Site.Params.headerLayout "flex") .Site.Params.enableLunrSearch }}
+    $enableLunrSearch: true;
+    @import "components/search";
+{{ else }}
+    $enableLunrSearch: false;
+{{ end }}
 
 // Responsive
 

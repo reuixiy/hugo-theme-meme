@@ -1,0 +1,54 @@
+@keyframes spin {
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--color-contrast-medium);
+    min-width: 1em;
+    height: 1em;
+    line-height: 1;
+    border-radius: 0.75em;
+    padding: 0.25em;
+
+    .search-icon {
+        cursor: pointer;
+        width: 1em;
+        height: 1em;
+        margin: 0;
+        vertical-align: bottom;
+
+        color: var(--color-contrast-medium);
+        transition: color $duration;
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+
+    &[data-running] .search-icon {
+        animation: spin 1.5s linear infinite;
+    }
+
+    .search-input {
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+        appearance: textfield;
+        border-width: 0;
+        padding: 0;
+        margin: 0;
+        width: 0;
+        outline: none;
+        background: transparent;
+        color: var(--color-contrast-higher);
+        transition: width $duration;
+
+        &:focus
+        {
+            margin-left: 0.5em;
+            width: 10em;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 [ellipsis]
-other = "..."
+other = "…"
 
 [colon]
 other = ": "
@@ -61,6 +61,13 @@ other = "New Update Available"
 
 [serviceWorkerUpdatedAction]
 other = "Refresh"
+
+[searchResultsTitle]
+one = "Found one result for “{{ .Term }}”"
+other = "Found {{ .Count }} results for “{{ .Term }}”"
+
+[searchResultsNone]
+other = "No results found for “{{ .Term }}”"
 
 
 # Socials
