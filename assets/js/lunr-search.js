@@ -148,7 +148,7 @@
             title.scrollIntoView(true);
 
             if (!doNotAddState) {
-                history.pushState({type: "search", term: term}, title.textContent);
+                history.pushState({type: "search", term: term}, title.textContent, "#search=" + encodeURIComponent(term));
             }
 
             {{ if .Site.Params.enableNavToggle }}
