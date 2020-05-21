@@ -78,6 +78,11 @@
 
             lookup = {};
             index = lunr(function() {
+                const language = "{{ .Site.Language.Lang }}";
+                if (language != "en" && lunr.hasOwnProperty(language)) {
+                    this.use(lunr[language]);
+                }
+
                 this.ref("uri");
                 this.field("title");
                 this.field("subtitle");
