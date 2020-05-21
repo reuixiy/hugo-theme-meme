@@ -156,6 +156,12 @@
     {{ end }}
 {{ end }}
 
+{{ if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") }}
+    $defaultTheme: dark;
+{{ else }}
+    $defaultTheme: light;
+{{ end }}
+
 @import "themes/light";
 
 // Dark Mode

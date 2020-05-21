@@ -7,19 +7,6 @@
         color: var(--color-primary);
     }
 
-    .theme-icon-dark {
-        display: none;
-    }
-
-    [data-theme="dark"] & {
-        .theme-icon-light {
-            display: none;
-        }
-        .theme-icon-dark {
-            display: inline-block;
-        }
-    }
-
     .icon {
         margin-right: 0 !important;
     }
