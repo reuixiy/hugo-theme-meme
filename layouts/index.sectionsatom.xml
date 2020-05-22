@@ -55,9 +55,9 @@
                 <rights>{{ . | plainify }}</rights>
             {{- end }}
             {{- $summary := .Description | default (partial "utils/summary.html" $page) -}}
-            <summary type="html">{{ $summary | html }}</summary>
+            <summary type="html">{{ partial "utils/make-links-absolute.html" (dict "Deliver" . "content" $summary) | html }}</summary>
             {{ if $.Site.Params.includeContent }}
-                <content type="html">{{ .Content | html }}</content>
+                <content type="html">{{ partial "utils/make-links-absolute.html" (dict "Deliver" . "content" .Content) | html }}</content>
             {{ end }}
             <!-- Sections -->
             {{ if eq $.Site.Params.categoryBy "sections" }}
