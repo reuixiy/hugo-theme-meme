@@ -55,22 +55,26 @@ navCurtain.addEventListener('animationend', (e) => {
 window.addEventListener(
     'scroll',
     throttle(function() {
-        closeNav();
+        checkInput();
     }, delayTime)
 );
 
 window.addEventListener(
     'resize',
     throttle(function() {
-        // https://github.com/reuixiy/hugo-theme-meme/issues/171
-        const input = document.getElementById('search-input');
-        if (input && input === document.activeElement) {
-            return;
-        }
-
-        closeNav();
+        checkInput();
     }, delayTime)
 );
+
+function checkInput() {
+    // https://github.com/reuixiy/hugo-theme-meme/issues/171
+    const input = document.getElementById('search-input');
+    if (input && input === document.activeElement) {
+        return;
+    }
+
+    closeNav();
+}
 
 function closeNav() {
     if (navToggle.checked) {
