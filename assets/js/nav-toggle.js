@@ -61,7 +61,6 @@ window.addEventListener(
 window.addEventListener(
     'resize',
     event => {
-        console.log(document.querySelector(".nav-toggle").offsetWidth);
         if (!document.querySelector(".nav-toggle").offsetWidth) {
             // We are no longer in responsive mode, close nav
             closeNav(true);
