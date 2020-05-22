@@ -63,7 +63,7 @@
         // A magic trick to make search field loses focus on mobile,
         // which prevents the virtual keyboard from popping up.
         const header = document.querySelector('.header');
-        if (header && header.className !== 'header') {
+        if (header && header.classList.contains('fade')) {
             input.blur();
         }
 
