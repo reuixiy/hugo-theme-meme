@@ -58,15 +58,17 @@ window.addEventListener(
     }, delayTime)
 );
 
-window.addEventListener(
-    'resize',
-    event => {
-        if (!document.querySelector(".nav-toggle").offsetWidth) {
-            // We are no longer in responsive mode, close nav
-            closeNav(true);
-        }
+
+const maxWidth = window.getComputedStyle(document.documentElement, null).getPropertyValue('--max-width');
+let mediaQuery = window.matchMedia(`(max-width: ${maxWidth})`);
+
+mediaQuery.addEventListener('change', e => {
+    if (!e.matches) {
+        // We are no longer in responsive mode, close nav
+        closeNav(true);
     }
-);
+})
+
 
 function checkInput() {
     // https://github.com/reuixiy/hugo-theme-meme/issues/171
