@@ -1,37 +1,42 @@
-{{- $scripts := partial "utils/process-script.html" (dict "$" . "script" "js/main.js") -}}
+{{- $scratch := newScratch -}}
+{{- $scratch.Set "$" . -}}
+{{- $scratch.Set "scripts" slice -}}
+{{- $scratch.Set "externalScripts" slice -}}
+
+{{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/main.js")) -}}
 
 {{- if and .Site.Params.enableForceHTTPS (eq hugo.Environment "production") -}}
-    {{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/force-https.js")) -}}
+    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/force-https.js")) -}}
 {{- end -}}
 
 {{- if and .Site.Params.enableHeader (eq .Site.Params.headerLayout "flex") -}}
-    {{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/header.js")) -}}
+    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/header.js")) -}}
 
     {{- if .Site.Params.enableNavToggle -}}
-        {{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/nav-toggle.js")) -}}
+        {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/nav-toggle.js")) -}}
     {{- end -}}
 {{- end -}}
 
 {{- if .Site.Params.enableBackToTopAutoHide -}}
-    {{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/back-to-top.js")) -}}
+    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/back-to-top.js")) -}}
 {{- end -}}
 
 {{- if .Site.Params.enableDarkMode -}}
-    {{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/dark-mode.js")) -}}
+    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/dark-mode.js")) -}}
 {{- end -}}
 
 {{- if and .Site.IsMultiLingual .Site.Params.enableLangToggle -}}
-    {{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/multilingual.js")) -}}
+    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/multilingual.js")) -}}
 {{- end -}}
 
-{{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/wrap-table.js")) -}}
+{{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/wrap-table.js")) -}}
 
 {{- if .Site.Params.enableCopy -}}
-    {{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/copy.js")) -}}
+    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/copy.js")) -}}
 {{- end -}}
 
 {{- if and .Site.Params.enableComments (eq hugo.Environment "production") -}}
-    {{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/comments.js")) -}}
+    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/comments.js")) -}}
 {{- end -}}
 
 {{ if .Site.Params.enableSmoothScroll }}
@@ -77,7 +82,7 @@
 {{ end }}
 
 {{ if .Site.Params.enableLunrSearch }}
-    {{ partial "third-party/lunr-search.html" . }}
+    {{ partial "third-party/lunr-search.html" $scratch }}
 {{ end }}
 
 {{ partial "third-party/service-worker.html" . }}
@@ -86,14 +91,18 @@
 
 {{ partial "custom/script.html" . }}
 
-{{- $scripts = union $scripts (partial "utils/process-script.html" (dict "$" . "script" "js/custom.js")) -}}
+{{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/custom.js")) -}}
 
 {{- $path := (strings.TrimPrefix "/" (printf `%s/js/meme.js` .Site.LanguagePrefix)) -}}
 
+{{- range $scratch.Get "externalScripts" -}}
+    <script src="{{ . }}"></script>
+{{- end -}}
+
 {{- if .Site.Params.enableFingerprint -}}
-    {{- $script := $scripts | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
+    {{- $script := $scratch.Get "scripts" | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
     <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
 {{- else -}}
-    {{- $script := $scripts | resources.Concat $path | resources.Minify -}}
+    {{- $script := $scratch.Get "scripts" | resources.Concat $path | resources.Minify -}}
     <script src="{{ $script.RelPermalink }}"></script>
 {{- end }}
