@@ -62,6 +62,12 @@ window.addEventListener(
 window.addEventListener(
     'resize',
     throttle(function() {
+        // https://github.com/reuixiy/hugo-theme-meme/issues/171
+        const input = document.getElementById('search-input');
+        if (input && input === document.activeElement) {
+            return;
+        }
+
         closeNav();
     }, delayTime)
 );
