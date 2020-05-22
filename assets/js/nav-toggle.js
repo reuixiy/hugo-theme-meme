@@ -50,20 +50,23 @@ navCurtain.addEventListener('animationend', (e) => {
 });
 
 
-// Close nav when window is scrolled or resized by user
-
 window.addEventListener(
     'scroll',
     throttle(function() {
+        // Close nav when window is scrolled by user
         checkInput();
     }, delayTime)
 );
 
 window.addEventListener(
     'resize',
-    throttle(function() {
-        checkInput();
-    }, delayTime)
+    event => {
+        console.log(document.querySelector(".nav-toggle").offsetWidth);
+        if (!document.querySelector(".nav-toggle").offsetWidth) {
+            // We are no longer in responsive mode, close nav
+            closeNav(true);
+        }
+    }
 );
 
 function checkInput() {
@@ -76,13 +79,18 @@ function checkInput() {
     closeNav();
 }
 
-function closeNav() {
+function closeNav(noFade) {
     if (navToggle.checked) {
         navToggle.checked = false;
 
         header.classList.remove('open');
         navToggleLabel.classList.remove('open');
 
-        header.classList.add('fade');
+        if (noFade) {
+            navCurtain.removeAttribute("style");
+        }
+        else {
+            header.classList.add('fade');
+        }
     }
 }
