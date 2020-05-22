@@ -1,32 +1,40 @@
-// Back to Previous Mode & Respect System Preferences
-
-changeMode();
-
 // Reactive Dark Mode
 // https://web.dev/prefers-color-scheme/#reacting-on-dark-mode-changes
 // https://twitter.com/ChromeDevTools/status/1197175265643745282
+
+const userPrefers = localStorage.getItem('theme');
+if (userPrefers === 'dark') {
+    changeModeMeta('dark');
+} else if (userPrefers === 'light') {
+    changeModeMeta('light');
+}
 
 window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
     changeMode();
 });
 
-// Theme Switcher
-// https://derekkedziora.com/blog/dark-mode
+window.addEventListener("DOMContentLoaded", event => {
+    // Update meta tags and code highlighting
+    changeMode();
 
-const themeSwitcher = document.getElementById('theme-switcher');
+    // Theme Switcher
+    // https://derekkedziora.com/blog/dark-mode
 
-if (themeSwitcher) {
-    themeSwitcher.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (getCurrentTheme() == "dark") {
-            changeModeMeta('light');
-        } else {
-            changeModeMeta('dark');
-        }
-        changeMode();
-        storePrefers();
-    });
-}
+    const themeSwitcher = document.getElementById('theme-switcher');
+
+    if (themeSwitcher) {
+        themeSwitcher.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (getCurrentTheme() == "dark") {
+                changeModeMeta('light');
+            } else {
+                changeModeMeta('dark');
+            }
+            changeMode();
+            storePrefers();
+        });
+    }
+}, {once: true});
 
 // Sync Across Tabs
 // https://codepen.io/tevko/pen/GgWYpg
@@ -44,6 +52,10 @@ window.addEventListener('storage', function (event) {
 
 function getCurrentTheme() {
     return JSON.parse(window.getComputedStyle(document.documentElement, null).getPropertyValue("--theme-name"));
+}
+
+function changeModeMeta(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
 }
 
 function changeMode() {
