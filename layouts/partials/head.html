@@ -13,17 +13,6 @@
 
     {{ partial "script.html" . }}
 
-    <!-- Force HTTPS Redirection -->
-    {{- if and .Site.Params.enableForceHTTPS (eq hugo.Environment "production") }}
-        {{ $url := urls.Parse .Site.BaseURL }}
-        {{ $host := $url.Host }}
-        <script>
-            if (window.location.host == "{{ $host }}" && window.location.protocol != "https:") {
-                window.location.protocol = "https";
-            }
-        </script>
-    {{- end }}
-
     <!-- Responsive Web Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Avoid Automatic Format Detection -->
