@@ -1,0 +1,6 @@
+{{- $Deliver := .Deliver -}}
+{{- $content := .content -}}
+{{- $baseURL := ($Deliver.Site.BaseURL | strings.TrimSuffix "/") -}}
+{{- $content = $content | replaceRE ` (href|src)="/` (printf ` $1="%s/` $baseURL) -}}
+{{- $content = $content | replaceRE ` (href|src)="#` (printf ` $1="%s#` $Deliver.Permalink) -}}
+{{- $content | safeHTML -}}
