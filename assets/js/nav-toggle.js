@@ -51,30 +51,49 @@ window.addEventListener("DOMContentLoaded", event => {
     });
 
 
-    // Close nav when window is scrolled or resized by user
-
     window.addEventListener(
         'scroll',
         throttle(function() {
-            closeNav();
+            // Close nav when window is scrolled by user
+            checkInput();
         }, delayTime)
     );
 
-    window.addEventListener(
-        'resize',
-        throttle(function() {
-            closeNav();
-        }, delayTime)
-    );
 
-    function closeNav() {
+    const maxWidth = window.getComputedStyle(document.documentElement, null).getPropertyValue('--max-width');
+    let mediaQuery = window.matchMedia(`(max-width: ${maxWidth})`);
+
+    mediaQuery.addEventListener('change', e => {
+        if (!e.matches) {
+            // We are no longer in responsive mode, close nav
+            closeNav(true);
+        }
+    })
+
+
+    function checkInput() {
+        // https://github.com/reuixiy/hugo-theme-meme/issues/171
+        const input = document.getElementById('search-input');
+        if (input && input === document.activeElement) {
+            return;
+        }
+
+        closeNav();
+    }
+
+    function closeNav(noFade) {
         if (navToggle.checked) {
             navToggle.checked = false;
 
             header.classList.remove('open');
             navToggleLabel.classList.remove('open');
 
-            header.classList.add('fade');
+            if (noFade) {
+                navCurtain.removeAttribute("style");
+            }
+            else {
+                header.classList.add('fade');
+            }
         }
     }
 }, {once: true});
