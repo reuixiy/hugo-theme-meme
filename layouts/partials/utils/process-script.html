@@ -1,5 +1,0 @@
-{{- $ := index . "$" -}}
-{{- $script := .script -}}
-{{- $path := $script | replaceRE `\.js$` "-rendered.js" -}}
-{{- $path = printf "%s/%s" $.Lang $script -}}
-{{- return slice (resources.Get $script | resources.ExecuteAsTemplate $path $) -}}

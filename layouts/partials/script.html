@@ -1,108 +1,61 @@
-{{- $scratch := newScratch -}}
-{{- $scratch.Set "$" . -}}
-{{- $scratch.Set "scripts" slice -}}
-{{- $scratch.Set "externalScripts" slice -}}
-
-{{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/main.js")) -}}
+{{- $scripts := slice "js/main.js" -}}
 
 {{- if and .Site.Params.enableForceHTTPS (eq hugo.Environment "production") -}}
-    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/force-https.js")) -}}
+    {{- $scripts = union $scripts (slice "js/force-https.js") -}}
 {{- end -}}
 
 {{- if and .Site.Params.enableHeader (eq .Site.Params.headerLayout "flex") -}}
-    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/header.js")) -}}
+    {{- $scripts = union $scripts (slice "js/header.js") -}}
 
     {{- if .Site.Params.enableNavToggle -}}
-        {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/nav-toggle.js")) -}}
+        {{- $scripts = union $scripts (slice "js/nav-toggle.js") -}}
     {{- end -}}
 {{- end -}}
 
 {{- if .Site.Params.enableBackToTopAutoHide -}}
-    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/back-to-top.js")) -}}
+    {{- $scripts = union $scripts (slice "js/back-to-top.js") -}}
 {{- end -}}
 
 {{- if .Site.Params.enableDarkMode -}}
-    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/dark-mode.js")) -}}
+    {{- $scripts = union $scripts (slice "js/dark-mode.js") -}}
 {{- end -}}
 
 {{- if and .Site.IsMultiLingual .Site.Params.enableLangToggle -}}
-    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/multilingual.js")) -}}
+    {{- $scripts = union $scripts (slice "js/multilingual.js") -}}
 {{- end -}}
 
-{{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/wrap-table.js")) -}}
+{{- $scripts = union $scripts (slice "js/wrap-table.js") -}}
 
 {{- if .Site.Params.enableCopy -}}
-    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/copy.js")) -}}
+    {{- $scripts = union $scripts (slice "js/copy.js") -}}
 {{- end -}}
 
 {{- if and .Site.Params.enableComments (eq hugo.Environment "production") -}}
-    {{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/comments.js")) -}}
+    {{- $scripts = union $scripts (slice "js/comments.js") -}}
 {{- end -}}
 
-{{ if .Site.Params.enableSmoothScroll }}
-    {{ partial "third-party/smooth-scroll.html" . }}
-{{ end }}
+{{- if .Site.Params.enableLunrSearch -}}
+    {{- $scripts = union $scripts (partial "third-party/lunr-search.html" .) -}}
+{{- end -}}
 
-{{ if .Params.katex | default .Site.Params.enableKaTeX }}
-    {{ partial "third-party/katex.html" . }}
-{{ end }}
+{{- $scripts = union $scripts (slice "js/custom.js") -}}
 
-{{ if .Params.mathjax | default .Site.Params.enableMathJax }}
-    {{ partial "third-party/mathjax.html" . }}
-{{ end }}
-
-{{ if .Params.mermaid | default .Site.Params.enableMermaid }}
-    {{ partial "third-party/mermaid.html" . }}
-{{ end }}
-
-{{ if and (.Params.comments | default .Site.Params.enableComments) (eq hugo.Environment "production") }}
-    {{ if or (in .Site.Params.mainSections .Section) .Params.comments }}
-
-        {{ if .Site.Params.enableDisqus }}
-            {{ partial "third-party/disqus.html" . }}
-        {{ end }}
-
-        {{ if .Site.Params.enableValine }}
-            {{ partial "third-party/valine.html" . }}
-        {{ end }}
-
-        {{ if .Site.Params.enableUtterances }}
-            {{ partial "third-party/utterances.html" . }}
-        {{ end }}
-
-    {{ end }}
-{{ end }}
-
-{{ if .Site.Params.enableMediumZoom }}
-    {{ partial "third-party/medium-zoom.html" . }}
-{{ end }}
-
-{{ if .Site.Params.enableInstantPage }}
-    {{ partial "third-party/instant-page.html" . }}
-{{ end }}
-
-{{ if .Site.Params.enableLunrSearch }}
-    {{ partial "third-party/lunr-search.html" $scratch }}
-{{ end }}
-
-{{ partial "third-party/service-worker.html" . }}
-
-{{ partial "third-party/busuanzi.html" . }}
-
-{{ partial "custom/script.html" . }}
-
-{{- $scratch.Add "scripts" (partial "utils/process-script.html" (dict "$" . "script" "js/custom.js")) -}}
+{{- $processedScripts := slice ("" | resources.FromString "dummy.js") -}}
+{{- range $scripts -}}
+    {{- if findRE `^https?:` . -}}
+        <script src="{{ . }}" defer></script>
+    {{- else -}}
+        {{- $path := printf "%s/%s" $.Lang (. | replaceRE `\.js$` "-rendered.js") -}}
+        {{- $processedScripts = union $processedScripts (slice (resources.Get . | resources.ExecuteAsTemplate $path $)) -}}
+    {{- end -}}
+{{- end -}}
 
 {{- $path := (strings.TrimPrefix "/" (printf `%s/js/meme.js` .Site.LanguagePrefix)) -}}
 
-{{- range $scratch.Get "externalScripts" -}}
-    <script src="{{ . }}"></script>
-{{- end -}}
-
 {{- if .Site.Params.enableFingerprint -}}
-    {{- $script := $scratch.Get "scripts" | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
+    {{- $script := $processedScripts | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
     <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
 {{- else -}}
-    {{- $script := $scratch.Get "scripts" | resources.Concat $path | resources.Minify -}}
+    {{- $script := $processedScripts | resources.Concat $path | resources.Minify -}}
     <script src="{{ $script.RelPermalink }}"></script>
 {{- end }}
