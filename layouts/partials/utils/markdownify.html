@@ -1,9 +1,9 @@
-{{- $Deliver := .Deliver -}}
+{{- $ := index . "$" -}}
 {{- $Content := .raw -}}
 {{- $isContent := .isContent -}}
 
 <!-- New Markdown Syntax: Emphasis Point `..text..` -->
-{{- if $Deliver.Site.Params.enableEmphasisPoint -}}
+{{- if $.Site.Params.enableEmphasisPoint -}}
     {{- $regexPatternEmphasisPoint := `([^\.\x60])\.\.([^\.\s\n\/\\]+)\.\.([^\.\x60])` -}}
     {{- $regexReplacementEmphasisPoint := `$1<em class="emphasis-point">$2</em>$3` -}}
     {{- $Content = $Content | replaceRE $regexPatternEmphasisPoint $regexReplacementEmphasisPoint -}}
@@ -23,7 +23,7 @@
 {{- end -}}
 
 <!-- External Links -->
-{{- if $Deliver.Site.Params.hrefTargetBlank -}}
+{{- if $.Site.Params.hrefTargetBlank -}}
     {{- $Content = replaceRE `(<a href="https?:[^"]+")` `$1 target="_blank" rel="noopener"` $Content -}}
 {{- end -}}
 

@@ -1,5 +1,4 @@
-{{- $Deliver := . -}}
-{{- $Content := partial "utils/markdownify.html" (dict "Deliver" . "raw" .Content "isContent" true) -}}
+{{- $Content := partial "utils/markdownify.html" (dict "$" . "raw" .Content "isContent" true) -}}
 
 <!-- Link Headings to TOC -->
 {{- $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
@@ -91,7 +90,7 @@
 
 <!-- Replace `footnoteReturnLinkContents` with icon -->
 {{- with .Site.Params.footnoteReturnLinkIcon -}}
-    {{- $icon := (partial "utils/icon.html" (dict "Deliver" $ "name" . "class" "footnote-icon")) -}}
+    {{- $icon := (partial "utils/icon.html" (dict "$" $ "name" . "class" "footnote-icon")) -}}
     {{- $replacement := (printf `${1}%s$3` $icon) -}}
 
     {{- $regexPatternfootnoteReturnLinkIcon := `(href="#fnref[^>]+>)([^<]+)(.+)` -}}
@@ -187,7 +186,7 @@
 {{- end -}}
 
 <!-- Custom -->
-{{- $Content = partial "custom/content.html" (dict "Deliver" $Deliver "Content" $Content) | default $Content -}}
+{{- $Content = partial "custom/content.html" (dict "$" $ "Content" $Content) | default $Content -}}
 
 <!-- Final Content -->
 {{- $Content | safeHTML -}}

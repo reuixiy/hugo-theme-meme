@@ -1,4 +1,3 @@
-{{- $Deliver := . -}}
 {{ if and .Site.Params.enablePostCopyright (.Params.displayCopyright | default .Site.Params.displayPostCopyright) }}
     {{ $author := partial "utils/author.html" . }}
     {{ with $author.name }}
@@ -23,7 +22,7 @@
             {{ end }}
             {{ with $author.copyright }}
                 {{- $raw := . -}}
-                <li class="copyright-item license"><span class="copyright-item-text">{{ i18n "copyrightLicense" }}</span>{{ i18n "colon" }}{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</li>
+                <li class="copyright-item license"><span class="copyright-item-text">{{ i18n "copyrightLicense" }}</span>{{ i18n "colon" }}{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</li>
             {{ end }}
         </ul>
     {{ end }}

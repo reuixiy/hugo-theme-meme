@@ -47,10 +47,10 @@
                     <copyright>{{ . | plainify }}</copyright>
                 {{- end }}
                 {{ if $.Site.Params.includeContent }}
-                    <description>{{ partial "utils/make-links-absolute.html" (dict "Deliver" . "content" .Content) | html }}</description>
+                    <description>{{ partial "utils/make-links-absolute.html" (dict "$" . "content" .Content) | html }}</description>
                 {{ else }}
                     {{- $summary := .Description | default (partial "utils/summary.html" $page) -}}
-                    <description>{{ partial "utils/make-links-absolute.html" (dict "Deliver" . "content" $summary) | html }}</description>
+                    <description>{{ partial "utils/make-links-absolute.html" (dict "$" . "content" $summary) | html }}</description>
                 {{ end }}
                 <!-- Sections -->
                 {{ if eq $.Site.Params.categoryBy "sections" }}

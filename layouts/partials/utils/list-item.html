@@ -1,5 +1,6 @@
 {{- $linkTarget := .linkTarget -}}
-{{- $pages := .Deliver.Pages -}}
+{{- $ := index . "$" -}}
+{{- $pages := $.Pages -}}
 {{- $limit := -1 -}}
 {{- with $linkTarget -}}
     {{- if isset (index $pages 0).Site.Params "limitentrieslimit" -}}
@@ -17,7 +18,7 @@
                 <time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="list-item-time">{{ .PublishDate.Format .Site.Params.listDateFormat }}</time>
             </li>
         {{ end }}
-        {{ if and (gt $limit 0) (gt (len $.Deliver.Pages) $limit) }}
+        {{ if and (gt $limit 0) (gt (len $.Pages) $limit) }}
             {{ with $linkTarget }}
                 <li class="list-read-more">
                     <a href="{{ $linkTarget.RelPermalink }}">{{ i18n "readMore" }} »</a>

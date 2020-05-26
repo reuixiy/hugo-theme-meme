@@ -5,11 +5,11 @@
         {{- end -}}
         {{- $entry := dict "uri" $page.RelPermalink "title" $page.Title "content" ($page.Plain | htmlUnescape) -}}
         {{- if $page.Params.subtitle -}}
-            {{- $subtitle := partial "utils/markdownify.html" (dict "Deliver" $page "raw" $page.Params.subtitle "isContent" false) -}}
+            {{- $subtitle := partial "utils/markdownify.html" (dict "$" $page "raw" $page.Params.subtitle "isContent" false) -}}
             {{- $entry = merge $entry (dict "subtitle" ($subtitle | plainify)) -}}
         {{- end -}}
         {{- if .Site.Params.displayPostDescription -}}
-            {{- $description := partial "utils/markdownify.html" (dict "Deliver" $page "raw" $page.Description "isContent" false) -}}
+            {{- $description := partial "utils/markdownify.html" (dict "$" $page "raw" $page.Description "isContent" false) -}}
             {{- $entry = merge $entry (dict "description" ($description | plainify)) -}}
         {{- end -}}
         {{- if .Site.Params.displayCategory -}}

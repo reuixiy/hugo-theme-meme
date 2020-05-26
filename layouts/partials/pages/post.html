@@ -1,4 +1,3 @@
-{{- $Deliver := . -}}
 <main class="main single" id="main">
     <div class="main-inner">
 
@@ -16,18 +15,18 @@
 
             {{ with .Params.subtitle }}
                 {{- $raw := . -}}
-                <div class="post-subtitle">{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</div>
+                <div class="post-subtitle">{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</div>
             {{ end }}
 
             {{ if .Site.Params.displayPostDescription }}
                 {{ with .Params.description }}
                     {{- $raw := . -}}
-                    <div class="post-description">{{ partial "utils/markdownify.html" (dict "Deliver" $Deliver "raw" $raw "isContent" false) }}</div>
+                    <div class="post-description">{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</div>
                 {{ end }}
             {{ end }}
 
             {{ if .Params.meta | default .Site.Params.enablePostMeta }}
-                {{ partial "components/post-meta.html" (dict "Deliver" . "isHome" false) }}
+                {{ partial "components/post-meta.html" (dict "$" . "isHome" false) }}
             {{ end }}
 
             {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}

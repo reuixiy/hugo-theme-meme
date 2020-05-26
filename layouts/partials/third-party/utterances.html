@@ -20,7 +20,7 @@
             script.crossOrigin = 'anonymous';
             script.setAttribute('repo', '{{ .Site.Params.utterancesRepo }}');
             script.setAttribute('issue-term', '{{ .Site.Params.utterancesIssueTerm }}');
-            {{ template "theme" (dict "Deliver" . "theme" $theme) }}
+            {{ template "theme" (dict "$" . "theme" $theme) }}
             {{ with .Site.Params.utterancesLabel }}
                 script.setAttribute('label', '{{ . }}');
             {{ end }}
@@ -29,20 +29,20 @@
     }
 </script>
 {{- define "theme" -}}
-    {{- $Deliver := .Deliver -}}
+    {{- $ := index . "$" -}}
     {{- $theme := .theme -}}
-    {{- if $Deliver.Site.Params.enableDarkMode -}}
+    {{- if $.Site.Params.enableDarkMode -}}
         const userPrefers = localStorage.getItem('theme');
         const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
         if (userPrefers === "dark") {
-            script.setAttribute('theme', '{{ $Deliver.Site.Params.utterancesThemeDark }}');
+            script.setAttribute('theme', '{{ $.Site.Params.utterancesThemeDark }}');
         } else if (userPrefers === "light") {
-            script.setAttribute('theme', '{{ $Deliver.Site.Params.utterancesTheme }}');
+            script.setAttribute('theme', '{{ $.Site.Params.utterancesTheme }}');
         } else if (darkModeMediaQuery.matches) {
-            script.setAttribute('theme', '{{ $Deliver.Site.Params.utterancesThemeDark }}');
+            script.setAttribute('theme', '{{ $.Site.Params.utterancesThemeDark }}');
         } else if (lightModeMediaQuery.matches) {
-            script.setAttribute('theme', '{{ $Deliver.Site.Params.utterancesTheme }}');
+            script.setAttribute('theme', '{{ $.Site.Params.utterancesTheme }}');
         }
     {{- else -}}
         script.setAttribute('theme', '{{ $theme }}');

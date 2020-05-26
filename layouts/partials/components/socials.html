@@ -4,7 +4,7 @@
             {{- range sort .socials "weight" -}}
                 <li class="socials-item">
                     <a href="{{ .url }}" target="_blank" rel="external noopener" title="{{ .title }}">
-                        {{- partial "utils/icon.html" (dict "Deliver" $ "name" .icon "class" "social-icon") -}}
+                        {{- partial "utils/icon.html" (dict "$" $ "name" .icon "class" "social-icon") -}}
                     </a>
                 </li>
             {{- end -}}
