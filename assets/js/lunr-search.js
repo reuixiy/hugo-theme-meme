@@ -1,4 +1,4 @@
-(function initLunr() {
+window.addEventListener("DOMContentLoaded", event => {
     let index = null;
     let lookup = null;
     let queuedTerm = null;
@@ -17,11 +17,9 @@
         startSearch(term, false);
     }, false);
 
-    window.addEventListener("load", function(event) {
-        if (history.state && history.state.type == "search") {
-            startSearch(history.state.term, true);
-        }
-    });
+    if (history.state && history.state.type == "search") {
+        startSearch(history.state.term, true);
+    }
 
     window.addEventListener("popstate", function(event) {
         if (event.state && event.state.type == "search") {
@@ -160,7 +158,8 @@
             }
 
             {{ if .Site.Params.enableNavToggle }}
-                if (navToggleLabel.classList.contains("open")) {
+                let navToggleLabel = document.querySelector('.nav-toggle');
+                if (navToggleLabel && navToggleLabel.classList.contains("open")) {
                     document.getElementById(navToggleLabel.getAttribute("for")).click();
                 }
             {{ end }}
@@ -198,4 +197,4 @@
         }
         return result;
     }
-})();
+}, {once: true});

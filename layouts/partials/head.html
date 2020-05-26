@@ -11,31 +11,7 @@
         {{- end -}}
     {{- end -}}
 
-    <!-- Dark Mode -->
-    {{- if .Site.Params.enableDarkMode }}
-        <script>
-            const userPrefers = localStorage.getItem('theme');
-            if (userPrefers === 'dark') {
-                changeModeMeta('dark');
-            } else if (userPrefers === 'light') {
-                changeModeMeta('light');
-            }
-            function changeModeMeta(theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-            }
-        </script>
-    {{- end }}
-
-    <!-- Force HTTPS Redirection -->
-    {{- if and .Site.Params.enableForceHTTPS (eq hugo.Environment "production") }}
-        {{ $url := urls.Parse .Site.BaseURL }}
-        {{ $host := $url.Host }}
-        <script>
-            if (window.location.host == "{{ $host }}" && window.location.protocol != "https:") {
-                window.location.protocol = "https";
-            }
-        </script>
-    {{- end }}
+    {{ partial "script.html" . }}
 
     <!-- Responsive Web Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

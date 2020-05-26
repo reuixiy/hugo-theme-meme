@@ -1,0 +1,47 @@
+{{ if .Site.Params.enableSmoothScroll }}
+    {{ partial "third-party/smooth-scroll.html" . }}
+{{ end }}
+
+{{ if .Params.katex | default .Site.Params.enableKaTeX }}
+    {{ partial "third-party/katex.html" . }}
+{{ end }}
+
+{{ if .Params.mathjax | default .Site.Params.enableMathJax }}
+    {{ partial "third-party/mathjax.html" . }}
+{{ end }}
+
+{{ if .Params.mermaid | default .Site.Params.enableMermaid }}
+    {{ partial "third-party/mermaid.html" . }}
+{{ end }}
+
+{{ if and (.Params.comments | default .Site.Params.enableComments) (eq hugo.Environment "production") }}
+    {{ if or (in .Site.Params.mainSections .Section) .Params.comments }}
+
+        {{ if .Site.Params.enableDisqus }}
+            {{ partial "third-party/disqus.html" . }}
+        {{ end }}
+
+        {{ if .Site.Params.enableValine }}
+            {{ partial "third-party/valine.html" . }}
+        {{ end }}
+
+        {{ if .Site.Params.enableUtterances }}
+            {{ partial "third-party/utterances.html" . }}
+        {{ end }}
+
+    {{ end }}
+{{ end }}
+
+{{ if .Site.Params.enableMediumZoom }}
+    {{ partial "third-party/medium-zoom.html" . }}
+{{ end }}
+
+{{ if .Site.Params.enableInstantPage }}
+    {{ partial "third-party/instant-page.html" . }}
+{{ end }}
+
+{{ partial "third-party/service-worker.html" . }}
+
+{{ partial "third-party/busuanzi.html" . }}
+
+{{ partial "custom/script.html" . }}
