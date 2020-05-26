@@ -11,8 +11,6 @@
         {{- end -}}
     {{- end -}}
 
-    {{ partial "script.html" . }}
-
     <!-- Responsive Web Design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Avoid Automatic Format Detection -->
@@ -26,6 +24,9 @@
 
     <!-- CSS -->
     {{- partial "style.html" . }}
+
+    <!-- JavaScript -->
+    {{ partial "script.html" . }}
 
     <!-- Fonts -->
     {{- with .Site.Params.fontsLink -}}
