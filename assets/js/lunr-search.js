@@ -71,7 +71,7 @@ window.addEventListener("DOMContentLoaded", event => {
 
     function initIndex() {
         let request = new XMLHttpRequest();
-        request.open("GET", "{{ partial "utils/relative-url.html" (dict "Deliver" . "filename" (((.Site.GetPage "").OutputFormats.Get "SearchIndex").RelPermalink | strings.TrimPrefix "/")) }}");
+        request.open("GET", "{{ partial "utils/relative-url.html" (dict "$" . "filename" (((.Site.GetPage "").OutputFormats.Get "SearchIndex").RelPermalink | strings.TrimPrefix "/")) }}");
         request.responseType = "json";
         request.addEventListener("load", function(event) {
             let documents = request.response;

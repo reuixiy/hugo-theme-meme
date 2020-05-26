@@ -2,8 +2,8 @@
     {{- $hide := or (and $.IsHome $.Site.Params.hideThemeToggleInHome) (and (not $.IsHome) $.Site.Params.hideThemeToggle) -}}
     {{- if not $hide -}}
         <a id="theme-switcher" href="#">
-            {{- partial "utils/icon.html" (dict "Deliver" $ "name" "sun" "class" "theme-icon-light") -}}
-            {{- partial "utils/icon.html" (dict "Deliver" $ "name" "moon" "class" "theme-icon-dark") -}}
+            {{- partial "utils/icon.html" (dict "$" $ "name" "sun" "class" "theme-icon-light") -}}
+            {{- partial "utils/icon.html" (dict "$" $ "name" "moon" "class" "theme-icon-dark") -}}
         </a>
     {{- end -}}
 {{- end -}}

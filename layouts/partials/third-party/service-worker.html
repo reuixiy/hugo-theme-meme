@@ -1,5 +1,5 @@
 {{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
-    {{- $url := partial "utils/relative-url.html" (dict "Deliver" . "filename" "sw.js") -}}
+    {{- $url := partial "utils/relative-url.html" (dict "$" . "filename" "sw.js") -}}
 
     <div class="app-refresh" id="app-refresh">
         <div class="app-refresh-wrap" onclick="location.reload()">

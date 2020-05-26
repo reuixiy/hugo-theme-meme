@@ -7,7 +7,7 @@
                     <a href="{{ .RelPermalink }}" class="summary-title-link">{{ .LinkTitle }}</a>
                 </h2>
                 {{ if $.Site.Params.enablePostMetaInHome }}
-                    {{ partial "components/post-meta.html" (dict "Deliver" . "isHome" true) }}
+                    {{ partial "components/post-meta.html" (dict "$" . "isHome" true) }}
                 {{ end }}
                 <summary class="summary">
                     {{ partial "utils/summary.html" . }}

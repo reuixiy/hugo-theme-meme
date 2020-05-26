@@ -7,11 +7,11 @@
                         <div class="gitinfo-item commit">
                             {{- with .Site.Params.repoURL -}}
                                 <a href="{{ . }}/commit/{{ $.GitInfo.Hash }}" target="_blank" rel="noopener">
-                                    {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.gitIcon "class" "git-icon") -}}
+                                    {{- partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.gitIcon "class" "git-icon") -}}
                                     {{- $.GitInfo.AbbreviatedHash -}}
                                 </a>
                             {{- else -}}
-                                {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.gitIcon "class" "git-icon") -}}
+                                {{- partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.gitIcon "class" "git-icon") -}}
                                 {{- $.GitInfo.AbbreviatedHash -}}
                             {{- end -}}
                         </div>
@@ -19,7 +19,7 @@
                     {{ if .Site.Params.displayCommitMessage }}
                         {{ with .GitInfo.Subject }}
                             <div class="gitinfo-item commit-msg">
-                                {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.msgIcon "class" "msg-icon") -}}
+                                {{- partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.msgIcon "class" "msg-icon") -}}
                                 {{- . -}}
                             </div>
                         {{ end }}
@@ -32,7 +32,7 @@
                         {{ with .Site.Params.repoURL }}
                             <div class="gitinfo-item feedback">
                                 <a href="{{ . }}/issues" target="_blank" rel="noopener">
-                                    {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.feedbackIcon "class" "feedback-icon") -}}
+                                    {{- partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.feedbackIcon "class" "feedback-icon") -}}
                                     {{- $.Site.Params.feedbackText -}}
                                 </a>
                             </div>
@@ -43,7 +43,7 @@
                             {{ $contentDir := (cond $.Site.IsMultiLingual (printf `/%s/` $.Site.Params.contentDir) "/content/") }}
                             <div class="gitinfo-item edit">
                                 <a href="{{ . }}{{ $contentDir }}{{ $.Path }}" target="_blank" rel="noopener">
-                                    {{- partial "utils/icon.html" (dict "Deliver" $ "name" $.Site.Params.editIcon "class" "edit-icon") -}}
+                                    {{- partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.editIcon "class" "edit-icon") -}}
                                     {{- $.Site.Params.editText -}}
                                 </a>
                             </div>

@@ -32,7 +32,7 @@
                 {{ if and $.Site.Params.enableLunrSearch (eq $.Site.Params.headerLayout "flex") }}
                     {{- $iconName := (string .Post) -}}
                     <li class="menu-item search-item">
-                        {{ partial "components/search.html" (dict "Deliver" $ctx "iconName" $iconName) }}
+                        {{ partial "components/search.html" (dict "$" $ctx "iconName" $iconName) }}
                     </li>
                 {{ end }}
             {{ else }}
@@ -40,7 +40,7 @@
                     {{- $linkType := (string .Pre) -}}
                     <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>
                         {{- $iconName := (string .Post) -}}
-                        {{- partial "utils/icon.html" (dict "Deliver" $ "name" $iconName "class" .Identifier) -}}
+                        {{- partial "utils/icon.html" (dict "$" $ "name" $iconName "class" .Identifier) -}}
                         {{- with .Name -}}
                             <span class="menu-item-name">{{ . }}</span>
                         {{- end -}}
