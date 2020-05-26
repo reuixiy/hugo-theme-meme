@@ -26,7 +26,7 @@
                 {{ range $index, $value := . }}
                     {{- $linkType := (string .Pre) -}}
                     {{- $iconName := (string .Post) -}}
-                    <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "Deliver" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
+                    <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "$" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
                     {{- if lt $index $length -}}
                         {{- $.Site.Params.homeLinksDelimiter -}}
                     {{- end -}}

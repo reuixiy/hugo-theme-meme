@@ -16,7 +16,7 @@
                         <span class="term-count">{{ printf "(%d)" .Count }}</span>
                     {{ end }}
                 </h2>
-                {{ partial "utils/list-item.html" (dict "Deliver" . "linkTarget" $page) }}
+                {{ partial "utils/list-item.html" (dict "$" . "linkTarget" $page) }}
             {{ end }}
         </div>
     </div>

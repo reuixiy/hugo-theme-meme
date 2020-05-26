@@ -1,6 +1,6 @@
-{{- $Deliver := .Deliver -}}
+{{- $ := index . "$" -}}
 {{- $name := .name -}}
 {{- $class := .class | default $name -}}
-{{- $icon := index $Deliver.Site.Data.SVG $name -}}
+{{- $icon := index $.Site.Data.SVG $name -}}
 {{- $class := printf "icon %s" $class -}}
 {{- return (replace $icon "icon" $class | safeHTML) -}}

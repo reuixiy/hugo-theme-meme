@@ -44,9 +44,9 @@
     {{- $safariMaskIcon := "icons/safari-pinned-tab.svg" -}}
     {{- $safariMaskColor := .Site.Params.safariMaskColor -}}
     {{- $appleTouchIcon := "icons/apple-touch-icon.png" -}}
-    {{- $msApplicationStartURL := partial "utils/relative-url.html" (dict "Deliver" . "filename" "") -}}
+    {{- $msApplicationStartURL := partial "utils/relative-url.html" (dict "$" . "filename" "") -}}
     {{- $msApplicationTileColor := .Site.Params.msApplicationTileColor -}}
-    {{- $msApplicationTileImage := partial "utils/relative-url.html" (dict "Deliver" . "filename" "icons/mstile-150x150.png") -}}
+    {{- $msApplicationTileImage := partial "utils/relative-url.html" (dict "$" . "filename" "icons/mstile-150x150.png") -}}
     {{- $manifest := "manifest.json" -}}
     <link rel="shortcut icon" href="{{ $favicon | relURL }}" type="image/x-icon" />
     <link rel="mask-icon" href="{{ $safariMaskIcon | relURL }}" color="{{ $safariMaskColor }}" />
@@ -71,19 +71,18 @@
 
     <!-- SEO -->
     <link rel="canonical" href="{{ .Permalink }}" />
-    {{- $Deliver := . -}}
     <!-- JSON-LD -->
     {{- with .Site.Params.jsonLD -}}
-        {{ partial "utils/json-ld.html" (dict "Deliver" $Deliver "description" $description) }}
+        {{ partial "utils/json-ld.html" (dict "$" $ "description" $description) }}
     {{- end }}
 
     <!-- Twitter Cards -->
     {{- with .Site.Params.twitterCards -}}
-        {{ partial "utils/twitter-cards.html" (dict "Deliver" $Deliver) }}
+        {{ partial "utils/twitter-cards.html" (dict "$" $) }}
     {{- end }}
     <!-- Open Graph -->
     {{- with .Site.Params.openGraph -}}
-        {{ partial "utils/open-graph.html" (dict "Deliver" $Deliver "description" $description) }}
+        {{ partial "utils/open-graph.html" (dict "$" $ "description" $description) }}
     {{- end }}
 
     {{- with .Site.Params.googleSiteVerification }}

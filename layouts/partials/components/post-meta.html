@@ -1,45 +1,45 @@
-{{ $Deliver := .Deliver }}
+{{ $ := index . "$" }}
 {{ $isHome := .isHome }}
 <div class="post-meta">
-    {{ if and $Deliver.Site.Params.displayPublishedDate (not $Deliver.PublishDate.IsZero) }}
-        {{ $icon := partial "utils/icon.html" (dict "Deliver" $Deliver "name" $Deliver.Site.Params.publishedDateIcon "class" "post-meta-icon") }}
-        <time datetime="{{ $Deliver.PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item published">{{ $icon }}&nbsp;{{ $Deliver.PublishDate.Format $Deliver.Site.Params.postMetaDateFormat }}</time>
+    {{ if and $.Site.Params.displayPublishedDate (not $.PublishDate.IsZero) }}
+        {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.publishedDateIcon "class" "post-meta-icon") }}
+        <time datetime="{{ $.PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item published">{{ $icon }}&nbsp;{{ $.PublishDate.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
-    {{ if and $Deliver.Site.Params.displayModifiedDate (not $Deliver.Lastmod.IsZero) }}
-        {{ $icon := partial "utils/icon.html" (dict "Deliver" $Deliver "name" $Deliver.Site.Params.modifiedDateIcon "class" "post-meta-icon") }}
-        <time datetime="{{ $Deliver.Lastmod.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item modified">{{ $icon }}&nbsp;{{ $Deliver.Lastmod.Format $Deliver.Site.Params.postMetaDateFormat }}</time>
+    {{ if and $.Site.Params.displayModifiedDate (not $.Lastmod.IsZero) }}
+        {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.modifiedDateIcon "class" "post-meta-icon") }}
+        <time datetime="{{ $.Lastmod.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item modified">{{ $icon }}&nbsp;{{ $.Lastmod.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
-    {{ if and $Deliver.Site.Params.displayExpiredDate (not $Deliver.ExpiryDate.IsZero) }}
-        {{ $icon := partial "utils/icon.html" (dict "Deliver" $Deliver "name" $Deliver.Site.Params.expiredDateIcon "class" "post-meta-icon") }}
-        <time datetime="{{ $Deliver.ExpiryDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item expired">{{ $icon }}&nbsp;{{ $Deliver.ExpiryDate.Format $Deliver.Site.Params.postMetaDateFormat }}</time>
+    {{ if and $.Site.Params.displayExpiredDate (not $.ExpiryDate.IsZero) }}
+        {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.expiredDateIcon "class" "post-meta-icon") }}
+        <time datetime="{{ $.ExpiryDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item expired">{{ $icon }}&nbsp;{{ $.ExpiryDate.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
-    {{ if $Deliver.Site.Params.displayCategory }}
-        {{ $icon := partial "utils/icon.html" (dict "Deliver" $Deliver "name" $Deliver.Site.Params.categoryIcon "class" "post-meta-icon") }}
-        {{ if and (eq $Deliver.Site.Params.categoryBy "sections") (in $Deliver.Site.Params.mainSections $Deliver.Section) }}
-            {{ $sections := split (strings.TrimSuffix "/" ($Deliver.File.Dir | default $Deliver.Section)) "/" }}
+    {{ if $.Site.Params.displayCategory }}
+        {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.categoryIcon "class" "post-meta-icon") }}
+        {{ if and (eq $.Site.Params.categoryBy "sections") (in $.Site.Params.mainSections $.Section) }}
+            {{ $sections := split (strings.TrimSuffix "/" ($.File.Dir | default $.Section)) "/" }}
             {{ with $sections }}
-                {{ $Deliver.Scratch.Delete "sectionsDirMeta" }}
-                {{ $Deliver.Scratch.Delete "sectionsMeta" }}
-                {{ $Deliver.Scratch.Set "index" 0 }}
+                {{ $.Scratch.Delete "sectionsDirMeta" }}
+                {{ $.Scratch.Delete "sectionsMeta" }}
+                {{ $.Scratch.Set "index" 0 }}
                 {{ range $sections }}
                     {{ $section := . }}
-                    {{ $Deliver.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
-                    {{ with $Deliver.Site.GetPage ($Deliver.Scratch.Get "sectionsDirMeta") }}
+                    {{ $.Scratch.Add "sectionsDirMeta" (printf `/%s` $section) }}
+                    {{ with $.Site.GetPage ($.Scratch.Get "sectionsDirMeta") }}
                         {{ if (eq .Kind "section") }}
-                            {{ $Deliver.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($Deliver.Scratch.Get "index")) .RelPermalink) (.LinkTitle | default $section) }}
-                            {{ $Deliver.Scratch.Set "index" (add ($Deliver.Scratch.Get "index") 1) }}
+                            {{ $.Scratch.SetInMap "sectionsMeta" (printf `%s/%s` (string ($.Scratch.Get "index")) .RelPermalink) (.LinkTitle | default $section) }}
+                            {{ $.Scratch.Set "index" (add ($.Scratch.Get "index") 1) }}
                         {{ end }}
                     {{ end }}
                 {{ end }}
             {{ end }}
-            {{ $sections := $Deliver.Scratch.Get "sectionsMeta" }}
+            {{ $sections := $.Scratch.Get "sectionsMeta" }}
             {{ with $sections }}
                 <span class="post-meta-item category">
                     {{- $icon -}}&nbsp;
                     {{- range $link, $title := $sections -}}
                         {{- $index := $link | replaceRE `(\d+)/.+` `$1` | int -}}
                         {{- if ne $index 0 }}
-                            {{- $Deliver.Site.Params.categoryDelimiter | default "/" -}}
+                            {{- $.Site.Params.categoryDelimiter | default "/" -}}
                         {{- end -}}
                         <a href="{{- $link | replaceRE `\d+/(.+)` `$1` -}}" class="category-link">
                             {{- $title -}}
@@ -48,17 +48,17 @@
                 </span>
             {{ end }}
         {{ end }}
-        {{ if eq $Deliver.Site.Params.categoryBy "categories" }}
-            {{ with $Deliver.Params.categories }}
+        {{ if eq $.Site.Params.categoryBy "categories" }}
+            {{ with $.Params.categories }}
                 <span class="post-meta-item category">
                     {{- $icon -}}&nbsp;
                     {{- range $index, $category := . -}}
                         {{- if ne $index 0 -}}
-                            {{- $Deliver.Site.Params.categoryDelimiter | default "/" -}}
+                            {{- $.Site.Params.categoryDelimiter | default "/" -}}
                         {{- end -}}
                         <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
                         {{- $path := (urls.Parse ($category | urlize)).Path -}}
-                        {{- with $Deliver.Site.GetPage (printf `/categories/%s` $path) -}}
+                        {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
                             <a href="{{- .RelPermalink -}}" class="category-link">
                                 {{- .LinkTitle | default $path -}}
                             </a>
@@ -68,19 +68,19 @@
             {{ end }}
         {{ end }}
     {{ end }}
-    {{ if $Deliver.Site.Params.displayWordCount }}
-        {{ $icon := partial "utils/icon.html" (dict "Deliver" $Deliver "name" $Deliver.Site.Params.wordCountIcon "class" "post-meta-icon") }}
-        <span class="post-meta-item wordcount">{{ $icon }}&nbsp;{{ $Deliver.WordCount }}</span>
+    {{ if $.Site.Params.displayWordCount }}
+        {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.wordCountIcon "class" "post-meta-icon") }}
+        <span class="post-meta-item wordcount">{{ $icon }}&nbsp;{{ $.WordCount }}</span>
     {{ end }}
-    {{ if $Deliver.Site.Params.displayReadingTime }}
-        {{ $icon := partial "utils/icon.html" (dict "Deliver" $Deliver "name" $Deliver.Site.Params.readingTimeIcon "class" "post-meta-icon") }}
-        <span class="post-meta-item reading-time">{{ $icon }}&nbsp;{{ $Deliver.ReadingTime }}&nbsp;{{ i18n "minute" $Deliver.ReadingTime }}</span>
+    {{ if $.Site.Params.displayReadingTime }}
+        {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.readingTimeIcon "class" "post-meta-icon") }}
+        <span class="post-meta-item reading-time">{{ $icon }}&nbsp;{{ $.ReadingTime }}&nbsp;{{ i18n "minute" $.ReadingTime }}</span>
     {{ end }}
-    {{ if and $Deliver.Site.Params.displayBusuanziPagePV (eq hugo.Environment "production") }}
+    {{ if and $.Site.Params.displayBusuanziPagePV (eq hugo.Environment "production") }}
         {{ if not $isHome }}
-            {{ $icon := partial "utils/icon.html" (dict "Deliver" $Deliver "name" $Deliver.Site.Params.busuanziPagePVIcon "class" "post-meta-icon") }}
+            {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.busuanziPagePVIcon "class" "post-meta-icon") }}
             <span class="post-meta-item busuanzi-page-pv" id="busuanzi_container_page_pv">{{ $icon }}&nbsp;<span id="busuanzi_value_page_pv"></span></span>
         {{ end }}
     {{ end }}
-    {{ partial "custom/post-meta.html" $Deliver }}
+    {{ partial "custom/post-meta.html" $ }}
 </div>

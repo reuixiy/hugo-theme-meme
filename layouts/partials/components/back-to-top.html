@@ -1,5 +1,5 @@
 {{ if or (and .IsHome .Site.Params.displayBackToTopInHome) (and (not .IsHome) .Site.Params.enableBackToTop) }}
     <div id="back-to-top" class="back-to-top">
-        <a href="#">{{ partial "utils/icon.html" (dict "Deliver" . "name" .Site.Params.backToTopIcon) }}</a>
+        <a href="#">{{ partial "utils/icon.html" (dict "$" . "name" .Site.Params.backToTopIcon) }}</a>
     </div>
 {{ end }}

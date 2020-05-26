@@ -7,7 +7,7 @@
                         {{- $linkType := (string .Pre) -}}
                         {{- $iconName := (string .Post) -}}
                         {{- $icon := (index $.Site.Data.SVG $iconName) -}}
-                        <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "Deliver" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
+                        <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "$" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
                     {{ end }}
                 </div>
             {{ end }}
@@ -17,7 +17,7 @@
                         {{- $linkType := (string .Pre) -}}
                         {{- $iconName := (string .Post) -}}
                         {{- $icon := (index $.Site.Data.SVG $iconName) -}}
-                        <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "Deliver" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
+                        <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "$" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
                     {{ end }}
                 </div>
             {{ end }}

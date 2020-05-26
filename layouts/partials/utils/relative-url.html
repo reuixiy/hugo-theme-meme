@@ -1,8 +1,8 @@
-{{- $Deliver := .Deliver -}}
+{{- $ := index . "$" -}}
 {{- $filename := .filename -}}
 
 {{- $url := $filename -}}
-{{- $pathParts := split ($Deliver.RelPermalink | strings.TrimPrefix "/" | strings.TrimSuffix "/") "/" -}}
+{{- $pathParts := split ($.RelPermalink | strings.TrimPrefix "/" | strings.TrimSuffix "/") "/" -}}
 {{- range $pathParts -}}
     {{- with . -}}
         {{- $url = printf `../%s` $url -}}

@@ -70,7 +70,7 @@
                             {{ $.Scratch.Set "year" .Key }}
                         {{ end }}
                         {{ $year := $.Scratch.Get "year" }}
-                        <h2 class="list-year">{{ $year }}{{ if $.Site.Params.chineseZodiac }}{{ partial "utils/icon.html" (dict "Deliver" $ "name" $zodiacName "class" "chinese-zodiac") }}{{ end }}</h2>
+                        <h2 class="list-year">{{ $year }}{{ if $.Site.Params.chineseZodiac }}{{ partial "utils/icon.html" (dict "$" $ "name" $zodiacName "class" "chinese-zodiac") }}{{ end }}</h2>
                         {{ if $.Site.Params.groupByMonth }}
                             {{ range .Pages.GroupByDate "January" }}
                                 {{ $.Scratch.Delete "month" }}
@@ -82,10 +82,10 @@
                                 {{ end }}
                                 {{ $month := $.Scratch.Get "month" }}
                                 <h3 class="list-month">{{ $month }}</h3>
-                                {{ partial "utils/list-item.html" (dict "Deliver" .) }}
+                                {{ partial "utils/list-item.html" (dict "$" .) }}
                             {{ end }}
                         {{ else }}
-                            {{ partial "utils/list-item.html" (dict "Deliver" .) }}
+                            {{ partial "utils/list-item.html" (dict "$" .) }}
                         {{ end }}
                     {{ end }}
                 </div>
