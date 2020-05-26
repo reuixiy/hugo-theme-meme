@@ -71,7 +71,6 @@
 
     <!-- SEO -->
     <link rel="canonical" href="{{ .Permalink }}" />
-    {{- $ := . -}}
     <!-- JSON-LD -->
     {{- with .Site.Params.jsonLD -}}
         {{ partial "utils/json-ld.html" (dict "$" $ "description" $description) }}

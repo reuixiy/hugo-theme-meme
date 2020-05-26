@@ -1,4 +1,3 @@
-{{- $ := . -}}
 {{ if and .Site.Params.enablePostCopyright (.Params.displayCopyright | default .Site.Params.displayPostCopyright) }}
     {{ $author := partial "utils/author.html" . }}
     {{ with $author.name }}

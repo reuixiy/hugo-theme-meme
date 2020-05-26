@@ -1,7 +1,6 @@
 <!-- Nested / Iteration / Recursion -->
 {{- $.Scratch.Delete "sections" -}}
 {{- $.Scratch.Delete "pages" -}}
-{{- $ := . -}}
 {{- $contentDir := $.Site.Params.contentDir -}}
 {{- template "treeSections" (dict "$" $ "path" (cond $.Site.IsMultiLingual (printf `./%s` $contentDir) (printf `./content`))) -}}
 {{- define "treeSections" -}}
