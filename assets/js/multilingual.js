@@ -1,13 +1,15 @@
-const langSwitcher = document.getElementById('lang-switcher');
+window.addEventListener("DOMContentLoaded", event => {
+    const langSwitcher = document.getElementById('lang-switcher');
 
-if (langSwitcher) {
-    const langs = document.getElementById('langs');
+    if (langSwitcher) {
+        const langs = document.getElementById('langs');
 
-    langSwitcher.addEventListener('mouseover', function() {
-        langs.style = 'display: block';
-    });
+        langSwitcher.addEventListener('mouseover', function() {
+            langs.style = 'display: block';
+        });
 
-    langSwitcher.addEventListener('mouseout', function() {
-        langs.style = 'display: none';
-    });
-}
+        langSwitcher.addEventListener('mouseout', function() {
+            langs.style = 'display: none';
+        });
+    }
+}, {once: true});
