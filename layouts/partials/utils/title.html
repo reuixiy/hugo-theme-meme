@@ -1,5 +1,5 @@
 <!-- Home -->
-{{- $rawTitle := .Title -}}
+{{- $rawTitle := .Title | markdownify | plainify | htmlUnescape -}}
 {{- if eq .Kind "home" -}}
     {{- $rawTitle = $rawTitle | default .Site.Title -}}
 <!-- Taxonomy -->
