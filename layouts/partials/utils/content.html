@@ -185,6 +185,10 @@
     {{- end -}}
 {{- end -}}
 
+<!-- Responsive tables -->
+{{- $Content = $Content | replaceRE `<table\b` `<div class="table-container"><table` -}}
+{{- $Content = $Content | replaceRE `</table>` `</table></div>` -}}
+
 <!-- Custom -->
 {{- $Content = partial "custom/content.html" (dict "$" $ "Content" $Content) | default $Content -}}
 
