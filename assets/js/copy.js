@@ -9,7 +9,9 @@ window.addEventListener("DOMContentLoaded", event => {
     const copiedText = '{{ i18n "copied" }}';
 
     document.querySelectorAll('.post-body > pre').forEach((e) => {
-        e.outerHTML = `<div style="position: relative">${e.outerHTML}</div>`;
+        let div = document.createElement('div');
+        e.parentNode.replaceChild(div, e);
+        div.appendChild(e);
     });
 
     function addCopyButtons(clipboard) {

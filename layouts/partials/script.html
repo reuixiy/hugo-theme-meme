@@ -24,8 +24,6 @@
     {{- $scripts = union $scripts (slice "js/multilingual.js") -}}
 {{- end -}}
 
-{{- $scripts = union $scripts (slice "js/wrap-table.js") -}}
-
 {{- if .Site.Params.enableCopy -}}
     {{- $scripts = union $scripts (slice "js/copy.js") -}}
 {{- end -}}
