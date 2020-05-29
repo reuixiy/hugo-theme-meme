@@ -13,6 +13,18 @@ MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/
 
 ![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)
 
+### Browser support
+
+MemE uses [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) and [let statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) extensively. These features are supported by the following browsers:
+
+* Chrome 49+
+* Firefox 44+
+* Edge 15+
+* Opera 36+
+* Safari 10+
+
+Internet Explorer does not support CSS variables.
+
 ## Quick Start
 
 https://gohugo.io/getting-started/quick-start/
