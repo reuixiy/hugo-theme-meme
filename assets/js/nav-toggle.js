@@ -63,12 +63,12 @@ window.addEventListener("DOMContentLoaded", event => {
     const maxWidth = window.getComputedStyle(document.documentElement, null).getPropertyValue('--max-width');
     let mediaQuery = window.matchMedia(`(max-width: ${maxWidth})`);
 
-    mediaQuery.addEventListener('change', e => {
+    mediaQuery.addListener(e => {
         if (!e.matches) {
             // We are no longer in responsive mode, close nav
             closeNav(true);
         }
-    })
+    });
 
 
     function checkInput() {
