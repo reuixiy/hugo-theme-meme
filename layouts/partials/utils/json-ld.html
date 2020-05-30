@@ -5,7 +5,7 @@
 {{- $description := .description -}}
 {{- $baseURLWithLangFix := print `/` | absLangURL -}}
 <!-- Title -->
-{{- $rawTitle := (partial "utils/title.html" $).rawTitle -}}
+{{- $rawTitle := (partial "utils/title.html" (dict "$" $ "title" $.Title)).rawTitle -}}
 <!-- Date -->
 {{- $dates := partial "utils/date.html" $ -}}
 <!-- Author -->

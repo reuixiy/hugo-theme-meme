@@ -10,7 +10,7 @@
 <!-- Images -->
 {{- $images := partial "utils/images.html" $ -}}
 
-<meta property="og:title" content="{{ (partial "utils/title.html" $).rawTitle }}" />
+<meta property="og:title" content="{{ (partial "utils/title.html" (dict "$" $ "title" $.Title)).rawTitle }}" />
 <meta property="og:description" content="{{ $description }}" />
 <meta property="og:url" content="{{ $.Permalink }}" />
 <meta property="og:site_name" content="{{ $.Site.Title }}" />
