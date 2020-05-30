@@ -27,4 +27,4 @@
     {{- $title = printf "%s | %s" $title $.Site.Title -}}
 {{- end -}}
 
-{{- return dict "rawTitle" ($htmlTitle | plainify) "title" ($title | plainify) "htmlTitle" $htmlTitle -}}
+{{- return dict "rawTitle" ($htmlTitle | plainify | htmlUnescape) "title" ($title | plainify | htmlUnescape) "htmlTitle" $htmlTitle -}}
