@@ -36,7 +36,7 @@
             {{ $page := . }}
             {{- $author := partial "utils/author.html" $page -}}
             <item>
-                <title>{{ .Title }}</title>
+                <title>{{ (partial "utils/title.html" (dict "$" . "title" .Title)).rawTitle }}</title>
                 <link>{{ .Permalink }}</link>
                 <guid isPermaLink="true">{{ .Permalink }}</guid>
                 <pubDate>{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>

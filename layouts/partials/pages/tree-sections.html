@@ -36,7 +36,7 @@
                             {{ $pages := $.Scratch.Get "pages" }}
                             {{ range $pages }}
                                 <p style="padding-left: {{ add $padding (mul 2 1.2) }}em">
-                                    <a href="{{ .RelPermalink }}" class="category-post">{{ .LinkTitle }}</a>
+                                    <a href="{{ .RelPermalink }}" class="category-post">{{ (partial "utils/title.html" (dict "$" . "title" .LinkTitle)).htmlTitle }}</a>
                                 </p>
                             {{ end }}
                         {{ end }}

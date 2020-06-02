@@ -20,7 +20,7 @@
     <!-- Avoid Baidu Mobile Search Transcoding -->
     <meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    <title>{{ (partial "utils/title.html" .).title }}</title>
+    <title>{{ (partial "utils/title.html" (dict "$" . "title" .Title)).title }}</title>
 
     <!-- CSS -->
     {{- partial "style.html" . }}
