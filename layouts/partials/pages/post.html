@@ -11,7 +11,7 @@
         {{- if $attrs.indent }} data-indent="true"{{ end }}
         {{- if $attrs.tocNum }} data-toc-num="true"{{ end }}>
 
-            <h1 class="post-title">{{ .Title }}</h1>
+            <h1 class="post-title">{{ (partial "utils/title.html" (dict "$" $ "title" $.Title)).htmlTitle }}</h1>
 
             {{ with .Params.subtitle }}
                 {{- $raw := . -}}

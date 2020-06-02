@@ -45,7 +45,7 @@
                                 {{ $category := $.Scratch.Get "category" }}
                                 {{ if eq $context $category }}
                                     <p style="padding-left: {{ add $padding (mul 2 1.2) }}em">
-                                        <a href="{{ $page.RelPermalink }}" class="category-post">{{ $page.LinkTitle }}</a>
+                                        <a href="{{ $page.RelPermalink }}" class="category-post">{{ (partial "utils/title.html" (dict "$" $page "title" $page.LinkTitle)).htmlTitle }}</a>
                                     </p>
                                 {{ end }}
                             {{ end }}

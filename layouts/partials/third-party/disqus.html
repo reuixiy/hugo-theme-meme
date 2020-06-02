@@ -1,4 +1,4 @@
-{{- $rawTitle := (partial "utils/title.html" .).rawTitle -}}
+{{- $rawTitle := (partial "utils/title.html" (dict "$" . "title" .Title)).rawTitle -}}
 <script>
     function loadComments() {
         if (typeof DISQUS === 'undefined') {

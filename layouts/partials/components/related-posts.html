@@ -6,7 +6,7 @@
             <ul class="related-list">
                 {{ range . }}
                     <li class="related-item">
-                        <a href="{{ .RelPermalink }}" class="related-link">{{ .LinkTitle }}</a>
+                        <a href="{{ .RelPermalink }}" class="related-link">{{ (partial "utils/title.html" (dict "$" . "title" .LinkTitle)).htmlTitle }}</a>
                     </li>
                 {{ end }}
             </ul>

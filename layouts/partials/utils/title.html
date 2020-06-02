@@ -1,27 +1,30 @@
+{{- $ := index . "$" -}}
+{{- $rawTitle := .title -}}
 <!-- Home -->
-{{- $rawTitle := .Title -}}
-{{- if eq .Kind "home" -}}
-    {{- $rawTitle = $rawTitle | default .Site.Title -}}
+{{- if eq $.Kind "home" -}}
+    {{- $rawTitle = $rawTitle | default $.Site.Title -}}
 <!-- Taxonomy -->
-{{- else if eq .Kind "taxonomyTerm" -}}
-    {{- $rawTitle = $rawTitle | default (.Type | title) -}}
+{{- else if eq $.Kind "taxonomyTerm" -}}
+    {{- $rawTitle = $rawTitle | default ($.Type | title) -}}
 <!-- Taxonomy Term -->
-{{- else if eq .Kind "taxonomy" -}}
-    {{- $taxonomyTermTitle := $rawTitle | default .Data.Term | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") -}}
-    {{- with .Site.GetPage (printf "/%s" .Data.Plural) -}}
-        {{- $rawTitle = printf "%s: %s" (.Title | default (.Type | title)) $taxonomyTermTitle -}}
+{{- else if eq $.Kind "taxonomy" -}}
+    {{- $taxonomyTermTitle := $rawTitle | default $.Data.Term | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" $.Path) "/")) " ") -}}
+    {{- with $.Site.GetPage (printf "/%s" $.Data.Plural) -}}
+        {{- $rawTitle = printf "%s: %s" ($.Title | default ($.Type | title)) $taxonomyTermTitle -}}
     {{- end -}}
 <!-- Section -->
-{{- else if eq .Kind "section" -}}
-    {{- $rawTitle = $rawTitle | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") | plainify -}}
+{{- else if eq $.Kind "section" -}}
+    {{- $rawTitle = $rawTitle | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" $.Path) "/")) " ") -}}
 <!-- Page -->
 {{- else -}}
-    {{- $rawTitle = $rawTitle | plainify -}}
+    {{- $rawTitle = $rawTitle -}}
 {{- end -}}
 
-{{- $title := $rawTitle -}}
-{{- if ne .Kind "home" -}}
-    {{- $title = printf "%s | %s" $title .Site.Title -}}
+{{- $htmlTitle := partial "utils/markdownify.html" (dict "$" $ "raw" $rawTitle "isContent" false) -}}
+
+{{- $title := $htmlTitle -}}
+{{- if ne $.Kind "home" -}}
+    {{- $title = printf "%s | %s" $title $.Site.Title -}}
 {{- end -}}
 
-{{- return dict "rawTitle" $rawTitle "title" $title -}}
+{{- return dict "rawTitle" ($htmlTitle | plainify | htmlUnescape) "title" ($title | plainify | htmlUnescape) "htmlTitle" $htmlTitle -}}
