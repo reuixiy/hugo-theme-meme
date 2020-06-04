@@ -162,6 +162,12 @@
     $defaultTheme: light;
 {{ end }}
 
+{{ if .Site.Params.enableHighlight }}
+    $enableHighlight: true;
+{{ else }}
+    $enableHighlight: false;
+{{ end }}
+
 @import "themes/light";
 
 // Dark Mode
@@ -184,10 +190,6 @@
 
     @import "themes/dark";
     @import "components/dark-mode";
-
-    {{ if .Site.Params.enableHighlight }}
-        @import "themes/highlight/dark";
-    {{ end }}
 {{ end }}
 
 
@@ -343,7 +345,6 @@
 {{ end }}
 
 {{ if .Site.Params.enableHighlight }}
-    @import "themes/highlight/light";
     @import "components/highlight";
 {{ end }}
 
