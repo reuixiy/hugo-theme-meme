@@ -16,6 +16,10 @@
     .theme-icon-dark {
         display: inline-block;
     }
+    img {
+        filter: brightness(50%);
+    }
+
     @if ($enableHighlight) {
         /* https://xyproto.github.io/splash/docs/all.html */
         /* Color values matching dracula style */
