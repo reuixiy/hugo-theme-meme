@@ -29,7 +29,7 @@
         "author": {
             "@type": "Person",
             {{ with .motto -}}
-            "description": {{ . | plainify }},
+            "description": {{ . | plainify | htmlUnescape }},
             {{ end -}}
             {{ with .email -}}
             "email": {{ . }},
@@ -46,7 +46,7 @@
         },
         {{ end -}}
         {{ with $author.copyright -}}
-        "license": {{ . | plainify }},
+        "license": {{ . | plainify | htmlUnescape }},
         {{ end -}}
         "name": {{ $rawTitle }}
     }
@@ -75,7 +75,7 @@
         "author": {
             "@type": "Person",
             {{ with .motto -}}
-            "description": {{ . | plainify }},
+            "description": {{ . | plainify | htmlUnescape }},
             {{ end -}}
             {{ with .email -}}
             "email": {{ . }},
@@ -92,7 +92,7 @@
         },
         {{ end -}}
         {{ with $author.copyright -}}
-        "license": {{ . | plainify }},
+        "license": {{ . | plainify | htmlUnescape }},
         {{ end -}}
         "publisher": {
             "@type": "Organization",
@@ -129,7 +129,7 @@
         {{ end -}}
         {{ end -}}
         {{ with $author.copyright -}}
-        "license": {{ . | plainify }},
+        "license": {{ . | plainify | htmlUnescape }},
         {{ end -}}
         "publisher": {
             "@type": "Organization",

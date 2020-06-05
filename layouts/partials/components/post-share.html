@@ -2,7 +2,7 @@
 
     {{- $title := (partial "utils/title.html" (dict "$" . "title" .Title)).rawTitle -}}
 
-    {{- $description := .Description | default (partial "utils/summary.html" .) | default .Site.Params.siteDescription | plainify -}}
+    {{- $description := .Description | default (partial "utils/summary.html" .) | default .Site.Params.siteDescription | plainify | htmlUnescape -}}
 
     {{- $images := partial "utils/images.html" . -}}
     {{- $images = union $images (slice (.Site.Params.siteLogo | absURL)) -}}
