@@ -16,6 +16,25 @@
     .theme-icon-dark {
         display: inline-block;
     }
+    img {
+        filter: brightness(50%);
+    }
+
+    @if ($enableHighlight) {
+        /* https://xyproto.github.io/splash/docs/all.html */
+        /* Color values matching dracula style */
+
+        --chroma-line-numbers-background: #ffffcc;
+        --chroma-line-numbers-color: #7f7f7f;
+        --chroma-keyword-color: #ff79c6;
+        --chroma-name-color: #8be9fd;
+        --chroma-attribute-color: #50fa7b;
+        --chroma-literal-color: #f1fa8c;
+        --chroma-number-color: #bd93f9;
+        --chroma-comment-color: #6272a4;
+        --chroma-deleted-color: #8b080b;
+        --chroma-output-color: #44475a;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
