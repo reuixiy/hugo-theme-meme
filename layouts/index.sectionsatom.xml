@@ -26,7 +26,7 @@
         </author>
     {{- end }}
     {{ with .Site.Copyright -}}
-        <rights>{{ . | plainify }}</rights>
+        <rights>{{ . | plainify | htmlUnescape }}</rights>
     {{- end }}
     <generator uri="https://gohugo.io/" version="{{ hugo.Version }}">Hugo</generator>
     {{- range (where $pages "Section" "in" .Site.Params.mainSections) }}
@@ -52,7 +52,7 @@
                 </author>
             {{- end }}
             {{ with $author.copyright -}}
-                <rights>{{ . | plainify }}</rights>
+                <rights>{{ . | plainify | htmlUnescape }}</rights>
             {{- end }}
             {{- $summary := .Description | default (partial "utils/summary.html" $page) -}}
             <summary type="html">{{ partial "utils/make-links-absolute.html" (dict "$" . "content" $summary) | html }}</summary>
