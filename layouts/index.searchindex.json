@@ -1,5 +1,5 @@
 [
-    {{- range $index, $page := .Site.RegularPages -}}
+    {{- range $index, $page := where .Site.Pages "Content" "ne" ("" | safeHTML)  -}}
         {{- if gt $index 0 -}}
             ,
         {{- end -}}
