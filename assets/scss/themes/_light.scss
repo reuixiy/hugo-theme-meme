@@ -15,11 +15,25 @@
     .theme-icon-dark {
         display: none;
     }
+    @if ($enableHighlight) {
+        /* https://xyproto.github.io/splash/docs/all.html */
+        /* Color values matching manni style */
+
+        --chroma-line-numbers-background: #ffffcc;
+        --chroma-line-numbers-color: #7f7f7f;
+        --chroma-keyword-color: #006699;
+        --chroma-name-color: #9999ff;
+        --chroma-attribute-color: #330099;
+        --chroma-literal-color: #cc3300;
+        --chroma-number-color: #ff6600;
+        --chroma-comment-color: #0099ff;
+        --chroma-deleted-color: #ffcccc;
+        --chroma-output-color: #aaaaaa;
+    }
 }
 
 @media (prefers-color-scheme: light) {
-    :root:not([data-theme])
-    {
+    :root:not([data-theme]) {
         @include light-theme;
     }
 }

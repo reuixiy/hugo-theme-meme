@@ -176,15 +176,6 @@
     {{- end -}}
 {{- end -}}
 
-<!-- Dark Mode -->
-{{- if .Site.Params.enableHighlight -}}
-    {{- if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") -}}
-        {{- $regexPatternDarkmode := `(<(div|pre) class=")chroma(">)` -}}
-        {{- $regexReplacementDarkmode := `${1}chroma-dark${3}` -}}
-        {{- $Content = $Content | replaceRE $regexPatternDarkmode $regexReplacementDarkmode -}}
-    {{- end -}}
-{{- end -}}
-
 <!-- Responsive tables -->
 {{- $Content = $Content | replaceRE `<table\b` `<div class="table-container"><table` -}}
 {{- $Content = $Content | replaceRE `</table>` `</table></div>` -}}

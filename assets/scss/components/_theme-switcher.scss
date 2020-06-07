@@ -12,12 +12,6 @@
     }
 }
 
-[data-theme="dark"] {
-    img {
-        filter: brightness(50%);
-    }
-}
-
 @if (not $headerLayoutFlex) {
     #theme-switcher {
         padding: 1em;

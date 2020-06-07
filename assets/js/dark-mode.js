@@ -65,14 +65,6 @@ function changeMode() {
     const themeColor = isDark ? '{{ .Site.Params.themeColorDark }}': '{{ .Site.Params.themeColor }}';
     document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
 
-    // Change Chroma Code Highlight Theme
-    const oldChromaTheme = isDark ? 'chroma' : 'chroma-dark';
-    const newChromaTheme = isDark ? 'chroma-dark' : 'chroma';
-
-    [].slice.apply(document.getElementsByClassName(oldChromaTheme)).forEach((e) => {
-        e.className = newChromaTheme;
-    });
-
     {{ if and .Site.Params.enableUtterances (eq hugo.Environment "production") }}
         // Change Utterances Comments Theme
         // https://github.com/utterance/utterances/issues/229
