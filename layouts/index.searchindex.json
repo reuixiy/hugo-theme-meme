@@ -3,14 +3,15 @@
         {{- if gt $index 0 -}}
             ,
         {{- end -}}
-        {{- $entry := dict "uri" $page.RelPermalink "title" $page.Title "content" ($page.Plain | htmlUnescape) -}}
+        {{- $rawTitle := (partial "utils/title.html" (dict "$" $ "title" $page.Title)).rawTitle -}}
+        {{- $entry := dict "uri" $page.RelPermalink "title" $rawTitle "content" ($page.Plain | htmlUnescape) -}}
         {{- if $page.Params.subtitle -}}
             {{- $subtitle := partial "utils/markdownify.html" (dict "$" $page "raw" $page.Params.subtitle "isContent" false) -}}
-            {{- $entry = merge $entry (dict "subtitle" ($subtitle | plainify)) -}}
+            {{- $entry = merge $entry (dict "subtitle" ($subtitle | plainify | htmlUnescape)) -}}
         {{- end -}}
         {{- if .Site.Params.displayPostDescription -}}
             {{- $description := partial "utils/markdownify.html" (dict "$" $page "raw" $page.Description "isContent" false) -}}
-            {{- $entry = merge $entry (dict "description" ($description | plainify)) -}}
+            {{- $entry = merge $entry (dict "description" ($description | plainify | htmlUnescape)) -}}
         {{- end -}}
         {{- if .Site.Params.displayCategory -}}
             {{- if eq .Site.Params.categoryBy "sections" -}}
