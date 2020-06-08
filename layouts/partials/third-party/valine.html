@@ -26,8 +26,6 @@
             appId: '{{ .Site.Params.valineAppId }}',
             appKey: '{{ .Site.Params.valineAppKey }}',
             placeholder: '{{ .Site.Params.valinePlaceholder }}',
-            notify: {{ .Site.Params.valineNotify }},
-            verify: {{ .Site.Params.valineVerify }},
             path: {{ .Site.Params.valinePath | default "location.pathname" | safeJS }},
             avatar: '{{ .Site.Params.valineAvatar }}',
             meta: {{ .Site.Params.valineMeta }},
@@ -35,9 +33,13 @@
             lang: '{{ .Site.Params.valineLang }}',
             visitor: {{ .Site.Params.valineVisitor }},
             highlight: {{ .Site.Params.valineHighlight }},
-            avatarForce: {{ .Site.Params.avatarForce }},
+            avatarForce: {{ .Site.Params.valineAvatarForce }},
             recordIP: {{ .Site.Params.valineRecordIP }},
-            serverURLs: '{{ .Site.Params.valineServerURLs }}'
+            serverURLs: '{{ .Site.Params.valineServerURLs }}',
+            emojiCDN: '{{ .Site.Params.valineEmojiCDN }}',
+            emojiMaps: {{ .Site.Params.valineEmojiMaps }},
+            enableQQ: {{ .Site.Params.valineEnableQQ }},
+            requiredFields: {{ .Site.Params.valineRequiredFields }}
         });
     }
 </script>
