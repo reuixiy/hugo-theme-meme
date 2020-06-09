@@ -40,6 +40,10 @@ window.addEventListener("DOMContentLoaded", event => {
 // https://codepen.io/tevko/pen/GgWYpg
 
 window.addEventListener('storage', function (event) {
+    if (event.key !== 'theme') {
+      return;
+    }
+
     if (event.newValue === 'dark') {
         changeModeMeta('dark');
     } else {
