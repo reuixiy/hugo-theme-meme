@@ -5,7 +5,7 @@
     --theme-name: "dark";
     @include defineColorHSL(--color-primary, $primaryColorDarkH, $primaryColorDarkS, $primaryColorDarkL);
     @include defineColorHSL(--color-bg, 231, 14%, 10%);
-    @include defineColorHSL(--color-contrast-lower, 230, 12%, 21%);
+    @include defineColorHSL(--color-contrast-lower, 230, 12%, 18%);
     @include defineColorHSL(--color-contrast-low, 240, 2%, 37%);
     @include defineColorHSL(--color-contrast-medium, 80, 2%, 69%);
     @include defineColorHSL(--color-contrast-high, 69, 9%, 84%);
