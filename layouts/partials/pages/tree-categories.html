@@ -24,7 +24,9 @@
                     {{ $lastTerm := (delimit (last 1 $categoryTerms) " ") }}
                     {{ $url := urls.Parse $lastTerm }}
                     {{ $path := $url.Path }}
+                    {{ $linkTarget := "" }}
                     {{ with $.Site.GetPage (printf `/categories/%s` $path) }}
+                        {{ $linkTarget = . }}
                         <p style="padding-left: {{ $padding }}em">
                             <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default .Data.Term | default $path }}</a>
                             {{ if $.Site.Params.displayPostsCount }}
@@ -34,6 +36,7 @@
                     {{ end }}
                     {{ if $.Site.Params.displayPosts }}
                         {{ $context := . }}
+                        {{ $.Scratch.Delete "pages" }}
                         {{ range $.Site.RegularPages }}
                             {{ $page := . }}
                             {{ with .Param "categories" }}
@@ -44,12 +47,12 @@
                                 {{ end }}
                                 {{ $category := $.Scratch.Get "category" }}
                                 {{ if eq $context $category }}
-                                    <p style="padding-left: {{ add $padding (mul 2 1.2) }}em">
-                                        <a href="{{ $page.RelPermalink }}" class="category-post">{{ (partial "utils/title.html" (dict "$" $page "title" $page.LinkTitle)).htmlTitle }}</a>
-                                    </p>
+                                    {{ $.Scratch.Add "pages" (slice $page) }}
                                 {{ end }}
                             {{ end }}
                         {{ end }}
+                        {{ $pages := $.Scratch.Get "pages" }}
+                        {{ partial "utils/limit-tree-posts.html" (dict "$" $ "pages" $pages "linkTarget" $linkTarget "padding" $padding) }}
                     {{ end }}
                 {{ end }}
             </div>
