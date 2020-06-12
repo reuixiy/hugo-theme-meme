@@ -5,14 +5,36 @@
                 <h1 class="list-title">{{ .Title | default (.Type | title) }}</h1>
             {{ end }}
             <div class="tree">
-                {{ partial "utils/tree-sections.html" . }}
-                {{ $pages := (.Scratch.Get "pages") }}
-                {{ range $page, $name := $pages }}
-                    {{ $depth := (len (split (strings.TrimPrefix "/" $page) "/")) }}
-                    {{ with $.Site.GetPage $page }}
-                        {{ $linkTarget := . }}
-                        {{ $padding := (mul (mul $depth 2) 1.2) }}
-                        <p style="padding-left: {{ $padding }}em">
+                <ul class="list-categories">
+                    {{ partial "utils/tree-sections.html" . }}
+                    {{ $sections := .Scratch.Get "sections" }}
+                    {{ $pages := .Scratch.Get "pages" }}
+                    {{ range $index, $page := $pages }}
+                        {{ $depth := (len (split (strings.TrimPrefix "/" $page) "/")) }}
+
+                        {{ with $.Site.GetPage $page }}
+                            {{ $linkTarget := . }}
+
+                            {{ $depthPrev := 0 }}
+                            {{ if ge $index 1 }}
+                                {{ $pagePrev := index $pages (sub $index 1) }}
+                                {{ $depthPrev = len (split (strings.TrimPrefix "/" $pagePrev) "/") }}
+                            {{ end }}
+
+                            {{ $depthNext := 0 }}
+                            {{ if lt $index (sub (len $pages) 1) }}
+                                {{ $pageNext := index $pages (add $index 1) }}
+                                {{ $depthNext = len (split (strings.TrimPrefix "/" $pageNext) "/") }}
+                            {{ end }}
+
+                            {{ if or (le $depth $depthPrev) (eq $index 0) }}
+                                <li>
+                            {{ end }}
+                            {{ if and (gt $depth $depthPrev) (ne $index 0) }}
+                                <ul class="list-categories"><li>
+                            {{ end }}
+
+                            {{ $name := index $sections $index }}
                             <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default $name }}</a>
                             {{ if $.Site.Params.displayPostsCount }}
                                 {{ $sectionPage := .CurrentSection }}
@@ -25,20 +47,32 @@
                                 {{ $pages := $.Scratch.Get "pages" }}
                                 <span class="category-count">{{ printf "(%d)" (len $pages) }}</span>
                             {{ end }}
-                        </p>
-                        {{ if $.Site.Params.displayPosts }}
-                            {{ $sectionPage := .CurrentSection }}
-                            {{ $.Scratch.Delete "pages" }}
-                            {{ range $.Site.RegularPages }}
-                                {{ if (.InSection $sectionPage) }}
-                                    {{ $.Scratch.Add "pages" (slice .) }}
+
+                            {{ if $.Site.Params.displayPosts }}
+                                {{ $sectionPage := .CurrentSection }}
+                                {{ $.Scratch.Delete "pages" }}
+                                {{ range $.Site.RegularPages }}
+                                    {{ if (.InSection $sectionPage) }}
+                                        {{ $.Scratch.Add "pages" (slice .) }}
+                                    {{ end }}
+                                {{ end }}
+                                {{ $pages := $.Scratch.Get "pages" }}
+                                {{ partial "utils/limit-tree-posts.html" (dict "$" $ "pages" $pages "linkTarget" $linkTarget) }}
+                            {{ end }}
+
+                            {{ if and (gt $depth $depthNext) (ne $index (sub (len $pages) 1)) }}
+                                {{ range seq (sub $depth $depthNext) }}
+                                    {{ if le . (sub $depth $depthNext) }}
+                                        </li></ul>
+                                    {{ end }}
                                 {{ end }}
                             {{ end }}
-                            {{ $pages := $.Scratch.Get "pages" }}
-                            {{ partial "utils/limit-tree-posts.html" (dict "$" $ "pages" $pages "linkTarget" $linkTarget "padding" $padding) }}
+                            {{ if ge $depth $depthNext }}
+                                </li>
+                            {{ end }}
                         {{ end }}
                     {{ end }}
-                {{ end }}
+                </ul>
             </div>
         </div>
     </div>

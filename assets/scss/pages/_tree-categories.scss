@@ -1,7 +1,28 @@
 .tree {
-    margin-left: -2.4em;
     overflow: auto hidden;
     white-space: nowrap;
+
+    ul {
+        padding-left: 2.4em;
+    }
+
+    & > ul {
+        padding: 0;
+    }
+}
+
+.list-categories > li {
+    position: relative;
+
+    &::before {
+        content: " ";
+        position: absolute;
+        top: 2.4em;
+        left: 0.1em;
+        width: 0.2em;
+        height: calc(100% - 2.8em);
+        background: var(--color-contrast-lower);
+    }
 }
 
 .category-item {
