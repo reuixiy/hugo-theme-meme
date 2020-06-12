@@ -3,6 +3,7 @@
 {{- $.Scratch.Delete "pages" -}}
 {{- $contentDir := $.Site.Params.contentDir -}}
 {{- template "treeSections" (dict "$" $ "path" (cond $.Site.IsMultiLingual (printf `./%s` $contentDir) (printf `./content`))) -}}
+
 {{- define "treeSections" -}}
     {{- $ := index . "$" -}}
     {{- $path := .path -}}
@@ -12,8 +13,8 @@
             {{- $pagePath := (cond $.Site.IsMultiLingual (strings.TrimPrefix (printf `./%s` $.Site.Params.contentDir) (printf `%s/%s` $path $fileName)) (strings.TrimPrefix "./content" (printf `%s/%s` $path $fileName))) -}}
             {{- with $.Site.GetPage $pagePath -}}
                 {{- if and (eq .Kind "section") (in $.Site.Params.mainSections .Section) -}}
-                    {{- $.Scratch.Add "sections" (printf "%s, " $fileName) -}}
-                    {{- $.Scratch.SetInMap "pages" $pagePath $fileName -}}
+                    {{- $.Scratch.Add "sections" (slice $fileName) -}}
+                    {{- $.Scratch.Add "pages" (slice $pagePath) -}}
                 {{- end -}}
             {{- end -}}
             {{- template "treeSections" (dict "$" $ "path" (printf `%s/%s` $path $fileName)) -}}

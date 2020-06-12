@@ -1,7 +1,6 @@
 {{- $ := index . "$" -}}
 {{- $pages := .pages -}}
 {{- $linkTarget := .linkTarget -}}
-{{- $padding := .padding -}}
 
 {{ with $pages }}
     {{ $rawPages := . }}
@@ -12,16 +11,19 @@
     {{ if ge $limit 0 }}
         {{ $pages = $pages | first $limit -}}
     {{ end }}
-    {{ range $pages }}
-        <p style="padding-left: {{ add $padding (mul 2 1.2) }}em">
-            <a href="{{ .RelPermalink }}" class="category-post">{{ (partial "utils/title.html" (dict "$" . "title" .LinkTitle)).htmlTitle }}</a>
-        </p>
-    {{ end }}
-    {{ if and (gt $limit 0) (gt (len $rawPages) $limit) }}
-        {{ with $linkTarget }}
-            <p style="padding-left: {{ add $padding (mul 2 1.2) }}em">
-                <a href="{{ $linkTarget.RelPermalink }}" class="category-post">{{ i18n "readMore" }} »</a>
-            </p>
+
+    <ul class="list-posts">
+        {{ range $pages }}
+            <li>
+                <a href="{{ .RelPermalink }}" class="category-post">{{ (partial "utils/title.html" (dict "$" . "title" .LinkTitle)).htmlTitle }}</a>
+            </li>
         {{ end }}
-    {{ end }}
+        {{ if and (gt $limit 0) (gt (len $rawPages) $limit) }}
+            {{ with $linkTarget }}
+                <li>
+                    <a href="{{ $linkTarget.RelPermalink }}" class="category-post more">{{ i18n "readMore" }} »</a>
+                </li>
+            {{ end }}
+        {{ end }}
+    </ul>
 {{ end }}
