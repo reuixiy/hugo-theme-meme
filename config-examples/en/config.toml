@@ -421,7 +421,7 @@ uglyURLs = false
     ######################################
     # List Page
 
-    listWidth = 39
+    listWidth = 36
     # Note: you can leave it empty("") to
     #       fallback to the default value: 42
     #       Unit: em
@@ -716,7 +716,7 @@ uglyURLs = false
     #            supported
 
     # The content width of the post
-    postWidth = 39
+    postWidth = 36
     # Note: you can leave it empty("") to
     #       fallback to the default value: 42
     #       Unit: em
@@ -956,7 +956,7 @@ uglyURLs = false
     ######################################
     ## Font Size (unit: px)
 
-    fontSize = 20
+    fontSize = 18
 
     ######################################
     ## Tab Size
