@@ -13,9 +13,7 @@
                     {{ partial "utils/summary.html" . }}
                 </summary>
                 {{ if .Truncated }}
-                    <div class="read-more-container">
-                        <a href="{{ .RelPermalink }}" class="read-more-link">{{ i18n "readMore" }} »</a>
-                    </div>
+                {{ partial "utils/read-more.html" . }}
                 {{ end }}
             </article>
         {{ end }}
