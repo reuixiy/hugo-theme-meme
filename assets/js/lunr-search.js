@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", event => {
 
     const form = document.getElementById("search");
     const input = document.getElementById("search-input");
+
     form.addEventListener("submit", function(event) {
         event.preventDefault();
 
