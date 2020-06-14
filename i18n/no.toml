@@ -45,7 +45,7 @@ other = "Deler på "
 other = "Deler via "
 
 [relatedPosts]
-other = "Se ogås:"
+other = "Se også:"
 
 [loadComments]
 other = "Gi kommentar?"
@@ -60,7 +60,7 @@ other = "Ta meg hjem"
 other = "Nye Oppdatering er tilgjengelig"
 
 [serviceWorkerUpdatedAction]
-other = "Oppdatere"
+other = "Oppdaterer"
 
 [searchResultsTitle]
 one = "Fant et resultat for “{{ .Term }}”"
