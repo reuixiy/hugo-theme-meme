@@ -4,6 +4,10 @@ window.addEventListener("DOMContentLoaded", event => {
     const navToggleLabel = document.querySelector('.nav-toggle');
     const navToggleLabelInner = document.createElement('div');
 
+    if (!navToggleLabel) {
+        return;
+    }
+
     navToggleLabelInner.className = 'nav-toggle-inner';
     navToggleLabel.appendChild(navToggleLabelInner);
 
