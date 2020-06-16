@@ -1,0 +1,174 @@
+[ellipsis]
+other = "…"
+
+[colon]
+other = ": "
+
+[minute]
+one = "min"
+other = "min"
+
+[tocTitle]
+other = "Innhold"
+
+[readMore]
+other = "Les mer"
+
+[prevPage]
+other = "Nyere"
+
+[nextPage]
+other = "Eldre"
+
+[copy]
+other = "Kopi"
+
+[copied]
+other = "Kopiert!"
+
+[copyrightAuthor]
+other = "Forfatter"
+
+[copyrightLink]
+other = "Link"
+
+[copyrightLicense]
+other = "Lisens"
+
+[shareOn]
+other = "Delt på:"
+
+[shareOnTitle]
+other = "Deler på "
+
+[shareViaTitle]
+other = "Deler via "
+
+[relatedPosts]
+other = "Se også:"
+
+[loadComments]
+other = "Gi kommentar?"
+
+[pageNotFound]
+other = "404 - Siden finnes ikke"
+
+[fofLinkText]
+other = "Ta meg hjem"
+
+[serviceWorkerUpdatedText]
+other = "Nye Oppdatering er tilgjengelig"
+
+[serviceWorkerUpdatedAction]
+other = "Oppdaterer"
+
+[searchResultsTitle]
+one = "Fant et resultat for “{{ .Term }}”"
+other = "Fant {{ .Count }} resultater for “{{ .Term }}”"
+
+[searchResultsNone]
+other = "Ingen er funnet for “{{ .Term }}”"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "januar"
+
+[february]
+other = "februar"
+
+[march]
+other = "mars"
+
+[april]
+other = "april"
+
+[may]
+other = "mai"
+
+[june]
+other = "juni"
+
+[july]
+other = "juli"
+
+[august]
+other = "august"
+
+[september]
+other = "september"
+
+[october]
+other = "oktober"
+
+[november]
+other = "november"
+
+[december]
+other = "desember"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"
