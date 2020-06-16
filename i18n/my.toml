@@ -1,0 +1,174 @@
+[ellipsis]
+other = "…"
+
+[colon]
+other = ": "
+
+[minute]
+one = "min"
+other = "min"
+
+[tocTitle]
+other = "Isi kandungan"
+
+[readMore]
+other = "Baca lagi"
+
+[prevPage]
+other = "Terbaru"
+
+[nextPage]
+other = "Lama"
+
+[copy]
+other = "Salinan"
+
+[copied]
+other = "Disalin!"
+
+[copyrightAuthor]
+other = "Pengarang"
+
+[copyrightLink]
+other = "Sambungan"
+
+[copyrightLicense]
+other = "Lesen"
+
+[shareOn]
+other = "Dikongsikan:"
+
+[shareOnTitle]
+other = "Dikongsikan "
+
+[shareViaTitle]
+other = "Dikongsikan di "
+
+[relatedPosts]
+other = "Sila lihat:"
+
+[loadComments]
+other = "Berikan komen?"
+
+[pageNotFound]
+other = "404 - Halaman tidak dijumpa"
+
+[fofLinkText]
+other = "Kembali ke asal"
+
+[serviceWorkerUpdatedText]
+other = "Ada kemaskini terbaru"
+
+[serviceWorkerUpdatedAction]
+other = "Kemaskini"
+
+[searchResultsTitle]
+one = "Jumpa satu halaman untuk “{{ .Term }}”"
+other = "Jumpa {{ .Count }} halaman untuk “{{ .Term }}”"
+
+[searchResultsNone]
+other = "Tidak jumpa sebarang halaman untuk “{{ .Term }}”"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "Januari"
+
+[february]
+other = "Februari"
+
+[march]
+other = "Mac"
+
+[april]
+other = "April"
+
+[may]
+other = "Mei"
+
+[june]
+other = "Jun"
+
+[july]
+other = "Julai"
+
+[august]
+other = "Ogos"
+
+[september]
+other = "September"
+
+[october]
+other = "Oktober"
+
+[november]
+other = "November"
+
+[december]
+other = "Disember"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"
