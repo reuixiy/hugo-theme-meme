@@ -66,7 +66,7 @@ function changeMode() {
     const isDark = getCurrentTheme() === 'dark';
 
     // Change theme color meta
-    const themeColor = isDark ? '{{ .Site.Params.themeColorDark }}': '{{ .Site.Params.themeColor }}';
+    const themeColor = isDark ? '{{ .Site.Params.themeColorDark }}' : '{{ .Site.Params.themeColor }}';
     document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
 
     {{ if and .Site.Params.enableUtterances (eq hugo.Environment "production") }}
@@ -88,6 +88,34 @@ function changeMode() {
             }
         }
     {{ end }}
+
+    // Mermaid
+    // https://github.com/reuixiy/hugo-theme-meme/issues/205
+    if (mermaidConfig) {
+        const mermaids = document.querySelectorAll('.mermaid');
+
+        mermaids.forEach(e => {
+            if (e.getAttribute('data-processed')) {
+                // Already rendered, clean the processed attributes
+                e.removeAttribute('data-processed');
+                // Replace the rendered HTML with the stored text
+                e.innerHTML = e.getAttribute('data-graph');
+            } else {
+                // First time, store the text
+                e.setAttribute('data-graph', e.textContent);
+            }
+        });
+
+        if (isDark) {
+            mermaidConfig.theme = '{{ .Site.Params.mermaidThemeDark | default "dark" }}';
+            mermaid.initialize(mermaidConfig);
+            mermaid.init();
+        } else {
+            mermaidConfig.theme = '{{ .Site.Params.mermaidTheme | default "default" }}';
+            mermaid.initialize(mermaidConfig);
+            mermaid.init();
+        }
+    }
 }
 
 function storePrefers() {

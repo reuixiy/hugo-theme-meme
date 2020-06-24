@@ -1,11 +1,20 @@
-<script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@8.5.2/dist/mermaid.min.js"></script>
 <script>
-    var config = {
+    let mermaidConfig = {
         startOnLoad: true,
         flowchart: {
             useMaxWidth: false,
             htmlLabels: true
-        }
+        },
+        theme: '{{ template "mermaid-theme" . }}'
     };
-    mermaid.initialize(config);
+    mermaid.initialize(mermaidConfig);
 </script>
+
+{{- define "mermaid-theme" -}}
+    {{- $theme := .Site.Params.mermaidTheme | default "default" -}}
+    {{- if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") -}}
+        {{- $theme = .Site.Params.mermaidThemeDark | default "dark" -}}
+    {{- end -}}
+    {{- $theme -}}
+{{- end -}}

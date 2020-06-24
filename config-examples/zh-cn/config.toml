@@ -572,6 +572,9 @@ uglyURLs = false
     # 说明：文章的 Front Matter 中的 `mermaid`
     #      的优先级高于此处
 
+    mermaidTheme = 'default'
+    mermaidThemeDark = 'dark'
+
 
     ######################################
     # 评论
