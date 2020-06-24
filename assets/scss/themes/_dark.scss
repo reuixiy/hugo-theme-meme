@@ -38,18 +38,16 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme])
-    {
+    :root:not([data-theme]) {
         @include dark-theme;
     }
 }
 
-@if $defaultTheme == dark {
+@if ($defaultTheme == "dark") {
     :root {
         @include dark-theme;
     }
-}
-@else {
+} @else {
     :root[data-theme="dark"] {
         @include dark-theme;
     }
