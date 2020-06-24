@@ -9,7 +9,7 @@
                         {{ if (eq .Kind "section") }}
                             <h1 class="list-title">{{ .Title | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") }}</h1>
                         {{ end }}
-                        {{ if (eq .Kind "taxonomy") }}
+                        {{ if (eq .Kind "term") }}
                             <h1 class="list-title">{{ .Title | default .Data.Term | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" .Path) "/")) " ") }}</h1>
                         {{ end }}
                     {{ end }}
@@ -34,11 +34,9 @@
                     {{ end }}
 
                     <!-- Taxonomy (See `taxonomy` folder) -->
-                    <!-- Note: Taxonomy’s Page Kind is `taxonomyTerm`; -->
-                    <!--       Taxonomy Term’s Page Kind is `taxonomy` -->
 
                     <!-- Taxonomy Term -->
-                    {{ if (eq .Kind "taxonomy") }}
+                    {{ if (eq .Kind "term") }}
                         {{ $pages := .Pages }}
                         {{ $.Scratch.Set "pages" $pages }}
                     {{ end }}
