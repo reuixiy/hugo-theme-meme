@@ -73,9 +73,9 @@ function changeMode() {
         // Change Utterances Comments Theme
         // https://github.com/utterance/utterances/issues/229
         if (isDark) {
-            changeUtterancesTheme('{{ .Site.Params.utterancesThemeDark }}');
+            changeUtterancesTheme('{{ .Site.Params.utterancesThemeDark | default "photon-dark" }}');
         } else {
-            changeUtterancesTheme('{{ .Site.Params.utterancesTheme }}');
+            changeUtterancesTheme('{{ .Site.Params.utterancesTheme | default "github-light" }}');
         }
         function changeUtterancesTheme(theme) {
             const iframe = document.querySelector('.utterances-frame');
