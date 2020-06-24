@@ -91,7 +91,7 @@ function changeMode() {
 
     // Mermaid
     // https://github.com/reuixiy/hugo-theme-meme/issues/205
-    if (mermaidConfig) {
+    if (typeof mermaidConfig !== 'undefined') {
         const mermaids = document.querySelectorAll('.mermaid');
 
         mermaids.forEach(e => {
