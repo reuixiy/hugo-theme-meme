@@ -15,6 +15,7 @@
     .theme-icon-dark {
         display: none;
     }
+
     @if ($enableHighlight) {
         /* https://xyproto.github.io/splash/docs/all.html */
         /* Color values matching manni style */
@@ -38,12 +39,11 @@
     }
 }
 
-@if $defaultTheme == light {
+@if ($defaultTheme == "light") {
     :root {
         @include light-theme;
     }
-}
-@else {
+} @else {
     :root[data-theme="light"] {
         @include light-theme;
     }
