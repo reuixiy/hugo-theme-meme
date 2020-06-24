@@ -1,15 +1,3 @@
-{{- if .Site.Params.enableDarkMode -}}
-    {{- with .Site.Params.defaultTheme | default "light" -}}
-        {{- if eq . "light" -}}
-            {{- $.Scratch.Set "theme" $.Site.Params.utterancesTheme -}}
-        {{- else -}}
-            {{- $.Scratch.Set "theme" $.Site.Params.utterancesThemeDark -}}
-        {{- end -}}
-    {{- end -}}
-{{- else -}}
-    {{- $.Scratch.Set "theme" $.Site.Params.utterancesTheme -}}
-{{- end -}}
-{{- $theme := $.Scratch.Get "theme" -}}
 <script>
     function loadComments() {
         (function() {
@@ -20,7 +8,7 @@
             script.crossOrigin = 'anonymous';
             script.setAttribute('repo', '{{ .Site.Params.utterancesRepo }}');
             script.setAttribute('issue-term', '{{ .Site.Params.utterancesIssueTerm }}');
-            {{ template "theme" (dict "$" . "theme" $theme) }}
+            script.setAttribute('theme', '{{ template "utterances-theme" . }}');
             {{ with .Site.Params.utterancesLabel }}
                 script.setAttribute('label', '{{ . }}');
             {{ end }}
@@ -28,23 +16,11 @@
         })();
     }
 </script>
-{{- define "theme" -}}
-    {{- $ := index . "$" -}}
-    {{- $theme := .theme -}}
-    {{- if $.Site.Params.enableDarkMode -}}
-        const userPrefers = localStorage.getItem('theme');
-        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
-        if (userPrefers === "dark") {
-            script.setAttribute('theme', '{{ $.Site.Params.utterancesThemeDark }}');
-        } else if (userPrefers === "light") {
-            script.setAttribute('theme', '{{ $.Site.Params.utterancesTheme }}');
-        } else if (darkModeMediaQuery.matches) {
-            script.setAttribute('theme', '{{ $.Site.Params.utterancesThemeDark }}');
-        } else if (lightModeMediaQuery.matches) {
-            script.setAttribute('theme', '{{ $.Site.Params.utterancesTheme }}');
-        }
-    {{- else -}}
-        script.setAttribute('theme', '{{ $theme }}');
+
+{{- define "utterances-theme" -}}
+    {{- $theme := .Site.Params.utterancesTheme | default "github-light" -}}
+    {{- if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") -}}
+        {{- $theme = .Site.Params.utterancesThemeDark | default "photon-dark" -}}
     {{- end -}}
+    {{- $theme -}}
 {{- end -}}
