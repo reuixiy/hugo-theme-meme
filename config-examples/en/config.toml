@@ -533,6 +533,10 @@ uglyURLs = false
     #       may still read your blog in
     #       light mode, even if you have
     #       hidden the theme toggle.
+    #       Unless you enable the following
+    #       option.
+
+    overrideSystemPreferences = false
 
 
     ######################################
