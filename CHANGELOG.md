@@ -1,3 +1,45 @@
+# [4.5.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.4.0...v4.5.0) (2020-06-24)
+
+
+### Bug Fixes
+
+* Avoid double escaping when using post description ([#190](https://github.com/reuixiy/hugo-theme-meme/issues/190)) ([44d4198](https://github.com/reuixiy/hugo-theme-meme/commit/44d4198))
+* Do not load the script in 404 page ([#200](https://github.com/reuixiy/hugo-theme-meme/issues/200)) ([87e8586](https://github.com/reuixiy/hugo-theme-meme/commit/87e8586)), closes [#199](https://github.com/reuixiy/hugo-theme-meme/issues/199)
+* make dark theme brighter ([#195](https://github.com/reuixiy/hugo-theme-meme/issues/195)) ([4e9c8fe](https://github.com/reuixiy/hugo-theme-meme/commit/4e9c8fe))
+* mermaidConfig is not defined error ([f0b87b2](https://github.com/reuixiy/hugo-theme-meme/commit/f0b87b2))
+* missing read-more on home-posts page ([#198](https://github.com/reuixiy/hugo-theme-meme/issues/198)) ([831d8fb](https://github.com/reuixiy/hugo-theme-meme/commit/831d8fb))
+* Safari doesn't support addEventListener on media queries ([#184](https://github.com/reuixiy/hugo-theme-meme/issues/184)) ([0fccbcc](https://github.com/reuixiy/hugo-theme-meme/commit/0fccbcc))
+* Search index should include sections & co. if these have content ([#192](https://github.com/reuixiy/hugo-theme-meme/issues/192)) ([e2948b2](https://github.com/reuixiy/hugo-theme-meme/commit/e2948b2))
+* Unrelated localStorage changes would cause switch to light theme ([#194](https://github.com/reuixiy/hugo-theme-meme/issues/194)) ([db102eb](https://github.com/reuixiy/hugo-theme-meme/commit/db102eb))
+* wrong utterances theme ([9a041c1](https://github.com/reuixiy/hugo-theme-meme/commit/9a041c1))
+
+
+### Code Refactoring
+
+* Do not use inline scripts ([#173](https://github.com/reuixiy/hugo-theme-meme/issues/173)) ([f160158](https://github.com/reuixiy/hugo-theme-meme/commit/f160158)), closes [#145](https://github.com/reuixiy/hugo-theme-meme/issues/145)
+* Improve code highlighting ([#188](https://github.com/reuixiy/hugo-theme-meme/issues/188)) ([cf603f3](https://github.com/reuixiy/hugo-theme-meme/commit/cf603f3)), closes [#169](https://github.com/reuixiy/hugo-theme-meme/issues/169)
+* Make title.html partial more readable, fix title for taxonomy pages ([#187](https://github.com/reuixiy/hugo-theme-meme/issues/187)) ([ea09a86](https://github.com/reuixiy/hugo-theme-meme/commit/ea09a86))
+* Rename $Deliver into $ for clarity ([#177](https://github.com/reuixiy/hugo-theme-meme/issues/177)) ([81a773d](https://github.com/reuixiy/hugo-theme-meme/commit/81a773d))
+
+
+### Features
+
+* allow to limit the number of tree posts ([#196](https://github.com/reuixiy/hugo-theme-meme/issues/196)) ([6f3aeba](https://github.com/reuixiy/hugo-theme-meme/commit/6f3aeba)), closes [#97](https://github.com/reuixiy/hugo-theme-meme/issues/97)
+* apply `markdownify` to post title ([#183](https://github.com/reuixiy/hugo-theme-meme/issues/183)) ([1322fdd](https://github.com/reuixiy/hugo-theme-meme/commit/1322fdd)), closes [#179](https://github.com/reuixiy/hugo-theme-meme/issues/179)
+* support dark theme for mermaid ([066138a](https://github.com/reuixiy/hugo-theme-meme/commit/066138a)), closes [#205](https://github.com/reuixiy/hugo-theme-meme/issues/205)
+* support override system preferences for dark mode ([29bd11e](https://github.com/reuixiy/hugo-theme-meme/commit/29bd11e)), closes [#201](https://github.com/reuixiy/hugo-theme-meme/issues/201)
+* **i18n:** add Malaysian and Norwegian languages ([#202](https://github.com/reuixiy/hugo-theme-meme/issues/202)) ([f782a59](https://github.com/reuixiy/hugo-theme-meme/commit/f782a59))
+
+
+### BREAKING CHANGES
+
+* Highlighting customization now works by overriding CSS variables, no longer by overriding theme-specific files
+* Markdown in page titles will be processed now
+* `Deliver` parameter to various templates is now called `$`
+* custom.js is loaded at the top of the page now, before the page elements are available
+
+
+
 # [4.4.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.3.1...v4.4.0) (2020-05-23)
 
 MemE `v4.4.0` comes with some big code refactoring by @palant, which makes MemE even more faster. Big thanks!
