@@ -4,10 +4,10 @@
 {{- if eq $.Kind "home" -}}
     {{- $htmlTitle = $htmlTitle | default $.Site.Title -}}
 <!-- Taxonomy -->
-{{- else if eq $.Kind "taxonomyTerm" -}}
+{{- else if eq $.Kind "taxonomy" -}}
     {{- $htmlTitle = $htmlTitle | default ($.Type | title) -}}
 <!-- Taxonomy Term -->
-{{- else if eq $.Kind "taxonomy" -}}
+{{- else if eq $.Kind "term" -}}
     {{- $taxonomyTermTitle := $htmlTitle | default $.Data.Term | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" $.Path) "/")) " ") -}}
     {{- with $.Site.GetPage (printf "/%s" $.Data.Plural) -}}
         {{- $htmlTitle = printf "%s: %s" (.Title | default (.Type | title)) $taxonomyTermTitle -}}
