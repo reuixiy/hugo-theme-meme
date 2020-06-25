@@ -1,14 +1,11 @@
-{{ if .Truncated -}}
+{{- $summary := .Summary -}}
+{{- if .Truncated -}}
     <!-- For the CJK language, add ellipsis. -->
     {{- if .Params.isCJKLanguage -}}
-        {{- .Summary -}}
-        {{- i18n "ellipsis" -}}
+        {{- $summary = printf `%s%s` .Summary (i18n "ellipsis") -}}
     <!-- For the other languages, no need. -->
     <!-- Hugo’s automatic summary split method will split until end of sentence. -->
     <!-- (Tested English Only) -->
-    {{- else -}}
-        {{- .Summary -}}
     {{- end -}}
-{{- else -}}
-    {{- .Summary -}}
 {{- end -}}
+{{- return $summary -}}
