@@ -52,7 +52,7 @@
 
 {{- if .Site.Params.enableFingerprint -}}
     {{- $script := $processedScripts | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
-    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
 {{- else -}}
     {{- $script := $processedScripts | resources.Concat $path | resources.Minify -}}
     <script src="{{ $script.RelPermalink }}"></script>

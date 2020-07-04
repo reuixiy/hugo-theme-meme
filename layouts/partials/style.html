@@ -3,7 +3,7 @@
 
 {{- if .Site.Params.enableFingerprint -}}
     {{- $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate (printf "%s/styles/main-rendered.scss" .Lang) . | resources.ToCSS $options | resources.Fingerprint -}}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous" />
 {{- else -}}
     {{- $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate (printf "%s/styles/main-rendered.scss" .Lang) . | resources.ToCSS $options -}}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
