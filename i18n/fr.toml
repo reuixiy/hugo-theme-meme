@@ -1,0 +1,174 @@
+[ellipsis]
+other = "…"
+
+[colon]
+other = " : "
+
+[minute]
+one = "min"
+other = "min."
+
+[tocTitle]
+other = "Contenus"
+
+[readMore]
+other = "Lire Plus"
+
+[prevPage]
+other = "Récent"
+
+[nextPage]
+other = "Ancien"
+
+[copy]
+other = "Copier"
+
+[copied]
+other = "Copié !"
+
+[copyrightAuthor]
+other = "Auteur"
+
+[copyrightLink]
+other = "Lien"
+
+[copyrightLicense]
+other = "Licence"
+
+[shareOn]
+other = "Partage sur : "
+
+[shareOnTitle]
+other = "Partage sur "
+
+[shareViaTitle]
+other = "Partage via "
+
+[relatedPosts]
+other = "Lire aussi : "
+
+[loadComments]
+other = "Charger les Commentaires ?"
+
+[pageNotFound]
+other = "404 - Page non trouvée"
+
+[fofLinkText]
+other = "Retour à la Maison"
+
+[serviceWorkerUpdatedText]
+other = "Une Nouvelle Mise-à-jour disponible"
+
+[serviceWorkerUpdatedAction]
+other = "Rafraîchir"
+
+[searchResultsTitle]
+one = "Trouvé un résultat pour “{{ .Term }}”"
+other = "Trouvé {{ .Count }} résultats pour “{{ .Term }}”"
+
+[searchResultsNone]
+other = "Aucun résultat pour “{{ .Term }}”"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "Janvier"
+
+[february]
+other = "Février"
+
+[march]
+other = "Mars"
+
+[april]
+other = "Avril"
+
+[may]
+other = "Mai"
+
+[june]
+other = "Juin"
+
+[july]
+other = "Juillet"
+
+[august]
+other = "Août"
+
+[september]
+other = "Septembre"
+
+[october]
+other = "Octobre"
+
+[november]
+other = "Novembre"
+
+[december]
+other = "Décembre"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"
