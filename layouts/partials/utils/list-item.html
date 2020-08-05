@@ -19,7 +19,7 @@
 					{{ if .Site.Params.i18nMonth }}
 						{{ $month := .PublishDate.Format "January" }}{{ $month := i18n (lower $month) }}
 						{{ $day := .PublishDate.Format "2" }}
-						{{ if eq .Site.LanguageCode "fr" }}{{ $day }} {{ $month }}
+						{{ if eq .Site.LanguageCode "fr" }}{{ $day }}{{ if eq $day "1" }}<sup>er</sup>{{ end }} {{ $month }}
 						{{ else }}{{ $month }} {{ $day }}{{ end }}
 					{{ else }}
 						{{ .PublishDate.Format .Site.Params.listDateFormat }}
