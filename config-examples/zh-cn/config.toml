@@ -1166,6 +1166,9 @@ uglyURLs = false
     # 是否开启
     enableFooter = true
 
+    # 是否显示
+    displayFooter = true
+
     # 是否在首页显示
     displayFooterInHome = true
 
