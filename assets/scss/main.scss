@@ -425,12 +425,6 @@ $fofPoster: url({{ $fofPoster }});
     @import "third-party/medium-zoom";
 {{ end }}
 
-// Service Worker
-
-{{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
-    @import "third-party/sw-notification";
-{{ end }}
-
 // Busuanzi Site UV And PV
 
 {{ if .Site.Params.enableFooter }}

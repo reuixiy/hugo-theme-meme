@@ -592,8 +592,6 @@ uglyURLs = false
     #       environment
 
     enableServiceWorker = false
-    # Note: need third-party support, see
-    #       https://io-oi.me/tech/pwa-via-workbox/
 
 
     ######################################

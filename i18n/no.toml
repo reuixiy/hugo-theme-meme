@@ -56,12 +56,6 @@ other = "404 - Siden finnes ikke"
 [fofLinkText]
 other = "Ta meg hjem"
 
-[serviceWorkerUpdatedText]
-other = "Nye Oppdatering er tilgjengelig"
-
-[serviceWorkerUpdatedAction]
-other = "Oppdaterer"
-
 [searchResultsTitle]
 one = "Fant et resultat for “{{ .Term }}”"
 other = "Fant {{ .Count }} resultater for “{{ .Term }}”"
