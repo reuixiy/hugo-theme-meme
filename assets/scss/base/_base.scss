@@ -1,3 +1,9 @@
+@if ($enableSmoothScroll) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 html, body {
     margin: 0;
     width: 100%;

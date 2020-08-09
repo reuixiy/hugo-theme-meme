@@ -57,6 +57,12 @@
     $enableCopyAutoHide: false;
 {{ end }}
 
+{{ if .Site.Params.enableSmoothScroll }}
+    $enableSmoothScroll: true;
+{{ else }}
+    $enableSmoothScroll: false;
+{{ end }}
+
 
 // Utilities
 

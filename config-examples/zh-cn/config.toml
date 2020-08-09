@@ -1266,7 +1266,6 @@ uglyURLs = false
 
     # 是否开启
     enableSmoothScroll = true
-    # 说明：https://github.com/cferdinandi/smooth-scroll
 
 
     ######################################
