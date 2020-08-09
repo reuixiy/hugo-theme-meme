@@ -56,12 +56,6 @@ other = "404 - Página não encontrada"
 [fofLinkText]
 other = "Leve-me para página inicial"
 
-[serviceWorkerUpdatedText]
-other = "Nova atualização disponível"
-
-[serviceWorkerUpdatedAction]
-other = "Recarregar"
-
 [searchResultsTitle]
 one = "Encontrado um resultado para “{{ .Term }}”"
 other = "Encontrados {{ .Count }} resultados para “{{ .Term }}”"

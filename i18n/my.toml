@@ -56,12 +56,6 @@ other = "404 - Halaman tidak dijumpa"
 [fofLinkText]
 other = "Kembali ke asal"
 
-[serviceWorkerUpdatedText]
-other = "Ada kemaskini terbaru"
-
-[serviceWorkerUpdatedAction]
-other = "Kemaskini"
-
 [searchResultsTitle]
 one = "Jumpa satu halaman untuk “{{ .Term }}”"
 other = "Jumpa {{ .Count }} halaman untuk “{{ .Term }}”"
