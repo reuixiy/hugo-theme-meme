@@ -4,9 +4,9 @@
         <ul class="post-copyright">
             <li class="copyright-item author">
                 {{- with $author.website -}}
-                    <span class="copyright-item-text">{{ i18n "copyrightAuthor" }}</span>{{ i18n "colon" }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $author.name }}</a>
+                    <span class="copyright-item-text">{{ i18n "copyrightAuthor" }}</span>{{ i18n "colon" }}<a href="{{ . }}" class="p-author h-card" target="_blank" rel="noopener">{{ $author.name }}</a>
                 {{- else -}}
-                    <span class="copyright-item-text">{{ i18n "copyrightAuthor" }}</span>{{ i18n "colon" }}{{ $author.name }}
+                    <span class="copyright-item-text">{{ i18n "copyrightAuthor" }}</span>{{ i18n "colon" }}<span class="p-author h-card">{{ $author.name }}</span>
                 {{- end -}}
             </li>
             {{ if $.Params.original | default $.Site.Params.original }}

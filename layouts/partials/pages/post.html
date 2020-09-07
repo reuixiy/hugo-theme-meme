@@ -38,13 +38,13 @@
               {{ partial "utils/content.html" . }}
             </div>
 
+            {{ partial "components/post-copyright.html" . }}
+
         </article>
 
         {{ if and .Site.Params.enableGoogleAdUnits (eq hugo.Environment "production") -}}
             {{ partial "third-party/google-adsense-unit.html" . }}
         {{- end }}
-
-        {{ partial "components/post-copyright.html" . }}
 
         {{ partial "components/post-updated-badge.html" . }}
 
