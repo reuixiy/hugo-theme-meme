@@ -3,11 +3,11 @@
 <div class="post-meta">
     {{ if and $.Site.Params.displayPublishedDate (not $.PublishDate.IsZero) }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.publishedDateIcon "class" "post-meta-icon") }}
-        <time datetime="{{ $.PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item published">{{ $icon }}&nbsp;{{ $.PublishDate.Format $.Site.Params.postMetaDateFormat }}</time>
+        <time datetime="{{ $.PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item published dt-published">{{ $icon }}&nbsp;{{ $.PublishDate.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
     {{ if and $.Site.Params.displayModifiedDate (not $.Lastmod.IsZero) }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.modifiedDateIcon "class" "post-meta-icon") }}
-        <time datetime="{{ $.Lastmod.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item modified">{{ $icon }}&nbsp;{{ $.Lastmod.Format $.Site.Params.postMetaDateFormat }}</time>
+        <time datetime="{{ $.Lastmod.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item modified dt-updated">{{ $icon }}&nbsp;{{ $.Lastmod.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
     {{ if and $.Site.Params.displayExpiredDate (not $.ExpiryDate.IsZero) }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.expiredDateIcon "class" "post-meta-icon") }}
@@ -41,7 +41,7 @@
                         {{- if ne $index 0 }}
                             {{- $.Site.Params.categoryDelimiter | default "/" -}}
                         {{- end -}}
-                        <a href="{{- $link | replaceRE `\d+/(.+)` `$1` -}}" class="category-link">
+                        <a href="{{- $link | replaceRE `\d+/(.+)` `$1` -}}" class="category-link p-category">
                             {{- $title -}}
                         </a>
                     {{- end -}}
@@ -59,7 +59,7 @@
                         <!-- Work-around for https://github.com/gohugoio/hugo/issues/6546 -->
                         {{- $path := (urls.Parse ($category | urlize)).Path -}}
                         {{- with $.Site.GetPage (printf `/categories/%s` $path) -}}
-                            <a href="{{- .RelPermalink -}}" class="category-link">
+                            <a href="{{- .RelPermalink -}}" class="category-link p-category">
                                 {{- .LinkTitle | default $path -}}
                             </a>
                         {{- end -}}
