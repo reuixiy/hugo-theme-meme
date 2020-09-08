@@ -3,7 +3,7 @@
 
         {{ $attrs := partial "utils/data-attributes.html" . }}
 
-        <article class="content post"
+        <article class="content post h-entry"
         {{- if $attrs.smallCaps }} data-small-caps="true"{{ end }}
         {{- with $attrs.align }} data-align="{{ . }}"{{ end }}
         {{- with $attrs.type }} data-type="{{ . }}"{{ end }}
@@ -11,17 +11,17 @@
         {{- if $attrs.indent }} data-indent="true"{{ end }}
         {{- if $attrs.tocNum }} data-toc-num="true"{{ end }}>
 
-            <h1 class="post-title">{{ (partial "utils/title.html" (dict "$" $ "title" $.Title)).htmlTitle }}</h1>
+            <h1 class="post-title p-name">{{ (partial "utils/title.html" (dict "$" $ "title" $.Title)).htmlTitle }}</h1>
 
             {{ with .Params.subtitle }}
                 {{- $raw := . -}}
-                <div class="post-subtitle">{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</div>
+                <div class="post-subtitle p-name">{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</div>
             {{ end }}
 
             {{ if .Site.Params.displayPostDescription }}
                 {{ with .Params.description }}
                     {{- $raw := . -}}
-                    <div class="post-description">{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</div>
+                    <div class="post-description p-summary">{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</div>
                 {{ end }}
             {{ end }}
 
@@ -34,17 +34,17 @@
                 {{- partial "utils/toc.html" . -}}
             {{- end -}}
 
-            <div class="post-body">
+            <div class="post-body e-content">
               {{ partial "utils/content.html" . }}
             </div>
+
+            {{ partial "components/post-copyright.html" . }}
 
         </article>
 
         {{ if and .Site.Params.enableGoogleAdUnits (eq hugo.Environment "production") -}}
             {{ partial "third-party/google-adsense-unit.html" . }}
         {{- end }}
-
-        {{ partial "components/post-copyright.html" . }}
 
         {{ partial "components/post-updated-badge.html" . }}
 

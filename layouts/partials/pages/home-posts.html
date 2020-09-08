@@ -2,14 +2,14 @@
     <div class="main-inner">
         {{ $paginator := .Paginate (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
         {{ range $paginator.Pages }}
-            <article class="content post home">
-                <h2 class="post-title">
-                    <a href="{{ .RelPermalink }}" class="summary-title-link">{{ (partial "utils/title.html" (dict "$" . "title" .LinkTitle)).htmlTitle }}</a>
+            <article class="content post home h-entry">
+                <h2 class="post-title p-name">
+                    <a href="{{ .RelPermalink }}" class="summary-title-link u-url">{{ (partial "utils/title.html" (dict "$" . "title" .LinkTitle)).htmlTitle }}</a>
                 </h2>
                 {{ if $.Site.Params.enablePostMetaInHome }}
                     {{ partial "components/post-meta.html" (dict "$" . "isHome" true) }}
                 {{ end }}
-                <summary class="summary">
+                <summary class="summary p-summary">
                     {{ partial "utils/summary.html" . }}
                 </summary>
                 {{ if or .Truncated .Params.summary }}
