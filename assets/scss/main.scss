@@ -445,10 +445,12 @@ $fofPoster: url({{ $fofPoster }});
 
 // Responsive
 
+$greaterWidth: null;
+
 @if ($postWidth > $listWidth) {
-    $greaterWidth: $postWidth !global;
+    $greaterWidth: $postWidth;
 } @else {
-    $greaterWidth: $listWidth !global;
+    $greaterWidth: $listWidth;
 }
 
 @import "base/max-width";
