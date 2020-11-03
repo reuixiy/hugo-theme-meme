@@ -1272,6 +1272,17 @@ uglyURLs = false
     # Note: valid for CSS and JS generated
     #       by MemE only
 
+    enableSRI = false
+    # Note: subresource integrity will
+    #       block MemE CSS and JS on third
+    #       party websites like Google
+    #       Translate. To prevent this,
+    #       your server has to send the
+    #       following header for CSS and
+    #       JS requests:
+    #
+    #       Access-Control-Allow-Origin: *
+
 
     ######################################
     # Force HTTPS Redirection
