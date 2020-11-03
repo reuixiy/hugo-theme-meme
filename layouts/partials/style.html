@@ -1,10 +1,12 @@
 {{- $path := (strings.TrimPrefix "/" (printf `%s/css/meme.min.css` .Site.LanguagePrefix)) -}}
 {{- $options := (dict "targetPath" $path "outputStyle" "compressed") -}}
 
+{{- $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate (printf "%s/styles/main-rendered.scss" .Lang) . | resources.ToCSS $options -}}
 {{- if .Site.Params.enableFingerprint -}}
-    {{- $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate (printf "%s/styles/main-rendered.scss" .Lang) . | resources.ToCSS $options | resources.Fingerprint -}}
-    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
+    {{- $style = $style | resources.Fingerprint -}}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}"
+    {{- if .Site.Params.enableSRI }} integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"{{- end -}}
+    />
 {{- else -}}
-    {{- $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate (printf "%s/styles/main-rendered.scss" .Lang) . | resources.ToCSS $options -}}
     <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
 {{- end -}}
