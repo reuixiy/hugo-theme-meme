@@ -50,10 +50,12 @@
 
 {{- $path := (strings.TrimPrefix "/" (printf `%s/js/meme.js` .Site.LanguagePrefix)) -}}
 
+{{- $script := $processedScripts | resources.Concat $path | resources.Minify -}}
 {{- if .Site.Params.enableFingerprint -}}
-    {{- $script := $processedScripts | resources.Concat $path | resources.Minify | resources.Fingerprint -}}
-    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+    {{- $script = $script | resources.Fingerprint -}}
+    <script src="{{ $script.RelPermalink }}"
+    {{- if .Site.Params.enableSRI }} integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"{{- end -}}
+    ></script>
 {{- else -}}
-    {{- $script := $processedScripts | resources.Concat $path | resources.Minify -}}
     <script src="{{ $script.RelPermalink }}"></script>
 {{- end }}
