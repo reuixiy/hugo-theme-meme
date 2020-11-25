@@ -1,4 +1,5 @@
 简体中文 |
+[繁體中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-tw.md) |
 [English](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.md)
 
 <div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
