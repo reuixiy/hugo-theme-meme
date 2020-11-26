@@ -1,0 +1,160 @@
+[ellipsis]
+other = "……"
+
+[colon]
+other = "："
+
+[minute]
+one = "分鐘"
+other = "分鐘"
+
+[tocTitle]
+other = "目錄"
+
+[readMore]
+other = "閱讀更多"
+
+[prevPage]
+other = "上一頁"
+
+[nextPage]
+other = "下一頁"
+
+[copy]
+other = "複製"
+
+[copied]
+other = "已複製"
+
+[copyrightAuthor]
+other = "作者"
+
+[copyrightLink]
+other = "連結"
+
+[copyrightLicense]
+other = "許可"
+
+[shareOn]
+other = "分享："
+
+[shareOnTitle]
+other = "分享到"
+
+[shareViaTitle]
+other = "透過"
+
+[relatedPosts]
+other = "相關文章："
+
+[loadComments]
+other = "載入評論"
+
+[pageNotFound]
+other = "404 - 頁面不存在"
+
+[fofLinkText]
+other = "送我回主頁"
+
+[searchResultsTitle]
+one = "找到 1 條關於「{{ .Term }}」的結果"
+other = "找到 {{ .Count }} 條關於「{{ .Term }}」的結果"
+
+[searchResultsNone]
+other = "沒有找到關於「{{ .Term }}」的結果"
+
+
+[twitter]
+other = "「Twitter」"
+
+[facebook]
+other = "「Facebook」"
+
+[linkedin]
+other = "「LinkedIn」"
+
+[telegram]
+other = "「Telegram」"
+
+[weibo]
+other = "「新浪微博」"
+
+[douban]
+other = "「豆瓣」"
+
+[qq]
+other = "「QQ」"
+
+[qzone]
+other = "「QQ 空間」"
+
+[qrcode]
+other = "「二維碼」"
+
+
+[january]
+other = "一月"
+
+[february]
+other = "二月"
+
+[march]
+other = "三月"
+
+[april]
+other = "四月"
+
+[may]
+other = "五月"
+
+[june]
+other = "六月"
+
+[july]
+other = "七月"
+
+[august]
+other = "八月"
+
+[september]
+other = "九月"
+
+[october]
+other = "十月"
+
+[november]
+other = "十一月"
+
+[december]
+other = "十二月"
+
+
+[0]
+other = "〇"
+
+[1]
+other = "一"
+
+[2]
+other = "二"
+
+[3]
+other = "三"
+
+[4]
+other = "四"
+
+[5]
+other = "五"
+
+[6]
+other = "六"
+
+[7]
+other = "七"
+
+[8]
+other = "八"
+
+[9]
+other = "九"
