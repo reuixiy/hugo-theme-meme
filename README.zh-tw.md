@@ -1,22 +1,22 @@
-English |
+繁體中文 |
 [简体中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-cn.md) |
-[繁體中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-tw.md)
+[English](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.md)
 
 <div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
 
 # <div align="center">MemE</div>
 
-## Description
+## 簡介
 
-MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) theme for personal blogs. MemE focuses on elegance, simplicity, modernity, and code correctness. Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! 😝
+MemE 是一個強大且可高度定製的 [GoHugo](https://github.com/gohugoio/hugo) 部落格主題，專為個人部落格設計。MemE 主題專注於優雅、簡約、現代，以及程式碼的正確性。同時，希望你將像欣賞一個模因一樣欣賞 MemE，希望你將像分享一個模因一樣分享 MemE，就像你的部落格和文章所做的那樣😝！
 
-## Preview
+## 預覽
 
 ![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)
 
-### Browser support
+### 瀏覽器支援
 
-MemE uses [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) and [let statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) extensively. These features are supported by the following browsers:
+MemE 廣泛地使用了 [CSS 變數](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)和 [let 宣告](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)。這些特性被以下瀏覽器所支援：
 
 * Chrome 49+
 * Firefox 44+
@@ -24,24 +24,24 @@ MemE uses [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using
 * Opera 36+
 * Safari 10+
 
-Internet Explorer does not support CSS variables.
+IE（Internet Explorer）瀏覽器不支援 CSS 變數。
 
-## Quick Start
+## 快速開始
 
 https://gohugo.io/getting-started/quick-start/
 
-### Install Hugo (`extended` version)
+### 安裝 Hugo（`extended` 擴充套件版）
 
-For Arch Linux users:
+對於 Arch Linux 的使用者：
 
 ```sh
 ~ $ sudo pacman -S hugo
 ~ $ hugo new site blog
 ```
 
-For users of other systems, see: https://gohugo.io/getting-started/installing/
+對於其它系統的使用者，請檢視：https://gohugo.io/getting-started/installing/
 
-### Install MemE
+### 安裝 MemE
 
 ```sh
 ~ $ cd blog
@@ -49,59 +49,59 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 ~/blog $ git submodule add --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
 ```
 
-### Blogging
+### 開始寫作
 
-1. Replace `config.toml` with [config examples](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/en/config.toml).
+1. 將 `config.toml` 替換為[示例配置](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
    ```sh
-   ~/blog $ rm config.toml && cp themes/meme/config-examples/en/config.toml config.toml
+   ~/blog $ rm config.toml && cp themes/meme/config-examples/zh-cn/config.toml config.toml
    ```
 
-2. Create a new post and the about page:
+2. 新建一篇文章和一個關於頁面：
    ```sh
    ~/blog $ hugo new "posts/hello-world.md"
    ~/blog $ hugo new "about/_index.md"
    ```
 
-3. Now:
+3. 現在：
    ```sh
    ~/blog $ hugo server -D
    ```
 
-## Customize MemE
+## 定製 MemE
 
-MemE uses SCSS via [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) to generate CSS instead of static CSS file and provides a [`_custom.scss`](https://github.com/reuixiy/hugo-theme-meme/blob/master/assets/scss/custom/_custom.scss) for customization.
+MemE 透過 Hugo 管道實現使用 SCSS 生成 CSS，而非靜態的 CSS 檔案，同時提供一個 [`_custom.scss`](https://github.com/reuixiy/hugo-theme-meme/blob/master/assets/scss/custom/_custom.scss) 檔案以供使用者定製。
 
-Just create a `~/blog/assets/scss/custom/_custom.scss` and add your own styles into this file. Your `_custom.scss` will override `~/blog/themes/meme/assets/scss/custom/_custom.scss` and your custom CSS will be applied correctly.
+直接新建一個 `~/blog/assets/scss/custom/_custom.scss` 並將你自己的樣式加入其中，就能覆蓋主題的 `~/blog/themes/meme/assets/scss/custom/_custom.scss` 檔案，且其會正確地被應用。
 
-Actually, you can override any template of theme in Hugo, see this *unofficial mirror* page: https://gohugobrasil.netlify.com/themes/customizing/
+事實上，在 Hugo 中你可以覆蓋主題的任何模板，見這個非官方的映象網頁：<https://gohugobrasil.netlify.com/themes/customizing/>
 
-## Update MemE
+## 更新 MemE
 
 ```sh
 ~/blog $ git submodule update --rebase --remote
 ```
 
-If failed, try:
+如果失敗了，請嘗試：
 
-1. Delete `meme` folder, e.g.
+1. 刪除 `meme` 資料夾，比如
    ```sh
    ~/blog $ rm -rf themes/meme
    ```
 
-2. Clone MemE again
+2. 重新克隆 MemE
    ```sh
    ~/blog $ git clone --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
    ```
 
-**Note that** MemE makes some brand new features or *breaking changes* sometimes, so please be sure to check [the modification history of `config.toml`](https://github.com/reuixiy/hugo-theme-meme/commits/master/config-examples) and update the related items after the update!
+**特別注意**：MemE 主題有時會新增一些全新功能或一些毀滅改動，所以在你更新完後，請務必檢查 [`config.toml` 的改動歷史](https://github.com/reuixiy/hugo-theme-meme/commits/master/config-examples)並將相應內容也更新！
 
 ## Awesome MemE
 
-See [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2).
+請看 [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2)。
 
-## Supported Front Matter
+## 支援的 Front Matter
 
-Name | Description | Notes
+名字 | 描述 | 說明
 ---|---|---
 title | * | string
 linkTitle | * | string
