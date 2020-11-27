@@ -54,7 +54,7 @@ other = "載入評論"
 other = "404 - 頁面不存在"
 
 [fofLinkText]
-other = "送我回主頁"
+other = "送我回起始頁面"
 
 [searchResultsTitle]
 one = "找到 1 條關於「{{ .Term }}」的結果"
