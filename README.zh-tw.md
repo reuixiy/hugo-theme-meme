@@ -8,7 +8,7 @@
 
 ## 簡介
 
-MemE 是一個強大且可高度定製的 [GoHugo](https://github.com/gohugoio/hugo) 部落格主題，專為個人部落格設計。MemE 主題專注於優雅、簡約、現代，以及程式碼的正確性。同時，希望你將像欣賞一個模因一樣欣賞 MemE，希望你將像分享一個模因一樣分享 MemE，就像你的部落格和文章所做的那樣😝！
+MemE 是一個強大且可高度客制化的 [GoHugo](https://github.com/gohugoio/hugo) 部落格主題，專為個人部落格設計。MemE 主題專注於優雅、簡約、現代，以及程式碼的正確性。同時，希望你將像欣賞一個模因一樣欣賞 MemE，希望你將像分享一個模因一樣分享 MemE，就像你的部落格和文章所做的那樣😝！
 
 ## 預覽
 
@@ -39,7 +39,7 @@ https://gohugo.io/getting-started/quick-start/
 ~ $ hugo new site blog
 ```
 
-對於其它系統的使用者，請檢視：https://gohugo.io/getting-started/installing/
+對於其它作業系統的使用者，請檢視：https://gohugo.io/getting-started/installing/
 
 ### 安裝 MemE
 
