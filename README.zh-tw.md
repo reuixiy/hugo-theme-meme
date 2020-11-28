@@ -16,7 +16,7 @@ MemE 是一個強大且可高度客制化的 [GoHugo](https://github.com/gohugoi
 
 ### 瀏覽器支援
 
-MemE 廣泛地使用了 [CSS 變數](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) 和 [let 宣告](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)。這些特性被以下瀏覽器所支援：
+MemE 廣泛地使用了 [CSS 變數](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)和 [let 宣告](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)。這些特性被以下瀏覽器所支援：
 
 * Chrome 49+
 * Firefox 44+
