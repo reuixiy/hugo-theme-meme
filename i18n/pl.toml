@@ -1,0 +1,168 @@
+[ellipsis]
+other = "…"
+
+[colon]
+other = ": "
+
+[minute]
+one = "min"
+other = "min."
+
+[tocTitle]
+other = "Spis treści"
+
+[readMore]
+other = "Czytaj więcej"
+
+[prevPage]
+other = "Nowsze"
+
+[nextPage]
+other = "Starsze"
+
+[copy]
+other = "Kopiuj"
+
+[copied]
+other = "Skopiowano!"
+
+[copyrightAuthor]
+other = "Autor"
+
+[copyrightLink]
+other = "Link"
+
+[copyrightLicense]
+other = "Licencja"
+
+[shareOn]
+other = "Share on:"
+
+[shareOnTitle]
+other = "Share on "
+
+[shareViaTitle]
+other = "Share via "
+
+[relatedPosts]
+other = "Zobacz także:"
+
+[loadComments]
+other = "Załadować komentarze?"
+
+[pageNotFound]
+other = "404 - Strona nie znaleziona"
+
+[fofLinkText]
+other = "Zabierz mnie do domu"
+
+[searchResultsTitle]
+one = "Znaleziono wynik dla: “{{ .Term }}”"
+other = "Znaleziono {{ .Count }} wyniki/ów dla: “{{ .Term }}”"
+
+[searchResultsNone]
+other = "Brak wyników dla: “{{ .Term }}”"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "Styczeń"
+
+[february]
+other = "Luty"
+
+[march]
+other = "Marzec"
+
+[april]
+other = "Kwiecień"
+
+[may]
+other = "Maj"
+
+[june]
+other = "Czerwiec"
+
+[july]
+other = "Lipiec"
+
+[august]
+other = "Sierpień"
+
+[september]
+other = "Wrzesień"
+
+[october]
+other = "Październik"
+
+[november]
+other = "Listopad"
+
+[december]
+other = "Grudzień"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"
