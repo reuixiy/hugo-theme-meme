@@ -773,8 +773,10 @@ uglyURLs = false
     ######################################
     # 分节标题锚点
 
-    # 是否开启
+    # 是否开启（全局设置）
     enableHeadingsAnchor = true
+    # 说明：文章的 Front Matter 中的 `anchor`
+    #      的优先级高于此处
 
     # 分节标题的级别范围
     headingsOpt = "1-6"
