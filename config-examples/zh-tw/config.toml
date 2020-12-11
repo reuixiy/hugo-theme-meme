@@ -773,8 +773,10 @@ uglyURLs = false
     ######################################
     # 分節標題錨點
 
-    # 是否開啟
+    # 是否開啟（全域性設定）
     enableHeadingsAnchor = true
+    # 說明：文章的 Front Matter 中的 `anchor`
+    #      的優先順序高於此處
 
     # 分節標題的級別範圍
     headingsOpt = "1-6"

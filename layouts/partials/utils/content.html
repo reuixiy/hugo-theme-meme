@@ -9,7 +9,7 @@
 {{- end -}}
 
 <!-- Headings Anchor -->
-{{- if .Site.Params.enableHeadingsAnchor -}}
+{{- if .Params.anchor | default .Site.Params.enableHeadingsAnchor -}}
     {{- with .Site.Params.headingsOpt -}}
         {{- $headings := . -}}
         {{- $.Scratch.Set "headings" $headings -}}
