@@ -18,11 +18,11 @@ MemE 是一個強大且可高度客制化的 [GoHugo](https://github.com/gohugoi
 
 MemE 廣泛地使用了 [CSS 變數](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)和 [let 宣告](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)。這些特性被以下瀏覽器所支援：
 
-* Chrome 49+
-* Firefox 44+
-* Edge 15+
-* Opera 36+
-* Safari 10+
+- Chrome 49+
+- Firefox 44+
+- Edge 15+
+- Opera 36+
+- Safari 10+
 
 IE（Internet Explorer）瀏覽器不支援 CSS 變數。
 
@@ -52,17 +52,20 @@ https://gohugo.io/getting-started/quick-start/
 ### 開始寫作
 
 1. 將 `config.toml` 替換為[示例配置](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
+
    ```sh
    ~/blog $ rm config.toml && cp themes/meme/config-examples/zh-cn/config.toml config.toml
    ```
 
 2. 新建一篇文章和一個關於頁面：
+
    ```sh
    ~/blog $ hugo new "posts/hello-world.md"
    ~/blog $ hugo new "about/_index.md"
    ```
 
 3. 現在：
+
    ```sh
    ~/blog $ hugo server -D
    ```
@@ -84,11 +87,13 @@ MemE 透過 Hugo 管道實現使用 SCSS 生成 CSS，而非靜態的 CSS 檔案
 如果失敗了，請嘗試：
 
 1. 刪除 `meme` 資料夾，比如
+
    ```sh
    ~/blog $ rm -rf themes/meme
    ```
 
 2. 重新克隆 MemE
+
    ```sh
    ~/blog $ git clone --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
    ```
@@ -101,60 +106,60 @@ MemE 透過 Hugo 管道實現使用 SCSS 生成 CSS，而非靜態的 CSS 檔案
 
 ## 支援的 Front Matter
 
-名字 | 描述 | 說明
----|---|---
-title | * | string
-linkTitle | * | string
-subtitle | displayed below the title | string, Markdown supported, MemE only
-date | * | string
-lastmod | * | string
-publishDate | * | string
-expiryDate | * | string
-`<taxonomies>` eg: categories, tags, series | * | array
-description | * | string, Markdown supported
-summary | * | string, Markdown supported
-images | * | array
-slug | * | string
-url | * | string
-draft | * | boolean
-isCJKLanguage | * | boolean
-weight | * | integer
-type | * | string, if equal to "poetry", will use a special layout for it
-layout | * | string
-outputs | * | array
-aliases | * | array
-markup | * | string
-meta | set `false` to disable post-meta | boolean, MemE only
-toc | display TOC | boolean, override `enableTOC` in `config.toml`, MemE only
-tocNum | display TOC number | boolean, override `displayTOCNum` in `config.toml`, MemE only
-displayCopyright | display post-copyright | boolean, override `displayPostCopyright` in `config.toml`, MemE only
-badge | display updated-badge | boolean, override `displayUpdatedBadge` in `config.toml`, MemE only
-gitinfo | display post-gitinfo | boolean, override `displayPostGitInfo` in `config.toml`, MemE only
-share | display post-share | boolean, override `displayPostShare` in `config.toml`, MemE only
-related | display related-posts | boolean, override `displayRelatedPosts` in `config.toml`, MemE only
-katex | add KaTeX support | boolean, override `enableKaTeX` in `config.toml`, MemE only
-mathjax | add MathJax support | boolean, override `enableMathJax` in `config.toml`, MemE only
-mermaid | add Mermaid support | boolean, override `enableMermaid` in `config.toml`, MemE only
-comments | set `false` to disable comments in mainSections or set `true` to enable comments in non-mainSections | boolean, MemE only
-smallCaps | small caps? | boolean, override `enableSmallCaps` in `config.toml`, MemE only
-dropCap | drop cap? | boolean, override `enableDropCap` in `config.toml`, MemE only
-dropCapAfterHr | drop cap after every horizontal rule tag? | boolean, override `enableDropCapAfterHr` in `config.toml`, MemE only
-deleteHrBeforeDropCap | delete horizontal rule tag before drop cap? | boolean, override `deleteHrBeforeDropCap` in `config.toml`, MemE only
-indent | indent instead of margin? | boolean, override `paragraphStyle` in `config.toml`, MemE only
-indentFirstParagraph | indent the first paragraph? | boolean, override `indentFirstParagraph` in `config.toml`, MemE only
-align | normal, justify, center | string, if equal to "normal", will override `enableJustify` in `config.toml`, MemE only
-original | original? You can add the following 8 terms if you set `false`. The `author` is required, other optional | boolean, override `original` in `config.toml`, MemE only
-author | author of original post | string, MemE only
-link | link of original post | string, URL, MemE only
-copyright | license of the post | string, Markdown supported, MemE only
-website | author’s website | string, MemE only
-email | author’s email | string, MemE only
-motto | author’s description | string, MemE only
-avatar | author’s avatar | string, URL, MemE only
-twitter | author’s twitter id | string, MemE only
-disqus_url | * | string, if not set, will use `Permalink` as default
-disqus_identifier | * | string, if not set, will use `RelPermalink` as default
-disqus_title | * | string, if not set, will use `Title` as default
+| 名字                                        | 描述                                                                                                     | 說明                                                                         |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| title                                       | \*                                                                                                       | string                                                                       |
+| linkTitle                                   | \*                                                                                                       | string                                                                       |
+| subtitle                                    | displayed below the title                                                                                | string, Markdown supported                                                   |
+| date                                        | \*                                                                                                       | string                                                                       |
+| lastmod                                     | \*                                                                                                       | string                                                                       |
+| publishDate                                 | \*                                                                                                       | string                                                                       |
+| expiryDate                                  | \*                                                                                                       | string                                                                       |
+| `<taxonomies>` eg: categories, tags, series | \*                                                                                                       | array                                                                        |
+| description                                 | \*                                                                                                       | string, Markdown supported                                                   |
+| summary                                     | \*                                                                                                       | string, Markdown supported                                                   |
+| images                                      | \*                                                                                                       | array                                                                        |
+| slug                                        | \*                                                                                                       | string                                                                       |
+| url                                         | \*                                                                                                       | string                                                                       |
+| draft                                       | \*                                                                                                       | boolean                                                                      |
+| isCJKLanguage                               | \*                                                                                                       | boolean                                                                      |
+| weight                                      | \*                                                                                                       | integer                                                                      |
+| type                                        | \*                                                                                                       | string, if equal to "poetry", will use a special layout for it               |
+| layout                                      | \*                                                                                                       | string                                                                       |
+| outputs                                     | \*                                                                                                       | array                                                                        |
+| aliases                                     | \*                                                                                                       | array                                                                        |
+| markup                                      | \*                                                                                                       | string                                                                       |
+| meta                                        | set `false` to disable post-meta                                                                         | boolean                                                                      |
+| toc                                         | display TOC                                                                                              | boolean, override `enableTOC` in `config.toml`                               |
+| tocNum                                      | display TOC number                                                                                       | boolean, override `displayTOCNum` in `config.toml`                           |
+| displayCopyright                            | display post-copyright                                                                                   | boolean, override `displayPostCopyright` in `config.toml`                    |
+| badge                                       | display updated-badge                                                                                    | boolean, override `displayUpdatedBadge` in `config.toml`                     |
+| gitinfo                                     | display post-gitinfo                                                                                     | boolean, override `displayPostGitInfo` in `config.toml`                      |
+| share                                       | display post-share                                                                                       | boolean, override `displayPostShare` in `config.toml`                        |
+| related                                     | display related-posts                                                                                    | boolean, override `displayRelatedPosts` in `config.toml`                     |
+| katex                                       | add KaTeX support                                                                                        | boolean, override `enableKaTeX` in `config.toml`                             |
+| mathjax                                     | add MathJax support                                                                                      | boolean, override `enableMathJax` in `config.toml`                           |
+| mermaid                                     | add Mermaid support                                                                                      | boolean, override `enableMermaid` in `config.toml`                           |
+| comments                                    | set `false` to disable comments in mainSections or set `true` to enable comments in non-mainSections     | boolean                                                                      |
+| smallCaps                                   | small caps?                                                                                              | boolean, override `enableSmallCaps` in `config.toml`                         |
+| dropCap                                     | drop cap?                                                                                                | boolean, override `enableDropCap` in `config.toml`                           |
+| dropCapAfterHr                              | drop cap after every horizontal rule tag?                                                                | boolean, override `enableDropCapAfterHr` in `config.toml`                    |
+| deleteHrBeforeDropCap                       | delete horizontal rule tag before drop cap?                                                              | boolean, override `deleteHrBeforeDropCap` in `config.toml`                   |
+| indent                                      | indent instead of margin?                                                                                | boolean, override `paragraphStyle` in `config.toml`                          |
+| indentFirstParagraph                        | indent the first paragraph?                                                                              | boolean, override `indentFirstParagraph` in `config.toml`                    |
+| align                                       | normal, justify, center                                                                                  | string, if equal to "normal", will override `enableJustify` in `config.toml` |
+| original                                    | original? You can add the following 8 terms if you set `false`. The `author` is required, other optional | boolean, override `original` in `config.toml`                                |
+| author                                      | author of original post                                                                                  | string                                                                       |
+| link                                        | link of original post                                                                                    | string, URL                                                                  |
+| copyright                                   | license of the post                                                                                      | string, Markdown supported                                                   |
+| website                                     | author’s website                                                                                         | string                                                                       |
+| email                                       | author’s email                                                                                           | string                                                                       |
+| motto                                       | author’s description                                                                                     | string                                                                       |
+| avatar                                      | author’s avatar                                                                                          | string, URL                                                                  |
+| twitter                                     | author’s twitter id                                                                                      | string                                                                       |
+| disqus_url                                  | \*                                                                                                       | string, if not set, will use `Permalink` as default                          |
+| disqus_identifier                           | \*                                                                                                       | string, if not set, will use `RelPermalink` as default                       |
+| disqus_title                                | \*                                                                                                       | string, if not set, will use `Title` as default                              |
 
-*: see https://gohugo.io/content-management/front-matter/  
-   and https://gohugo.io/templates/internal/#configure-disqus
+\*: see https://gohugo.io/content-management/front-matter/  
+    and https://gohugo.io/templates/internal/#configure-disqus
