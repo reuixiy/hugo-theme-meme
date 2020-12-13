@@ -14,7 +14,6 @@ jobs:
         git clone https://github.com/gohugoio/hugoBasicExample.git
         cd hugoBasicExample
         mkdir -p themes/meme
-        pwd
 
     - name: 'Check out MemE into themes/meme folder'
       uses: actions/checkout@v2
@@ -23,7 +22,7 @@ jobs:
 
     - name: 'Setup MemE'
       run: |
-        pwd
+        cd hugoBasicExample
         rm -rf config*
         cp themes/meme/exampleSite/config.toml .
 
@@ -35,10 +34,12 @@ jobs:
 
     - name: 'Build site'
       run: |
+        cd hugoBasicExample
         hugo --gc --minify --cleanDestinationDir
 
     - name: 'Deploy to GitHub Pages'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: hugoBasicExample/public
         force_orphan: true
