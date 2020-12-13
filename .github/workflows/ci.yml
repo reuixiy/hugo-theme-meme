@@ -15,6 +15,7 @@ jobs:
         cd hugoBasicExample
         mv content/post content/posts
         sed -i 's/posts/post/g' content/posts/_index.md
+        mkdir content/about && mv content/about.md content/about/_index.md
         mkdir -p themes/meme
 
     - name: 'Check out MemE into themes/meme folder'
