@@ -13,6 +13,8 @@ jobs:
       run: |
         git clone https://github.com/gohugoio/hugoBasicExample.git
         cd hugoBasicExample
+        mv content/post content/posts
+        sed -i 's/posts/post/g' content/posts/_index.md
         mkdir -p themes/meme
 
     - name: 'Check out MemE into themes/meme folder'
