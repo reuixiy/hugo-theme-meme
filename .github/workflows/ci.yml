@@ -1,0 +1,43 @@
+# .github/workflows/ci.yml
+
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 'Clone gohugoio/hugoBasicExample repository'
+      run: |
+        git clone https://github.com/gohugoio/hugoBasicExample.git
+        cd hugoBasicExample
+        mkdir -p themes/meme
+
+    - name: 'Check out MemE into themes/meme folder'
+      uses: actions/checkout@v2
+      with:
+        path: hugoBasicExample/themes/meme
+
+    - name: 'Setup MemE'
+      run: |
+        pwd
+        rm -rf config*
+        cp themes/meme/exampleSite/config.toml .
+
+    - name: 'Install Hugo'
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: latest
+        extended: true
+
+    - name: 'Build site'
+      run: |
+        hugo --gc --minify --cleanDestinationDir
+
+    - name: 'Deploy to GitHub Pages'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        force_orphan: true
