@@ -35,6 +35,7 @@ jobs:
     - name: 'Build site'
       run: |
         cd hugoBasicExample
+        sed -i 's/relativeURLs = false/relativeURLs = true/g' config.toml
         hugo --gc --minify --cleanDestinationDir
 
     - name: 'Deploy to GitHub Pages'
