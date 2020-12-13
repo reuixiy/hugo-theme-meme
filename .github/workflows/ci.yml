@@ -2,7 +2,7 @@
 
 name: ci
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -37,8 +37,7 @@ jobs:
     - name: 'Build site'
       run: |
         cd hugoBasicExample
-        sed -i 's/relativeURLs = false/relativeURLs = true/g' config.toml
-        hugo --gc --minify --cleanDestinationDir
+        hugo --gc --minify --cleanDestinationDir --baseURL="https://io-oi.me/hugo-theme-meme/"
 
     - name: 'Deploy to GitHub Pages'
       uses: peaceiris/actions-gh-pages@v3
