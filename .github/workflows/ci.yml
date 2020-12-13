@@ -14,12 +14,12 @@ jobs:
         git clone https://github.com/gohugoio/hugoBasicExample.git
         cd hugoBasicExample
         mkdir -p themes/meme
+        pwd
 
     - name: 'Check out MemE into themes/meme folder'
       uses: actions/checkout@v2
       with:
         path: hugoBasicExample/themes/meme
-      run: pwd
 
     - name: 'Setup MemE'
       run: |
