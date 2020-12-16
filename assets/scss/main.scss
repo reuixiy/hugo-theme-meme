@@ -35,6 +35,12 @@
     $enableNavToggle: false;
 {{ end }}
 
+{{ if .Site.Params.displayBackToTopOnMobile }}
+    $displayBackToTopOnMobile: true;
+{{ else }}
+    $displayBackToTopOnMobile: false;
+{{ end }}
+
 {{ if .Site.Params.enableOverflowY }}
     $enableOverflowY: true;
 {{ else }}

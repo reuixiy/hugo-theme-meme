@@ -1156,6 +1156,9 @@ uglyURLs = false
     # 是否在首页显示
     displayBackToTopInHome = true
 
+    # 是否在移动端显示
+    displayBackToTopOnMobile = false
+
     # 按钮图标
     backToTopIcon = "arrow-up"
 
