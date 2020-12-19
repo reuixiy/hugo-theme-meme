@@ -817,6 +817,9 @@ uglyURLs = false
     # Headings Anchor
 
     enableHeadingsAnchor = true
+    # Note: *global settings*
+    #       `anchor` in post’s Front Matter
+    #       has a higher priority than here
 
     # Level range of headings
     headingsOpt = "1-6"
@@ -1191,6 +1194,8 @@ uglyURLs = false
     enableBackToTopAutoHide = true
 
     displayBackToTopInHome = true
+
+    displayBackToTopOnMobile = false
 
     backToTopIcon = "arrow-up"
 
