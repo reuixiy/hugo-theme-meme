@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'glyph-correction';
     font-display: swap;
-    src: url('/fonts/glyph-correction.woff2') format('woff2'),
-         url('/fonts/glyph-correction.woff') format('woff'),
-         url('/fonts/glyph-correction.ttf') format('truetype'),
-         url('/fonts/glyph-correction.eot') format('embedded-opentype');
+    src: url('#{$baseRelURL}/fonts/glyph-correction.woff2') format('woff2'),
+         url('#{$baseRelURL}/fonts/glyph-correction.woff') format('woff'),
+         url('#{$baseRelURL}/fonts/glyph-correction.ttf') format('truetype'),
+         url('#{$baseRelURL}/fonts/glyph-correction.eot') format('embedded-opentype');
     unicode-range: U+00B7, U+2014, U+2022, U+2026;
     font-weight: inherit;
     font-style: inherit;
