@@ -128,7 +128,8 @@
 // Chinese Punctuation Glyph Correction
 
 {{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
-$_baseURL:  "{{- .Site.BaseURL | relURL -}}";
+    $baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
+
     @import "base/glyph-correction";
 
     // Magic adjustment for zh-cn
