@@ -243,6 +243,9 @@ uglyURLs = false
 
     enableHeader = true
 
+    enableHeaderAutoHide = false
+    # Note: works for header layout flex only
+
     displayHeaderInHome = true
     # Note: invalid for header layout flex
 

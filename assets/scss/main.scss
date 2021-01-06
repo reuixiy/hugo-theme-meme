@@ -25,6 +25,12 @@
     $headerLayoutFlex: false;
 {{ end }}
 
+{{ if .Site.Params.enableHeaderAutoHide }}
+    $enableHeaderAutoHide: true;
+{{ else }}
+    $enableHeaderAutoHide: false;
+{{ end }}
+
 {{ if .Site.Params.enableNavToggle }}
     $enableNavToggle: true;
 
