@@ -231,6 +231,10 @@ uglyURLs = false
     # 是否開啟
     enableHeader = true
 
+    # 是否自動隱藏
+    enableHeaderAutoHide = false
+    # 說明：僅對彈性佈局的頂欄有效
+
     # 是否在首頁顯示
     displayHeaderInHome = true
     # 說明：對彈性佈局的頂欄無效

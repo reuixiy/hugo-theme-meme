@@ -76,3 +76,14 @@ $brandHeight: null;
         scroll-margin-top: var(--header-height);
     }
 }
+
+@if ($enableHeaderAutoHide and $headerLayoutFlex) {
+    .header {
+        top: 0;
+        transition: top 0.3s ease-in-out;
+    
+        &.hide {
+            top: calc(var(--header-height) * -1);
+        }
+    }
+}
