@@ -75,6 +75,8 @@
     $enableSmoothScroll: false;
 {{ end }}
 
+$baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
+
 
 // Utilities
 
@@ -134,8 +136,6 @@
 // Chinese Punctuation Glyph Correction
 
 {{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
-    $baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
-
     @import "base/glyph-correction";
 
     // Magic adjustment for zh-cn
