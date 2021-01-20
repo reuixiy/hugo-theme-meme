@@ -35,7 +35,11 @@
             {{- end -}}
 
             <div class="post-body e-content">
-              {{ partial "utils/content.html" . }}
+              {{if .Params.gallery }}
+                  {{ partial "utils/gallery.html" . }}
+              {{ else }}
+                  {{ partial "utils/content.html" . }}
+              {{ end }}
             </div>
 
             {{ partial "components/post-copyright.html" . }}
