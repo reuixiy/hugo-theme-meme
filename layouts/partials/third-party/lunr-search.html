@@ -2,6 +2,9 @@
 {{- if ne .Site.Language.Lang "en" -}}
     {{- $supported := slice "ar" "da" "de" "du" "es" "fi" "fr" "hu" "it" "ja" "nl" "no" "pt" "ro" "ru" "sv" "tr" "vi" -}}
     {{- if in $supported .Site.Language.Lang -}}
+        {{- if eq .Site.Language.Lang "ja" -}}
+            {{- $scripts = union $scripts (slice "https://cdn.jsdelivr.net/npm/lunr-languages@1.4.0/tinyseg.js") -}}
+        {{- end -}}
         {{- $scripts = union $scripts (slice "https://cdn.jsdelivr.net/npm/lunr-languages@1.4.0/min/lunr.stemmer.support.min.js") -}}
         {{- $scripts = union $scripts (slice (printf "https://cdn.jsdelivr.net/npm/lunr-languages@1.4.0/min/lunr.%s.min.js" .Site.Language.Lang)) -}}
     {{- else -}}
