@@ -12,5 +12,5 @@
     "background_color": "#fff",
     "display": "standalone",
     "orientation": "portrait-primary",
-    "start_url": "./?utm_source=homescreen"
+    "start_url": "/"
 }
