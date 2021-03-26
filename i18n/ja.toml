@@ -1,0 +1,168 @@
+[ellipsis]
+other = "…"
+
+[colon]
+other = ": "
+
+[minute]
+one = "分"
+other = "分"
+
+[tocTitle]
+other = "目次"
+
+[readMore]
+other = "続きを読む"
+
+[prevPage]
+other = "新しい記事"
+
+[nextPage]
+other = "古い記事"
+
+[copy]
+other = "コピー"
+
+[copied]
+other = "コピー完了!"
+
+[copyrightAuthor]
+other = "筆者"
+
+[copyrightLink]
+other = "リンク"
+
+[copyrightLicense]
+other = "ライセンス"
+
+[shareOn]
+other = "シェアする:"
+
+[shareOnTitle]
+other = "シェアする: "
+
+[shareViaTitle]
+other = "シェアする "
+
+[relatedPosts]
+other = "関連記事:"
+
+[loadComments]
+other = "コメントを読み込みますか?"
+
+[pageNotFound]
+other = "404 - ページが見つかりません"
+
+[fofLinkText]
+other = "ホームへ戻る"
+
+[searchResultsTitle]
+one = "“{{ .Term }}” の検索結果が 1 件見つかりました"
+other = "“{{ .Term }}” の検索結果が {{ .Count }} 件見つかりました"
+
+[searchResultsNone]
+other = "“{{ .Term }}” の検索結果が見つかりませんでした"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "1月"
+
+[february]
+other = "2月"
+
+[march]
+other = "3月"
+
+[april]
+other = "4月"
+
+[may]
+other = "5月"
+
+[june]
+other = "6月"
+
+[july]
+other = "7月"
+
+[august]
+other = "8月"
+
+[september]
+other = "9月"
+
+[october]
+other = "10月"
+
+[november]
+other = "11月"
+
+[december]
+other = "12月"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"
