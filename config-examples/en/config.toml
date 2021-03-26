@@ -46,6 +46,16 @@ disablePathToLower = false
 relativeURLs = false
 uglyURLs = false
 
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"]
+
 # URL structure
 [permalinks]
     categories = "/categories/:slug/"
@@ -1327,13 +1337,33 @@ uglyURLs = false
 
 
     ######################################
-    # Lunr search
+    # Enable Search
 
-    # Note: This requires SearchIndex
-    # output to be enabled.
+    # 说明：需要开启 `SearchIndex` 的输出
 
-    enableLunrSearch = true
-    # Note: https://lunrjs.com/
+    enableSearch = true
+
+    # 搜索引擎目前支持：lunr, algolia
+    searchEngine = "lunr"
+
+    ######################################
+    # Enable Lunr Search
+
+    # Note：Needs Turn On `SearchIndex` Output
+    # This option is used to compatible with original lunr search option, with higher priority
+
+    enableLunrSearch = false
+
+    # Note：https://lunrjs.com/
+
+    ######################################
+    # Algolia
+
+    algoliaIndex = ""
+    algoliaKey = ""  #“Search-Only API Key”
+    algoliaAppID = ""
+
+    # Note：https://www.algolia.com/
 
 
     ######################################

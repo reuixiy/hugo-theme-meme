@@ -128,7 +128,7 @@
             #langs li {
                 width: auto;
             }
-            @if ($enableLunrSearch) {
+            @if ($enableSearch) {
                 .search-item {
                     grid-column: 1 / -1;
                 }
