@@ -44,6 +44,17 @@ disablePathToLower = false
 relativeURLs = false
 uglyURLs = false
 
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"]
+
 # URL 结构
 [permalinks]
     categories = "/categories/:slug/"
@@ -135,15 +146,14 @@ uglyURLs = false
     baseName = "rss"
 
 # lunr.js 的搜索索引
-# [outputFormats.SearchIndex]
-#     mediaType = "application/json"
-#     baseName = "search"
+[outputFormats.SearchIndex]
+    mediaType = "application/json"
+    baseName = "search"
 
 # Hugo 的输出控制
 [outputs]
     page = ["HTML"]
-    # home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex"]
-    home = ["HTML", "SectionsAtom", "SectionsRSS"]
+    home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex"]
     section = ["HTML"]
     taxonomy = ["HTML"]
     term = ["HTML"]
@@ -1301,13 +1311,33 @@ uglyURLs = false
 
 
     ######################################
-    # Lunr 搜索（暂不支持中文）
+    # 启用搜索
 
     # 说明：需要开启 `SearchIndex` 的输出
 
+    enableSearch = false
+
+    # 搜索引擎目前支持：lunr, algolia
+    searchEngine = "algolia"
+
+    ######################################
+    # Lunr搜索（暂不支持中文）
+
+    # 说明：需要开启 `SearchIndex` 的输出
+    # 此选项用于兼容原有 lunr 搜索，优先级较高
+
     enableLunrSearch = false
+
     # 说明：https://lunrjs.com/
 
+    ######################################
+    # Algolia
+
+    algoliaIndex = ""
+    algoliaKey = "" # 这个key是 “Search-Only API Key”
+    algoliaAppID = ""
+
+    # 说明：https://www.algolia.com/
 
     ######################################
     # 404 页面

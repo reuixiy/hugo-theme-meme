@@ -115,6 +115,9 @@ window.addEventListener("DOMContentLoaded", event => {
             let results = index.search(term);
 
             let target = document.querySelector(".main-inner");
+            if (!target) {
+                target = document.querySelector("main.home").firstElementChild;
+            }
             let replaced = [];
             while (target.firstChild) {
                 replaced.push(target.firstChild);

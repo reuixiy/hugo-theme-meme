@@ -165,6 +165,6 @@ See [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2).
   | disqus_identifier                           | \*                                                                                                       | string, if not set, will use `RelPermalink` as default                       |
   | disqus_title                                | \*                                                                                                       | string, if not set, will use `Title` as default                              |
 
-  \*: see https://gohugo.io/content-management/front-matter/  
+  \*: see https://gohugo.io/content-management/front-matter/
       and https://gohugo.io/templates/internal/#configure-disqus
 </details>
