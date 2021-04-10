@@ -1,5 +1,5 @@
 @if ($headerLayoutFlex) {
-    @supports not (backdrop-filter: none) {
+    @supports not ((backdrop-filter: none) or (-webkit-backdrop-filter: none)) {
         .header-wrapper {
             background-color: var(--color-bg);
         }
