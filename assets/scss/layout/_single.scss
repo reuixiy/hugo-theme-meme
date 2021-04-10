@@ -205,7 +205,7 @@ dd {
 
 code {
     padding: ($fontSize / 8) ($fontSize / 4);
-    background-color: var(--color-contrast-lower);
+    background-color: alpha(var(--color-contrast-lower), 0.5);
     font-size: 80%;
 }
 pre {
@@ -216,7 +216,7 @@ pre {
     margin: 2rem 0;
     padding: 1em;
     line-height: 1.618;
-    background-color: alpha(var(--color-contrast-lower), 0.75);
+    background-color: alpha(var(--color-contrast-lower), 0.5);
     code {
         background-color: unset;
         font-size: 0.8rem;
