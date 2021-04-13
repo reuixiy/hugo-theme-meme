@@ -8,28 +8,39 @@
   5. https://serviceworke.rs/
 */
 
-const RUNTIME = 'runtime';
+const CACHE_NAME = 'runtime';
 
 self.skipWaiting();
 
-self.addEventListener('fetch', (event) => {
-    if (event.request.url.startsWith(self.location.origin)) {
-        event.respondWith(
-            (async () => {
-                const cache = await caches.open(RUNTIME);
-                const cachedResponse = await cache.match(event.request);
-                const networkResponsePromise = fetch(event.request);
+self.addEventListener('fetch', function (event) {
+  // Do nothing if not from the same origin
+  if (!event.request.url.startsWith(self.location.origin)) return;
 
-                event.waitUntil(
-                    (async () => {
-                        const networkResponse = await networkResponsePromise;
-                        await cache.put(event.request, networkResponse.clone());
-                    })()
-                );
+  event.respondWith(
+    caches.match(event.request).then(function (response) {
+      // Cache hit - return response
+      if (response) {
+        return response;
+      }
 
-                // Returned the cached response if we have one, otherwise return the network response.
-                return cachedResponse || networkResponsePromise;
-            })()
-        );
-    }
+      return fetch(event.request).then(function (response) {
+        // Check if we received a valid response
+        if (!response || response.status !== 200 || response.type !== 'basic') {
+          return response;
+        }
+
+        // IMPORTANT: Clone the response. A response is a stream
+        // and because we want the browser to consume the response
+        // as well as the cache consuming the response, we need
+        // to clone it so we have two streams.
+        var responseToCache = response.clone();
+
+        caches.open(CACHE_NAME).then(function (cache) {
+          cache.put(event.request, responseToCache);
+        });
+
+        return response;
+      });
+    })
+  );
 });
