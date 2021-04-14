@@ -712,6 +712,16 @@ uglyURLs = false
 
 
     ######################################
+    # Yandex.Metrika
+    # https://metrika.yandex.ru/
+
+    # Note: render only in production
+    #       environment
+
+    yandexMetrikaId = ""
+
+
+    ######################################
     # Post Settings
 
     # The color change duration of the
