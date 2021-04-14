@@ -659,6 +659,15 @@ uglyURLs = false
 
 
     ######################################
+    # Yandex.Metrika
+    # https://metrika.yandex.ru/
+
+    # 說明：僅在生產環境（production）下渲染
+
+    yandexMetrikaId = ""
+
+
+    ######################################
     # 文章設定
 
     # 超連結的顏色變化持續時間（單位：秒）
