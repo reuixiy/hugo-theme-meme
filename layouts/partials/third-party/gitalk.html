@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script>
+    function loadComments() {
+        if (typeof Gitalk === 'undefined') {
+            var getScript = (options) => {
+                var script = document.createElement('script');
+                script.defer = true;
+                script.crossOrigin = 'anonymous';
+                Object.keys(options).forEach((key) => {
+                    script[key] = options[key];
+                });
+                document.body.appendChild(script);
+            };
+            getScript({
+                src: 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js',
+                onload: () => {
+                    newGitalk();
+                }
+            });
+        } else {
+            newGitalk();
+        }
+    }
+    function newGitalk() {
+        const gitalk = new Gitalk({
+            clientID: {{ .Site.Params.gitalkClientID }},
+            clientSecret: {{ .Site.Params.gitalkClientSecret }},
+            repo: {{ .Site.Params.gitalkRepo }},
+            owner: {{ .Site.Params.gitalkOwner }},
+            admin: {{ .Site.Params.gitalkAdmin }},
+            labels: {{ .Site.Params.gitalkLable }},
+            distractionFreeMode: {{ .Site.Params.gitalkDistractionFreeMode }}, 
+            perPage: {{ .Site.Params.gitalkPerPage }},
+            language: {{ .Site.Params.gitalkLanguage }},
+            pagerDirection: {{ .Site.Params.gitalkPagerDirection }},
+            createIssueManually: {{ .Site.Params.gitalkDistractionFreeMode }},
+            proxy: {{ .Site.Params.gitalkProxy }},
+            enableHotKey: {{ .Site.Params.gitalkEnableHotKey }},
+            id:  location.pathname
+        })
+
+        gitalk.render('gitalk-container')
+    }
+</script>
