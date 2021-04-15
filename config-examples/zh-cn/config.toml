@@ -589,7 +589,7 @@ uglyURLs = false
     #      的优先级高于此处
 
     ## Gitalk
-    enableGitalk = true
+    enableGitalk = false
     gitalkClientID = "your_client_id"
     gitalkClientSecret = "your_client_secret"
     gitalkRepo = "your_repository"
