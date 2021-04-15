@@ -588,6 +588,23 @@ uglyURLs = false
     # 說明：文章的 Front Matter 中的 `comments`
     #      的優先順序高於此處
 
+    ## Gitalk
+    enableGitalk = false
+    gitalkClientID = "your_client_id"
+    gitalkClientSecret = "your_client_secret"
+    gitalkRepo = "your_repository"
+    gitalkOwner = "your_gitalk_owner"
+    gitalkAdmin = ["your_gitalk_admin"]
+    gitalkLable = ["Gitalk"]
+    gitalkDistractionFreeMode = false
+    gitalkPerPage = 10
+    gitalkLanguage = "en"
+    gitalkPagerDirection = "last"
+    gitalkCreateIssueManually = false
+    gitalkProxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
+    gitalkEnableHotKey = true
+    # 說明：https://github.com/gitalk/gitalk
+
     ## Disqus
     enableDisqus = false
     disqusShortname = ""
