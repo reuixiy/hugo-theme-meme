@@ -108,5 +108,10 @@
         {{ partial "third-party/google-adsense-auto.html" . }}
     {{- end }}
 
+    <!-- Yandex.Metrika -->
+    {{ if and .Site.Params.yandexMetrikaId (eq hugo.Environment "production") }}
+        {{ partial "third-party/yandex-metrika.html" . }}
+    {{- end }}
+
     {{ partial "custom/head.html" . }}
 </head>
