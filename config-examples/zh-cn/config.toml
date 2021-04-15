@@ -603,7 +603,7 @@ uglyURLs = false
     gitalkCreateIssueManually = false
     gitalkProxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
     gitalkEnableHotKey = true
-    # Note: https://github.com/gitalk/gitalk
+    # 说明：https://github.com/gitalk/gitalk
 
     ## Disqus
     enableDisqus = false
