@@ -588,6 +588,9 @@ uglyURLs = false
     # 說明：文章的 Front Matter 中的 `comments`
     #      的優先順序高於此處
 
+    # 直接加載評論，不需要手動點擊按鈕加載
+    autoLoadComments = false
+
     ## Disqus
     enableDisqus = false
     disqusShortname = ""

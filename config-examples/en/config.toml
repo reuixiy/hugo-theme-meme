@@ -640,6 +640,9 @@ uglyURLs = false
     #       `comments` in post’s Front Matter
     #       has a higher priority than here
 
+    # directly load the comments after pages loaded
+    autoLoadComments = false
+
     ## Disqus
     enableDisqus = false
     disqusShortname = ""
