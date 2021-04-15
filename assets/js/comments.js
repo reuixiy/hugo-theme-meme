@@ -1,6 +1,8 @@
 window.addEventListener("DOMContentLoaded", event => {
     {{ if .Site.Params.autoLoadComments }}
-        loadComments()
+        if (typeof loadComments === 'function') {
+            loadComments()
+        }
     {{ else }}
         const commentsToggle = document.getElementById('load-comments');
 
