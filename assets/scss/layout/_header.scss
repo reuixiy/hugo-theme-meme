@@ -11,6 +11,7 @@
         padding: 1em 0;
         @include blur;
         background: $headerBackground;
+        transition: background $duration;
     }
     .header-inner {
         display: flex;

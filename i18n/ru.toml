@@ -1,0 +1,169 @@
+[ellipsis]
+other = "…"
+
+[colon]
+other = ": "
+
+[minute]
+one = "мин"
+other = "мин"
+
+[tocTitle]
+other = "Содержание"
+
+[readMore]
+other = "Читать далее"
+
+[prevPage]
+other = "Новые"
+
+[nextPage]
+other = "Старые"
+
+[copy]
+other = "Копировать"
+
+[copied]
+other = "Скопировано!"
+
+[copyrightAuthor]
+other = "Автор"
+
+[copyrightLink]
+other = "Ссылка"
+
+[copyrightLicense]
+other = "Лицензия"
+
+[shareOn]
+other = "Поделиться:"
+
+[shareOnTitle]
+other = "Поделиться "
+
+[shareViaTitle]
+other = "Поделиться "
+
+[relatedPosts]
+other = "Ещё:"
+
+[loadComments]
+other = "Загрузить комментарии?"
+
+[pageNotFound]
+other = "404 - Страница не найдена"
+
+[fofLinkText]
+other = "Домой"
+
+[searchResultsTitle]
+one = "Найден один результат для “{{ .Term }}”"
+other = "Найдено {{ .Count }} результатов для “{{ .Term }}”"
+
+[searchResultsNone]
+other = "Ничего не найдено для “{{ .Term }}”"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "Январь"
+
+[february]
+other = "Февраль"
+
+[march]
+other = "Март"
+
+[april]
+other = "Апрель"
+
+[may]
+other = "Март"
+
+[june]
+other = "Июнь"
+
+[july]
+other = "Июль"
+
+[august]
+other = "Август"
+
+[september]
+other = "Сентябрь"
+
+[october]
+other = "Октябрь"
+
+[november]
+other = "Ноябрь"
+
+[december]
+other = "Декабрь"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"
+
