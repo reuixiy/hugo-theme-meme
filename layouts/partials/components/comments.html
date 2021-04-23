@@ -1,9 +1,11 @@
 {{ if and (.Params.comments | default .Site.Params.enableComments) (eq hugo.Environment "production") }}
     {{ if or (in .Site.Params.mainSections .Section) .Params.comments }}
 
-        <div class="load-comments">
-            <div id="load-comments">{{ i18n "loadComments" }}</div>
-        </div>
+        {{ if not .Site.Params.autoLoadComments }}
+            <div class="load-comments">
+                <div id="load-comments">{{ i18n "loadComments" }}</div>
+            </div>
+        {{  end }}
 
         {{ if .Site.Params.enableDisqus }}
             <div id="disqus_thread"></div>
@@ -17,5 +19,8 @@
             <div id="utterances"></div>
         {{ end }}
 
+        {{ if .Site.Params.enableGitalk }}
+            <div id="gitalk-container"></div>
+        {{ end }}
     {{ end }}
 {{ end }}
