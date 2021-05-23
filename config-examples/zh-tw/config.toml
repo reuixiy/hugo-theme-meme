@@ -44,12 +44,6 @@ disablePathToLower = false
 relativeURLs = false
 uglyURLs = false
 
-[outputFormats.Algolia]
-baseName = "algolia"
-isPlainText = true
-mediaType = "application/json"
-notAlternative = true
-
 # URL 結構
 [permalinks]
     categories = "/categories/:slug/"
@@ -145,10 +139,18 @@ notAlternative = true
     mediaType = "application/json"
     baseName = "search"
 
+# Algolia 的搜尋索引
+[outputFormats.Algolia]
+    mediaType = "application/json"
+    baseName = "algolia"
+    isPlainText = true
+    notAlternative = true
+
 # Hugo 的輸出控制
 [outputs]
     page = ["HTML"]
-    home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex"]
+    # home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex", "Algolia"]
+    home = ["HTML", "SectionsAtom", "SectionsRSS"]
     section = ["HTML"]
     taxonomy = ["HTML"]
     term = ["HTML"]
@@ -1333,32 +1335,30 @@ notAlternative = true
     enableInstantPage = true
     # 說明：https://github.com/instantpage/instant.page
 
-    ######################################
-    # 啟用搜尋
-
-    enableSearch = false
-
-    # 搜尋引擎目前支持：lunr, algolia
-    searchEngine = "algolia"
 
     ######################################
-    # Lunr搜尋（暫不支援中文）
+    # Lunr 搜尋（暫不支援中文）
 
     # 說明：需要開啟 `SearchIndex` 的輸出
-    # 此選項用於兼容原有 lunr 搜尋，優先級較高
 
     enableLunrSearch = false
-
     # 說明：https://lunrjs.com/
 
+
     ######################################
-    # Algolia
+    # Algolia 搜尋
 
-    algoliaIndex = ""
-    algoliaKey = "" # 這個key是 “Search-Only API Key”
-    algoliaAppID = ""
+    # 說明：需要開啟 `Algolia` 的輸出，且需要每
+    #      次將生成的 algolia.json 文件上傳到
+    #      Algolia
 
-    # 说明：https://www.algolia.com/
+    enableAlgoliaSearch = false
+
+    algoliaAppId = ""
+    algoliaApiKey = ""
+    algoliaIndexName = ""
+    # 說明：https://www.algolia.com/
+
 
     ######################################
     # 404 頁面

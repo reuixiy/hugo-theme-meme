@@ -1,0 +1,5 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- range (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) -}}
+    {{- $.Scratch.Add "index" (dict "objectID" .File.UniqueID "date" .Date.UTC.Unix "description" .Description "fuzzywordcount" .FuzzyWordCount "kind" .Kind "lang" .Lang "lastmod" .Lastmod.UTC.Unix "publishdate" .PublishDate.UTC.Unix "relpermalink" .RelPermalink "summary" .Summary "title" .Title "url" .Permalink "wordcount" .WordCount "section" .Section "tags" .Params.tags "categories" .Section "content" .Content)}}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

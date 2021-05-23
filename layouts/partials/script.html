@@ -32,13 +32,12 @@
     {{- $scripts = union $scripts (slice "js/comments.js") -}}
 {{- end -}}
 
-{{- if .Site.Params.enableSearch -}}
-    {{- if or .Site.Params.enableLunrSearch (eq .Site.Params.searchEngine "lunr") -}}
-        {{- $scripts = union $scripts (partial "third-party/lunr-search.html" .) -}}
-    {{- end -}}
-    {{- if (eq .Site.Params.searchEngine "algolia") -}}
-        {{- $scripts = union $scripts (partial "third-party/algolia-search.html" .) -}}
-    {{- end -}}
+{{- if .Site.Params.enableLunrSearch -}}
+    {{- $scripts = union $scripts (partial "third-party/lunr-search.html" .) -}}
+{{- end -}}
+
+{{- if .Site.Params.enableAlgoliaSearch -}}
+    {{- $scripts = union $scripts (partial "third-party/algolia-search.html" .) -}}
 {{- end -}}
 
 {{- $scripts = union $scripts (slice "js/custom.js") -}}

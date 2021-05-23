@@ -32,7 +32,7 @@
     {{ end }}
 {{ end }}
 
-{{ if and (.Site.Params.enableMediumZoom) (not .Params.gallery) }}
+{{ if .Site.Params.enableMediumZoom }}
     {{ partial "third-party/medium-zoom.html" . }}
 {{ end }}
 
