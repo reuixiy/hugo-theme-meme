@@ -141,9 +141,17 @@ uglyURLs = false
     mediaType = "application/json"
     baseName = "search"
 
+# Search index for Algolia
+[outputFormats.Algolia]
+    mediaType = "application/json"
+    baseName = "algolia"
+    isPlainText = true
+    notAlternative = true
+
 # Hugo’s output control
 [outputs]
     page = ["HTML"]
+    # home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex", "Algolia"]
     home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex"]
     section = ["HTML"]
     taxonomy = ["HTML"]
@@ -1360,10 +1368,28 @@ uglyURLs = false
     # Lunr search
 
     # Note: This requires SearchIndex
-    # output to be enabled.
+    #       output to be enabled.
 
     enableLunrSearch = true
     # Note: https://lunrjs.com/
+
+
+    ######################################
+    # Algolia search
+
+    # Note: This requires Algolia
+    #       output to be enabled.
+    #       And you need to upload the
+    #       generated algolia.json to
+    #       Algolia every time you rebuild
+    #       your site.
+
+    enableAlgoliaSearch = false
+
+    algoliaAppId = ""
+    algoliaApiKey = ""
+    algoliaIndexName = ""
+    # Note: https://www.algolia.com/
 
 
     ######################################

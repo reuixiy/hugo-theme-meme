@@ -36,6 +36,10 @@
     {{- $scripts = union $scripts (partial "third-party/lunr-search.html" .) -}}
 {{- end -}}
 
+{{- if .Site.Params.enableAlgoliaSearch -}}
+    {{- $scripts = union $scripts (partial "third-party/algolia-search.html" .) -}}
+{{- end -}}
+
 {{- $scripts = union $scripts (slice "js/custom.js") -}}
 
 {{- $processedScripts := slice ("" | resources.FromString "dummy.js") -}}

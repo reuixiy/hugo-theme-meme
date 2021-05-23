@@ -449,11 +449,11 @@ $fofPoster: url({{ $fofPoster }});
 
 // Lunr search
 
-{{ if and (eq .Site.Params.headerLayout "flex") .Site.Params.enableLunrSearch }}
-    $enableLunrSearch: true;
+{{ if and (eq .Site.Params.headerLayout "flex") (or .Site.Params.enableLunrSearch .Site.Params.enableAlgoliaSearch) }}
+    $enableSearch: true;
     @import "components/search";
 {{ else }}
-    $enableLunrSearch: false;
+    $enableSearch: false;
 {{ end }}
 
 
