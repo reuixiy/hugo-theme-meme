@@ -6,6 +6,7 @@
   3. https://googlechrome.github.io/samples/service-worker/
   4. https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers
   5. https://serviceworke.rs/
+  6. https://www.youtube.com/watch?v=baSiSIyTGSk
 */
 
 const RUNTIME = 'runtime';
@@ -13,23 +14,27 @@ const RUNTIME = 'runtime';
 self.skipWaiting();
 
 self.addEventListener('fetch', (event) => {
-    if (event.request.url.startsWith(self.location.origin)) {
-        event.respondWith(
-            (async () => {
-                const cache = await caches.open(RUNTIME);
-                const cachedResponse = await cache.match(event.request);
-                const networkResponsePromise = fetch(event.request);
+  // Do nothing if not the same origin
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
 
-                event.waitUntil(
-                    (async () => {
-                        const networkResponse = await networkResponsePromise;
-                        await cache.put(event.request, networkResponse.clone());
-                    })()
-                );
+  // Network first strategy
+  event.respondWith(
+    (async () => {
+      const cache = await caches.open(RUNTIME);
 
-                // Returned the cached response if we have one, otherwise return the network response.
-                return cachedResponse || networkResponsePromise;
-            })()
-        );
-    }
+      try {
+        const networkResponse = await fetch(event.request);
+
+        await cache.put(event.request, networkResponse.clone());
+
+        return networkResponse;
+      } catch (e) {
+        const cachedResponse = await cache.match(event.request);
+
+        return cachedResponse;
+      }
+    })()
+  );
 });
