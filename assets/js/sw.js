@@ -27,7 +27,10 @@ self.addEventListener('fetch', (event) => {
       try {
         const networkResponse = await fetch(event.request);
 
-        await cache.put(event.request, networkResponse.clone());
+        // Save/Update cache if network response is ok
+        if (networkResponse && networkResponse.status === 200) {
+          cache.put(event.request, networkResponse.clone());
+        }
 
         return networkResponse;
       } catch (e) {
