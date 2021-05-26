@@ -1,5 +1,11 @@
 <script src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js"></script>
 <script>
+    // Replace mermaid pre.code to div
+    Array.from(document.getElementsByClassName("language-mermaid")).forEach(
+        (el) => {
+            el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
+        }
+    );
     let mermaidConfig = {
         startOnLoad: true,
         flowchart: {
