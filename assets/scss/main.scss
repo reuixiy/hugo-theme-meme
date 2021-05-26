@@ -11,12 +11,9 @@
 {{ with .Site.Params.postWidth | default 42 }}
     $postWidth: {{ . }}em;
 {{ end }}
-{{ if eq .Site.Params.postWidth "false" }}
-    $listWidth: "none";
-{{ else }}
-    {{ with .Site.Params.listWidth | default 42 }}
-        $listWidth: {{ . }}em;
-    {{ end }}
+
+{{ with .Site.Params.listWidth | default 42 }}
+    $listWidth: {{ . }}em;
 {{ end }}
 
 {{ with .Site.Params.duration | default 0.5 }}
