@@ -14,7 +14,7 @@
 
 [[socials]]
     id = "email"
-    url = "wlfkongl@gmail.com"
+    url = "mailto:wlfkongl@gmail.com"
     icon = "envelope"
     title = "Email"
     weight = 2
