@@ -11,8 +11,12 @@
 {{ with .Site.Params.postWidth | default 42 }}
     $postWidth: {{ . }}em;
 {{ end }}
-{{ with .Site.Params.listWidth | default 42 }}
-    $listWidth: {{ . }}em;
+{{ if eq .Site.Params.postWidth "false" }}
+    $listWidth: none;
+{{ else }}
+    {{ with .Site.Params.listWidth | default 42 }}
+        $listWidth: {{ . }}em;
+    {{ end }}
 {{ end }}
 
 {{ with .Site.Params.duration | default 0.5 }}
@@ -461,15 +465,11 @@ $fofPoster: url({{ $fofPoster }});
 
 $greaterWidth: null;
 
-{{ if eq .Site.Params.postWidth "false") }}
-
-{{ else }}
 @if ($postWidth > $listWidth) {
     $greaterWidth: $postWidth;
 } @else {
     $greaterWidth: $listWidth;
 }
-{{ end }}
 @import "base/max-width";
 :root {
     --max-width: #{$maxWidth};
