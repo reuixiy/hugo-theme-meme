@@ -461,12 +461,15 @@ $fofPoster: url({{ $fofPoster }});
 
 $greaterWidth: null;
 
+{{ if eq .Site.Params.postWidth "false") }}
+
+{{ else }}
 @if ($postWidth > $listWidth) {
     $greaterWidth: $postWidth;
 } @else {
     $greaterWidth: $listWidth;
 }
-
+{{ end }}
 @import "base/max-width";
 :root {
     --max-width: #{$maxWidth};
