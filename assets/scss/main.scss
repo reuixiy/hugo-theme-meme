@@ -12,7 +12,7 @@
     $postWidth: {{ . }}em;
 {{ end }}
 {{ if eq .Site.Params.postWidth "false" }}
-    $listWidth: none;
+    $listWidth: "none";
 {{ else }}
     {{ with .Site.Params.listWidth | default 42 }}
         $listWidth: {{ . }}em;
