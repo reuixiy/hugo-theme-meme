@@ -14,28 +14,28 @@
 
 [[socials]]
     id = "email"
-    url = "mailto:reuixiy@gmail.com"
+    url = "wlfkongl@gmail.com"
     icon = "envelope"
     title = "Email"
     weight = 2
 
 [[socials]]
     id = "github"
-    url = "https://github.com/reuixiy"
+    url = "https://github.com/mmfei"
     icon = "github"
     title = "GitHub"
     weight = 3
 
 [[socials]]
     id = "twitter"
-    url = "https://twitter.com/reuixiy"
+    url = "https://twitter.com/mmfei"
     icon = "twitter"
     title = "Twitter"
     weight = 4
 
 [[socials]]
     id = "telegram"
-    url = "https://t.me/yixiuer"
+    url = "https://t.me/mmfei"
     icon = "telegram"
     title = "Telegram"
     weight = 5
