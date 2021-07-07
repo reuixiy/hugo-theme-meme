@@ -12,7 +12,7 @@ MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/
 
 ## Preview
 
-![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)
+[![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)](https://themes.gohugo.io/themes/hugo-theme-meme/)
 
 ### Browser support
 
