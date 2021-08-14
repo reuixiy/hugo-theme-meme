@@ -11,6 +11,7 @@
         padding: 1em 0;
         @include blur;
         background: $headerBackground;
+        transition: background $duration;
     }
     .header-inner {
         display: flex;
@@ -52,36 +53,38 @@ $brandHeight: null;
             color: $siteBrandFontColor;
         }
     }
-    $brandHeight: $siteBrandFontSize * /* body line height */ 1.618;
+    /* $siteBrandFontSize * {body line-height} */
+    $brandHeight: $fontSize * strip-unit($siteBrandFontSize) * 1.618;
 }
 
 @if ($headerLayoutFlex) {
-    :root
-    {
+    :root {
         /* This is an approximate calculation, it won't cover all scenarios */
         --header-height: calc(
             max(
-                /* menu */
-                #{$fontSize * /* .nav font size */ 0.8 * /* .menu line height */ 1.5},
                 /* brand */
-                #{$brandHeight}
-            ) + #{/* .header-wrapper top+bottom margin */ 2 * $fontSize}
+                #{$brandHeight},
+                /* menu */
+                #{$fontSize * 0.8 * 1.5} /* {.nav font-size} * {.menu line-height} */
+            )
+            /* .header-wrapper top+bottom margin */
+            + #{$fontSize * 2}
         );
     }
 
-    /* Work-around for anchors being hidden below the header */
-    #main
-    {
-        p, div, ul, ol, form, section, h1, h2, h3, h4, h5, h6
-        {
-            &[id]::before
-            {
-                content: "";
-                display: block;
-                visibility: hidden;
-                height: var(--header-height);
-                margin: calc(-1 * var(--header-height)) 0 0;
-            }
+    /* Scrolling fix for anchors being hidden below the header */
+    *[id] {
+        scroll-margin-top: var(--header-height);
+    }
+}
+
+@if ($enableHeaderAutoHide and $headerLayoutFlex) {
+    .header {
+        top: 0;
+        transition: top 0.3s ease-in-out;
+    
+        &.hide {
+            top: calc(var(--header-height) * -1);
         }
     }
 }

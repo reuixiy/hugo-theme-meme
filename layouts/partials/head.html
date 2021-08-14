@@ -56,7 +56,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouchIcon | relURL }}" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="{{ .Site.Title }}" />
     <meta name="msapplication-starturl" content="{{ $msApplicationStartURL }}" />
@@ -106,6 +106,11 @@
 
     {{- if and .Site.Params.enableGoogleAutoAds (eq hugo.Environment "production") -}}
         {{ partial "third-party/google-adsense-auto.html" . }}
+    {{- end }}
+
+    <!-- Yandex.Metrika -->
+    {{ if and .Site.Params.yandexMetrikaId (eq hugo.Environment "production") }}
+        {{ partial "third-party/yandex-metrika.html" . }}
     {{- end }}
 
     {{ partial "custom/head.html" . }}

@@ -91,6 +91,10 @@ uglyURLs = false
         endLevel = 6
         ordered = true
 
+# HTML minify
+[minify.tdewolff.html]
+    keepWhitespace = false
+
 # Author’s information
 [author]
     # Name
@@ -141,9 +145,17 @@ uglyURLs = false
     mediaType = "application/json"
     baseName = "search"
 
+# Search index for Algolia
+[outputFormats.Algolia]
+    mediaType = "application/json"
+    baseName = "algolia"
+    isPlainText = true
+    notAlternative = true
+
 # Hugo’s output control
 [outputs]
     page = ["HTML"]
+    # home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex", "Algolia"]
     home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex"]
     section = ["HTML"]
     taxonomy = ["HTML"]
@@ -242,6 +254,9 @@ uglyURLs = false
     # Header
 
     enableHeader = true
+
+    enableHeaderAutoHide = false
+    # Note: works for header layout flex only
 
     displayHeaderInHome = true
     # Note: invalid for header layout flex
@@ -592,8 +607,6 @@ uglyURLs = false
     #       environment
 
     enableServiceWorker = false
-    # Note: need third-party support, see
-    #       https://io-oi.me/tech/pwa-via-workbox/
 
 
     ######################################
@@ -639,6 +652,9 @@ uglyURLs = false
     #       `comments` in post’s Front Matter
     #       has a higher priority than here
 
+    # directly load the comments after pages loaded
+    autoLoadComments = false
+
     ## Disqus
     enableDisqus = false
     disqusShortname = ""
@@ -672,6 +688,23 @@ uglyURLs = false
     utterancesThemeDark = "photon-dark"
     utterancesLabel = ""
     # Note: https://utteranc.es/
+
+    ## Gitalk
+    enableGitalk = false
+    gitalkClientID = "your_client_id"
+    gitalkClientSecret = "your_client_secret"
+    gitalkRepo = "your_repository"
+    gitalkOwner = "your_gitalk_owner"
+    gitalkAdmin = ["your_gitalk_admin"]
+    gitalkLable = ["Gitalk"]
+    gitalkDistractionFreeMode = false
+    gitalkPerPage = 10
+    gitalkLanguage = "en"
+    gitalkPagerDirection = "last"
+    gitalkCreateIssueManually = false
+    gitalkProxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
+    gitalkEnableHotKey = true
+    # Note: https://github.com/gitalk/gitalk
 
 
     ######################################
@@ -708,6 +741,16 @@ uglyURLs = false
     ## Ad Units
     enableGoogleAdUnits = false
     googleAdSlot = ""
+
+
+    ######################################
+    # Yandex.Metrika
+    # https://metrika.yandex.ru/
+
+    # Note: render only in production
+    #       environment
+
+    yandexMetrikaId = ""
 
 
     ######################################
@@ -819,6 +862,9 @@ uglyURLs = false
     # Headings Anchor
 
     enableHeadingsAnchor = true
+    # Note: *global settings*
+    #       `anchor` in post’s Front Matter
+    #       has a higher priority than here
 
     # Level range of headings
     headingsOpt = "1-6"
@@ -1194,6 +1240,8 @@ uglyURLs = false
 
     displayBackToTopInHome = true
 
+    displayBackToTopOnMobile = false
+
     backToTopIcon = "arrow-up"
 
 
@@ -1202,8 +1250,11 @@ uglyURLs = false
 
     enableFooter = true
 
+    displayFooter = true
+
     displayFooterInHome = true
 
+    displayCopyleftSymbol = false
     displayCopyrightSymbol = true
 
     displaySiteCreatedYear = true
@@ -1268,9 +1319,21 @@ uglyURLs = false
     ######################################
     # Fingerprinting and SRI
 
-    enableFingerprint = true
     # Note: valid for CSS and JS generated
     #       by MemE only
+
+    enableFingerprint = true
+
+    enableSRI = false
+    # Note: subresource integrity will
+    #       block MemE CSS and JS on third
+    #       party websites like Google
+    #       Translate. To prevent this,
+    #       your server has to send the
+    #       following header for CSS and
+    #       JS requests:
+    #
+    #       Access-Control-Allow-Origin: *
 
 
     ######################################
@@ -1290,7 +1353,6 @@ uglyURLs = false
     # Smooth Scroll
 
     enableSmoothScroll = true
-    # Note: https://github.com/cferdinandi/smooth-scroll
 
 
     ######################################
@@ -1311,10 +1373,28 @@ uglyURLs = false
     # Lunr search
 
     # Note: This requires SearchIndex
-    # output to be enabled.
+    #       output to be enabled.
 
     enableLunrSearch = true
     # Note: https://lunrjs.com/
+
+
+    ######################################
+    # Algolia search
+
+    # Note: This requires Algolia
+    #       output to be enabled.
+    #       And you need to upload the
+    #       generated algolia.json to
+    #       Algolia every time you rebuild
+    #       your site.
+
+    enableAlgoliaSearch = false
+
+    algoliaAppId = ""
+    algoliaApiKey = ""
+    algoliaIndexName = ""
+    # Note: https://www.algolia.com/
 
 
     ######################################

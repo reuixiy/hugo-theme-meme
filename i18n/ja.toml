@@ -5,63 +5,63 @@ other = "…"
 other = ": "
 
 [minute]
-one = "min"
-other = "min"
+one = "分"
+other = "分"
 
 [tocTitle]
-other = "Isi kandungan"
+other = "目次"
 
 [readMore]
-other = "Baca lagi"
+other = "続きを読む"
 
 [prevPage]
-other = "Terbaru"
+other = "新しい記事"
 
 [nextPage]
-other = "Lama"
+other = "古い記事"
 
 [copy]
-other = "Salinan"
+other = "コピー"
 
 [copied]
-other = "Disalin!"
+other = "コピー完了!"
 
 [copyrightAuthor]
-other = "Pengarang"
+other = "筆者"
 
 [copyrightLink]
-other = "Sambungan"
+other = "リンク"
 
 [copyrightLicense]
-other = "Lesen"
+other = "ライセンス"
 
 [shareOn]
-other = "Dikongsikan:"
+other = "シェアする:"
 
 [shareOnTitle]
-other = "Dikongsikan "
+other = "シェアする: "
 
 [shareViaTitle]
-other = "Dikongsikan di "
+other = "シェアする "
 
 [relatedPosts]
-other = "Sila lihat:"
+other = "関連記事:"
 
 [loadComments]
-other = "Berikan komen?"
+other = "コメントを読み込みますか?"
 
 [pageNotFound]
-other = "404 - Halaman tidak dijumpa"
+other = "404 - ページが見つかりません"
 
 [fofLinkText]
-other = "Kembali ke asal"
+other = "ホームへ戻る"
 
 [searchResultsTitle]
-one = "Jumpa satu halaman untuk “{{ .Term }}”"
-other = "Jumpa {{ .Count }} halaman untuk “{{ .Term }}”"
+one = "“{{ .Term }}” の検索結果が 1 件見つかりました"
+other = "“{{ .Term }}” の検索結果が {{ .Count }} 件見つかりました"
 
 [searchResultsNone]
-other = "Tidak jumpa sebarang halaman untuk “{{ .Term }}”"
+other = "“{{ .Term }}” の検索結果が見つかりませんでした"
 
 
 # Socials
@@ -98,40 +98,40 @@ other = "QR Code"
 # Used for `i18nMonth`
 
 [january]
-other = "Januari"
+other = "1月"
 
 [february]
-other = "Februari"
+other = "2月"
 
 [march]
-other = "Mac"
+other = "3月"
 
 [april]
-other = "April"
+other = "4月"
 
 [may]
-other = "Mei"
+other = "5月"
 
 [june]
-other = "Jun"
+other = "6月"
 
 [july]
-other = "Julai"
+other = "7月"
 
 [august]
-other = "Ogos"
+other = "8月"
 
 [september]
-other = "September"
+other = "9月"
 
 [october]
-other = "Oktober"
+other = "10月"
 
 [november]
-other = "November"
+other = "11月"
 
 [december]
-other = "Disember"
+other = "12月"
 
 
 # Numbers

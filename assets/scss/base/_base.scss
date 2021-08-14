@@ -1,3 +1,9 @@
+@if ($enableSmoothScroll) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 html, body {
     margin: 0;
     width: 100%;
@@ -41,7 +47,7 @@ body {
 }
 
 .icon {
-    width: 1em;
+    width: 1.05em; // fixes svg icon get cut off on safari
     height: 1em;
     fill: currentColor;
     display: inline-block;
@@ -91,8 +97,8 @@ a {
 }
 
 ::-webkit-scrollbar {
-    width: 0.4rem;
-    height: 0.4rem;
+    width: 0.5rem;
+    height: 0.5rem;
 }
 ::-webkit-scrollbar-track {
     background-color: var(--color-bg);

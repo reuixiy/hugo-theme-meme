@@ -29,7 +29,7 @@
                     {{ end }}
                 {{ end }}
             {{ else if eq .Identifier "search" }}
-                {{ if and $.Site.Params.enableLunrSearch (eq $.Site.Params.headerLayout "flex") }}
+                {{ if and (eq $.Site.Params.headerLayout "flex") (or $.Site.Params.enableLunrSearch $.Site.Params.enableAlgoliaSearch) }}
                     {{- $iconName := (string .Post) -}}
                     <li class="menu-item search-item">
                         {{ partial "components/search.html" (dict "$" $ctx "iconName" $iconName) }}

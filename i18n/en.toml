@@ -56,12 +56,6 @@ other = "404 - Page not found"
 [fofLinkText]
 other = "Take Me Home"
 
-[serviceWorkerUpdatedText]
-other = "New Update Available"
-
-[serviceWorkerUpdatedAction]
-other = "Refresh"
-
 [searchResultsTitle]
 one = "Found one result for “{{ .Term }}”"
 other = "Found {{ .Count }} results for “{{ .Term }}”"

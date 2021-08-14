@@ -1,7 +1,10 @@
-{{ if or (and .IsHome .Site.Params.displayFooterInHome) (and (not .IsHome) .Site.Params.enableFooter) }}
+{{ if or (and .IsHome .Site.Params.displayFooterInHome) (and (not .IsHome) (.Site.Params.displayFooter | default .Site.Params.enableFooter)) }}
     <footer id="footer" class="footer">
         <div class="footer-inner">
             <div class="site-info">
+              {{- if .Site.Params.displayCopyleftSymbol -}}
+                  <span class="copyleft-symbol">🄯</span>&nbsp;
+              {{- end -}}
               {{- if .Site.Params.displayCopyrightSymbol -}}
                   ©&nbsp;
               {{- end -}}

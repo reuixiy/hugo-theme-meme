@@ -27,6 +27,10 @@
     .post-body {
         display: table;
         margin: 0 auto;
+
+        p {
+            margin: 0 0 1em;
+        }
     }
     .post-body > p:first-child {
         img, video {

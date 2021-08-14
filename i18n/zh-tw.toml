@@ -5,35 +5,35 @@ other = "……"
 other = "："
 
 [minute]
-one = "分钟"
-other = "分钟"
+one = "分鐘"
+other = "分鐘"
 
 [tocTitle]
-other = "目录"
+other = "目錄"
 
 [readMore]
-other = "阅读更多"
+other = "閱讀更多"
 
 [prevPage]
-other = "上一页"
+other = "上一頁"
 
 [nextPage]
-other = "下一页"
+other = "下一頁"
 
 [copy]
-other = "复制"
+other = "複製"
 
 [copied]
-other = "已复制"
+other = "已複製"
 
 [copyrightAuthor]
 other = "作者"
 
 [copyrightLink]
-other = "链接"
+other = "連結"
 
 [copyrightLicense]
-other = "许可"
+other = "許可"
 
 [shareOn]
 other = "分享："
@@ -42,26 +42,26 @@ other = "分享："
 other = "分享到"
 
 [shareViaTitle]
-other = "通过"
+other = "透過"
 
 [relatedPosts]
-other = "相关文章："
+other = "相關文章："
 
 [loadComments]
-other = "加载评论"
+other = "載入評論"
 
 [pageNotFound]
-other = "404 - 页面不存在"
+other = "404 - 頁面不存在"
 
 [fofLinkText]
-other = "送我回主页"
+other = "送我回起始頁面"
 
 [searchResultsTitle]
-one = "找到 1 条关于「{{ .Term }}」的结果"
-other = "找到 {{ .Count }} 条关于「{{ .Term }}」的结果"
+one = "找到 1 條關於「{{ .Term }}」的結果"
+other = "找到 {{ .Count }} 條關於「{{ .Term }}」的結果"
 
 [searchResultsNone]
-other = "没有找到关于「{{ .Term }}」的结果"
+other = "沒有找到關於「{{ .Term }}」的結果"
 
 
 [twitter]
@@ -86,10 +86,10 @@ other = "「豆瓣」"
 other = "「QQ」"
 
 [qzone]
-other = "「QQ 空间」"
+other = "「QQ 空間」"
 
 [qrcode]
-other = "「二维码」"
+other = "「二維碼」"
 
 
 [january]

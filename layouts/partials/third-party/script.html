@@ -1,7 +1,3 @@
-{{ if .Site.Params.enableSmoothScroll }}
-    {{ partial "third-party/smooth-scroll.html" . }}
-{{ end }}
-
 {{ if .Params.katex | default .Site.Params.enableKaTeX }}
     {{ partial "third-party/katex.html" . }}
 {{ end }}
@@ -29,6 +25,10 @@
             {{ partial "third-party/utterances.html" . }}
         {{ end }}
 
+        {{ if .Site.Params.enableGitalk }}
+            {{ partial "third-party/gitalk.html" . }}
+        {{ end }}
+
     {{ end }}
 {{ end }}
 
@@ -39,8 +39,6 @@
 {{ if .Site.Params.enableInstantPage }}
     {{ partial "third-party/instant-page.html" . }}
 {{ end }}
-
-{{ partial "third-party/service-worker.html" . }}
 
 {{ partial "third-party/busuanzi.html" . }}
 

@@ -25,6 +25,12 @@
     $headerLayoutFlex: false;
 {{ end }}
 
+{{ if .Site.Params.enableHeaderAutoHide }}
+    $enableHeaderAutoHide: true;
+{{ else }}
+    $enableHeaderAutoHide: false;
+{{ end }}
+
 {{ if .Site.Params.enableNavToggle }}
     $enableNavToggle: true;
 
@@ -33,6 +39,12 @@
     {{ end }}
 {{ else }}
     $enableNavToggle: false;
+{{ end }}
+
+{{ if .Site.Params.displayBackToTopOnMobile }}
+    $displayBackToTopOnMobile: true;
+{{ else }}
+    $displayBackToTopOnMobile: false;
 {{ end }}
 
 {{ if .Site.Params.enableOverflowY }}
@@ -56,6 +68,14 @@
 {{ else }}
     $enableCopyAutoHide: false;
 {{ end }}
+
+{{ if .Site.Params.enableSmoothScroll }}
+    $enableSmoothScroll: true;
+{{ else }}
+    $enableSmoothScroll: false;
+{{ end }}
+
+$baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
 
 
 // Utilities
@@ -419,12 +439,6 @@ $fofPoster: url({{ $fofPoster }});
     @import "third-party/medium-zoom";
 {{ end }}
 
-// Service Worker
-
-{{ if and .Site.Params.enableServiceWorker (eq hugo.Environment "production") }}
-    @import "third-party/sw-notification";
-{{ end }}
-
 // Busuanzi Site UV And PV
 
 {{ if .Site.Params.enableFooter }}
@@ -435,20 +449,22 @@ $fofPoster: url({{ $fofPoster }});
 
 // Lunr search
 
-{{ if and (eq .Site.Params.headerLayout "flex") .Site.Params.enableLunrSearch }}
-    $enableLunrSearch: true;
+{{ if and (eq .Site.Params.headerLayout "flex") (or .Site.Params.enableLunrSearch .Site.Params.enableAlgoliaSearch) }}
+    $enableSearch: true;
     @import "components/search";
 {{ else }}
-    $enableLunrSearch: false;
+    $enableSearch: false;
 {{ end }}
 
 
 // Responsive
 
+$greaterWidth: null;
+
 @if ($postWidth > $listWidth) {
-    $greaterWidth: $postWidth !global;
+    $greaterWidth: $postWidth;
 } @else {
-    $greaterWidth: $listWidth !global;
+    $greaterWidth: $listWidth;
 }
 
 @import "base/max-width";
