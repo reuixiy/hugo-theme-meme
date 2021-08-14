@@ -91,6 +91,10 @@ uglyURLs = false
         endLevel = 6
         ordered = true
 
+# HTML minify
+[minify.tdewolff.html]
+    keepWhitespace = false
+
 # Author’s information
 [author]
     # Name
