@@ -2,6 +2,9 @@
     <footer id="footer" class="footer">
         <div class="footer-inner">
             <div class="site-info">
+              {{- if .Site.Params.displayCopyleftSymbol -}}
+                  🄯&nbsp;
+              {{- end -}}
               {{- if .Site.Params.displayCopyrightSymbol -}}
                   ©&nbsp;
               {{- end -}}

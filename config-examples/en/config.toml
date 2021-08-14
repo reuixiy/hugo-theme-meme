@@ -1250,6 +1250,7 @@ uglyURLs = false
 
     displayFooterInHome = true
 
+    displayCopyleftSymbol = false
     displayCopyrightSymbol = true
 
     displaySiteCreatedYear = true

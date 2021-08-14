@@ -1215,6 +1215,7 @@ uglyURLs = false
     # 是否在首頁顯示
     displayFooterInHome = true
 
+    displayCopyleftSymbol = false
     # 是否顯示版權符號（©）
     displayCopyrightSymbol = true
 
