@@ -16,6 +16,11 @@
             text-justify: distribute;
         }
     }
+    .footnotes {
+        a {
+            word-break: break-all;
+        }
+    }
 }
 [data-align="center"] {
     .post-body p {
