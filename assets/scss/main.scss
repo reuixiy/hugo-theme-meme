@@ -11,6 +11,7 @@
 {{ with .Site.Params.postWidth | default 42 }}
     $postWidth: {{ . }}em;
 {{ end }}
+
 {{ with .Site.Params.listWidth | default 42 }}
     $listWidth: {{ . }}em;
 {{ end }}
@@ -466,7 +467,6 @@ $greaterWidth: null;
 } @else {
     $greaterWidth: $listWidth;
 }
-
 @import "base/max-width";
 :root {
     --max-width: #{$maxWidth};
