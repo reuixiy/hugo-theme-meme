@@ -1,14 +1,14 @@
-{{- `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }}
+{{ `<?xml version="1.0" encoding="utf-8"?>` | safeHTML }}
 <!-- Reference: https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/rss.xml -->
 <!-- Reference: https://github.com/kaushalmodi/hugo-atom-feed/blob/master/layouts/_default/list.atom.xml -->
 <!-- Reference: https://validator.w3.org/feed/docs/rss2.html -->
 <!-- Reference: https://developers.google.com/gdata/docs/1.0/reference -->
 <!-- Reference: https://www.intertwingly.net/wiki/pie/Rss20AndAtom10Compared -->
 <!-- Reference: https://en.wikipedia.org/wiki/RSS -->
-{{- $pages := .Site.RegularPages -}}
+{{- $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections -}}
 {{- $limit := .Site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
-{{- $pages = $pages | first $limit -}}
+    {{- $pages = $pages | first $limit -}}
 {{- end }}
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
@@ -32,7 +32,7 @@
         {{ with .OutputFormats.Get "SectionsRSS" }}
             <atom:link rel="self" type="{{ .MediaType }}" href="{{ .Permalink }}" />
         {{ end }}
-        {{ range (where $pages "Section" "in" .Site.Params.mainSections) }}
+        {{ range $pages }}
             {{ $page := . }}
             {{- $author := partial "utils/author.html" $page -}}
             <item>

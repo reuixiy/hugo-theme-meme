@@ -2,10 +2,10 @@
 <!-- Reference: https://tools.ietf.org/html/rfc4287 -->
 <!-- Reference: https://github.com/kaushalmodi/hugo-atom-feed/blob/master/layouts/_default/list.atom.xml -->
 <!-- Reference: https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/rss.xml -->
-{{- $pages := .Site.RegularPages -}}
+{{- $pages := where .Site.RegularPages "Section" "in" .Site.Params.mainSections -}}
 {{- $limit := .Site.Config.Services.RSS.Limit -}}
 {{- if ge $limit 1 -}}
-{{- $pages = $pages | first $limit -}}
+    {{- $pages = $pages | first $limit -}}
 {{- end -}}
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ .Site.LanguageCode }}">
     <title type="text">{{ .Site.Title }}</title>
@@ -29,7 +29,7 @@
         <rights>{{ . | plainify | htmlUnescape }}</rights>
     {{- end }}
     <generator uri="https://gohugo.io/" version="{{ hugo.Version }}">Hugo</generator>
-    {{- range (where $pages "Section" "in" .Site.Params.mainSections) }}
+    {{- range $pages }}
         {{ $page := . }}
         {{- $author := partial "utils/author.html" $page -}}
         <entry>
