@@ -88,6 +88,10 @@ $baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
 
 @import "base/base";
 
+{{ if .Site.Params.customizeScrollbar }}
+    @import "base/scrollbar";
+{{ end }}
+
 
 // Typography
 
