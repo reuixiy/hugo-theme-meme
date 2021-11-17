@@ -52,7 +52,7 @@
     {{- $regexReplacementDropCap := `$1 style="text-indent:0"$2<span class="drop-cap">$3</span>$4` -}}
     {{- $firstParagraphOld := (delimit (findRE $regexPatternDropCap $Content 1) " ") -}}
     {{- $firstParagraphNew := (replaceRE $regexPatternDropCap $regexReplacementDropCap $firstParagraphOld) -}}
-    {{- $Content = replace $Content $firstParagraphOld $firstParagraphNew -}}
+    {{- $Content = replace $Content $firstParagraphOld $firstParagraphNew 1 -}}
 {{- end -}}
 
 <!-- Drop Cap After `<hr />` -->
