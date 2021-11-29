@@ -177,7 +177,7 @@ uglyURLs = false
 # 4. links      連結欄（關於頁面的極簡頁尾）
 
 # 選單內的配置說明如下：
-# url           連結地址
+# pageref/url   內鏈地址/外鏈地址
 # name          文字（留空（""）則無）
 # weight        位置
 # pre           內鏈（internal）或外鏈（external）
@@ -190,31 +190,31 @@ uglyURLs = false
 [menu]
     ## 選單欄
     # [[menu.main]]
-    #     url = "/"
+    #     pageref = "/"
     #     name = "首頁"
     #     weight = 1
     #     pre = "internal"
     #     post = "home"
     [[menu.main]]
-        url = "/posts/"
+        pageref = "/posts/"
         name = "文章"
         weight = 2
         pre = "internal"
         post = "archive"
     [[menu.main]]
-        url = "/categories/"
+        pageref = "/categories/"
         name = "分類"
         weight = 3
         pre = "internal"
         post = "th"
     [[menu.main]]
-        url = "/tags/"
+        pageref = "/tags/"
         name = "標籤"
         weight = 4
         pre = "internal"
         post = "tags"
     [[menu.main]]
-        url = "/about/"
+        pageref = "/about/"
         name = "關於"
         weight = 5
         pre = "internal"

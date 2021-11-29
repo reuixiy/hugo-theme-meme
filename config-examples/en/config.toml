@@ -185,7 +185,7 @@ uglyURLs = false
 
 # The configuration instructions in the
 # menu are as follows:
-# url           URL
+# pageref/url   internal/external URL
 # name          Text (won’t display if it
 #               is left empty("") or does
 #               not exist)
@@ -204,31 +204,31 @@ uglyURLs = false
 [menu]
     ## Menu bar
     # [[menu.main]]
-    #     url = "/"
+    #     pageref = "/"
     #     name = "Home"
     #     weight = 1
     #     pre = "internal"
     #     post = "home"
     [[menu.main]]
-        url = "/posts/"
+        pageref = "/posts/"
         name = "Posts"
         weight = 2
         pre = "internal"
         post = "archive"
     [[menu.main]]
-        url = "/categories/"
+        pageref = "/categories/"
         name = "Categories"
         weight = 3
         pre = "internal"
         post = "th"
     [[menu.main]]
-        url = "/tags/"
+        pageref = "/tags/"
         name = "Tags"
         weight = 4
         pre = "internal"
         post = "tags"
     [[menu.main]]
-        url = "/about/"
+        pageref = "/about/"
         name = "About"
         weight = 5
         pre = "internal"

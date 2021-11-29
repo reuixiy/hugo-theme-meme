@@ -177,7 +177,7 @@ uglyURLs = false
 # 4. links      链接栏（关于页面的极简页脚）
 
 # 菜单内的配置说明如下：
-# url           链接地址
+# pageref/url   内链地址/外链地址
 # name          文本（留空（""）则无）
 # weight        位置
 # pre           内链（internal）或外链（external）
@@ -190,31 +190,31 @@ uglyURLs = false
 [menu]
     ## 菜单栏
     # [[menu.main]]
-    #     url = "/"
+    #     pageref = "/"
     #     name = "首页"
     #     weight = 1
     #     pre = "internal"
     #     post = "home"
     [[menu.main]]
-        url = "/posts/"
+        pageref = "/posts/"
         name = "文章"
         weight = 2
         pre = "internal"
         post = "archive"
     [[menu.main]]
-        url = "/categories/"
+        pageref = "/categories/"
         name = "分类"
         weight = 3
         pre = "internal"
         post = "th"
     [[menu.main]]
-        url = "/tags/"
+        pageref = "/tags/"
         name = "标签"
         weight = 4
         pre = "internal"
         post = "tags"
     [[menu.main]]
-        url = "/about/"
+        pageref = "/about/"
         name = "关于"
         weight = 5
         pre = "internal"
