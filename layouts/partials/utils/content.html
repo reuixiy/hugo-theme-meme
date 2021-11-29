@@ -129,14 +129,14 @@
 
 <!-- Video Hosting -->
 {{- if and .Site.Params.enableVideoHost (eq hugo.Environment "production") -}}
-    {{- $hostURL := .Site.Params.videoHostURL -}}
+    {{- $hostURL := strings.TrimSuffix "/" .Site.Params.videoHostURL -}}
     {{- $temps := findRE `<(video) src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
             {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
                 {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
                 {{- $prefix := replaceRE `(<(video) src=")/?([^":]+)` `$1` . -}}
-                {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
+                {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}
             {{- end -}}
         {{- end -}}
