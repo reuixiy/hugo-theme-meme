@@ -113,14 +113,14 @@
 
 <!-- Image Hosting -->
 {{- if and .Site.Params.enableImageHost (eq hugo.Environment "production") -}}
-    {{- $hostURL := .Site.Params.imageHostURL -}}
+    {{- $hostURL := strings.TrimSuffix "/" .Site.Params.imageHostURL -}}
     {{- $temps := findRE `<(img) src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
             {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
                 {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
                 {{- $prefix := replaceRE `(<(img) src=")/?([^":]+)` `$1` . -}}
-                {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
+                {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}
             {{- end -}}
         {{- end -}}
