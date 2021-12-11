@@ -1,0 +1,168 @@
+[ellipsis]
+other = "…"
+
+[colon]
+other = ": "
+
+[minute]
+one = "perc"
+other = "perc"
+
+[tocTitle]
+other = "Tartalom"
+
+[readMore]
+other = "Olvass továb"
+
+[prevPage]
+other = "Újabb"
+
+[nextPage]
+other = "Korábbi"
+
+[copy]
+other = "Másol"
+
+[copied]
+other = "Másolva!"
+
+[copyrightAuthor]
+other = "Szerző"
+
+[copyrightLink]
+other = "Link"
+
+[copyrightLicense]
+other = "Licensz"
+
+[shareOn]
+other = "Oszd meg:"
+
+[shareOnTitle]
+other = "Oszd meg a "
+
+[shareViaTitle]
+other = "Oszd meg "
+
+[relatedPosts]
+other = "Lásd még:"
+
+[loadComments]
+other = "Töltse be a megjegyzéseket"
+
+[pageNotFound]
+other = "404 - Az oldal nem található"
+
+[fofLinkText]
+other = "Vissza a nyitólapra"
+
+[searchResultsTitle]
+one = "A “{{ .Term }}” kifejezésre egy eredményt találtam"
+other = "A “{{ .Term }}” kifejezésre {{ .Count }} eredményt találtam"
+
+[searchResultsNone]
+other = "A “{{ .Term }}” kifejezésre nincs találat"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "Január"
+
+[february]
+other = "Február"
+
+[march]
+other = "Március"
+
+[april]
+other = "Április"
+
+[may]
+other = "Május"
+
+[june]
+other = "Június"
+
+[july]
+other = "Július"
+
+[august]
+other = "Augusztus"
+
+[september]
+other = "Szeptember"
+
+[october]
+other = "Október"
+
+[november]
+other = "November"
+
+[december]
+other = "December"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"
