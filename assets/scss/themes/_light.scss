@@ -16,7 +16,7 @@
         display: none;
     }
     img {
-        filter: brightness(100%);
+        filter: none;
     }
 
     @if ($enableHighlight) {
