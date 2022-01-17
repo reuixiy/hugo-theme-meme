@@ -15,6 +15,9 @@
     .theme-icon-dark {
         display: none;
     }
+    img {
+        filter: brightness(100%);
+    }
 
     @if ($enableHighlight) {
         /* https://xyproto.github.io/splash/docs/all.html */
