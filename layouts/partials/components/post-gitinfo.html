@@ -1,3 +1,10 @@
+{{- $path := "" -}}
+{{- with .File -}}
+    {{- $path = .Path -}}
+{{- else -}}
+    {{- $path = .Path -}}
+{{- end -}}
+
 {{ if .GitInfo }}
     {{ if and .Site.Params.enablePostGitInfo (.Params.gitinfo | default .Site.Params.displayPostGitInfo) }}
         <div class="post-gitinfo">
@@ -42,7 +49,7 @@
                         {{ with .Site.Params.repoEditURL }}
                             {{ $contentDir := (cond $.Site.IsMultiLingual (printf `/%s/` $.Site.Params.contentDir) "/content/") }}
                             <div class="gitinfo-item edit">
-                                <a href="{{ . }}{{ $contentDir }}{{ replace $.Path "\\" "/" }}" target="_blank" rel="noopener">
+                                <a href="{{ . }}{{ $contentDir }}{{ replace $path "\\" "/" }}" target="_blank" rel="noopener">
                                     {{- partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.editIcon "class" "edit-icon") -}}
                                     {{- $.Site.Params.editText -}}
                                 </a>
