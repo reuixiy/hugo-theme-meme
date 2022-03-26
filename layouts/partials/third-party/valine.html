@@ -1,5 +1,8 @@
 <script>
     function loadComments() {
+        if (!document.getElementById('vcomments')) {
+            return;
+        }
         if (typeof Valine === 'undefined') {
             var getScript = (options) => {
                 var script = document.createElement('script');
