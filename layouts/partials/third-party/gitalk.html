@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script>
     function loadComments() {
+        if (!document.getElementById('gitalk-container')) {
+            return;
+        }
         if (typeof Gitalk === 'undefined') {
             var getScript = (options) => {
                 var script = document.createElement('script');

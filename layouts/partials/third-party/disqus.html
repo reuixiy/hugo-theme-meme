@@ -1,6 +1,9 @@
 {{- $rawTitle := (partial "utils/title.html" (dict "$" . "title" .Title)).rawTitle -}}
 <script>
     function loadComments() {
+        if (!document.getElementById('disqus_thread')) {
+            return;
+        }
         if (typeof DISQUS === 'undefined') {
             var disqus_config = function() {
                 {{ with .Params.disqus_url | default .Permalink }}this.page.url = '{{ . }}';{{ end }}
