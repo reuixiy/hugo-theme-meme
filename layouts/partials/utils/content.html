@@ -83,7 +83,7 @@
 
 <!-- Delete Footnote `<hr />` -->
 {{- if .Site.Params.insertHrBySelf -}}
-    {{- $regexPatternDeleteHr := `(<hr />|<hr>)\n(<section class="footnotes" role="doc-endnotes">)` -}}
+    {{- $regexPatternDeleteHr := `(<hr />|<hr>)\n(<(section|div) class="footnotes" role="doc-endnotes">)` -}}
     {{- $regexReplacementDeleteHr := `$2` -}}
     {{- $Content = $Content | replaceRE $regexPatternDeleteHr $regexReplacementDeleteHr -}}
 {{- end -}}
