@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script>
     function loadComments() {
         if (!document.getElementById('gitalk-container')) {
@@ -15,7 +15,7 @@
                 document.body.appendChild(script);
             };
             getScript({
-                src: 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js',
+                src: 'https://fastly.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js',
                 onload: () => {
                     newGitalk();
                 }

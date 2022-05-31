@@ -67,7 +67,7 @@ window.addEventListener("DOMContentLoaded", event => {
         addCopyButtons(navigator.clipboard);
     } else {
         const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js';
+        script.src = 'https://fastly.jsdelivr.net/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js';
         script.defer = true;
         script.onload = function() {
             addCopyButtons(clipboard);
