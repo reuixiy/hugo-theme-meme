@@ -1,0 +1,168 @@
+[ellipsis]
+other = "…"
+
+[colon]
+other = ": "
+
+[minute]
+one = "menit"
+other = "menit"
+
+[tocTitle]
+other = "Daftar Isi"
+
+[readMore]
+other = "Selengkapnya"
+
+[prevPage]
+other = "Sebelumnya"
+
+[nextPage]
+other = "Selanjutnya"
+
+[copy]
+other = "Salin"
+
+[copied]
+other = "Tersalin!"
+
+[copyrightAuthor]
+other = "Pengarang"
+
+[copyrightLink]
+other = "Tautan"
+
+[copyrightLicense]
+other = "Lisensi"
+
+[shareOn]
+other = "Bagikan ke:"
+
+[shareOnTitle]
+other = "Bagikan "
+
+[shareViaTitle]
+other = "Bagikan melalui "
+
+[relatedPosts]
+other = "Tulisan lainnya:"
+
+[loadComments]
+other = "Memuat Komentar?"
+
+[pageNotFound]
+other = "404 - Tidak ditemukan"
+
+[fofLinkText]
+other = "Arahkan ke Beranda"
+
+[searchResultsTitle]
+one = "Ditemukan satu hasil untuk “{{ .Term }}”"
+other = "Ditemukan {{ .Count }} hasil dari “{{ .Term }}”"
+
+[searchResultsNone]
+other = "Tidak ditemukan hasil dari “{{ .Term }}”"
+
+
+# Socials
+
+[twitter]
+other = "Twitter"
+
+[facebook]
+other = "Facebook"
+
+[linkedin]
+other = "LinkedIn"
+
+[telegram]
+other = "Telegram"
+
+[weibo]
+other = "Weibo"
+
+[douban]
+other = "Douban"
+
+[qq]
+other = "QQ"
+
+[qzone]
+other = "Qzone"
+
+[qrcode]
+other = "QR Code"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "Januari"
+
+[february]
+other = "Februari"
+
+[march]
+other = "Maret"
+
+[april]
+other = "April"
+
+[may]
+other = "Mei"
+
+[june]
+other = "Juni"
+
+[july]
+other = "Juli"
+
+[august]
+other = "Agustus"
+
+[september]
+other = "September"
+
+[october]
+other = "Oktober"
+
+[november]
+other = "November"
+
+[december]
+other = "Desember"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "0"
+
+[1]
+other = "1"
+
+[2]
+other = "2"
+
+[3]
+other = "3"
+
+[4]
+other = "4"
+
+[5]
+other = "5"
+
+[6]
+other = "6"
+
+[7]
+other = "7"
+
+[8]
+other = "8"
+
+[9]
+other = "9"
