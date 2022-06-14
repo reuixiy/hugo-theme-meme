@@ -549,6 +549,15 @@ uglyURLs = false
 
 
     ######################################
+    # 自定义导入第三方库的CDN
+
+    # 说明：不需要时请删除(注释)此项或将引号内置空，
+    #       此时默认CDN为"https://cdn.jsdelivr.net"
+
+    cdnCustomized = "https://cdn.jsdelivr.net"
+
+
+    ######################################
     # Service Worker
 
     # 说明：仅在生产环境（production）下渲染

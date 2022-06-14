@@ -1,4 +1,5 @@
-<script src="https://fastly.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
+{{- $defaultCDN := "https://cdn.jsdelivr.net" -}}
+<script src="{{ .Site.Params.cdnCustomized | default $defaultCDN }}/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
 
 <script>
     let imgNodes = document.querySelectorAll('div.post-body img');

@@ -1,3 +1,4 @@
+{{- $defaultCDN := "https://cdn.jsdelivr.net" -}}
 <script>
     function loadComments() {
         if (!document.getElementById('vcomments')) {
@@ -14,7 +15,7 @@
                 document.body.appendChild(script);
             };
             getScript({
-                src: 'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+                src: '{{ .Site.Params.cdnCustomized | default $defaultCDN }}/npm/valine@1.4.14/dist/Valine.min.js',
                 onload: () => {
                     newValine();
                 }

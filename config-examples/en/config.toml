@@ -601,6 +601,16 @@ uglyURLs = false
 
 
     ######################################
+    # Customize the CDN for importing third-party libraries
+
+    # note：When not needed, please delete (comment) this item 
+    #       or empty the quotation marks. at this point,
+    #       The default CDN is "https://cdn.jsdelivr.net" 
+           
+    cdnCustomized = "https://cdn.jsdelivr.net"
+
+
+    ######################################
     # Service Worker
 
     # Note: render only in production

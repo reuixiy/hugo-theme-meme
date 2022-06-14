@@ -1,3 +1,4 @@
+{{- $defaultCDN := "https://cdn.jsdelivr.net" -}}
 <script>
     if (typeof MathJax === 'undefined') {
         window.MathJax = {
@@ -19,7 +20,7 @@
         };
         (function() {
             var script = document.createElement('script');
-            script.src = 'https://fastly.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+            script.src = '{{ .Site.Params.cdnCustomized | default $defaultCDN }}/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
             script.defer = true;
             document.head.appendChild(script);
         })();

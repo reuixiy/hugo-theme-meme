@@ -1,5 +1,7 @@
-<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+{{- $defaultCDN := "https://cdn.jsdelivr.net" -}}
+<link rel="stylesheet" href="{{ .Site.Params.cdnCustomized | default $defaultCDN }}/npm/gitalk@1/dist/gitalk.css">
 <script>
+    
     function loadComments() {
         if (!document.getElementById('gitalk-container')) {
             return;
@@ -15,7 +17,7 @@
                 document.body.appendChild(script);
             };
             getScript({
-                src: 'https://fastly.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js',
+                src: '{{- .Site.Params.cdnCustomized | default $defaultCDN -}}/npm/gitalk@1/dist/gitalk.min.js',
                 onload: () => {
                     newGitalk();
                 }
@@ -44,4 +46,5 @@
 
         gitalk.render('gitalk-container')
     }
+    
 </script>

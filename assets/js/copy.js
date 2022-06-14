@@ -7,6 +7,9 @@
 window.addEventListener("DOMContentLoaded", event => {
     const copyText = '{{ i18n "copy" }}';
     const copiedText = '{{ i18n "copied" }}';
+    var $cdnCustomized = '{{ .Site.Params.cdnCustomized }}';
+    var $defaultCDN = 'https://cdn.jsdelivr.net';
+
 
     document.querySelectorAll('.post-body > pre').forEach((e) => {
         let div = document.createElement('div');
@@ -67,7 +70,12 @@ window.addEventListener("DOMContentLoaded", event => {
         addCopyButtons(navigator.clipboard);
     } else {
         const script = document.createElement('script');
-        script.src = 'https://fastly.jsdelivr.net/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js';
+        if($cdnCustomized=null){
+            script.src = $defaultCDN + '/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js';
+        }else {
+            script.src = $cdnCustomized + '/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js';
+        }
+        
         script.defer = true;
         script.onload = function() {
             addCopyButtons(clipboard);
