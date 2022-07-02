@@ -1,4 +1,4 @@
-{{- $src := partial "utils/lib.html" (dict "type" "qrcode") -}}
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "qrcode") -}}
 
 <script src="{{ $src }}"></script>
 

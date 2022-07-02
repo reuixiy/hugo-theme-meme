@@ -1,7 +1,9 @@
-{{- $host := $.Site.Params.lib.host | default "https://cdn.jsdelivr.net" -}}
-{{- $path := "" -}}
+{{- $ := index . "$" -}}
 {{- $type := .type -}}
 {{- $lang := .lang -}}
+
+{{- $host := $.Site.Params.lib.host | default "https://cdn.jsdelivr.net" -}}
+{{- $path := "" -}}
 
 <!--
 
@@ -25,7 +27,7 @@
 {{- end -}}
 {{- if eq $type "gitalk-css" -}}
     {{- $dafault := "/npm/gitalk@1/dist/gitalk.css" -}}
-    {{- $path = $.Site.Params.lib.path.gitalk-css | default $dafault -}}
+    {{- $path = $.Site.Params.lib.path.gitalk_css | default $dafault -}}
 {{- end -}}
 
 {{- if eq $type "instantpage" -}}
@@ -39,15 +41,15 @@
 {{- end -}}
 {{- if eq $type "katex-css" -}}
     {{- $defalut := "/npm/katex@0.13.0/dist/katex.min.css" -}}
-    {{- $path = $.Site.Params.lib.path.katex-css | default $defalut -}}
+    {{- $path = $.Site.Params.lib.path.katex_css | default $defalut -}}
 {{- end -}}
 {{- if eq $type "katex-mhchem" -}}
     {{- $defalut := "/npm/katex@0.13.0/dist/contrib/mhchem.min.js" -}}
-    {{- $path = $.Site.Params.lib.path.katex-mhchem | default $defalut -}}
+    {{- $path = $.Site.Params.lib.path.katex_mhchem | default $defalut -}}
 {{- end -}}
 {{- if eq $type "katex-auto-render" -}}
     {{- $defalut := "/npm/katex@0.13.0/dist/contrib/auto-render.min.js" -}}
-    {{- $path = $.Site.Params.lib.path.katex-auto-render | default $defalut -}}
+    {{- $path = $.Site.Params.lib.path.katex_auto_render | default $defalut -}}
 {{- end -}}
 
 {{- if eq $type "lunr" -}}
@@ -56,15 +58,15 @@
 {{- end -}}
 {{- if eq $type "lunr-tinyseg" -}}
     {{- $defalut := "/npm/lunr-languages@1.4.0/tinyseg.js" -}}
-    {{- $path = $.Site.Params.lib.path.lunr-tinyseg | default $defalut -}}
+    {{- $path = $.Site.Params.lib.path.lunr_tinyseg | default $defalut -}}
 {{- end -}}
 {{- if eq $type "lunr-stemmer" -}}
     {{- $defalut := "/npm/lunr-languages@1.4.0/min/lunr.stemmer.support.min.js" -}}
-    {{- $path = $.Site.Params.lib.path.lunr-stemmer | default $defalut -}}
+    {{- $path = $.Site.Params.lib.path.lunr_stemmer | default $defalut -}}
 {{- end -}}
 {{- if eq $type "lunr-lang" -}}
     {{- $defalut := printf "/npm/lunr-languages@1.4.0/min/lunr.%s.min.js" $lang -}}
-    {{- $path = $.Site.Params.lib.path.lunr-lang | default $defalut -}}
+    {{- $path = $.Site.Params.lib.path.lunr_lang | default $defalut -}}
 {{- end -}}
 
 {{- if eq $type "mathjax" -}}
@@ -74,7 +76,7 @@
 
 {{- if eq $type "medium-zoom" -}}
     {{- $defalut := "/npm/medium-zoom@latest/dist/medium-zoom.min.js" -}}
-    {{- $path = $.Site.Params.lib.path.medium-zoom | default $defalut -}}
+    {{- $path = $.Site.Params.lib.path.medium_zoom | default $defalut -}}
 {{- end -}}
 
 {{- if eq $type "mermaid" -}}

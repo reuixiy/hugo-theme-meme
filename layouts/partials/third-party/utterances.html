@@ -1,4 +1,4 @@
-{{- $src := partial "utils/lib.html" (dict "type" "utterances") -}}
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "utterances") -}}
 
 <script>
     function loadComments() {

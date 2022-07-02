@@ -1,5 +1,5 @@
-{{- $src := partial "utils/lib.html" (dict "type" "gitalk") -}}
-{{- $srcCSS := partial "utils/lib.html" (dict "type" "gitalk-css") -}}
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "gitalk") -}}
+{{- $srcCSS := partial "utils/lib.html" (dict "$" . "type" "gitalk-css") -}}
 
 <link rel="stylesheet" href="{{ $srcCSS }}">
 <script>

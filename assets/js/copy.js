@@ -1,4 +1,4 @@
-{{ $src := partial "utils/lib.html" (dict "type" "clipboard") }}
+{{ $src := partial "utils/lib.html" (dict "$" . "type" "clipboard") }}
 
 // Copy Button for Code Blocks
 

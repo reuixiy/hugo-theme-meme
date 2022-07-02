@@ -1,7 +1,7 @@
-{{- $src := partial "utils/lib.html" (dict "type" "lunr") -}}
-{{- $srcTinyseg := partial "utils/lib.html" (dict "type" "lunr-tinyseg") -}}
-{{- $srcStemmer := partial "utils/lib.html" (dict "type" "lunr-stemmer") -}}
-{{- $srcLang := partial "utils/lib.html" (dict "type" "lunr-lang" "lang" .Site.Language.Lang) -}}
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "lunr") -}}
+{{- $srcTinyseg := partial "utils/lib.html" (dict "$" . "type" "lunr-tinyseg") -}}
+{{- $srcStemmer := partial "utils/lib.html" (dict "$" . "type" "lunr-stemmer") -}}
+{{- $srcLang := partial "utils/lib.html" (dict "$" . "type" "lunr-lang" "lang" .Site.Language.Lang) -}}
 
 {{- $scripts := slice $src -}}
 {{- if ne .Site.Language.Lang "en" -}}

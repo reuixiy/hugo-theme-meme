@@ -1,4 +1,4 @@
-{{- $src := partial "utils/lib.html" (dict "type" "valine") -}}
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "valine") -}}
 
 <script>
     function loadComments() {
