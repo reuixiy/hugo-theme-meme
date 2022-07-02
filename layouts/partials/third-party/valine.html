@@ -1,12 +1,13 @@
-{{- $defaultCDN := "https://cdn.jsdelivr.net" -}}
+{{- $src := partial "utils/lib.html" (dict "type" "valine") -}}
+
 <script>
     function loadComments() {
         if (!document.getElementById('vcomments')) {
             return;
         }
         if (typeof Valine === 'undefined') {
-            var getScript = (options) => {
-                var script = document.createElement('script');
+            const getScript = (options) => {
+                const script = document.createElement('script');
                 script.defer = true;
                 script.crossOrigin = 'anonymous';
                 Object.keys(options).forEach((key) => {
@@ -15,7 +16,7 @@
                 document.body.appendChild(script);
             };
             getScript({
-                src: '{{ .Site.Params.cdnCustomized | default $defaultCDN }}/npm/valine@1.4.14/dist/Valine.min.js',
+                src: '{{ $src }}',
                 onload: () => {
                     newValine();
                 }

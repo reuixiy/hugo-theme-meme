@@ -1,7 +1,8 @@
-{{- $defaultCDN := "https://cdn.jsdelivr.net" -}}
-<script src="{{ .Site.Params.cdnCustomized | default $defaultCDN }}/npm/mermaid@8.8.3/dist/mermaid.min.js"></script>
+{{- $src := partial "utils/lib.html" (dict "type" "mermaid") -}}
+
+<script src="{{ $src }}"></script>
 <script>
-    let mermaidConfig = {
+    const mermaidConfig = {
         startOnLoad: true,
         flowchart: {
             useMaxWidth: false,

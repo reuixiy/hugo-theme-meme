@@ -1,18 +1,17 @@
-{{- $defaultCDN := "https://cdn.jsdelivr.net" -}}
-{{- $cdn := slice ( .Site.Params.cdnCustomized | default $defaultCDN ) -}}
-{{- $LunrMinJs := slice ("/npm/lunr@2.3.9/lunr.min.js") -}}
-{{- $tinysegJs := slice ("/npm/lunr-languages@1.4.0/tinyseg.js") -}}
-{{- $lunrStemmerSupportJs := slice ("/npm/lunr-languages@1.4.0/min/lunr.stemmer.support.min.js") -}}
-{{- $lunrLanguagesJs := slice ("/npm/lunr-languages@1.4.0/min/lunr.%s.min.js") -}}
-{{- $scripts := slice (union $cdn $LunrMinJs) -}}
+{{- $src := partial "utils/lib.html" (dict "type" "lunr") -}}
+{{- $srcTinyseg := partial "utils/lib.html" (dict "type" "lunr-tinyseg") -}}
+{{- $srcStemmer := partial "utils/lib.html" (dict "type" "lunr-stemmer") -}}
+{{- $srcLang := partial "utils/lib.html" (dict "type" "lunr-lang" "lang" .Site.Language.Lang) -}}
+
+{{- $scripts := slice $src -}}
 {{- if ne .Site.Language.Lang "en" -}}
     {{- $supported := slice "ar" "da" "de" "du" "es" "fi" "fr" "hu" "it" "ja" "nl" "no" "pt" "ro" "ru" "sv" "tr" "vi" -}}
     {{- if in $supported .Site.Language.Lang -}}
         {{- if eq .Site.Language.Lang "ja" -}}
-            {{- $scripts = union $scripts (slice (union $cdn $tinysegJs)) -}}
+            {{- $scripts = union $scripts (slice $srcTinyseg) -}}
         {{- end -}}
-        {{- $scripts = union $scripts (slice (union $cdn $lunrStemmerSupportJs)) -}}
-        {{- $scripts = union $scripts (slice (printf union $cdn $lunrLanguagesJs .Site.Language.Lang)) -}}
+        {{- $scripts = union $scripts (slice $srcStemmer) -}}
+        {{- $scripts = union $scripts (slice $srcLang) -}}
     {{- else -}}
         {{- warnf "The site language %q isn't supported by lunr, the search results might be suboptimal. Supported languages are: %q" .Site.Language.Lang $supported -}}
     {{- end -}}

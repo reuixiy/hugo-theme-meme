@@ -1,14 +1,15 @@
-{{- $defaultCDN := "https://cdn.jsdelivr.net" -}}
-<link rel="stylesheet" href="{{ .Site.Params.cdnCustomized | default $defaultCDN }}/npm/gitalk@1/dist/gitalk.css">
+{{- $src := partial "utils/lib.html" (dict "type" "gitalk") -}}
+{{- $srcCSS := partial "utils/lib.html" (dict "type" "gitalk-css") -}}
+
+<link rel="stylesheet" href="{{ $srcCSS }}">
 <script>
-    
     function loadComments() {
         if (!document.getElementById('gitalk-container')) {
             return;
         }
         if (typeof Gitalk === 'undefined') {
-            var getScript = (options) => {
-                var script = document.createElement('script');
+            const getScript = (options) => {
+                const script = document.createElement('script');
                 script.defer = true;
                 script.crossOrigin = 'anonymous';
                 Object.keys(options).forEach((key) => {
@@ -17,7 +18,7 @@
                 document.body.appendChild(script);
             };
             getScript({
-                src: '{{- .Site.Params.cdnCustomized | default $defaultCDN -}}/npm/gitalk@1/dist/gitalk.min.js',
+                src: '{{ $src }}',
                 onload: () => {
                     newGitalk();
                 }
@@ -46,5 +47,4 @@
 
         gitalk.render('gitalk-container')
     }
-    
 </script>

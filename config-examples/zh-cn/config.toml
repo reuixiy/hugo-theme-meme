@@ -549,15 +549,6 @@ uglyURLs = false
 
 
     ######################################
-    # 自定义导入第三方库的CDN
-
-    # 说明：不需要时请删除(注释)此项或将引号内置空，
-    #       此时默认CDN为"https://cdn.jsdelivr.net"
-
-    cdnCustomized = "https://cdn.jsdelivr.net"
-
-
-    ######################################
     # Service Worker
 
     # 说明：仅在生产环境（production）下渲染
@@ -1389,3 +1380,36 @@ uglyURLs = false
     fofVideoWebm = ""
     fofVideoMp4 = ""
     # 说明：视频地址可留空（""）
+
+
+    ######################################
+    # 定制第三方库的地址
+
+    [params.lib]
+        host = "https://cdn.jsdelivr.net"
+        # 说明：留空（""）且将下方对应 path 设
+        #      置为绝对路径，如果你想要直接从
+        #      「本地」加载某个库的话。比如：
+        #      将 path 设置为 "/js/lib.min.js"，
+        #      并将文件放到你的 /static/js/lib.min.js
+    [params.lib.path]
+        clipboard = "/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js"
+        instantsearch = "/npm/instantsearch.js@2/dist/instantsearch.min.js"
+        gitalk = "/npm/gitalk@1/dist/gitalk.min.js"
+        gitalk-css = "/npm/gitalk@1/dist/gitalk.css"
+        instantpage = "/npm/instant.page@5.1.0/instantpage.min.js"
+        katex = "/npm/katex@0.13.0/dist/katex.min.js"
+        katex-css = "/npm/katex@0.13.0/dist/katex.min.css"
+        katex-mhchem = "/npm/katex@0.13.0/dist/contrib/mhchem.min.js"
+        katex-auto-render = "/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+        lunr = "/npm/lunr@2.3.9/lunr.min.js"
+        lunr-tinyseg = "/npm/lunr-languages@1.4.0/tinyseg.js"
+        lunr-stemmer = "/npm/lunr-languages@1.4.0/min/lunr.stemmer.support.min.js"
+        lunr-lang = "/npm/lunr-languages@1.4.0/min/lunr.de.min.js"
+        mathjax = "/npm/mathjax@3.1.2/es5/tex-mml-chtml.js"
+        medium-zoom = "/npm/medium-zoom@latest/dist/medium-zoom.min.js"
+        mermaid = "/npm/mermaid@8.8.3/dist/mermaid.min.js"
+        qrcode = "/npm/qrcode-generator@1.4.4/qrcode.min.js"
+        valine = "/npm/valine@1.4.14/dist/Valine.min.js"
+        busuanzi = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+        utterances = "https://utteranc.es/client.js"

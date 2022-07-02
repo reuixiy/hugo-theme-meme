@@ -1,10 +1,11 @@
-{{- $defaultCDN := "https://cdn.jsdelivr.net" -}}
-<script src="{{ .Site.Params.cdnCustomized | default $defaultCDN }}/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+{{- $src := partial "utils/lib.html" (dict "type" "qrcode") -}}
+
+<script src="{{ $src }}"></script>
 
 <script>
-    var typeNumber = 0;
-    var errorCorrectionLevel = 'L';
-    var qr = qrcode(typeNumber, errorCorrectionLevel);
+    const typeNumber = 0;
+    const errorCorrectionLevel = 'L';
+    const qr = qrcode(typeNumber, errorCorrectionLevel);
     qr.addData('{{ .Permalink }}');
     qr.make();
     document.getElementById('qrcode-img').innerHTML = qr.createImgTag();
