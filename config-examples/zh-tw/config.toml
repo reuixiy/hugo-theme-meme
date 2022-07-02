@@ -1387,10 +1387,10 @@ uglyURLs = false
 
     [params.lib]
         host = "https://cdn.jsdelivr.net"
-        # 說明：留空（""）且將下方對應 path 設
-        #      置為絕對路徑，如果你想要直接從
-        #      「本地」加載某個庫的話。比如：
-        #      將 path 設置為 "/js/lib.min.js"，
+        # 說明：設置為根（"/"）且將下方對應 path
+        #      設置，如果你想要直接從「本地」
+        #      加載某個庫的話。比如：
+        #      將 path 設置為 "js/lib.min.js"，
         #      並將文件放到你的 /static/js/lib.min.js
     [params.lib.path]
         clipboard = "/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js"

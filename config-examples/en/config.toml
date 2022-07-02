@@ -1418,11 +1418,10 @@ uglyURLs = false
 
     [params.lib]
         host = "https://cdn.jsdelivr.net"
-        # Note: leave it empty("") and set
-        #       the path below to absolute
-        #       path if you want to host
+        # Note: set it to root("/") and set
+        #       the path below if you want to host
         #       the lib directly from “local”.
-        #       I.e. set path to "/js/lib.min.js",
+        #       I.e. set path to "js/lib.min.js",
         #       and put this file to your
         #       /static/js/lib.min.js
     [params.lib.path]
