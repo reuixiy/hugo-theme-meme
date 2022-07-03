@@ -1,3 +1,92 @@
+# [5.0.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.5.0...v5.0.0) (2022-07-03)
+
+It’s been two years since our last release, the world has changed a lot. Still, we’re happy to announce that MemE 5.0.0 is out!
+
+Some highlights:
+
+* 7 more languages support
+* A live preview site via GitHub Actions
+* Third-party libraries customization
+
+Thanks to all the contributors who contributed to this release!
+
+
+### Bug Fixes
+
+* **a11y:** increase width of scrollbar ([d392ab1](https://github.com/reuixiy/hugo-theme-meme/commit/d392ab181418d8ed7224132f5e45b64564351bd3))
+* build error ([74ea4db](https://github.com/reuixiy/hugo-theme-meme/commit/74ea4db7e788c3490d4a956addbefbbf9a503156))
+* check before loading comments ([#374](https://github.com/reuixiy/hugo-theme-meme/issues/374)) ([1c0beed](https://github.com/reuixiy/hugo-theme-meme/commit/1c0beeddd73f59f6c82f792d0918d961b4069792))
+* **css:** add transition for header ([342939d](https://github.com/reuixiy/hugo-theme-meme/commit/342939db7eaf273b12337c2748586e91ac4e591d))
+* **css:** backdrop-filter supports at-rule for webkit ([37d8a68](https://github.com/reuixiy/hugo-theme-meme/commit/37d8a689bea8d81e4429eeed9e38a9474ff3c5fa))
+* **css:** dim image in light mode ([#367](https://github.com/reuixiy/hugo-theme-meme/issues/367)) ([5e6c812](https://github.com/reuixiy/hugo-theme-meme/commit/5e6c8123a1d61fe5c097781ab1f1f45846467114)), closes [#365](https://github.com/reuixiy/hugo-theme-meme/issues/365)
+* **css:** make code related backgound-color consistent ([32224aa](https://github.com/reuixiy/hugo-theme-meme/commit/32224aa24738389ac8773dbda04c3b4be1f62734))
+* **css:** margin issue of nested ol/ul ([25de088](https://github.com/reuixiy/hugo-theme-meme/commit/25de088e9160a3cb0e00a39685487942490f259b))
+* **css:** margin issue of post type poetry ([a65114a](https://github.com/reuixiy/hugo-theme-meme/commit/a65114aaa156e66e711f5856459b2b8c7fa90f4c))
+* **css:** menu is not aligned on medium screen ([ed7e68b](https://github.com/reuixiy/hugo-theme-meme/commit/ed7e68ba0f5b4b6dbe3a246810bef682735d0900))
+* **css:** svg icon get cut off on safari ([25e9e4d](https://github.com/reuixiy/hugo-theme-meme/commit/25e9e4d6bdde27293a92b1f61332b6743608d36c))
+* **css:** url word-break for justify align ([8112664](https://github.com/reuixiy/hugo-theme-meme/commit/8112664a053ccb93d454540615ddbe37a420d186))
+* declares the social url as a safe url ([#354](https://github.com/reuixiy/hugo-theme-meme/issues/354)) ([72212b2](https://github.com/reuixiy/hugo-theme-meme/commit/72212b2dd61224aeacf84d0f327ed5291e7bbc9b)), closes [#353](https://github.com/reuixiy/hugo-theme-meme/issues/353)
+* deprecated warning for .Path ([e425890](https://github.com/reuixiy/hugo-theme-meme/commit/e4258903032a6a6b3b27ca3603652c11b167ace3)), closes [#369](https://github.com/reuixiy/hugo-theme-meme/issues/369)
+* deprecation warning of !global assignments ([504ee32](https://github.com/reuixiy/hugo-theme-meme/commit/504ee327e93712f530dd0aad3e3b5a51dabccd81))
+* drop cap to the identical paras only once ([#356](https://github.com/reuixiy/hugo-theme-meme/issues/356)) ([27ba8bb](https://github.com/reuixiy/hugo-theme-meme/commit/27ba8bbd6489226679c94548fb1429b71771fba8))
+* escaped HTML in summary.html ([47cead2](https://github.com/reuixiy/hugo-theme-meme/commit/47cead29fe090c3a7ddb24d3e96826189a981d09)), closes [#213](https://github.com/reuixiy/hugo-theme-meme/issues/213)
+* exclude medium-zoom for img tags directly under a tag ([#346](https://github.com/reuixiy/hugo-theme-meme/issues/346)) ([951b0ad](https://github.com/reuixiy/hugo-theme-meme/commit/951b0ad3c60ee2220de42cd5ddf1bff3fe2813c5))
+* filter pages before limit ([7cf1577](https://github.com/reuixiy/hugo-theme-meme/commit/7cf157797f6857e99ef8b653f11d08ae2210d9bb))
+* insertHrBySelf not working anymore ([293d9a0](https://github.com/reuixiy/hugo-theme-meme/commit/293d9a082903a16a686fd564c2310758e56cea95))
+* make header width to 100vw to avoid change when scroll bar appears ([#351](https://github.com/reuixiy/hugo-theme-meme/issues/351)) ([adefef8](https://github.com/reuixiy/hugo-theme-meme/commit/adefef8bc638ace1d48a7ce5e75f8c2d9e3e53b3))
+* modify start_url to meet the PWA's fast and reliable requirment ([#314](https://github.com/reuixiy/hugo-theme-meme/issues/314)) ([9be741a](https://github.com/reuixiy/hugo-theme-meme/commit/9be741a3238fe5c0d19bc77000057f0a4e1d1181))
+* remove extra white space in summary.html ([8ebbfa8](https://github.com/reuixiy/hugo-theme-meme/commit/8ebbfa81a5a517038b24e20768b8db2dda812649))
+* resolve the editURL problem on Windows ([#308](https://github.com/reuixiy/hugo-theme-meme/issues/308)) ([25be50d](https://github.com/reuixiy/hugo-theme-meme/commit/25be50d1a2d135b7912e6ae8ffc1e46d0acbf2a1)), closes [#279](https://github.com/reuixiy/hugo-theme-meme/issues/279)
+* set app-mobile-web-app-status-bar-style to black ([91bba2a](https://github.com/reuixiy/hugo-theme-meme/commit/91bba2a624651f43bef20edc25473f191f73ef9f)), closes [#280](https://github.com/reuixiy/hugo-theme-meme/issues/280)
+* **style:** margin issue in toc ([ca1d2b1](https://github.com/reuixiy/hugo-theme-meme/commit/ca1d2b1b5b80b7b8bf8b6fb6c7b4e9edc0fccafd))
+* **style:** margin issue of nested ordered/unordered list ([b52d699](https://github.com/reuixiy/hugo-theme-meme/commit/b52d69953e61f62f20ef152bf4880cb928845a8a))
+* **sw.js:** an object that was not a Response was passed to respondWith() ([159652e](https://github.com/reuixiy/hugo-theme-meme/commit/159652eafbd79a1956174be36989354686f08654))
+* syntax error ([e781e17](https://github.com/reuixiy/hugo-theme-meme/commit/e781e176e3e73d42e685b3483f497e9d5fc0fab6))
+* **third-party:** add tinyseg.js to scripts if japanese ([#305](https://github.com/reuixiy/hugo-theme-meme/issues/305)) ([ed7f353](https://github.com/reuixiy/hugo-theme-meme/commit/ed7f353f772edc281857b6ac34d0fb0489db1bd4))
+* undefined loadComments() in homepage ([#326](https://github.com/reuixiy/hugo-theme-meme/issues/326)) ([c2d2200](https://github.com/reuixiy/hugo-theme-meme/commit/c2d220042cd0bc974f10c6b3880877fb27f33027))
+* use network first strategy for sw.js ([cddaf25](https://github.com/reuixiy/hugo-theme-meme/commit/cddaf250b0e93c94697df6de77c873ccbf168c18))
+* use pageref for internal links in menus ([2479717](https://github.com/reuixiy/hugo-theme-meme/commit/2479717386e82a8b3e2446e887a85d63592e1702)), closes [#343](https://github.com/reuixiy/hugo-theme-meme/issues/343)
+* wrong glyph-correction URL when baseURL is set to sub-directory ([#291](https://github.com/reuixiy/hugo-theme-meme/issues/291)) ([28bcb78](https://github.com/reuixiy/hugo-theme-meme/commit/28bcb78fd9f396204930ae288e0581f00fa42705)), closes [#287](https://github.com/reuixiy/hugo-theme-meme/issues/287)
+
+
+### Features
+
+* add Algolia Search support ([#329](https://github.com/reuixiy/hugo-theme-meme/issues/329)) ([2dc1f8b](https://github.com/reuixiy/hugo-theme-meme/commit/2dc1f8bb184c36329375af3b4bafc445e2c2210d)), closes [#222](https://github.com/reuixiy/hugo-theme-meme/issues/222)
+* add built-in service worker support ([5470cbe](https://github.com/reuixiy/hugo-theme-meme/commit/5470cbe6c4c8e726e81bba7cb5dc45863678281f))
+* add copyleft 🄯 support ([8964306](https://github.com/reuixiy/hugo-theme-meme/commit/8964306e6cea55a8c7457a3ebace226db95ce107))
+* add Gitalk comments support  ([#324](https://github.com/reuixiy/hugo-theme-meme/issues/324)) ([6941bd2](https://github.com/reuixiy/hugo-theme-meme/commit/6941bd28fbf17354247f993c71ea9259dfd56571))
+* add html minify configuration ([72e1a9d](https://github.com/reuixiy/hugo-theme-meme/commit/72e1a9d03fdab80c2527a07c915422efe2384f48))
+* add new config param displayBackToTopOnMobile ([9d7ce99](https://github.com/reuixiy/hugo-theme-meme/commit/9d7ce997307cfca6cc79f9d557a7ebe889e39186)), closes [#280](https://github.com/reuixiy/hugo-theme-meme/issues/280)
+* add new front matter `anchor` ([e927542](https://github.com/reuixiy/hugo-theme-meme/commit/e927542dbe1cb8329acfe475bcd77df2361118f8)), closes [#276](https://github.com/reuixiy/hugo-theme-meme/issues/276)
+* add new param `displayFooter` ([2d17152](https://github.com/reuixiy/hugo-theme-meme/commit/2d17152f2d79da3890f077600fc0f8af95fa0394))
+* add support for `color-scheme` meta tag ([7d7c485](https://github.com/reuixiy/hugo-theme-meme/commit/7d7c4857fdd7d07d0018c397221db6cc6ee18453)), closes [#361](https://github.com/reuixiy/hugo-theme-meme/issues/361)
+* add support for auto-hiding flex header ([6e7027e](https://github.com/reuixiy/hugo-theme-meme/commit/6e7027ea8d8971b0b07f442b7ca8d805a326647e)), closes [#293](https://github.com/reuixiy/hugo-theme-meme/issues/293)
+* Add support for Yandex.Metrika ([#323](https://github.com/reuixiy/hugo-theme-meme/issues/323)) ([abd67d8](https://github.com/reuixiy/hugo-theme-meme/commit/abd67d8e27d9cf253b08dcd49d0af4f6de9dab07))
+* Adjust post markup to conform to h-entry spec ([#253](https://github.com/reuixiy/hugo-theme-meme/issues/253)) ([cb4fb52](https://github.com/reuixiy/hugo-theme-meme/commit/cb4fb527ac93fb19591f0292a622bb3b6c5a3a98))
+* **i18n:** add 'id' Bahasa ([#388](https://github.com/reuixiy/hugo-theme-meme/issues/388)) ([790d2ab](https://github.com/reuixiy/hugo-theme-meme/commit/790d2ab1432bb0aee4cc4ddcc12977676c9e0447))
+* **i18n:** add FR lang support ([#233](https://github.com/reuixiy/hugo-theme-meme/issues/233)) ([a7c47aa](https://github.com/reuixiy/hugo-theme-meme/commit/a7c47aa5f4f33373068a24fb9f735a2b8dfee501))
+* **i18n:** Add Hungarian language file ([#363](https://github.com/reuixiy/hugo-theme-meme/issues/363)) ([d1d3472](https://github.com/reuixiy/hugo-theme-meme/commit/d1d347204552e3a49052a504705450829439ed86))
+* **i18n:** add Japanese support ([#311](https://github.com/reuixiy/hugo-theme-meme/issues/311)) ([6c8faec](https://github.com/reuixiy/hugo-theme-meme/commit/6c8faeca509c809704b2dbe8db3bc05d0796e58b))
+* **i18n:** add polish language support ([#273](https://github.com/reuixiy/hugo-theme-meme/issues/273)) ([f49ac2c](https://github.com/reuixiy/hugo-theme-meme/commit/f49ac2cf19ab1ef44b72b0cc4c0e60125470d502))
+* **i18n:** add zh-TW lang support ([#270](https://github.com/reuixiy/hugo-theme-meme/issues/270)) ([e051e0c](https://github.com/reuixiy/hugo-theme-meme/commit/e051e0ce95024fc71b51f59f1711bd7c9ba60c45))
+* **i18n:** Added support for Russian language ([#322](https://github.com/reuixiy/hugo-theme-meme/issues/322)) ([eb0aecd](https://github.com/reuixiy/hugo-theme-meme/commit/eb0aecd3a6e694491e7c98ab499427c7958ffa82))
+* ignore suffix slash of image host ([#358](https://github.com/reuixiy/hugo-theme-meme/issues/358)) ([d8af0e0](https://github.com/reuixiy/hugo-theme-meme/commit/d8af0e0d6c89afc4cc79982cb73a8c094cf5ee5e))
+* ignore suffix slash of video host ([597d20d](https://github.com/reuixiy/hugo-theme-meme/commit/597d20db75e696f75a1c4e30a0791aa3a5266478))
+* Make SRI for scripts and styles enabled separately from fingerprinting ([#215](https://github.com/reuixiy/hugo-theme-meme/issues/215)) ([b9869e7](https://github.com/reuixiy/hugo-theme-meme/commit/b9869e7a3df34dc721d99d79b0f5771cc57973a6))
+* new config param customizeScrollbar ([2c06353](https://github.com/reuixiy/hugo-theme-meme/commit/2c06353fb886101ff4be5c23ec0e44f135afb8ef))
+* set up github actions for pages  ([#278](https://github.com/reuixiy/hugo-theme-meme/issues/278)) ([8e0d1b5](https://github.com/reuixiy/hugo-theme-meme/commit/8e0d1b56a711ed26495465283ba12ed55ad15d8b)), closes [#277](https://github.com/reuixiy/hugo-theme-meme/issues/277)
+* support directly load the comments after pages loaded ([#325](https://github.com/reuixiy/hugo-theme-meme/issues/325)) ([29e4726](https://github.com/reuixiy/hugo-theme-meme/commit/29e472630bfe632299cb595e432acce179b644f8))
+* support host customization for third-party libraries ([#389](https://github.com/reuixiy/hugo-theme-meme/issues/389)) ([a6111f9](https://github.com/reuixiy/hugo-theme-meme/commit/a6111f9f8c04484000214c5d5c21b2bcbe4368bf))
+* support hugo v0.73.0 ([f1e3503](https://github.com/reuixiy/hugo-theme-meme/commit/f1e35035e0b92d80881743adbbfa523839e27019)), closes [#207](https://github.com/reuixiy/hugo-theme-meme/issues/207)
+
+
+### BREAKING CHANGES
+
+* enableFingerprint config parameter no longer enables Subresource Integrity. If you need it, you have to specify enableSRI parameter as well
+* MemE now requires Hugo v0.73.0+.
+
+
+
 # [4.5.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.4.0...v4.5.0) (2020-06-24)
 
 
