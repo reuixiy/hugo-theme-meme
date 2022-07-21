@@ -5,9 +5,10 @@
 
 {{- $scripts := slice $src -}}
 {{- if ne .Site.Language.Lang "en" -}}
+    {{- $lang := substr .Site.Language.Lang 0 2 -}}
     {{- $supported := slice "ar" "da" "de" "du" "es" "fi" "fr" "hu" "it" "ja" "nl" "no" "pt" "ro" "ru" "sv" "tr" "vi" -}}
-    {{- if in $supported .Site.Language.Lang -}}
-        {{- if eq .Site.Language.Lang "ja" -}}
+    {{- if in $supported $lang -}}
+        {{- if eq $lang "ja" -}}
             {{- $scripts = union $scripts (slice $srcTinyseg) -}}
         {{- end -}}
         {{- $scripts = union $scripts (slice $srcStemmer) -}}
