@@ -2,7 +2,7 @@
     <div class="main-inner">
         <div class="content categories">
             {{ if .Site.Params.displayListTitle }}
-                <h1 class="list-title">{{ .Title | default (.Type | title) }}</h1>
+                <h1 class="list-title">{{ i18n .Type | default (.Title | default (.Type | title)) }}</h1>
             {{ end }}
             <div class="tree">
                 {{ .Scratch.Delete "categories" }}
