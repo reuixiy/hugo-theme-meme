@@ -1,0 +1,46 @@
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "giscus") -}}
+
+<script>
+    function loadComments() {
+        (function() {
+            const giscus = document.getElementById("giscus");
+            if (!giscus) {
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = '{{ $src }}';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.dataset.repo = '{{ .Site.Params.giscusRepo }}';
+            script.dataset.repoId = '{{ .Site.Params.giscusRepoId }}';
+            script.dataset.category = '{{ .Site.Params.giscusCategory }}';
+            script.dataset.categoryId = '{{ .Site.Params.giscusCategoryId }}';
+            script.dataset.mapping = '{{ .Site.Params.giscusMapping }}';
+            {{ template "giscus-theme" . }}
+            script.dataset.inputPosition = '{{ .Site.Params.giscusInputPosition }}';
+            script.dataset.lang = '{{ .Site.Params.giscusLang }}';
+            script.dataset.strict = '1';
+            script.dataset.reactionsEnabled = '1';
+            script.dataset.emitMetadata = '0';
+            giscus.appendChild(script);
+        })();
+    }
+</script>
+
+{{- define "giscus-theme" -}}
+    {{- $theme := .Site.Params.giscusTheme | default "light" -}}
+    {{- if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") -}}
+        {{- $theme = .Site.Params.giscusThemeDark | default "dark" -}}
+    {{- end -}}
+
+    {{- if .Site.Params.enableDarkMode -}}
+        const isDark = getCurrentTheme() === 'dark';
+        if (isDark) {
+            script.dataset.theme = '{{ .Site.Params.giscusThemeDark | default "dark" }}';
+        } else {
+            script.dataset.theme = '{{ .Site.Params.giscusTheme | default "light" }}';
+        }
+    {{- else -}}
+        script.dataset.theme = '{{ $theme }}';
+    {{- end -}}
+{{- end -}}

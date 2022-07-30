@@ -29,6 +29,10 @@
             {{ partial "third-party/gitalk.html" . }}
         {{ end }}
 
+        {{ if .Site.Params.enableGiscus }}
+            {{ partial "third-party/giscus.html" . }}
+        {{ end }}
+
     {{ end }}
 {{ end }}
 

@@ -705,7 +705,19 @@ uglyURLs = false
     gitalkProxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
     gitalkEnableHotKey = true
     # Note: https://github.com/gitalk/gitalk
-
+    
+    ## Giscus
+    enableGiscus = false
+    giscusRepo = "[ENTER REPO HERE]"
+    giscusRepoId = "[ENTER REPO ID HERE]"
+    giscusCategory = "[ENTER CATEGORY NAME HERE]"
+    giscusCategoryId = "[ENTER CATEGORY ID HERE]"
+    giscusMapping = "pathname"
+    giscusTheme = "light"
+    giscusThemeDark = "dark"
+    giscusInputPosition = "top"
+    giscusLang = "en"
+    # Note：https://giscus.app
 
     ######################################
     # Google Analytics

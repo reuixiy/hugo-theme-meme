@@ -653,6 +653,18 @@ uglyURLs = false
     gitalkEnableHotKey = true
     # 说明：https://github.com/gitalk/gitalk
 
+    ## Giscus
+    enableGiscus = false
+    giscusRepo = "[ENTER REPO HERE]"
+    giscusRepoId = "[ENTER REPO ID HERE]"
+    giscusCategory = "[ENTER CATEGORY NAME HERE]"
+    giscusCategoryId = "[ENTER CATEGORY ID HERE]"
+    giscusMapping = "pathname"
+    giscusTheme = "light"
+    giscusThemeDark = "dark"
+    giscusInputPosition = "top"
+    giscusLang = "zh-CN"
+    # 说明：https://giscus.app/zh-CN
 
     ######################################
     # Google Analytics
