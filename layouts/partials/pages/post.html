@@ -1,8 +1,8 @@
 <main class="main single" id="main">
 
     {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
-    {{ $displayTOConEdge := default .Site.Params.displayTOConEdge -}}
-    {{- if and $enableTOC $displayTOConEdge -}}
+    {{ $displayTOConSide := default .Site.Params.displayTOConSide -}}
+    {{- if and $enableTOC $displayTOConSide -}}
     {{- partial "utils/toc.html" . -}}
     {{- end -}}
     
@@ -37,7 +37,7 @@
             {{ end }}
 
             {{- if $enableTOC -}}
-                {{- if not $displayTOConEdge -}}
+                {{- if not $displayTOConSide -}}
                     {{- partial "utils/toc.html" . -}}
                 {{- end -}}
             {{- end -}}

@@ -75,6 +75,12 @@
     $enableSmoothScroll: false;
 {{ end }}
 
+{{ if .Site.Params.displayTOConSide }}
+    $tocPosition: fixed;
+{{ else }}
+    $tocPosition: inherit;
+{{ end }}
+
 $baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
 
 
@@ -403,15 +409,6 @@ $baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
 {{ if eq .Site.Params.homeLayout "posts" }}
     @import "pages/home-posts";
 {{ end }}
-
-// Post
-
-{{ if .Site.Params.displayTOConEdge }}
-    $tocPosition: fixed;
-{{ else }}
-    $tocPosition: inherit;
-{{ end }}
-
 
 // Categories Page
 

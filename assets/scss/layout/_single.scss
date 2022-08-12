@@ -102,7 +102,7 @@ blockquote {
 }
 
 .contents {
-    position: $tocPosition
+    position: $tocPosition;
     margin-top: 5em;
     ol, ul {
         list-style: none;
