@@ -1,6 +1,12 @@
 <main class="main single" id="main">
     <div class="main-inner">
 
+        {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
+        {{ $displayTOConEdge := default .Site.Params.displayTOConEdge -}}
+        {{- if and $enableTOC $displayTOConEdge -}}
+        {{- partial "utils/toc.html" . -}}
+        {{- end -}}
+
         {{ $attrs := partial "utils/data-attributes.html" . }}
 
         <article class="content post h-entry"
@@ -29,9 +35,10 @@
                 {{ partial "components/post-meta.html" (dict "$" . "isHome" false) }}
             {{ end }}
 
-            {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
             {{- if $enableTOC -}}
-                {{- partial "utils/toc.html" . -}}
+                {{- if not $displayTOConEdge -}}
+                    {{- partial "utils/toc.html" . -}}
+                {{- end -}}
             {{- end -}}
 
             <div class="post-body e-content">
