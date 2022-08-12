@@ -1,11 +1,12 @@
 <main class="main single" id="main">
-    <div class="main-inner">
 
-        {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
-        {{ $displayTOConEdge := default .Site.Params.displayTOConEdge -}}
-        {{- if and $enableTOC $displayTOConEdge -}}
-        {{- partial "utils/toc.html" . -}}
-        {{- end -}}
+    {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
+    {{ $displayTOConEdge := default .Site.Params.displayTOConEdge -}}
+    {{- if and $enableTOC $displayTOConEdge -}}
+    {{- partial "utils/toc.html" . -}}
+    {{- end -}}
+    
+    <div class="main-inner">
 
         {{ $attrs := partial "utils/data-attributes.html" . }}
 
