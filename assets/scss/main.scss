@@ -404,6 +404,14 @@ $baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
     @import "pages/home-posts";
 {{ end }}
 
+// Post
+
+{{ if .Site.Params.displayTOConEdge }}
+    $tocPosition: fixed;
+{{ else }}
+    $tocPosition: inherit;
+{{ end }}
+
 
 // Categories Page
 
