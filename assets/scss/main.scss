@@ -410,6 +410,7 @@ $baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
     @import "pages/home-posts";
 {{ end }}
 
+
 // Categories Page
 
 {{ if .Site.Params.enableTree }}
