@@ -12,7 +12,7 @@
     {{- with .Site.Author.avatar -}}
         {{- $author = merge $author (dict "avatar" .) -}}
     {{- end -}}
-    {{- $baseURLWithLangFix := (printf "%s%s/" (strings.TrimSuffix "/" .Site.BaseURL) .Site.LanguagePrefix) -}}
+    {{- $baseURLWithLangFix := "" | absLangURL -}}
     {{- with .Site.Author.website | default $baseURLWithLangFix -}}
         {{- $author = merge $author (dict "website" .) -}}
     {{- end -}}

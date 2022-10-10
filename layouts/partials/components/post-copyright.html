@@ -12,7 +12,7 @@
             {{ if $.Params.original | default $.Site.Params.original }}
                 {{ $url := urls.Parse $.Permalink }}
                 {{ $decodedPath := $url.Path }}
-                {{ $baseURLWithLangFix := (strings.TrimSuffix "/" (print `/` | absLangURL)) }}
+                {{ $baseURLWithLangFix := "" | absLangURL | strings.TrimSuffix "/" }}
                 {{ $decodedPermalink := (printf `%s%s` $baseURLWithLangFix $decodedPath) }}
                 <li class="copyright-item link"><span class="copyright-item-text">{{ i18n "copyrightLink" }}</span>{{ i18n "colon" }}<a href="{{ $.RelPermalink }}" target="_blank" rel="noopener">{{ $decodedPermalink }}</a></li>
             {{ else }}
