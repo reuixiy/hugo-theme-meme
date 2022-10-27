@@ -19,7 +19,7 @@
     {{ with .Site.Author.name -}}
         <author>
             <name>{{ . }}</name>
-            <uri>{{ print `/` | absLangURL }}</uri>
+            <uri>{{ "" | absLangURL }}</uri>
             {{ with $.Site.Author.email }}
                 <email>{{ . }}</email>
             {{ end -}}
