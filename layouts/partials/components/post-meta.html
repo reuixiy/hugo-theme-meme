@@ -1,15 +1,15 @@
 {{ $ := index . "$" }}
 {{ $isHome := .isHome }}
 <div class="post-meta">
-    {{ if and $.Site.Params.displayPublishedDate (not $.PublishDate.IsZero) }}
+    {{ if $.Params.displayPublishedDate | default (and $.Site.Params.displayPublishedDate (not $.PublishDate.IsZero)) }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.publishedDateIcon "class" "post-meta-icon") }}
         <time datetime="{{ $.PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item published dt-published">{{ $icon }}&nbsp;{{ $.PublishDate.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
-    {{ if and $.Site.Params.displayModifiedDate (not $.Lastmod.IsZero) }}
+    {{ if $.Params.displayModifiedDate | default (and $.Site.Params.displayModifiedDate (not $.Lastmod.IsZero)) }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.modifiedDateIcon "class" "post-meta-icon") }}
         <time datetime="{{ $.Lastmod.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item modified dt-updated">{{ $icon }}&nbsp;{{ $.Lastmod.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
-    {{ if and $.Site.Params.displayExpiredDate (not $.ExpiryDate.IsZero) }}
+    {{ if $.Params.displayExpiryDate | default (and $.Site.Params.displayExpiredDate (not $.ExpiryDate.IsZero)) }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.expiredDateIcon "class" "post-meta-icon") }}
         <time datetime="{{ $.ExpiryDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item expired">{{ $icon }}&nbsp;{{ $.ExpiryDate.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
@@ -68,11 +68,11 @@
             {{ end }}
         {{ end }}
     {{ end }}
-    {{ if $.Site.Params.displayWordCount }}
+    {{ if $.Params.displayWordCount | default $.Site.Params.displayWordCount }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.wordCountIcon "class" "post-meta-icon") }}
         <span class="post-meta-item wordcount">{{ $icon }}&nbsp;{{ $.WordCount }}</span>
     {{ end }}
-    {{ if $.Site.Params.displayReadingTime }}
+    {{ if $.Params.displayReadingTime | default $.Site.Params.displayReadingTime }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.readingTimeIcon "class" "post-meta-icon") }}
         <span class="post-meta-item reading-time">{{ $icon }}&nbsp;{{ $.ReadingTime }}&nbsp;{{ i18n "minute" $.ReadingTime }}</span>
     {{ end }}
