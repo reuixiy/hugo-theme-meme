@@ -34,15 +34,44 @@
             repo: {{ .Site.Params.gitalkRepo }},
             owner: {{ .Site.Params.gitalkOwner }},
             admin: {{ .Site.Params.gitalkAdmin }},
-            labels: {{ .Site.Params.gitalkLable }},
-            distractionFreeMode: {{ .Site.Params.gitalkDistractionFreeMode }}, 
-            perPage: {{ .Site.Params.gitalkPerPage }},
+
+        {{ if eq .Site.Params.gitalkID "pathname" }}
+            id: location.pathname,
+        {{ else if eq .Site.Params.gitalkID "hash" }}
+            id: {{ .File.UniqueID }},
+        {{ else if hasPrefix .Site.Params.gitalkID "custom:" }}
+            id: {{ strings.TrimPrefix "custom:" .Site.Params.gitalkID }},
+        {{ end }}
+
+            number: {{ .Site.Params.gitalkNumber }},
+            labels: {{ .Site.Params.gitalkLables }},
+
+        {{ if hasPrefix .Site.Params.gitalkTitle "custom:" }}
+            title: {{ strings.TrimPrefix "custom:" .Site.Params.gitalkTitle }},
+        {{ end }}
+
+        {{ if eq .Site.Params.gitalkBody "href" }}
+            body: location.href,
+        {{ else if hasPrefix .Site.Params.gitalkBody "custom:" }}
+            body: {{ strings.TrimPrefix "custom:" .Site.Params.gitalkBody }},
+        {{ end }}
+
+        {{ if ne .Site.Params.gitalkLanguage "default" }}
             language: {{ .Site.Params.gitalkLanguage }},
+        {{ end }}
+
+            perPage: {{ .Site.Params.gitalkPerPage }},
+            distractionFreeMode: {{ .Site.Params.gitalkDistractionFreeMode }},
             pagerDirection: {{ .Site.Params.gitalkPagerDirection }},
-            createIssueManually: {{ .Site.Params.gitalkDistractionFreeMode }},
+            createIssueManually: {{ .Site.Params.gitalkCreateIssueManually }},
             proxy: {{ .Site.Params.gitalkProxy }},
-            enableHotKey: {{ .Site.Params.gitalkEnableHotKey }},
-            id:  location.pathname
+            flipMoveOptions: {
+                staggerDelayBy: {{ .Site.Params.gitalkStaggerDelayBy }},
+                appearAnimation: {{ .Site.Params.gitalkAppearAnimation }},
+                enterAnimation: {{ .Site.Params.gitalkEnterAnimation }},
+                leaveAnimation: {{ .Site.Params.gitalkLeaveAnimation }}
+            },
+            enableHotKey: {{ .Site.Params.gitalkEnableHotKey }}
         })
 
         gitalk.render('gitalk-container')
