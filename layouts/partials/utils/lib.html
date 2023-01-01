@@ -1,0 +1,125 @@
+{{- $ := index . "$" -}}
+{{- $type := .type -}}
+{{- $lang := .lang -}}
+
+{{- $host := $.Site.Params.lib.host | default "https://cdn.jsdelivr.net" -}}
+{{- $path := "" -}}
+
+<!--
+
+  Common libraries
+
+--->
+
+{{- if eq $type "clipboard" -}}
+    {{- $defalut := "/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.clipboard | default $defalut -}}
+{{- end -}}
+
+{{- if eq $type "instantsearch" -}}
+    {{- $defalut := "/npm/instantsearch.js@2/dist/instantsearch.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.instantsearch | default $defalut -}}
+{{- end -}}
+
+{{- if eq $type "gitalk" -}}
+    {{- $defalut := "/npm/gitalk@1/dist/gitalk.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.gitalk | default $defalut -}}
+{{- end -}}
+{{- if eq $type "gitalk-css" -}}
+    {{- $dafault := "/npm/gitalk@1/dist/gitalk.css" -}}
+    {{- $path = $.Site.Params.lib.path.gitalk_css | default $dafault -}}
+{{- end -}}
+
+{{- if eq $type "instantpage" -}}
+    {{- $default := "/npm/instant.page@5.1.0/instantpage.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.instantpage | default $default -}}
+{{- end -}}
+
+{{- if eq $type "katex" -}}
+    {{- $defalut := "/npm/katex@0.13.0/dist/katex.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.katex | default $defalut -}}
+{{- end -}}
+{{- if eq $type "katex-css" -}}
+    {{- $defalut := "/npm/katex@0.13.0/dist/katex.min.css" -}}
+    {{- $path = $.Site.Params.lib.path.katex_css | default $defalut -}}
+{{- end -}}
+{{- if eq $type "katex-mhchem" -}}
+    {{- $defalut := "/npm/katex@0.13.0/dist/contrib/mhchem.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.katex_mhchem | default $defalut -}}
+{{- end -}}
+{{- if eq $type "katex-auto-render" -}}
+    {{- $defalut := "/npm/katex@0.13.0/dist/contrib/auto-render.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.katex_auto_render | default $defalut -}}
+{{- end -}}
+
+{{- if eq $type "lunr" -}}
+    {{- $defalut := "/npm/lunr@2.3.9/lunr.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.lunr | default $defalut -}}
+{{- end -}}
+{{- if eq $type "lunr-tinyseg" -}}
+    {{- $defalut := "/npm/lunr-languages@1.4.0/tinyseg.js" -}}
+    {{- $path = $.Site.Params.lib.path.lunr_tinyseg | default $defalut -}}
+{{- end -}}
+{{- if eq $type "lunr-stemmer" -}}
+    {{- $defalut := "/npm/lunr-languages@1.4.0/min/lunr.stemmer.support.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.lunr_stemmer | default $defalut -}}
+{{- end -}}
+{{- if eq $type "lunr-lang" -}}
+    {{- $defalut := printf "/npm/lunr-languages@1.4.0/min/lunr.%s.min.js" $lang -}}
+    {{- $path = $.Site.Params.lib.path.lunr_lang | default $defalut -}}
+{{- end -}}
+
+{{- if eq $type "mathjax" -}}
+    {{- $defalut := "/npm/mathjax@3.1.2/es5/tex-mml-chtml.js" -}}
+    {{- $path = $.Site.Params.lib.path.mathjax | default $defalut -}}
+{{- end -}}
+
+{{- if eq $type "medium-zoom" -}}
+    {{- $defalut := "/npm/medium-zoom@latest/dist/medium-zoom.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.medium_zoom | default $defalut -}}
+{{- end -}}
+
+{{- if eq $type "mermaid" -}}
+    {{- $defalut := "/npm/mermaid@8.8.3/dist/mermaid.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.mermaid | default $defalut -}}
+{{- end -}}
+
+{{- if eq $type "qrcode" -}}
+    {{- $defalut := "/npm/qrcode-generator@1.4.4/qrcode.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.qrcode | default $defalut -}}
+{{- end -}}
+
+{{- if eq $type "valine" -}}
+    {{- $defalut := "/npm/valine@1.4.14/dist/Valine.min.js" -}}
+    {{- $path = $.Site.Params.lib.path.valine | default $defalut -}}
+{{- end -}}
+
+<!--
+
+  Third-party services
+
+--->
+
+{{- if eq $type "busuanzi" -}}
+    {{- $defalut := "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" -}}
+    {{- $host = $.Site.Params.lib.path.busuanzi | default $defalut -}}
+{{- end -}}
+
+{{- if eq $type "utterances" -}}
+    {{- $defalut := "https://utteranc.es/client.js" -}}
+    {{- $host = $.Site.Params.lib.path.utterances | default $defalut -}}
+{{- end -}}
+
+<!--
+
+  Third-party libraries/services/resources which not included in this file:
+
+    1. Disqus
+    2. Google Analytics
+    3. Google Adsense
+    4. Yandex Metrika
+    5. Other hosts customized in config.toml
+
+--->
+
+{{- return printf `%s%s` $host $path -}}

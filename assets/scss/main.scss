@@ -75,7 +75,7 @@
     $enableSmoothScroll: false;
 {{ end }}
 
-$baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
+$baseRelURL: "{{ "" | relURL | strings.TrimSuffix "/" }}";
 
 
 // Utilities

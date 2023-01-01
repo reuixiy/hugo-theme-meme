@@ -83,7 +83,7 @@
 
 <!-- Delete Footnote `<hr />` -->
 {{- if .Site.Params.insertHrBySelf -}}
-    {{- $regexPatternDeleteHr := `(<hr />|<hr>)\n(<section class="footnotes" role="doc-endnotes">)` -}}
+    {{- $regexPatternDeleteHr := `(<hr />|<hr>)\n(<(section|div) class="footnotes" role="doc-endnotes">)` -}}
     {{- $regexReplacementDeleteHr := `$2` -}}
     {{- $Content = $Content | replaceRE $regexPatternDeleteHr $regexReplacementDeleteHr -}}
 {{- end -}}
@@ -117,8 +117,8 @@
     {{- $temps := findRE `<(img) src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
-            {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
-                {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
+            {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
+            {{- if ne (substr $url 0 4) "http" -}}
                 {{- $prefix := replaceRE `(<(img) src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}
@@ -133,8 +133,8 @@
     {{- $temps := findRE `<(video) src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
-            {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
-                {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
+            {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
+            {{- if ne (substr $url 0 4) "http" -}}
                 {{- $prefix := replaceRE `(<(video) src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}

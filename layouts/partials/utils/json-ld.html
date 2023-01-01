@@ -3,7 +3,7 @@
 <!-- https://search.google.com/structured-data/testing-tool -->
 {{- $ := index . "$" -}}
 {{- $description := .description -}}
-{{- $baseURLWithLangFix := print `/` | absLangURL -}}
+{{- $baseURLWithLangFix := "" | absLangURL -}}
 <!-- Title -->
 {{- $rawTitle := (partial "utils/title.html" (dict "$" $ "title" $.Title)).rawTitle -}}
 <!-- Date -->

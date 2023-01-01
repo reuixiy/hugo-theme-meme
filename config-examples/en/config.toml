@@ -702,13 +702,38 @@ uglyURLs = false
     gitalkRepo = "your_repository"
     gitalkOwner = "your_gitalk_owner"
     gitalkAdmin = ["your_gitalk_admin"]
-    gitalkLable = ["Gitalk"]
-    gitalkDistractionFreeMode = false
-    gitalkPerPage = 10
+
+    # 1. default (`location.href`)
+    # 2. pathname (`location.pathname`)
+    # 3. hash (hash_filepath)
+    # 4. custom:your_gitalk_id ("your_gitalk_id")
+    gitalkID = "pathname"
+
+    gitalkNumber = -1
+    gitalkLables = ["Gitalk"]
+
+    # 1. default (`document.title`)
+    # 2. custom:your_gitalk_title ("your_gitalk_title")
+    gitalkTitle = "default"
+
+    # 1. default (`location.href` + header.meta[description])
+    # 2. href (`location.href`)
+    # 3. custom:your_gitalk_body ("your_gitalk_body")
+    gitalkBody = "default"
+
+    # 1. default (`navigator.language || navigator.userLanguage`)
+    # 2. Support [en, zh-CN, zh-TW, es-ES, fr, ru, de, pl, ko, fa, ja]
     gitalkLanguage = "en"
+
+    gitalkPerPage = 10
+    gitalkDistractionFreeMode = false
     gitalkPagerDirection = "last"
     gitalkCreateIssueManually = false
     gitalkProxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
+    gitalkStaggerDelayBy = 150
+    gitalkAppearAnimation = "accordionVertical"
+    gitalkEnterAnimation = "accordionVertical"
+    gitalkLeaveAnimation = "accordionVertical"
     gitalkEnableHotKey = true
     # Note: https://github.com/gitalk/gitalk
 
@@ -1417,3 +1442,37 @@ uglyURLs = false
     fofVideoMp4 = ""
     # Note: you can leave these two
     #       options empty("")
+
+
+    ######################################
+    # Customize host for third-party libraries
+
+    [params.lib]
+        host = "https://cdn.jsdelivr.net"
+        # Note: set it to root("/") and set
+        #       the path below if you want to host
+        #       the lib directly from “local”.
+        #       I.e. set path to "js/lib.min.js",
+        #       and put this file to your
+        #       /static/js/lib.min.js
+    [params.lib.path]
+        clipboard = "/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js"
+        instantsearch = "/npm/instantsearch.js@2/dist/instantsearch.min.js"
+        gitalk = "/npm/gitalk@1/dist/gitalk.min.js"
+        gitalk_css = "/npm/gitalk@1/dist/gitalk.css"
+        instantpage = "/npm/instant.page@5.1.0/instantpage.min.js"
+        katex = "/npm/katex@0.13.0/dist/katex.min.js"
+        katex_css = "/npm/katex@0.13.0/dist/katex.min.css"
+        katex_mhchem = "/npm/katex@0.13.0/dist/contrib/mhchem.min.js"
+        katex_auto_render = "/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+        lunr = "/npm/lunr@2.3.9/lunr.min.js"
+        lunr_tinyseg = "/npm/lunr-languages@1.4.0/tinyseg.js"
+        lunr_stemmer = "/npm/lunr-languages@1.4.0/min/lunr.stemmer.support.min.js"
+        lunr_lang = "/npm/lunr-languages@1.4.0/min/lunr.de.min.js"
+        mathjax = "/npm/mathjax@3.1.2/es5/tex-mml-chtml.js"
+        medium_zoom = "/npm/medium-zoom@latest/dist/medium-zoom.min.js"
+        mermaid = "/npm/mermaid@8.8.3/dist/mermaid.min.js"
+        qrcode = "/npm/qrcode-generator@1.4.4/qrcode.min.js"
+        valine = "/npm/valine@1.4.14/dist/Valine.min.js"
+        busuanzi = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+        utterances = "https://utteranc.es/client.js"

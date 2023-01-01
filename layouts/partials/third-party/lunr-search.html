@@ -1,12 +1,18 @@
-{{- $scripts := slice "https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js" -}}
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "lunr") -}}
+{{- $srcTinyseg := partial "utils/lib.html" (dict "$" . "type" "lunr-tinyseg") -}}
+{{- $srcStemmer := partial "utils/lib.html" (dict "$" . "type" "lunr-stemmer") -}}
+{{- $srcLang := partial "utils/lib.html" (dict "$" . "type" "lunr-lang" "lang" .Site.Language.Lang) -}}
+
+{{- $scripts := slice $src -}}
 {{- if ne .Site.Language.Lang "en" -}}
+    {{- $lang := substr .Site.Language.Lang 0 2 -}}
     {{- $supported := slice "ar" "da" "de" "du" "es" "fi" "fr" "hu" "it" "ja" "nl" "no" "pt" "ro" "ru" "sv" "tr" "vi" -}}
-    {{- if in $supported .Site.Language.Lang -}}
-        {{- if eq .Site.Language.Lang "ja" -}}
-            {{- $scripts = union $scripts (slice "https://cdn.jsdelivr.net/npm/lunr-languages@1.4.0/tinyseg.js") -}}
+    {{- if in $supported $lang -}}
+        {{- if eq $lang "ja" -}}
+            {{- $scripts = union $scripts (slice $srcTinyseg) -}}
         {{- end -}}
-        {{- $scripts = union $scripts (slice "https://cdn.jsdelivr.net/npm/lunr-languages@1.4.0/min/lunr.stemmer.support.min.js") -}}
-        {{- $scripts = union $scripts (slice (printf "https://cdn.jsdelivr.net/npm/lunr-languages@1.4.0/min/lunr.%s.min.js" .Site.Language.Lang)) -}}
+        {{- $scripts = union $scripts (slice $srcStemmer) -}}
+        {{- $scripts = union $scripts (slice $srcLang) -}}
     {{- else -}}
         {{- warnf "The site language %q isn't supported by lunr, the search results might be suboptimal. Supported languages are: %q" .Site.Language.Lang $supported -}}
     {{- end -}}

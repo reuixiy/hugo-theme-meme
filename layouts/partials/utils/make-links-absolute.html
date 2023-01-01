@@ -1,7 +1,7 @@
 <!-- https://github.com/reuixiy/hugo-theme-meme/issues/141 -->
 {{- $ := index . "$" -}}
 {{- $content := .content -}}
-{{- $baseURL := ($.Site.BaseURL | strings.TrimSuffix "/") -}}
+{{- $baseURL := "" | absLangURL | strings.TrimSuffix "/" -}}
 {{- $content = $content | replaceRE ` (href|src)="/` (printf ` $1="%s/` $baseURL) -}}
 {{- $content = $content | replaceRE ` (href|src)="#` (printf ` $1="%s#` $.Permalink) -}}
 {{- $content | safeHTML -}}
