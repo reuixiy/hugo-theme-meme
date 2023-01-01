@@ -329,6 +329,11 @@ uglyURLs = false
     homeKeywords = ""
     homeLinksDelimiter = ""
 
+    ## 「文章摘要」
+    enableHideInHomepage = false
+    # 說明：激活 `hideInHomepage` front matter
+    #      的支持（性能原因默認關閉）
+
 
     ######################################
     # 站點資訊
