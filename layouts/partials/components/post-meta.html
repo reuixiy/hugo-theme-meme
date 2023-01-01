@@ -1,19 +1,19 @@
 {{ $ := index . "$" }}
 {{ $isHome := .isHome }}
 <div class="post-meta">
-    {{ if and $.Site.Params.displayPublishedDate (not $.PublishDate.IsZero) }}
+    {{ if $.Params.displayPublishedDate | default (and $.Site.Params.displayPublishedDate (not $.PublishDate.IsZero)) }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.publishedDateIcon "class" "post-meta-icon") }}
         <time datetime="{{ $.PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item published dt-published">{{ $icon }}&nbsp;{{ $.PublishDate.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
-    {{ if and $.Site.Params.displayModifiedDate (not $.Lastmod.IsZero) }}
+    {{ if $.Params.displayModifiedDate | default (and $.Site.Params.displayModifiedDate (not $.Lastmod.IsZero)) }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.modifiedDateIcon "class" "post-meta-icon") }}
         <time datetime="{{ $.Lastmod.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item modified dt-updated">{{ $icon }}&nbsp;{{ $.Lastmod.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
-    {{ if and $.Site.Params.displayExpiredDate (not $.ExpiryDate.IsZero) }}
+    {{ if $.Params.displayExpiryDate | default (and $.Site.Params.displayExpiredDate (not $.ExpiryDate.IsZero)) }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.expiredDateIcon "class" "post-meta-icon") }}
         <time datetime="{{ $.ExpiryDate.Format "2006-01-02T15:04:05-07:00" }}" class="post-meta-item expired">{{ $icon }}&nbsp;{{ $.ExpiryDate.Format $.Site.Params.postMetaDateFormat }}</time>
     {{ end }}
-    {{ if $.Site.Params.displayCategory }}
+    {{ if $.Params.displayCategory | default $.Site.Params.displayCategory }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.categoryIcon "class" "post-meta-icon") }}
         {{ if and (eq $.Site.Params.categoryBy "sections") (in $.Site.Params.mainSections $.Section) }}
             {{ $sections := split (strings.TrimSuffix "/" ($.File.Dir | default $.Section)) "/" }}
@@ -68,15 +68,15 @@
             {{ end }}
         {{ end }}
     {{ end }}
-    {{ if $.Site.Params.displayWordCount }}
+    {{ if $.Params.displayWordCount | default $.Site.Params.displayWordCount }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.wordCountIcon "class" "post-meta-icon") }}
         <span class="post-meta-item wordcount">{{ $icon }}&nbsp;{{ $.WordCount }}</span>
     {{ end }}
-    {{ if $.Site.Params.displayReadingTime }}
+    {{ if $.Params.displayReadingTime | default $.Site.Params.displayReadingTime }}
         {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.readingTimeIcon "class" "post-meta-icon") }}
         <span class="post-meta-item reading-time">{{ $icon }}&nbsp;{{ $.ReadingTime }}&nbsp;{{ i18n "minute" $.ReadingTime }}</span>
     {{ end }}
-    {{ if and $.Site.Params.displayBusuanziPagePV (eq hugo.Environment "production") }}
+    {{ if and ($.Params.displayBusuanziPagePV | default $.Site.Params.displayBusuanziPagePV) (eq hugo.Environment "production") }}
         {{ if not $isHome }}
             {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.busuanziPagePVIcon "class" "post-meta-icon") }}
             <span class="post-meta-item busuanzi-page-pv" id="busuanzi_container_page_pv">{{ $icon }}&nbsp;<span id="busuanzi_value_page_pv"></span></span>
