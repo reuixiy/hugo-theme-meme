@@ -346,6 +346,12 @@ uglyURLs = false
     homeKeywords = ""
     homeLinksDelimiter = ""
 
+    ## Posts
+    enableHideInHomepage = false
+    # Note: enable `hideInHomepage` front
+    #       matter support (disabled by
+    #       default for performance concern)
+
 
     ######################################
     # Site Info
