@@ -97,14 +97,17 @@ function changeMode() {
             changeGiscusTheme('{{ .Site.Params.giscusTheme | default "light" }}');
         }
         function changeGiscusTheme(theme) {
-            const iframe = document.querySelector('.giscus-frame');
-            if (iframe !== null) {
-                const message = {
-                    type: 'set-theme',
-                    theme: theme
-                };
-                iframe.contentWindow.postMessage(message, 'https://giscus.app');
+            function sendMessage(message) {
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (iframe !== null) {
+                    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+                }
             }
+            sendMessage({
+                setConfig: {
+                    theme: theme,
+                },
+            });
         }
     {{ end }}
 
