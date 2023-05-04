@@ -9,11 +9,11 @@ if (userPrefers === 'dark') {
     changeModeMeta('light');
 }
 
-window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", () => {
     changeMode();
 });
 
-window.addEventListener("DOMContentLoaded", event => {
+window.addEventListener("DOMContentLoaded", () => {
     // Update meta tags and code highlighting
     changeMode();
 
@@ -69,7 +69,7 @@ function changeMode() {
     const themeColor = isDark ? '{{ .Site.Params.themeColorDark }}' : '{{ .Site.Params.themeColor }}';
     document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
 
-    {{ if and .Site.Params.enableUtterances (eq hugo.Environment "production") }}
+    {{ if and .Site.Params.enableUtterances }}
         // Change Utterances Comments Theme
         // https://github.com/utterance/utterances/issues/229
         if (isDark) {
@@ -85,6 +85,25 @@ function changeMode() {
                     theme: theme
                 };
                 iframe.contentWindow.postMessage(message, 'https://utteranc.es');
+            }
+        }
+    {{ end }}
+
+    {{ if and .Site.Params.enableGiscus }}
+        // Change Giscus Comments Theme
+        if (isDark) {
+            changeGiscusTheme('{{ .Site.Params.giscusThemeDark | default "dark" }}');
+        } else {
+            changeGiscusTheme('{{ .Site.Params.giscusTheme | default "light" }}');
+        }
+        function changeGiscusTheme(theme) {
+            const iframe = document.querySelector('.giscus-frame');
+            if (iframe !== null) {
+                const message = {
+                    type: 'set-theme',
+                    theme: theme
+                };
+                iframe.contentWindow.postMessage(message, 'https://giscus.app');
             }
         }
     {{ end }}

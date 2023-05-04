@@ -1,0 +1,58 @@
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "giscus") -}}
+
+<script>
+    function loadComments() {
+        (function() {
+            const giscus = document.getElementById("giscus");
+            if (!giscus) {
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = '{{ $src }}';
+            script.async = true;
+            script.crossOrigin = 'anonymous';
+            script.setAttribute('data-repo', '{{ .Site.Params.giscusRepo }}');
+            script.setAttribute('data-repo-id', '{{ .Site.Params.giscusRepoId }}');
+            script.setAttribute('data-category', '{{ .Site.Params.giscusCategory }}');
+            script.setAttribute('data-category-id', '{{ .Site.Params.giscusCategoryId }}');
+            script.setAttribute('data-mapping', '{{ .Site.Params.giscusMapping }}');
+            script.setAttribute('data-strict', '0');
+            {{- if .Site.Params.giscusReactionsEnabled -}}
+                script.setAttribute('data-reactions-enabled', '1');
+            {{- else -}}
+                script.setAttribute('data-reactions-enabled', '0');
+            {{- end -}}
+            {{- if .Site.Params.giscusEmitMetaData -}}
+                script.setAttribute('data-emit-metadata', '1');
+            {{- else -}}
+                script.setAttribute('data-emit-metadata', '0');
+            {{- end -}}
+            script.setAttribute('data-input-position', '{{ .Site.Params.giscusInputPosition }}')
+            {{ template "giscus-theme" . }}
+            script.setAttribute('data-lang', '{{- .Site.Params.giscusLang -}}')
+            script.setAttribute('data-loading', 'lazy');
+            {{ with .Site.Params.giscusLabel }}
+                script.setAttribute('label', '{{ . }}');
+            {{ end }}
+            giscus.appendChild(script);
+        })();
+    }
+</script>
+
+{{- define "giscus-theme" -}}
+    {{- $theme := .Site.Params.giscusTheme | default "light" -}}
+    {{- if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") -}}
+        {{- $theme = .Site.Params.giscusThemeDark | default "dark" -}}
+    {{- end -}}
+
+    {{- if .Site.Params.enableDarkMode -}}
+        const isDark = getCurrentTheme() === 'dark';
+        if (isDark) {
+            script.setAttribute('data-theme', '{{ .Site.Params.giscusThemeDark | default "dark" }}');
+        } else {
+            script.setAttribute('data-theme', '{{ .Site.Params.giscusTheme | default "light" }}');
+        }
+    {{- else -}}
+        script.setAttribute('data-theme', '{{ $theme }}');
+    {{- end -}}
+{{- end -}}
