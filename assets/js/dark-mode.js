@@ -69,7 +69,7 @@ function changeMode() {
     const themeColor = isDark ? '{{ .Site.Params.themeColorDark }}' : '{{ .Site.Params.themeColor }}';
     document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
 
-    {{ if and .Site.Params.enableUtterances }}
+    {{ if and .Site.Params.enableUtterances (eq hugo.Environment "production") }}
         // Change Utterances Comments Theme
         // https://github.com/utterance/utterances/issues/229
         if (isDark) {
@@ -89,7 +89,7 @@ function changeMode() {
         }
     {{ end }}
 
-    {{ if and .Site.Params.enableGiscus }}
+    {{ if and .Site.Params.enableGiscus (eq hugo.Environment "production") }}
         // Change Giscus Comments Theme
         if (isDark) {
             changeGiscusTheme('{{ .Site.Params.giscusThemeDark | default "dark" }}');
