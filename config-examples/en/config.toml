@@ -695,6 +695,22 @@ uglyURLs = false
     utterancesLabel = ""
     # Note: https://utteranc.es/
 
+    ## Giscus
+    enableGiscus = true
+    giscusRepo = "repo/you/want"
+    giscusRepoId = ""
+    giscusCategory = "General"
+    giscusCategoryId = ""
+    giscusMapping = "pathname"
+    giscusReactionsEnabled = true
+    giscusEmitMetaData = false
+    giscusInputPosition = "top"
+    giscusTheme = "light_tritanopia"
+    giscusThemeDark = "dark_tritanopia"
+    giscusLang = "en"
+    giscusLabel = "giscus"
+    # 说明：https://giscus.app
+
     ## Gitalk
     enableGitalk = false
     gitalkClientID = "your_client_id"
