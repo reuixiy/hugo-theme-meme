@@ -30,7 +30,6 @@
             script.setAttribute('data-input-position', '{{ .Site.Params.giscusInputPosition }}')
             {{ template "giscus-theme" . }}
             script.setAttribute('data-lang', '{{- .Site.Params.giscusLang -}}')
-            script.setAttribute('data-loading', 'lazy');
             {{ with .Site.Params.giscusLabel }}
                 script.setAttribute('label', '{{ . }}');
             {{ end }}
