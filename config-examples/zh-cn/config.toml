@@ -1441,6 +1441,6 @@ uglyURLs = false
         mermaid = "/npm/mermaid/dist/mermaid.min.js"
         qrcode = "/npm/qrcode-generator@1.4.4/qrcode.min.js"
         valine = "/npm/valine@1.5.1/dist/Valine.min.js"
-        busuanzi = "/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"
+        busuanzi = "https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"
         utterances = "https://utteranc.es/client.js"
         giscus = "https://giscus.app/client.js"
