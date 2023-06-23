@@ -1113,6 +1113,7 @@ uglyURLs = false
     repoURL = ""
     # 編輯地址
     repoEditURL = ""
+    repoEditURLSuffix = ""
 
     # Git 的圖示
     gitIcon = "code-branch"

@@ -1169,6 +1169,7 @@ uglyURLs = false
 
     repoURL = ""
     repoEditURL = ""
+    repoEditURLSuffix = ""
 
     gitIcon = "code-branch"
     displayCommitHash = true
