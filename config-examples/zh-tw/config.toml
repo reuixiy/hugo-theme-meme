@@ -1269,6 +1269,9 @@ uglyURLs = false
     # 是否開啟圖示的跳動效果
     iconAnimation = true
 
+    # 是否顯示站點的作者名稱
+    displaySiteAuthorName = true
+
     # 是否顯示 Hugo 和 MemE 的連結
     displayPoweredBy = true
 

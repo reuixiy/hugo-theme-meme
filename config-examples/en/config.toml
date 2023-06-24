@@ -1303,6 +1303,8 @@ uglyURLs = false
     # Enable heartbeat animation?
     iconAnimation = true
 
+    displaySiteAuthorName = true
+
     # Display links to Hugo and MemE?
     displayPoweredBy = true
 
