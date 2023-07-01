@@ -15,12 +15,12 @@
               {{- now.Format "2006" -}}
 
               {{- with .Site.Params.iconBetweenYearAndAuthor -}}
-                  &nbsp;{{- partial "utils/icon.html" (dict "$" $ "name" . "class" "footer-icon") -}}&nbsp;
-              {{- else -}}
-                  &nbsp;
+                  &nbsp;{{- partial "utils/icon.html" (dict "$" $ "name" . "class" "footer-icon") -}}
               {{- end -}}
 
-              {{- .Site.Author.name -}}
+              {{- if .Site.Params.displaySiteAuthorName -}}
+                  &nbsp;{{- .Site.Author.name -}}
+              {{- end -}}
             </div>
 
             {{- if .Site.Params.displayPoweredBy }}

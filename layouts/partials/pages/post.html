@@ -4,6 +4,7 @@
         {{ $attrs := partial "utils/data-attributes.html" . }}
 
         <article class="content post h-entry"
+        {{- with .Params.languageCode }} lang="{{ . }}"{{ end }}
         {{- if $attrs.smallCaps }} data-small-caps="true"{{ end }}
         {{- with $attrs.align }} data-align="{{ . }}"{{ end }}
         {{- with $attrs.type }} data-type="{{ . }}"{{ end }}
