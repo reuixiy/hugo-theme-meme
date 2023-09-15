@@ -788,6 +788,8 @@ uglyURLs = false
     ## Ad Units
     enableGoogleAdUnits = false
     googleAdSlot = ""
+    googleAdSlotInArticle = ""
+    googleAdSlotAutoRelaxed = ""
 
 
     ######################################

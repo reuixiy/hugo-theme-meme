@@ -733,6 +733,8 @@ uglyURLs = false
     ## 廣告單元
     enableGoogleAdUnits = false
     googleAdSlot = ""
+    googleAdSlotInArticle = ""
+    googleAdSlotAutoRelaxed = ""
 
 
     ######################################
