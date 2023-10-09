@@ -108,3 +108,27 @@
         }
     }
 }
+
+@if ($shareOnMastodon) {
+    .warning {
+        font-size: 150%;
+        border: 1px dashed var(--color-contrast-low);
+        text-align: center;
+        padding: 1em;
+    }
+    .share-text {
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .share-instance-container {
+        display: flex;
+        flex-direction: row;
+    }
+    .share-instance {
+        flex-grow: 1;
+    }
+    .share-submit {
+        font-size: 120%;
+        font-weight: bold;
+    }
+}

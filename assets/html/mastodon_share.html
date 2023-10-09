@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    {{ .Scratch.Set "share_page" true }}
+    {{ partial "head.html" . }}
+    {{ .Scratch.Delete "share_page" }}
+    <body>
+        {{ $domains := resources.GetRemote "https://api.fediverse.observer/"  (dict
+            "method" "post"
+            "body" `query={nodes(softwarename: "mastodon"){domain score active_users_monthly}}`
+            "headers" (dict
+                "Content-Type" "application/x-www-form-urlencoded"
+            )
+        ) -}}
+        {{ with $domains.Err -}}
+            {{ warnf "Failed retrieving the list of Mastodon instances: %s" . -}}
+            {{ $domains = slice }}
+        {{ else -}}
+            {{ $domains = sort ($domains | unmarshal).data.nodes "domain" -}}
+        {{ end -}}
+        <datalist id="mastodon-domains">
+            {{ range $domains -}}
+                {{ if and (gt .score 90) (gt .active_users_monthly 100 ) -}}
+                    <option>{{ .domain }}</option>
+                {{ end -}}
+            {{ end -}}
+        </datalist>
+        <div class="container">
+            <main class="main single" id="main">
+                <div class="main-inner">
+                    <article class="content">
+                        <noscript><div class="warning">{{ i18n "javascriptRequired" }}</div></noscript>
+                        <h1>{{ i18n "shareOnTitle" }}{{ i18n "mastodon" }}</h1>
+                        <form id="shareForm">
+                            <p>
+                                <label>
+                                    {{ i18n "shareTextLabel" }}
+                                    <textarea id="text" class="share-text" rows="7" readonly></textarea>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    {{ i18n "mastodonInstanceLabel" }}
+                                    <span class="share-instance-container">
+                                        https://<input id="instance" class="share-instance" type="text" autofocus list="mastodon-domains">
+                                    </span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" id="rememberInstance">
+                                    {{ i18n "rememberInstanceLabel" }}
+                                </label>
+                            </p>
+                            <p><button type="submit" class="share-submit" id="submit">{{ i18n "mastodonSubmitLabel" }}</button></p>
+                        </form>
+                    </article>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

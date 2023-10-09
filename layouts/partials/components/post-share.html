@@ -49,6 +49,22 @@
                 </div>
             {{ end }}
 
+            {{ if .Site.Params.shareOnMastodon }}
+                <div class="share-item mastodon">
+                    {{ $path := (strings.TrimPrefix "/" (printf `%s/mastodon_share.html` .Site.LanguagePrefix)) -}}
+                    {{ $page := resources.Get "html/mastodon_share.html" -}}
+                    {{ $page := $page | resources.ExecuteAsTemplate $path (.GetPage "/") -}}
+                    {{ if .Site.Params.enableFingerprint -}}
+                        {{ $page = $page | resources.Fingerprint -}}
+                    {{ end -}}
+                    {{ $hashtags_text := delimit (union (slice "") (split ($hashtags.Get "tags") ",")) " #" -}}
+                    {{ $text := printf "%s%s\n%s" $title $hashtags_text .Permalink -}}
+                    <a href="{{ $page.RelPermalink }}#{{ $text | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "mastodon" }}" target="_blank" rel="noopener">
+                        {{- partial "utils/icon.html" (dict "$" . "name" "mastodon" "class" "mastodon-icon") -}}
+                    </a>
+                </div>
+            {{ end }}
+
             {{ if .Site.Params.shareOnLinkedIn }}
                 <div class="share-item linkedin">
                     {{ $url := (printf `https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s&summary=%s&source=%s` .Permalink $title $description .Site.Title) }}

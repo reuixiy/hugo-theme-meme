@@ -63,6 +63,20 @@ other = "Found {{ .Count }} results for “{{ .Term }}”"
 [searchResultsNone]
 other = "No results found for “{{ .Term }}”"
 
+[javascriptRequired]
+other = "This functionality requires JavaScript to be enabled!"
+
+[shareTextLabel]
+other = "Post text (can be changed in the next step)"
+
+[mastodonInstanceLabel]
+other = "Mastodon instance"
+
+[rememberInstanceLabel]
+other = "Remember instance on this device"
+
+[mastodonSubmitLabel]
+other = "Continue to Mastodon"
 
 # Socials
 
@@ -71,6 +85,9 @@ other = "Twitter"
 
 [facebook]
 other = "Facebook"
+
+[mastodon]
+other = "Mastodon"
 
 [linkedin]
 other = "LinkedIn"
