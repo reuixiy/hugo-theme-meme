@@ -1212,6 +1212,11 @@ uglyURLs = false
 
     shareViaQRCode = true
 
+    shareOnMastodonFetchInstances = true
+    # Note: This will cause a list of
+    # instances to be downloaded at build
+    # time. There might be build delays.
+
 
     ######################################
     # Related Posts

@@ -4,18 +4,21 @@
     {{ partial "head.html" . }}
     {{ .Scratch.Delete "share_page" }}
     <body>
-        {{ $domains := resources.GetRemote "https://api.fediverse.observer/"  (dict
-            "method" "post"
-            "body" `query={nodes(softwarename: "mastodon"){domain score active_users_monthly}}`
-            "headers" (dict
-                "Content-Type" "application/x-www-form-urlencoded"
-            )
-        ) -}}
-        {{ with $domains.Err -}}
-            {{ warnf "Failed retrieving the list of Mastodon instances: %s" . -}}
-            {{ $domains = slice }}
-        {{ else -}}
-            {{ $domains = sort ($domains | unmarshal).data.nodes "domain" -}}
+        {{ $domains := slice -}}
+        {{ if .Site.Params.shareOnMastodonFetchInstances -}}
+            {{ with resources.GetRemote "https://api.fediverse.observer/"  (dict
+                "method" "post"
+                "body" `query={nodes(softwarename: "mastodon"){domain score active_users_monthly}}`
+                "headers" (dict
+                    "Content-Type" "application/x-www-form-urlencoded"
+                )
+            ) -}}
+                {{ with .Err -}}
+                    {{ warnf "Failed retrieving the list of Mastodon instances: %s" . -}}
+                {{ else -}}
+                    {{ $domains = sort (. | unmarshal).data.nodes "domain" -}}
+                {{ end -}}
+            {{ end -}}
         {{ end -}}
         <datalist id="mastodon-domains">
             {{ range $domains -}}
