@@ -41,6 +41,12 @@
     }
 }
 
+.mastodon-icon {
+    &:hover {
+        fill: #2B90D9;
+    }
+}
+
 .facebook-icon {
     &:hover {
         fill: #1877F2;
