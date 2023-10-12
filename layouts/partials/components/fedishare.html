@@ -20,7 +20,18 @@
             "misskey" "share?text={text}"
     -}}
     <body data-projects="{{ $projects | jsonify }}">
-        {{ $domains := slice -}}
+        {{
+            $domains := slice
+                (dict "domain" "mastodon.social" "softwarename" "mastodon" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "fedibird.com" "softwarename" "fedibird" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "lemmy.world" "softwarename" "lemmy" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "kbin.social" "softwarename" "kbin" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "pixelfed.social" "softwarename" "pixelfed" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "micro.blog" "softwarename" "microdotblog" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "misskey.io" "softwarename" "misskey" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "bookwyrm.social" "softwarename" "bookwyrm" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "diasp.org" "softwarename" "diaspora" "score" "100" "active_users_monthly" "1000")
+        -}}
         {{ if .Site.Params.shareOnFediverseFetchInstances -}}
             {{ with resources.GetRemote "https://api.fediverse.observer/"  (dict
                 "method" "post"
