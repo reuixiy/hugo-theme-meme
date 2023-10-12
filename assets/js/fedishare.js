@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let instance = document.getElementById("instance").value.trim();
 
-        // Fix URLs mistakenly entered into the instance fields
+        // Fix URLs mistakenly entered into the instance field
         instance = instance.replace(/^\w+:[\/\\]*/, "");
         instance = instance.replace(/[\/\\].*/, "");
         document.getElementById("instance").value = instance;
