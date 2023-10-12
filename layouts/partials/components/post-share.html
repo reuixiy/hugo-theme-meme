@@ -49,18 +49,22 @@
                 </div>
             {{ end }}
 
-            {{ if .Site.Params.shareOnMastodon }}
+            {{ if .Site.Params.shareOnFediverse }}
+                {{ $path := (strings.TrimPrefix "/" (printf `%s/fedishare.html` .Site.LanguagePrefix)) -}}
+                {{ $page := resources.Get "html/fedishare.html" -}}
+                {{ $page := $page | resources.ExecuteAsTemplate $path (.GetPage "/") -}}
+                {{ if .Site.Params.enableFingerprint -}}
+                    {{ $page = $page | resources.Fingerprint -}}
+                {{ end -}}
+                {{ $url := printf "%s#title=%s&description=%s&url=%s" $page.RelPermalink ($title | safeURL) ($description | safeURL) (.Permalink | safeURL) }}
                 <div class="share-item mastodon">
-                    {{ $path := (strings.TrimPrefix "/" (printf `%s/mastodon_share.html` .Site.LanguagePrefix)) -}}
-                    {{ $page := resources.Get "html/mastodon_share.html" -}}
-                    {{ $page := $page | resources.ExecuteAsTemplate $path (.GetPage "/") -}}
-                    {{ if .Site.Params.enableFingerprint -}}
-                        {{ $page = $page | resources.Fingerprint -}}
-                    {{ end -}}
-                    {{ $hashtags_text := delimit (union (slice "") (split ($hashtags.Get "tags") ",")) " #" -}}
-                    {{ $text := printf "%s%s\n%s" $title $hashtags_text .Permalink -}}
-                    <a href="{{ $page.RelPermalink }}#{{ $text | safeURL }}" title="{{ i18n "shareOnTitle" }}{{ i18n "mastodon" }}" target="_blank" rel="noopener">
+                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "mastodon" }}" target="_blank" rel="noopener">
                         {{- partial "utils/icon.html" (dict "$" . "name" "mastodon" "class" "mastodon-icon") -}}
+                    </a>
+                </div>
+                <div class="share-item fediverse">
+                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "fediverse" }}" target="_blank" rel="noopener">
+                        {{- partial "utils/icon.html" (dict "$" . "name" "fediverse" "class" "fediverse-icon") -}}
                     </a>
                 </div>
             {{ end }}

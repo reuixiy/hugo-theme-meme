@@ -1,5 +1,5 @@
-{{- $path := (strings.TrimPrefix "/" (printf `%s/js/share.js` .Site.LanguagePrefix)) -}}
-{{- $script := resources.Get "js/share.js" | resources.ExecuteAsTemplate $path . | resources.Minify -}}
+{{- $path := (strings.TrimPrefix "/" (printf `%s/js/fedishare.js` .Site.LanguagePrefix)) -}}
+{{- $script := resources.Get "js/fedishare.js" | resources.ExecuteAsTemplate $path . | resources.Minify -}}
 
 {{- if .Site.Params.enableFingerprint -}}
     {{- $script = $script | resources.Fingerprint -}}

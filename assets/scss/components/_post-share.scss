@@ -47,6 +47,12 @@
     }
 }
 
+.fediverse-icon {
+    &:hover {
+        fill: url(#gradient);
+    }
+}
+
 .facebook-icon {
     &:hover {
         fill: #1877F2;
@@ -115,25 +121,27 @@
     }
 }
 
-@if ($shareOnMastodon) {
+@if ($shareOnFediverse) {
     .warning {
         font-size: 150%;
         border: 1px dashed var(--color-contrast-low);
         text-align: center;
         padding: 1em;
     }
-    .share-shared-text {
+    .fedishare-title,
+    .fedishare-description,
+    .fedishare-url {
         box-sizing: border-box;
         width: 100%;
     }
-    .share-instance-container {
+    .fedishare-instance-container {
         display: flex;
         flex-direction: row;
     }
-    .share-instance {
+    .fedishare-instance {
         flex-grow: 1;
     }
-    .share-submit {
+    .fedishare-submit {
         font-size: 120%;
         font-weight: bold;
     }

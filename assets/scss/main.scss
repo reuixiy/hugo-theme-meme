@@ -325,10 +325,10 @@ $baseRelURL: "{{ "" | relURL | strings.TrimSuffix "/" }}";
         $displayShareOnText: false;
     {{ end }}
 
-    {{ if .Site.Params.shareOnMastodon }}
-        $shareOnMastodon: true;
+    {{ if .Site.Params.shareOnFediverse }}
+        $shareOnFediverse: true;
     {{ else }}
-        $shareOnMastodon: false;
+        $shareOnFediverse: false;
     {{ end }}
 
     {{ if and .Site.Params.shareViaQRCode }}

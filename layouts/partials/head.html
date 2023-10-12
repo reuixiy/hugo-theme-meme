@@ -30,8 +30,8 @@
 
     <!-- JavaScript -->
     {{ if ne .Kind "404" }}
-        {{ if .Scratch.Get "share_page" }}
-            {{ partial "components/share-script.html" . }}
+        {{ if .Scratch.Get "fedishare_page" }}
+            {{ partial "components/fedishare-script.html" . }}
         {{ else }}
             {{ partial "script.html" . }}
         {{ end }}
