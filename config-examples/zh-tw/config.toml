@@ -1157,7 +1157,7 @@ uglyURLs = false
 
     shareOnTwitter = true
     shareOnFacebook = true
-    shareOnMastodon = true
+    shareOnFediverse = true
     shareOnLinkedIn = true
     shareOnTelegram = true
     shareOnWeibo = true
