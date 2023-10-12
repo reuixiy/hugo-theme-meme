@@ -325,7 +325,7 @@ $baseRelURL: "{{ "" | relURL | strings.TrimSuffix "/" }}";
         $displayShareOnText: false;
     {{ end }}
 
-    {{ if .Site.Params.shareOnFediverse }}
+    {{ if or .Site.Params.shareOnMastodon .Site.Params.shareOnFediverse }}
         $shareOnFediverse: true;
     {{ else }}
         $shareOnFediverse: false;

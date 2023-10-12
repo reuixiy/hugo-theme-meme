@@ -34,7 +34,7 @@
                 (dict "domain" "bookwyrm.social" "softwarename" "bookwyrm" "score" "100" "active_users_monthly" "1000")
                 (dict "domain" "diasp.org" "softwarename" "diaspora" "score" "100" "active_users_monthly" "1000")
         -}}
-        {{ if .Site.Params.shareOnFediverseFetchInstances -}}
+        {{ if .Site.Params.shareFetchFediverseInstances -}}
             {{ with resources.GetRemote "https://api.fediverse.observer/"  (dict
                 "method" "post"
                 "body" `query={nodes(softwarename: ""){softwarename domain score active_users_monthly}}`

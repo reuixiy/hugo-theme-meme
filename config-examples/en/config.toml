@@ -1202,6 +1202,7 @@ uglyURLs = false
 
     shareOnTwitter = true
     shareOnFacebook = true
+    shareOnMastodon = true
     shareOnFediverse = true
     shareOnLinkedIn = true
     shareOnTelegram = true
@@ -1212,7 +1213,9 @@ uglyURLs = false
 
     shareViaQRCode = true
 
-    shareOnFediverseFetchInstances = true
+    shareFetchFediverseInstances = true
+    # Recommended when using shareOnMastodon
+    # or shareOnFediverse.
     # Note: This will cause a list of
     # instances to be downloaded at build
     # time. There might be build delays.

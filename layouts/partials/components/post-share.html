@@ -49,24 +49,28 @@
                 </div>
             {{ end }}
 
-            {{ if .Site.Params.shareOnFediverse }}
+            {{ if or .Site.Params.shareOnMastodon .Site.Params.shareOnFediverse }}
                 {{ $path := (strings.TrimPrefix "/" (printf `%s/fedishare.html` .Site.LanguagePrefix)) -}}
                 {{ $page := resources.Get "html/fedishare.html" -}}
                 {{ $page := $page | resources.ExecuteAsTemplate $path (.GetPage "/") -}}
                 {{ if .Site.Params.enableFingerprint -}}
                     {{ $page = $page | resources.Fingerprint -}}
                 {{ end -}}
-                {{ $url := printf "%s#title=%s&description=%s&url=%s" $page.RelPermalink ($title | safeURL) ($description | safeURL) (.Permalink | safeURL) }}
-                <div class="share-item mastodon">
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "mastodon" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "mastodon" "class" "mastodon-icon") -}}
-                    </a>
-                </div>
-                <div class="share-item fediverse">
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "fediverse" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "fediverse" "class" "fediverse-icon") -}}
-                    </a>
-                </div>
+                {{ $url := printf "%s#title=%s&description=%s&url=%s" $page.RelPermalink ($title | safeURL) ($description | safeURL) (.Permalink | safeURL) -}}
+                {{ if .Site.Params.shareOnMastodon -}}
+                    <div class="share-item mastodon">
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "mastodon" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" . "name" "mastodon" "class" "mastodon-icon") -}}
+                        </a>
+                    </div>
+                {{ end -}}
+                {{ if .Site.Params.shareOnFediverse -}}
+                    <div class="share-item fediverse">
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "fediverse" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" . "name" "fediverse" "class" "fediverse-icon") -}}
+                        </a>
+                    </div>
+                {{ end -}}
             {{ end }}
 
             {{ if .Site.Params.shareOnLinkedIn }}
