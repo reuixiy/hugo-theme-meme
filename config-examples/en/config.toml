@@ -737,6 +737,23 @@ uglyURLs = false
     gitalkEnableHotKey = true
     # Note: https://github.com/gitalk/gitalk
 
+    # Remark42
+    enableRemark42 = false
+    remark42Host = ""
+    remark42SiteId = "remark"
+    remark42Url = ""
+    remark42Components = ["embed"]
+    remark42MaxShownComments = 15
+    remark42MaxLastComments = 15
+    remark42Theme = "light"
+    remark42PageTitle = ""
+    remark42Locale = "en"
+    remark42ShowEmailSubscription = true
+    remark42ShowRssSubscription = true
+    remark42SimpleView = false
+    remark42NoFooter = false
+    # Note: https://remark42.com/docs/configuration/frontend/
+
 
     ######################################
     # Google Analytics
