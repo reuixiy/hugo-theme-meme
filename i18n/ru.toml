@@ -15,10 +15,10 @@ other = "Содержание"
 other = "Читать далее"
 
 [prevPage]
-other = "Новые"
+other = "Предыдущие"
 
 [nextPage]
-other = "Старые"
+other = "Следующие"
 
 [copy]
 other = "Копировать"

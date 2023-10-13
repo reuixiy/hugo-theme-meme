@@ -36,13 +36,13 @@ other = "Link"
 other = "Lizenz"
 
 [shareOn]
-other = "Teile auf:"
+other = "Teilen auf:"
 
 [shareOnTitle]
-other = "Teile auf "
+other = "Teilen auf "
 
 [shareViaTitle]
-other = "Teile mit "
+other = "Teilen mit "
 
 [relatedPosts]
 other = "Siehe auch:"
