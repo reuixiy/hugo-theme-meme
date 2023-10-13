@@ -1155,18 +1155,7 @@ uglyURLs = false
 
     displayShareOnText = false
 
-    shareOnTwitter = true
-    shareOnFacebook = true
-    shareOnMastodon = true
-    shareOnFediverse = true
-    shareOnLinkedIn = true
-    shareOnTelegram = true
-    shareOnWeibo = true
-    shareOnDouban = true
-    shareOnQQ = true
-    shareOnQzone = true
-
-    shareViaQRCode = true
+    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "qrcode"]
 
     # 从网络获取 Fediverse 实例列表用于输入建议
     shareFetchFediverseInstances = true

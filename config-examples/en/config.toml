@@ -1200,24 +1200,13 @@ uglyURLs = false
 
     displayShareOnText = false
 
-    shareOnTwitter = true
-    shareOnFacebook = true
-    shareOnMastodon = true
-    shareOnFediverse = true
-    shareOnLinkedIn = true
-    shareOnTelegram = true
-    shareOnWeibo = true
-    shareOnDouban = true
-    shareOnQQ = true
-    shareOnQzone = true
-
-    shareViaQRCode = true
+    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "qrcode"]
 
     # Fetch fediverse instances list for
     # input suggestions
     shareFetchFediverseInstances = true
-    # Note: Recommended when using shareOnMastodon
-    #       or shareOnFediverse. This will
+    # Note: Recommended when using mastodon
+    #       or fediverse share items. This will
     #       cause a list of instances to be
     #       downloaded at build time. There
     #       might be build delays.
