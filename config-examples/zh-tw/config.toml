@@ -1168,6 +1168,13 @@ uglyURLs = false
 
     shareViaQRCode = true
 
+    # 從網路取得 Fediverse 實例清單用於輸入建議
+    shareFetchFediverseInstances = true
+    # 說明：當使用 shareOnMastodon 或
+    #      shareOnFediverse 時建議開啟。開啟後
+    #      建置時，資料需要從網路下載，會帶來額外
+    #      的建置時間。
+
 
     ######################################
     # 相關文章

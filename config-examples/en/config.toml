@@ -1213,12 +1213,14 @@ uglyURLs = false
 
     shareViaQRCode = true
 
+    # Fetch fediverse instances list for
+    # input suggestions
     shareFetchFediverseInstances = true
-    # Recommended when using shareOnMastodon
-    # or shareOnFediverse.
-    # Note: This will cause a list of
-    # instances to be downloaded at build
-    # time. There might be build delays.
+    # Note: Recommended when using shareOnMastodon
+    #       or shareOnFediverse. This will
+    #       cause a list of instances to be
+    #       downloaded at build time. There
+    #       might be build delays.
 
 
     ######################################

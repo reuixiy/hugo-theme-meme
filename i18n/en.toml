@@ -63,26 +63,6 @@ other = "Found {{ .Count }} results for “{{ .Term }}”"
 [searchResultsNone]
 other = "No results found for “{{ .Term }}”"
 
-[javascriptRequired]
-other = "This functionality requires JavaScript to be enabled!"
-
-[fedishareTitleLabel]
-other = "Post title"
-
-[fedishareDescriptionLabel]
-other = "Description (can be changed in the next step)"
-
-[fedishareUrlLabel]
-other = "Link"
-
-[fedishareInstanceLabel]
-other = "Fediverse instance"
-
-[fedishareRememberInstance]
-other = "Remember instance on this device"
-
-[fedishareSubmitLabel]
-other = "Continue to instance"
 
 # Socials
 
@@ -118,6 +98,30 @@ other = "Qzone"
 
 [qrcode]
 other = "QR Code"
+
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "This functionality requires JavaScript to be enabled!"
+
+[fedishareTitleLabel]
+other = "Post title"
+
+[fedishareDescriptionLabel]
+other = "Description (can be changed in the next step)"
+
+[fedishareUrlLabel]
+other = "Link"
+
+[fedishareInstanceLabel]
+other = "Fediverse instance"
+
+[fedishareRememberInstance]
+other = "Remember instance on this device"
+
+[fedishareSubmitLabel]
+other = "Continue to instance"
 
 
 # Months

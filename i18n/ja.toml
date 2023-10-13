@@ -94,6 +94,30 @@ other = "Qzone"
 other = "QR Code"
 
 
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "この機能を使用するには、JavaScript を有効にする必要があります。"
+
+[fedishareTitleLabel]
+other = "記事のタイトル"
+
+[fedishareDescriptionLabel]
+other = "説明 (次のステップで変更可能)"
+
+[fedishareUrlLabel]
+other = "リンク"
+
+[fedishareInstanceLabel]
+other = "フェディバースインスタンス"
+
+[fedishareRememberInstance]
+other = "このデバイス上のインスタンスを記憶する"
+
+[fedishareSubmitLabel]
+other = "インスタンスを続行する"
+
+
 # Months
 # Used for `i18nMonth`
 

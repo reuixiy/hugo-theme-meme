@@ -94,6 +94,30 @@ other = "Qzone"
 other = "QR Code"
 
 
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "Ehhez a funkcióhoz engedélyezni kell a JavaScriptet!"
+
+[fedishareTitleLabel]
+other = "Postai cím"
+
+[fedishareDescriptionLabel]
+other = "Leírás (a következő lépésben módosítható)"
+
+[fedishareUrlLabel]
+other = "Link"
+
+[fedishareInstanceLabel]
+other = "Fediverse példa"
+
+[fedishareRememberInstance]
+other = "Emlékezzen a példányra ezen az eszközön"
+
+[fedishareSubmitLabel]
+other = "Folytassa a példával"
+
+
 # Months
 # Used for `i18nMonth`
 
