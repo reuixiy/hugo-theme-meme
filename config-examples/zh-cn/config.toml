@@ -1158,7 +1158,7 @@ uglyURLs = false
     postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "qrcode"]
 
     # 从网络获取 Fediverse 实例列表用于输入建议
-    fetchFediverseInstances = true
+    shareFetchFediverseInstances = true
     # 说明：当开启 mastodon 或 fediverse 分享项
     #      时建议开启。开启后构建时，数据需要从网
     #      络下载，会带来额外的构建时间。

@@ -1204,7 +1204,7 @@ uglyURLs = false
 
     # Fetch fediverse instances list for
     # input suggestions
-    fetchFediverseInstances = true
+    shareFetchFediverseInstances = true
     # Note: Recommended when using mastodon
     #       or fediverse share items. This will
     #       cause a list of instances to be
