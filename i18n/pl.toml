@@ -94,6 +94,30 @@ other = "Qzone"
 other = "QR Code"
 
 
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "Ta funkcjonalność wymaga włączonej obsługi JavaScript!"
+
+[fedishareTitleLabel]
+other = "Tytuł posta"
+
+[fedishareDescriptionLabel]
+other = "Opis (można zmienić w następnym kroku)"
+
+[fedishareUrlLabel]
+other = "Połączyć"
+
+[fedishareInstanceLabel]
+other = "Instancja Fediverse"
+
+[fedishareRememberInstance]
+other = "Zapamiętaj instancję na tym urządzeniu"
+
+[fedishareSubmitLabel]
+other = "Przejdź do instancji"
+
+
 # Months
 # Used for `i18nMonth`
 

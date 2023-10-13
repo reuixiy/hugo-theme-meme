@@ -1202,6 +1202,8 @@ uglyURLs = false
 
     shareOnTwitter = true
     shareOnFacebook = true
+    shareOnMastodon = true
+    shareOnFediverse = true
     shareOnLinkedIn = true
     shareOnTelegram = true
     shareOnWeibo = true
@@ -1210,6 +1212,15 @@ uglyURLs = false
     shareOnQzone = true
 
     shareViaQRCode = true
+
+    # Fetch fediverse instances list for
+    # input suggestions
+    shareFetchFediverseInstances = true
+    # Note: Recommended when using shareOnMastodon
+    #       or shareOnFediverse. This will
+    #       cause a list of instances to be
+    #       downloaded at build time. There
+    #       might be build delays.
 
 
     ######################################

@@ -64,6 +64,8 @@ other = "找到 {{ .Count }} 條關於「{{ .Term }}」的結果"
 other = "沒有找到關於「{{ .Term }}」的結果"
 
 
+# Socials
+
 [twitter]
 other = "「Twitter」"
 
@@ -91,6 +93,32 @@ other = "「QQ 空間」"
 [qrcode]
 other = "「二維碼」"
 
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "此功能需要啟用 JavaScript！"
+
+[fedishareTitleLabel]
+other = "貼文標題"
+
+[fedishareDescriptionLabel]
+other = "描述（可以在下一步中更改）"
+
+[fedishareUrlLabel]
+other = "連結"
+
+[fedishareInstanceLabel]
+other = "Fediverse 實例"
+
+[fedishareRememberInstance]
+other = "這是設備上記住該實例"
+
+[fedishareSubmitLabel]
+other = "前往實例"
+
+
+# Share on Fediverse page
 
 [january]
 other = "一月"
@@ -128,6 +156,9 @@ other = "十一月"
 [december]
 other = "十二月"
 
+
+# Months
+# Used for `i18nMonth`
 
 [0]
 other = "〇"

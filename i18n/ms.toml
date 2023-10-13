@@ -94,6 +94,30 @@ other = "Qzone"
 other = "QR Code"
 
 
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "Fungsi ini memerlukan JavaScript untuk didayakan!"
+
+[fedishareTitleLabel]
+other = "Tajuk siaran"
+
+[fedishareDescriptionLabel]
+other = "Penerangan (boleh diubah dalam langkah seterusnya)"
+
+[fedishareUrlLabel]
+other = "Pautan"
+
+[fedishareInstanceLabel]
+other = "Contoh Fediverse"
+
+[fedishareRememberInstance]
+other = "Ingat contoh pada peranti ini"
+
+[fedishareSubmitLabel]
+other = "Teruskan ke contoh"
+
+
 # Months
 # Used for `i18nMonth`
 
