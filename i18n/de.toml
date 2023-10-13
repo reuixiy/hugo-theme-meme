@@ -106,7 +106,7 @@ other = "Titel des Beitrags"
 other = "Beschreibung (kann im nächsten Schritt geändert werden)"
 
 [fedishareUrlLabel]
-other = "Verknüpfung"
+other = "Link"
 
 [fedishareInstanceLabel]
 other = "Fediverse-Instanz"

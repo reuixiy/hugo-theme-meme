@@ -100,22 +100,22 @@ other = "QR Code"
 other = "Эта функция требует включения JavaScript!"
 
 [fedishareTitleLabel]
-other = "Заголовок поста"
+other = "Заголовок статьи"
 
 [fedishareDescriptionLabel]
 other = "Описание (можно изменить на следующем шаге)"
 
 [fedishareUrlLabel]
-other = "Связь"
+other = "Ссылка"
 
 [fedishareInstanceLabel]
-other = "Экземпляр Федиверс"
+other = "Сервер Fediverse"
 
 [fedishareRememberInstance]
-other = "Запомнить экземпляр на этом устройстве"
+other = "Запомнить сервер на этом устройстве"
 
 [fedishareSubmitLabel]
-other = "Продолжить создание экземпляра"
+other = "Перейти к серверу"
 
 
 # Months
