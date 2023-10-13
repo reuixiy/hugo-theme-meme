@@ -95,6 +95,18 @@
     }
 }
 
+.pocket-icon {
+    &:hover {
+        fill: #EF3F56;
+    }
+}
+
+.email-icon {
+    &:hover {
+        fill: #FFDF00;
+    }
+}
+
 @if ($shareViaQRCode) {
     .qrcode-icon {
         &:hover {

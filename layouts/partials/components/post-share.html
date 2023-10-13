@@ -110,6 +110,13 @@
                             {{- partial "utils/icon.html" (dict "$" $ "name" "qzone" "class" "qzone-icon") -}}
                         </a>
                     </div>
+                {{ else if eq . "pocket" }}
+                    <div class="share-item pocket">
+                        {{ $url := (printf `https://getpocket.com/edit.php?url=%s` $.Permalink) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "pocket" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "pocket" "class" "pocket-icon") -}}
+                        </a>
+                    </div>
                 {{ else if eq . "qrcode" }}
                     <div class="share-item qrcode">
                         <div class="qrcode-container" title="{{ i18n "shareViaTitle" }}{{ i18n "qrcode" }}">
@@ -117,6 +124,13 @@
                             <div id="qrcode-img"></div>
                         </div>
                         {{ partial "third-party/qrcode-generator.html" $ }}
+                    </div>
+                {{ else if eq . "email" }}
+                    <div class="share-item email">
+                        {{ $url := (printf `mailto:?subject=%s&body=%s%%0A%s` $title $description $.Permalink) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareViaTitle" }}{{ i18n "email" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "email" "class" "email-icon") -}}
+                        </a>
                     </div>
                 {{ else }}
                     {{ warnf "postShareItems option contains unknown share item '%s'" . }}
