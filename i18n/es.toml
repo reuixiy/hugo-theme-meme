@@ -90,8 +90,14 @@ other = "QQ"
 [qzone]
 other = "Qzone"
 
+[pocket]
+other = "Pocket"
+
 [qrcode]
 other = "Código QR"
+
+[email]
+other = "correo electrónico"
 
 
 # Share on Fediverse page

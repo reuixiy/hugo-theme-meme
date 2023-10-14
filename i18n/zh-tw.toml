@@ -90,8 +90,14 @@ other = "「QQ」"
 [qzone]
 other = "「QQ 空間」"
 
+[pocket]
+other = "「Pocket」"
+
 [qrcode]
 other = "「二維碼」"
+
+[email]
+other = "「電子郵件」"
 
 
 # Share on Fediverse page
