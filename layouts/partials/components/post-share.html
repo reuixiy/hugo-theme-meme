@@ -51,9 +51,6 @@
                     {{ $path := (strings.TrimPrefix "/" (printf `%s/fedishare.html` $.Site.LanguagePrefix)) -}}
                     {{ $page := resources.Get "html/fedishare.html" -}}
                     {{ $page := $page | resources.ExecuteAsTemplate $path ($.GetPage "/") -}}
-                    {{ if $.Site.Params.enableFingerprint -}}
-                        {{ $page = $page | resources.Fingerprint -}}
-                    {{ end -}}
                     {{ $url := printf "%s#title=%s&description=%s&url=%s" $page.RelPermalink ($title | safeURL) ($description | safeURL) ($.Permalink | safeURL) -}}
                     {{ if eq . "mastodon" -}}
                         <div class="share-item mastodon">
