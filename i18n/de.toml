@@ -36,13 +36,13 @@ other = "Link"
 other = "Lizenz"
 
 [shareOn]
-other = "Teile auf:"
+other = "Teilen auf:"
 
 [shareOnTitle]
-other = "Teile auf "
+other = "Teilen auf "
 
 [shareViaTitle]
-other = "Teile mit "
+other = "Teilen mit "
 
 [relatedPosts]
 other = "Siehe auch:"
@@ -72,6 +72,12 @@ other = "Twitter"
 [facebook]
 other = "Facebook"
 
+[fediverse]
+other = "Fediverse"
+
+[mastodon]
+other = "Mastodon"
+
 [linkedin]
 other = "LinkedIn"
 
@@ -90,8 +96,41 @@ other = "QQ"
 [qzone]
 other = "Qzone"
 
+[pocket]
+other = "Pocket"
+
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "QR Code"
+
+[email]
+other = "E-Mail"
+
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "Für diese Funktionalität muss JavaScript aktiviert sein!"
+
+[fedishareTitleLabel]
+other = "Titel des Beitrags"
+
+[fedishareDescriptionLabel]
+other = "Beschreibung (kann im nächsten Schritt geändert werden)"
+
+[fedishareUrlLabel]
+other = "Link"
+
+[fedishareInstanceLabel]
+other = "Fediverse-Instanz"
+
+[fedishareRememberInstance]
+other = "Instanz auf diesem Gerät merken"
+
+[fedishareSubmitLabel]
+other = "Weiter zur Instanz"
 
 
 # Months

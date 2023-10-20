@@ -30,7 +30,11 @@
 
     <!-- JavaScript -->
     {{ if ne .Kind "404" }}
-        {{ partial "script.html" . }}
+        {{ if .Scratch.Get "fedishare_page" }}
+            {{ partial "components/fedishare-script.html" . }}
+        {{ else }}
+            {{ partial "script.html" . }}
+        {{ end }}
     {{ end }}
 
     <!-- Fonts -->
@@ -75,8 +79,12 @@
         <link rel="{{ .Rel }}" type="{{ .MediaType }}" href="{{ .Permalink }}" title="{{ $.Site.Title }}" />
     {{ end }}
 
-    <!-- SEO -->
-    <link rel="canonical" href="{{ .Permalink }}" />
+    {{ if .Scratch.Get "share_page" -}}
+        <meta name="robots" value="noindex,nofollow">
+    {{ else -}}
+        <!-- SEO -->
+        <link rel="canonical" href="{{ .Permalink }}" />
+    {{ end -}}
     <!-- JSON-LD -->
     {{- with .Site.Params.jsonLD -}}
         {{ partial "utils/json-ld.html" (dict "$" $ "description" $description) }}

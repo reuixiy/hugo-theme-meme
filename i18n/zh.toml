@@ -64,11 +64,19 @@ other = "找到 {{ .Count }} 条关于「{{ .Term }}」的结果"
 other = "没有找到关于「{{ .Term }}」的结果"
 
 
+# Socials
+
 [twitter]
 other = "「Twitter」"
 
 [facebook]
 other = "「Facebook」"
+
+[fediverse]
+other = "「Fediverse」"
+
+[mastodon]
+other = "「Mastodon」"
 
 [linkedin]
 other = "「LinkedIn」"
@@ -88,9 +96,45 @@ other = "「QQ」"
 [qzone]
 other = "「QQ 空间」"
 
+[pocket]
+other = "「Pocket」"
+
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "「二维码」"
 
+[email]
+other = "「电子邮件」"
+
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "此功能需要启用 JavaScript！"
+
+[fedishareTitleLabel]
+other = "帖子标题"
+
+[fedishareDescriptionLabel]
+other = "描述（可以在下一步中更改）"
+
+[fedishareUrlLabel]
+other = "链接"
+
+[fedishareInstanceLabel]
+other = "Fediverse 实例"
+
+[fedishareRememberInstance]
+other = "在此设备上记住该实例"
+
+[fedishareSubmitLabel]
+other = "前往实例"
+
+
+# Months
+# Used for `i18nMonth`
 
 [january]
 other = "一月"
@@ -128,6 +172,9 @@ other = "十一月"
 [december]
 other = "十二月"
 
+
+# Numbers
+# Used for `i18nYear`
 
 [0]
 other = "〇"

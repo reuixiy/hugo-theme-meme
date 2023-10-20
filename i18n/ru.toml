@@ -15,10 +15,10 @@ other = "Содержание"
 other = "Читать далее"
 
 [prevPage]
-other = "Новые"
+other = "Предыдущие"
 
 [nextPage]
-other = "Старые"
+other = "Следующие"
 
 [copy]
 other = "Копировать"
@@ -39,10 +39,10 @@ other = "Лицензия"
 other = "Поделиться:"
 
 [shareOnTitle]
-other = "Поделиться "
+other = "Поделиться на "
 
 [shareViaTitle]
-other = "Поделиться "
+other = "Поделиться через "
 
 [relatedPosts]
 other = "Ещё:"
@@ -72,6 +72,12 @@ other = "Twitter"
 [facebook]
 other = "Facebook"
 
+[fediverse]
+other = "Fediverse"
+
+[mastodon]
+other = "Mastodon"
+
 [linkedin]
 other = "LinkedIn"
 
@@ -90,8 +96,41 @@ other = "QQ"
 [qzone]
 other = "Qzone"
 
+[pocket]
+other = "Pocket"
+
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "QR Code"
+
+[email]
+other = "электронную почту"
+
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "Эта функция требует включения JavaScript!"
+
+[fedishareTitleLabel]
+other = "Заголовок статьи"
+
+[fedishareDescriptionLabel]
+other = "Описание (можно изменить на следующем шаге)"
+
+[fedishareUrlLabel]
+other = "Ссылка"
+
+[fedishareInstanceLabel]
+other = "Сервер Fediverse"
+
+[fedishareRememberInstance]
+other = "Запомнить сервер на этом устройстве"
+
+[fedishareSubmitLabel]
+other = "Перейти к серверу"
 
 
 # Months

@@ -72,6 +72,12 @@ other = "Twitter"
 [facebook]
 other = "Facebook"
 
+[fediverse]
+other = "Fediverse"
+
+[mastodon]
+other = "Mastodon"
+
 [linkedin]
 other = "LinkedIn"
 
@@ -90,8 +96,41 @@ other = "QQ"
 [qzone]
 other = "Qzone"
 
+[pocket]
+other = "Pocket"
+
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "QR Code"
+
+[email]
+other = "surel"
+
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "Fungsionalitas ini memerlukan JavaScript untuk diaktifkan!"
+
+[fedishareTitleLabel]
+other = "Judul postingan"
+
+[fedishareDescriptionLabel]
+other = "Deskripsi (dapat diubah pada langkah berikutnya)"
+
+[fedishareUrlLabel]
+other = "Tautan"
+
+[fedishareInstanceLabel]
+other = "Contoh federal"
+
+[fedishareRememberInstance]
+other = "Ingat contoh pada perangkat ini"
+
+[fedishareSubmitLabel]
+other = "Lanjutkan ke contoh"
 
 
 # Months

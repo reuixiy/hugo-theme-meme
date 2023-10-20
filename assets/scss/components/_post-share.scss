@@ -41,6 +41,18 @@
     }
 }
 
+.mastodon-icon {
+    &:hover {
+        fill: #2B90D9;
+    }
+}
+
+.fediverse-icon {
+    &:hover {
+        fill: url(#fediverse-gradient);
+    }
+}
+
 .facebook-icon {
     &:hover {
         fill: #1877F2;
@@ -83,6 +95,24 @@
     }
 }
 
+.pocket-icon {
+    &:hover {
+        fill: #EF3F56;
+    }
+}
+
+.hackernews-icon {
+    &:hover {
+        fill: #FF6600;
+    }
+}
+
+.email-icon {
+    &:hover {
+        fill: #FFDF00;
+    }
+}
+
 @if ($shareViaQRCode) {
     .qrcode-icon {
         &:hover {
@@ -106,5 +136,31 @@
                 border: 1px solid var(--color-contrast-lower);
             }
         }
+    }
+}
+
+@if ($shareOnFediverse) {
+    .warning {
+        font-size: 150%;
+        border: 1px dashed var(--color-contrast-low);
+        text-align: center;
+        padding: 1em;
+    }
+    .fedishare-title,
+    .fedishare-description,
+    .fedishare-url {
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .fedishare-instance-container {
+        display: flex;
+        flex-direction: row;
+    }
+    .fedishare-instance {
+        flex-grow: 1;
+    }
+    .fedishare-submit {
+        font-size: 120%;
+        font-weight: bold;
     }
 }

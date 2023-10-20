@@ -31,88 +31,115 @@
 
         <div class="share-items">
 
-            {{ if .Site.Params.shareOnTwitter }}
-                <div class="share-item twitter">
-                    {{ $url := (printf `https://twitter.com/share?url=%s&text=%s&hashtags=%s&via=%s` .Permalink $title ($hashtags.Get "tags" | default "") .Site.Params.siteTwitter) }}
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "twitter" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "twitter" "class" "twitter-icon") -}}
-                    </a>
-                </div>
-            {{ end }}
-
-            {{ if .Site.Params.shareOnFacebook }}
-                <div class="share-item facebook">
-                    {{ $url := (printf `https://www.facebook.com/sharer/sharer.php?u=%s&hashtag=%s` .Permalink ($hashtags.Get "firsttag" | default "")) }}
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "facebook" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "facebook" "class" "facebook-icon") -}}
-                    </a>
-                </div>
-            {{ end }}
-
-            {{ if .Site.Params.shareOnLinkedIn }}
-                <div class="share-item linkedin">
-                    {{ $url := (printf `https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s&summary=%s&source=%s` .Permalink $title $description .Site.Title) }}
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "linkedin" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "linkedin" "class" "linkedin-icon") -}}
-                    </a>
-                </div>
-            {{ end }}
-
-            {{ if .Site.Params.shareOnTelegram }}
-                <div class="share-item telegram">
-                    {{ $url := (printf `https://t.me/share/url?url=%s&text=%s` .Permalink $title) }}
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "telegram" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "telegram" "class" "telegram-icon") -}}
-                    </a>
-                </div>
-            {{ end }}
-
-            {{ if .Site.Params.shareOnWeibo }}
-                <div class="share-item weibo">
-                    {{ $url := (printf `https://service.weibo.com/share/share.php?&url=%s&title=%s&pic=%s&searchPic=false` .Permalink $title $images) }}
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "weibo" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "weibo" "class" "weibo-icon") -}}
-                    </a>
-                </div>
-            {{ end }}
-
-            {{ if .Site.Params.shareOnDouban }}
-                <div class="share-item douban">
-                    {{ $url := (printf `https://www.douban.com/share/service?href=%s&name=%s&text=%s` .Permalink $title $description) }}
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "douban" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "douban" "class" "douban-icon") -}}
-                    </a>
-                </div>
-            {{ end }}
-
-            {{ if .Site.Params.shareOnQQ }}
-                <div class="share-item qq">
-                    {{ $url := (printf `https://connect.qq.com/widget/shareqq/index.html?url=%s&title=%s&summary=%s&pics=%s&site=%s` .Permalink $title $description $images .Site.Title) }}
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "qq" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "qq" "class" "qq-icon") -}}
-                    </a>
-                </div>
-            {{ end }}
-
-            {{ if .Site.Params.shareOnQzone }}
-                <div class="share-item qzone">
-                    {{ $url := (printf `https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=%s&title=%s&summary=%s&pics=%s&site=%s` .Permalink $title $description $images .Site.Title) }}
-                    <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "qzone" }}" target="_blank" rel="noopener">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "qzone" "class" "qzone-icon") -}}
-                    </a>
-                </div>
-            {{ end }}
-
-            {{ if .Site.Params.shareViaQRCode }}
-                <div class="share-item qrcode">
-                    <div class="qrcode-container" title="{{ i18n "shareViaTitle" }}{{ i18n "qrcode" }}">
-                        {{- partial "utils/icon.html" (dict "$" . "name" "qrcode" "class" "qrcode-icon") -}}
-                        <div id="qrcode-img"></div>
+            {{ $ := . }}
+            {{ range .Site.Params.postShareItems | default (slice "facebook" "mastodon" "fediverse" "twitter") }}
+                {{ if eq . "twitter" }}
+                    <div class="share-item twitter">
+                        {{ $url := (printf `https://twitter.com/share?url=%s&text=%s&hashtags=%s&via=%s` $.Permalink $title ($hashtags.Get "tags" | default "") $.Site.Params.siteTwitter) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "twitter" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "twitter" "class" "twitter-icon") -}}
+                        </a>
                     </div>
-                    {{ partial "third-party/qrcode-generator.html" . }}
-                </div>
+                {{ else if eq . "facebook" }}
+                    <div class="share-item facebook">
+                        {{ $url := (printf `https://www.facebook.com/sharer/sharer.php?u=%s&hashtag=%s` $.Permalink ($hashtags.Get "firsttag" | default "")) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "facebook" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "facebook" "class" "facebook-icon") -}}
+                        </a>
+                    </div>
+                {{ else if or (eq . "mastodon") (eq . "fediverse") }}
+                    {{ $path := (strings.TrimPrefix "/" (printf `%s/fedishare.html` $.Site.LanguagePrefix)) -}}
+                    {{ $page := resources.Get "html/fedishare.html" -}}
+                    {{ $page := $page | resources.ExecuteAsTemplate $path ($.GetPage "/") -}}
+                    {{ $url := printf "%s#title=%s&description=%s&url=%s" $page.RelPermalink ($title | safeURL) ($description | safeURL) ($.Permalink | safeURL) -}}
+                    {{ if eq . "mastodon" -}}
+                        <div class="share-item mastodon">
+                            <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "mastodon" }}" target="_blank" rel="noopener">
+                                {{- partial "utils/icon.html" (dict "$" $ "name" "mastodon" "class" "mastodon-icon") -}}
+                            </a>
+                        </div>
+                    {{ else if eq . "fediverse" -}}
+                        <div class="share-item fediverse">
+                            <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "fediverse" }}" target="_blank" rel="noopener">
+                                {{- partial "utils/icon.html" (dict "$" $ "name" "fediverse" "class" "fediverse-icon") -}}
+                            </a>
+                        </div>
+                    {{ end -}}
+                {{ else if eq . "linkedin" }}
+                    <div class="share-item linkedin">
+                        {{ $url := (printf `https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s&summary=%s&source=%s` $.Permalink $title $description $.Site.Title) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "linkedin" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "linkedin" "class" "linkedin-icon") -}}
+                        </a>
+                    </div>
+                {{ else if eq  . "telegram" }}
+                    <div class="share-item telegram">
+                        {{ $url := (printf `https://t.me/share/url?url=%s&text=%s` $.Permalink $title) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "telegram" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "telegram" "class" "telegram-icon") -}}
+                        </a>
+                    </div>
+                {{ else if eq . "weibo" }}
+                    <div class="share-item weibo">
+                        {{ $url := (printf `https://service.weibo.com/share/share.php?&url=%s&title=%s&pic=%s&searchPic=false` $.Permalink $title $images) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "weibo" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "weibo" "class" "weibo-icon") -}}
+                        </a>
+                    </div>
+                {{ else if eq . "douban" }}
+                    <div class="share-item douban">
+                        {{ $url := (printf `https://www.douban.com/share/service?href=%s&name=%s&text=%s` $.Permalink $title $description) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "douban" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "douban" "class" "douban-icon") -}}
+                        </a>
+                    </div>
+                {{ else if eq . "qq" }}
+                    <div class="share-item qq">
+                        {{ $url := (printf `https://connect.qq.com/widget/shareqq/index.html?url=%s&title=%s&summary=%s&pics=%s&site=%s` $.Permalink $title $description $images $.Site.Title) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "qq" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "qq" "class" "qq-icon") -}}
+                        </a>
+                    </div>
+                {{ else if eq . "qzone" }}
+                    <div class="share-item qzone">
+                        {{ $url := (printf `https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=%s&title=%s&summary=%s&pics=%s&site=%s` $.Permalink $title $description $images $.Site.Title) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "qzone" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "qzone" "class" "qzone-icon") -}}
+                        </a>
+                    </div>
+                {{ else if eq . "pocket" }}
+                    <div class="share-item pocket">
+                        {{ $url := (printf `https://getpocket.com/edit.php?url=%s` $.Permalink) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "pocket" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "pocket" "class" "pocket-icon") -}}
+                        </a>
+                    </div>
+                {{ else if eq . "hackernews" }}
+                    <div class="share-item hackernews">
+                        {{ $url := (printf `https://news.ycombinator.com/submitlink?u=%s&t=%s` $.Permalink $title) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "hackernews" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "hackernews" "class" "hackernews-icon") -}}
+                        </a>
+                    </div>
+                {{ else if eq . "qrcode" }}
+                    <div class="share-item qrcode">
+                        <div class="qrcode-container" title="{{ i18n "shareViaTitle" }}{{ i18n "qrcode" }}">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "qrcode" "class" "qrcode-icon") -}}
+                            <div id="qrcode-img"></div>
+                        </div>
+                        {{ partial "third-party/qrcode-generator.html" $ }}
+                    </div>
+                {{ else if eq . "email" }}
+                    <div class="share-item email">
+                        {{ $url := (printf `mailto:?subject=%s&body=%s%%0A%s` $title $description $.Permalink) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareViaTitle" }}{{ i18n "email" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "email" "class" "email-icon") -}}
+                        </a>
+                    </div>
+                {{ else }}
+                    {{ warnf "postShareItems option contains unknown share item '%s'" . }}
+                {{ end }}
             {{ end }}
-
         </div>
 
     </div>

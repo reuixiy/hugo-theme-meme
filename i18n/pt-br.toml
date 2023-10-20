@@ -64,13 +64,19 @@ other = "Encontrados {{ .Count }} resultados para “{{ .Term }}”"
 other = "Não foram encontrados resultados para “{{ .Term }}”"
 
 
-# Redes Sociais
+# Socials
 
 [twitter]
 other = "Twitter"
 
 [facebook]
 other = "Facebook"
+
+[fediverse]
+other = "Fediverse"
+
+[mastodon]
+other = "Mastodon"
 
 [linkedin]
 other = "LinkedIn"
@@ -90,12 +96,45 @@ other = "QQ"
 [qzone]
 other = "Qzone"
 
+[pocket]
+other = "Pocket"
+
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "QR Code"
 
+[email]
+other = "e-mail"
 
-# Meses
-# Utilizado em `i18nMonth`
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "Esta funcionalidade requer que o JavaScript esteja ativado!"
+
+[fedishareTitleLabel]
+other = "Título da postagem"
+
+[fedishareDescriptionLabel]
+other = "Descrição (pode ser alterada na próxima etapa)"
+
+[fedishareUrlLabel]
+other = "Link"
+
+[fedishareInstanceLabel]
+other = "Instância Fediverse"
+
+[fedishareRememberInstance]
+other = "Lembrar instância neste dispositivo"
+
+[fedishareSubmitLabel]
+other = "Continuar para a instância"
+
+
+# Months
+# Used for `i18nMonth`
 
 [january]
 other = "Janeiro"
@@ -134,8 +173,8 @@ other = "Novembro"
 other = "Dezembro"
 
 
-# Números
-# Utilizado em `i18nYear`
+# Numbers
+# Used for `i18nYear`
 
 [0]
 other = "0"

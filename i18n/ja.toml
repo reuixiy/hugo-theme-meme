@@ -72,6 +72,12 @@ other = "Twitter"
 [facebook]
 other = "Facebook"
 
+[fediverse]
+other = "Fediverse"
+
+[mastodon]
+other = "Mastodon"
+
 [linkedin]
 other = "LinkedIn"
 
@@ -90,8 +96,41 @@ other = "QQ"
 [qzone]
 other = "Qzone"
 
+[pocket]
+other = "Pocket"
+
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "QR Code"
+
+[email]
+other = "Eメール"
+
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "この機能を使用するには、JavaScript を有効にする必要があります。"
+
+[fedishareTitleLabel]
+other = "記事のタイトル"
+
+[fedishareDescriptionLabel]
+other = "説明 (次のステップで変更可能)"
+
+[fedishareUrlLabel]
+other = "リンク"
+
+[fedishareInstanceLabel]
+other = "フェディバースインスタンス"
+
+[fedishareRememberInstance]
+other = "このデバイス上のインスタンスを記憶する"
+
+[fedishareSubmitLabel]
+other = "インスタンスを続行する"
 
 
 # Months
