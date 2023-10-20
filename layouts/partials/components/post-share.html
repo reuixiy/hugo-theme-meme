@@ -114,6 +114,13 @@
                             {{- partial "utils/icon.html" (dict "$" $ "name" "pocket" "class" "pocket-icon") -}}
                         </a>
                     </div>
+                {{ else if eq . "hackernews" }}
+                    <div class="share-item hackernews">
+                        {{ $url := (printf `https://news.ycombinator.com/submitlink?u=%s&t=%s` $.Permalink $title) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "hackernews" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "hackernews" "class" "hackernews-icon") -}}
+                        </a>
+                    </div>
                 {{ else if eq . "qrcode" }}
                     <div class="share-item qrcode">
                         <div class="qrcode-container" title="{{ i18n "shareViaTitle" }}{{ i18n "qrcode" }}">

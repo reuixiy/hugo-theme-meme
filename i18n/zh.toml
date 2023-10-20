@@ -93,6 +93,9 @@ other = "「QQ 空间」"
 [pocket]
 other = "「Pocket」"
 
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "「二维码」"
 

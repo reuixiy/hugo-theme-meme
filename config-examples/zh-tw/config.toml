@@ -1155,7 +1155,7 @@ uglyURLs = false
 
     displayShareOnText = false
 
-    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "qrcode", "email"]
+    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "hackernews", "qrcode", "email"]
 
     # 從網路取得 Fediverse 實例清單用於輸入建議
     fetchFediverseInstances = true

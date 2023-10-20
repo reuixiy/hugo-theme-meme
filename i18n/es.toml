@@ -93,6 +93,9 @@ other = "Qzone"
 [pocket]
 other = "Pocket"
 
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "Código QR"
 

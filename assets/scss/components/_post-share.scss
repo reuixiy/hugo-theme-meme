@@ -101,6 +101,12 @@
     }
 }
 
+.hackernews-icon {
+    &:hover {
+        fill: #FF6600;
+    }
+}
+
 .email-icon {
     &:hover {
         fill: #FFDF00;
