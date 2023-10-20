@@ -72,6 +72,12 @@ other = "Twitter"
 [facebook]
 other = "Facebook"
 
+[fediverse]
+other = "Fediverse"
+
+[mastodon]
+other = "Mastodon"
+
 [linkedin]
 other = "LinkedIn"
 
