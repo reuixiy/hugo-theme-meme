@@ -737,6 +737,22 @@ uglyURLs = false
     gitalkEnableHotKey = true
     # Note: https://github.com/gitalk/gitalk
 
+    ## Giscus
+    enableGiscus = false
+    giscusRepo = "[ENTER repo/you/want HERE]"
+    giscusRepoId = "[ENTER REPO ID HERE]"
+    giscusCategory = "[ENTER CATEGORY NAME HERE]"
+    giscusCategoryId = "[ENTER CATEGORY ID HERE]"
+    giscusMapping = "pathname"
+    giscusStrict = false
+    giscusReactionsEnabled = true
+    giscusEmitMetaData = false
+    giscusInputPosition = "top"
+    giscusTheme = "light"
+    giscusThemeDark = "dark"
+    giscusLang = "en"
+    # Note: https://giscus.app
+
     # Remark42
     enableRemark42 = false
     remark42Host = ""
@@ -1217,11 +1233,11 @@ uglyURLs = false
 
     displayShareOnText = false
 
-    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "qrcode", "email"]
+    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "hackernews", "qrcode", "email"]
 
     # Fetch fediverse instances list for
     # input suggestions
-    fetchFediverseInstances = true
+    fetchFediverseInstances = false
     # Note: Recommended when using mastodon
     #       or fediverse share items. This will
     #       cause a list of instances to be

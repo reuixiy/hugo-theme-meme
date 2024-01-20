@@ -51,9 +51,6 @@
                     {{ $path := (strings.TrimPrefix "/" (printf `%s/fedishare.html` $.Site.LanguagePrefix)) -}}
                     {{ $page := resources.Get "html/fedishare.html" -}}
                     {{ $page := $page | resources.ExecuteAsTemplate $path ($.GetPage "/") -}}
-                    {{ if $.Site.Params.enableFingerprint -}}
-                        {{ $page = $page | resources.Fingerprint -}}
-                    {{ end -}}
                     {{ $url := printf "%s#title=%s&description=%s&url=%s" $page.RelPermalink ($title | safeURL) ($description | safeURL) ($.Permalink | safeURL) -}}
                     {{ if eq . "mastodon" -}}
                         <div class="share-item mastodon">
@@ -115,6 +112,13 @@
                         {{ $url := (printf `https://getpocket.com/edit.php?url=%s` $.Permalink) }}
                         <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "pocket" }}" target="_blank" rel="noopener">
                             {{- partial "utils/icon.html" (dict "$" $ "name" "pocket" "class" "pocket-icon") -}}
+                        </a>
+                    </div>
+                {{ else if eq . "hackernews" }}
+                    <div class="share-item hackernews">
+                        {{ $url := (printf `https://news.ycombinator.com/submitlink?u=%s&t=%s` $.Permalink $title) }}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "hackernews" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "hackernews" "class" "hackernews-icon") -}}
                         </a>
                     </div>
                 {{ else if eq . "qrcode" }}

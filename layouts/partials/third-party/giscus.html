@@ -1,0 +1,61 @@
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "giscus") -}}
+
+<script>
+    function loadComments() {
+        (function() {
+            const giscus = document.getElementById('giscus');
+            if (!giscus) return;
+            const script = document.createElement('script');
+
+            script.src = '{{ $src }}';
+            script.dataset.repo = '{{ .Site.Params.giscusRepo }}';
+            script.dataset.repoId = '{{ .Site.Params.giscusRepoId }}';
+            script.dataset.category = '{{ .Site.Params.giscusCategory }}';
+            script.dataset.categoryId = '{{ .Site.Params.giscusCategoryId }}';
+            script.dataset.mapping = '{{ .Site.Params.giscusMapping }}';
+
+            {{ if .Site.Params.giscusStrict }}
+                script.dataset.strict = '1';
+            {{ else }}
+                script.dataset.strict = '0';
+            {{ end }}
+            {{ if .Site.Params.giscusReactionsEnabled }}
+                script.dataset.reactionsEnabled = '1';
+            {{ else }}
+                script.dataset.reactionsEnabled = '0';
+            {{ end }}
+            {{ if .Site.Params.giscusEmitMetaData }}
+                script.dataset.emitMetadata = '1';
+            {{ else }}
+                script.dataset.emitMetadata = '0';
+            {{ end }}
+
+            script.dataset.inputPosition = '{{ .Site.Params.giscusInputPosition }}';
+            {{ template "giscus-theme" . }}
+            script.dataset.lang = '{{ .Site.Params.giscusLang }}';
+            script.dataset.loading = 'lazy';
+            script.crossOrigin = 'anonymous';
+            script.async = true;
+
+            giscus.appendChild(script);
+        })();
+    }
+</script>
+
+{{- define "giscus-theme" -}}
+    {{- $theme := .Site.Params.giscusTheme | default "light" -}}
+    {{- if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") -}}
+        {{- $theme = .Site.Params.giscusThemeDark | default "dark" -}}
+    {{- end -}}
+
+    {{- if .Site.Params.enableDarkMode -}}
+        const isDark = getCurrentTheme() === 'dark';
+        if (isDark) {
+            script.dataset.theme = '{{ .Site.Params.giscusThemeDark | default "dark" }}';
+        } else {
+            script.dataset.theme = '{{ .Site.Params.giscusTheme | default "light" }}';
+        }
+    {{- else -}}
+        script.dataset.theme = '{{ $theme }}';
+    {{- end -}}
+{{- end -}}

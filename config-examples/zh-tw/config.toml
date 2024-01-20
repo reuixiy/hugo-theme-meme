@@ -683,6 +683,22 @@ uglyURLs = false
     gitalkEnableHotKey = true
     # 說明：https://github.com/gitalk/gitalk
 
+    ## Giscus
+    enableGiscus = false
+    giscusRepo = "[ENTER repo/you/want HERE]"
+    giscusRepoId = "[ENTER REPO ID HERE]"
+    giscusCategory = "[ENTER CATEGORY NAME HERE]"
+    giscusCategoryId = "[ENTER CATEGORY ID HERE]"
+    giscusMapping = "pathname"
+    giscusStrict = false
+    giscusReactionsEnabled = true
+    giscusEmitMetaData = false
+    giscusInputPosition = "top"
+    giscusTheme = "light"
+    giscusThemeDark = "dark"
+    giscusLang = "zh-TW"
+    # 說明：https://giscus.app/zh-TW
+
     # Remark42
     enableRemark42 = false
     remark42Host = ""
@@ -1172,10 +1188,10 @@ uglyURLs = false
 
     displayShareOnText = false
 
-    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "qrcode", "email"]
+    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "hackernews", "qrcode", "email"]
 
     # 從網路取得 Fediverse 實例清單用於輸入建議
-    fetchFediverseInstances = true
+    fetchFediverseInstances = false
     # 說明：當開啟 mastodon 或 fediverse 分享項
     #      時建議開啟。開啟後建置時，資料需要從網
     #      路下載，會帶來額外的建置時間。

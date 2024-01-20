@@ -23,8 +23,13 @@
             <div id="gitalk-container"></div>
         {{ end }}
 
+        {{ if .Site.Params.enableGiscus }}
+            <div id="giscus"></div>
+        {{ end }}
+
         {{ if .Site.Params.enableRemark42 }}
           <div id="remark42"></div>
         {{ end }}
+
     {{ end }}
 {{ end }}

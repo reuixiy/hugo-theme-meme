@@ -110,6 +110,11 @@
     {{- $host = $.Site.Params.lib.path.utterances | default $defalut -}}
 {{- end -}}
 
+{{- if eq $type "giscus" -}}
+    {{- $defalut := "https://giscus.app/client.js" -}}
+    {{- $host = $.Site.Params.lib.path.giscus | default $defalut -}}
+{{- end -}}
+
 <!--
 
   Third-party libraries/services/resources which not included in this file:

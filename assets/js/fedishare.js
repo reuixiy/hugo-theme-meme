@@ -69,13 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         getSoftwareName(instance).then(name => {
             let projects = JSON.parse(document.body.getAttribute("data-projects"));
-            let endpoint = projects[name];
+            let endpoint = projects.hasOwnProperty(name) ? projects[name] : projects.mastodon;
             endpoint = endpoint.replace("{title}", encodeURIComponent(title));
             endpoint = endpoint.replace("{description}", encodeURIComponent(description));
             endpoint = endpoint.replace("{url}", encodeURIComponent(url));
             endpoint = endpoint.replace("{text}", encodeURIComponent(text));
-            if (projects.hasOwnProperty(name))
-                location.href = `https://${instance}/${endpoint}`;
+            location.href = `https://${instance}/${endpoint}`;
         });
     });
 
