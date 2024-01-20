@@ -655,16 +655,20 @@ uglyURLs = false
 
     ## Giscus
     enableGiscus = false
-    giscusRepo = "[ENTER REPO HERE]"
+    giscusRepo = "[ENTER repo/you/want HERE]"
     giscusRepoId = "[ENTER REPO ID HERE]"
     giscusCategory = "[ENTER CATEGORY NAME HERE]"
     giscusCategoryId = "[ENTER CATEGORY ID HERE]"
     giscusMapping = "pathname"
+    giscusStrict = false
+    giscusReactionsEnabled = true
+    giscusEmitMetaData = false
+    giscusInputPosition = "top"
     giscusTheme = "light"
     giscusThemeDark = "dark"
-    giscusInputPosition = "top"
     giscusLang = "zh-TW"
     # 說明：https://giscus.app/zh-TW
+
 
     ######################################
     # Google Analytics
