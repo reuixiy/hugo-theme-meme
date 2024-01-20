@@ -33,6 +33,10 @@
             {{ partial "third-party/giscus.html" . }}
         {{ end }}
 
+        {{ if .Site.Params.enableRemark42 }}
+            {{ partial "third-party/remark42.html" . }}
+        {{ end }}
+
     {{ end }}
 {{ end }}
 

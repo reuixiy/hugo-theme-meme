@@ -699,6 +699,23 @@ uglyURLs = false
     giscusLang = "zh-TW"
     # 說明：https://giscus.app/zh-TW
 
+    # Remark42
+    enableRemark42 = false
+    remark42Host = ""
+    remark42SiteId = "remark"
+    remark42Url = ""
+    remark42Components = ["embed"]
+    remark42MaxShownComments = 15
+    remark42MaxLastComments = 15
+    remark42Theme = "light"
+    remark42PageTitle = ""
+    remark42Locale = "zh-tw"
+    remark42ShowEmailSubscription = true
+    remark42ShowRssSubscription = true
+    remark42SimpleView = false
+    remark42NoFooter = false
+    # 說明：https://remark42.com/docs/configuration/frontend/
+
 
     ######################################
     # Google Analytics
