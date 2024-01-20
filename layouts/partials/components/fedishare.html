@@ -37,9 +37,9 @@
         {{ if .Site.Params.fetchFediverseInstances -}}
             {{ with resources.GetRemote "https://api.fediverse.observer/"  (dict
                 "method" "post"
-                "body" `query={nodes(softwarename: ""){softwarename domain score active_users_monthly}}`
+                "body" `{"query": "{nodes(softwarename: \"\"){softwarename domain score active_users_monthly}}"}`
                 "headers" (dict
-                    "Content-Type" "application/x-www-form-urlencoded"
+                    "Content-Type" "application/json"
                 )
             ) -}}
                 {{ with .Err -}}
