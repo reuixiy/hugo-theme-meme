@@ -2,6 +2,12 @@
 
 <script src="{{ $src }}"></script>
 <script>
+    // Replace mermaid pre.code to div
+    Array.from(document.getElementsByClassName("language-mermaid")).forEach(
+        (el) => {
+            el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
+        }
+    );
     const mermaidConfig = {
         startOnLoad: true,
         flowchart: {
