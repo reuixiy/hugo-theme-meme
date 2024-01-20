@@ -1,4 +1,5 @@
-{{- $scripts := slice "https://cdn.jsdelivr.net/npm/instantsearch.js@2/dist/instantsearch.min.js" -}}
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "instantsearch") -}}
 
+{{- $scripts := slice $src -}}
 {{- $scripts = union $scripts (slice "js/algolia-search.js") -}}
 {{- return $scripts -}}

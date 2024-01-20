@@ -12,7 +12,7 @@
         {{- if and $.Site.Params.enableImageHost $.Site.Params.headAlso -}}
             {{- if (eq hugo.Environment "production") -}}
                 {{- if ne (substr . 0 4) "http" -}}
-                    {{- $img = printf `%s%s` $.Site.Params.imageHostURL (strings.TrimPrefix "/" $img) -}}
+                    {{- $img = printf `%s/%s` (strings.TrimSuffix "/" $.Site.Params.imageHostURL) (strings.TrimPrefix "/" $img) -}}
                 {{- end -}}
             {{- end -}}
         {{- end -}}

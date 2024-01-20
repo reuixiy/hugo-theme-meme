@@ -9,11 +9,11 @@ if (userPrefers === 'dark') {
     changeModeMeta('light');
 }
 
-window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
     changeMode();
 });
 
-window.addEventListener("DOMContentLoaded", event => {
+window.addEventListener("DOMContentLoaded", () => {
     // Update meta tags and code highlighting
     changeMode();
 
@@ -86,6 +86,28 @@ function changeMode() {
                 };
                 iframe.contentWindow.postMessage(message, 'https://utteranc.es');
             }
+        }
+    {{ end }}
+
+    {{ if and .Site.Params.enableGiscus (eq hugo.Environment "production") }}
+        // Change Giscus Comments Theme
+        if (isDark) {
+            changeGiscusTheme('{{ .Site.Params.giscusThemeDark | default "dark" }}');
+        } else {
+            changeGiscusTheme('{{ .Site.Params.giscusTheme | default "light" }}');
+        }
+        function changeGiscusTheme(theme) {
+            function sendMessage(message) {
+                const iframe = document.querySelector('iframe.giscus-frame');
+                if (iframe !== null) {
+                    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+                }
+            }
+            sendMessage({
+                setConfig: {
+                    theme: theme,
+                },
+            });
         }
     {{ end }}
 

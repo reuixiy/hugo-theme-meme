@@ -72,6 +72,12 @@ other = "Twitter"
 [facebook]
 other = "Facebook"
 
+[fediverse]
+other = "Fediverse"
+
+[mastodon]
+other = "Mastodon"
+
 [linkedin]
 other = "LinkedIn"
 
@@ -90,8 +96,41 @@ other = "QQ"
 [qzone]
 other = "Qzone"
 
+[pocket]
+other = "Pocket"
+
+[hackernews]
+other = "Hacker News"
+
 [qrcode]
 other = "QR Code"
+
+[email]
+other = "e-mail"
+
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "Cette fonctionnalité nécessite que JavaScript soit activé !"
+
+[fedishareTitleLabel]
+other = "Titre de l’article"
+
+[fedishareDescriptionLabel]
+other = "Description (peut être modifiée à l’étape suivante)"
+
+[fedishareUrlLabel]
+other = "Lien"
+
+[fedishareInstanceLabel]
+other = "Instance Fediverse"
+
+[fedishareRememberInstance]
+other = "Mémoriser l’instance sur cet appareil"
+
+[fedishareSubmitLabel]
+other = "Continuer à instancier"
 
 
 # Months

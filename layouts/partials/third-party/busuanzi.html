@@ -1,5 +1,7 @@
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "busuanzi") -}}
+
 {{ if or .Site.Params.displayBusuanziPagePV .Site.Params.displayBusuanziSiteUVAndPV }}
     {{ if eq hugo.Environment "production" }}
-        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <script async src="{{ $src }}"></script>
     {{ end }}
 {{ end }}

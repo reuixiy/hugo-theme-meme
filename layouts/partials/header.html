@@ -18,9 +18,9 @@
 {{ define "site-brand" }}
     <div class="site-brand">
         {{ if .Site.Params.siteBrandSVG }}
-            <a href="{{ print `/` | relLangURL }}">{{ partial "utils/icon.html" (dict "$" . "name" "brand") }}</a>
+            <a href="{{ "" | relLangURL }}">{{ partial "utils/icon.html" (dict "$" . "name" "brand") }}</a>
         {{ else }}
-            <a href="{{ print `/` | relLangURL }}" class="brand">{{ .Site.Title }}</a>
+            <a href="{{ "" | relLangURL }}" class="brand">{{ .Site.Title }}</a>
         {{ end }}
     </div>
 {{ end }}

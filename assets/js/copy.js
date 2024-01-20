@@ -1,3 +1,5 @@
+{{ $src := partial "utils/lib.html" (dict "$" . "type" "clipboard") }}
+
 // Copy Button for Code Blocks
 
 // References
@@ -9,7 +11,7 @@ window.addEventListener("DOMContentLoaded", event => {
     const copiedText = '{{ i18n "copied" }}';
 
     document.querySelectorAll('.post-body > pre').forEach((e) => {
-        let div = document.createElement('div');
+        const div = document.createElement('div');
         e.parentNode.replaceChild(div, e);
         div.appendChild(e);
     });
@@ -25,10 +27,11 @@ window.addEventListener("DOMContentLoaded", event => {
             button.type = 'button';
             button.innerText = copyText;
 
+            let codeBlock;
             if (containerEl.classList.contains('lntable')) {
-                var codeBlock = containerEl.querySelectorAll('.lntd')[1];
+                codeBlock = containerEl.querySelectorAll('.lntd')[1];
             } else {
-                var codeBlock = containerEl.querySelector('code');
+                codeBlock = containerEl.querySelector('code');
             }
 
             button.addEventListener('click', () => {
@@ -67,7 +70,7 @@ window.addEventListener("DOMContentLoaded", event => {
         addCopyButtons(navigator.clipboard);
     } else {
         const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js';
+        script.src = '{{ $src }}';
         script.defer = true;
         script.onload = function() {
             addCopyButtons(clipboard);

@@ -11,9 +11,9 @@
             </li>
             {{ if $.Params.original | default $.Site.Params.original }}
                 {{ $url := urls.Parse $.Permalink }}
+                {{ $decodedBaseURL := (printf `%s://%s` $url.Scheme $url.Host) }}
                 {{ $decodedPath := $url.Path }}
-                {{ $baseURLWithLangFix := (strings.TrimSuffix "/" (print `/` | absLangURL)) }}
-                {{ $decodedPermalink := (printf `%s%s` $baseURLWithLangFix $decodedPath) }}
+                {{ $decodedPermalink := (printf `%s%s` $decodedBaseURL $decodedPath) }}
                 <li class="copyright-item link"><span class="copyright-item-text">{{ i18n "copyrightLink" }}</span>{{ i18n "colon" }}<a href="{{ $.RelPermalink }}" target="_blank" rel="noopener">{{ $decodedPermalink }}</a></li>
             {{ else }}
                 {{ with $.Params.link }}

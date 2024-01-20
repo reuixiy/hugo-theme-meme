@@ -1,0 +1,19 @@
+::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-contrast-low);
+  &:hover {
+      background-color: alpha(var(--color-primary), 0.5);
+  }
+  &:active {
+      background-color: alpha(var(--color-primary), 0.75);
+  }
+}
+::-webkit-scrollbar-corner {
+  background-color: var(--color-bg);
+}

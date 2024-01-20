@@ -1,9 +1,14 @@
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "utterances") -}}
+
 <script>
     function loadComments() {
         (function() {
-            var utterances = document.getElementById("utterances");
-            var script = document.createElement('script');
-            script.src = 'https://utteranc.es/client.js';
+            const utterances = document.getElementById("utterances");
+            if (!utterances) {
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = '{{ $src }}';
             script.async = true;
             script.crossOrigin = 'anonymous';
             script.setAttribute('repo', '{{ .Site.Params.utterancesRepo }}');

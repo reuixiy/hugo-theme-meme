@@ -1,14 +1,17 @@
 {{- $rawTitle := (partial "utils/title.html" (dict "$" . "title" .Title)).rawTitle -}}
 <script>
     function loadComments() {
+        if (!document.getElementById('disqus_thread')) {
+            return;
+        }
         if (typeof DISQUS === 'undefined') {
-            var disqus_config = function() {
+            const disqus_config = function() {
                 {{ with .Params.disqus_url | default .Permalink }}this.page.url = '{{ . }}';{{ end }}
                 {{ with .Params.disqus_identifier | default .RelPermalink }}this.page.identifier = '{{ . }}';{{ end }}
                 {{ with .Params.disqus_title | default $rawTitle }}this.page.title = '{{ . }}';{{ end }}
             };
             (function() {
-                var d = document, s = d.createElement('script'); s.async = true;
+                const d = document, s = d.createElement('script'); s.async = true;
                 s.src = 'https://{{ .Site.Params.disqusShortname }}.disqus.com/embed.js';
                 s.setAttribute('data-timestamp', +new Date());
                 (d.head || d.body).appendChild(s);

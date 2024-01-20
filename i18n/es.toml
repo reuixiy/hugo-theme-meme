@@ -9,16 +9,16 @@ one = "min"
 other = "mins"
 
 [tocTitle]
-other = "Conteúdo"
+other = "Contenido"
 
 [readMore]
-other = "Leia mais"
+other = "Continúa leyendo"
 
 [prevPage]
-other = "Recentes"
+other = "Nuevas"
 
 [nextPage]
-other = "Anteriores"
+other = "Viejas"
 
 [copy]
 other = "Copiar"
@@ -30,38 +30,38 @@ other = "Copiado!"
 other = "Autor"
 
 [copyrightLink]
-other = "Link"
+other = "Vínculo"
 
 [copyrightLicense]
-other = "Licença"
+other = "Licencia"
 
 [shareOn]
-other = "Compartilhar em:"
+other = "Compartir en:"
 
 [shareOnTitle]
-other = "Compartilhar em "
+other = "Compartir en "
 
 [shareViaTitle]
-other = "Compartilhar via "
+other = "Compartir via "
 
 [relatedPosts]
-other = "Veja também:"
+other = "Publicaciones relacionadas:"
 
 [loadComments]
-other = "Carregar comentários?"
+other = "Cargar Comentarios?"
 
 [pageNotFound]
-other = "404 - Página não encontrada"
+other = "404 - Página no encontrada."
 
 [fofLinkText]
-other = "Leve-me para página inicial"
+other = "Llévame al Inicio"
 
 [searchResultsTitle]
-one = "Encontrado um resultado para “{{ .Term }}”"
-other = "Encontrados {{ .Count }} resultados para “{{ .Term }}”"
+one = "Se encontró un resultado sobre “{{ .Term }}”"
+other = "Se encontraron {{ .Count }} resultados sobre “{{ .Term }}”"
 
 [searchResultsNone]
-other = "Não foram encontrados resultados para “{{ .Term }}”"
+other = "No se encontró ningún resultado sobre “{{ .Term }}”"
 
 
 # Socials
@@ -103,74 +103,74 @@ other = "Pocket"
 other = "Hacker News"
 
 [qrcode]
-other = "QR Code"
+other = "Código QR"
 
 [email]
-other = "e-mail"
+other = "correo electrónico"
 
 
 # Share on Fediverse page
 
 [javascriptRequired]
-other = "Esta funcionalidade requer que o JavaScript esteja ativado!"
+other = "¡Esta funcionalidad requiere que JavaScript esté habilitado!"
 
 [fedishareTitleLabel]
-other = "Título da postagem"
+other = "Título de la entrada"
 
 [fedishareDescriptionLabel]
-other = "Descrição (pode ser alterada na próxima etapa)"
+other = "Descripción (se puede cambiar en el siguiente paso)"
 
 [fedishareUrlLabel]
-other = "Link"
+other = "Enlace"
 
 [fedishareInstanceLabel]
-other = "Instância Fediverse"
+other = "Instancia fediversa"
 
 [fedishareRememberInstance]
-other = "Lembrar instância neste dispositivo"
+other = "Recordar instancia en este dispositivo"
 
 [fedishareSubmitLabel]
-other = "Continuar para a instância"
+other = "Continuar a la instancia"
 
 
 # Months
 # Used for `i18nMonth`
 
 [january]
-other = "Janeiro"
+other = "Enero"
 
 [february]
-other = "Fevereiro"
+other = "Febrero"
 
 [march]
-other = "Março"
+other = "Marzo"
 
 [april]
 other = "Abril"
 
 [may]
-other = "Maio"
+other = "Mayo"
 
 [june]
-other = "Junho"
+other = "Junio"
 
 [july]
-other = "Julho"
+other = "Julio"
 
 [august]
 other = "Agosto"
 
 [september]
-other = "Setembro"
+other = "Septiembre"
 
 [october]
-other = "Outubro"
+other = "Octubre"
 
 [november]
-other = "Novembro"
+other = "Noviembre"
 
 [december]
-other = "Dezembro"
+other = "Diciembre"
 
 
 # Numbers

@@ -52,7 +52,7 @@
     {{- $regexReplacementDropCap := `$1 style="text-indent:0"$2<span class="drop-cap">$3</span>$4` -}}
     {{- $firstParagraphOld := (delimit (findRE $regexPatternDropCap $Content 1) " ") -}}
     {{- $firstParagraphNew := (replaceRE $regexPatternDropCap $regexReplacementDropCap $firstParagraphOld) -}}
-    {{- $Content = replace $Content $firstParagraphOld $firstParagraphNew -}}
+    {{- $Content = replace $Content $firstParagraphOld $firstParagraphNew 1 -}}
 {{- end -}}
 
 <!-- Drop Cap After `<hr />` -->
@@ -83,7 +83,7 @@
 
 <!-- Delete Footnote `<hr />` -->
 {{- if .Site.Params.insertHrBySelf -}}
-    {{- $regexPatternDeleteHr := `(<hr />|<hr>)\n(<section class="footnotes" role="doc-endnotes">)` -}}
+    {{- $regexPatternDeleteHr := `(<hr />|<hr>)\n(<(section|div) class="footnotes" role="doc-endnotes">)` -}}
     {{- $regexReplacementDeleteHr := `$2` -}}
     {{- $Content = $Content | replaceRE $regexPatternDeleteHr $regexReplacementDeleteHr -}}
 {{- end -}}
@@ -113,14 +113,14 @@
 
 <!-- Image Hosting -->
 {{- if and .Site.Params.enableImageHost (eq hugo.Environment "production") -}}
-    {{- $hostURL := .Site.Params.imageHostURL -}}
+    {{- $hostURL := strings.TrimSuffix "/" .Site.Params.imageHostURL -}}
     {{- $temps := findRE `<(img) src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
-            {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
-                {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
+            {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
+            {{- if ne (substr $url 0 4) "http" -}}
                 {{- $prefix := replaceRE `(<(img) src=")/?([^":]+)` `$1` . -}}
-                {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
+                {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}
             {{- end -}}
         {{- end -}}
@@ -129,14 +129,14 @@
 
 <!-- Video Hosting -->
 {{- if and .Site.Params.enableVideoHost (eq hugo.Environment "production") -}}
-    {{- $hostURL := .Site.Params.videoHostURL -}}
+    {{- $hostURL := strings.TrimSuffix "/" .Site.Params.videoHostURL -}}
     {{- $temps := findRE `<(video) src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
-            {{- if not (in (slice "http" "ttps") (substr . -1 4)) -}}
-                {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
+            {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
+            {{- if ne (substr $url 0 4) "http" -}}
                 {{- $prefix := replaceRE `(<(video) src=")/?([^":]+)` `$1` . -}}
-                {{- $replacement := (printf `%s%s%s` $prefix $hostURL $url) -}}
+                {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}
             {{- end -}}
         {{- end -}}

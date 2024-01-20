@@ -12,7 +12,7 @@ MemE 是一个强大且可高度定制的 [GoHugo](https://github.com/gohugoio/h
 
 ## 预览
 
-![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)
+[![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)](https://themes.gohugo.io/themes/hugo-theme-meme/)
 
 ### 浏览器支持
 

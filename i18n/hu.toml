@@ -5,63 +5,63 @@ other = "…"
 other = ": "
 
 [minute]
-one = "min"
-other = "mins"
+one = "perc"
+other = "perc"
 
 [tocTitle]
-other = "Conteúdo"
+other = "Tartalom"
 
 [readMore]
-other = "Leia mais"
+other = "Olvass továb"
 
 [prevPage]
-other = "Recentes"
+other = "Újabb"
 
 [nextPage]
-other = "Anteriores"
+other = "Korábbi"
 
 [copy]
-other = "Copiar"
+other = "Másol"
 
 [copied]
-other = "Copiado!"
+other = "Másolva!"
 
 [copyrightAuthor]
-other = "Autor"
+other = "Szerző"
 
 [copyrightLink]
 other = "Link"
 
 [copyrightLicense]
-other = "Licença"
+other = "Licensz"
 
 [shareOn]
-other = "Compartilhar em:"
+other = "Oszd meg:"
 
 [shareOnTitle]
-other = "Compartilhar em "
+other = "Oszd meg a "
 
 [shareViaTitle]
-other = "Compartilhar via "
+other = "Oszd meg "
 
 [relatedPosts]
-other = "Veja também:"
+other = "Lásd még:"
 
 [loadComments]
-other = "Carregar comentários?"
+other = "Töltse be a megjegyzéseket"
 
 [pageNotFound]
-other = "404 - Página não encontrada"
+other = "404 - Az oldal nem található"
 
 [fofLinkText]
-other = "Leve-me para página inicial"
+other = "Vissza a nyitólapra"
 
 [searchResultsTitle]
-one = "Encontrado um resultado para “{{ .Term }}”"
-other = "Encontrados {{ .Count }} resultados para “{{ .Term }}”"
+one = "A “{{ .Term }}” kifejezésre egy eredményt találtam"
+other = "A “{{ .Term }}” kifejezésre {{ .Count }} eredményt találtam"
 
 [searchResultsNone]
-other = "Não foram encontrados resultados para “{{ .Term }}”"
+other = "A “{{ .Term }}” kifejezésre nincs találat"
 
 
 # Socials
@@ -106,71 +106,71 @@ other = "Hacker News"
 other = "QR Code"
 
 [email]
-other = "e-mail"
+other = "email"
 
 
 # Share on Fediverse page
 
 [javascriptRequired]
-other = "Esta funcionalidade requer que o JavaScript esteja ativado!"
+other = "Ehhez a funkcióhoz engedélyezni kell a JavaScriptet!"
 
 [fedishareTitleLabel]
-other = "Título da postagem"
+other = "Postai cím"
 
 [fedishareDescriptionLabel]
-other = "Descrição (pode ser alterada na próxima etapa)"
+other = "Leírás (a következő lépésben módosítható)"
 
 [fedishareUrlLabel]
 other = "Link"
 
 [fedishareInstanceLabel]
-other = "Instância Fediverse"
+other = "Fediverse példa"
 
 [fedishareRememberInstance]
-other = "Lembrar instância neste dispositivo"
+other = "Emlékezzen a példányra ezen az eszközön"
 
 [fedishareSubmitLabel]
-other = "Continuar para a instância"
+other = "Folytassa a példával"
 
 
 # Months
 # Used for `i18nMonth`
 
 [january]
-other = "Janeiro"
+other = "Január"
 
 [february]
-other = "Fevereiro"
+other = "Február"
 
 [march]
-other = "Março"
+other = "Március"
 
 [april]
-other = "Abril"
+other = "Április"
 
 [may]
-other = "Maio"
+other = "Május"
 
 [june]
-other = "Junho"
+other = "Június"
 
 [july]
-other = "Julho"
+other = "Július"
 
 [august]
-other = "Agosto"
+other = "Augusztus"
 
 [september]
-other = "Setembro"
+other = "Szeptember"
 
 [october]
-other = "Outubro"
+other = "Október"
 
 [november]
-other = "Novembro"
+other = "November"
 
 [december]
-other = "Dezembro"
+other = "December"
 
 
 # Numbers

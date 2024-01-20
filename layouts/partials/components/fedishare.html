@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+    {{ .Scratch.Set "fedishare_page" true -}}
+    {{ partial "head.html" . }}
+    {{ .Scratch.Delete "fedishare_page" -}}
+    {{
+        $projects := dict
+            "calckey" "share?text={text}"
+            "diaspora" "bookmarklet?title={title}&notes={description}&url={url}"
+            "fedibird" "share?text={text}"
+            "firefish" "share?text={text}"
+            "foundkey" "share?text={text}"
+            "friendica" "compose?title={title}&body={description}%0A{url}"
+            "glitchcafe" "share?text={text}"
+            "gnusocial" "notice/new?status_textarea={text}"
+            "hometown" "share?text={text}"
+            "hubzilla" "rpost?title={title}&body={description}%0A{url}"
+            "kbin" "new/link?url={url}"
+            "mastodon" "share?text={text}"
+            "meisskey" "share?text={text}"
+            "microdotblog" "post?text=[{title}]({url})%0A%0A{description}"
+            "misskey" "share?text={text}"
+    -}}
+    <body data-projects="{{ $projects | jsonify }}">
+        {{
+            $domains := slice
+                (dict "domain" "mastodon.social" "softwarename" "mastodon" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "fedibird.com" "softwarename" "fedibird" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "lemmy.world" "softwarename" "lemmy" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "kbin.social" "softwarename" "kbin" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "pixelfed.social" "softwarename" "pixelfed" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "micro.blog" "softwarename" "microdotblog" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "misskey.io" "softwarename" "misskey" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "bookwyrm.social" "softwarename" "bookwyrm" "score" "100" "active_users_monthly" "1000")
+                (dict "domain" "diasp.org" "softwarename" "diaspora" "score" "100" "active_users_monthly" "1000")
+        -}}
+        {{ if .Site.Params.fetchFediverseInstances -}}
+            {{ with resources.GetRemote "https://api.fediverse.observer/"  (dict
+                "method" "post"
+                "body" `query={nodes(softwarename: ""){softwarename domain score active_users_monthly}}`
+                "headers" (dict
+                    "Content-Type" "application/x-www-form-urlencoded"
+                )
+            ) -}}
+                {{ with .Err -}}
+                    {{ warnf "Failed retrieving the list of Fediverse instances: %s" . -}}
+                {{ else -}}
+                    {{ $domains = sort (. | unmarshal).data.nodes "domain" -}}
+                {{ end -}}
+            {{ end -}}
+        {{ end -}}
+        <datalist id="fediverse-domains">
+            {{ range $domains -}}
+                {{ if and .softwarename (isset $projects .softwarename) (gt .score 90) (gt .active_users_monthly 10) -}}
+                    <option data-project="{{ .softwarename }}">{{ .domain }}</option>
+                {{ end -}}
+            {{ end -}}
+        </datalist>
+        <div class="container">
+            <main class="main single" id="main">
+                <div class="main-inner">
+                    <article class="content">
+                        <noscript><div class="warning">{{ i18n "javascriptRequired" }}</div></noscript>
+                        <h1>{{ i18n "shareOnTitle" }}{{ i18n "fediverse" }}</h1>
+                        <form id="shareForm">
+                            <p>
+                                <label>
+                                    {{ i18n "fedishareTitleLabel" }}
+                                    <input id="title" class="fedishare-title" readonly></textarea>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    {{ i18n "fedishareDescriptionLabel" }}
+                                    <textarea id="description" class="fedishare-description" rows="7" readonly></textarea>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    {{ i18n "fedishareUrlLabel" }}
+                                    <input id="url" class="fedishare-url" readonly></textarea>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    {{ i18n "fedishareInstanceLabel" }}
+                                    <span class="fedishare-instance-container">
+                                        https://<input id="instance" class="fedishare-instance" type="text" autofocus list="fediverse-domains">
+                                    </span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" id="rememberInstance">
+                                    {{ i18n "fedishareRememberInstance" }}
+                                </label>
+                            </p>
+                            <p><button type="submit" class="fedishare-submit" id="submit">{{ i18n "fedishareSubmitLabel" }}</button></p>
+                        </form>
+                    </article>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

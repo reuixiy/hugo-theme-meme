@@ -89,6 +89,10 @@ uglyURLs = false
         endLevel = 6
         ordered = true
 
+# 壓縮 HTML
+[minify.tdewolff.html]
+    keepWhitespace = false
+
 # 作者資訊
 [author]
     # 名字
@@ -173,7 +177,7 @@ uglyURLs = false
 # 4. links      連結欄（關於頁面的極簡頁尾）
 
 # 選單內的配置說明如下：
-# url           連結地址
+# pageref/url   內鏈地址/外鏈地址
 # name          文字（留空（""）則無）
 # weight        位置
 # pre           內鏈（internal）或外鏈（external）
@@ -186,31 +190,31 @@ uglyURLs = false
 [menu]
     ## 選單欄
     # [[menu.main]]
-    #     url = "/"
+    #     pageref = "/"
     #     name = "首頁"
     #     weight = 1
     #     pre = "internal"
     #     post = "home"
     [[menu.main]]
-        url = "/posts/"
+        pageref = "/posts/"
         name = "文章"
         weight = 2
         pre = "internal"
         post = "archive"
     [[menu.main]]
-        url = "/categories/"
+        pageref = "/categories/"
         name = "分類"
         weight = 3
         pre = "internal"
         post = "th"
     [[menu.main]]
-        url = "/tags/"
+        pageref = "/tags/"
         name = "標籤"
         weight = 4
         pre = "internal"
         post = "tags"
     [[menu.main]]
-        url = "/about/"
+        pageref = "/about/"
         name = "關於"
         weight = 5
         pre = "internal"
@@ -324,6 +328,11 @@ uglyURLs = false
     homeDescription = ""
     homeKeywords = ""
     homeLinksDelimiter = ""
+
+    ## 「文章摘要」
+    enableHideInHomepage = false
+    # 說明：激活 `hideInHomepage` front matter
+    #      的支持（性能原因默認關閉）
 
 
     ######################################
@@ -639,15 +648,73 @@ uglyURLs = false
     gitalkRepo = "your_repository"
     gitalkOwner = "your_gitalk_owner"
     gitalkAdmin = ["your_gitalk_admin"]
-    gitalkLable = ["Gitalk"]
+
+    # 1. default (`location.href`)
+    # 2. pathname (`location.pathname`)
+    # 3. hash (hash_filepath)
+    # 4. custom:your_gitalk_id ("your_gitalk_id")
+    gitalkID = "pathname"
+
+    gitalkNumber = -1
+    gitalkLables = ["Gitalk"]
+
+    # 1. default (`document.title`)
+    # 2. custom:your_gitalk_title ("your_gitalk_title")
+    gitalkTitle = "default"
+
+    # 1. default (`location.href` + header.meta[description])
+    # 2. href (`location.href`)
+    # 3. custom:your_gitalk_body ("your_gitalk_body")
+    gitalkBody = "default"
+
+    # 1. default (`navigator.language || navigator.userLanguage`)
+    # 2. Support [en, zh-CN, zh-TW, es-ES, fr, ru, de, pl, ko, fa, ja]
+    gitalkLanguage = "zh-TW"
+
     gitalkDistractionFreeMode = false
     gitalkPerPage = 10
-    gitalkLanguage = "en"
     gitalkPagerDirection = "last"
     gitalkCreateIssueManually = false
     gitalkProxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
+    gitalkStaggerDelayBy = 150
+    gitalkAppearAnimation = "accordionVertical"
+    gitalkEnterAnimation = "accordionVertical"
+    gitalkLeaveAnimation = "accordionVertical"
     gitalkEnableHotKey = true
     # 說明：https://github.com/gitalk/gitalk
+
+    ## Giscus
+    enableGiscus = false
+    giscusRepo = "[ENTER repo/you/want HERE]"
+    giscusRepoId = "[ENTER REPO ID HERE]"
+    giscusCategory = "[ENTER CATEGORY NAME HERE]"
+    giscusCategoryId = "[ENTER CATEGORY ID HERE]"
+    giscusMapping = "pathname"
+    giscusStrict = false
+    giscusReactionsEnabled = true
+    giscusEmitMetaData = false
+    giscusInputPosition = "top"
+    giscusTheme = "light"
+    giscusThemeDark = "dark"
+    giscusLang = "zh-TW"
+    # 說明：https://giscus.app/zh-TW
+
+    # Remark42
+    enableRemark42 = false
+    remark42Host = ""
+    remark42SiteId = "remark"
+    remark42Url = ""
+    remark42Components = ["embed"]
+    remark42MaxShownComments = 15
+    remark42MaxLastComments = 15
+    remark42Theme = "light"
+    remark42PageTitle = ""
+    remark42Locale = "zh-tw"
+    remark42ShowEmailSubscription = true
+    remark42ShowRssSubscription = true
+    remark42SimpleView = false
+    remark42NoFooter = false
+    # 說明：https://remark42.com/docs/configuration/frontend/
 
 
     ######################################
@@ -683,6 +750,8 @@ uglyURLs = false
     ## 廣告單元
     enableGoogleAdUnits = false
     googleAdSlot = ""
+    googleAdSlotInArticle = ""
+    googleAdSlotAutoRelaxed = ""
 
 
     ######################################
@@ -907,6 +976,11 @@ uglyURLs = false
 
 
     ######################################
+    # 滾動條
+    customizeScrollbar = true
+
+
+    ######################################
     # 字型排版
 
     ######################################
@@ -1074,6 +1148,7 @@ uglyURLs = false
     repoURL = ""
     # 編輯地址
     repoEditURL = ""
+    repoEditURLSuffix = ""
 
     # Git 的圖示
     gitIcon = "code-branch"
@@ -1113,16 +1188,13 @@ uglyURLs = false
 
     displayShareOnText = false
 
-    shareOnTwitter = true
-    shareOnFacebook = true
-    shareOnLinkedIn = true
-    shareOnTelegram = true
-    shareOnWeibo = true
-    shareOnDouban = true
-    shareOnQQ = true
-    shareOnQzone = true
+    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "hackernews", "qrcode", "email"]
 
-    shareViaQRCode = true
+    # 從網路取得 Fediverse 實例清單用於輸入建議
+    fetchFediverseInstances = false
+    # 說明：當開啟 mastodon 或 fediverse 分享項
+    #      時建議開啟。開啟後建置時，資料需要從網
+    #      路下載，會帶來額外的建置時間。
 
 
     ######################################
@@ -1215,6 +1287,7 @@ uglyURLs = false
     # 是否在首頁顯示
     displayFooterInHome = true
 
+    displayCopyleftSymbol = false
     # 是否顯示版權符號（©）
     displayCopyrightSymbol = true
 
@@ -1227,6 +1300,9 @@ uglyURLs = false
     iconColor = "#f06292"
     # 是否開啟圖示的跳動效果
     iconAnimation = true
+
+    # 是否顯示站點的作者名稱
+    displaySiteAuthorName = true
 
     # 是否顯示 Hugo 和 MemE 的連結
     displayPoweredBy = true
@@ -1370,3 +1446,36 @@ uglyURLs = false
     fofVideoWebm = ""
     fofVideoMp4 = ""
     # 說明：影片地址可留空（""）
+
+
+    ######################################
+    # 定制第三方庫的地址
+
+    [params.lib]
+        host = "https://cdn.jsdelivr.net"
+        # 說明：設置為根（"/"）且將下方對應 path
+        #      設置，如果你想要直接從「本地」
+        #      加載某個庫的話。比如：
+        #      將 path 設置為 "js/lib.min.js"，
+        #      並將文件放到你的 /static/js/lib.min.js
+    [params.lib.path]
+        clipboard = "/npm/clipboard-polyfill@2.8.6/dist/clipboard-polyfill.min.js"
+        instantsearch = "/npm/instantsearch.js@2/dist/instantsearch.min.js"
+        gitalk = "/npm/gitalk@1/dist/gitalk.min.js"
+        gitalk_css = "/npm/gitalk@1/dist/gitalk.css"
+        instantpage = "/npm/instant.page@5.1.0/instantpage.min.js"
+        katex = "/npm/katex@0.13.0/dist/katex.min.js"
+        katex_css = "/npm/katex@0.13.0/dist/katex.min.css"
+        katex_mhchem = "/npm/katex@0.13.0/dist/contrib/mhchem.min.js"
+        katex_auto_render = "/npm/katex@0.13.0/dist/contrib/auto-render.min.js"
+        lunr = "/npm/lunr@2.3.9/lunr.min.js"
+        lunr_tinyseg = "/npm/lunr-languages@1.4.0/tinyseg.js"
+        lunr_stemmer = "/npm/lunr-languages@1.4.0/min/lunr.stemmer.support.min.js"
+        lunr_lang = "/npm/lunr-languages@1.4.0/min/lunr.de.min.js"
+        mathjax = "/npm/mathjax@3.1.2/es5/tex-mml-chtml.js"
+        medium_zoom = "/npm/medium-zoom@latest/dist/medium-zoom.min.js"
+        mermaid = "/npm/mermaid@8.8.3/dist/mermaid.min.js"
+        qrcode = "/npm/qrcode-generator@1.4.4/qrcode.min.js"
+        valine = "/npm/valine@1.4.14/dist/Valine.min.js"
+        busuanzi = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+        utterances = "https://utteranc.es/client.js"

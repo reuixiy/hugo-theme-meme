@@ -1,0 +1,11 @@
+{{- $path := (strings.TrimPrefix "/" (printf `%s/js/fedishare.js` .Site.LanguagePrefix)) -}}
+{{- $script := resources.Get "js/fedishare.js" | resources.ExecuteAsTemplate $path . | resources.Minify -}}
+
+{{- if .Site.Params.enableFingerprint -}}
+    {{- $script = $script | resources.Fingerprint -}}
+    <script src="{{ $script.RelPermalink }}"
+    {{- if .Site.Params.enableSRI }} integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"{{- end -}}
+    ></script>
+{{- else -}}
+    <script src="{{ $script.RelPermalink }}"></script>
+{{- end }}

@@ -1,8 +1,13 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" integrity="sha256-gPJfuwTULrEAAcI3X4bALVU/2qBU+QY/TpoD3GO+Exw=" crossorigin="anonymous">
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "katex") -}}
+{{- $srcCSS := partial "utils/lib.html" (dict "$" . "type" "katex-css") -}}
+{{- $srcMhchem := partial "utils/lib.html" (dict "$" . "type" "katex-mhchem") -}}
+{{- $srcAutoRender := partial "utils/lib.html" (dict "$" . "type" "katex-auto-render") -}}
+
+<link rel="stylesheet" href="{{ $srcCSS }}">
 <script>
     if (typeof renderMathInElement === 'undefined') {
-        var getScript = (options) => {
-            var script = document.createElement('script');
+        const getScript = (options) => {
+            const script = document.createElement('script');
             script.defer = true;
             script.crossOrigin = 'anonymous';
             Object.keys(options).forEach((key) => {
@@ -11,16 +16,13 @@
             document.body.appendChild(script);
         };
         getScript({
-            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js',
-            integrity: 'sha256-YTW9cMncW/ZQMhY69KaUxIa2cPTxV87Uh627Gf5ODUw=',
+            src: '{{ $src }}',
             onload: () => {
                 getScript({
-                    src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/mhchem.min.js',
-                    integrity: 'sha256-yzSfYeVsWJ1x+2g8CYHsB/Mn7PcSp8122k5BM4T3Vxw=',
+                    src: '{{ $srcMhchem }}',
                     onload: () => {
                         getScript({
-                            src: 'https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/contrib/auto-render.min.js',
-                            integrity: 'sha256-fxJzNV6hpc8tgW8tF0zVobKa71eTCRGTgxFXt1ZpJNM=',
+                            src: '{{ $srcAutoRender }}',
                             onload: () => {
                                 renderKaTex();
                             }

@@ -1,1 +1,3 @@
-<script src="https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js" type="module" defer></script>
+{{- $src := partial "utils/lib.html" (dict "$" . "type" "instantpage") -}}
+
+<script src="{{ $src }}" type="module" defer></script>
