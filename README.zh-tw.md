@@ -8,11 +8,11 @@
 
 ## 簡介
 
-MemE 是一個強大且可高度客制化的 [GoHugo](https://github.com/gohugoio/hugo) 部落格主題，專為個人部落格設計。MemE 主題專注於優雅、簡約、現代，以及程式碼的正確性。同時，希望你將像欣賞一個模因一樣欣賞 MemE，希望你將像分享一個模因一樣分享 MemE，就像你的部落格和文章所做的那樣😝！
+MemE 是一個強大且可高度客制化的 [GoHugo](https://github.com/gohugoio/hugo) 部落格主題，專為個人部落格設計，專注於優雅、簡約、現代，以及程式碼之最佳實踐。
 
 ## 預覽
 
-[![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)](https://themes.gohugo.io/themes/hugo-theme-meme/)
+[![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)](https://io-oi.me/tech/documentation-of-hugo-theme-meme/)
 
 ### 瀏覽器支援
 
