@@ -133,7 +133,8 @@ other = "這是設備上記住該實例"
 other = "前往實例"
 
 
-# Share on Fediverse page
+# Months
+# Used for `i18nMonth`
 
 [january]
 other = "一月"
@@ -172,8 +173,8 @@ other = "十一月"
 other = "十二月"
 
 
-# Months
-# Used for `i18nMonth`
+# Numbers
+# Used for `i18nYear`
 
 [0]
 other = "〇"
