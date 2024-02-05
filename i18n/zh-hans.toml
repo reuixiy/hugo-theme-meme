@@ -1,0 +1,209 @@
+# NOTE: COPIED FROM zh-cn.toml
+
+[ellipsis]
+other = "……"
+
+[colon]
+other = "："
+
+[minute]
+one = "分钟"
+other = "分钟"
+
+[tocTitle]
+other = "目录"
+
+[readMore]
+other = "阅读更多"
+
+[prevPage]
+other = "上一页"
+
+[nextPage]
+other = "下一页"
+
+[copy]
+other = "复制"
+
+[copied]
+other = "已复制"
+
+[copyrightAuthor]
+other = "作者"
+
+[copyrightLink]
+other = "链接"
+
+[copyrightLicense]
+other = "许可"
+
+[shareOn]
+other = "分享："
+
+[shareOnTitle]
+other = "分享到"
+
+[shareViaTitle]
+other = "通过"
+
+[relatedPosts]
+other = "相关文章："
+
+[loadComments]
+other = "加载评论"
+
+[pageNotFound]
+other = "404 - 页面不存在"
+
+[fofLinkText]
+other = "送我回主页"
+
+[searchResultsTitle]
+one = "找到 1 条关于「{{ .Term }}」的结果"
+other = "找到 {{ .Count }} 条关于「{{ .Term }}」的结果"
+
+[searchResultsNone]
+other = "没有找到关于「{{ .Term }}」的结果"
+
+
+# Socials
+
+[twitter]
+other = "「Twitter」"
+
+[facebook]
+other = "「Facebook」"
+
+[fediverse]
+other = "「Fediverse」"
+
+[mastodon]
+other = "「Mastodon」"
+
+[linkedin]
+other = "「LinkedIn」"
+
+[telegram]
+other = "「Telegram」"
+
+[weibo]
+other = "「新浪微博」"
+
+[douban]
+other = "「豆瓣」"
+
+[qq]
+other = "「QQ」"
+
+[qzone]
+other = "「QQ 空间」"
+
+[pocket]
+other = "「Pocket」"
+
+[hackernews]
+other = "Hacker News"
+
+[qrcode]
+other = "「二维码」"
+
+[email]
+other = "「电子邮件」"
+
+
+# Share on Fediverse page
+
+[javascriptRequired]
+other = "此功能需要启用 JavaScript！"
+
+[fedishareTitleLabel]
+other = "帖子标题"
+
+[fedishareDescriptionLabel]
+other = "描述（可以在下一步中更改）"
+
+[fedishareUrlLabel]
+other = "链接"
+
+[fedishareInstanceLabel]
+other = "Fediverse 实例"
+
+[fedishareRememberInstance]
+other = "在此设备上记住该实例"
+
+[fedishareSubmitLabel]
+other = "前往实例"
+
+
+# Months
+# Used for `i18nMonth`
+
+[january]
+other = "一月"
+
+[february]
+other = "二月"
+
+[march]
+other = "三月"
+
+[april]
+other = "四月"
+
+[may]
+other = "五月"
+
+[june]
+other = "六月"
+
+[july]
+other = "七月"
+
+[august]
+other = "八月"
+
+[september]
+other = "九月"
+
+[october]
+other = "十月"
+
+[november]
+other = "十一月"
+
+[december]
+other = "十二月"
+
+
+# Numbers
+# Used for `i18nYear`
+
+[0]
+other = "〇"
+
+[1]
+other = "一"
+
+[2]
+other = "二"
+
+[3]
+other = "三"
+
+[4]
+other = "四"
+
+[5]
+other = "五"
+
+[6]
+other = "六"
+
+[7]
+other = "七"
+
+[8]
+other = "八"
+
+[9]
+other = "九"
