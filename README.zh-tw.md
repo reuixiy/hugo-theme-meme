@@ -12,7 +12,11 @@ MemE 是一個強大且可高度客制化的 [GoHugo](https://github.com/gohugoi
 
 ## 預覽
 
-[![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)](https://io-oi.me/tech/documentation-of-hugo-theme-meme/)
+[![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)](https://io-oi.me/hugo-theme-meme/)
+
+### 文檔
+
+[Hugo 主題 MemE 文檔](https://io-oi.me/tech/documentation-of-hugo-theme-meme/)
 
 ### 瀏覽器支援
 
