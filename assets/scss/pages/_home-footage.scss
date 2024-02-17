@@ -1,5 +1,4 @@
 .home {
-    font-family: STShusong, serif;
     &::before {
         background-image: $homePoster;
         background-repeat: no-repeat;
@@ -23,13 +22,13 @@
     .content {
         text-align: center;
         width: auto;
-        max-width: 26em;
+        max-width: 28em;
         margin: 0 auto;
         color: #fff;
         padding: 5em 1em 10em;
     }
     .links {
-        color: #aaa;
+        color: #ccc;
         position: absolute;
         bottom: 10%;
         left: 5%;
@@ -39,7 +38,8 @@
     .avatar {
         width: 8em;
         height: 8em;
-        transition: transform 1s ease-out;
+        border-radius: 50%;
+        transition: transform 1.5s ease-out;
         &:hover {
             transform: rotateZ(360deg);
         }
@@ -49,19 +49,17 @@
         font-size: 1.7em;
         line-height: 1em;
         font-weight: bold;
-        font-family: 'Source Han Serif CN', serif;
         margin: 0.67em 0;
     }
     .motto {
         margin-bottom: 1em;
-        font-family: STKaiti, serif;
     }
     .description {
         line-height: 1.618;
         margin: 1em 0;
     }
     .keywords {
-        font-family: STFangsong, serif;
+        font-size: 90%;
         line-height: 1.5;
         margin: 1em 0;
     }
@@ -71,7 +69,7 @@
         background-image: linear-gradient(90deg, transparent, #fff, transparent);
     }
     a {
-        color: #aaa;
+        color: #ccc;
         transition: color 0.5s;
         text-decoration: none;
         &:hover {
