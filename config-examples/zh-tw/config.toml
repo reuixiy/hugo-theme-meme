@@ -18,6 +18,10 @@ newContentEditor = ""
 defaultContentLanguage = "zh-tw"
 defaultContentLanguageInSubdir = false
 
+# 標題大小寫格式
+# https://gohugo.io/getting-started/configuration/#configure-title-case
+titleCaseStyle = "none"
+
 # 是否複數化列表頁面的標題
 pluralizeListTitles = false
 

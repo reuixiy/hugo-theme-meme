@@ -18,7 +18,11 @@ newContentEditor = ""
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 
-# Pluralize titles in lists?
+# Title case style
+# https://gohugo.io/getting-started/configuration/#configure-title-case
+titleCaseStyle = "none"
+
+# Pluralize list titles
 pluralizeListTitles = false
 
 # The length of text in words to show in summary
