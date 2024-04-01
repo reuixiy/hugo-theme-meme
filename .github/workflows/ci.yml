@@ -16,9 +16,9 @@ jobs:
         run: |
           git clone https://github.com/gohugoio/hugoBasicExample.git
           cd hugoBasicExample
+          git checkout 61c64dcf16b654f535787beba597ebcfa0f06bb6
           mv content/post content/posts
           sed -i 's/posts/post/g' content/posts/_index.md
-          sed -i 's/{{< twitter_simple \([0-9]*\) >}}/{{< twitter_simple user="DesignReviewed" id="\1" >}}/' content/posts/rich-content.md
           mkdir content/about && mv content/about.md content/about/_index.md
           mkdir -p themes/meme
 
