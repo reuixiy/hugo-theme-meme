@@ -18,7 +18,7 @@
 {{- else if eq $.Kind "term" -}}
     {{- $taxonomyTermTitle := $htmlTitle | default $.Data.Term | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" $path) "/")) " ") -}}
     {{- with $.Site.GetPage (printf "/%s" $.Data.Plural) -}}
-        {{- $htmlTitle = printf "%s: %s" (.Title | default (.Type | title)) $taxonomyTermTitle -}}
+        {{- $htmlTitle = printf "%s%s%s" (.Title | default (.Type | title)) (i18n "colon") $taxonomyTermTitle -}}
     {{- end -}}
 <!-- Section -->
 {{- else if eq $.Kind "section" -}}
