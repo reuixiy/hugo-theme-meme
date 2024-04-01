@@ -1,16 +1,11 @@
 <nav class="nav">
     <ul class="menu" id="menu">
-        {{ if .Site.Params.activeInSection }}
-            {{ .Scratch.Set "currentPage" (.Site.GetPage (printf `/%s` .Section)) }}
-        {{ else }}
-            {{ .Scratch.Set "currentPage" . }}
-        {{ end }}
-        {{ $currentPage := .Scratch.Get "currentPage" }}
-        {{ $ctx := . }}
+        {{ $currentPage := . }}
+
         {{ range .Site.Menus.main }}
             {{ if and (eq .Identifier "theme-switcher") $.Site.Params.enableDarkMode }}
                 {{ if eq $.Site.Params.headerLayout "flex" }}
-                    {{ $switcher := partial "components/dark-mode.html" $ctx }}
+                    {{ $switcher := partial "components/dark-mode.html" $currentPage }}
                     {{ with $switcher }}
                         <li class="menu-item">
                             {{ . }}
@@ -20,7 +15,7 @@
             {{ else if eq .Identifier "lang-switcher" }}
                 {{ if and $.Site.IsMultiLingual $.Site.Params.enableLangToggle }}
                     {{ if eq $.Site.Params.headerLayout "flex" }}
-                        {{ $switcher := partial "components/multilingual.html" $ctx }}
+                        {{ $switcher := partial "components/multilingual.html" $currentPage }}
                         {{ with $switcher }}
                             <li class="menu-item">
                                 {{ . }}
@@ -32,11 +27,11 @@
                 {{ if and (eq $.Site.Params.headerLayout "flex") (or $.Site.Params.enableLunrSearch $.Site.Params.enableAlgoliaSearch) }}
                     {{- $iconName := (string .Post) -}}
                     <li class="menu-item search-item">
-                        {{ partial "components/search.html" (dict "$" $ctx "iconName" $iconName) }}
+                        {{ partial "components/search.html" (dict "$" $currentPage "iconName" $iconName) }}
                     </li>
                 {{ end }}
             {{ else }}
-                <li class="menu-item{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{ end }}">
+                <li class="menu-item{{ if or ($currentPage.IsMenuCurrent .Menu .) (and ($currentPage.HasMenuCurrent .Menu .) $.Site.Params.activeInSection) }} active{{ end }}">
                     {{- $linkType := (string .Pre) -}}
                     <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>
                         {{- $iconName := (string .Post) -}}
