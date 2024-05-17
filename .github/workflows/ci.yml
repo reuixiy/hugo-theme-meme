@@ -31,7 +31,7 @@ jobs:
         run: |
           cd hugoBasicExample
           rm -rf config*
-          cp themes/meme/exampleSite/config.toml .
+          cp themes/meme/exampleSite/hugo.toml .
 
       - name: 'Install Hugo'
         uses: peaceiris/actions-hugo@v2
