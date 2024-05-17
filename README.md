@@ -45,6 +45,7 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 
 ```sh
 ~ $ cd blog
+~/blog $ git config --global init.defaultBranch main # change the git default branch name to "main"
 ~/blog $ git init
 ~/blog $ git submodule add --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
 ```

@@ -49,6 +49,7 @@ https://gohugo.io/getting-started/quick-start/
 
 ```sh
 ~ $ cd blog
+~/blog $ git config --global init.defaultBranch main # 更改 git 默認分支名稱為 "main"
 ~/blog $ git init
 ~/blog $ git submodule add --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
 ```
