@@ -45,7 +45,7 @@
         <noscript><link rel="stylesheet" href="{{ . }}" /></noscript>
     {{- end }}
 
-    <meta name="author" content="{{ .Params.author | default .Site.Author.name }}" />
+    <meta name="author" content="{{ .Params.author | default .Site.Params.author.name }}" />
     {{- $description := .Description | default (partial "utils/summary.html" .) | default .Site.Params.siteDescription | plainify | htmlUnescape -}}
     <meta name="description" content="{{ $description }}" />
 

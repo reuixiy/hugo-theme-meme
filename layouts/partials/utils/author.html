@@ -1,25 +1,25 @@
 {{- $author := dict -}}
 {{- if .Params.original | default .Site.Params.original -}}
-    {{- with .Site.Author.name -}}
+    {{- with .Site.Params.author.name -}}
         {{- $author = merge $author (dict "name" .) -}}
     {{- end -}}
-    {{- with .Site.Author.email -}}
+    {{- with .Site.Params.author.email -}}
         {{- $author = merge $author (dict "email" .) -}}
     {{- end -}}
-    {{- with .Site.Author.motto -}}
+    {{- with .Site.Params.author.motto -}}
         {{- $author = merge $author (dict "motto" .) -}}
     {{- end -}}
-    {{- with .Site.Author.avatar -}}
+    {{- with .Site.Params.author.avatar -}}
         {{- $author = merge $author (dict "avatar" .) -}}
     {{- end -}}
     {{- $baseURLWithLangFix := "" | absLangURL -}}
-    {{- with .Site.Author.website | default $baseURLWithLangFix -}}
+    {{- with .Site.Params.author.website | default $baseURLWithLangFix -}}
         {{- $author = merge $author (dict "website" .) -}}
     {{- end -}}
     {{- with .Site.Copyright -}}
         {{- $author = merge $author (dict "copyright" .) -}}
     {{- end -}}
-    {{- with .Site.Author.twitter -}}
+    {{- with .Site.Params.author.twitter -}}
         {{- $author = merge $author (dict "twitter" .) -}}
     {{- end -}}
 {{- else -}}

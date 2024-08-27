@@ -1,4 +1,4 @@
-{{- if and .Site.IsMultiLingual .Site.Params.enableLangToggle -}}
+{{- if and hugo.IsMultilingual .Site.Params.enableLangToggle -}}
     {{- $hide := or (and .IsHome .Site.Params.hideLangToggleInHome) (and (not .IsHome) (and .Site.Params.autoHideLangToggle (not .IsTranslated))) -}}
     {{- if not $hide -}}
         <div id="lang-switcher">

@@ -97,21 +97,6 @@ uglyURLs = false
 [minify.tdewolff.html]
     keepWhitespace = false
 
-# 作者信息
-[author]
-    # 名字
-    name = "reuixiy"
-    # 邮箱
-    email = "reuixiy@gmail.com"
-    # 座右铭或简介
-    motto = "Viva La Vida"
-    # 头像
-    avatar = "/icons/apple-touch-icon.png"
-    # 网站（默认值：baseURL）
-    website = "https://io-oi.me/"
-    # 推特
-    twitter = "reuixiy"
-
 # 相关文章
 [related]
     threshold = 80
@@ -1483,3 +1468,20 @@ uglyURLs = false
         valine = "/npm/valine@1.4.14/dist/Valine.min.js"
         busuanzi = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
         utterances = "https://utteranc.es/client.js"
+
+
+    ######################################
+    # 作者信息
+    [params.author]
+        # 名字
+        name = "reuixiy"
+        # 邮箱
+        email = "reuixiy@gmail.com"
+        # 座右铭或简介
+        motto = "Viva La Vida"
+        # 头像
+        avatar = "/icons/apple-touch-icon.png"
+        # 网站（默认值：baseURL）
+        website = "https://io-oi.me/"
+        # 推特
+        twitter = "reuixiy"

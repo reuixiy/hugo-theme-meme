@@ -16,11 +16,11 @@
     {{ with .OutputFormats.Get "SectionsAtom" -}}
         <link rel="self" type="{{ .MediaType }}" href="{{ .Permalink }}" />
     {{ end -}}
-    {{ with .Site.Author.name -}}
+    {{ with .Site.Params.author.name -}}
         <author>
             <name>{{ . }}</name>
             <uri>{{ "" | absLangURL }}</uri>
-            {{ with $.Site.Author.email }}
+            {{ with $.Site.Params.author.email }}
                 <email>{{ . }}</email>
             {{ end -}}
         </author>

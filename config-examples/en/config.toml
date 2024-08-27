@@ -99,21 +99,6 @@ uglyURLs = false
 [minify.tdewolff.html]
     keepWhitespace = false
 
-# Author’s information
-[author]
-    # Name
-    name = "reuixiy"
-    # Email
-    email = "reuixiy@gmail.com"
-    # Motto or introduction
-    motto = "Viva La Vida"
-    # Avatar
-    avatar = "/icons/apple-touch-icon.png"
-    # Personal website, default: baseURL
-    website = "https://io-oi.me/"
-    # Twitter
-    twitter = "reuixiy"
-
 # Related content
 [related]
     threshold = 80
@@ -1518,3 +1503,20 @@ uglyURLs = false
         valine = "/npm/valine@1.4.14/dist/Valine.min.js"
         busuanzi = "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
         utterances = "https://utteranc.es/client.js"
+
+
+    ######################################
+    # Author’s information
+    [params.author]
+        # Name
+        name = "reuixiy"
+        # Email
+        email = "reuixiy@gmail.com"
+        # Motto or introduction
+        motto = "Viva La Vida"
+        # Avatar
+        avatar = "/icons/apple-touch-icon.png"
+        # Personal website, default: baseURL
+        website = "https://io-oi.me/"
+        # Twitter
+        twitter = "reuixiy"

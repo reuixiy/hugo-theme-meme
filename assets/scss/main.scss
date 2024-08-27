@@ -298,7 +298,7 @@ $baseRelURL: "{{ "" | relURL | strings.TrimSuffix "/" }}";
 
 // Components
 
-{{ if and .Site.IsMultiLingual .Site.Params.enableLangToggle }}
+{{ if and hugo.IsMultilingual .Site.Params.enableLangToggle }}
     @import "components/multilingual";
 {{ end }}
 
