@@ -7,6 +7,8 @@
 {{- $description := .description -}}
 <!-- Date -->
 {{- $dates := partial "utils/date.html" $ -}}
+<!-- Author -->
+{{- $author := partial "utils/author.html" $ -}}
 <!-- Images -->
 {{- $images := partial "utils/images.html" $ -}}
 
@@ -41,4 +43,7 @@
     <meta property="article:section" content="{{ $.Section }}" />
 {{ else -}}
     <meta property="og:type" content="website" />
+{{- end }}
+{{- with $author.fediverse -}}
+    <meta name="fediverse:creator" content="{{ . }}" />
 {{- end }}

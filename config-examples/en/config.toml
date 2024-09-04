@@ -1523,3 +1523,5 @@ uglyURLs = false
         website = "https://io-oi.me/"
         # Twitter
         twitter = "reuixiy"
+        # Fediverse
+        fediverse = "@reuixiy@bird.makeup"
