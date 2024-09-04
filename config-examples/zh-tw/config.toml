@@ -40,9 +40,6 @@ enableGitInfo = false
 # 是否生成 robots.txt 檔案
 enableRobotsTXT = true
 
-# 每一分頁的文章數（僅對「文章摘要」首頁佈局有效）
-paginate = 5
-
 # URL 相關
 disablePathToLower = false
 relativeURLs = false
@@ -61,6 +58,12 @@ uglyURLs = false
 # 修改時間
 [frontmatter]
     lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
+
+[pagination]
+    disableAliases = false
+    # 每一分頁的文章數（僅對「文章摘要」首頁佈局有效）
+    pagerSize = 5
+    path = 'page'
 
 # Markdown 渲染器
 [markup]
