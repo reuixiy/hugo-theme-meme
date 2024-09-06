@@ -22,6 +22,9 @@
     {{- with .Site.Params.author.twitter -}}
         {{- $author = merge $author (dict "twitter" .) -}}
     {{- end -}}
+    {{- with .Site.Params.author.fediverse -}}
+        {{- $author = merge $author (dict "fediverse" .) -}}
+    {{- end -}}
 {{- else -}}
     {{- with .Params.author -}}
         {{- $author = merge $author (dict "name" .) -}}
@@ -43,6 +46,9 @@
     {{- end -}}
     {{- with .Params.twitter -}}
         {{- $author = merge $author (dict "twitter" .) -}}
+    {{- end -}}
+    {{- with .Params.fediverse -}}
+        {{- $author = merge $author (dict "fediverse" .) -}}
     {{- end -}}
 {{- end -}}
 {{- return $author -}}
