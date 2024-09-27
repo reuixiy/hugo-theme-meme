@@ -50,7 +50,7 @@
 
                             <a href="{{ .RelPermalink }}" class="category-item">{{ .LinkTitle | default .Data.Term | default $path }}</a>
                             {{ if $.Site.Params.displayPostsCount }}
-                                <span class="category-count">{{ printf "(%d)" (len .Data.category) }}</span>
+                                <span class="category-count">{{ printf "(%d)" ($.Data.Terms.Count .Data.Term) }}</span>
                             {{ end }}
 
                             {{ if $.Site.Params.displayPosts }}
