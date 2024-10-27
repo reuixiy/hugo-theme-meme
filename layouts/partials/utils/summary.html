@@ -1,4 +1,9 @@
 {{- $summary := .Summary -}}
+{{/*
+    2024-10-27 @reuixiy I found that Hugo now applies the same logic for CJK language,
+    so we don’t need to add ellipsis additionally now.
+*/}}
+{{/*
 {{- if .Truncated -}}
     <!-- For the CJK language, add ellipsis. -->
     {{- if .Params.isCJKLanguage -}}
@@ -8,4 +13,5 @@
     <!-- (Tested English Only) -->
     {{- end -}}
 {{- end -}}
+*/}}
 {{- return $summary -}}
