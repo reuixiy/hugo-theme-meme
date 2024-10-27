@@ -1,6 +1,6 @@
 <main class="home">
     {{ with or .Site.Params.homeVideoWebm .Site.Params.homeVideoMp4 }}
-        <video poster="{{ $.Site.Params.homePoster }}" id="bgvid" playsinline autoplay muted loop>
+        <video poster="{{ $.Site.Params.homePoster }}" playsinline autoplay muted loop>
             {{ with $.Site.Params.homeVideoWebm }}
                 <source src="{{ . }}" type="video/webm" />
             {{ end }}

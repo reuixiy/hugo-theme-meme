@@ -5,7 +5,7 @@
         <div class="container">
             <main class="fof">
                 {{ with or .Site.Params.fofVideoWebm .Site.Params.fofVideoMp4 }}
-                <video poster="{{ $.Site.Params.fofPoster }}" id="bgvid" playsinline autoplay muted loop>
+                <video poster="{{ $.Site.Params.fofPoster }}" playsinline autoplay muted loop>
                     {{ with $.Site.Params.fofVideoWebm }}
                     <source src="{{ . }}" type="video/webm" />
                     {{ end }}
