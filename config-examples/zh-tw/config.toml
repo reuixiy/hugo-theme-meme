@@ -907,7 +907,7 @@ uglyURLs = false
     enableCaption = true
 
     # 說明文字的字首
-    captionPrefix = "◎ "
+    captionPrefix = "※ "
 
 
     ######################################
@@ -1015,7 +1015,7 @@ uglyURLs = false
     ######################################
     ## 字號（單位：px）
 
-    fontSize = 16
+    fontSize = 18
 
     ######################################
     ## 製表符的寬度
