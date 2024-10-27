@@ -47,7 +47,8 @@
                     <copyright>{{ . | plainify | htmlUnescape }}</copyright>
                 {{- end }}
                 {{ if $.Site.Params.includeContent }}
-                    <description>{{ partial "utils/make-links-absolute.html" (dict "$" . "content" .Content) | html }}</description>
+                    {{- $content := (partial "utils/content.html" $page) -}}
+                    <description>{{ partial "utils/make-links-absolute.html" (dict "$" . "content" $content) | html }}</description>
                 {{ else }}
                     {{- $summary := .Description | default (partial "utils/summary.html" $page) -}}
                     <description>{{ partial "utils/make-links-absolute.html" (dict "$" . "content" $summary) | html }}</description>
