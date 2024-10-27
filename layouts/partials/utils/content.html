@@ -114,12 +114,12 @@
 <!-- Image Hosting -->
 {{- if and .Site.Params.enableImageHost (eq hugo.Environment "production") -}}
     {{- $hostURL := strings.TrimSuffix "/" .Site.Params.imageHostURL -}}
-    {{- $temps := findRE `<(img) src="/?([^":]+)` $Content | uniq -}}
+    {{- $temps := findRE `<(img)\s+[^>]*?src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
-            {{- $url := replaceRE `<(img) src="/?([^":]+)` `$2` . -}}
+            {{- $url := replaceRE `<(img)\s+[^>]*?src="/?([^":]+)` `$2` . -}}
             {{- if ne (substr $url 0 4) "http" -}}
-                {{- $prefix := replaceRE `(<(img) src=")/?([^":]+)` `$1` . -}}
+                {{- $prefix := replaceRE `(<(img)\s+[^>]*?src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}
             {{- end -}}
@@ -130,12 +130,12 @@
 <!-- Video Hosting -->
 {{- if and .Site.Params.enableVideoHost (eq hugo.Environment "production") -}}
     {{- $hostURL := strings.TrimSuffix "/" .Site.Params.videoHostURL -}}
-    {{- $temps := findRE `<(video) src="/?([^":]+)` $Content | uniq -}}
+    {{- $temps := findRE `<(video)\s+[^>]*?src="/?([^":]+)` $Content | uniq -}}
     {{- with $temps -}}
         {{- range . -}}
-            {{- $url := replaceRE `<(video) src="/?([^":]+)` `$2` . -}}
+            {{- $url := replaceRE `<(video)\s+[^>]*?src="/?([^":]+)` `$2` . -}}
             {{- if ne (substr $url 0 4) "http" -}}
-                {{- $prefix := replaceRE `(<(video) src=")/?([^":]+)` `$1` . -}}
+                {{- $prefix := replaceRE `(<(video)\s+[^>]*?src=")/?([^":]+)` `$1` . -}}
                 {{- $replacement := (printf `%s%s/%s` $prefix $hostURL $url) -}}
                 {{- $Content = replace $Content . $replacement -}}
             {{- end -}}

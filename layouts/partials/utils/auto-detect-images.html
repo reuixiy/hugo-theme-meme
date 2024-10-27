@@ -3,8 +3,8 @@
 <!-- https://regex101.com/ -->
 {{- $imgs := slice -}}
 {{- if and .IsPage (in .Site.Params.mainSections .Section) -}}
-    {{- range (findRE `<img src="/?([^"]+)` .Content | uniq) -}}
-        {{- $url := replaceRE `<img src="/?([^"]+)` `$1` . -}}
+    {{- range (findRE `<img\s+[^>]*?src="/?([^"]+)` .Content | uniq) -}}
+        {{- $url := replaceRE `<img\s+[^>]*?src="/?([^"]+)` `$1` . -}}
         {{- $imgs = union $imgs (slice $url) -}}
     {{- end -}}
 {{- end -}}
