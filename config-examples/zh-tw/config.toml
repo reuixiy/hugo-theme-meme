@@ -988,11 +988,11 @@ uglyURLs = false
     # 選單欄
     fontFamilyMenu = ""
     # 文章標題、文章副標題、列表標題、列表的年份和月份標題、相關文章標題、文章上下篇標題、表格的表頭、定義列表中的術語
-    fontFamilyTitle = "'Noto Serif SC', 'EB Garamond', serif"
+    fontFamilyTitle = "'Noto Serif TC', serif"
     # 分節標題、目錄標題
-    fontFamilyHeadings = "'Noto Serif SC', 'EB Garamond', serif"
+    fontFamilyHeadings = "'Noto Serif TC', serif"
     # 程式碼、上標、文章元資訊、文章更新徽章、文章的 Git 版本資訊、極簡頁尾、不蒜子站點瀏覽計數
-    fontFamilyCode = "'Source Code Pro', 'Noto Serif SC', monospace"
+    fontFamilyCode = "'Source Code Pro', 'Noto Serif TC', monospace"
     # 引用
     fontFamilyQuote = ""
     # 文章目錄
@@ -1002,10 +1002,10 @@ uglyURLs = false
     # 頁尾
     fontFamilyFooter = ""
     # 主體
-    fontFamilyBody = "'EB Garamond', 'Noto Serif SC', serif"
+    fontFamilyBody = "'Noto Serif TC', serif"
 
     # 網路字型連結
-    fontsLink = "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    fontsLink = "https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     # 說明：要想讀者一定體驗到你設定的字型，最好
     #      採用網路字型。MemE 主題目前僅支援
     #      Google Fonts 的連結，請前往
