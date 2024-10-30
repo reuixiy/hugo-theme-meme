@@ -19,7 +19,7 @@
     }
     .list-item-time {
         text-align: right;
-        margin-left: 1em;
+        margin-left: 1em !important;
     }
 }
 @if ($listDatePosition == "left") {
@@ -31,7 +31,7 @@
     }
     .list-item-title {
         text-align: right;
-        margin-left: 1em;
+        margin-left: 1em !important;
     }
 }
 
