@@ -49,6 +49,7 @@
         clear: both;
     }
     sup {
+        unicode-bidi: isolate;
         font-size: 70%;
         vertical-align: super;
         a {
