@@ -3,8 +3,8 @@
         {{ .Scratch.Set "prev" .PrevInSection }}
         {{ .Scratch.Set "next" .NextInSection }}
     {{ else }}
-        {{ .Scratch.Set "prev" .PrevPage }}
-        {{ .Scratch.Set "next" .NextPage }}
+        {{ .Scratch.Set "prev" .Prev }}
+        {{ .Scratch.Set "next" .Next }}
     {{ end }}
     {{ $prev := .Scratch.Get "prev" }}
     {{ $next := .Scratch.Get "next" }}
