@@ -8,10 +8,14 @@ function getSoftwareName(instance) {
         if (option.value == instance)
             return Promise.resolve(option.getAttribute("data-project"));
 
+    const SUPPORTED_SCHEMAS = [
+        "http://nodeinfo.diaspora.software/ns/schema/2.0",
+        "http://nodeinfo.diaspora.software/ns/schema/2.1",
+    ];
     return fetch(`https://${instance}/.well-known/nodeinfo`).then(response => response.json()).then(response => {
         if (response && Array.isArray(response.links))
             for (let link of response.links)
-                if (link.rel == "http://nodeinfo.diaspora.software/ns/schema/2.0" && typeof link.href == "string")
+                if (SUPPORTED_SCHEMAS.includes(link.rel) && typeof link.href == "string")
                     return fetch(link.href);
         throw new Exception(".well-known/nodeinfo file does not contain a nodeinfo link");
     }).then(response => response.json()).then(response => {
