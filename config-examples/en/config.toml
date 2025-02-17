@@ -569,7 +569,7 @@ uglyURLs = false
     #            If any problems are detected,
     #            check the filename differences
     #            between the generated files
-    #            and the related files in
+    #            and the related files in the
     #            ~/blog/themes/meme/static/ directory.
     #            If there are any differences,
     #            it means some files may be outdated.
@@ -581,26 +581,28 @@ uglyURLs = false
     enableSafariMask = true
     safariMaskColor = "#2a6df4"
     # ATTENTION: Since https://realfavicongenerator.net/
-    #            no longer supports the generation
-    #            of safari-pinned-tab.svg (600x600 px),
-    #            if you enable it, please generate
-    #            the icon by yourself. Then move it
-    #            to ~/blog/static/icons/ directory,
-    #            and rename it to safari-pinned-tab.svg.
-    #            Otherwise, it will default to the icon
-    #            provided by MemE.
+    #            no longer supports generating
+    #            safari-pinned-tab.svg (600x600 px),
+    #            please generate your own icon
+    #            if necessary, move it to the
+    #            ~/blog/static/icons/ directory,
+    #            and finally rename it to
+    #            safari-pinned-tab.svg.
+    #            Otherwise, it will default to
+    #            the icon provided by MemE.
 
     enableMsApplication = true
     msApplicationTileColor = "#fff"
     # ATTENTION: Since https://realfavicongenerator.net/
-    #            no longer supports the generation
-    #            of mstile-150x150.png (150x150 px),
-    #            if you enable it, please generate
-    #            the icon by yourself. Then move it
-    #            to ~/blog/static/icons/ directory,
-    #            and rename it to mstile-150x150.png.
-    #            Otherwise, it will default to the icon
-    #            provided by MemE.
+    #            no longer supports generating
+    #            mstile-150x150.png (150x150 px),
+    #            please generate your own icon
+    #            if necessary, move it to the
+    #            ~/blog/static/icons/ directory,
+    #            and finally rename it to
+    #            mstile-150x150.png.
+    #            Otherwise, it will default to
+    #            the icon provided by MemE.
 
     ######################################
     # HTML Head Meta, SEO & Social Discovery
