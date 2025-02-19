@@ -527,7 +527,7 @@ uglyURLs = false
     themeColor = "#fff"
     themeColorDark = "#16171d"
 
-    enableSafariMask = true
+    enableSafariMask = false
     safariMaskColor = "#2a6df4"
     # 注意：由於 https://realfavicongenerator.net/
     #      不再支援生成 safari-pinned-tab.svg (600x600 px)，
@@ -536,7 +536,7 @@ uglyURLs = false
     #      並重新命名為 safari-pinned-tab.svg。
     #      否則，將預設使用 MemE 提供的圖示。
 
-    enableMsApplication = true
+    enableMsApplication = false
     msApplicationTileColor = "#fff"
     # 注意：由於 https://realfavicongenerator.net/
     #      不再支援生成 mstile-150x150.png (150x150 px)，

@@ -578,7 +578,7 @@ uglyURLs = false
     themeColor = "#fff"
     themeColorDark = "#16171d"
 
-    enableSafariMask = true
+    enableSafariMask = false
     safariMaskColor = "#2a6df4"
     # ATTENTION: Since https://realfavicongenerator.net/
     #            no longer supports generating
@@ -591,7 +591,7 @@ uglyURLs = false
     #            Otherwise, it will default to
     #            the icon provided by MemE.
 
-    enableMsApplication = true
+    enableMsApplication = false
     msApplicationTileColor = "#fff"
     # ATTENTION: Since https://realfavicongenerator.net/
     #            no longer supports generating
