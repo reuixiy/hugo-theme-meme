@@ -554,24 +554,29 @@ uglyURLs = false
 
     # Note: go to https://realfavicongenerator.net/
     #       to generate related icons and
-    #       files, unzip after downloading,
-    #       and keep only android-chrome-512x512.png,
-    #       apple-touch-icon.png, mstile-150x150.png,
-    #       safari-pinned-tab.svg, favicon.ico,
-    #       site.webmanifest these files,
-    #       delete the rest. Then move
-    #       these files to the ~/blog/static/icons/
-    #       directory, move favicon.ico,
-    #       site.webmanifest to the ~/blog/static/
-    #       directory, and finally rename
-    #       site.webmanifest to manifest.json,
-    #       and check and modify related
-    #       content (the path of the icons).
+    #       files, unzip after downloading.
+    #       Then move these files to the
+    #       ~/blog/static/icons/ directory,
+    #       move favicon.ico, site.webmanifest
+    #       to the ~/blog/static/ directory,
+    #       and finally rename site.webmanifest
+    #       to manifest.json, and check
+    #       and modify related content
+    #       (the path of the icons).
+
+    # ATTENTION: To check your favicon, plese
+    #            go to https://realfavicongenerator.net/favicon-checker.
+    #            If any problems are detected,
+    #            check the filename differences
+    #            between the generated files
+    #            and the related files in the
+    #            ~/blog/themes/meme/static/ directory.
+    #            If there are any differences,
+    #            it means some files may be outdated.
+    #            Please create an issue if necessary.
 
     themeColor = "#fff"
     themeColorDark = "#16171d"
-    safariMaskColor = "#2a6df4"
-    msApplicationTileColor = "#fff"
 
 
     ######################################

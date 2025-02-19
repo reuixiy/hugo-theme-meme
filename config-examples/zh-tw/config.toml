@@ -508,12 +508,7 @@ uglyURLs = false
     # 網頁應用
 
     # 說明：前往 https://realfavicongenerator.net/
-    #      生成相關圖示和檔案，下載後解壓，僅保留
-    #      android-chrome-512x512.png、
-    #      apple-touch-icon.png、
-    #      mstile-150x150.png、
-    #      safari-pinned-tab.svg、favicon.ico、
-    #      site.webmanifest 這些檔案，刪除其餘。
+    #      生成相關圖示和檔案，下載後解壓。
     #      然後將這些檔案移動到 ~/blog/static/icons/
     #      目錄下，再將 favicon.ico、site.webmanifest
     #      移動到 ~/blog/static/ 目錄下，
@@ -521,10 +516,16 @@ uglyURLs = false
     #      manifest.json，並檢查和修改相關內容
     #      （圖示的路徑）。
 
+    # 注意：要檢查你的圖標
+    #      請前往 https://realfavicongenerator.net/favicon-checker。
+    #      如果偵測到任何問題，檢查生成的檔案和
+    #      ~/blog/themes/meme/static/ 目錄下
+    #      相關檔案的檔案名稱差異。如果有差異，
+    #      這意味著某些文件可能已經過時。
+    #      如有需要，請提 Issue。
+
     themeColor = "#fff"
     themeColorDark = "#16171d"
-    safariMaskColor = "#2a6df4"
-    msApplicationTileColor = "#fff"
 
 
     ######################################

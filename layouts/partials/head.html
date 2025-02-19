@@ -50,25 +50,20 @@
     <meta name="description" content="{{ $description }}" />
 
     <!-- Favicon, Icons, Web App -->
-    {{- $favicon := "favicon.ico" -}}
-    {{- $safariMaskIcon := "icons/safari-pinned-tab.svg" -}}
-    {{- $safariMaskColor := .Site.Params.safariMaskColor -}}
+    {{- $icoFavicon := "favicon.ico" -}}
+    {{- $svgFavicon := "icons/favicon.svg" -}}
+    {{- $pngFavicon := "icons/favicon-96x96.png" -}}
     {{- $appleTouchIcon := "icons/apple-touch-icon.png" -}}
-    {{- $msApplicationStartURL := partial "utils/relative-url.html" (dict "$" . "filename" "") -}}
-    {{- $msApplicationTileColor := .Site.Params.msApplicationTileColor -}}
-    {{- $msApplicationTileImage := partial "utils/relative-url.html" (dict "$" . "filename" "icons/mstile-150x150.png") -}}
     {{- $manifest := "manifest.json" -}}
-    <link rel="shortcut icon" href="{{ $favicon | relURL }}" type="image/x-icon" />
-    <link rel="mask-icon" href="{{ $safariMaskIcon | relURL }}" color="{{ $safariMaskColor }}" />
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ $appleTouchIcon | relURL }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ $icoFavicon | relURL }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ $svgFavicon | relURL }}" />
+    <link rel="icon" type="image/png" href="{{ $pngFavicon | relURL }}" sizes="96x96" />
+    <link rel="apple-touch-icon" href="{{ $appleTouchIcon | relURL }}" sizes="180x180" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="{{ .Site.Title }}" />
-    <meta name="msapplication-starturl" content="{{ $msApplicationStartURL }}" />
-    <meta name="msapplication-TileColor" content="{{ $msApplicationTileColor }}" />
-    <meta name="msapplication-TileImage" content="{{ $msApplicationTileImage }}" />
     <link rel="manifest" href="{{ $manifest | relURL }}" />
 
     <!-- Atom / RSS -->
