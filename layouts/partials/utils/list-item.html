@@ -15,7 +15,16 @@
         {{ range . }}
             <li class="list-item">
                 <a href="{{ .RelPermalink }}" class="list-item-title">{{ (partial "utils/title.html" (dict "$" . "title" .LinkTitle)).htmlTitle }}</a>
-                <time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="list-item-time">{{ .PublishDate.Format .Site.Params.listDateFormat }}</time>
+                <time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-07:00" }}" class="list-item-time">
+					{{ if .Site.Params.i18nMonth }}
+						{{ $month := .PublishDate.Format "January" }}{{ $month := i18n (lower $month) }}
+						{{ $day := .PublishDate.Format "2" }}
+						{{ if findRE "fr" .Site.LanguageCode }}{{ $day }}{{ if eq $day "1" }}<sup>er</sup>{{ end }} {{ $month }}
+						{{ else }}{{ .PublishDate.Format .Site.Params.listDateFormat }}{{ end }}
+					{{ else }}
+						{{ .PublishDate.Format .Site.Params.listDateFormat }}
+					{{ end }}
+                </time>
             </li>
         {{ end }}
         {{ if and (gt $limit 0) (gt (len $.Pages) $limit) }}
