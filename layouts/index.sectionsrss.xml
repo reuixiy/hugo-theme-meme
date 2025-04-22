@@ -46,12 +46,20 @@
                 {{ with $author.copyright -}}
                     <copyright>{{ . | plainify | htmlUnescape }}</copyright>
                 {{- end }}
+                {{ $feedFooterRaw := $.Site.Params.feedFooter | resources.FromString (printf "feed-footer-%s.md" (.Permalink | urlize)) | resources.ExecuteAsTemplate (printf "feed-footer-rendered-%s.md" (.Permalink | urlize)) . }}
+                {{ $feedFooter := partial "utils/markdownify.html" (dict "$" . "raw" $feedFooterRaw.Content "isContent" false) }}
                 {{ if $.Site.Params.includeContent }}
                     {{- $content := (partial "utils/content.html" $page) -}}
-                    <description>{{ partial "utils/make-links-absolute.html" (dict "$" . "content" $content) | html }}</description>
+                    <description>
+                        {{ partial "utils/make-links-absolute.html" (dict "$" . "content" $content) | html }}
+                        {{ partial "utils/make-links-absolute.html" (dict "$" . "content" $feedFooter) | html }}
+                    </description>
                 {{ else }}
                     {{- $summary := .Description | default (partial "utils/summary.html" $page) -}}
-                    <description>{{ partial "utils/make-links-absolute.html" (dict "$" . "content" $summary) | html }}</description>
+                    <description>
+                        {{ partial "utils/make-links-absolute.html" (dict "$" . "content" $summary) | html }}
+                        {{ partial "utils/make-links-absolute.html" (dict "$" . "content" $feedFooter) | html }}
+                    </description>
                 {{ end }}
                 <!-- Sections -->
                 {{ if eq $.Site.Params.categoryBy "sections" }}

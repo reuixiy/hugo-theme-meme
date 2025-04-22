@@ -478,6 +478,10 @@ uglyURLs = false
     #      有一个比手动指定更高的优先级——
     #      Front Matter 中的 `description`。
 
+    # 自定页脚（支持 Template 与 Markdown 语法）
+    feedFooter = """> 阅读原文：<{{ .Permalink }}>  
+> 博客公告：博客现已开通邮件订阅，欢迎[通过 Substack 订阅](https://username.substack.com)支持我的创作！"""
+
 
     ######################################
     # 深色模式

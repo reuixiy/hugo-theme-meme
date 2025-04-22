@@ -521,6 +521,10 @@ uglyURLs = false
     #       custom Atom & RSS template of
     #       MemE.
 
+    # Custom Footer (Supports Template and Markdown syntax)
+feedFooter = """> Read original: <{{ .Permalink }}>  
+> Notice: This blog now offers email subscriptions—feel free to [subscribe via Substack](https://username.substack.com) to support my work!"""
+
 
     ######################################
     # Dark Mode

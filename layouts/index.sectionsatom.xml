@@ -56,9 +56,17 @@
             {{- end }}
             {{- $summary := .Description | default (partial "utils/summary.html" $page) -}}
             {{- $content := (partial "utils/content.html" $page) -}}
-            <summary type="html">{{ partial "utils/make-links-absolute.html" (dict "$" . "content" $summary) | html }}</summary>
+            {{- $feedFooterRaw := $.Site.Params.feedFooter | resources.FromString (printf "feed-footer-%s.md" (.Permalink | urlize)) | resources.ExecuteAsTemplate (printf "feed-footer-rendered-%s.md" (.Permalink | urlize)) . -}}
+            {{- $feedFooter := partial "utils/markdownify.html" (dict "$" . "raw" $feedFooterRaw.Content "isContent" false) -}}
+            <summary type="html">
+                {{ partial "utils/make-links-absolute.html" (dict "$" . "content" $summary) | html }}
+                {{ partial "utils/make-links-absolute.html" (dict "$" . "content" $feedFooter) | html }}
+            </summary>
             {{ if $.Site.Params.includeContent }}
-                <content type="html">{{ partial "utils/make-links-absolute.html" (dict "$" . "content" $content) | html }}</content>
+                <content type="html">
+                    {{ partial "utils/make-links-absolute.html" (dict "$" . "content" $content) | html }}
+                    {{ partial "utils/make-links-absolute.html" (dict "$" . "content" $feedFooter) | html }}
+                </content>
             {{ end }}
             <!-- Sections -->
             {{ if eq $.Site.Params.categoryBy "sections" }}

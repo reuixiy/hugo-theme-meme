@@ -478,6 +478,10 @@ uglyURLs = false
     #      有一個比手動指定更高的優先順序——
     #      Front Matter 中的 `description`。
 
+    # 客製頁尾（支援 Template 與 Markdown 語法）
+    feedFooter = """> 閱讀原文：<{{ .Permalink }}>  
+> 網誌公告：網誌現已開通郵件訂閱，歡迎[透過 Substack 訂閱](https://username.substack.com)支援我的創作！"""
+
 
     ######################################
     # 深色模式
