@@ -23,38 +23,29 @@
             "misskey" "share?text={text}"
     -}}
     <body data-projects="{{ $projects | jsonify }}">
-        {{
-            $domains := slice
-                (dict "domain" "mastodon.social" "softwarename" "mastodon" "score" "100" "active_users_monthly" "1000")
-                (dict "domain" "fedibird.com" "softwarename" "fedibird" "score" "100" "active_users_monthly" "1000")
-                (dict "domain" "lemmy.world" "softwarename" "lemmy" "score" "100" "active_users_monthly" "1000")
-                (dict "domain" "kbin.social" "softwarename" "kbin" "score" "100" "active_users_monthly" "1000")
-                (dict "domain" "pixelfed.social" "softwarename" "pixelfed" "score" "100" "active_users_monthly" "1000")
-                (dict "domain" "micro.blog" "softwarename" "microdotblog" "score" "100" "active_users_monthly" "1000")
-                (dict "domain" "misskey.io" "softwarename" "misskey" "score" "100" "active_users_monthly" "1000")
-                (dict "domain" "bookwyrm.social" "softwarename" "bookwyrm" "score" "100" "active_users_monthly" "1000")
-                (dict "domain" "diasp.org" "softwarename" "diaspora" "score" "100" "active_users_monthly" "1000")
-        -}}
-        {{ if .Site.Params.fetchFediverseInstances -}}
-            {{ with resources.GetRemote "https://api.fediverse.observer/"  (dict
-                "method" "post"
-                "body" `{"query": "{nodes(softwarename: \"\"){softwarename domain score active_users_monthly}}"}`
-                "headers" (dict
-                    "Content-Type" "application/json"
-                )
-            ) -}}
-                {{ with .Err -}}
-                    {{ warnf "Failed retrieving the list of Fediverse instances: %s" . -}}
-                {{ else -}}
-                    {{ $domains = sort (. | unmarshal).data.nodes "domain" -}}
-                {{ end -}}
-            {{ end -}}
-        {{ end -}}
+        {{ $domains := slice }}
+        {{/* Attempt to load instances from the local JSON file */}}
+        {{ $localInstances := getJSON "data/fedi_instances.json" }}
+        {{ if $localInstances }}
+            {{ $domains = $localInstances }}
+        {{ else }}
+            {{/* Fallback to a minimal hardcoded list if fedi_instances.json is not found or is empty */}}
+            {{ warnf "data/fedi_instances.json not found or empty. Falling back to minimal hardcoded instance list." }}
+            {{ $domains = slice
+                "mastodon.social"
+                "fedibird.com"
+                "lemmy.world"
+                "kbin.social"
+                "pixelfed.social"
+                "micro.blog"
+                "misskey.io"
+                "bookwyrm.social"
+                "diasp.org"
+            }}
+        {{ end }}
         <datalist id="fediverse-domains">
             {{ range $domains -}}
-                {{ if and .softwarename (isset $projects .softwarename) (gt .score 90) (gt .active_users_monthly 10) -}}
-                    <option data-project="{{ .softwarename }}">{{ .domain }}</option>
-                {{ end -}}
+                <option>{{ . }}</option>
             {{ end -}}
         </datalist>
         <div class="container">
