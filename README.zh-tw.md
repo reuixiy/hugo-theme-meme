@@ -111,3 +111,7 @@ MemE 透過 Hugo 管道實現使用 SCSS 生成 CSS，而非靜態的 CSS 檔案
 ## 支援的 Front Matter
 
 請看 <https://github.com/reuixiy/hugo-theme-meme#supported-front-matter>。
+
+## 讚助
+
+請看 <https://github.com/reuixiy/hugo-theme-meme#sponsorship>。
