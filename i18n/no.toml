@@ -63,6 +63,9 @@ other = "Fant {{ .Count }} resultater for “{{ .Term }}”"
 [searchResultsNone]
 other = "Ingen er funnet for “{{ .Term }}”"
 
+[themeSwitcher]
+other = "Bytt tema"
+
 
 # Socials
 
