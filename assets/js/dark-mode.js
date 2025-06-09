@@ -2,15 +2,36 @@
 // https://web.dev/prefers-color-scheme/#reacting-on-dark-mode-changes (old reference)
 // https://twitter.com/ChromeDevTools/status/1197175265643745282 (old reference)
 
-// Initialize theme based on user preference
-const userPreference = localStorage.getItem('theme') || 'system';
+// Check if system preferences should be overridden
+const enableDarkMode = {{ if .Site.Params.enableDarkMode }}true{{ else }}false{{ end }};
+const overrideSystemPreferences = {{ if .Site.Params.overrideSystemPreferences }}true{{ else }}false{{ end }};
+const defaultTheme = '{{ .Site.Params.defaultTheme | default "light" }}';
+
+// Helper function to check if system preferences should be overridden
+function shouldOverrideSystemPreferences() {
+    return enableDarkMode && overrideSystemPreferences;
+}
+
+// Helper function to check if theme switching is allowed
+function isThemeSwitchingAllowed() {
+    return !shouldOverrideSystemPreferences();
+}
+
+// Initialize theme based on user preference or site configuration
+let userPreference;
+if (shouldOverrideSystemPreferences()) {
+    // When overrideSystemPreferences is enabled, use defaultTheme and ignore localStorage and system preferences
+    userPreference = defaultTheme;
+} else {
+    userPreference = localStorage.getItem('theme') || 'system';
+}
 applyThemeFromPreference(userPreference);
 
 // Listen for system preference changes
 const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 mediaQuery.addEventListener('change', () => {
-    // Only apply system changes if user preference is 'system'
-    if (getUserPreference() === 'system') {
+    // Only apply system changes if user preference is 'system' and overrideSystemPreferences is not enabled
+    if (getUserPreference() === 'system' && isThemeSwitchingAllowed()) {
         applyThemeFromPreference('system');
         changeMode();
     }
@@ -30,8 +51,11 @@ window.addEventListener("DOMContentLoaded", () => {
     if (themeSwitcher) {
         themeSwitcher.addEventListener('click', (e) => {
             e.preventDefault();
-            cycleTheme();
-            changeMode();
+            // Don't allow theme cycling if overrideSystemPreferences is enabled
+            if (isThemeSwitchingAllowed()) {
+                cycleTheme();
+                changeMode();
+            }
         });
     }
 }, {once: true});
@@ -43,13 +67,19 @@ window.addEventListener('storage', function (event) {
         return;
     }
     
-    applyThemeFromPreference(event.newValue || 'system');
-    changeMode();
+    // Don't sync if overrideSystemPreferences is enabled
+    if (isThemeSwitchingAllowed()) {
+        applyThemeFromPreference(event.newValue || 'system');
+        changeMode();
+    }
 });
 
 // Functions
 
 function getUserPreference() {
+    if (shouldOverrideSystemPreferences()) {
+        return defaultTheme;
+    }
     return localStorage.getItem('theme') || 'system';
 }
 
@@ -64,7 +94,10 @@ function getCurrentTheme() {
 function applyThemeFromPreference(preference) {
     let actualTheme;
     
-    if (preference === 'system') {
+    if (shouldOverrideSystemPreferences()) {
+        // When overrideSystemPreferences is enabled, always use defaultTheme
+        actualTheme = defaultTheme;
+    } else if (preference === 'system') {
         actualTheme = getSystemPreference();
     } else {
         actualTheme = preference;
@@ -75,6 +108,11 @@ function applyThemeFromPreference(preference) {
 }
 
 function cycleTheme() {
+    // Don't allow cycling if overrideSystemPreferences is enabled
+    if (!isThemeSwitchingAllowed()) {
+        return;
+    }
+    
     const currentPreference = getUserPreference();
     let newPreference;
     
@@ -102,7 +140,14 @@ function updateThemeIcons(preference) {
     icons.forEach(icon => icon.style.display = 'none');
     
     // Show the appropriate icon based on user preference (not actual theme)
-    const iconToShow = document.querySelector(`.theme-icon-${preference}`);
+    let iconClass;
+    if (shouldOverrideSystemPreferences()) {
+        iconClass = `.theme-icon-${defaultTheme}`;
+    } else {
+        iconClass = `.theme-icon-${preference}`;
+    }
+    
+    const iconToShow = document.querySelector(iconClass);
     if (iconToShow) {
         iconToShow.style.display = 'inline-block';
     }
