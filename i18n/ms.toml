@@ -63,6 +63,9 @@ other = "Jumpa {{ .Count }} halaman untuk “{{ .Term }}”"
 [searchResultsNone]
 other = "Tidak jumpa sebarang halaman untuk “{{ .Term }}”"
 
+[backToTop]
+other = "Kembali ke atas"
+
 [themeSwitcher]
 other = "Tukar tema"
 

@@ -63,6 +63,9 @@ other = "Ditemukan {{ .Count }} hasil dari “{{ .Term }}”"
 [searchResultsNone]
 other = "Tidak ditemukan hasil dari “{{ .Term }}”"
 
+[backToTop]
+other = "Kembali ke atas"
+
 [themeSwitcher]
 other = "Ganti tema"
 
