@@ -1,8 +1,9 @@
 #theme-switcher {
-    background: transparent;
     border: none;
-    cursor: pointer;
     padding: 0;
+    background: transparent;
+    font-size: inherit;
+    cursor: pointer;
 
     color: var(--color-contrast-medium);
     transition: color $duration;
