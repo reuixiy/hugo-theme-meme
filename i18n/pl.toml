@@ -63,6 +63,9 @@ other = "Znaleziono {{ .Count }} wyniki/ów dla: “{{ .Term }}”"
 [searchResultsNone]
 other = "Brak wyników dla: “{{ .Term }}”"
 
+[backToTop]
+other = "Powrót do góry"
+
 [themeSwitcher]
 other = "Przełącz motyw"
 
