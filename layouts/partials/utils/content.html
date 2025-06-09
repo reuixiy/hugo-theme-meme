@@ -25,10 +25,10 @@
     {{- $anchor := $icon | default .Site.Params.anchorSymbol | default "§" -}}
 
     {{- if .Site.Params.enableAnchorLink -}}
-        {{- $replacement := (printf `$1<a href="#$2" class="anchor-link">%s</a>$3$4` $anchor) -}}
+        {{- $replacement := (printf `$1<a href="#$2" class="anchor-link" aria-label="$2">%s</a>$3$4` $anchor) -}}
         {{- $.Scratch.Set "replacement" $replacement -}}
     {{- else -}}
-        {{- $replacement := (printf `$1<span class="anchor-link">%s</span>$3$4` $anchor) -}}
+        {{- $replacement := (printf `$1<span class="anchor-link" aria-hidden="true">%s</span>$3$4` $anchor) -}}
         {{- $.Scratch.Set "replacement" $replacement -}}
     {{- end -}}
     {{- $replacement := .Scratch.Get "replacement" -}}
