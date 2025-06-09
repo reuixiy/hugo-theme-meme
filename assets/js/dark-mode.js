@@ -1,61 +1,111 @@
-// Reactive Dark Mode
-// https://web.dev/prefers-color-scheme/#reacting-on-dark-mode-changes
-// https://twitter.com/ChromeDevTools/status/1197175265643745282
+// Reactive Dark Mode with Three-Mode Support (Light → Dark → System)
+// https://web.dev/prefers-color-scheme/#reacting-on-dark-mode-changes (old reference)
+// https://twitter.com/ChromeDevTools/status/1197175265643745282 (old reference)
 
-const userPrefers = localStorage.getItem('theme');
-if (userPrefers === 'dark') {
-    changeModeMeta('dark');
-} else if (userPrefers === 'light') {
-    changeModeMeta('light');
-}
+// Initialize theme based on user preference
+const userPreference = localStorage.getItem('theme') || 'system';
+applyThemeFromPreference(userPreference);
 
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    changeMode();
+// Listen for system preference changes
+const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+mediaQuery.addEventListener('change', () => {
+    // Only apply system changes if user preference is 'system'
+    if (getUserPreference() === 'system') {
+        applyThemeFromPreference('system');
+        changeMode();
+    }
 });
 
 window.addEventListener("DOMContentLoaded", () => {
     // Update meta tags and code highlighting
     changeMode();
+    
+    // Set initial icon based on user preference
+    updateThemeIcons(getUserPreference());
 
-    // Theme Switcher
-    // https://derekkedziora.com/blog/dark-mode
-
+    // Theme Switcher with three-mode support (new implementation)
+    // https://derekkedziora.com/blog/dark-mode (old reference)
     const themeSwitcher = document.getElementById('theme-switcher');
 
     if (themeSwitcher) {
         themeSwitcher.addEventListener('click', (e) => {
             e.preventDefault();
-            if (getCurrentTheme() == "dark") {
-                changeModeMeta('light');
-            } else {
-                changeModeMeta('dark');
-            }
+            cycleTheme();
             changeMode();
-            storePrefers();
         });
     }
 }, {once: true});
 
 // Sync Across Tabs
-// https://codepen.io/tevko/pen/GgWYpg
-
+// https://codepen.io/tevko/pen/GgWYpg (old reference)
 window.addEventListener('storage', function (event) {
     if (event.key !== 'theme') {
-      return;
+        return;
     }
-
-    if (event.newValue === 'dark') {
-        changeModeMeta('dark');
-    } else {
-        changeModeMeta('light');
-    }
+    
+    applyThemeFromPreference(event.newValue || 'system');
     changeMode();
 });
 
 // Functions
 
+function getUserPreference() {
+    return localStorage.getItem('theme') || 'system';
+}
+
+function getSystemPreference() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
 function getCurrentTheme() {
-    return JSON.parse(window.getComputedStyle(document.documentElement, null).getPropertyValue("--theme-name"));
+    return document.documentElement.getAttribute('data-theme') || getSystemPreference();
+}
+
+function applyThemeFromPreference(preference) {
+    let actualTheme;
+    
+    if (preference === 'system') {
+        actualTheme = getSystemPreference();
+    } else {
+        actualTheme = preference;
+    }
+    
+    changeModeMeta(actualTheme);
+    updateThemeIcons(preference);
+}
+
+function cycleTheme() {
+    const currentPreference = getUserPreference();
+    let newPreference;
+    
+    // Cycle: light → dark → system → light...
+    switch (currentPreference) {
+        case 'light':
+            newPreference = 'dark';
+            break;
+        case 'dark':
+            newPreference = 'system';
+            break;
+        case 'system':
+        default:
+            newPreference = 'light';
+            break;
+    }
+    
+    localStorage.setItem('theme', newPreference);
+    applyThemeFromPreference(newPreference);
+}
+
+function updateThemeIcons(preference) {
+    // Hide all icons first
+    const icons = document.querySelectorAll('.theme-icon-light, .theme-icon-dark, .theme-icon-system');
+    icons.forEach(icon => icon.style.display = 'none');
+    
+    // Show the appropriate icon based on user preference (not actual theme)
+    const iconToShow = document.querySelector(`.theme-icon-${preference}`);
+    if (iconToShow) {
+        iconToShow.style.display = 'inline-block';
+    }
 }
 
 function changeModeMeta(theme) {
@@ -138,8 +188,4 @@ function changeMode() {
             mermaid.init();
         }
     }
-}
-
-function storePrefers() {
-    window.localStorage.setItem('theme', getCurrentTheme());
 }
