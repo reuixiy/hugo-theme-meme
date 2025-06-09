@@ -1,4 +1,9 @@
 #theme-switcher {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+
     color: var(--color-contrast-medium);
     transition: color $duration;
     z-index: 4;
