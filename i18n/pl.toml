@@ -63,6 +63,9 @@ other = "Znaleziono {{ .Count }} wyniki/ów dla: “{{ .Term }}”"
 [searchResultsNone]
 other = "Brak wyników dla: “{{ .Term }}”"
 
+[themeSwitcher]
+other = "Przełącz motyw"
+
 
 # Socials
 

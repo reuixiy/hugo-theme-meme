@@ -63,6 +63,9 @@ other = "Trouvé {{ .Count }} résultats pour “{{ .Term }}”"
 [searchResultsNone]
 other = "Aucun résultat pour “{{ .Term }}”"
 
+[themeSwitcher]
+other = "Changer de thème"
+
 
 # Socials
 

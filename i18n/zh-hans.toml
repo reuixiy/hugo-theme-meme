@@ -65,6 +65,9 @@ other = "找到 {{ .Count }} 条关于「{{ .Term }}」的结果"
 [searchResultsNone]
 other = "没有找到关于「{{ .Term }}」的结果"
 
+[themeSwitcher]
+other = "切换主题"
+
 
 # Socials
 

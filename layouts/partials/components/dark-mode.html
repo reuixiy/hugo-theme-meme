@@ -1,7 +1,7 @@
 {{- if .Site.Params.enableDarkMode -}}
     {{- $hide := or (and $.IsHome $.Site.Params.hideThemeToggleInHome) (and (not $.IsHome) $.Site.Params.hideThemeToggle) -}}
     {{- if not $hide -}}
-        <a id="theme-switcher" href="#">
+        <a id="theme-switcher" href="#" aria-label="{{ i18n "themeSwitcher" }}">
             {{- partial "utils/icon.html" (dict "$" $ "name" "sun" "class" "theme-icon-light") -}}
             {{- partial "utils/icon.html" (dict "$" $ "name" "moon" "class" "theme-icon-dark") -}}
         </a>

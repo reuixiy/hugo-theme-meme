@@ -63,6 +63,9 @@ other = "A “{{ .Term }}” kifejezésre {{ .Count }} eredményt találtam"
 [searchResultsNone]
 other = "A “{{ .Term }}” kifejezésre nincs találat"
 
+[themeSwitcher]
+other = "Téma váltása"
+
 
 # Socials
 

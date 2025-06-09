@@ -63,6 +63,9 @@ other = "Найдено {{ .Count }} результатов для “{{ .Term }
 [searchResultsNone]
 other = "Ничего не найдено для “{{ .Term }}”"
 
+[themeSwitcher]
+other = "Переключить тему"
+
 
 # Socials
 
