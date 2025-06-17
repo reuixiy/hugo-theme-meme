@@ -10,7 +10,7 @@
     <main class="main list" id="main">
         <div class="main-inner">
             <div class="content list-group">
-                {{ if .Site.Params.displayListTitle }}
+                {{ if site.Params.displayListTitle }}
                     {{ if (eq .Kind "section") }}
                         <h1 class="list-title">
                             {{ .Title | default (delimit (last 1 (split (strings.TrimSuffix "/_index.md" $path) "/")) " ") }}
@@ -24,21 +24,20 @@
                 {{ end }}
                 {{ .Content }}
 
-                {{ .Scratch.Delete "pages" }}
+                {{- $pages := slice -}}
 
 
                 <!-- Section -->
                 {{ if (eq .Kind "section") }}
                     <!-- Archives -->
                     {{ if (eq .Section "archives") }}
-                        {{ $pages := (where .Site.RegularPages "Section" "in" .Site.Params.mainSections) }}
-                        {{ .Scratch.Set "pages" $pages }}
+                        {{- $pages = (where site.RegularPages "Section" "in" site.Params.mainSections) -}}
                         <!-- Regular Section -->
                     {{ else }}
                         {{ $sectionPage := .CurrentSection }}
-                        {{ range .Site.RegularPages }}
+                        {{ range site.RegularPages }}
                             {{ if (.IsDescendant $sectionPage) }}
-                                {{ $.Scratch.Add "pages" (slice .) }}
+                                {{- $pages = $pages | append . -}}
                             {{ end }}
                         {{ end }}
                     {{ end }}
@@ -49,53 +48,44 @@
 
                 <!-- Taxonomy Term -->
                 {{ if (eq .Kind "term") }}
-                    {{ $pages := .Pages }}
-                    {{ $.Scratch.Set "pages" $pages }}
+                    {{- $pages = .Pages -}}
                 {{ end }}
 
 
                 <!-- Start List -->
-                {{ $pages := .Scratch.Get "pages" }}
                 {{ range $pages.GroupByDate "2006" }}
-                    {{ $.Scratch.Delete "zodiacName" }}
-                    {{ if $.Site.Params.chineseZodiac }}
-                        {{ $zodiacName := (index $.Site.Data.ChineseZodiac (string (mod .Key 12))) }}
-                        {{ $.Scratch.Set "zodiacName" $zodiacName }}
+                    {{- $zodiacName := "" -}}
+                    {{ if site.Params.chineseZodiac }}
+                        {{- $zodiacName = (index site.Data.ChineseZodiac (string (mod .Key 12))) -}}
                     {{ end }}
-                    {{ $zodiacName := $.Scratch.Get "zodiacName" }}
-                    {{ $.Scratch.Delete "year" }}
-                    {{ if $.Site.Params.i18nYear }}
+                    {{- $year := "" -}}
+                    {{ if site.Params.i18nYear }}
                         {{ $key := .Key }}
-                        {{ $.Scratch.Delete "num" }}
+                        {{- $num := slice -}}
                         {{ range (slice 1 2 3 4) }}
-                            {{ $.Scratch.Add "num" (slice (substr $key (sub . 1) 1)) }}
+                            {{- $num = $num | append (substr $key (sub . 1) 1) -}}
                         {{ end }}
-                        {{ $num := $.Scratch.Get "num" }}
-                        {{ $.Scratch.Delete "i18nNum" }}
+                        {{- $i18nNum := slice -}}
                         {{ range $num }}
-                            {{ $.Scratch.Add "i18nNum" (i18n .) }}
+                            {{- $i18nNum = $i18nNum | append (i18n .) -}}
                         {{ end }}
-                        {{ $i18nNum := $.Scratch.Get "i18nNum" }}
-                        {{ $.Scratch.Set "year" $i18nNum }}
+                        {{- $year = delimit $i18nNum "" -}}
                     {{ else }}
-                        {{ $.Scratch.Set "year" .Key }}
+                        {{- $year = .Key -}}
                     {{ end }}
-                    {{ $year := $.Scratch.Get "year" }}
                     <h2 class="list-year">
-                        {{ $year }}{{ if $.Site.Params.chineseZodiac }}
+                        {{ $year }}{{ if site.Params.chineseZodiac }}
                             {{ partial "utils/icon.html" (dict "$" $ "name" $zodiacName "class" "chinese-zodiac") }}
                         {{ end }}
                     </h2>
-                    {{ if $.Site.Params.groupByMonth }}
+                    {{ if site.Params.groupByMonth }}
                         {{ range .Pages.GroupByDate "January" }}
-                            {{ $.Scratch.Delete "month" }}
-                            {{ if $.Site.Params.i18nMonth }}
-                                {{ $month := i18n (lower .Key) }}
-                                {{ $.Scratch.Set "month" $month }}
+                            {{- $month := "" -}}
+                            {{ if site.Params.i18nMonth }}
+                                {{- $month = i18n (lower .Key) -}}
                             {{ else }}
-                                {{ $.Scratch.Set "month" .Key }}
+                                {{- $month = .Key -}}
                             {{ end }}
-                            {{ $month := $.Scratch.Get "month" }}
                             <h3 class="list-month">{{ $month }}</h3>
                             {{ partial "utils/list-item.html" (dict "$" .) }}
                         {{ end }}
