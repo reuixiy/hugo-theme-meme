@@ -1,17 +1,11 @@
 .emphasis-point {
     font-style: normal;
-}
-.dot {
-    position: relative;
-    display: inline-block;
-}
-.dot::after {
-    content: '‧'; /* U+2027 */
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.5em;
-    line-height: 1;
-    pointer-events: none;
+
+    -webkit-text-emphasis: '‧';
+    -moz-text-emphasis: '‧';
+    text-emphasis: '‧'; /* U+2027 */
+
+    -webkit-text-emphasis-position: under;
+    -moz-text-emphasis-position: under;
+    text-emphasis-position: under;
 }

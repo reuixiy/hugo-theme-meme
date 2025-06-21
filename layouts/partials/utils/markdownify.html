@@ -4,22 +4,9 @@
 
 <!-- New Syntax: Emphasis Point `..中文..` -->
 {{- if $.Site.Params.enableEmphasisPoint -}}
-    {{- $emphasisPoints := findRE `\.\.([\p{Han}]+)\.\.` $Content -}}
-    {{- with $emphasisPoints -}}
-        {{- range $emphasisPoints -}}
-            {{- $original := . -}}
-            {{- $text := replaceRE `\.\.(.+)\.\.` `$1` $original -}}
-
-            {{- $chars := split $text "" -}}
-            {{- $wrapped := "" -}}
-            {{- range $chars -}}
-                {{- $wrapped = printf "%s<span class=\"dot\">%s</span>" $wrapped . -}}
-            {{- end -}}
-
-            {{- $replacement := printf `<em class="emphasis-point">%s</em>` $wrapped -}}
-            {{- $Content = replace $Content $original $replacement -}}
-        {{- end -}}
-    {{- end -}}
+    {{- $regexPatternEmphasisPoint := `\.\.([\p{Han}]+)\.\.` -}}
+    {{- $regexReplacementEmphasisPoint := `<em class="emphasis-point">$1</em>` -}}
+    {{- $Content = $Content | replaceRE $regexPatternEmphasisPoint $regexReplacementEmphasisPoint -}}
 {{- end -}}
 
 <!-- Markdownify -->
