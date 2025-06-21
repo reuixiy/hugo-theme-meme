@@ -4,10 +4,6 @@ function updateState() {
 }
 
 function getSoftwareName(instance) {
-    for (let option of document.querySelectorAll("#fediverse-domains > option"))
-        if (option.value == instance)
-            return Promise.resolve(option.getAttribute("data-project"));
-
     const SUPPORTED_SCHEMAS = [
         "http://nodeinfo.diaspora.software/ns/schema/2.0",
         "http://nodeinfo.diaspora.software/ns/schema/2.1",
