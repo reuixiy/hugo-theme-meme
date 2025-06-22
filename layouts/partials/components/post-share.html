@@ -19,9 +19,11 @@
             {{- end -}}
             {{- $hashtags.Add "tags" "," -}}
         {{- end -}}
+        {{- $firstTag := index (split ($hashtags.Get "tags") ",") 0 -}}
+        {{- if $firstTag -}}
+            {{- $hashtags.Set "firsttag" (printf "%s%s" "%23" $firstTag) -}}
+        {{- end -}}
     {{- end -}}
-    {{- $hashtags.Set "firsttag" "%23" -}}
-    {{- $hashtags.Add "firsttag" (index (split ($hashtags.Get "tags") ",") 0) -}}
 
     <div class="post-share">
 
@@ -35,14 +37,17 @@
             {{ range .Site.Params.postShareItems | default (slice "facebook" "mastodon" "fediverse" "twitter") }}
                 {{ if eq . "twitter" }}
                     <div class="share-item twitter">
-                        {{ $url := (printf `https://twitter.com/share?url=%s&text=%s&hashtags=%s&via=%s` $.Permalink $title ($hashtags.Get "tags" | default "") $.Site.Params.siteTwitter) }}
+                        {{ $url := printf "https://twitter.com/share?url=%s&text=%s" $.Permalink $title }}
+                        {{ with $hashtags.Get "tags" }}{{ $url = printf "%s&hashtags=%s" $url . }}{{ end }}
+                        {{ with $.Site.Params.siteTwitter }}{{ $url = printf "%s&via=%s" $url . }}{{ end }}
                         <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "twitter" }}" target="_blank" rel="noopener">
                             {{- partial "utils/icon.html" (dict "$" $ "name" "twitter" "class" "twitter-icon") -}}
                         </a>
                     </div>
                 {{ else if eq . "facebook" }}
                     <div class="share-item facebook">
-                        {{ $url := (printf `https://www.facebook.com/sharer/sharer.php?u=%s&hashtag=%s` $.Permalink ($hashtags.Get "firsttag" | default "")) }}
+                        {{ $url := printf "https://www.facebook.com/sharer/sharer.php?u=%s" $.Permalink }}
+                        {{ with $hashtags.Get "firsttag" }}{{ $url = printf "%s&hashtag=%s" $url . }}{{ end }}
                         <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "facebook" }}" target="_blank" rel="noopener">
                             {{- partial "utils/icon.html" (dict "$" $ "name" "facebook" "class" "facebook-icon") -}}
                         </a>
