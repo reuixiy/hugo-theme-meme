@@ -210,7 +210,7 @@ Also, make sure to follow [the instructions](https://github.com/reuixiy/hugo-the
 # [4.3.0](https://github.com/reuixiy/hugo-theme-meme/compare/v4.2.1...v4.3.0) (2020-03-20)
 
 
-MemE v4.3.0 makes some brand new features and *breaking changes*, so please be sure to check [the modification history of `config.toml`](https://github.com/reuixiy/hugo-theme-meme/commits/master/config-examples) and update the related items after the update!
+MemE v4.3.0 makes some brand new features and *breaking changes*, so please be sure to check [the modification history of `hugo.toml`](https://github.com/reuixiy/hugo-theme-meme/commits/master/config-examples) and update the related items after the update!
 
 
 ### Bug Fixes
@@ -529,13 +529,13 @@ As I described in [#26](https://github.com/reuixiy/hugo-theme-meme/issues/26), I
 
 # [3.0.0](https://github.com/reuixiy/hugo-theme-meme/compare/v2.3.7...v3.0.0) (2019-11-09)
 
-MemE has a brand new `config.toml` (in config-examples folder) with detailed instructions now! I highly recommend you replace your existing config.toml with it. Although this may take a while to reconfigure the configuration.
+MemE has a brand new `hugo.toml` (in config-examples folder) with detailed instructions now! I highly recommend you replace your existing hugo.toml with it. Although this may take a while to reconfigure the configuration.
 
-Moreover, MemE modifies the color values ​​of dark mode to make dark mode less depressed. Please change `primaryColorDark` to `201, 65%, 62%` if you are not using the latest version of `config.toml`.
+Moreover, MemE modifies the color values ​​of dark mode to make dark mode less depressed. Please change `primaryColorDark` to `201, 65%, 62%` if you are not using the latest version of `hugo.toml`.
 
-MemE 主题现在有一个全新的 `config.toml` 了（在 config-examples 文件夹内），且里面包含详细的说明！我强烈建议你用它替换你现有的 config.toml 文件，尽管这可能需要一些时间重新配置。
+MemE 主题现在有一个全新的 `hugo.toml` 了（在 config-examples 文件夹内），且里面包含详细的说明！我强烈建议你用它替换你现有的 hugo.toml 文件，尽管这可能需要一些时间重新配置。
 
-此外，MemE 主题修改了一些深色模式的颜色值，以使深色模式不那么压抑。对于这点，如果你没有使用最新版本的 `config.toml`，请你将其中的 `primaryColorDark` 设置为 `201, 65%, 62%`。
+此外，MemE 主题修改了一些深色模式的颜色值，以使深色模式不那么压抑。对于这点，如果你没有使用最新版本的 `hugo.toml`，请你将其中的 `primaryColorDark` 设置为 `201, 65%, 62%`。
 
 ### Bug Fixes
 
@@ -558,9 +558,9 @@ MemE 主题现在有一个全新的 `config.toml` 了（在 config-examples 文�
 ### BREAKING CHANGES
 
 * `darkImage` option is removed
-You can delete `darkImage` in config.toml or post’s Front Matter now.
+You can delete `darkImage` in hugo.toml or post’s Front Matter now.
 
-* config.toml changed
+* hugo.toml changed
 Please change `primaryColorDark` to `201, 65%, 62%` by yourself.
 
 
@@ -606,7 +606,7 @@ Please change `primaryColorDark` to `201, 65%, 62%` by yourself.
 * fonts.scss changed
 
 If you have customized `fonts.scss`, be sure to check this change before updating.
-* config.toml option changed
+* hugo.toml option changed
 ```
  # Image Hosting
  # Only support absolute URLs relative to root,
@@ -687,7 +687,7 @@ If you have customized `fonts.scss`, be sure to check this change before updatin
 ### BREAKING CHANGES
 
 * You must add `displayRelatedPosts = true` in
-config.toml
+hugo.toml
 
 
 
@@ -757,6 +757,6 @@ config.toml
 
 ### BREAKING CHANGES
 
-* config.toml option changed
+* hugo.toml option changed
 displayHeader -> enableHeader
 displayMenu   -> enableMenu
