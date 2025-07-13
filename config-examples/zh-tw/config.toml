@@ -344,7 +344,7 @@ uglyURLs = false
     # 注意：請保持此格式，更改數字
 
     # 站點的推特帳號
-    siteTwitter = "reuixiy"
+    siteTwitter = "yixiuer"
     # 說明：用於 Twitter Cards
 
 
@@ -1185,7 +1185,7 @@ uglyURLs = false
 
     displayShareOnText = false
 
-    postShareItems = ["facebook", "mastodon", "fediverse", "twitter", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "hackernews", "qrcode", "email"]
+    postShareItems = ["facebook", "mastodon", "fediverse", "x", "linkedin", "telegram", "weibo", "douban", "qq", "qzone", "pocket", "hackernews", "qrcode", "email"]
 
     # 從網路取得 Fediverse 實例清單用於輸入建議
     fetchFediverseInstances = false
@@ -1492,6 +1492,6 @@ uglyURLs = false
         # 網站（預設值：baseURL）
         website = "https://io-oi.me/"
         # 推特
-        twitter = "reuixiy"
+        twitter = "yixiuer"
         # Fediverse
-        fediverse = "@reuixiy@bird.makeup"
+        fediverse = "@yixiuer@mastodon.social"

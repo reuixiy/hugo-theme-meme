@@ -34,14 +34,14 @@
         <div class="share-items">
 
             {{ $ := . }}
-            {{ range .Site.Params.postShareItems | default (slice "facebook" "mastodon" "fediverse" "twitter") }}
-                {{ if eq . "twitter" }}
-                    <div class="share-item twitter">
-                        {{ $url := printf "https://twitter.com/share?url=%s&text=%s" $.Permalink $title }}
+            {{ range .Site.Params.postShareItems | default (slice "facebook" "mastodon" "fediverse" "x") }}
+                {{ if eq . "x" }}
+                    <div class="share-item x">
+                        {{ $url := printf "https://x.com/share?url=%s&text=%s" $.Permalink $title }}
                         {{ with $hashtags.Get "tags" }}{{ $url = printf "%s&hashtags=%s" $url . }}{{ end }}
                         {{ with $.Site.Params.siteTwitter }}{{ $url = printf "%s&via=%s" $url . }}{{ end }}
-                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "twitter" }}" target="_blank" rel="noopener">
-                            {{- partial "utils/icon.html" (dict "$" $ "name" "twitter" "class" "twitter-icon") -}}
+                        <a href="{{ $url }}" title="{{ i18n "shareOnTitle" }}{{ i18n "x" }}" target="_blank" rel="noopener">
+                            {{- partial "utils/icon.html" (dict "$" $ "name" "x" "class" "x-icon") -}}
                         </a>
                     </div>
                 {{ else if eq . "facebook" }}
