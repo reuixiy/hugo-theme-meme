@@ -55,10 +55,10 @@ https://gohugo.io/getting-started/quick-start/
 
 ### 开始写作
 
-1. 将 `config.toml` 替换为[示例配置](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
+1. 将 `hugo.toml` 替换为[示例配置](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
 
    ```sh
-   ~/blog $ rm config.toml && cp themes/meme/config-examples/zh-cn/config.toml config.toml
+   ~/blog $ rm hugo.toml && cp themes/meme/config-examples/zh-cn/config.toml config.toml
    ```
 
 2. 新建一篇文章和一个关于页面：
@@ -86,6 +86,8 @@ MemE 通过 Hugo 管道实现使用 SCSS 生成 CSS，而非静态的 CSS 文件
 
 ```sh
 ~/blog $ git submodule update --rebase --remote
+# 或
+~/blog $ cd themes/meme && git pull
 ```
 
 如果失败了，请尝试：

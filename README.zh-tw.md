@@ -55,10 +55,10 @@ https://gohugo.io/getting-started/quick-start/
 
 ### 開始寫作
 
-1. 將 `config.toml` 替換為[示例配置](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
+1. 將 `hugo.toml` 替換為[示例配置](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-tw/config.toml)。
 
    ```sh
-   ~/blog $ rm config.toml && cp themes/meme/config-examples/zh-cn/config.toml config.toml
+   ~/blog $ rm hugo.toml && cp themes/meme/config-examples/zh-tw/config.toml config.toml
    ```
 
 2. 新建一篇文章和一個關於頁面：
@@ -86,6 +86,8 @@ MemE 透過 Hugo 管道實現使用 SCSS 生成 CSS，而非靜態的 CSS 檔案
 
 ```sh
 ~/blog $ git submodule update --rebase --remote
+# 或
+~/blog $ cd themes/meme && git pull
 ```
 
 如果失敗了，請嘗試：
