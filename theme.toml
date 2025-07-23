@@ -8,7 +8,7 @@ description = "MemE is a powerful and highly customizable GoHugo theme for perso
 homepage = "https://github.com/reuixiy/hugo-theme-meme/"
 tags = ["Blog", "Minimal", "Clean", "Typography", "Multilingual"]
 features = ["Dark Mode", "MathJax", "KaTeX", "JSON-LD", "Drop Cap", "PWA", "TOC"]
-min_version = "0.128.0"
+min_version = "0.141.0"
 
 [author]
 name = "reuixiy"

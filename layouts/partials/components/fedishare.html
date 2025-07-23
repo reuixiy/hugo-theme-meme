@@ -36,17 +36,17 @@
                 (dict "domain" "diasp.org" "softwarename" "diaspora" "score" "100" "active_users_monthly" "1000")
         -}}
         {{ if .Site.Params.fetchFediverseInstances -}}
-            {{ with resources.GetRemote "https://api.fediverse.observer/"  (dict
+            {{ with try (resources.GetRemote "https://api.fediverse.observer/"  (dict
                 "method" "post"
                 "body" `{"query": "{nodes(softwarename: \"\"){softwarename domain score active_users_monthly}}"}`
                 "headers" (dict
                     "Content-Type" "application/json"
                 )
-            ) -}}
+            )) -}}
                 {{ with .Err -}}
                     {{ warnf "Failed retrieving the list of Fediverse instances: %s" . -}}
                 {{ else -}}
-                    {{ $domains = sort (. | unmarshal).data.nodes "domain" -}}
+                    {{ $domains = sort (.Value | unmarshal).data.nodes "domain" -}}
                 {{ end -}}
             {{ end -}}
         {{ end -}}
