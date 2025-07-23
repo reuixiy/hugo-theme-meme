@@ -1088,8 +1088,8 @@ uglyURLs = false
     ######################################
     ## 著重號
 
-    # 說明：MemE 主題自創的新 Markdown 語法
-    #      `..文字..`
+    # 說明：MemE 主題定義的語法 `..文字..`
+    #      https://www.w3.org/International/clreq/#id84
 
     # 是否開啟
     enableEmphasisPoint = true

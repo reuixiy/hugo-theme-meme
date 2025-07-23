@@ -1156,8 +1156,8 @@ uglyURLs = false
     ######################################
     ## Emphasis Point (Chinese)
 
-    # Note: new Markdown syntax created by MemE
-    #       `..文本..`
+    # Note: syntax defined by MemE `..文本..`
+    #       https://www.w3.org/International/clreq/#id84
 
     enableEmphasisPoint = false
 

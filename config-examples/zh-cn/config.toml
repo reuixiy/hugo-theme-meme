@@ -1088,8 +1088,8 @@ uglyURLs = false
     ######################################
     ## 着重号
 
-    # 说明：MemE 主题自创的新 Markdown 语法
-    #      `..文本..`
+    # 说明：MemE 主题定义的语法 `..文本..`
+    #      https://www.w3.org/International/clreq/#id84
 
     # 是否开启
     enableEmphasisPoint = true

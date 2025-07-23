@@ -1,9 +1,10 @@
+// https://www.w3.org/International/clreq/#id84
 .emphasis-point {
     font-style: normal;
 
-    -webkit-text-emphasis: '‧';
-    -moz-text-emphasis: '‧';
-    text-emphasis: '‧'; /* U+2027 */
+    -webkit-text-emphasis: '•';
+    -moz-text-emphasis: '•';
+    text-emphasis: '•'; /* U+2022 */
 
     -webkit-text-emphasis-position: under;
     -moz-text-emphasis-position: under;

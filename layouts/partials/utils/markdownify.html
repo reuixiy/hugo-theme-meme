@@ -3,6 +3,7 @@
 {{- $isContent := .isContent -}}
 
 <!-- New Syntax: Emphasis Point `..中文..` -->
+<!-- https://www.w3.org/International/clreq/#id84 -->
 {{- if $.Site.Params.enableEmphasisPoint -}}
     {{- $regexPatternEmphasisPoint := `\.\.([\p{Han}]+)\.\.` -}}
     {{- $regexReplacementEmphasisPoint := `<em class="emphasis-point">$1</em>` -}}
