@@ -1,4 +1,11 @@
 <main class="main single" id="main">
+
+    {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
+    {{ $displayTOConSide := default .Site.Params.displayTOConSide -}}
+    {{- if and $enableTOC $displayTOConSide -}}
+    {{- partial "utils/toc.html" . -}}
+    {{- end -}}
+    
     <div class="main-inner">
 
         {{ $attrs := partial "utils/data-attributes.html" . }}
@@ -30,9 +37,10 @@
                 {{ partial "components/post-meta.html" (dict "$" . "isHome" false) }}
             {{ end }}
 
-            {{ $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
             {{- if $enableTOC -}}
-                {{- partial "utils/toc.html" . -}}
+                {{- if not $displayTOConSide -}}
+                    {{- partial "utils/toc.html" . -}}
+                {{- end -}}
             {{- end -}}
 
             <div class="post-body e-content">

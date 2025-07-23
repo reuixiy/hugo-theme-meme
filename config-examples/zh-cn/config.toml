@@ -875,6 +875,9 @@ uglyURLs = false
     # 是否链接文章的分节标题到目录
     linkHeadingsToTOC = true
 
+    # 是否将目录置于页面左侧
+    displayTOConSide = false
+
 
     ######################################
     # 分节标题锚点

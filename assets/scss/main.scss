@@ -75,6 +75,13 @@
     $enableSmoothScroll: false;
 {{ end }}
 
+
+{{ if .Site.Params.displayTOConSide }}
+    $tocPosition: fixed;
+{{ else }}
+    $tocPosition: inherit;
+{{ end }}
+
 $baseRelURL: "{{ "" | relURL | strings.TrimSuffix "/" }}";
 
 
