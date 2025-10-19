@@ -2,7 +2,7 @@ English |
 [简体中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-cn.md) |
 [繁體中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-tw.md)
 
-<div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
+<div align="center"><img src="static/icons/mylogo-512.png" /></div>
 
 # <div align="center">MemE</div>
 
