@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <main class="main list" id="main">
+    <div class="main-inner">
+      <div class="content list-group">
+        <h1 class="list-title">{{ .Title }}</h1>
+        <p>在下方输入关键词进行站内搜索。</p>
+
+        <section aria-label="站内搜索区域">
+          <div id="search" role="search" aria-label="站内搜索"></div>
+          <p id="search-status" role="status" aria-live="polite">正在加载搜索组件...</p>
+          <noscript>
+            <p>搜索需要启用 JavaScript。</p>
+          </noscript>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <link rel="stylesheet" href="{{ "pagefind/pagefind-ui.css" | relURL }}" />
+  <script defer src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
+{{ end }}
