@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
   const pagefindEnabled = {{ .Site.Params.enablePagefindSearch | default false }}
   if (!pagefindEnabled) {
     return
@@ -19,7 +19,23 @@ window.addEventListener("DOMContentLoaded", () => {
     return
   }
 
-  if (typeof window.PagefindUI !== "function") {
+  const waitForPagefindUI = async () => {
+    const timeoutMs = 2000
+    const intervalMs = 50
+    const maxTries = Math.ceil(timeoutMs / intervalMs)
+
+    for (let i = 0; i < maxTries; i++) {
+      if (typeof window.PagefindUI === "function") {
+        return true
+      }
+      await new Promise((resolve) => setTimeout(resolve, intervalMs))
+    }
+
+    return false
+  }
+
+  const pagefindReady = await waitForPagefindUI()
+  if (!pagefindReady) {
     if (statusNode) {
       statusNode.textContent = "{{ i18n "pagefindSearchUnavailable" }}"
     }
