@@ -1434,6 +1434,17 @@ uglyURLs = false
 
 
     ######################################
+    # Pagefind 搜索
+
+    # 说明：提供由 Pagefind 驱动的静态搜索页。
+    #      需要在 Hugo 构建后额外执行：
+    #      pagefind --site public
+
+    enablePagefindSearch = false
+    pagefindSearchPath = "/search/"
+
+
+    ######################################
     # 404 页面
 
     # 视频封面

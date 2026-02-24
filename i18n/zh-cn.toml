@@ -68,6 +68,23 @@ other = "回到顶部"
 
 [themeSwitcher]
 other = "切换主题"
+[pagefindSearchHint]
+other = "请输入关键词开始搜索。"
+
+[pagefindSearchRegionLabel]
+other = "站内搜索区域"
+
+[pagefindSearchLoading]
+other = "正在加载搜索组件..."
+
+[pagefindSearchNoScript]
+other = "搜索需要启用 JavaScript。"
+
+[pagefindSearchUnavailable]
+other = "搜索暂不可用，请稍后再试。"
+
+[pagefindSearchInputLabel]
+other = "站内搜索输入框"
 
 
 # Socials
