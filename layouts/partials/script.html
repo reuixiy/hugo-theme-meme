@@ -40,6 +40,10 @@
     {{- $scripts = union $scripts (partial "third-party/algolia-search.html" .) -}}
 {{- end -}}
 
+{{- if (.Site.Params.enableReadingProgress | default true) -}}
+    {{- $scripts = union $scripts (slice "js/reading-progress.js") -}}
+{{- end -}}
+
 {{- $scripts = union $scripts (slice "js/custom.js") -}}
 
 {{- $processedScripts := slice ("" | resources.FromString "dummy.js") -}}

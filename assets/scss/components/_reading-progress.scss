@@ -1,0 +1,10 @@
+#reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width $duration;
+}

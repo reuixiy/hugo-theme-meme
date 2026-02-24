@@ -382,6 +382,10 @@ $baseRelURL: "{{ "" | relURL | strings.TrimSuffix "/" }}";
     @import "components/socials";
 {{ end }}
 
+{{ if (.Site.Params.enableReadingProgress | default true) }}
+    @import "components/reading-progress";
+{{ end }}
+
 
 // Homepage Layout
 
