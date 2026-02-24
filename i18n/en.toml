@@ -68,6 +68,23 @@ other = "Back to top"
 
 [themeSwitcher]
 other = "Switch theme"
+[pagefindSearchHint]
+other = "Type keywords to search this site."
+
+[pagefindSearchRegionLabel]
+other = "Site search"
+
+[pagefindSearchLoading]
+other = "Loading search component..."
+
+[pagefindSearchNoScript]
+other = "Search requires JavaScript to be enabled."
+
+[pagefindSearchUnavailable]
+other = "Search is temporarily unavailable. Please try again later."
+
+[pagefindSearchInputLabel]
+other = "Search input"
 
 
 # Socials

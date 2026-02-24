@@ -1,6 +1,14 @@
 window.addEventListener("DOMContentLoaded", () => {
+  const pagefindEnabled = {{ .Site.Params.enablePagefindSearch | default false }}
+  if (!pagefindEnabled) {
+    return
+  }
+
+  const searchPath = "{{ .Site.Params.pagefindSearchPath | default "/search/" }}"
   const normalizedPath = `${window.location.pathname.replace(/\/+$/, "")}/`
-  if (normalizedPath !== "/search/") {
+  const normalizedSearchPath = `${searchPath.replace(/\/+$/, "")}/`
+
+  if (normalizedPath !== normalizedSearchPath) {
     return
   }
 
@@ -13,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (typeof window.PagefindUI !== "function") {
     if (statusNode) {
-      statusNode.textContent = "搜索暂不可用，请稍后再试。"
+      statusNode.textContent = "{{ i18n "pagefindSearchUnavailable" }}"
     }
     return
   }
@@ -29,17 +37,17 @@ window.addEventListener("DOMContentLoaded", () => {
         input.id = "search-input"
       }
       if (!input.getAttribute("aria-label")) {
-        input.setAttribute("aria-label", "站内搜索输入框")
+        input.setAttribute("aria-label", "{{ i18n "pagefindSearchInputLabel" }}")
       }
     }
 
     if (statusNode) {
-      statusNode.textContent = "请输入关键词开始搜索。"
+      statusNode.textContent = "{{ i18n "pagefindSearchHint" }}"
     }
   } catch (error) {
     if (statusNode) {
-      statusNode.textContent = "搜索暂不可用，请稍后再试。"
+      statusNode.textContent = "{{ i18n "pagefindSearchUnavailable" }}"
     }
-    console.error("[search] Pagefind 初始化失败", error)
+    console.error("[search] Pagefind initialization failed", error)
   }
 }, { once: true })

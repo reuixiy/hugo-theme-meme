@@ -1473,6 +1473,18 @@ uglyURLs = false
 
 
     ######################################
+    # Pagefind search
+
+    # Note: This feature provides a static
+    #       search page powered by Pagefind.
+    #       Generate index after Hugo build:
+    #       pagefind --site public
+
+    enablePagefindSearch = false
+    pagefindSearchPath = "/search/"
+
+
+    ######################################
     # 404 Page
 
     fofPoster = ""
