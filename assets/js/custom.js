@@ -58,7 +58,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
 
     if (statusNode) {
-      statusNode.textContent = "{{ i18n "pagefindSearchHint" }}"
+      statusNode.textContent = ""
     }
   } catch (error) {
     if (statusNode) {
