@@ -103,16 +103,45 @@ blockquote {
 }
 
 .contents {
-    margin-top: 5em;
+    margin-top: 4em;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-contrast-lower);
+    border-radius: 0.5rem;
+
+    .contents-title {
+        margin: 0 0 0.75rem;
+    }
+
     ol, ul {
         list-style: none;
+        margin: 0;
+        padding-left: 1.25rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--color-contrast-high);
+
+        &:hover {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+            border-radius: 0.2rem;
+        }
     }
 }
 ol, ul {
     &.toc {
         padding: 0;
-        overflow: auto hidden;
-        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
     }
 }
 
