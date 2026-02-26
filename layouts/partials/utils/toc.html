@@ -1,27 +1,30 @@
 {{- $toc := .TableOfContents -}}
+{{- $hasTOCItems := gt (len (findRE `<li>` $toc)) 0 -}}
 
-<!-- Change TOC Attribute -->
-{{- $regexPatternTOC := `<nav id="TableOfContents">` -}}
-{{- $regexReplacementTOC := `<nav class="contents">` -}}
-{{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
-
-<!-- Inject Class Attribute -->
-{{- $regexPatternTOC := `(<nav class="contents">\n.+)<(ol|ul)>` -}}
-{{- $regexReplacementTOC := `$1<$2 class="toc">` -}}
-{{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
-
-<!-- Inject TOC Title -->
-{{- if .Site.Params.displayTOCTitle -}}
-    {{- $regexPatternTOC := `(<nav class="contents">\n.+)(<(ol|ul) class="toc">)` -}}
-    {{- $regexReplacementTOC := (printf `$1<h2 id="contents" class="contents-title">%s</h2>$2` (i18n "tocTitle")) -}}
+{{- if $hasTOCItems -}}
+    <!-- Change TOC Attribute -->
+    {{- $regexPatternTOC := `<nav id="TableOfContents">` -}}
+    {{- $regexReplacementTOC := `<nav class="contents">` -}}
     {{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
+
+    <!-- Inject Class Attribute (first list only, multiline-safe) -->
+    {{- $regexPatternTOC := `(?s)(<nav class="contents">.*?)(<(ol|ul)>)` -}}
+    {{- $regexReplacementTOC := `$1<$3 class="toc">` -}}
+    {{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
+
+    <!-- Inject TOC Title -->
+    {{- if .Site.Params.displayTOCTitle -}}
+        {{- $regexPatternTOC := `(?s)(<nav class="contents">)(\s*<(ol|ul) class="toc">)` -}}
+        {{- $regexReplacementTOC := (printf `$1<h2 id="contents" class="contents-title">%s</h2>$2` (i18n "tocTitle")) -}}
+        {{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
+    {{- end -}}
+
+    <!-- Link Headings to TOC -->
+    {{- if .Site.Params.linkHeadingsToTOC -}}
+        {{- $regexPatternTOC := `(<a)( href="#([^"]+)">)` -}}
+        {{- $regexReplacementTOC := `$1 id="contents:$3"$2` -}}
+        {{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
+    {{ end }}
+
+    {{- $toc | safeHTML -}}
 {{- end -}}
-
-<!-- Link Headings to TOC -->
-{{- if .Site.Params.linkHeadingsToTOC -}}
-    {{- $regexPatternTOC := `(<a)( href="#([^"]+)">)` -}}
-    {{- $regexReplacementTOC := `$1 id="contents:$3"$2` -}}
-    {{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
-{{ end }}
-
-{{- $toc | safeHTML -}}
