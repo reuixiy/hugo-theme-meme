@@ -6,7 +6,7 @@
                     {{ range $index, $value := . }}
                         {{- $linkType := (string .Pre) -}}
                         {{- $iconName := (string .Post) -}}
-                        {{- $icon := (index $.Site.Data.SVG $iconName) -}}
+                        {{- $icon := (index hugo.Data.SVG $iconName) -}}
                         <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "$" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
                     {{ end }}
                 </div>
@@ -16,7 +16,7 @@
                     {{ range $index, $value := . }}
                         {{- $linkType := (string .Pre) -}}
                         {{- $iconName := (string .Post) -}}
-                        {{- $icon := (index $.Site.Data.SVG $iconName) -}}
+                        {{- $icon := (index hugo.Data.SVG $iconName) -}}
                         <a href="{{ .URL }}"{{ if eq $linkType "external" }} target="_blank" rel="external noopener"{{ end }}>{{ partial "utils/icon.html" (dict "$" $ "name" $iconName "class" .Identifier) }}{{ .Name }}</a>
                     {{ end }}
                 </div>

@@ -1,6 +1,6 @@
 {{- $ := index . "$" -}}
 {{- $name := .name -}}
 {{- $class := .class | default $name -}}
-{{- $icon := index $.Site.Data.SVG $name -}}
+{{- $icon := index hugo.Data.SVG $name -}}
 {{- $class := printf "icon %s" $class -}}
 {{- return (replace $icon "icon" $class | safeHTML) -}}
