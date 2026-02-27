@@ -53,7 +53,7 @@
                     {{ range $pages.GroupByDate "2006" }}
                         {{ $.Scratch.Delete "zodiacName" }}
                         {{ if $.Site.Params.chineseZodiac }}
-                            {{ $zodiacName := (index $.Site.Data.ChineseZodiac (string (mod .Key 12))) }}
+                            {{ $zodiacName := (index hugo.Data.ChineseZodiac (string (mod .Key 12))) }}
                             {{ $.Scratch.Set "zodiacName" $zodiacName }}
                         {{ end }}
                         {{ $zodiacName := $.Scratch.Get "zodiacName" }}
