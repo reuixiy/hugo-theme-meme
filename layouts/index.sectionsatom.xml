@@ -7,7 +7,7 @@
 {{- if ge $limit 1 -}}
     {{- $pages = $pages | first $limit -}}
 {{- end -}}
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ .Site.LanguageCode }}">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ .Site.Language.Locale }}">
     <title type="text">{{ .Site.Title }}</title>
     <subtitle type="html">{{ .Site.Params.siteDescription }}</subtitle>
     <updated>{{ now.Format "2006-01-02T15:04:05-07:00" }}</updated>

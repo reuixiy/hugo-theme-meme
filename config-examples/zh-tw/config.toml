@@ -3,7 +3,7 @@
 
 baseURL = "https://example.com/"
 title = "Hugo 主題 MemE"
-languageCode = "zh-TW"
+locale = "zh-TW"
 hasCJKLanguage = true
 # 版權資訊（支援 Markdown）
 copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)"

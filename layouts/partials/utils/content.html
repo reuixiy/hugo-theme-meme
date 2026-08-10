@@ -18,7 +18,7 @@
     {{- $headings := $headings | default "1-6" -}}
 
     {{- with .Site.Params.anchorIcon -}}
-        {{- $icon := (replace (index $.Site.Data.SVG .) "icon" "icon anchor-icon") -}}
+        {{- $icon := (replace (index hugo.Data.SVG .) "icon" "icon anchor-icon") -}}
         {{- $.Scratch.Set "icon" $icon -}}
     {{- end -}}
     {{- $icon := .Scratch.Get "icon" -}}
