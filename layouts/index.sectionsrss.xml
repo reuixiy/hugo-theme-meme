@@ -16,7 +16,7 @@
         <link>{{ .Permalink }}</link>
         <description>{{ .Site.Params.siteDescription }}</description>
         <generator>Hugo {{ hugo.Version }} https://gohugo.io/</generator>
-        {{ with .Site.LanguageCode }}
+        {{ with .Site.Language.Locale }}
             <language>{{ . }}</language>
         {{ end }}
         {{ with .Site.Params.author.email }}

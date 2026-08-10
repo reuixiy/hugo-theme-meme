@@ -1,5 +1,5 @@
 {{ if .Site.Params.enableSocials }}
-    {{ with .Site.Data.Socials }}
+    {{ with hugo.Data.Socials }}
         <ul class="socials">
             {{- range sort .socials "weight" -}}
                 <li class="socials-item">
